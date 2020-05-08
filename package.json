@@ -1,0 +1,28 @@
+{
+  "name": "altv-types",
+  "version": "1.0.0",
+  "description": "This repository contains types definitions for alt:V JavaScript modules.",
+  "main": "",
+  "subPackages": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "test": "subpkg run test",
+    "release": "subpkg run release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altmp/altv-types.git"
+  },
+  "author": "altMP Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/altmp/altv/issues"
+  },
+  "homepage": "https://github.com/altmp/altv-types#readme",
+  "devDependencies": {
+    "subpackage": "^1.1.0",
+    "typescript": "^3.8.3"
+  }
+}
