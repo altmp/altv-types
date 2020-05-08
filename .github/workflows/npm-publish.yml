@@ -20,6 +20,22 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./client/package.json
           access: public
+  webview:
+    name: Publish webview
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Publish package
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          package: ./webview/package.json
+          access: public
   server:
     name: Publish server
     runs-on: ubuntu-latest
