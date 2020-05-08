@@ -1,0 +1,16 @@
+name: Test Pull Request
+on:
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Test
+        run: npm run test
