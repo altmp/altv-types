@@ -522,6 +522,53 @@ declare module "alt-client" {
     public static read(filename: string, encoding: "binary"): ArrayBuffer;
   }
 
+  /**
+   * Removes the specified key.
+   *
+   * @param key The key of the value to remove.
+   */
+  export function deleteMeta(key: string): void;
+
+  /**
+   * Gets a value using the specified key.
+   *
+   * @param key The key of the value to get.
+   * @returns Dynamic value associated with the specified key.
+   */
+  export function getMeta(key: string): any;
+
+  /**
+   * Determines whether contains the specified key.
+   *
+   * @param key The key of the value to locate.
+   * @returns True when element associated with the specified key is stored.
+   */
+  export function hasMeta(key: string): boolean;
+
+  /**
+   * Stores the given value with the specified key.
+   *
+   * @remarks The given value will be shared locally to all resources.
+   * @param key The key of the value to store.
+   */
+  export function setMeta(key: string, value: any): void;
+
+  /**
+   * Gets a value using the specified key.
+   *
+   * @param key The key of the value to get.
+   * @returns Dynamic value associated with the specified key.
+   */
+  export function getSyncedMeta(key: string): any;
+
+  /**
+   * Determines whether contains the specified key.
+   *
+   * @param key The key of the value to locate.
+   * @returns Return is dependent on whether element associated with the specified key is stored.
+   */
+  export function hasSyncedMeta(key: string): boolean;
+
   export function addGxtText(key: string, value: string): void;
 
   export function beginScaleformMovieMethodMinimap(methodName: string): boolean;
@@ -794,7 +841,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any) => void): void;
+  export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -802,7 +849,23 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any) => void): void;
+  export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
