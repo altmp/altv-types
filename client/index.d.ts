@@ -852,7 +852,7 @@ declare module "alt-client" {
   export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Subscribes to server event handler with specified listener.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -860,7 +860,7 @@ declare module "alt-client" {
   export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Subscribes to server event handler with specified listener.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -868,7 +868,7 @@ declare module "alt-client" {
   export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Subscribes to server event handler with specified listener.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
