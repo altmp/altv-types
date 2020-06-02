@@ -62,17 +62,8 @@ jobs:
           path: ./tmp
           repository: altmp/natives
           ref: a6990af2f7a0c364b2fbeb272726875c58a14393
-      - name: Debug actual directory
-        run: ls
-      - name: Debug tmp directory
-        working-directory: ./tmp
-        run: ls
-      - name: Debug dotnet executable
-        working-directory: ./tmp
-        run: '[ -f "/you/file.file" ] && echo 1 || echo 0'
       - name: Run generator
-        run: dotnet run -p Durty.AltV.NativesTypingsGenerator.Console --disableHeader --nativesPath "./natives.json" --outPath "../natives/index.d.ts" --outIndent "  "
-        working-directory: ./tmp
+        run: dotnet run -p ../tmp/Durty.AltV.NativesTypingsGenerator.Console --disableHeader --nativesPath "../tmp/natives.json" --outPath "./natives/index.d.ts" --outIndent "  "
       # - name: Move to package
       #   run: mv ./tmp/native-types/natives.d.ts ./natives/index.d.ts
       - name: Publish package
