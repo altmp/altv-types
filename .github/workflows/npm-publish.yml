@@ -62,9 +62,6 @@ jobs:
           path: ./nativedb
           repository: altmp/natives
           ref: a6990af2f7a0c364b2fbeb272726875c58a14393
-      - name: Debug tmp directory
-        working-directory: ../tmp
-        run: ls
       - name: Run generator
         run: dotnet run -p ../gen/Durty.AltV.NativesTypingsGenerator.Console --disableHeader --nativesPath "../nativedb/natives.json" --outPath "./natives/index.d.ts" --outIndent "  "
       # - name: Move to package
