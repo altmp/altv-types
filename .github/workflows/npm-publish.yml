@@ -61,7 +61,7 @@ jobs:
         with:
           path: ./tmp
           repository: altmp/natives
-          ref: e91e1716a3cf6ec70a74402231cc2d905262de66
+          ref: a6990af2f7a0c364b2fbeb272726875c58a14393
       - name: Run generator
         run: dotnet run -p Durty.AltV.NativesTypingsGenerator.Console --disableHeader --nativesPath "./natives.json" --outPath "../natives/index.d.ts" --outIndent "  "
         working-directory: ./tmp
