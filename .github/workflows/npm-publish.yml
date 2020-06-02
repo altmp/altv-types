@@ -56,15 +56,15 @@ jobs:
           path: ./tmp
           repository: altmp/altv-native-typings
           ref: 28ce7b3b6a0a14db5f4a538a069b84110ee0891f
-      # - name: Checkout nativedb
-      #   uses: actions/checkout@v1
-      #   with:
-      #     path: ./tmp
-      #     repository: altmp/natives
-      #     ref: a6990af2f7a0c364b2fbeb272726875c58a14393
+      - name: Checkout nativedb
+        uses: actions/checkout@v1
+        with:
+          path: ./tmp
+          repository: altmp/natives
+          ref: a6990af2f7a0c364b2fbeb272726875c58a14393
       - name: Run generator
         run: dotnet run -p Durty.AltV.NativesTypingsGenerator.Console --disableHeader --nativesPath "./natives.json" --outPath "../natives/index.d.ts" --outIndent "  "
-        working-directory: ./tmp
+        working-directory: tmp
       # - name: Move to package
       #   run: mv ./tmp/native-types/natives.d.ts ./natives/index.d.ts
       - name: Publish package
