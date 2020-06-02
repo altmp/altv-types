@@ -1,0 +1,32 @@
+{
+  "name": "@altv/types-natives",
+  "version": "1.0.0",
+  "description": "This package contains types definitions for alt:V client-side natives.",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "tsc",
+    "preversion": "npm run test",
+    "release": "npm version --no-git-tag-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altmp/altv-types.git"
+  },
+  "keywords": [
+    "altv",
+    "native",
+    "natives",
+    "gta",
+    "gta5",
+    "gtav"
+  ],
+  "author": "altMP Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/altmp/altv/issues"
+  },
+  "homepage": "https://github.com/altmp/altv-types#readme"
+}
