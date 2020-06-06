@@ -260,6 +260,7 @@ declare module "alt-server" {
     public darkness: number;
     public dashboardColor: number;
     public readonly daylightOn: boolean;
+    public readonly destroyed: boolean;
     public dirtLevel: number;
     public readonly driver: Player | null;
     public engineHealth: number;
@@ -835,6 +836,14 @@ declare module "alt-server" {
    * @param listener Listener that should be added.
    */
   export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on(eventName: "vehicleDestroy", listener: (vehicle: Vehicle) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
