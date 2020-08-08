@@ -414,6 +414,8 @@ declare module "alt-server" {
     public colshapeType: number;
 
     public isEntityIn(entity: Entity): boolean;
+
+    public isPointIn(position: Vector3): boolean;
   }
 
   export class ColshapeCylinder extends Colshape {
