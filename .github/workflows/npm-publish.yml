@@ -7,6 +7,7 @@ jobs:
   client:
     name: Publish client
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'chore:')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -23,6 +24,7 @@ jobs:
   webview:
     name: Publish webview
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'chore:')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -39,6 +41,7 @@ jobs:
   natives:
     name: Publish natives
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'chore:')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -75,6 +78,7 @@ jobs:
   server:
     name: Publish server
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'chore:')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
