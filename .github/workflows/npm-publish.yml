@@ -7,7 +7,7 @@ jobs:
   client:
     name: Publish client
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:')"
+    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -20,11 +20,10 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./client/package.json
-          # access: public
   webview:
     name: Publish webview
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:')"
+    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -37,11 +36,10 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./webview/package.json
-          # access: public
   natives:
     name: Publish natives
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:')"
+    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -52,9 +50,12 @@ jobs:
         with:
           dotnet-version: '3.1.100'
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
       - name: Checkout generator
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
         with:
           path: ./gen
           repository: altmp/altv-native-typings
@@ -65,20 +66,29 @@ jobs:
           path: ./nativedb
           repository: altmp/natives
           ref: a6990af2f7a0c364b2fbeb272726875c58a14393
+      - name: Remove previous file
+        run: rm -f ./natives/index.d.ts
       - name: Run generator
         run: dotnet run -p ../gen/Durty.AltV.NativesTypingsGenerator.Console --disableHeader --nativesPath "../nativedb/natives.json" --outPath "./natives/index.d.ts" --outIndent "  "
-      # - name: Move to package
-      #   run: mv ./tmp/native-types/natives.d.ts ./natives/index.d.ts
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add ./natives/index.d.ts
+          git commit -m "chore: Update natives/index.d.ts"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish package
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./natives/package.json
-          # access: public
   server:
     name: Publish server
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:')"
+    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -91,4 +101,3 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./server/package.json
-          # access: public
