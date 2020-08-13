@@ -50,12 +50,12 @@ jobs:
         with:
           dotnet-version: '3.1.100'
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
         with:
           persist-credentials: false
           fetch-depth: 0
       - name: Checkout generator
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
         with:
           path: ./gen
           repository: altmp/altv-native-typings
