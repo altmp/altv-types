@@ -133,13 +133,16 @@ jobs:
           ref: patch-1
       - name: Install dependencies
         run: npm install
+      - name: Install type2docfx dependencies
+        run: npm install
+        working-directory: ../type2docfx
       - name: Generate JSON
         run: npx typedoc --options "docs/typedoc.json"
       - name: Compile type2docfx
         run: npm run build
         working-directory: ../type2docfx
       - name: Generate YAML
-        run: node "../type2docfx/dist/main.js" "docs/typings.json" "docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
+        run: node "../type2docfx/dist/main.js" "docs/output.json" "docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
       - name: Run generator
         run: dotnet run -p "../docfx/src/docfx/docfx.csproj" "docs/docfx.json" --serve
 
