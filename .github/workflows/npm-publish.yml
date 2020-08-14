@@ -149,7 +149,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: site
-          path: _site
+          path: docs/_site
   deploy:
     needs: [docs]
     runs-on: ubuntu-latest
