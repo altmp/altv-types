@@ -160,6 +160,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: site
+          path: docs/_site
       - name: Cleanup artifacts
         uses: geekyeggo/delete-artifact@v1
         with:
@@ -167,6 +168,6 @@ jobs:
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: _site
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: docs/_site
