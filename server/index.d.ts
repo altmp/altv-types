@@ -57,7 +57,7 @@ declare module "alt-server" {
      * Removes the object from the world.
      */
     public destroy(): void;
-    
+
     /**
      * Removes the specified key.
      *
@@ -119,7 +119,7 @@ declare module "alt-server" {
      * @remarks Only setter accepts string or number as input, getter returns value as number.
      */
     public model: number | string;
-    
+
     /**
      * Entity rotation.
      *
@@ -232,7 +232,12 @@ declare module "alt-server" {
 
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
-    public kick(): void;
+    /**
+     * Forcefully disconnects the player from the server with an error message.
+     *
+     * @param reason The reason to display to the player on the disconnect screen.
+     */
+    public kick(reason: string): void;
 
     public removeAllWeapons(): void;
 
