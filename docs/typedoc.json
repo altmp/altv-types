@@ -5,8 +5,7 @@
   "excludeExternals": true,
   "inputFiles": [
     "client",
-    "server",
-    "webview"
+    "server"
   ],
   "out": "",
   "json": "docs/output.json",
