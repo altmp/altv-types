@@ -148,8 +148,8 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: _site
-          path: build
+          name: site
+          path: _site
   deploy:
     needs: [docs]
     runs-on: ubuntu-latest
@@ -159,11 +159,11 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v1
         with:
-          name: _site
+          name: site
       - name: Cleanup artifacts
         uses: geekyeggo/delete-artifact@v1
         with:
-          name: _site
+          name: site
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
