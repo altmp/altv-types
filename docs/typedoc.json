@@ -1,0 +1,14 @@
+{
+  "mode": "file",
+  "readme": "none",
+  "includeDeclarations": true,
+  "excludeExternals": true,
+  "inputFiles": [
+    "client",
+    "server",
+    "webview"
+  ],
+  "out": "",
+  "json": "docs/output.json",
+  "name": "@altmp/altv-types"
+}

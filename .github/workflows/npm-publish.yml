@@ -7,7 +7,7 @@ jobs:
   client:
     name: Publish client
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
+    if: "contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -23,7 +23,7 @@ jobs:
   webview:
     name: Publish webview
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
+    if: "contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -39,7 +39,7 @@ jobs:
   natives:
     name: Publish natives
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
+    if: "contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -88,7 +88,7 @@ jobs:
   server:
     name: Publish server
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore:') || contains(github.event.head_commit.message, 'Bump version')"
+    if: "contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -101,3 +101,45 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./server/package.json
+  docs:
+    name: Publish documentation
+    runs-on: ubuntu-latest
+    # if: "contains(github.event.head_commit.message, 'Bump version')"
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Set up .Net SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.100'
+      - name: Checkout repository
+        uses: actions/checkout@v1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Checkout generator
+        uses: actions/checkout@v1
+        with:
+          path: ./docfx
+          repository: Lhoerion/docfx
+          ref: patch-1
+      - name: Checkout generator
+        uses: actions/checkout@v1
+        with:
+          path: ./type2docfx
+          repository: Lhoerion/type2docfx
+          ref: patch-1
+      - name: Install dependencies
+        run: npm install
+      - name: Generate JSON
+        run: npx typedoc --options "docs/typedoc.json"
+      - name: Compile type2docfx
+        run: npm run build
+        working-directory: ../type2docfx
+      - name: Generate YAML
+        run: node "../type2docfx/dist/main.js" "docs/typings.json" "docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
+      - name: Run generator
+        run: dotnet run -p "../docfx/src/docfx/docfx.csproj" "docs/docfx.json" --serve
+
