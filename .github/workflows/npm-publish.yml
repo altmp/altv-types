@@ -103,7 +103,7 @@ jobs:
           package: ./server/package.json
   docs:
     name: Publish documentation
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     # if: "contains(github.event.head_commit.message, 'Bump version')"
     steps:
       - name: Setup Node.js
