@@ -39,7 +39,7 @@
     ],
     "template": [
         "default",
-        "templates/darkfx"
+        "templates/igniteui"
     ],
     "dest": "_site",
     "globalMetadataFiles": [],
