@@ -136,6 +136,10 @@ jobs:
       - name: Install type2docfx dependencies
         run: npm install
         working-directory: ../type2docfx
+      - name: Install DocFX dependencies
+        run: ./UpdateTemplate.ps1
+        shell: powershell
+        working-directory: ../docfx
       - name: Generate JSON
         run: npx typedoc --options "docs/typedoc.json"
       - name: Compile type2docfx
@@ -169,7 +173,7 @@ jobs:
       - name: Unpack files
         run: |
           ls -R
-          tar -xzf site.tar
+          tar -xzf _site.tar
         working-directory: ./docs
       - name: Cleanup artifacts
         uses: geekyeggo/delete-artifact@v1
