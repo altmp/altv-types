@@ -151,8 +151,6 @@ jobs:
         run: node "../type2docfx/dist/main.js" "docs/output.json" "docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
       - name: Run generator
         run: dotnet run -p "../docfx/src/docfx/docfx.csproj" "docs/docfx.json"
-      - run: ls -R
-        working-directory: ../
       - name: Pack files
         run: tar -cvf _site.tar _site
         working-directory: ./docs
@@ -173,9 +171,7 @@ jobs:
           name: site
           path: docs
       - name: Unpack files
-        run: |
-          ls -R
-          tar -xzf _site.tar
+        run: tar -xvf _site.tar
         working-directory: ./docs
       - name: Cleanup artifacts
         uses: geekyeggo/delete-artifact@v1
