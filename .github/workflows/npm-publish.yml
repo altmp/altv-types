@@ -140,6 +140,8 @@ jobs:
         run: ./UpdateTemplate.ps1
         shell: powershell
         working-directory: ../docfx
+        env:
+          TF_BUILD: true
       - name: Generate JSON
         run: npx typedoc --options "docs/typedoc.json"
       - name: Compile type2docfx
