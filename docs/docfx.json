@@ -19,13 +19,6 @@
         ]
       }
     ],
-    "resource": [
-      {
-        "files": [
-          "images/**"
-        ]
-      }
-    ],
     "overwrite": [
       {
         "files": [
@@ -38,13 +31,19 @@
       }
     ],
     "template": [
-        "default",
-        "templates/igniteui"
+      "default",
+      "templates/darkfx"
     ],
     "dest": "_site",
+    "globalMetadata": {
+      "_disableAffix": "true",
+      "_enableSearch": "true"
+    },
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
-    "postProcessors": [],
+    "postProcessors": [
+      "ExtractSearchIndex"
+    ],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,
     "keepFileLink": false,
