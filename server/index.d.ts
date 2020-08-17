@@ -233,9 +233,9 @@ declare module "alt-server" {
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
     /**
-     * Forcefully disconnects the player from the server with an error message.
+     * Forcefully disconnects the player from with a reason message.
      *
-     * @param reason The reason to display to the player on the disconnect screen.
+     * @param reason The reason that will display to the player on the disconnect screen.
      */
     public kick(reason: string): void;
 
