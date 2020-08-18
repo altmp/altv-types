@@ -233,7 +233,7 @@ declare module "alt-server" {
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
     /**
-     * Forcefully disconnects the player from with a reason message.
+     * Forcefully disconnects the player with a reason message.
      *
      * @param reason The reason that will display to the player on the disconnect screen.
      */
