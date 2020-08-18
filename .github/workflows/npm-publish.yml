@@ -102,9 +102,9 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./server/package.json
   docs:
-    name: Generate documentation
+    name: Publish documentation
     runs-on: windows-latest
-    # if: "contains(github.event.head_commit.message, 'Bump version')"
+    if: "contains(github.event.head_commit.message, 'Bump version') || contains(github.event.head_commit.message, 'Update documentation')"
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -160,8 +160,9 @@ jobs:
           name: site
           path: docs/_site.tar
   deploy:
-    needs: [docs]
+    name: Deploy GitHub Pages
     runs-on: ubuntu-latest
+    needs: [docs]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1

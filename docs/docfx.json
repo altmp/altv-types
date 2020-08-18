@@ -19,6 +19,13 @@
         ]
       }
     ],
+    "resource": [
+        {
+          "files": [
+            "CNAME"
+          ]
+        }
+    ],
     "overwrite": [
       {
         "files": [
