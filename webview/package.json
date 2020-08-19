@@ -16,9 +16,10 @@
     "url": "git+https://github.com/altmp/altv-types.git"
   },
   "keywords": [
+    "altmp",
     "altv",
-    "node",
-    "node-module",
+    "webview",
+    "cef",
     "gta",
     "gta5",
     "gtav"
