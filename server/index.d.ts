@@ -110,6 +110,11 @@ declare module "alt-server" {
 
     /**
      * Network owner of the entity.
+     * @remarks Network owner is responsible for syncing entity with the server.
+     * It changes when actual network owner passes the migration range,
+     * then the new one is determined based on distance from the entity
+     * (if entity is a vehicle, then the driver will take priority for becoming network owner).
+     * Disabling migration range will stop this process from happening until turned on again.
      */
     public readonly netOwner: Player | null;
 
@@ -196,6 +201,35 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      */
     public setStreamSyncedMeta(key: string, value: any): void;
+
+    /**
+     * Changes network owner to the specified player.
+     *
+     * @remarks See {@link netOwner} to understand how network owner works.
+     * <p><b>
+     * Keep in mind that disabling migration can lead to unexpected behaviour when
+     * the network owner gets out of the streaming range.
+     * </b></p>
+     *
+     * @param player The given player that will be set as new network owner.
+     * @param disableMigration Pass true to disable migration, false to keep it enabled.
+     * If not specified, it defaults to "false".
+     */
+    public setNetOwner(player: Player, disableMigration?: boolean): void;
+
+    /**
+     * Resets overwritten network owner.
+     *
+     * @remarks See {@link netOwner} to understand how network owner works.
+     * <p><b>
+     * Keep in mind that disabling migration can lead to unexpected behaviour when
+     * the network owner gets out of the streaming range.
+     * </b></p>
+     *
+     * @param disableMigration Pass true to disable migration, false to keep it enabled.
+     * If not specified, it defaults to "false".
+     */
+    public resetNetOwner(disableMigration?: boolean): void;
   }
 
   export class Player extends Entity {
