@@ -1046,8 +1046,19 @@ declare module "alt-server" {
   export class Colshape extends WorldObject {
     public colshapeType: number;
 
+    /**
+     * Checks if the specified entity is inside the colshape.
+     *
+     * @returns True if the entity is inside the colshape.
+     */
     public isEntityIn(entity: Entity): boolean;
 
+    /**
+     * Checks if the specified point is inside the colshape.
+     *
+     * @param position A vector3 representing a point in the world.
+     * @returns True if the point is inside the colshape.
+     */
     public isPointIn(position: Vector3): boolean;
   }
 
