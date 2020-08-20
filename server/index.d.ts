@@ -10,23 +10,23 @@ declare module "alt-server" {
   type DateTimeMonth = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
   /**
-   * Resource name of the executing entity
+   * Resource name of the executing entity.
    */
   export const resourceName: string;
   /**
-   * The root directory of the alt:V server
+   * The root directory of the alt:V server.
    */
   export const rootDir: string;
   /**
-   * The default entity dimension
+   * The default entity dimension.
    * 
-   * @remarks Can only see itself but can be seen by itself and the public dimension (-1 to -2147483647)
+   * @remarks Can only see itself but can be seen by itself and the public dimension. (-1 to -2147483647).
    */
   export const DefaultDimension: number;
   /**
-   * The global dimension
+   * The global dimension.
    * 
-   * @remarks Can only see itself but can be seen by itself, the public dimension (-1 to -2147483647) and the private dimension (1 to 2147483647)
+   * @remarks Can only see itself but can be seen by itself, the public dimension (-1 to -2147483647) and the private dimension (1 to 2147483647).
    */
   export const GlobalDimension: number;
  
