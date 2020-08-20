@@ -462,51 +462,201 @@ declare module "alt-server" {
   }
 
   export class Vehicle extends Entity {
+    /**
+     * Array containing all existing vehicles.
+     */
     public static readonly all: Array<Vehicle>;
+    /**
+     * The current active radio station.
+     */
     public activeRadioStation: number;
+    /**
+     * Additional body health of the vehicle.
+     */
     public bodyAdditionalHealth: number;
+    /**
+     * Body health of the vehicle.
+     * @remarks A body health of 0 does not mean the vehicle is destroyed.
+     */
     public bodyHealth: number;
+    /**
+     * RGBA Primary color of the vehicle.
+     */
     public customPrimaryColor: RGBA;
+    /**
+     * RGBA Secondary color of the vehicle.
+     */
     public customSecondaryColor: RGBA;
+    /**
+     * Are custom tires enabled.
+     */
     public customTires: boolean;
     public darkness: number;
+    /**
+     * Color of the vehicle interior dashboard.
+     * @remarks The color is a GTA V hud color.
+     */
     public dashboardColor: number;
+    /**
+     * Is the vehicle daylight activated.
+     */
     public readonly daylightOn: boolean;
+    /**
+     * Is the vehicle destroyed.
+     */
     public readonly destroyed: boolean;
+    /**
+     * Dirt level on the vehicle.
+     * @remarks A dirt level of 0 means the vehicle is completely clean.
+     */
     public dirtLevel: number;
+    /**
+     * The current driver of the vehicle.
+     */
     public readonly driver: Player | null;
+    /**
+     * Engine Health of the vehicle.
+     * @remarks Engine health of 0 does not mean the vehicle is detroyed.
+     */
     public engineHealth: number;
+    /**
+     * Is the vehicle engine on.
+     */
     public engineOn: boolean;
+    /**
+     * Is the flamethrower active.
+     * @remarks This is a special vehicle weapon.
+     */
     public readonly flamethrowerActive: boolean;
+    /**
+     * Is the handbrake active.
+     */
     public readonly handbrakeActive: boolean;
+    /**
+     * Does the vehicle have armored windows.
+     */
     public readonly hasArmoredWindows: number;
+    /**
+     * Headlight color of the vehicle.
+     * @remarks The color is a GTA V hud color.
+     */
     public headlightColor: number;
+    /**
+     * Interior color of the vehicle.
+     * @remarks The color is a GTA V hud color.
+     */
     public interiorColor: number;
+    /**
+     * The vehicle lights multiplier.
+     */
     public lightsMultiplier: number;
+    /**
+     * The current vehicle livery.
+     * @remarks Vehicle liveries are special paints.
+     */
     public livery: number;
+    /**
+     * The current vehicle lock state.
+     */
     public lockState: number;
+    /**
+     * Is manual engine control enabled for the vehicle.
+     * @remarks Manual engine control activates full engine control from the serverside.
+     */
     public manualEngineControl: boolean;
+    /**
+     * The current vehicle modkit.
+     * @remarks Not every vehicle has modkits, see {@link modKitsCount}
+     */
     public modKit: number;
+    /**
+     * The amount of modkits available for the vehicle.
+     */
     public readonly modKitsCount: number;
+    /**
+     * The vehicle neon layout.
+     */
     public neon: VehicleNeon;
+    /**
+     * The vehicle neon color.
+     */
     public neonColor: RGBA;
+    /**
+     * Are the nightlights activated.
+     */
     public readonly nightlightOn: boolean;
+    /**
+     * The current numberplate type.
+     */
     public numberPlateIndex: number;
+    /**
+     * The current number plate text.
+     * @remarks Only a maximum of 8 characters can be displayed.
+     */
     public numberPlateText: string;
+    /**
+     * The vehicle pearl color. 
+     */
     public pearlColor: number;
+    /**
+     * The vehicle petrol tank health.
+     */
     public petrolTankHealth: number;
+    /**
+     * The primary color of the vehicle.
+     * @remarks The color is a GTA hud color.
+     */
     public primaryColor: number;
+    /**
+     * The amount of times the vehicle has been repaired.
+     */
     public readonly repairsCount: number;
+    /**
+     * The livery of the roof of the vehicle.
+     * @remarks Liveries are a custom paint.
+     */
     public roofLivery: number;
+    /**
+     * Is the roof of the vehicle open.
+     */
     public roofOpened: boolean;
+    /**
+     * The secondary color of the vehicle.
+     * @remarks The color is a GTA hud color.
+     */
     public secondaryColor: number;
+    /**
+     * Is the siren active.
+     * @remarks This only works for vehicles that have a siren.
+     */
     public sirenActive: boolean;
+    /**
+     * The tire smoke color of the vehicle.
+     */
     public tireSmokeColor: RGBA;
+    /**
+     * The wheel color of the vehicle.
+     */
     public wheelColor: number;
+    /**
+     * The amount of wheels the vehicle has.
+     */
     public readonly wheelsCount: number;
+    /**
+     * The type of wheels the vehicle has.
+     */
     public readonly wheelType: number;
+    /**
+     * The amount of front wheels the vehicle has.
+     */
     public readonly frontWheels: number;
+    /**
+     * The amount of rear wheels the vehicle has.
+     */
     public readonly rearWheels: number;
+    /**
+     * The window tint color of the vehicle.
+     */
     public windowTint: number;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
@@ -519,98 +669,369 @@ declare module "alt-server" {
      */
     public static getByID(id: number): Vehicle | null;
 
+    /**
+     * Checks if the specified wheel has a tire.
+     *
+     * @param wheelId The index of the wheel.
+     * @returns True if the wheel has a tire.
+     */
     public doesWheelHasTire(wheelId: number): boolean;
 
+    /**
+     * Gets the appearance of the vehicle as a Base64 string.
+     * @deprecated Base64 methods are deprecated.
+     */
     public getAppearanceDataBase64(): string;
 
+    /**
+     * Gets the health of the specified armored window.
+     *
+     * @param windowId Window index.
+     * @returns Window health value.
+     */
     public getArmoredWindowHealth(windowId: number): number;
 
+    /**
+     * Gets the amount of shots in the specified armored window.
+     *
+     * @param windowId Window index.
+     * @returns Amount of shots in the window.
+     */
     public getArmoredWindowShootCount(windowId: number): number;
 
+    /**
+     * Gets the damage level of the specified bumper.
+     *
+     * @param bumperId Bumper index.
+     * @returns Damage level value of the bumper.
+     */
     public getBumperDamageLevel(bumperId: number): number;
 
+    /**
+     * Gets the damage status of the vehicle as a Base64 string.
+     * @deprecated Base64 methods are deprecated.
+     */
     public getDamageStatusBase64(): string;
 
+    /**
+     * Gets the state of the specified door.
+     *
+     * @param doorId Door index.
+     * @returns State of the door.
+     */
     public getDoorState(doorId: number): number;
 
+    /**
+     * Gets the extra in the specified category.
+     *
+     * @param category Extra category.
+     * @returns True if the extra is activated.
+     */
     public getExtra(category: number): boolean;
 
+    /**
+     * Gets the game state data of the vehicle as a Base64 string.
+     * @deprecated Base64 methods are deprecated.
+     */
     public getGamestateDataBase64(): string;
 
+    /**
+     * Gets the health data of the vehicle as a Base64 string.
+     * @deprecated Base64 methods are deprecated.
+     */
     public getHealthDataBase64(): string;
 
+    /**
+     * Gets the mod in the specified category.
+     *
+     * @param category Mod category.
+     * @returns Activated mod in the category.
+     */
     public getMod(category: number): number;
 
+    /**
+     * Gets the amount of mods the specified category has available.
+     *
+     * @param category Mod category.
+     * @returns Amount of mods available in that category.
+     */
     public getModsCount(category: number): number;
 
+    /**
+     * Gets the amount of bullet holes in the specified vehicle part.
+     *
+     * @param partId Vehicle part index.
+     * @returns Amount of bullet holes in the vehicle part.
+     */
     public getPartBulletHoles(partId: number): number;
 
+    /**
+     * Gets the damage level of the specified vehicle part.
+     *
+     * @param partId Vehicle part index.
+     * @returns Damage level of the vehicle part.
+     */
     public getPartDamageLevel(partId: number): number;
 
+    /**
+     * Gets the vehicle script data as a Base64 string.
+     * @deprecated Base64 methods are deprecated.
+     */
     public getScriptDataBase64(): string;
 
+    /**
+     * Gets the health of the specified wheel.
+     *
+     * @param wheelId Wheel index.
+     * @returns Health value of the wheel.
+     */
     public getWheelHealth(wheelId: number): number;
 
+    /**
+     * Gets whether the specified light is damaged.
+     *
+     * @param lightId Light index.
+     * @returns True if the light is damaged.
+     */
     public isLightDamaged(lightId: number): boolean;
 
+    /**
+     * Gets whether the specified special light is damaged.
+     *
+     * @param specialLightId Special light index.
+     * @returns True if the special light is damaged.
+     */
     public isSpecialLightDamaged(specialLightId: number): boolean;
 
+    /**
+     * Gets whether the specified wheel is burst.
+     *
+     * @param wheelId Wheel index.
+     * @returns True if the wheel is burst.
+     */
     public isWheelBurst(wheelId: number): boolean;
 
+    /**
+     * Gets whether the specified wheel is detached.
+     *
+     * @param wheelId Wheel index.
+     * @returns True if the wheel is detached.
+     */
     public isWheelDetached(wheelId: number): boolean;
 
+    /**
+     * Gets whether the specified wheel is on fire.
+     *
+     * @param wheelId Wheel index.
+     * @returns True if the wheel is on fire.
+     */
     public isWheelOnFire(wheelId: number): boolean;
 
+    /**
+     * Gets whether the specified window is damaged.
+     *
+     * @param windowId Window index.
+     * @returns True if the window is damaged.
+     */
     public isWindowDamaged(windowId: number): boolean;
 
+    /**
+     * Gets whether the specified window is open.
+     *
+     * @param windowId Window index.
+     * @returns True if the window is open.
+     */
     public isWindowOpened(windowId: number): boolean;
 
+    /**
+     * Sets the vehicle appearance data from a Base64 string.
+     *
+     * @param data Base64 vehicle appearance string. (See {@link getAppearanceDataBase64})
+     * @deprecated Base64 methods are deprecated.
+     */
     public setAppearanceDataBase64(data: string): void;
 
+    /**
+     * Sets the health of the specified armored window.
+     *
+     * @param windowId Window index.
+     * @param health Health value.
+     */
     public setArmoredWindowHealth(windowId: number, health: number): void;
 
+    /**
+     * Sets the amount of shots in the specified armored window.
+     *
+     * @param windowId Window index.
+     * @param count Amount of shots.
+     */
     public setArmoredWindowShootCount(windowId: number, count: number): void;
 
+    /**
+     * Sets the damage level of the specified bumper.
+     *
+     * @param bumperId Bumper index.
+     * @param level Damage level.
+     */
     public setBumperDamageLevel(bumperId: number, level: number): void;
 
+    /**
+     * Sets the vehicle damage status from a Base64 string.
+     *
+     * @param data Base64 vehicle damage status string. (See {@link getDamageStatusBase64})
+     * @deprecated Base64 methods are deprecated.
+     */
     public setDamageStatusBase64(data: string): void;
 
+    /**
+     * Sets the state of the specified door.
+     *
+     * @param doorId Door index.
+     * @param state Door state.
+     */
     public setDoorState(doorId: number, state: number): void;
 
+    /**
+     * Enables or disables the specified vehicle extra.
+     *
+     * @param category Extra category.
+     * @param state Extra state.
+     */
     public setExtra(category: number, state: boolean): void;
 
+    /**
+     * Sets the vehicle game state from a Base64 string.
+     *
+     * @param data Base64 vehicle game state string. (See {@link getGamestateDataBase64})
+     * @deprecated Base64 methods are deprecated.
+     */
     public setGamestateDataBase64(data: string): void;
 
+    /**
+     * Sets the vehicle health data from a Base64 string.
+     *
+     * @param data Base64 vehicle health data string. (See {@link getHealthDataBase64})
+     * @deprecated Base64 methods are deprecated.
+     */
     public setHealthDataBase64(data: string): void;
 
+    /**
+     * Sets the specified light as damaged.
+     *
+     * @param lightId Light index.
+     * @param isDamaged Is the light damaged.
+     */
     public setLightDamaged(lightId: number, isDamaged: boolean): void;
 
+    /**
+     * Sets the mod in the specified category.
+     *
+     * @param category Mod category.
+     * @param id Mod index.
+     */
     public setMod(category: number, id: number): void;
 
+    /**
+     * Sets the amount of bullet holes in the specified vehicle part.
+     *
+     * @param partId Vehicle part index.
+     * @param count Amount of bullet holes.
+     */
     public setPartBulletHoles(partId: number, count: number): void;
 
+    /**
+     * Sets the damage level of the specified vehicle part.
+     *
+     * @param partId Vehicle part index.
+     * @param level Damage level value.
+     */
     public setPartDamageLevel(partId: number, level: number): void;
 
+    /**
+     * Sets the variation of the rear wheels.
+     *
+     * @param variation Variation index.
+     */
     public setRearWheels(variation: number): void;
 
+    /**
+     * Sets the vehicle script data from a Base64 string.
+     *
+     * @param data Base64 vehicle script data string. (See {@link getScriptDataBase64})
+     * @deprecated Base64 methods are deprecated.
+     */
     public setScriptDataBase64(data: string): void;
 
+    /**
+     * Sets the specified special light as damaged.
+     *
+     * @param specialLightId Special light index.
+     * @param isDamaged Is the special light damaged.
+     */
     public setSpecialLightDamaged(specialLightId: number, isDamaged: boolean): void;
 
+    /**
+     * Sets the burst state of the specified wheel.
+     *
+     * @param wheelId Wheel index.
+     * @param state Is the wheel burst.
+     */
     public setWheelBurst(wheelId: number, state: boolean): void;
 
+    /**
+     * Sets the detached state of the specified wheel.
+     *
+     * @param wheelId Wheel index.
+     * @param state Is the wheel detached.
+     */
     public setWheelDetached(wheelId: number, state: boolean): void;
 
+    /**
+     * Sets if the specified wheel has a tire.
+     *
+     * @param wheelId Wheel index.
+     * @param state Does the wheel have a tire.
+     */
     public setWheelHasTire(wheelId: number, state: boolean): void;
 
+    /**
+     * Sets the health of the specified wheel.
+     *
+     * @param wheelId Wheel index.
+     * @param health Health value.
+     */
     public setWheelHealth(wheelId: number, health: number): void;
 
+    /**
+     * Sets if the specified wheel is on fire.
+     *
+     * @param wheelId Wheel index.
+     * @param state Is the wheel on fire.
+     */
     public setWheelOnFire(wheelId: number, state: boolean): void;
 
+    /**
+     * Sets the wheels type and variation.
+     *
+     * @param type Wheel type.
+     * @param variation Wheel variation.
+     */
     public setWheels(type: number, variation: number): void;
 
+    /**
+     * Sets if the specified window is damaged.
+     *
+     * @param windowId Window index.
+     * @param isDamaged Is the window damaged.
+     */
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
 
+    /**
+     * Sets if the specified window is open.
+     *
+     * @param windowId Window index.
+     * @param state Is the window open.
+     */
     public setWindowOpened(windowId: number, state: boolean): void;
   }
 
