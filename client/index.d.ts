@@ -283,6 +283,9 @@ declare module "alt-client" {
      */
     public emit(eventName: string, ...args: any[]): void;
 
+    /**
+     * Focuses the view so it can be interacted with.
+     */
     public focus(): void;
 
     /**
@@ -310,6 +313,9 @@ declare module "alt-client" {
      */
     public on(eventName: "load", listener: () => void): void;
 
+    /**
+     * Unfocuses the view so it can no longer be interacted with.
+     */
     public unfocus(): void;
   }
 
@@ -1238,10 +1244,10 @@ declare module "alt-client" {
    * Sets the current weather cycle.
    *
    * @remarks Length of the weathers array has to be the same as the multipliers array.
-   * @param weathers An array containing the available weathers.
+   * @param weathers An array containing the available weathers ids.
    * @param multipliers An array containing the multipliers for every weather.
    */
-  export function setWeatherCycle(weathers: Array<any>, multipliers: Array<number>): void;
+  export function setWeatherCycle(weathers: Array<number>, multipliers: Array<number>): void;
 
   /**
    * Toggles the state of the weather sync.
