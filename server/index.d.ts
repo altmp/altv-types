@@ -1087,18 +1087,44 @@ declare module "alt-server" {
   }
 
   export class VoiceChannel extends BaseObject {
+    /**
+     * @param isSpatial Should the sound in the voice channel be spatial. (3D)
+     * @param maxDistance The max distance to hear other players in this voice channel from.
+     */
     constructor(isSpatial: boolean, maxDistance: number);
 
+    /**
+     * Adds the specified player to the voice channel.
+     */
     public addPlayer(player: Player): void;
 
+    /**
+     * Checks if the specified player is in the voice channel.
+     * 
+     * @returns True if the player is in the voice channel.
+     */
     public isPlayerInChannel(player: Player): boolean;
 
+    /**
+     * Checks if the player is muted inside the voice channel.
+     *
+     * @returns True if the player is muted.
+     */
     public isPlayerMuted(player: Player): boolean;
 
+    /**
+     * Mutes the specified player in the voice channel.
+     */
     public mutePlayer(player: Player): void;
 
+    /**
+     * Removes the specified channel from the voice channel.
+     */
     public removePlayer(player: Player): void;
 
+    /**
+     * Unmutes the specified player in the voice channel.
+     */
     public unmutePlayer(player: Player): void;
   }
 
