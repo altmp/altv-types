@@ -13,10 +13,30 @@ declare module "alt-server" {
    * Resource name of the executing entity
    */
   export const resourceName: string;
+  /**
+   * The root directory of the alt:V server
+   */
   export const rootDir: string;
+  /**
+   * The default entity dimension
+   * 
+   * @remarks Can only see itself but can be seen by itself and the public dimension (-1 to -2147483647)
+   */
   export const DefaultDimension: number;
+  /**
+   * The global dimension
+   * 
+   * @remarks Can only see itself but can be seen by itself, the public dimension (-1 to -2147483647) and the private dimension (1 to 2147483647)
+   */
   export const GlobalDimension: number;
-
+ 
+  /**
+   * Vehicle neon.
+   * 
+   * @remarks ALl individual neon locations can be toggled seperately
+   * @export
+   * @interface VehicleNeon
+   */
   export interface VehicleNeon {
     left: boolean;
     right: boolean;
@@ -24,6 +44,12 @@ declare module "alt-server" {
     back: boolean;
   }
 
+  /**
+   * 3 dimensional Vector.
+   *
+   * @export
+   * @class Vector3
+   */
   export class Vector3 {
     readonly x: number;
     readonly y: number;
@@ -32,6 +58,12 @@ declare module "alt-server" {
     constructor(x: number, y: number, z: number);
   }
 
+  /**
+   * RGBA Color.
+   *
+   * @export
+   * @class RGBA
+   */
   export class RGBA {
     public r: number;
     public g: number;
@@ -41,6 +73,12 @@ declare module "alt-server" {
     constructor(r: number, g: number, b: number, a: number);
   }
 
+  /**
+   * Basic object.
+   *  
+   * @export
+   * @class BaseObject
+   */
   export class BaseObject {
     /**
      * Type of the object.
@@ -90,6 +128,13 @@ declare module "alt-server" {
     public setMeta(key: string, value: any): void;
   }
 
+  /**
+   * World object.
+   *
+   * @export
+   * @class WorldObject
+   * @extends {BaseObject}
+   */
   export class WorldObject extends BaseObject {
     /**
      * Object dimension.
@@ -102,6 +147,14 @@ declare module "alt-server" {
     public pos: Vector3;
   }
 
+  /**
+   * Basic entity.
+   * 
+   * @remarks This is the base class for most alt:V entities (Players, Vehicles, etc.)
+   * @export
+   * @class Entity
+   * @extends {WorldObject}
+   */
   export class Entity extends WorldObject {
     /**
      * Internal identificator of the entity which is identical on both sides.
@@ -232,26 +285,152 @@ declare module "alt-server" {
     public resetNetOwner(disableMigration?: boolean): void;
   }
 
+  /**
+   * Player entity.
+   *
+   * @export
+   * @class Player
+   * @extends {Entity}
+   */
   export class Player extends Entity {
+    /**
+     * Array containing all connected players
+     *
+     * @static
+     * @memberof Player
+     */
     public static all: Array<Player>;
+
+    /**
+     * Current armour value of the player
+     * 
+     * @remarks The max armour is not the same for every model, check the max armour with {@link maxArmour}
+     * @memberof Player
+     */
     public armour: number;
+
+    /**
+     * Hash of the current held weapon by the player
+     * 
+     * @memberof Player
+     */
     public currentWeapon: number;
+
+    /**
+     * Array containing all weapon components added to the player
+     *
+     * @memberof Player
+     */
     public readonly currentWeaponComponents: Array<number>;
+
+    /**
+     * The current weapon tint of the held weapon
+     *
+     * @memberof Player
+     */
     public readonly currentWeaponTintIndex: number;
+
+    /**
+     * Current aim offset
+     *
+     * @memberof Player
+     */
     public readonly entityAimOffset: Vector3;
+
+    /**
+     * The entity the player is currently aiming at
+     *
+     * @memberof Player
+     */
+
     public readonly entityAimingAt: Entity | null;
     public readonly flashlightActive: boolean;
+
+    /**
+     * Current player health
+     * 
+     * @remarks The max health is not the same for every model, check the max health with {@link maxHealth}
+     * @memberof Player
+     */
     public health: number;
+
+    /**
+     * The IP address of the player in IPv6 format
+     *
+     * @memberof Player
+     */
     public readonly ip: string;
+
+    /**
+     * The max armour value for the player
+     *
+     * @remarks This value is determined by the current model
+     * @memberof Player
+     */
     public maxArmour: number;
+
+    /**
+     * The max health value for the player
+     *
+     * @remarks This value is determined by the current model
+     * @memberof Player
+     */
     public maxHealth: number;
+
+    /**
+     * The player name chosen in the main menu
+     *
+     * @memberof Player
+     */
     public readonly name: string;
+
+    /**
+     * Current ping of the player
+     *
+     * @remarks A high ping is most often caused by a bad internet connection
+     * @memberof Player
+     */
     public readonly ping: number;
+
+    /**
+     * The vehicle seat the player is sitting in
+     *
+     * @memberof Player
+     */
     public readonly seat: number;
+    /**
+     * The vehicle the player is sitting in
+     *
+     * @memberof Player
+     */
     public readonly vehicle: Vehicle | null;
+    /**
+     * The social club id of the player
+     *
+     * @remarks This id is spoofable, do not use it for identification
+     * @memberof Player
+     */
     public readonly socialId: string;
+    /**
+     * The hardware id hash of the player
+     *
+     * @remarks This hash can have collisions, do not use it for identification
+     * @memberof Player
+     */
     public readonly hwidHash: string;
+    /**
+     * The extra hardware id hash of the player
+     *
+     * @remarks This hash can have collisions, do not use it for identification
+     * @memberof Player
+     */
     public readonly hwidExHash: string;
+    /**
+     * The auth token of the player retrieved from Early Auth
+     *
+     * @remarks This is only used for Early Auth
+     * @memberof Player
+     */
     public readonly authToken: string;
 
     /**
@@ -262,8 +441,23 @@ declare module "alt-server" {
      */
     public static getByID(id: number): Player | null;
 
+    /**
+     * Adds the specified weapon component to the specified weapon of the player
+     *
+     * @param weaponHash Weapon hash
+     * @param component Component id
+     * @memberof Player
+     */
     public addWeaponComponent(weaponHash: number, component: number): void;
 
+    /**
+     * Gives the player the specified weapon
+     *
+     * @param weaponHash Weapon hash
+     * @param ammo Weapon ammo to give
+     * @param equipNow Should the weapon be equipped immediately
+     * @memberof Player
+     */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
     /**
@@ -273,18 +467,70 @@ declare module "alt-server" {
      */
     public kick(reason: string): void;
 
+    /**
+     * Removes all weapons from the player
+     *
+     * @memberof Player
+     */
     public removeAllWeapons(): void;
 
+    /**
+     * Removes the specified weapon from the player
+     *
+     * @param weaponHash
+     * @memberof Player
+     */
     public removeWeapon(weaponHash: number): void;
 
+    /**
+     * Removes the specified weapon component from the specified weapon of the player
+     *
+     * @param weaponHash Weapon hash
+     * @param component Component id
+     * @memberof Player
+     */
     public removeWeaponComponent(weaponHash: number, component: number): void;
 
+    /**
+     * Sets the date and time for the player
+     *
+     * @param day The current day of the year
+     * @param month The current month
+     * @param year The current year
+     * @param hour The current hour
+     * @param minute The current minute
+     * @param second The current second
+     * @memberof Player
+     */
     public setDateTime(day: DateTimeDay, month: DateTimeMonth, year: number, hour: DateTimeHour, minute: DateTimeMinute, second: DateTimeSecond): void;
 
+    /**
+     * Sets the specified tint index for the specified weapon of the player
+     *
+     * @param weaponHash Weapon hash
+     * @param tintIndex Weapon tint index
+     * @memberof Player
+     */
     public setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
 
+    /**
+     * Sets the weather for the player
+     *
+     * @param weatherHash Hash of the weather name
+     * @memberof Player
+     */
     public setWeather(weatherHash: number): void;
 
+    /**
+     * Spawns the player at the specified position after the specified delay
+     *
+     * @param x X coordinate to spawn at
+     * @param y Y coordinate to spawn at
+     * @param z Z coordinate to spawn at
+     * @param delay Delay until the player is spawned in milliseconds
+     * @remarks This also sets the player health to max health
+     * @memberof Player
+     */
     public spawn(x: number, y: number, z: number, delay: number): void;
   }
 
