@@ -520,6 +520,12 @@ declare module "alt-client" {
     public unkFloat5: number;
     public weaponDamageMult: number;
 
+    /**
+     * Gets the handling data for the specified model.
+     *
+     * @param modelHash Hash of the model.
+     * @returns The handling data.
+     */
     public static getForModel(modelHash: number): HandlingData;
   }
 
@@ -530,10 +536,22 @@ declare module "alt-client" {
     public vTilesX: number;
     public vTilesY: number;
 
+    /**
+     * Gets the map zoom data with the specified zoom data level.
+     *
+     * @param zoomData The zoom data level.
+     * @returns The map zoom data.
+     */
     public static get(zoomData: string): MapZoomData;
 
+    /**
+     * Resets all map zoom levels to their default state.
+     */
     public static resetAll(): void;
 
+    /**
+     * Resets the map zoom data to the default state.
+     */
     public reset(): void;
   }
 
@@ -583,28 +601,98 @@ declare module "alt-client" {
   export class MemoryBuffer {
     constructor(size: number);
 
+    /**
+     * Gets the byte at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The byte at the memory offset.
+     */
     public byte(offset: number): number;
 
+    /**
+     * Gets the double at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The double at the memory offset.
+     */
     public double(offset: number): number;
 
+    /**
+     * Gets the float at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The float at the memory offset.
+     */
     public float(offset: number): number;
 
+    /**
+     * Gets the int at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The int at the memory offset.
+     */
     public int(offset: number): number;
 
+    /**
+     * Gets the long at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The long at the memory offset.
+     */
     public long(offset: number): bigint;
 
+    /**
+     * Gets the short at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The short at the memory offset.
+     */
     public short(offset: number): number;
 
+    /**
+     * Gets the string at the specified memory offset with the specified length.
+     *
+     * @param offset The memory offset.
+     * @param length The string length.
+     * @returns The string at the memory offset.
+     */
     public string(offset: number, length: number): string;
 
+    /**
+     * Gets the unsigned byte at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The unsigned byte at the memory offset.
+     */
     public ubyte(offset: number): number;
 
+    /**
+     * Gets the unisnged int at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The unsigned int at the memory offset.
+     */
     public uint(offset: number): number;
 
+    /**
+     * Gets the unsigned long at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The unsigned long at the memory offset.
+     */
     public ulong(offset: number): bigint;
 
+    /**
+     * Gets the unsigned short at the specified memory offset.
+     *
+     * @param offset The memory offset.
+     * @returns The unsigned short at the memory offset.
+     */
     public ushort(offset: number): number;
 
+    /**
+     * Frees the memory buffer.
+     */
     public free(): boolean;
   }
 
@@ -690,8 +778,21 @@ declare module "alt-client" {
    */
   export function hasSyncedMeta(key: string): boolean;
 
+  /**
+   * Adds a gxt label text.
+   *
+   * @remarks Gxt labels are used in some of the natives for displaying text.
+   * @param key Label name.
+   * @param value Label value.
+   */
   export function addGxtText(key: string, value: string): void;
 
+  /**
+   * Executes a scaleform method on the minimap scaleform.
+   *
+   * @param methodName Name of the method.
+   * @returns True if it was successful.
+   */
   export function beginScaleformMovieMethodMinimap(methodName: string): boolean;
 
   /**
@@ -753,16 +854,46 @@ declare module "alt-client" {
    */
   export function everyTick(handler: () => void): number;
 
+  /**
+   * Gets if the game controls are enabled.
+   *
+   * @returns True if the game controls are enabled.
+   */
   export function gameControlsEnabled(): boolean;
 
+  /**
+   * Gets the current position of the cursor.
+   *
+   * @returns A 2 dimensional vector representing the point on the screen where the cursor is located.
+   */
   export function getCursorPos(): Vector2;
 
+  /**
+   * Gets a gxt label text.
+   *
+   * @remarks Can be set with {@link addGxtText}.
+   * @param key Label name.
+   * @returns The value of the gxt label.
+   */
   export function getGxtText(key: string): string;
 
+  /**
+   * Gets the license hash.
+   *
+   * @returns Hash of the license.
+   */
   export function getLicenseHash(): string;
 
+  /**
+   * Gets the current game locale.
+   *
+   * @returns Current game locale.
+   */
   export function getLocale(): string;
 
+  /**
+   * Gets the amount of milliseconds that have to pass every game minute.
+   */
   export function getMsPerGameMinute(): number;
 
   /**
@@ -800,6 +931,11 @@ declare module "alt-client" {
    */
   export function isMenuOpen(): boolean;
 
+  /**
+   * Checks whether the specified model hash and name are loaded.
+   *
+   * @returns True if loaded.
+   */
   export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
 
   /**
@@ -812,10 +948,19 @@ declare module "alt-client" {
    */
   export function loadModelAsync(modelHash: number): void;
 
+  /**
+   * Prints the arguments to the ingame console. (F8)
+   */
   export function log(...args: any[]): void;
 
+  /**
+   * Prints the arguments to the ingame console as an error. (F8)
+   */
   export function logError(...args: any[]): void;
 
+  /**
+   * Prints the arguments to the ingame console as a warning. (F8)
+   */
   export function logWarning(...args: any[]): void;
 
   /**
@@ -996,10 +1141,27 @@ declare module "alt-client" {
    */
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
+  /**
+   * Removes a gxt text label.
+   *
+   * @remarks Can be set with {@link addGxtText}.
+   * @param key Label name.
+   */
   export function removeGxtText(key: string): void;
 
+  /**
+   * Removes the specified ipl from the world.
+   *
+   * @param iplName Name of the ipl.
+   */
   export function removeIpl(iplName: string): void;
 
+  /**
+   * Loads the specified ipl into the world.
+   *
+   * @remarks The ipl gets loaded synchronously.
+   * @param iplName Name of the ipl.
+   */
   export function requestIpl(iplName: string): void;
 
   /**
@@ -1018,8 +1180,18 @@ declare module "alt-client" {
    */
   export function resetStat(statName: StatName): void;
 
+  /**
+   * Freezes the gameplay camera rotation and position.
+   *
+   * @param state Should the cam be frozen.
+   */
   export function setCamFrozen(state: boolean): void;
 
+  /**
+   * Sets the position of the cursor.
+   *
+   * @param pos A 2 dimensional vector representing a point on the screen.
+   */
   export function setCursorPos(pos: Vector2): void;
 
   /**
@@ -1031,8 +1203,18 @@ declare module "alt-client" {
    */
   export function setInterval(handler: () => void, miliseconds: number): number;
 
+  /**
+   * Sets the model of the local ped.
+   *
+   * @param modelName Name of the model.
+   */
   export function setModel(modelName: string): void;
 
+  /**
+   * Sets the milliseconds that pass every game minute.
+   *
+   * @param miliseconds Amount of milliseconds that pass every game minute.
+   */
   export function setMsPerGameMinute(miliseconds: number): void;
 
   /**
@@ -1052,8 +1234,21 @@ declare module "alt-client" {
    */
   export function setTimeout(handler: () => void, miliseconds: number): number;
 
-  export function setWeatherCycle(weathers: Array<any>, multipliers: Array<any>): void;
+  /**
+   * Sets the current weather cycle.
+   *
+   * @remarks Length of the weathers array has to be the same as the multipliers array.
+   * @param weathers An array containing the available weathers.
+   * @param multipliers An array containing the multipliers for every weather.
+   */
+  export function setWeatherCycle(weathers: Array<any>, multipliers: Array<number>): void;
 
+  /**
+   * Toggles the state of the weather sync.
+   *
+   * @remarks Can be set with {@link setWeatherCycle}.
+   * @param isActive Should the weather sync be active.
+   */
   export function setWeatherSyncActive(isActive: boolean): void;
 
   /**
@@ -1064,7 +1259,17 @@ declare module "alt-client" {
    */
   export function showCursor(state: boolean): void;
 
+  /**
+   * Toggles the game controls.
+   *
+   * @param state A boolean indicating if the controls should be enabled.
+   */
   export function toggleGameControls(state: boolean): void;
 
+  /**
+   * Toggles the voice controls.
+   *
+   * @param state A boolean indicating if the voice controls should be enabled.
+   */
   export function toggleVoiceControls(state: boolean): void;
 }
