@@ -538,16 +538,45 @@ declare module "alt-client" {
   }
 
   export class LocalStorage {
+    /**
+     * Retrieves an instance of the local storage to interact with.
+     *
+     * @returns An instance of the local storage.
+     */
     public static get(): LocalStorage;
 
+    /**
+     * Deletes the specified key from the local storage.
+     * 
+     * @remarks The local storage has to be saved for this to be persistent. (See {@link save})
+     * @param key Key in the local storage.
+     */
     public delete(key: string): void;
 
+    /**
+     * Deletes all data from the local storage.
+     * 
+     * @remarks The local storage has to be saved for this to be persistent. (See {@link save})
+     */
     public deleteAll(): void;
 
+    /**
+     * Gets the specified value associated with the key in the local storage.
+     *
+     * @returns The value stored in the local storage or undefined.
+     */
     public get(key: string): any;
 
+    /**
+     * Saves the local storage to the disk.
+     */
     public save(): void;
 
+    /**
+     * Sets the specified key to the specified value in the local storage.
+     *
+     * @remarks The local storage has to be saved for this to be persistent. (See {@link save})
+     */
     public set(key: string, value: any): void;
   }
 
