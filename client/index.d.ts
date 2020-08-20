@@ -314,37 +314,129 @@ declare module "alt-client" {
   }
 
   export class Blip extends WorldObject {
+    /**
+     * Alpha value of the blip. (transparency)
+     * @remarks Accepted values are 0-255
+     */
     public alpha: number;
+    /**
+     * Should the blip be a mission creator.
+     */
     public asMissionCreator: boolean;
+    /**
+     * Should the blip be bright.
+     */
     public bright: boolean;
+    /**
+     * Category of the blip.
+     */
     public category: number;
+    /**
+     * Color of the blip. 
+     * @remarks The color is a GTA hud color.
+     */
     public color: number;
+    /**
+     * Should the crew indicator on the blip be visible.
+     */
     public crewIndicatorVisible: boolean;
+    /**
+     * The interval to flash the blip at in milliseconds
+     */
     public flashInterval: number;
     public flashTimer: number;
+    /**
+     * Should the blip flash.
+     */
     public flashes: boolean;
     public flashesAlternate: boolean;
+    /**
+     * Should the friend indicator on the blip be visible.
+     */
     public friendIndicatorVisible: boolean;
+    /**
+     * Should the blip be friendly.
+     */
     public friendly: boolean;
+    /**
+     * GXT name of the blip.
+     */
     public gxtName: string;
+    /**
+     * Heading (Rotation) of the blip.
+     */
     public heading: number;
+    /**
+     * Should the heading indicator on the blip be visible.
+     */
     public headingIndicatorVisible: boolean;
+    /**
+     * Should the blip be displayed as high detail.
+     */
     public highDetail: boolean;
+    /**
+     * Name of the blip.
+     * @remarks This is the name of the blip displayed on the map.
+     */
     public name: string;
     public number: number;
+    /**
+     * Should the outline indicator of the blip be visible.
+     */
     public outlineIndicatorVisible: boolean;
+    /**
+     * Priority of the blip.
+     */
     public priority: number;
+    /**
+     * Should the blip pulse.
+     */
     public pulse: boolean;
+    /**
+     * Should the route to the blip be shown.
+     */
     public route: boolean;
+    /**
+     * The color of the route to the blip.
+     */
     public routeColor: number;
+    /**
+     * Scale of the blip.
+     * @remarks >1 makes the blip bigger, <1 makes the blip smaller
+     */
     public scale: number;
+    /**
+     * Secondary color of the blip.
+     */
     public secondaryColor: number;
+    /**
+     * Should the blip be short range.
+     * @remarks If true, the blip is not displayed on the edge of the minimap.
+     */
     public shortRange: boolean;
+    /**
+     * Should the cone of the blip be shown.
+     */
     public showCone: boolean;
+    /**
+     * Should the blip be shrinked.
+     */
     public shrinked: boolean;
+    /**
+     * Sprite of the blip.
+     */
     public sprite: number;
+    /**
+     * Should a tick be visible next to the blip.
+     */
     public tickVisible: boolean;
 
+    /**
+     * Fades the blip to the specified opacity.
+     *
+     * @param opacity Opacity value.
+     * @param duration Fade duration in milliseconds.
+     */
     public fade(opacity: number, duration: number): void;
   }
 
