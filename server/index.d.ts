@@ -33,7 +33,7 @@ declare module "alt-server" {
   /**
    * Vehicle neon.
    * 
-   * @remarks ALl individual neon locations can be toggled seperately
+   * @remarks All individual neon locations can be toggled seperately
    * @export
    * @interface VehicleNeon
    */
