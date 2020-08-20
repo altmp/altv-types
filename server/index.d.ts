@@ -1284,14 +1284,44 @@ declare module "alt-server" {
    */
   export function everyTick(handler: () => void): number;
 
+  /**
+   * Gets the current net time in milliseconds.
+   *
+   * @remarks The net time is the amount of time the current resource is started.
+   * @returns Current net time in milliseconds.
+   */
   export function getNetTime(): number;
 
+  /**
+   * Gets the exports of the specified resource.
+   *
+   * @param name Name of the resource.
+   * @returns Exports of that resource.
+   */
   export function getResourceExports(name: string): any;
 
+  /**
+   * Gets the main file of the specified resource.
+   *
+   * @param name Name of the resource.
+   * @returns The main file of the specified resource.
+   */
   export function getResourceMain(name: string): string;
 
+  /**
+   * Gets the path of the specified resource.
+   *
+   * @param name Name of the resource.
+   * @returns The path of the resource.
+   */
   export function getResourcePath(name: string): string;
 
+  /**
+   * Checks whether the specified resource exists.
+   *
+   * @param name Name of the resource.
+   * @returns True if the resource exists.
+   */
   export function hasResource(name: string): boolean;
 
   /**
@@ -1301,10 +1331,19 @@ declare module "alt-server" {
    */
   export function hash(str: string): number;
 
+  /**
+   * Prints the specified arguments to the server console.
+   */
   export function log(...args: any[]): void;
 
+  /**
+   * Prints the specified arguments to the server console as an error.
+   */
   export function logError(...args: any[]): void;
 
+  /**
+   * Prints the specified arguments to the server console as a warning.
+   */
   export function logWarning(...args: any[]): void;
 
   /**
@@ -1533,6 +1572,11 @@ declare module "alt-server" {
    */
   export function onClient(eventName: string, listener: (...args: any[]) => void): void;
 
+  /**
+   * Restarts the specified resource.
+   *
+   * @param name Name of the resource.
+   */
   export function restartResource(name: string): void;
 
   /**
@@ -1553,7 +1597,17 @@ declare module "alt-server" {
    */
   export function setTimeout(handler: () => void, miliseconds: number): number;
 
+  /**
+   * Starts the specified resource.
+   *
+   * @param name Name of the resource.
+   */
   export function startResource(name: string): void;
 
+  /**
+   * Stops the specified resource.
+   *
+   * @param name Name of the resource.
+   */
   export function stopResource(name: string): void;
 }
