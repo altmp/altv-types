@@ -136,6 +136,11 @@ declare module "alt-client" {
      *
      * @param id The id of the entity.
      * @returns Entity if it was found, otherwise null.
+     * @example
+     * ```
+     * let entity = alt.Entity.getByID(1);
+     * alt.log(entity.model); // Prints the model of the entity with the ID 1
+     * ```
      */
     public static getByID(id: number): Entity | null;
 
@@ -144,6 +149,11 @@ declare module "alt-client" {
      *
      * @param scriptID The script id of the entity.
      * @returns Entity if it was found, otherwise null.
+     * @example
+     * ```
+     * let entity = alt.Entity.getByScriptID(1);
+     * alt.log(entity.model); // Prints the model of the enity with the scriptID 1
+     * ```
      */
     public static getByScriptID(scriptID: number): Entity | null;
 
@@ -181,7 +191,16 @@ declare module "alt-client" {
   }
 
   export class Player extends Entity {
-    /** Array with all players */
+    /** 
+     * Array with all players 
+     * @example
+     * ```
+     * let players = alt.Player.all;
+     * for(let player of players) {
+     *   alt.log(player.name); // Prints the name of every player
+     * }
+     * ```
+    */
     public static readonly all: Array<Player>;
 
     /** Local player */
@@ -193,7 +212,10 @@ declare module "alt-client" {
     /** Player talking volume */
     public readonly micLevel: number;
 
-    /** Player name */
+    /**
+     * Player name.
+     * @remarks Default name if no name was set is 'Player'.
+     */
     public readonly name: string;
 
     /** Player's vehicle, null if player is not in any vehicle */
@@ -204,6 +226,7 @@ declare module "alt-client" {
      *
      * @param id The id of the player.
      * @returns Entity if it was found, otherwise null.
+     * @remarks For an example see {@link Entity.getByID}.
      */
     public static getByID(id: number): Player | null;
 
@@ -212,12 +235,22 @@ declare module "alt-client" {
      *
      * @param scriptID The script id of the player.
      * @returns Entity if it was found, otherwise null.
+     * @remarks For an example see {@link Entity.getByScriptID}.
      */
     public static getByScriptID(scriptID: number): Player | null;
   }
 
   export class Vehicle extends Entity {
-    /** Array with all vehicles */
+    /** 
+     * Array with all vehicles 
+     * @example
+     * ```
+     * let vehicles = alt.Vehicles.all;
+     * for(let vehicle of vehicles) {
+     *   alt.log(vehicle.model); // Logs the model of every vehicle on the server
+     * }
+     * ```
+    */
     public static readonly all: Array<Vehicle>;
 
     /** Vehicle gear */
@@ -226,7 +259,10 @@ declare module "alt-client" {
     /** Vehicle RPM [0, 1] */
     public readonly rpm: number;
 
-    /** Vehicle wheel speed */
+    /** 
+     * Vehicle wheel speed 
+     * @ignore Should not be used until fixed
+    */
     public readonly speed: number;
 
     /** Vehicle wheel speed vector */
@@ -240,6 +276,7 @@ declare module "alt-client" {
      *
      * @param id The id of the vehicle.
      * @returns Entity if it was found, otherwise null.
+     * @remarks For an example see {@link Entity.getByID}.
      */
     public static getByID(id: number): Vehicle | null;
 
@@ -248,6 +285,7 @@ declare module "alt-client" {
      *
      * @param scriptID The script id of the vehicle.
      * @returns Entity if it was found, otherwise null.
+     * @remarks For an example see {@link Entity.getByScriptID}.
      */
     public static getByScriptID(scriptID: number): Vehicle | null;
   }
@@ -263,6 +301,14 @@ declare module "alt-client" {
      *
      * @param url URL.
      * @param isOverlay true to render as overlay, false to render on game's GUI stage
+     * @remarks 
+     * If isOverlay is true, the view will not be visible in external recordings. 
+     * This can display normal websites as well as local clientside html files.
+     * @example
+     * ```
+     * let view = new alt.WebView("http://resource/client/index.html"); // Creates a webview with a local file
+     * view.focus(); // Focuses the webview so it can be interacted with
+     * ```
      */
     constructor(url: string, isOverlay?: boolean);
 
@@ -430,6 +476,7 @@ declare module "alt-client" {
     public shrinked: boolean;
     /**
      * Sprite of the blip.
+     * @remarks This resets all blip properties, so this should be set last.
      */
     public sprite: number;
     /**
@@ -442,19 +489,47 @@ declare module "alt-client" {
      *
      * @param opacity Opacity value.
      * @param duration Fade duration in milliseconds.
+     * @remarks Opacity allows values from 0 to 255.
+     * @example
+     * ```
+     * let blip = new alt.PointBlip(0, 0, 0);
+     * blip.fade(0, 1000); // Fades the blip to be invisible after one second
+     * ```
      */
     public fade(opacity: number, duration: number): void;
   }
 
   export class AreaBlip extends Blip {
+    /**
+     * Creates an area blip.
+     * @param x X position of the blip center.
+     * @param y Y position of the blip center.
+     * @param z Z position of the blip center.
+     * @param width Area width.
+     * @param height Area height.
+     * @remarks Width and height use the same units as X, Y, Z coordinates.
+     */
     constructor(x: number, y: number, z: number, width: number, height: number);
   }
 
   export class RadiusBlip extends Blip {
+    /**
+     * Creates a radius blip.
+     * @param x X position of the blip center.
+     * @param y Y position of the blip center.
+     * @param z Z position of the blip center.
+     * @param radius Blip radius.
+     */
     constructor(x: number, y: number, z: number, radius: number);
   }
 
   export class PointBlip extends Blip {
+    /**
+     * Creates a point blip.
+     * @param x X position of the blip.
+     * @param y Y position of the blip.
+     * @param z Z position of the blip.
+     */
     constructor(x: number, y: number, z: number);
   }
 
@@ -531,6 +606,13 @@ declare module "alt-client" {
      *
      * @param modelHash Hash of the model.
      * @returns The handling data.
+     * @remarks All existing vehicles with that model have to be respawned for changes to the handling data to take effect.
+     * @example
+     * ```
+     * let model = alt.hash("t20");
+     * let handlingData = alt.HandlingData.getForModel(model); // Gets the handling data for the T20
+     * handlingData.acceleration *= 2; // Doubles the vehicle model acceleration
+     * ```
      */
     public static getForModel(modelHash: number): HandlingData;
   }
@@ -566,6 +648,11 @@ declare module "alt-client" {
      * Retrieves an instance of the local storage to interact with.
      *
      * @returns An instance of the local storage.
+     * @example
+     * ```
+     * let storage = alt.LocalStorage.get();
+     * alt.log(storage.get("test")); // Prints the local storage value stored in 'test'
+     * ```
      */
     public static get(): LocalStorage;
 
@@ -574,6 +661,14 @@ declare module "alt-client" {
      * 
      * @remarks The local storage has to be saved for this to be persistent. (See {@link save})
      * @param key Key in the local storage.
+     * @example
+     * ```
+     * let storage = alt.LocalStorage.get();
+     * storage.set("test", 123); // Sets the value '123' to the key 'test'
+     * alt.log(storage.get("test")); // Prints '123'
+     * storage.delete("test");
+     * alt.log(storage.get("test")); // Prints 'undefined'
+     * ```
      */
     public delete(key: string): void;
 
@@ -593,6 +688,12 @@ declare module "alt-client" {
 
     /**
      * Saves the local storage to the disk.
+     * @example
+     * ```
+     * let storage = alt.LocalStorage.get();
+     * storage.set("test", 123); // Sets the value '123' to the key 'test'
+     * storage.save(); // The storage is now saved to the disk and is persistent
+     * ```
      */
     public save(): void;
 
@@ -600,11 +701,20 @@ declare module "alt-client" {
      * Sets the specified key to the specified value in the local storage.
      *
      * @remarks The local storage has to be saved for this to be persistent. (See {@link save})
+     * @example
+     * ```
+     * let storage = alt.LocalStorage.get();
+     * storage.set("test", 123); // Sets the value '123' to the key 'test'
+     * ```
      */
     public set(key: string, value: any): void;
   }
 
   export class MemoryBuffer {
+    /**
+     * Creates a memory buffer with the specified size.
+     * @param size Memory buffer size in bytes.
+     */
     constructor(size: number);
 
     /**
@@ -717,6 +827,14 @@ declare module "alt-client" {
      *
      * @param filename The name of the file.
      * @returns Return is dependent on whether file with the specified filename exists.
+     * @example
+     * ```
+     * let file = "data.json";
+     * if(alt.File.exists(file)) {
+     *    let data = alt.File.read(file);
+     *    alt.log(data); // Prints the file contents
+     * }
+     * ```
      */
     public static exists(filename: string): boolean;
 
@@ -725,6 +843,11 @@ declare module "alt-client" {
      *
      * @param filename The name of the file.
      * @param encoding The encoding of the file. If not specified, it defaults to "utf-8".
+     * @example
+     * ```
+     * let data = alt.File.read("data.json");
+     * alt.log(data); // Logs the file contents
+     * ```
      */
     public static read(filename: string, encoding?: "utf-8" | "utf-16"): string;
 
@@ -733,6 +856,11 @@ declare module "alt-client" {
      *
      * @param filename The name of the file.
      * @param encoding The encoding of the file.
+     * @example
+     * ```
+     * let data = alt.File.read("data.json");
+     * alt.log(data); // Logs the file contents
+     * ```
      */
     public static read(filename: string, encoding: "binary"): ArrayBuffer;
   }
@@ -790,6 +918,11 @@ declare module "alt-client" {
    * @remarks Gxt labels are used in some of the natives for displaying text.
    * @param key Label name.
    * @param value Label value.
+   * @example
+   * ```
+   * alt.addGxtText("LABEL_TEST_TEXT", "Test Label value");
+   * alt.log(alt.getGxtText("LABEL_TEST_TEXT")); // Prints 'Test label value'
+   * ```
    */
   export function addGxtText(key: string, value: string): void;
 
@@ -805,6 +938,14 @@ declare module "alt-client" {
    * Clears a timer set with the {@link everyTick} function.
    *
    * @param id The id of a timer.
+   * @example
+   * ```
+   * let ticks = 0;
+   * let tick = alt.everyTick(() => {
+   *   ticks++;
+   *   if(ticks > 1000) alt.clearEveryTick(tick); // Clears the every tick timer after 1000 ticks
+   * });
+   * ```
    */
   export function clearEveryTick(id: number): void;
 
@@ -812,6 +953,14 @@ declare module "alt-client" {
    * Clears a timer set with the {@link setInterval} function.
    *
    * @param id The id of a timer.
+   * @example
+   * ```
+   * let counter = 0;
+   * let interval = alt.setInterval(() => {
+   *   counter++;
+   *   if(counter === 5) alt.clearInterval(interval); // Clears the interval after it has been executed 5 times
+   * }, 500);
+   * ```
    */
   export function clearInterval(id: number): void;
 
@@ -826,6 +975,13 @@ declare module "alt-client" {
    * Clears a timer set with the {@link setTimeout} function.
    *
    * @param id The id of a timer.
+   * @example
+   * ```
+   * let timeout = alt.setTimeout(() => {
+   *   // Do stuff
+   * }, 500);
+   * alt.clearTimeout(timeout); // The timeout now never gets called, because it was cleared
+   * ```
    */
   export function clearTimeout(id: number): void;
 
@@ -857,6 +1013,13 @@ declare module "alt-client" {
    *
    * @param handler Handler that should be scheduled for execution.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearEveryTick} function to cancel the timer.
+   * @remarks Some native functions need to be called in every tick to work. One tick is one frame.
+   * @example
+   * ```
+   * let tick = alt.everyTick(() => {
+   *   native.hideHudComponentThisFrame(1); // Hides the wanted stars hud component
+   * });
+   * ```
    */
   export function everyTick(handler: () => void): number;
 
@@ -880,6 +1043,11 @@ declare module "alt-client" {
    * @remarks Can be set with {@link addGxtText}.
    * @param key Label name.
    * @returns The value of the gxt label.
+   * @example
+   * ```
+   * alt.addGxtText("LABEL_TEST_TEXT", "Test Label value");
+   * alt.log(alt.getGxtText("LABEL_TEST_TEXT")); // Prints 'Test label value'
+   * ```
    */
   export function getGxtText(key: string): string;
 
@@ -913,6 +1081,11 @@ declare module "alt-client" {
    * Creates a hash using Jenkins one-at-a-time algorithm.
    *
    * @param str A string from which hash will be created.
+   * @example
+   * ```
+   * let hash = alt.hash("weapon_pistol");
+   * alt.log(hash); // Prints the hash of the string 'weapon_pistol'
+   * ```
    */
   export function hash(str: string): number;
 
@@ -956,16 +1129,23 @@ declare module "alt-client" {
 
   /**
    * Prints the arguments to the ingame console. (F8)
+   * @example
+   * ```
+   * let str = "World";
+   * alt.log("Hello", str); // Prints 'Hello World'
+   * ```
    */
   export function log(...args: any[]): void;
 
   /**
    * Prints the arguments to the ingame console as an error. (F8)
+   * @remarks For an example see {@link log}
    */
   export function logError(...args: any[]): void;
 
   /**
    * Prints the arguments to the ingame console as a warning. (F8)
+   * @remarks For an example see {@link log}
    */
   export function logWarning(...args: any[]): void;
 
@@ -1152,6 +1332,13 @@ declare module "alt-client" {
    *
    * @remarks Can be set with {@link addGxtText}.
    * @param key Label name.
+   * @example
+   * ```
+   * alt.addGxtText("LABEL_TEST_TEXT", "Test Label value");
+   * alt.log(alt.getGxtText("LABEL_TEST_TEXT")); // Prints 'Test label value'
+   * alt.removeGxtText("LABEL_TEST_TEXT");
+   * alt.log(alt.getGxtText("LABEL_TEST_TEXT")); // Prints 'undefined'
+   * ```
    */
   export function removeGxtText(key: string): void;
 
@@ -1159,6 +1346,10 @@ declare module "alt-client" {
    * Removes the specified ipl from the world.
    *
    * @param iplName Name of the ipl.
+   * @example
+   * ```
+   * alt.removeIpl("v_carshowroom"); // Unloads the car show room ipl
+   * ```
    */
   export function removeIpl(iplName: string): void;
 
@@ -1167,6 +1358,10 @@ declare module "alt-client" {
    *
    * @remarks The ipl gets loaded synchronously.
    * @param iplName Name of the ipl.
+   * @example
+   * ```
+   * alt.requestIpl('vw_casino_garage'); // Loads the casino garage ipl
+   * ```
    */
   export function requestIpl(iplName: string): void;
 
@@ -1206,6 +1401,12 @@ declare module "alt-client" {
    * @param handler Handler that should be scheduled for execution.
    * @param miliseconds The time, in milliseconds, between execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearInterval} function to cancel the timer.
+   * @example
+   * ```
+   * let timeout = alt.setInterval(() => {
+   *   alt.log("Called"); // Prints 'Called' every second
+   * }, 1000);
+   * ```
    */
   export function setInterval(handler: () => void, miliseconds: number): number;
 
@@ -1213,6 +1414,7 @@ declare module "alt-client" {
    * Sets the model of the local ped.
    *
    * @param modelName Name of the model.
+   * @remarks Setting the model on the serverside is preferred for anticheat purposes.
    */
   export function setModel(modelName: string): void;
 
@@ -1220,6 +1422,10 @@ declare module "alt-client" {
    * Sets the milliseconds that pass every game minute.
    *
    * @param miliseconds Amount of milliseconds that pass every game minute.
+   * @example
+   * ```
+   * alt.setMsPerGameMinute(60000); // Every real minute one game minute now passes
+   * ```
    */
   export function setMsPerGameMinute(miliseconds: number): void;
 
@@ -1237,6 +1443,12 @@ declare module "alt-client" {
    * @param handler Handler that should be scheduled for execution.
    * @param miliseconds The time, in milliseconds, before execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
+   * @example
+   * ```
+   * let timeout = alt.setTimeout(() => {
+   *   alt.log("Called"); // Prints 'Called' after one second
+   * }, 1000);
+   * ```
    */
   export function setTimeout(handler: () => void, miliseconds: number): number;
 
@@ -1246,6 +1458,11 @@ declare module "alt-client" {
    * @remarks Length of the weathers array has to be the same as the multipliers array.
    * @param weathers An array containing the available weathers ids.
    * @param multipliers An array containing the multipliers for every weather.
+   * @example
+   * ```
+   * alt.setWeatherCycle([0, 1, 2, 5, 6], [1, 1, 1, 1, 1]); // Sets the weather cycle with an equal chance for every weather
+   * alt.setWeatherSyncActive(true); // Activates the weather sync
+   * ```
    */
   export function setWeatherCycle(weathers: Array<number>, multipliers: Array<number>): void;
 
