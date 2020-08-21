@@ -1240,7 +1240,7 @@ declare module "alt-server" {
      * @param z Z position of the colshape.
      * @param radius Radius of the cylinder.
      * @param height Height of the cylinder.
-     * @remarks A cylinder is 3 dimensional.
+     * @remarks A cylinder is 3 dimensional. The created cylinder is axis locked.
      */
     constructor(x: number, y: number, z: number, radius: number, height: number);
   }
@@ -1252,7 +1252,7 @@ declare module "alt-server" {
      * @param y Y position of the colshape.
      * @param z Z position of the colshape.
      * @param radius Radius of the sphere.
-     * @remarks A sphere is 3 dimensional.
+     * @remarks A sphere is 3 dimensional. The created sphere is axis locked.
      */
     constructor(x: number, y: number, z: number, radius: number);
   }
@@ -1263,7 +1263,7 @@ declare module "alt-server" {
      * @param x X position of the colshape.
      * @param y Y position of the colshape.
      * @param radius Radius of the circle.
-     * @remarks A circle is 2 dimensional.
+     * @remarks A circle is 2 dimensional. The created circle is axis locked.
      */
     constructor(x: number, y: number, radius: number);
   }
@@ -1277,7 +1277,7 @@ declare module "alt-server" {
      * @param x2 Bottom right X position of the colshape.
      * @param y2 Bottom right Y position of the colshape.
      * @param z2 Bottom right Z position of the colshape.
-     * @remarks A cuboid is 3 dimensional.
+     * @remarks A cuboid is 3 dimensional. The created cuboid is axis locked.
      */
     constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
   }
@@ -1289,7 +1289,7 @@ declare module "alt-server" {
      * @param y1 Top left Y position of the colshape.
      * @param x2 Bottom right X position of the colshape.
      * @param y2 Bottom right Y position of the colshape.
-     * @remarks A rectangle is 2 dimensional.
+     * @remarks A rectangle is 2 dimensional. The created rectangle is axis locked.
      */
     constructor(x1: number, y1: number, x2: number, y2: number);
   }
