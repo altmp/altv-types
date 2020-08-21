@@ -794,6 +794,20 @@ declare module "alt-server" {
      */
     public windowTint: number;
 
+    /**
+     * Creates a new vehicle.
+     * @param model Vehicle model. (Can be the model name or the hashed model name)
+     * @param x Vehicle spawn x coordinate.
+     * @param y Vehicle spawn y coordinate.
+     * @param z Vehicle spawn z coordinate.
+     * @param rx Vehicle x rotation.
+     * @param ry Vehicle y rotation.
+     * @param rz Vehicle z rotation.
+     * @example
+     * ```
+     * let vehicle = new alt.Vehicle("elegy", 0, 0, 72, 0, 0, 0); // Creates a vehicle with the model 'elegy' at the coordinates 0, 0, 72
+     * ```
+     */
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
 
     /**
@@ -801,14 +815,26 @@ declare module "alt-server" {
      *
      * @param id The id of the vehicle.
      * @returns Vehicle if it was found, otherwise null.
+     * @example
+     * ```
+     * let vehicle = alt.Vehicle.getByID(1);
+     * alt.log(vehicle.model); // Logs the model of the vehicle with the ID 1
+     * ```
      */
     public static getByID(id: number): Vehicle | null;
 
     /**
      * Checks if the specified wheel has a tire.
-     *
+     
      * @param wheelId The index of the wheel.
      * @returns True if the wheel has a tire.
+     * @example
+     * ```
+     * let wheel = 0;
+     * if(!vehicle.doesWheelHasTire(wheel)) {
+     *   vehicle.setWheelHasTire(wheel, true); // Repairs the wheel tire if it is destroyed
+     * }
+     * ```
      */
     public doesWheelHasTire(wheelId: number): boolean;
 
@@ -1185,6 +1211,10 @@ declare module "alt-server" {
      * Checks if the specified entity is inside the colshape.
      *
      * @returns True if the entity is inside the colshape.
+     * @example
+     * ```
+     * alt.log(colshape.isEntityIn(player)); // Returns whether the player is inside the colshape
+     * ```
      */
     public isEntityIn(entity: Entity): boolean;
 
@@ -1193,43 +1223,114 @@ declare module "alt-server" {
      *
      * @param position A vector3 representing a point in the world.
      * @returns True if the point is inside the colshape.
+     * @example
+     * ```
+     * let point = new alt.Vector3(50, 50, 50);
+     * alt.log(colshape.isPointIn(point)); // Returns whether the point is inside the colshape
+     * ```
      */
     public isPointIn(position: Vector3): boolean;
   }
 
   export class ColshapeCylinder extends Colshape {
+    /**
+     * Creates a cylinder shaped colshape.
+     * @param x X position of the colshape.
+     * @param y Y position of the colshape.
+     * @param z Z position of the colshape.
+     * @param radius Radius of the cylinder.
+     * @param height Height of the cylinder.
+     * @remarks A cylinder is 3 dimensional.
+     */
     constructor(x: number, y: number, z: number, radius: number, height: number);
   }
 
   export class ColshapeSphere extends Colshape {
+    /**
+     * Creates a sphere shaped colshape.
+     * @param x X position of the colshape.
+     * @param y Y position of the colshape.
+     * @param z Z position of the colshape.
+     * @param radius Radius of the sphere.
+     * @remarks A sphere is 3 dimensional.
+     */
     constructor(x: number, y: number, z: number, radius: number);
   }
 
   export class ColshapeCircle extends Colshape {
+    /**
+     * Creates a circle shaped colshape.
+     * @param x X position of the colshape.
+     * @param y Y position of the colshape.
+     * @param radius Radius of the circle.
+     * @remarks A circle is 2 dimensional.
+     */
     constructor(x: number, y: number, radius: number);
   }
 
   export class ColshapeCuboid extends Colshape {
+    /**
+     * Creates a cuboid shaped colshape.
+     * @param x1 Top left X position of the colshape.
+     * @param y1 Top left Y position of the colshape.
+     * @param z1 Top left Z position of the colshape.
+     * @param x2 Bottom right X position of the colshape.
+     * @param y2 Bottom right Y position of the colshape.
+     * @param z2 Bottom right Z position of the colshape.
+     * @remarks A cuboid is 3 dimensional.
+     */
     constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
   }
 
   export class ColshapeRectangle extends Colshape {
+    /**
+     * Creates a rectangle shaped colshape.
+     * @param x1 Top left X position of the colshape.
+     * @param y1 Top left Y position of the colshape.
+     * @param x2 Bottom right X position of the colshape.
+     * @param y2 Bottom right Y position of the colshape.
+     * @remarks A rectangle is 2 dimensional.
+     */
     constructor(x1: number, y1: number, x2: number, y2: number);
   }
 
   export class Checkpoint extends Colshape {
+    /**
+     * Creates a checkpoint.
+     * @param type Checkpoint type.
+     * @param x X position of the checkpoint.
+     * @param y Y position of the checkpoint.
+     * @param z Z position of the checkpoint.
+     * @param radius Radius of the checkpoint.
+     * @param height Height of the checkpoint.
+     * @param r Red color component of the checkpoint.
+     * @param g Green color component of the checkpoint.
+     * @param b Blue color component of the checkpoint.
+     * @param a Transparency color component of the checkpoint.
+     */
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
   }
 
   export class VoiceChannel extends BaseObject {
     /**
+     * Creates a voice channel.
      * @param isSpatial Should the sound in the voice channel be spatial. (3D)
      * @param maxDistance The max distance to hear other players in this voice channel from.
+     * @remarks This only works when the alt:V voice chat is enabled on the server.
+     * @example
+     * ```
+     * let channel = new alt.VoiceChannel(true, 50); // Creates a 3 dimensional voice channel with a max range of 50 meters
+     * ```
      */
     constructor(isSpatial: boolean, maxDistance: number);
 
     /**
      * Adds the specified player to the voice channel.
+     * @example
+     * ```
+     * let channel = new alt.VoiceChannel(true, 50);
+     * channel.addPlayer(player); // The player is now in this voice channel and can be heard and hear others players in the channel
+     * ```
      */
     public addPlayer(player: Player): void;
 
@@ -1237,6 +1338,10 @@ declare module "alt-server" {
      * Checks if the specified player is in the voice channel.
      * 
      * @returns True if the player is in the voice channel.
+     * @example
+     * ```
+     * if(!channel.isPlayerInChannel(player)) channel.addPlayer(player); // Adds the player to the channel if they are not added yet
+     * ```
      */
     public isPlayerInChannel(player: Player): boolean;
 
@@ -1249,16 +1354,28 @@ declare module "alt-server" {
 
     /**
      * Mutes the specified player in the voice channel.
+     * @example
+     * ```
+     * channel.mutePlayer(player); // The player can now not be heard in that channel anymore
+     * ```
      */
     public mutePlayer(player: Player): void;
 
     /**
      * Removes the specified channel from the voice channel.
+     * @example
+     * ```
+     * if(channel.isPlayerInChannel(player)) channel.removePlayer(player); // Removes the player from the channel if they are added
+     * ```
      */
     public removePlayer(player: Player): void;
 
     /**
      * Unmutes the specified player in the voice channel.
+     * @example
+     * ```
+     * channel.unmutePlayer(player); // The player can now be heard in that channel again
+     * ```
      */
     public unmutePlayer(player: Player): void;
   }
@@ -1355,6 +1472,14 @@ declare module "alt-server" {
    * Clears a timer set with the {@link everyTick} function.
    *
    * @param id The id of a timer.
+   * @example
+   * ```
+   * let ticks = 0;
+   * let tick = alt.everyTick(() => {
+   *   ticks++;
+   *   if(ticks > 1000) alt.clearEveryTick(tick); // Clears the every tick timer after 1000 ticks
+   * });
+   * ```
    */
   export function clearEveryTick(id: number): void;
 
@@ -1362,6 +1487,14 @@ declare module "alt-server" {
    * Clears a timer set with the {@link setInterval} function.
    *
    * @param id The id of a timer.
+   * @example
+   * ```
+   * let counter = 0;
+   * let interval = alt.setInterval(() => {
+   *   counter++;
+   *   if(counter === 5) alt.clearInterval(interval); // Clears the interval after it has been executed 5 times
+   * }, 500);
+   * ```
    */
   export function clearInterval(id: number): void;
 
@@ -1376,6 +1509,13 @@ declare module "alt-server" {
    * Clears a timer set with the {@link setTimeout} function.
    *
    * @param id The id of a timer.
+   * @example
+   * ```
+   * let timeout = alt.setTimeout(() => {
+   *   // Do stuff
+   * }, 500);
+   * alt.clearTimeout(timeout); // The timeout now never gets called, because it was cleared
+   * ```
    */
   export function clearTimeout(id: number): void;
 
@@ -1390,6 +1530,10 @@ declare module "alt-server" {
    * @param player Event is sent to specific player.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
+   * @example
+   * ```
+   * alt.emit("test", 123); // Emits the event 'test' with the parameter '123'
+   * ```
    */
   export function emit(eventName: string, ...args: any[]): void;
 
@@ -1399,6 +1543,10 @@ declare module "alt-server" {
    * @param player Event is sent to specific player.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
+   * @example
+   * ```
+   * alt.emitClient(player, "test", 123); // Emits the event 'test' with the parameter '123' to the player
+   * ```
    */
   export function emitClient(player: Player, eventName: string, ...args: any[]): void;
 
@@ -1408,6 +1556,10 @@ declare module "alt-server" {
    * @param player Event is sent to every player.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
+   * @example
+   * ```
+   * alt.emitClient(null, "test", 123); // Emits the event 'test' with the parameter '123' to all players
+   * ```
    */
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
@@ -1416,6 +1568,12 @@ declare module "alt-server" {
    *
    * @param handler Handler that should be scheduled for execution.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearEveryTick} function to cancel the timer.
+   * @example
+   * ```
+   * let tick = alt.everyTick(() => {
+   *   alt.log("Tick"); // Prints 'Tick' every tick
+   * });
+   * ```
    */
   export function everyTick(handler: () => void): number;
 
@@ -1424,6 +1582,11 @@ declare module "alt-server" {
    *
    * @remarks The net time is the amount of time the current resource is started.
    * @returns Current net time in milliseconds.
+   * @example
+   * ```
+   * let netTime = alt.getNetTime(); // Net time in milliseconds
+   * alt.log(`The resource has been started ${netTime / 1000} seconds ago`); // Prints 'The resource has been started X seconds ago'
+   * ```
    */
   export function getNetTime(): number;
 
@@ -1440,6 +1603,11 @@ declare module "alt-server" {
    *
    * @param name Name of the resource.
    * @returns The main file of the specified resource.
+   * @example
+   * ```
+   * let main = alt.getResourceMain("myResource");
+   * alt.log(main); // Logs the name of the main file of the resource 'myResource'
+   * ```
    */
   export function getResourceMain(name: string): string;
 
@@ -1456,6 +1624,10 @@ declare module "alt-server" {
    *
    * @param name Name of the resource.
    * @returns True if the resource exists.
+   * @example
+   * ```
+   * alt.log(alt.hasResource("myResource")); // Logs whether the resource 'myResource' exists
+   * ```
    */
   export function hasResource(name: string): boolean;
 
@@ -1463,21 +1635,33 @@ declare module "alt-server" {
    *  Creates a hash using Jenkins one-at-a-time algorithm.
    *
    * @param str A string, from which hash will be created.
+   * @example
+   * ```
+   * let hash = alt.hash("weapon_pistol");
+   * alt.log(hash); // Prints the hash of the string 'weapon_pistol'
+   * ```
    */
   export function hash(str: string): number;
 
   /**
    * Prints the specified arguments to the server console.
+   * @example
+   * ```
+   * let str = "World";
+   * alt.log("Hello", str); // Prints 'Hello World'
+   * ```
    */
   export function log(...args: any[]): void;
 
   /**
    * Prints the specified arguments to the server console as an error.
+   * @remarks For an example see {@link log}
    */
   export function logError(...args: any[]): void;
 
   /**
    * Prints the specified arguments to the server console as a warning.
+   * @remarks For an example see {@link log}
    */
   export function logWarning(...args: any[]): void;
 
@@ -1486,6 +1670,12 @@ declare module "alt-server" {
    *
    * @param handler Handler that should be scheduled for execution.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearNextTick} function to cancel the timer.
+   * @example
+   * ```
+   * alt.nextTick(() => {
+   *   alt.log("Executed"); // Prints 'Executed' on the next tick
+   * });
+   * ```
    */
   export function nextTick(handler: () => void): number;
 
@@ -1711,6 +1901,11 @@ declare module "alt-server" {
    * Restarts the specified resource.
    *
    * @param name Name of the resource.
+   * @example
+   * ```
+   * let currentResource = alt.resourceName;
+   * alt.restartResource(currentResource); // Restarts the current executing resource
+   * ```
    */
   export function restartResource(name: string): void;
 
@@ -1720,6 +1915,12 @@ declare module "alt-server" {
    * @param handler Handler that should be scheduled for execution.
    * @param miliseconds The time, in milliseconds, between execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearInterval} function to cancel the timer.
+   * @example
+   * ```
+   * let timeout = alt.setInterval(() => {
+   *   alt.log("Called"); // Prints 'Called' every second
+   * }, 1000);
+   * ```
    */
   export function setInterval(handler: () => void, miliseconds: number): number;
 
@@ -1729,6 +1930,12 @@ declare module "alt-server" {
    * @param handler Handler that should be scheduled for execution.
    * @param miliseconds The time, in milliseconds, before execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
+   * @example
+   * ```
+   * let timeout = alt.setTimeout(() => {
+   *   alt.log("Called"); // Prints 'Called' after one second
+   * }, 1000);
+   * ```
    */
   export function setTimeout(handler: () => void, miliseconds: number): number;
 
@@ -1736,6 +1943,11 @@ declare module "alt-server" {
    * Starts the specified resource.
    *
    * @param name Name of the resource.
+   * @example
+   * ```
+   * let resource = "test";
+   * if(alt.hasResource(resource)) alt.startResource(resource); // Starts the resource 'test' if it exists
+   * ```
    */
   export function startResource(name: string): void;
 
@@ -1743,6 +1955,11 @@ declare module "alt-server" {
    * Stops the specified resource.
    *
    * @param name Name of the resource.
+   * @example
+   * ```
+   * let currentResource = alt.resourceName;
+   * alt.stopResource(currentResource); // Stops the current executing resource
+   * ```
    */
   export function stopResource(name: string): void;
 }
