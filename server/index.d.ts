@@ -460,6 +460,11 @@ declare module "alt-server" {
      *
      * @param id The id of the player.
      * @returns Player if it was found, otherwise null.
+     * @example
+     * ```
+     * let player = alt.Player.getByID(1);
+     * alt.log(player.name); // Logs the name of the player with the ID 1
+     * ```
      */
     public static getByID(id: number): Player | null;
 
@@ -468,6 +473,12 @@ declare module "alt-server" {
      *
      * @param weaponHash Weapon hash.
      * @param component Component id.
+     * @example
+     * ```
+     * let weapon = alt.hash("weapon_pistol"); // Gets the hash for the pistol
+     * let component = alt.hash("COMPONENT_AT_PI_SUPP_02"); // Gets the hash for the suppressor component
+     * player.addWeaponComponent(weapon, component); // The pistol of the player now has a suppressor
+     * ```
      */
     public addWeaponComponent(weaponHash: number, component: number): void;
 
@@ -477,6 +488,11 @@ declare module "alt-server" {
      * @param weaponHash Weapon hash.
      * @param ammo Weapon ammo to give.
      * @param equipNow Should the weapon be equipped immediately.
+     * @example
+     * ```
+     * let weapon = alt.hash("weapon_pistol"); // Gets the hash for the pistol
+     * player.giveWeapon(weapon, 500, true); // Gives the player the pistol with 500 ammo and equips it
+     * ```
      */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
@@ -484,6 +500,10 @@ declare module "alt-server" {
      * Forcefully disconnects the player with a reason message.
      *
      * @param reason The reason that will display to the player on the disconnect screen.
+     * @example
+     * ```
+     * player.kick("You have been kicked"); // Kicks the player and displays the message 'You have been kicked'
+     * ```
      */
     public kick(reason: string): void;
 
@@ -496,6 +516,11 @@ declare module "alt-server" {
      * Removes the specified weapon from the player.
      *
      * @param weaponHash Weapon hash.
+     * @example
+     * ```
+     * let weapon = alt.hash("weapon_pistol"); // Gets the hash for the pistol
+     * player.removeWeapon(weapon); // Removes the pistol from the player
+     * ```
      */
     public removeWeapon(weaponHash: number): void;
 
@@ -504,6 +529,12 @@ declare module "alt-server" {
      *
      * @param weaponHash Weapon hash.
      * @param component Component id.
+     * @example
+     * ```
+     * let weapon = alt.hash("weapon_pistol"); // Gets the hash for the pistol
+     * let component = alt.hash("COMPONENT_AT_PI_SUPP_02"); // Gets the hash for the suppressor component
+     * player.removeWeaponComponent(weapon, component); // The pistol of the player now no longer has a suppressor
+     * ```
      */
     public removeWeaponComponent(weaponHash: number, component: number): void;
 
@@ -516,6 +547,11 @@ declare module "alt-server" {
      * @param hour The current hour.
      * @param minute The current minute.
      * @param second The current second.
+     * @example
+     * ```
+     * let date = new Date();
+     * player.setDateTime(date.getDate(), date.getMonth(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()); // Sets the player ingame date and time to the current date and time
+     * ```
      */
     public setDateTime(day: DateTimeDay, month: DateTimeMonth, year: number, hour: DateTimeHour, minute: DateTimeMinute, second: DateTimeSecond): void;
 
@@ -524,6 +560,11 @@ declare module "alt-server" {
      *
      * @param weaponHash Weapon hash.
      * @param tintIndex Weapon tint index.
+     * @example
+     * ```
+     * let weapon = alt.hash("weapon_pistol"); // Gets the hash for the pistol
+     * player.setWeaponTintIndex(weapon, 2); // Changes the tint for the pistol to golden
+     * ```
      */
     public setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
 
@@ -531,6 +572,11 @@ declare module "alt-server" {
      * Sets the weather for the player.
      *
      * @param weatherHash Hash of the weather name.
+     * @example
+     * ```
+     * let weather = alt.hash("RAIN"); // Gets the hash for the rainy weather
+     * player.setWeather(weather); // It now rains for the player
+     * ```
      */
     public setWeather(weatherHash: number): void;
 
@@ -542,6 +588,10 @@ declare module "alt-server" {
      * @param z Z coordinate to spawn at
      * @param delay Delay until the player is spawned in milliseconds
      * @remarks This also sets the player health to max health
+     * @example
+     * ```
+     * player.spawn(0, 0, 72, 0); // Immediately spawns the player at the coordinates 0, 0, 72
+     * ```
      */
     public spawn(x: number, y: number, z: number, delay: number): void;
   }
