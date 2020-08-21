@@ -13,27 +13,30 @@ declare module "alt-server" {
    * Resource name of the executing entity.
    */
   export const resourceName: string;
+
   /**
    * The root directory of the alt:V server.
    */
   export const rootDir: string;
+
   /**
    * The default entity dimension.
    * 
-   * @remarks Can only see itself but can be seen by itself and the public dimension. (-1 to -2147483647).
+   * @remarks Informations about dimensions can be found at {@link WorldObject.dimension}.
    */
-  export const DefaultDimension: number;
+  export const DefaultDimension: 0;
+
   /**
    * The global dimension.
    * 
-   * @remarks Can only see itself but can be seen by itself, the public dimension (-1 to -2147483647) and the private dimension (1 to 2147483647).
+   * @remarks Informations about dimensions can be found at {@link WorldObject.dimension}.
    */
-  export const GlobalDimension: number;
+  export const GlobalDimension: -2147483648;
  
   /**
    * Vehicle neon.
    * 
-   * @remarks All individual neon locations can be toggled seperately
+   * @remarks All individual neon locations can be toggled seperately.
    */
   export interface VehicleNeon {
     left: boolean;
@@ -117,11 +120,25 @@ declare module "alt-server" {
   export class WorldObject extends BaseObject {
     /**
      * Object dimension.
+     * @remarks
+     * alt:V includes a dimension system which allows you to have two entities at the same place, that can't see or interact with each other.
+     * (-2147483648) Global Dimension: Can only see itself, but can be seen by itself, the public dimension and the private dimension.
+     * (-2147483647 to -1) Public Dimension: Can see itself, the general dimension and the global dimension, but can only be seen by itself. 
+     * (0) General/Default Dimension: Can only see itself, but can be seen by itself and the public dimension.
+     * (1 to 2147483647) Private dimension: Can see itself and the global dimension, but can only be seen by itself.
+     * @example
+     * ```
+     * object.dimension = 0; // The object is now in the default dimension
+     * ```
      */
     public dimension: number;
 
     /**
      * Object position.
+     * @example
+     * ```
+     * entity.pos = new alt.Vector3(0, 0, 72); // Sets the position of the 'entity' to 0, 0, 72
+     * ```
      */
     public pos: Vector3;
   }
@@ -146,13 +163,22 @@ declare module "alt-server" {
      * Entity model hash.
      *
      * @remarks Only setter accepts string or number as input, getter returns value as number.
+     * @example
+     * ```
+     * entity.model = "mp_m_freemode_01"; // Sets the entity model to 'mp_m_freemode_01'
+     * entity.model = 0x705E61F2; // You can also set the hash of the model
+     * ```
      */
     public model: number | string;
 
     /**
      * Entity rotation.
      *
-     * @remarks Values are provided in radians .
+     * @remarks Values are provided in radians.
+     * @example
+     * ```
+     * entity.rot = new alt.Vector3(0, 0, 2); // The entity is now rotated by about 115 degrees
+     * ```
      */
     public rot: Vector3;
 
@@ -161,6 +187,11 @@ declare module "alt-server" {
      *
      * @param id The id of the entity.
      * @returns Entity if it was found, otherwise null.
+     * @example
+     * ```
+     * let entity = alt.Entity.getByID(1);
+     * alt.log(entity.id); // Prints '1'
+     * ```
      */
     public static getByID(id: number): Entity | null;
 
@@ -168,6 +199,13 @@ declare module "alt-server" {
      * Removes the specified key.
      *
      * @param key The key of the value to remove.
+     * @example
+     * ```
+     * entity.setSyncedMeta("test", 123);
+     * alt.log(entity.getSyncedMeta("test")); // Prints '123'
+     * entity.deleteSyncedMeta("test");
+     * alt.log(entity.getSyncedMeta("test")); // Prints 'undefined'
+     * ```
      */
     public deleteSyncedMeta(key: string): void;
 
@@ -176,6 +214,11 @@ declare module "alt-server" {
      *
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key.
+     * @example
+     * ```
+     * entity.setSyncedMeta("test", 123);
+     * alt.log(entity.getSyncedMeta("test")); // Prints '123'
+     * ```
      */
     public getSyncedMeta(key: string): any;
 
@@ -184,6 +227,12 @@ declare module "alt-server" {
      *
      * @param key The key of the value to locate.
      * @returns Return is dependent on whether element associated with the specified key is stored.
+     * @example
+     * ```
+     * alt.log(entity.hasSyncedMeta("test")); // Prints 'false'
+     * entity.setSyncedMeta("test", 123);
+     * alt.log(entity.hasSyncedMeta("test")); // Prints 'true'
+     * ```
      */
     public hasSyncedMeta(key: string): boolean;
 
@@ -192,6 +241,11 @@ declare module "alt-server" {
      *
      * @remarks The given value will be shared with all clients.
      * @param key The key of the value to store.
+     * @example
+     * ```
+     * entity.setSyncedMeta("test", 123);
+     * alt.log(entity.getSyncedMeta("test")); // Prints '123'
+     * ```
      */
     public setSyncedMeta(key: string, value: any): void;
 
@@ -199,6 +253,13 @@ declare module "alt-server" {
      * Removes the specified key.
      *
      * @param key The key of the value to remove.
+     * @example
+     * ```
+     * entity.setStreamSyncedMeta("test", 123);
+     * alt.log(entity.getStreamSyncedMeta("test")); // Prints '123'
+     * entity.deleteStreamSyncedMeta("test");
+     * alt.log(entity.getStreamSyncedMeta("test")); // Prints 'undefined'
+     * ```
      */
     public deleteStreamSyncedMeta(key: string): void;
 
@@ -207,6 +268,11 @@ declare module "alt-server" {
      *
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key.
+     * @example
+     * ```
+     * entity.setStreamSyncedMeta("test", 123);
+     * alt.log(entity.getStreamSyncedMeta("test")); // Prints '123'
+     * ```
      */
     public getStreamSyncedMeta(key: string): any;
 
@@ -215,6 +281,12 @@ declare module "alt-server" {
      *
      * @param key The key of the value to locate.
      * @returns Return is dependent on whether element associated with the specified key is stored.
+     * @example
+     * ```
+     * alt.log(entity.hasStreamSyncedMeta("test")); // Prints 'false'
+     * entity.setStreamSyncedMeta("test", 123);
+     * alt.log(entity.hasStreamSyncedMeta("test")); // Prints 'true'
+     * ```
      */
     public hasStreamSyncedMeta(key: string): boolean;
 
@@ -223,6 +295,11 @@ declare module "alt-server" {
      *
      * @remarks The given value will be shared with all clients in streaming range.
      * @param key The key of the value to store.
+     * @example
+     * ```
+     * entity.setSyncedMeta("test", 123);
+     * alt.log(entity.getSyncedMeta("test")); // Prints '123'
+     * ```
      */
     public setStreamSyncedMeta(key: string, value: any): void;
 
@@ -238,6 +315,10 @@ declare module "alt-server" {
      * @param player The given player that will be set as new network owner.
      * @param disableMigration Pass true to disable migration, false to keep it enabled.
      * If not specified, it defaults to "false".
+     * @example
+     * ```
+     * entity.setNetOwner(player, true); // 'player' is now the net owner of 'entity'
+     * ```
      */
     public setNetOwner(player: Player, disableMigration?: boolean): void;
 
@@ -252,6 +333,10 @@ declare module "alt-server" {
      *
      * @param disableMigration Pass true to disable migration, false to keep it enabled.
      * If not specified, it defaults to "false".
+     * @example
+     * ```
+     * entity.resetNetOwner(); // The entity now calculates a net owner by itself
+     * ```
      */
     public resetNetOwner(disableMigration?: boolean): void;
   }
