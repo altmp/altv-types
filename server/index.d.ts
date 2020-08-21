@@ -24,14 +24,14 @@ declare module "alt-server" {
    * 
    * @remarks Informations about dimensions can be found at {@link WorldObject.dimension}.
    */
-  export const DefaultDimension: 0;
+  export const DefaultDimension: number;
 
   /**
    * The global dimension.
    * 
    * @remarks Informations about dimensions can be found at {@link WorldObject.dimension}.
    */
-  export const GlobalDimension: -2147483648;
+  export const GlobalDimension: number;
  
   /**
    * Vehicle neon.
