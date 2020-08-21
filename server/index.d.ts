@@ -825,7 +825,7 @@ declare module "alt-server" {
 
     /**
      * Checks if the specified wheel has a tire.
-     
+     *
      * @param wheelId The index of the wheel.
      * @returns True if the wheel has a tire.
      * @example
