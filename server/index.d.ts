@@ -1046,6 +1046,8 @@ declare module "alt-server" {
   export class Colshape extends WorldObject {
     public colshapeType: number;
 
+    public playersOnly: boolean;
+    
     /**
      * Checks if the specified entity is inside the colshape.
      *
