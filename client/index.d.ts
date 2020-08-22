@@ -640,7 +640,14 @@ declare module "alt-client" {
 
   export function getLicenseHash(): string;
 
-  export function getLocale(): string;
+  /**
+   * Returns the language identifier configured in alt:V / alt.cfg.
+   * All possible identifiers are listed here:
+   * https://github.com/altmp/altv-locales/tree/master/langs
+   * 
+   * @returns The language identifier (e.g. "en" for English)
+   */
+  export function getLocale(): "de" | "en" | "fr" | "hu" | "ru" | string;
 
   export function getMsPerGameMinute(): number;
 
