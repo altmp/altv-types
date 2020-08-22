@@ -1702,6 +1702,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("customEvent", (message) => {
+   *   alt.log(`Received custom event with message: ${message}`);
+   * });
+   * alt.emit("customEvent", "Hello World"); // Will print 'Received custom event with message: Hello World'
+   * ```
    */
   export function on(eventName: string, listener: (...args: any[]) => void): void;
 
@@ -1710,6 +1717,12 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("anyResourceError", (resource) => {
+   *   alt.log(`An error occured in the resource ${resource}`); // Prints the text every time an error occurs
+   * });
+   * ```
    */
   export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
 
@@ -1718,6 +1731,12 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("anyResourceStart", (resource) => {
+   *   alt.log(`Resource ${resource} has been started`); // Prints every time a resource is started
+   * });
+   * ```
    */
   export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
 
@@ -1726,6 +1745,12 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("anyResourceStop", (resource) => {
+   *   alt.log(`Resource ${resource} has been stopped`); // Prints every time a resource is stopped
+   * });
+   * ```
    */
   export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
 
@@ -1734,6 +1759,15 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("consoleCommand", (...args) => {
+   *   let [command, ...arg] = args; // Gets the command and arguments from the args array
+   *   if(command === "test") {
+   *     alt.log(`Executed test command with args: ${arg}`); // Prints every time the test command is entered into the console
+   *   }
+   * });
+   * ```
    */
   export function on(eventName: "consoleCommand", listener: (...args: string[]) => void): void;
 
@@ -1742,6 +1776,15 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleColshape = new alt.ColshapeCylinder(0, 0, 72, 5, 10); // Creates a cylinder shaped colshape
+   * alt.on("entityEnterColshape", (colshape, entity) => {
+   *   if(!entity instanceof alt.Player) return; // Don't do anything if the entity is not a player
+   *   if(colshape !== exampleColshape) return; // Don't do anything if the colshape is not our example colshape
+   *   alt.log(`${entity.name} entered the example colshape`); // Prints every time the player enters the example colshape
+   * });
+   * ```
    */
   export function on(eventName: "entityEnterColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
 
@@ -1750,6 +1793,15 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleColshape = new alt.ColshapeCylinder(0, 0, 72, 5, 10); // Creates a cylinder shaped colshape
+   * alt.on("entityLeaveColshape", (colshape, entity) => {
+   *   if(!entity instanceof alt.Player) return; // Don't do anything if the entity is not a player
+   *   if(colshape !== exampleColshape) return; // Don't do anything if the colshape is not our example colshape
+   *   alt.log(`${entity.name} left the example colshape`); // Prints every time the player leaves the example colshape
+   * });
+   * ```
    */
   export function on(eventName: "entityLeaveColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
 
@@ -1758,6 +1810,14 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @remarks This event is cancellable.
+   * @example
+   * ```
+   * alt.on("explosion", (entity, type, pos, fx) => {
+   *   if(!entity instanceof alt.Player) return false; // Cancels the explosion if it is not coming from a player
+   *   return true; // Does not cancel the explosion otherwise
+   * });
+   * ```
    */
   export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number) => boolean | void): void;
 
@@ -1766,6 +1826,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("playerChangedVehicleSeat", (player, vehicle, oldSeat, newSeat) => {
+   *   if(newSeat === -1) alt.log(`${player.name} entered the driver seat`); // Gets printed every time the player changes to the driver seat
+   *   else if(oldSeat === -1) alt.log(`${player.name} left the driver seat`); // Gets printed every time the player leaves the driver seat
+   * });
+   * ```
    */
   export function on(eventName: "playerChangedVehicleSeat", listener: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void): void;
 
@@ -1774,6 +1841,12 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("playerConnect", (player) => {
+   *   alt.log(`${player.name} has connected to the server`); // Prints every time a player connects to the server
+   * });
+   * ```
    */
   export function on(eventName: "playerConnect", listener: (player: Player) => void): void;
 
@@ -1782,6 +1855,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("playerDamage", (victim, attacker, weapon, damage) => {
+   *   if(victim === attacker || !attacker) alt.log(`${victim.name} hurt themselves with ${weapon} for ${damage} damage`); // Prints when the player injures themselves
+   *   else alt.log(`${victim.name} got hurt by ${attacker.name} with ${weapon} for ${damage} damage`); // Prints when a a player injures another player
+   * });
+   * ```
    */
   export function on(eventName: "playerDamage", listener: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void): void;
 
@@ -1790,6 +1870,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("playerDeath", (victim, killer, weapon) => {
+   *   if(victim === killer || !killer) alt.log(`${victim.name} killed themselves with ${weapon}`); // Prints when the player kills themselves
+   *   else if(killer instanceof alt.Player) alt.log(`${victim.name} got killed by ${attacker.name} with ${weapon}`); // Prints when a a player kills another player
+   * });
+   * ```
    */
   export function on(eventName: "playerDeath", listener: (victim: Player, killer: Entity, weaponHash: number) => void): void;
 
@@ -1798,6 +1885,12 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("playerDisconnect", (player, reason) => {
+   *   alt.log(`${player.name} disconnected with reason: ${reason}`); // Prints every time a player disconnects
+   * });
+   * ```
    */
   export function on(eventName: "playerDisconnect", listener: (player: Player, reason: string) => void): void;
 
@@ -1806,6 +1899,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("playerEnteredVehicle", (player, vehicle, seat) => {
+   *   if(seat === -1) alt.log(`${player.name} entered a vehicle with the model ${vehicle.model} as the driver`); // Prints every time a player enters a vehicle as the driver
+   *   else alt.log(`${player.name} entered a vehicle with the model ${vehicle.model} as a passenger`); // Prints every time a player enters a vehicle as a passenger
+   * });
+   * ```
    */
   export function on(eventName: "playerEnteredVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
 
@@ -1814,6 +1914,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("playerLeftVehicle", (player, vehicle, seat) => {
+   *   if(seat === -1) alt.log(`${player.name} left a vehicle with the model ${vehicle.model} as the driver`); // Prints every time a player leaves a vehicle as the driver
+   *   else alt.log(`${player.name} left a vehicle with the model ${vehicle.model} as a passenger`); // Prints every time a player leaves a vehicle as a passenger
+   * });
+   * ```
    */
   export function on(eventName: "playerLeftVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
 
@@ -1822,6 +1929,14 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let vehicle = new alt.Vehicle("t20", 0, 0, 72, 0, 0, 0); // Creates a vehicle with the T20 model
+   * alt.on("removeEntity", (object) => {
+   *   if(object !== vehicle) return; // Don't do anything if the object is not our created vehicle
+   *   alt.log(`The vehicle with the T20 model was removed`);
+   * });
+   * ```
    */
   export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
 
@@ -1830,6 +1945,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("resourceStart", (errored) => {
+   *   if(!errored) alt.log(`The resource started without errors! Hooray!`);
+   *   else alt.log(`The resource started with errors. :(`);
+   * });
+   * ```
    */
   export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
 
@@ -1838,6 +1960,13 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("resourceStop", () => {
+   *   alt.log("The resource has been stopped.");
+   *   // Do some cleanup here
+   * });
+   * ```
    */
   export function on(eventName: "resourceStop", listener: () => void): void;
 
@@ -1846,6 +1975,19 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleMeta = "exampleMetaName";
+   * alt.on("syncedMetaChange", (entity, key, value, oldValue) => {
+   *   if(key !== exampleMeta) return; // Don't do anything if the synced meta that changed is not our example meta
+   *   alt.log(`${entity.name}'s example meta has changed to: ${value} (Old value: ${oldValue})`);
+   * });
+   * alt.setInterval(() => {
+   *   alt.Player.all.forEach((player) => {
+   *     player.setSyncedMeta(exampleMeta, Math.random().toFixed(3)); // Sets the example meta of every player to a random value between 0 and 1 every 5 seconds
+   *   });
+   * }, 5000);
+   * ```
    */
   export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
@@ -1854,6 +1996,19 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleMeta = "exampleMetaName";
+   * alt.on("streamSyncedMetaChange", (entity, key, value, oldValue) => {
+   *   if(key !== exampleMeta) return; // Don't do anything if the synced meta that changed is not our example meta
+   *   alt.log(`${entity.name}'s example stream meta has changed to: ${value} (Old value: ${oldValue})`);
+   * });
+   * alt.setInterval(() => {
+   *   alt.Player.all.forEach((player) => {
+   *     player.setSyncedMeta(exampleMeta, Math.random().toFixed(3)); // Sets the example meta of every player to a random value between 0 and 1 every 5 seconds
+   *   });
+   * }, 5000);
+   * ```
    */
   export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
@@ -1862,6 +2017,17 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleMeta = "exampleMetaName";
+   * alt.on("globalMetaChange", (key, value, oldValue) => {
+   *   if(key !== exampleMeta) return; // Don't do anything if the synced meta that changed is not our example meta
+   *   alt.log(`Global example meta has changed to: ${value} (Old value: ${oldValue})`);
+   * });
+   * alt.setInterval(() => {
+   *   alt.setMeta(exampleMeta, Math.random().toFixed(3)); // Sets the global example meta to a random value between 0 and 1 every 5 seconds
+   * }, 5000);
+   * ```
    */
   export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
@@ -1870,6 +2036,17 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleMeta = "exampleMetaName";
+   * alt.on("globalSyncedMetaChange", (key, value, oldValue) => {
+   *   if(key !== exampleMeta) return; // Don't do anything if the synced meta that changed is not our example meta
+   *   alt.log(`Global example meta has changed to: ${value} (Old value: ${oldValue})`);
+   * });
+   * alt.setInterval(() => {
+   *   alt.setSyncedMeta(exampleMeta, Math.random().toFixed(3)); // Sets the global example meta to a random value between 0 and 1 every 5 seconds
+   * }, 5000);
+   * ```
    */
   export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
@@ -1878,6 +2055,14 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let customVehicle = new alt.Vehicle("t20", 0, 0, 72, 0, 0, 0); // Creates a new vehicle with the T20 model
+   * alt.on("vehicleDestroy", (vehicle) => {
+   *    if(vehicle === customVehicle) alt.log(`The custom vehicle was destroyed`); // Prints when the created vehicle is destroyed
+   *    else alt.log(`A vehicle with the model ${vehicle.model} was destroyed`); // Prints when any other vehicle is destroyed
+   * });
+   * ```
    */
   export function on(eventName: "vehicleDestroy", listener: (vehicle: Vehicle) => void): void;
 
@@ -1886,6 +2071,14 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("weaponDamage", (source, target, weapon, damage, offset, bodyPart) => {
+   *   let sourceName = source instanceof alt.Player ? source.name : source.model;
+   *   let targetName = target instanceof alt.Player ? target.name : target.model;
+   *   alt.log(`${sourceName} injured ${targetName} with weapon ${weapon} for ${damage} damage. ${bodyPart === 20 ? "HEADSHOT!" : ""}`);
+   * });
+   * ```
    */
   export function on(eventName: "weaponDamage", listener: (source: Entity, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: number) => boolean | void): void;
 
