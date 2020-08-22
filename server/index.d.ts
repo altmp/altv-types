@@ -500,6 +500,7 @@ declare module "alt-server" {
      * Forcefully disconnects the player with a reason message.
      *
      * @param reason The reason that will display to the player on the disconnect screen.
+     * If not specified, it defaults to "KICKED_OUT".
      * @example
      * ```
      * player.kick("You have been kicked"); // Kicks the player and displays the message 'You have been kicked'
@@ -1206,6 +1207,8 @@ declare module "alt-server" {
 
   export class Colshape extends WorldObject {
     public colshapeType: number;
+
+    public playersOnly: boolean;
 
     /**
      * Checks if the specified entity is inside the colshape.
