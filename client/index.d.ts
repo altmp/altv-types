@@ -2,7 +2,7 @@ declare module "alt-client" {
   type StatName = "stamina" | "strength" | "lung_capacity" | "wheelie_ability" | "flying_ability" | "shooting_ability" | "stealth_ability";
 
   export interface DiscordOAuth2Token {
-    readonly token: string
+    readonly token: string;
     readonly expires: number;
     readonly scopes: string;
   }
@@ -31,9 +31,14 @@ declare module "alt-client" {
     public readonly z: number;
 
     /**
+     * Creates a new 3D Position Object known as a Vector3.
      * @param x An x component.
      * @param y An y component.
      * @param z An z component.
+     * @example
+     * ```
+     * const aPosition = new alt.Vector3(0, 0, 0);
+     * ```
      */
     constructor(x: number, y: number, z: number);
   }
@@ -49,10 +54,15 @@ declare module "alt-client" {
     public a: number;
 
     /**
-     * @param r An r component.
-     * @param g An g component.
-     * @param b An b component.
-     * @param a An a component.
+     * Creates a new RGBA Object for Colour.
+     * @param r Red (0 - 255)
+     * @param g Green (0 - 255)
+     * @param b Blue (0 - 255)
+     * @param a Alpha (0 - 255)
+     * @example
+     * ```
+     * const myColour = new alt.RGBA(255, 0, 0, 255);
+     * ```
      */
     constructor(r: number, g: number, b: number, a: number);
   }
@@ -78,6 +88,10 @@ declare module "alt-client" {
      * Removes the specified key.
      *
      * @param key The key of the value to remove.
+     * @example
+     * ```
+     * alt.Player.local.deleteMeta('Custom_Data');
+     * ```
      */
     public deleteMeta(key: string): void;
 
@@ -86,6 +100,11 @@ declare module "alt-client" {
      *
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key.
+     * @example
+     * ```
+     * const result = alt.Player.local.getMeta('Custom_Data');
+     * alt.log(`Result was: ${result}`);
+     * ```
      */
     public getMeta(key: string): any;
 
@@ -94,6 +113,12 @@ declare module "alt-client" {
      *
      * @param key The key of the value to locate.
      * @returns True when element associated with the specified key is stored.
+     * @example
+     * ```
+     * if (alt.Player.local.hasMeta('Custom_Data')) {
+     *    alt.log(`Has the custom data!`);
+     * }
+     * ```
      */
     public hasMeta(key: string): boolean;
 
@@ -102,6 +127,10 @@ declare module "alt-client" {
      *
      * @remarks The given value will be shared locally.
      * @param key The key of the value to store.
+     * @example
+     * ```
+     * alt.Player.local.setMeta('Custom_Data', 'Hello World');
+     * ```
      */
     public setMeta(key: string, value: any): void;
   }
@@ -117,7 +146,19 @@ declare module "alt-client" {
     /** Entity unique id */
     public readonly id: number;
 
-    /** Internal game id that can be used in native calls */
+    /**
+     * Internal game id that can be used in native calls
+     * @example
+     * ```
+     * // Give the local player a police helmet.
+     * native.givePedHelmet(alt.Player.local.scriptID, true, 1024, 0);
+     *
+     * // Leave any vehicle if the local player is in it.
+     * if (alt.Player.local.vehicle) {
+     *     native.taskLeaveVehicle(alt.Player.local.scriptID, alt.Player.local.vehicle.scriptID, 0);
+     * }
+     * ```
+     * */
     public readonly scriptID: number;
 
     /** Hash of entity model */
@@ -148,18 +189,33 @@ declare module "alt-client" {
     public static getByScriptID(scriptID: number): Entity | null;
 
     /**
-     * Gets a value using the specified key.
+     * Gets a value using the specified key set on the server-side in client-side on the entity.
      *
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key.
+     * @example
+     * ```
+     * // This assumes you've set the key 'NAME' on server-side.
+     * const aPlayersName = alt.Player.all[0].getSyncedMeta('NAME');
+     * if (aPlayersName) {
+     *     alt.log(`Got the name: ${aPlayersName} from SyncedMeta`);
+     * }
+     * ```
      */
     public getSyncedMeta(key: string): any;
 
     /**
-     * Determines whether contains the specified key.
+     * Determines whether the entity contains the specified key set on the server-side.
      *
      * @param key The key of the value to locate.
      * @returns Return is dependent on whether element associated with the specified key is stored.
+     * @example
+     * ```
+     * // This assumes you've set the key 'NAME' on server-side.
+     * if (alt.Player.all[0].hasSyncedMeta('NAME')) {
+     *   alt.log(`The name is set for the first player in the array.');
+     * }
+     * ```
      */
     public hasSyncedMeta(key: string): boolean;
 
@@ -181,7 +237,17 @@ declare module "alt-client" {
   }
 
   export class Player extends Entity {
-    /** Array with all players */
+    /**
+     * Array with all players.
+     * @example
+     * ```
+     * // Find a player with the id of 1. Then log if the player was found.
+     * const foundPlayer = alt.Player.all.find(p => p.id === 1);
+     * if (foundPlayer) {
+     *    alt.log('We found a player with the matching id!');
+     * }
+     * ```
+     * */
     public static readonly all: Array<Player>;
 
     /** Local player */
@@ -196,7 +262,17 @@ declare module "alt-client" {
     /** Player name */
     public readonly name: string;
 
-    /** Player's vehicle, null if player is not in any vehicle */
+    /**
+     * Player's vehicle, null if player is not in any vehicle.
+     * Also null if the player is not in streaming range.
+     * @example
+     * ```
+     * // If the local player is in a vehicle. Log it.
+     * if (alt.Player.local.vehicle) {
+     *     alt.log(`You are in a vehicle!`);
+     * }
+     * ```
+     * */
     public readonly vehicle: Vehicle | null;
 
     /**
@@ -283,6 +359,9 @@ declare module "alt-client" {
      */
     public emit(eventName: string, ...args: any[]): void;
 
+    /**
+     * Set the focus state on this WebView object. Changing focus from other WebViews.
+     */
     public focus(): void;
 
     /**
@@ -291,6 +370,24 @@ declare module "alt-client" {
      * @remarks Listener should be of the same reference as when event was subscribed.
      * @param eventName Name of the event.
      * @param listener Listener that should be removed.
+     * @example
+     * ```
+     * // This will point to a file you create called index inside the 'client/html' folder.
+     * // This assumes your webview will emit an event called test from its javascript file.
+     * const view = new alt.WebView('http://resource/client/html/index.html');
+     *
+     * // Sets up an event called test that invokes the handleTest Function.
+     * view.on('test', handleTest);
+     *
+     * // After the event is called from inside of the WebView the event will be shut off.
+     * function handleTest() {
+     *     if (!view) {
+     *         return;
+     *     }
+     *
+     *     view.off('test', handleTest);
+     * }
+     * ```
      */
     public off(eventName: string, listener: (...args: any[]) => void): void;
 
@@ -299,6 +396,24 @@ declare module "alt-client" {
      *
      * @param eventName Name of the event.
      * @param listener Listener that should be added.
+     * @example
+     * ```
+     * // This will point to a file you create called index inside the 'client/html' folder.
+     * // This assumes your webview will emit an event called test from its javascript file.
+     * const view = new alt.WebView('http://resource/client/html/index.html');
+     *
+     * // Sets up an event called test that invokes the handleTest Function.
+     * view.on('test', handleTest);
+     *
+     * // After the event is called from inside of the WebView the event will be shut off.
+     * function handleTest() {
+     *     if (!view) {
+     *         return;
+     *     }
+     *
+     *     view.off('test', handleTest);
+     * }
+     * ```
      */
     public on(eventName: string, listener: (...args: any[]) => void): void;
 
@@ -310,6 +425,9 @@ declare module "alt-client" {
      */
     public on(eventName: "load", listener: () => void): void;
 
+    /**
+     * Removes focus from the WebView object.
+     */
     public unfocus(): void;
   }
 
