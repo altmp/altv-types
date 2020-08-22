@@ -1188,6 +1188,12 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("anyResourceError", (resource) => {
+   *   alt.log(`An error occured in the resource ${resource}`); // Prints the text every time an error occurs
+   * });
+   * ```
    */
   export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
 
@@ -1196,6 +1202,12 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("anyResourceStart", (resource) => {
+   *   alt.log(`Resource ${resource} has been started`); // Prints every time a resource is started
+   * });
+   * ```
    */
   export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
 
@@ -1204,6 +1216,12 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("anyResourceStop", (resource) => {
+   *   alt.log(`Resource ${resource} has been stopped`); // Prints every time a resource is stopped
+   * });
+   * ```
    */
   export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
 
@@ -1212,6 +1230,12 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("connectionComplete", () => {
+   *   alt.log("You are now connected to the server"); // Prints when you are successfully connected to the server
+   * });
+   * ```
    */
   export function on(eventName: "connectionComplete", listener: () => void): void;
 
@@ -1220,6 +1244,14 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("consoleCommand", (name, ...args) => {
+   *   if(name === "test") {
+   *     alt.log(`Executed test command with args: ${args}`); // Prints every time the command 'test' is entered into the console
+   *   }
+   * });
+   * ```
    */
   export function on(eventName: "consoleCommand", listener: (name: string, ...args: string[]) => void): void;
 
@@ -1228,6 +1260,13 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @remarks This event is useful for cleaning up after disconnect. (E.g. removing peds)
+   * @example
+   * ```
+   * alt.on("disconnect", () => {
+   *   alt.log("You are now disconnected from the server"); // Prints when you disconnect from the server
+   * });
+   * ```
    */
   export function on(eventName: "disconnect", listener: () => void): void;
 
@@ -1236,6 +1275,12 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("gameEntityCreate", (entity) => {
+   *   if(entity.hasSyncedMeta("testMeta")) alt.log("The entity with the test meta is now in stream range");
+   * });
+   * ```
    */
   export function on(eventName: "gameEntityCreate", listener: (entity: Entity) => void): void;
 
@@ -1244,6 +1289,13 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @remarks The scriptID of the entity is now 0, so it can not be accessed.
+   * @example
+   * ```
+   * alt.on("gameEntityCreate", (entity) => {
+   *   if(entity.hasSyncedMeta("testMeta")) alt.log("The entity with the test meta is now not in the stream range anymore");
+   * });
+   * ```
    */
   export function on(eventName: "gameEntityDestroy", listener: (entity: Entity) => void): void;
 
@@ -1252,6 +1304,14 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @remarks The key parameter is a JavaScript keycode.
+   * @example
+   * ```
+   * let exampleKey = 69; // E Key
+   * alt.on("keydown", (key) => {
+   *   if(key === exampleKey) alt.log("E key was pressed down"); // Prints every time you press down the E key
+   * });
+   * ```
    */
   export function on(eventName: "keydown", listener: (key: number) => void): void;
 
@@ -1260,6 +1320,14 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @remarks The key parameter is a JavaScript keycode.
+   * @example
+   * ```
+   * let exampleKey = 69; // E Key
+   * alt.on("keyup", (key) => {
+   *   if(key === exampleKey) alt.log("E key was pressed down"); // Prints every time you release the E key
+   * });
+   * ```
    */
   export function on(eventName: "keyup", listener: (key: number) => void): void;
 
@@ -1268,6 +1336,13 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("removeEntity", (object) => {
+   *   if(object !== alt.Player.local.vehicle) return; // Don't do anything if the object is not our current vehicle
+   *   alt.log(`The current vehicle was removed`); // Prints when the vehicle you are sitting in gets destroyed from the serverside
+   * });
+   * ```
    */
   export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
 
@@ -1276,6 +1351,13 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("resourceStart", (errored) => {
+   *   if(!errored) alt.log(`The resource started without errors! Hooray!`);
+   *   else alt.log(`The resource started with errors. :(`);
+   * });
+   * ```
    */
   export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
 
@@ -1284,6 +1366,13 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("resourceStop", () => {
+   *   alt.log("The resource has been stopped.");
+   *   // Do some cleanup here
+   * });
+   * ```
    */
   export function on(eventName: "resourceStop", listener: () => void): void;
 
@@ -1292,6 +1381,13 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("syncedMetaChange", (entity, key, value, oldValue) => {
+   *   if(entity !== alt.Player.local) return; // Don't do anything if the entity is not the local player
+   *   alt.log(`Synced meta for local player has changed: ${key} is now ${value} (Old value: ${oldValue})`); // Prints when the synced meta for the local player changes
+   * });
+   * ```
    */
   export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
@@ -1300,6 +1396,13 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * alt.on("streamSyncedMetaChange", (entity, key, value, oldValue) => {
+   *   if(entity !== alt.Player.local) return; // Don't do anything if the entity is not the local player
+   *   alt.log(`Stream synced meta for local player has changed: ${key} is now ${value} (Old value: ${oldValue})`); // Prints when the stream synced meta for the local player changes
+   * });
+   * ```
    */
   export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
@@ -1308,6 +1411,17 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleMeta = "exampleMetaName";
+   * alt.on("globalMetaChange", (key, value, oldValue) => {
+   *   if(key !== exampleMeta) return; // Don't do anything if the synced meta that changed is not our example meta
+   *   alt.log(`Global example meta has changed to: ${value} (Old value: ${oldValue})`);
+   * });
+   * alt.setInterval(() => {
+   *   alt.setMeta(exampleMeta, Math.random().toFixed(3)); // Sets the global example meta to a random value between 0 and 1 every 5 seconds
+   * }, 5000);
+   * ```
    */
   export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
@@ -1316,6 +1430,17 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @example
+   * ```
+   * let exampleMeta = "exampleMetaName";
+   * alt.on("globalSyncedMetaChange", (key, value, oldValue) => {
+   *   if(key !== exampleMeta) return; // Don't do anything if the synced meta that changed is not our example meta
+   *   alt.log(`Global example meta has changed to: ${value} (Old value: ${oldValue})`);
+   * });
+   * alt.setInterval(() => {
+   *   alt.setSyncedMeta(exampleMeta, Math.random().toFixed(3)); // Sets the global example meta to a random value between 0 and 1 every 5 seconds
+   * }, 5000);
+   * ```
    */
   export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
