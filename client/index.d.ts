@@ -1,5 +1,7 @@
 declare module "alt-client" {
   type StatName = "stamina" | "strength" | "lung_capacity" | "wheelie_ability" | "flying_ability" | "shooting_ability" | "stealth_ability";
+  type Locale = "ar" | "by" | "cz" | "de" | "en" | "es" | "fa" | "fr" | "he" | "hu" | "id" | "in_hd" | "in_ml" | "in_tl" | "in_tm" | "it"
+        | "lt" | "lv" | "nb_no" | "nn_no" | "pl" | "pt" | "pt_br" | "ro" | "rs" | "ru" | "sk" | "th" | "tr" | "ua" | "zh_cn" | "zh_tw";
 
   export interface DiscordOAuth2Token {
     readonly token: string
@@ -647,7 +649,7 @@ declare module "alt-client" {
    * 
    * @returns The language identifier (e.g. "en" for English)
    */
-  export function getLocale(): "de" | "en" | "fr" | "hu" | "ru" | string;
+  export function getLocale(): Locale;
 
   export function getMsPerGameMinute(): number;
 
