@@ -6,3 +6,15 @@
     width: 40px;
     height: auto;
 }
+
+.release-stage.alpha::before {
+  content: "dev";
+}
+
+.release-stage.beta::before {
+  content: "rc";
+}
+
+.release-stage.public::before {
+  content: "release";
+}
