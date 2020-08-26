@@ -17,6 +17,14 @@ declare module "alt-server" {
   export const DefaultDimension: number;
   export const GlobalDimension: number;
 
+  /**
+   * @alpha
+   */
+  export interface IFireInfo {
+    pos: Vector3;
+    weapon: number;
+  }
+
   export interface VehicleNeon {
     left: boolean;
     right: boolean;
@@ -205,7 +213,7 @@ declare module "alt-server" {
     /**
      * Changes network owner to the specified player.
      *
-     * @remarks See {@link netOwner} to understand how network owner works.
+     * @remarks See {@link Entity~netOwner} to understand how network owner works.
      * <p><b>
      * Keep in mind that disabling migration can lead to unexpected behaviour when
      * the network owner gets out of the streaming range.
@@ -220,7 +228,7 @@ declare module "alt-server" {
     /**
      * Resets overwritten network owner.
      *
-     * @remarks See {@link netOwner} to understand how network owner works.
+     * @remarks See {@link Entity~netOwner} to understand how network owner works.
      * <p><b>
      * Keep in mind that disabling migration can lead to unexpected behaviour when
      * the network owner gets out of the streaming range.
@@ -774,6 +782,15 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
+   * @alpha
+   */
+  export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number, target: Entity) => boolean | void): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
    */
   export function on(eventName: "playerChangedVehicleSeat", listener: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void): void;
 
@@ -896,6 +913,33 @@ declare module "alt-server" {
    * @param listener Listener that should be added.
    */
   export function on(eventName: "weaponDamage", listener: (source: Entity, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: number) => boolean | void): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   * @alpha
+   */
+  export function on(eventName: "startFire", listener: (player: Player, fires: Array<IFireInfo>) => boolean | void): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   * @alpha
+   */
+  export function on(eventName: "startProjectile", listener: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   * @alpha
+   */
+  export function on(eventName: "playerWeaponChange", listener: (player: Player, oldWeapon: number, newWeapon: number) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
