@@ -49,10 +49,11 @@ declare module "alt-client" {
     public a: number;
 
     /**
-     * @param r An r component.
-     * @param g An g component.
-     * @param b An b component.
-     * @param a An a component.
+     * Creates a new RGBA color.
+     * @param r Red value. (0-255)
+     * @param g Green value. (0-255)
+     * @param b Blue value. (0-255)
+     * @param a Alpha value. (0-255)
      */
     constructor(r: number, g: number, b: number, a: number);
   }
@@ -339,7 +340,7 @@ declare module "alt-client" {
     public category: number;
     /**
      * Color of the blip. 
-     * @remarks The color is a GTA hud color.
+     * @remarks The color is a GTA hud color. (See https://wiki.altv.mp/Blips)
      */
     public color: number;
     /**

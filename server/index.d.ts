@@ -31,9 +31,6 @@ declare module "alt-server" {
   export const GlobalDimension: number;
  
   /**
-   * Vehicle neon.
-   * 
-   * @remarks All individual neon locations can be toggled seperately
    * @alpha
    */
   export interface IFireInfo {
@@ -41,6 +38,11 @@ declare module "alt-server" {
     weapon: number;
   }
 
+   /**
+   * Vehicle neon.
+   * 
+   * @remarks All individual neon locations can be toggled seperately
+   */
   export interface VehicleNeon {
     left: boolean;
     right: boolean;
@@ -68,6 +70,13 @@ declare module "alt-server" {
     public b: number;
     public a: number;
 
+    /**
+     * Creates a new RGBA color.
+     * @param r Red value. (0-255)
+     * @param g Green value. (0-255)
+     * @param b Blue value. (0-255)
+     * @param a Alpha value. (0-255)
+     */
     constructor(r: number, g: number, b: number, a: number);
   }
 
@@ -338,8 +347,6 @@ declare module "alt-server" {
 
     /**
      * Current ping of the player.
-     *
-     * @remarks A high ping is most often caused by a bad internet connection.
      */
     public readonly ping: number;
 
@@ -459,11 +466,11 @@ declare module "alt-server" {
     /**
      * Spawns the player at the specified position after the specified delay.
      *
-     * @param x X coordinate to spawn at
-     * @param y Y coordinate to spawn at
-     * @param z Z coordinate to spawn at
-     * @param delay Delay until the player is spawned in milliseconds
-     * @remarks This also sets the player health to max health
+     * @param x X coordinate to spawn at.
+     * @param y Y coordinate to spawn at.
+     * @param z Z coordinate to spawn at.
+     * @param delay Delay until the player is spawned in milliseconds.
+     * @remarks This also sets the player health to max health. (See {@link maxHealth})
      */
     public spawn(x: number, y: number, z: number, delay: number): void;
   }
@@ -501,7 +508,7 @@ declare module "alt-server" {
     public darkness: number;
     /**
      * Color of the vehicle interior dashboard.
-     * @remarks The color is a GTA V hud color.
+     * @remarks The color is a GTA V vehicle color. (See https://wiki.altv.mp/Colors_(Vehicle))
      */
     public dashboardColor: number;
     /**
@@ -545,12 +552,12 @@ declare module "alt-server" {
     public readonly hasArmoredWindows: number;
     /**
      * Headlight color of the vehicle.
-     * @remarks The color is a GTA V hud color.
+     * @remarks The color is a GTA V vehicle color. (See https://wiki.altv.mp/Colors_(Vehicle))
      */
     public headlightColor: number;
     /**
      * Interior color of the vehicle.
-     * @remarks The color is a GTA V hud color.
+     * @remarks The color is a GTA V vehicle color. (See https://wiki.altv.mp/Colors_(Vehicle))
      */
     public interiorColor: number;
     /**
@@ -603,6 +610,7 @@ declare module "alt-server" {
     public numberPlateText: string;
     /**
      * The vehicle pearl color. 
+     * @remarks The color is a GTA V vehicle color. (See https://wiki.altv.mp/Colors_(Vehicle))
      */
     public pearlColor: number;
     /**
@@ -611,7 +619,7 @@ declare module "alt-server" {
     public petrolTankHealth: number;
     /**
      * The primary color of the vehicle.
-     * @remarks The color is a GTA hud color.
+     * @remarks The color is a GTA V vehicle color. (See https://wiki.altv.mp/Colors_(Vehicle))
      */
     public primaryColor: number;
     /**
@@ -629,7 +637,7 @@ declare module "alt-server" {
     public roofOpened: boolean;
     /**
      * The secondary color of the vehicle.
-     * @remarks The color is a GTA hud color.
+     * @remarks The color is a GTA V vehicle color. (See https://wiki.altv.mp/Colors_(Vehicle))
      */
     public secondaryColor: number;
     /**
@@ -1105,12 +1113,14 @@ declare module "alt-server" {
 
     /**
      * Adds the specified player to the voice channel.
+     * @param {Player} player The player to add to the voice channel.
      */
     public addPlayer(player: Player): void;
 
     /**
      * Checks if the specified player is in the voice channel.
      * 
+     * @param {Player} player The player that should be checked.
      * @returns True if the player is in the voice channel.
      */
     public isPlayerInChannel(player: Player): boolean;
@@ -1118,22 +1128,26 @@ declare module "alt-server" {
     /**
      * Checks if the player is muted inside the voice channel.
      *
+     * @param {Player} player The player that should be checked.
      * @returns True if the player is muted.
      */
     public isPlayerMuted(player: Player): boolean;
 
     /**
      * Mutes the specified player in the voice channel.
+     * @param {Player} player The player that should be muted.
      */
     public mutePlayer(player: Player): void;
 
     /**
      * Removes the specified channel from the voice channel.
+     * @param {Player} player The player that should be removed.
      */
     public removePlayer(player: Player): void;
 
     /**
      * Unmutes the specified player in the voice channel.
+     * @param {Player} player The player that should be unmuted.
      */
     public unmutePlayer(player: Player): void;
   }
