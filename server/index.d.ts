@@ -34,16 +34,17 @@ declare module "alt-server" {
   export const GlobalDimension: number;
  
   /**
-   * Vehicle neon.
-   * 
-   * @remarks All individual neon locations can be toggled seperately.
    * @alpha
    */
   export interface IFireInfo {
     pos: Vector3;
     weapon: number;
   }
-
+  /**
+   * Vehicle neon.
+   * 
+   * @remarks All individual neon locations can be toggled seperately.
+   */
   export interface VehicleNeon {
     left: boolean;
     right: boolean;
