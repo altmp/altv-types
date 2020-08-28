@@ -1,5 +1,93 @@
 declare module "alt-client" {
-  type StatName = "stamina" | "strength" | "lung_capacity" | "wheelie_ability" | "flying_ability" | "shooting_ability" | "stealth_ability";
+  export const enum Locale {
+    Arabic = "ar",
+    Belarusian = "by",
+    Czech = "cz",
+    German = "de",
+    English = "en",
+    Spanish = "es",
+    Farsi = "fa",
+    French = "fr",
+    Hebrew = "he",
+    Hungarian = "hu",
+    Indonesian = "id",
+    Hindi = "in_hd", // Wrong tag (hi_in)
+    Malayalam = "in_ml", // Wrong tag (ml_in)
+    Telugu = "in_tl", // Wrong tag (te_in)
+    Tamil = "in_tm", // Wrong tag (ta_in)
+    Italian = "it",
+    Lithuanian = "lt",
+    Latvian = "lv",
+    NorwegianBokmal = "nb_no",
+    NorwegianNynorsk = "nn_no",
+    Polish = "pl",
+    Portugese = "pt",
+    BrazilianPortuguese = "pt_br",
+    Romanian = "ro",
+    Serbian = "rs", // Wrong tag (sr)
+    Russian = "ru",
+    Slovak = "sk",
+    Thai = "th",
+    Turkish = "tr",
+    Ukrainian = "ua", // Wrong tag (uk)
+    ChineseSimplified = "zh_cn",
+    ChineseTraditional = "zh_tw"
+  }
+
+  export const enum StatName {
+    Stamina = "stamina",
+    Strength = "strength",
+    LungCapacity = "lung_capacity",
+    Wheelie = "wheelie_ability",
+    Flying = "flying_ability",
+    Shooting = "shooting_ability",
+    Stealth = "stealth_ability"
+  }
+
+  export const enum FileEncoding {
+    Utf8 = "utf-8",
+    Utf16 = "utf-16",
+    Binary = "binary"
+  }
+
+  export const enum BaseObjectType {
+    Player,
+    Vehicle,
+    Blip,
+    WebView,
+    VoiceChannel,
+    Colshape,
+    Checkpoint
+  }
+
+  export const enum EventType {
+    // Shared
+    AnyResourceStart = "anyResourceStart",
+    AnyResourceStop = "anyResourceStop",
+    AnyResourceError = "anyResourceError",
+
+    ResourceStart = "resourceStart",
+    ResourceStop = "resourceStop",
+
+    // MetaChange = "",
+    SyncedMetaChange = "syncedMetaChange",
+    StreamSyncedMetaChange = "streamSyncedMetaChange",
+    GlobalMetaChange = "globalMetaChange",
+    GlobalSyncedMetaChange = "globalSyncedMetaChange",
+
+    RemoveEntity = "removeEntity",
+
+    ConsoleCommand = "consoleCommand",
+
+    // Client
+    ConnectionComplete = "connectionComplete",
+    Disconnect = "disconnect",
+    WebViewLoad = "load",
+    KeyUp = "keyup",
+    KeyDown = "keydown",
+    GameEntityCreate = "gameEntityCreate",
+    GameEntityDestroy = "gameEntityDestroy"
+  }
 
   export interface DiscordOAuth2Token {
     readonly token: string
@@ -61,7 +149,7 @@ declare module "alt-client" {
     /**
      * Type of the object.
      */
-    public readonly type: number;
+    public readonly type: BaseObjectType;
 
     /**
      * Object usability.
@@ -511,7 +599,7 @@ declare module "alt-client" {
      * @param filename The name of the file.
      * @param encoding The encoding of the file. If not specified, it defaults to "utf-8".
      */
-    public static read(filename: string, encoding?: "utf-8" | "utf-16"): string;
+    public static read(filename: string, encoding?: FileEncoding.Utf8 | FileEncoding.Utf16): string;
 
     /**
      * Reads content of the file.
@@ -519,7 +607,7 @@ declare module "alt-client" {
      * @param filename The name of the file.
      * @param encoding The encoding of the file.
      */
-    public static read(filename: string, encoding: "binary"): ArrayBuffer;
+    public static read(filename: string, encoding: FileEncoding.Binary): ArrayBuffer;
   }
 
   /**
@@ -737,7 +825,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
+  export function on(eventName: EventType.AnyResourceError, listener: (resourceName: string) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -745,7 +833,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
+  export function on(eventName: EventType.AnyResourceStart, listener: (resourceName: string) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -753,7 +841,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
+  export function on(eventName: EventType.AnyResourceStop, listener: (resourceName: string) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -761,7 +849,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "connectionComplete", listener: () => void): void;
+  export function on(eventName: EventType.ConnectionComplete, listener: () => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -769,7 +857,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "consoleCommand", listener: (name: string, ...args: string[]) => void): void;
+  export function on(eventName: EventType.ConsoleCommand, listener: (name: string, ...args: string[]) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -777,7 +865,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "disconnect", listener: () => void): void;
+  export function on(eventName: EventType.Disconnect, listener: () => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -785,7 +873,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "gameEntityCreate", listener: (entity: Entity) => void): void;
+  export function on(eventName: EventType.GameEntityCreate, listener: (entity: Entity) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -793,7 +881,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "gameEntityDestroy", listener: (entity: Entity) => void): void;
+  export function on(eventName: EventType.GameEntityDestroy, listener: (entity: Entity) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -801,7 +889,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "keydown", listener: (key: number) => void): void;
+  export function on(eventName: EventType.KeyDown, listener: (key: number) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -809,7 +897,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "keyup", listener: (key: number) => void): void;
+  export function on(eventName: EventType.KeyUp, listener: (key: number) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -817,7 +905,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
+  export function on(eventName: EventType.RemoveEntity, listener: (object: BaseObject) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -825,7 +913,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
+  export function on(eventName: EventType.ResourceStart, listener: (errored: boolean) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -833,7 +921,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "resourceStop", listener: () => void): void;
+  export function on(eventName: EventType.ResourceStop, listener: () => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -841,7 +929,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.SyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -849,7 +937,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.StreamSyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -857,7 +945,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.GlobalMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -865,7 +953,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.GlobalSyncedMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.

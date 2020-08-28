@@ -4,10 +4,293 @@ declare module "alt-server" {
   type DateTimeMinute = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
       22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
       45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
-  type DateTimeSecond = DateTimeMinute;
+  type DateTimeSecond = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
+      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
+      45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
   type DateTimeDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
       22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30;
   type DateTimeMonth = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+
+  export const enum ExplosionType {
+    Grenade,
+    GrenadeLauncher,
+    StickyBomb,
+    Molotov,
+    Rocket,
+    TankShell,
+    HiOctane,
+    Car,
+    Plane,
+    PetrolPump,
+    Bike,
+    DirSteam,
+    DirFlame,
+    DirWaterHydrant,
+    DirGasCanister,
+    Boat,
+    ShipDestroy,
+    Truck,
+    Bullet,
+    SmokeGrenadeLauncher,
+    SmokeGrenade,
+    BzGas,
+    Flare,
+    GasCanister,
+    Extinguisher,
+    ProgrammableAr,
+    Train,
+    Barrel,
+    Propane,
+    Blimp,
+    DirFlameExplode,
+    Tanker,
+    PlaneRocket,
+    VehicleBullet,
+    GasTank,
+    Firework,
+    Snowball,
+    ProxMine,
+    ValkyrieCannon,
+    Unknown = -1
+  }
+
+  export const enum BodyPart {
+    Pelvis,
+    LeftHip,
+    LeftLeg,
+    LeftFoot,
+    RightHip,
+    RightLeg,
+    RightFoot,
+    LowerTorso,
+    UpperTorso,
+    Chest,
+    UnderNeck,
+    LeftShoulder,
+    LeftUpperArm,
+    LeftElbrow,
+    LeftWrist,
+    RightShoulder,
+    RightUpperArm,
+    RightElbrow,
+    RightWrist,
+    Neck,
+    Head,
+    Unknown = -1
+  }
+
+  export const enum BlipType {
+    Vehicle = 1,
+    Ped,
+    Object,
+    Destination,
+    Cont,
+    PickupUnk,
+    Radius,
+    Pickup,
+    Cop,
+    Area,
+    Gallery,
+    PickupObject
+  }
+
+  export const enum ColShapeType {
+    Sphere,
+    Cylinder,
+    Circle,
+    Cuboid,
+    Rectangle,
+    CheckpointCylinder
+  }
+
+  export const enum BaseObjectType {
+    Player,
+    Vehicle,
+    Blip,
+    WebView,
+    VoiceChannel,
+    Colshape,
+    Checkpoint
+  }
+
+  export const enum CheckpointType {
+    CylinderSingleArrow,
+    CylinderDoubleArrow,
+    CylinderTripleArrow,
+    CylinderCycleArrow,
+    CylinderCheckerboard,
+    CylinderWrench,
+    CylinderSingleArrow2,
+    CylinderDoubleArrow2,
+    CylinderTripleArrow2,
+    CylinderCycleArrow2,
+    CylinderCheckerboard2,
+    CylinderWrench2,
+    RingSingleArrow,
+    RingDoubleArrow,
+    RingTripleArrow,
+    RingCycleArrow,
+    RingCheckerboard,
+    SingleArrow,
+    DoubleArrow,
+    TripleArrow,
+    CycleArrow,
+    Checkerboard,
+    CylinderSingleArrow3,
+    CylinderDoubleArrow3,
+    CylinderTripleArrow3,
+    CylinderCycleArrow3,
+    CylinderCheckerboard3,
+    CylinderSingleArrow4,
+    CylinderDoubleArrow4,
+    CylinderTripleArrow4,
+    CylinderCycleArrow4,
+    CylinderCheckerboard4,
+    CylinderSingleArrow5,
+    CylinderDoubleArrow5,
+    CylinderTripleArrow5,
+    CylinderCycleArrow5,
+    CylinderCheckerboard5,
+    RingPlaneUp,
+    RingPlaneLeft,
+    RingPlaneRight,
+    RingPlaneDown,
+    Empty,
+    Ring,
+    Empty2,
+    Cylinder,
+    Cylinder1,
+    Cylinder2,
+    Cylinder3,
+    Cylinder4,
+    Cylinder5,
+    Empty3,
+    Empty4,
+    Empty5,
+    Empty6,
+    RingDollar,
+    RingWolf,
+    RingQuestionMark,
+    RingPlane,
+    RingChopper,
+    RingBoat,
+    RingCar,
+    RingBike,
+    RingBicycle,
+    RingTruck,
+    RingParachute,
+    RingJetpack,
+    RingWhirl
+  }
+
+  export const enum VehicleDoorState {
+    Closed,
+    OpenedLevel1,
+    OpenedLevel2,
+    OpenedLevel3,
+    OpenedLevel4,
+    OpenedLevel5,
+    OpenedLevel6,
+    OpenedLevel7,
+    Unknown = 255
+  }
+
+  export const enum VehicleLockState {
+    None,
+    Unlocked,
+    Locked,
+    LockoutPlayerOnly,
+    LockPlayerInside,
+    InitiallyLocked,
+    ForceDoorsShut,
+    LockedCanBeDamaged
+  }
+
+  export const enum VehicleBumper {
+    Front,
+    Rear
+  }
+
+  export const enum VehicleBumperDamage {
+    NotDamaged,
+    Damaged,
+    None
+  }
+
+  export const enum VehiclePart {
+    FrontLeft,
+    FrontRight,
+    MiddleLeft,
+    MiddleRight,
+    RearLeft,
+    RearRight
+  }
+
+  export const enum VehiclePartDamage {
+    NotDamaged,
+    DamagedLevel1,
+    DamagedLevel2,
+    DamagedLevel3
+  }
+
+  export const enum WeatherType {
+    ExtraSunny,
+    Clear,
+    Clouds,
+    Smog,
+    Foggy,
+    Overcast,
+    Rain,
+    Thunder,
+    Clearing,
+    Neutral,
+    Snow,
+    Blizzard,
+    Snowlight,
+    Xmas,
+    Halloween
+  }
+
+  export const enum EventType {
+    // Shared
+    PlayerConnect = "playerConnect",
+    PlayerDisconnect = "playerDisconnect",
+
+    AnyResourceStart = "anyResourceStart",
+    AnyResourceStop = "anyResourceStop",
+    AnyResourceError = "anyResourceError",
+
+    ResourceStart = "resourceStart",
+    ResourceStop = "resourceStop",
+
+    MetaChange = "",
+    SyncedMetaChange = "syncedMetaChange",
+    StreamSyncedMetaChange = "streamSyncedMetaChange",
+    GlobalMetaChange = "globalMetaChange",
+    GlobalSyncedMetaChange = "globalSyncedMetaChange",
+
+    PlayerDamage = "playerDamage",
+    PlayerDeath = "playerDeath",
+    /** @internal */
+    Fire = "startFire",
+    Explosion = "explosion",
+    /** @internal */
+    StartProjectile = "startProjectile",
+    WeaponDamage = "weaponDamage",
+    VehicleDestroy = "vehicleDestroy",
+
+    ColshapeEnter = "entityEnterColshape",
+    ColshapeLeave = "entityLeaveColshape",
+    PlayerEnterVehicle = "playerEnteredVehicle",
+    PlayerLeaveVehicle = "playerLeftVehicle",
+    PlayerChangeVehicleSeat = "playerChangedVehicleSeat",
+    /** @internal */
+    PlayerWeaponChange = "playerWeaponChange",
+
+    RemoveEntity = "removeEntity",
+
+    ConsoleCommand = "consoleCommand",
+  }
 
   /**
    * Resource name of the executing entity
@@ -53,7 +336,7 @@ declare module "alt-server" {
     /**
      * Type of the object.
      */
-    public readonly type: number;
+    public readonly type: BaseObjectType;
 
     /**
      * Object usability.
@@ -243,6 +526,7 @@ declare module "alt-server" {
   export class Player extends Entity {
     public static all: Array<Player>;
     public armour: number;
+    /* @deprecated */
     public currentWeapon: number;
     public readonly currentWeaponComponents: Array<number>;
     public readonly currentWeaponTintIndex: number;
@@ -292,7 +576,7 @@ declare module "alt-server" {
 
     public setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
 
-    public setWeather(weatherHash: number): void;
+    public setWeather(weatherId: WeatherType): void;
 
     public spawn(x: number, y: number, z: number, delay: number): void;
   }
@@ -363,11 +647,11 @@ declare module "alt-server" {
 
     public getArmoredWindowShootCount(windowId: number): number;
 
-    public getBumperDamageLevel(bumperId: number): number;
+    public getBumperDamageLevel(bumperId: VehicleBumper): VehicleBumperDamage;
 
     public getDamageStatusBase64(): string;
 
-    public getDoorState(doorId: number): number;
+    public getDoorState(doorId: number): VehicleDoorState;
 
     public getExtra(category: number): boolean;
 
@@ -379,9 +663,9 @@ declare module "alt-server" {
 
     public getModsCount(category: number): number;
 
-    public getPartBulletHoles(partId: number): number;
+    public getPartBulletHoles(partId: VehiclePart): number;
 
-    public getPartDamageLevel(partId: number): number;
+    public getPartDamageLevel(partId: VehiclePart): VehiclePartDamage;
 
     public getScriptDataBase64(): string;
 
@@ -407,11 +691,11 @@ declare module "alt-server" {
 
     public setArmoredWindowShootCount(windowId: number, count: number): void;
 
-    public setBumperDamageLevel(bumperId: number, level: number): void;
+    public setBumperDamageLevel(bumperId: VehicleBumper, level: VehicleBumperDamage): void;
 
     public setDamageStatusBase64(data: string): void;
 
-    public setDoorState(doorId: number, state: number): void;
+    public setDoorState(doorId: number, state: VehicleDoorState): void;
 
     public setExtra(category: number, state: boolean): void;
 
@@ -423,9 +707,9 @@ declare module "alt-server" {
 
     public setMod(category: number, id: number): void;
 
-    public setPartBulletHoles(partId: number, count: number): void;
+    public setPartBulletHoles(partId: VehiclePart, count: number): void;
 
-    public setPartDamageLevel(partId: number, level: number): void;
+    public setPartDamageLevel(partId: VehiclePart, level: VehiclePartDamage): void;
 
     public setRearWheels(variation: number): void;
 
@@ -455,11 +739,11 @@ declare module "alt-server" {
   }
 
   export class PointBlip extends Blip {
-    constructor(type: number, x: number, y: number, z: number);
+    constructor(type: BlipType, x: number, y: number, z: number);
   }
 
   export class Colshape extends WorldObject {
-    public colshapeType: number;
+    public colshapeType: ColShapeType;
 
     public playersOnly: boolean;
 
@@ -727,7 +1011,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
+  export function on(eventName: EventType.AnyResourceError, listener: (resourceName: string) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -735,7 +1019,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
+  export function on(eventName: EventType.AnyResourceStart, listener: (resourceName: string) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -743,7 +1027,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
+  export function on(eventName: EventType.AnyResourceStop, listener: (resourceName: string) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -751,7 +1035,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "consoleCommand", listener: (...args: string[]) => void): void;
+  export function on(eventName: EventType.ConsoleCommand, listener: (...args: string[]) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -759,7 +1043,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "entityEnterColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
+  export function on(eventName: EventType.ColshapeEnter, listener: (colshape: Colshape, entity: Entity) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -767,7 +1051,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "entityLeaveColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
+  export function on(eventName: EventType.ColshapeLeave, listener: (colshape: Colshape, entity: Entity) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -775,7 +1059,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number) => boolean | void): void;
+  export function on(eventName: EventType.Explosion, listener: (source: Player, type: ExplosionType, pos: Vector3, fx: number) => boolean | void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -792,7 +1076,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerChangedVehicleSeat", listener: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void): void;
+  export function on(eventName: EventType.PlayerChangeVehicleSeat, listener: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -800,7 +1084,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerConnect", listener: (player: Player) => void): void;
+  export function on(eventName: EventType.PlayerConnect, listener: (player: Player) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -808,7 +1092,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerDamage", listener: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void): void;
+  export function on(eventName: EventType.PlayerDamage, listener: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -816,7 +1100,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerDeath", listener: (victim: Player, killer: Entity, weaponHash: number) => void): void;
+  export function on(eventName: EventType.PlayerDeath, listener: (victim: Player, killer: Entity, weaponHash: number) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -824,7 +1108,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerDisconnect", listener: (player: Player, reason: string) => void): void;
+  export function on(eventName: EventType.PlayerDisconnect, listener: (player: Player, reason: string) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -832,7 +1116,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerEnteredVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
+  export function on(eventName: EventType.PlayerEnterVehicle, listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -840,7 +1124,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerLeftVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
+  export function on(eventName: EventType.PlayerLeaveVehicle, listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -848,7 +1132,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
+  export function on(eventName: EventType.RemoveEntity, listener: (object: BaseObject) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -856,7 +1140,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
+  export function on(eventName: EventType.ResourceStart, listener: (errored: boolean) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -864,7 +1148,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "resourceStop", listener: () => void): void;
+  export function on(eventName: EventType.ResourceStop, listener: () => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -872,7 +1156,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.SyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -880,7 +1164,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.StreamSyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -888,7 +1172,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.GlobalMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -896,7 +1180,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+  export function on(eventName: EventType.GlobalSyncedMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -904,7 +1188,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "vehicleDestroy", listener: (vehicle: Vehicle) => void): void;
+  export function on(eventName: EventType.VehicleDestroy, listener: (vehicle: Vehicle) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -912,7 +1196,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "weaponDamage", listener: (source: Entity, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: number) => boolean | void): void;
+  export function on(eventName: EventType.WeaponDamage, listener: (source: Player, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: BodyPart) => boolean | void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
