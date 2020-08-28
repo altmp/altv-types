@@ -280,7 +280,7 @@ declare module "alt-server" {
      * @param reason The reason that will display to the player on the disconnect screen.
      * If not specified, it defaults to "KICKED_OUT".
      */
-    public kick(reason: string): void;
+    public kick(reason?: string): void;
 
     public removeAllWeapons(): void;
 
