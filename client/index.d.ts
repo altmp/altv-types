@@ -49,7 +49,7 @@ declare module "alt-client" {
     public a: number;
 
     /**
-     * Creates a new RGBA color.
+     * Creates a new RGBA (Red, Green, Blue, Alpha) color.
      * @param r Red value. (0-255)
      * @param g Green value. (0-255)
      * @param b Blue value. (0-255)
@@ -326,9 +326,6 @@ declare module "alt-client" {
      * @remarks Accepted values are 0-255
      */
     public alpha: number;
-    /**
-     * Should the blip be a mission creator.
-     */
     public asMissionCreator: boolean;
     /**
      * Should the blip be bright.
@@ -340,50 +337,36 @@ declare module "alt-client" {
     public category: number;
     /**
      * Color of the blip. 
-     * @remarks The color is a GTA hud color. (See https://wiki.altv.mp/Blips)
+     * @remarks The color is a GTA hud color. (See {@link https://wiki.altv.mp/Blips#Colors})
      */
     public color: number;
-    /**
-     * Should the crew indicator on the blip be visible.
-     */
     public crewIndicatorVisible: boolean;
-    /**
-     * The interval to flash the blip at in milliseconds
-     */
     public flashInterval: number;
     public flashTimer: number;
-    /**
-     * Should the blip flash.
-     */
     public flashes: boolean;
     public flashesAlternate: boolean;
     /**
      * Should the friend indicator on the blip be visible.
      */
     public friendIndicatorVisible: boolean;
-    /**
-     * Should the blip be friendly.
-     */
     public friendly: boolean;
     /**
      * GXT name of the blip.
+     * @remarks GXT names are automatically localized strings.
      */
     public gxtName: string;
     /**
-     * Heading (Rotation) of the blip.
+     * Heading (Yaw axis) of the blip.
      */
     public heading: number;
     /**
      * Should the heading indicator on the blip be visible.
      */
     public headingIndicatorVisible: boolean;
-    /**
-     * Should the blip be displayed as high detail.
-     */
     public highDetail: boolean;
     /**
      * Name of the blip.
-     * @remarks This is the name of the blip displayed on the map.
+     * @remarks This will be the name displayed in the map legend.
      */
     public name: string;
     public number: number;
@@ -391,20 +374,16 @@ declare module "alt-client" {
      * Should the outline indicator of the blip be visible.
      */
     public outlineIndicatorVisible: boolean;
-    /**
-     * Priority of the blip.
-     */
     public priority: number;
-    /**
-     * Should the blip pulse.
-     */
     public pulse: boolean;
     /**
-     * Should the route to the blip be shown.
+     * Should the route to the blip be displayed on the map.
+     * @remarks The displayed route color can be set with {@link routeColor}.
      */
     public route: boolean;
     /**
      * The color of the route to the blip.
+     * @remarks The color is a GTA hud color.
      */
     public routeColor: number;
     /**
@@ -423,6 +402,7 @@ declare module "alt-client" {
     public shortRange: boolean;
     /**
      * Should the cone of the blip be shown.
+     * @remarks This displays a little cone in front of the blip to show the direction its facing at.
      */
     public showCone: boolean;
     /**
@@ -431,15 +411,13 @@ declare module "alt-client" {
     public shrinked: boolean;
     /**
      * Sprite of the blip.
+     * @remarks This resets all blip properties, so this should be set last.
      */
     public sprite: number;
-    /**
-     * Should a tick be visible next to the blip.
-     */
     public tickVisible: boolean;
 
     /**
-     * Fades the blip to the specified opacity.
+     * Fades the blip to the specified opacity for the specified amount of time.
      *
      * @param opacity Opacity value.
      * @param duration Fade duration in milliseconds.
@@ -528,10 +506,9 @@ declare module "alt-client" {
     public weaponDamageMult: number;
 
     /**
-     * Gets the handling data for the specified model.
+     * Gets the handling data for the specified handling name.
      *
-     * @param modelHash Hash of the model.
-     * @returns The handling data.
+     * @param modelHash Hash of the handling name.
      */
     public static getForModel(modelHash: number): HandlingData;
   }
@@ -565,8 +542,6 @@ declare module "alt-client" {
   export class LocalStorage {
     /**
      * Retrieves an instance of the local storage to interact with.
-     *
-     * @returns An instance of the local storage.
      */
     public static get(): LocalStorage;
 
@@ -786,9 +761,9 @@ declare module "alt-client" {
   export function hasSyncedMeta(key: string): boolean;
 
   /**
-   * Adds a gxt label text.
+   * Creates a new GXT label (localized string) to be used in natives.
    *
-   * @remarks Gxt labels are used in some of the natives for displaying text.
+   * @remarks Gxt labels are used in some of the natives for displaying text. Can be get with {@link getGxtText}.
    * @param key Label name.
    * @param value Label value.
    */
@@ -862,9 +837,7 @@ declare module "alt-client" {
   export function everyTick(handler: () => void): number;
 
   /**
-   * Gets if the game controls are enabled.
-   *
-   * @returns True if the game controls are enabled.
+   * Returns whether the game controls are enabled.
    */
   export function gameControlsEnabled(): boolean;
 
@@ -876,7 +849,7 @@ declare module "alt-client" {
   export function getCursorPos(): Vector2;
 
   /**
-   * Gets a gxt label text.
+   * Gets a GXT label (localized string) to be used in natives.
    *
    * @remarks Can be set with {@link addGxtText}.
    * @param key Label name.
@@ -884,11 +857,6 @@ declare module "alt-client" {
    */
   export function getGxtText(key: string): string;
 
-  /**
-   * Gets the license hash.
-   *
-   * @returns Hash of the license.
-   */
   export function getLicenseHash(): string;
 
   /**
@@ -1154,16 +1122,19 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Removes a gxt text label.
+   * Removes a GXT label (localized string) to be used in natives.
    *
-   * @remarks Can be set with {@link addGxtText}.
+   * @remarks Can be set with {@link addGxtText}. Can be get with {@link getGxtText}.
    * @param key Label name.
    */
   export function removeGxtText(key: string): void;
 
   /**
    * Removes the specified ipl from the world.
-   *
+   * 
+   * @remarks Can be requested with {@link requestIpl}.
+   * An IPL is a missing 3D structure in the GTA:V world.
+   * IPLs can be loaded to fill in missing structures and gaps to change the GTA:V world.
    * @param iplName Name of the ipl.
    */
   export function removeIpl(iplName: string): void;
@@ -1171,7 +1142,9 @@ declare module "alt-client" {
   /**
    * Loads the specified ipl into the world.
    *
-   * @remarks The ipl gets loaded synchronously.
+   * @remarks The ipl gets loaded synchronously. (Can be removed with {@link removeIpl})
+   * An IPL is a missing 3D structure in the GTA:V world.
+   * IPLs can be loaded to fill in missing structures and gaps to change the GTA:V world.
    * @param iplName Name of the ipl.
    */
   export function requestIpl(iplName: string): void;
@@ -1216,14 +1189,14 @@ declare module "alt-client" {
   export function setInterval(handler: () => void, miliseconds: number): number;
 
   /**
-   * Sets the model of the local ped.
+   * Sets the model of the local player ped.
    *
    * @param modelName Name of the model.
    */
   export function setModel(modelName: string): void;
 
   /**
-   * Sets the milliseconds that pass every game minute.
+   * Sets the length of one game minute in real time.
    *
    * @param miliseconds Amount of milliseconds that pass every game minute.
    */
