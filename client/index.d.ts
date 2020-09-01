@@ -323,7 +323,7 @@ declare module "alt-client" {
   export class Blip extends WorldObject {
     /**
      * Alpha value of the blip. (transparency)
-     * @remarks Accepted values are 0-255
+     * @remarks Accepted values are 0-255.
      */
     public alpha: number;
     public asMissionCreator: boolean;
@@ -345,18 +345,11 @@ declare module "alt-client" {
     public flashTimer: number;
     public flashes: boolean;
     public flashesAlternate: boolean;
-    /**
-     * Should the friend indicator on the blip be visible.
-     */
     public friendIndicatorVisible: boolean;
     public friendly: boolean;
-    /**
-     * GXT name of the blip.
-     * @remarks GXT names are automatically localized strings.
-     */
     public gxtName: string;
     /**
-     * Heading (Yaw axis) of the blip.
+     * Heading (Yaw rotation) of the blip.
      */
     public heading: number;
     /**
@@ -383,7 +376,8 @@ declare module "alt-client" {
     public route: boolean;
     /**
      * The color of the route to the blip.
-     * @remarks The color is a GTA hud color.
+     * @remarks The color is a GTA hud color. (See {@link https://wiki.altv.mp/Blips#Colors})
+     * This needs to be set after setting {@link route} to true.
      */
     public routeColor: number;
     /**
@@ -508,9 +502,9 @@ declare module "alt-client" {
     /**
      * Gets the handling data for the specified handling name.
      *
-     * @param modelHash Hash of the handling name.
+     * @param handlingHash Hash of the handling name.
      */
-    public static getForModel(modelHash: number): HandlingData;
+    public static getForModel(handlingHash: number): HandlingData;
   }
 
   export class MapZoomData {
@@ -761,16 +755,16 @@ declare module "alt-client" {
   export function hasSyncedMeta(key: string): boolean;
 
   /**
-   * Creates a new GXT label (localized string) to be used in natives.
+   * Creates a new GXT value (localized string) to be used in natives.
    *
-   * @remarks Gxt labels are used in some of the natives for displaying text. Can be get with {@link getGxtText}.
-   * @param key Label name.
-   * @param value Label value.
+   * @remarks GXT values are used to localize strings into multiple languages. Can be get with {@link getGxtText}.
+   * @param key GXT name.
+   * @param value GXT value.
    */
   export function addGxtText(key: string, value: string): void;
 
   /**
-   * Executes a scaleform method on the minimap scaleform.
+   * Executes a method on the minimap scaleform.
    *
    * @param methodName Name of the method.
    * @returns True if it was successful.
@@ -841,19 +835,14 @@ declare module "alt-client" {
    */
   export function gameControlsEnabled(): boolean;
 
-  /**
-   * Gets the current position of the cursor.
-   *
-   * @returns A 2 dimensional vector representing the point on the screen where the cursor is located.
-   */
   export function getCursorPos(): Vector2;
 
   /**
-   * Gets a GXT label (localized string) to be used in natives.
+   * Gets a GXT value (localized string) to be used in natives.
    *
    * @remarks Can be set with {@link addGxtText}.
-   * @param key Label name.
-   * @returns The value of the gxt label.
+   * @param key GXT name.
+   * @returns GXT value.
    */
   export function getGxtText(key: string): string;
 
@@ -1122,10 +1111,10 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Removes a GXT label (localized string) to be used in natives.
+   * Removes a GXT value (localized string) to be used in natives.
    *
    * @remarks Can be set with {@link addGxtText}. Can be get with {@link getGxtText}.
-   * @param key Label name.
+   * @param key GXT name.
    */
   export function removeGxtText(key: string): void;
 
@@ -1196,9 +1185,9 @@ declare module "alt-client" {
   export function setModel(modelName: string): void;
 
   /**
-   * Sets the length of one game minute in real time.
+   * Sets the duration of one game minute in real time.
    *
-   * @param miliseconds Amount of milliseconds that pass every game minute.
+   * @param miliseconds Amount of milliseconds that should pass every game minute.
    */
   export function setMsPerGameMinute(miliseconds: number): void;
 
@@ -1231,7 +1220,7 @@ declare module "alt-client" {
   /**
    * Toggles the state of the weather sync.
    *
-   * @remarks Can be set with {@link setWeatherCycle}.
+   * @remarks The weather can be set with {@link setWeatherCycle}.
    * @param isActive Should the weather sync be active.
    */
   export function setWeatherSyncActive(isActive: boolean): void;
