@@ -428,7 +428,7 @@ declare module "alt-client" {
     public unkFloat5: number;
     public weaponDamageMult: number;
 
-    public static getForModel(handlingName: number): HandlingData;
+    public static getForModel(handlingHash: number): HandlingData;
   }
 
   export class MapZoomData {
