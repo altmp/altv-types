@@ -757,7 +757,7 @@ declare module "alt-client" {
   /**
    * Creates a new GXT value (localized string).
    *
-   * @remarks GXT values are used to localize strings into multiple languages. Can be get with {@link getGxtText}.
+   * @remarks GXT values are used to localize strings into multiple languages. Can be get with {@link getGxtText}. Can be removed with {@link removeGxtText}.
    * @param key GXT name.
    * @param value GXT value.
    */
@@ -843,7 +843,7 @@ declare module "alt-client" {
   /**
    * Gets a GXT value (localized string).
    *
-   * @remarks Can be set with {@link addGxtText}.
+   * @remarks Can be set with {@link addGxtText}. Can be removed with {@link removeGxtText}.
    * @param key GXT name.
    * @returns GXT value.
    */
