@@ -526,7 +526,6 @@ declare module "alt-server" {
   export class Player extends Entity {
     public static all: Array<Player>;
     public armour: number;
-    /* @deprecated */
     public currentWeapon: number;
     public readonly currentWeaponComponents: Array<number>;
     public readonly currentWeaponTintIndex: number;
