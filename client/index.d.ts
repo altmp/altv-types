@@ -835,6 +835,9 @@ declare module "alt-client" {
    */
   export function gameControlsEnabled(): boolean;
 
+  /**
+   * Gets the current position of the cursor.
+   */
   export function getCursorPos(): Vector2;
 
   /**
