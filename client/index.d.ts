@@ -328,7 +328,7 @@ declare module "alt-client" {
     public alpha: number;
     public asMissionCreator: boolean;
     /**
-     * Should the blip be bright.
+     * Sets the blip to be bright.
      */
     public bright: boolean;
     /**
@@ -353,7 +353,7 @@ declare module "alt-client" {
      */
     public heading: number;
     /**
-     * Should the heading indicator on the blip be visible.
+     * Enables the heading indicator on the blip.
      */
     public headingIndicatorVisible: boolean;
     public highDetail: boolean;
@@ -364,13 +364,13 @@ declare module "alt-client" {
     public name: string;
     public number: number;
     /**
-     * Should the outline indicator of the blip be visible.
+     * Enables the outline indicator on the blip.
      */
     public outlineIndicatorVisible: boolean;
     public priority: number;
     public pulse: boolean;
     /**
-     * Should the route to the blip be displayed on the map.
+     * Enables the route to the blip be displayed on the map.
      * @remarks The displayed route color can be set with {@link routeColor}.
      */
     public route: boolean;
@@ -390,17 +390,17 @@ declare module "alt-client" {
      */
     public secondaryColor: number;
     /**
-     * Should the blip be short range.
+     * Sets the blip to be short range.
      * @remarks If true, the blip is not displayed on the edge of the minimap.
      */
     public shortRange: boolean;
     /**
-     * Should the cone of the blip be shown.
+     * Enables the cone on the blip.
      * @remarks This displays a little cone in front of the blip to show the direction its facing at.
      */
     public showCone: boolean;
     /**
-     * Should the blip be shrinked.
+     * Sets the blip to be shrinked.
      */
     public shrinked: boolean;
     /**
