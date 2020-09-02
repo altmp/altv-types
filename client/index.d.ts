@@ -755,7 +755,7 @@ declare module "alt-client" {
   export function hasSyncedMeta(key: string): boolean;
 
   /**
-   * Creates a new GXT value (localized string) to be used in natives.
+   * Creates a new GXT value (localized string).
    *
    * @remarks GXT values are used to localize strings into multiple languages. Can be get with {@link getGxtText}.
    * @param key GXT name.
@@ -841,7 +841,7 @@ declare module "alt-client" {
   export function getCursorPos(): Vector2;
 
   /**
-   * Gets a GXT value (localized string) to be used in natives.
+   * Gets a GXT value (localized string).
    *
    * @remarks Can be set with {@link addGxtText}.
    * @param key GXT name.
@@ -1114,7 +1114,7 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Removes a GXT value (localized string) to be used in natives.
+   * Removes a GXT value (localized string).
    *
    * @remarks Can be set with {@link addGxtText}. Can be get with {@link getGxtText}.
    * @param key GXT name.
