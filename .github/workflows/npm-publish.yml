@@ -24,7 +24,7 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
@@ -51,7 +51,7 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
@@ -83,7 +83,7 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
       - name: Checkout generator
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: actions/checkout@v2
@@ -139,7 +139,7 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
@@ -178,7 +178,7 @@ jobs:
           ref: patch-1
           path: ./type2docfx
       - name: Install dependencies
-        run: npm install
+        run: yarn install
       - name: Install type2docfx dependencies
         run: npm install
         working-directory: ./type2docfx
@@ -189,7 +189,7 @@ jobs:
         env:
           TF_BUILD: true
       - name: Generate JSON
-        run: npx typedoc --options "./docs/typedoc.json"
+        run: yarn run typedoc --options "./docs/typedoc.json"
       - name: Compile type2docfx
         run: npm run build
         working-directory: ./type2docfx

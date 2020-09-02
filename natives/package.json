@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "test": "tsc",
-    "preversion": "npm run test",
-    "release": "npm version --no-git-tag-version"
+    "preversion": "yarn run test",
+    "release": "yarn version --no-git-tag-version"
   },
   "repository": {
     "type": "git",
