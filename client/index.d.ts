@@ -964,7 +964,7 @@ declare module "alt-client" {
   export function on(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Gets fired when an error occurs on any resource.
+   * Gets called when an error occurs on any resource.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -972,7 +972,7 @@ declare module "alt-client" {
   export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets fired when any resource starts.
+   * Gets called when any resource starts.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -980,7 +980,7 @@ declare module "alt-client" {
   export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets fired when any resource stops.
+   * Gets called when any resource stops.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -988,7 +988,7 @@ declare module "alt-client" {
   export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets fired when the player is fully connected to the server.
+   * Gets called when the player is fully connected to the server.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -996,7 +996,7 @@ declare module "alt-client" {
   export function on(eventName: "connectionComplete", listener: () => void): void;
 
   /**
-   * Gets fired when a command is entered into the client console. (F8)
+   * Gets called when a command is entered into the client console. (F8)
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1004,7 +1004,7 @@ declare module "alt-client" {
   export function on(eventName: "consoleCommand", listener: (name: string, ...args: string[]) => void): void;
 
   /**
-   * Gets fired when the local player disconnects from the server.
+   * Gets called when the local player disconnects from the server.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1012,25 +1012,25 @@ declare module "alt-client" {
   export function on(eventName: "disconnect", listener: () => void): void;
 
   /**
-   * Gets fired when a game entity (e.g. a vehicle) gets created in the world.
+   * Gets called when a game entity (e.g. a vehicle) gets created in the world.
    *
-   * @remarks This event gets fired every time you enter the stream range of an entity.
+   * @remarks This event gets called every time you enter the stream range of an entity.
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: "gameEntityCreate", listener: (entity: Entity) => void): void;
 
   /**
-   * Gets fired when a game entity (e.g. a vehicle) gets removed from the world.
+   * Gets called when a game entity (e.g. a vehicle) gets removed from the world.
    *
-   * @remarks This event gets fired every time you leave the stream range of an entity.
+   * @remarks This event gets called every time you leave the stream range of an entity.
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: "gameEntityDestroy", listener: (entity: Entity) => void): void;
 
   /**
-   * Gets fired when you press down on a button.
+   * Gets called when you press down on a button.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1038,7 +1038,7 @@ declare module "alt-client" {
   export function on(eventName: "keydown", listener: (key: number) => void): void;
 
   /**
-   * Gets fired when you release a button.
+   * Gets called when you release a button.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1046,7 +1046,7 @@ declare module "alt-client" {
   export function on(eventName: "keyup", listener: (key: number) => void): void;
 
   /**
-   * Gets fired when an entity gets completely removed.
+   * Gets called when an entity gets completely removed.
    *
    * @remarks This is when the entity is completely removed, for a stream out event see gameEntityDestroy event
    * @param eventName Name of the event.
@@ -1055,7 +1055,7 @@ declare module "alt-client" {
   export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
 
   /**
-   * Gets fired when the resource starts.
+   * Gets called when the resource starts.
    *
    * @remarks This only fires for the resource that this listener was created in.
    * @param eventName Name of the event.
@@ -1064,7 +1064,7 @@ declare module "alt-client" {
   export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
 
   /**
-   * Gets fired when the resource stops.
+   * Gets called when the resource stops.
    *
    * @remarks This only fires for the resource that this listener was created in.
    * @param eventName Name of the event.
@@ -1073,7 +1073,7 @@ declare module "alt-client" {
   export function on(eventName: "resourceStop", listener: () => void): void;
 
   /**
-   * Gets fired when the synced meta on any entity has changed.
+   * Gets called when the synced meta on any entity has changed.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1081,7 +1081,7 @@ declare module "alt-client" {
   export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets fired when the stream synced meta on any entity has changed.
+   * Gets called when the stream synced meta on any entity has changed.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1089,7 +1089,7 @@ declare module "alt-client" {
   export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets fired when any global meta has changed.
+   * Gets called when any global meta has changed.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1097,7 +1097,7 @@ declare module "alt-client" {
   export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets fired when any global synced meta has changed.
+   * Gets called when any global synced meta has changed.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
