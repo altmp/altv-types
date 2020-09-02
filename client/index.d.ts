@@ -845,7 +845,6 @@ declare module "alt-client" {
    *
    * @remarks Can be set with {@link addGxtText}. Can be removed with {@link removeGxtText}.
    * @param key GXT name.
-   * @returns GXT value.
    */
   export function getGxtText(key: string): string;
 
