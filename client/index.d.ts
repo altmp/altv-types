@@ -353,7 +353,7 @@ declare module "alt-client" {
     public tickVisible: boolean;
 
     /**
-     * Fades the blip to the specified opacity for the specified amount of time.
+     * Fades the blip to the specified opacity for a specified amount of time.
      *
      * @param opacity Opacity value.
      * @param duration Fade duration in milliseconds.
