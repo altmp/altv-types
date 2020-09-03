@@ -939,7 +939,7 @@ declare module "alt-server" {
     public setLightDamaged(lightId: number, isDamaged: boolean): void;
 
     /**
-     * Sets the mod in the specified category.
+     * Sets the mod in a specified category.
      *
      * @param category Mod category.
      * @param id Mod index.
