@@ -25,19 +25,33 @@ declare module "alt-server" {
     weapon: number;
   }
 
-  export interface VehicleNeon {
+  export interface IVehicleNeon {
     left: boolean;
     right: boolean;
     front: boolean;
     back: boolean;
   }
 
-  export class Vector3 {
+  export interface IVector3 {
     readonly x: number;
+
     readonly y: number;
+
     readonly z: number;
+  }
+
+  export class Vector3 {
+    public readonly x: number;
+
+    public readonly y: number;
+
+    public readonly z: number;
 
     constructor(x: number, y: number, z: number);
+
+    constructor(arr: number[]);
+
+    constructor(obj: IVector3);
   }
 
   export class RGBA {
@@ -324,7 +338,7 @@ declare module "alt-server" {
     public manualEngineControl: boolean;
     public modKit: number;
     public readonly modKitsCount: number;
-    public neon: VehicleNeon;
+    public neon: IVehicleNeon;
     public neonColor: RGBA;
     public readonly nightlightOn: boolean;
     public numberPlateIndex: number;
