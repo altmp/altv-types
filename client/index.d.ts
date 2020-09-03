@@ -321,24 +321,10 @@ declare module "alt-client" {
   }
 
   export class Blip extends WorldObject {
-    /**
-     * Alpha value of the blip. (transparency)
-     * @remarks Accepted values are 0-255.
-     */
     public alpha: number;
     public asMissionCreator: boolean;
-    /**
-     * Sets the blip to be bright.
-     */
     public bright: boolean;
-    /**
-     * Category of the blip.
-     */
     public category: number;
-    /**
-     * Color of the blip. 
-     * @remarks The color is a GTA hud color. (See {@link https://wiki.altv.mp/Blips#Colors})
-     */
     public color: number;
     public crewIndicatorVisible: boolean;
     public flashInterval: number;
@@ -348,65 +334,21 @@ declare module "alt-client" {
     public friendIndicatorVisible: boolean;
     public friendly: boolean;
     public gxtName: string;
-    /**
-     * Heading (Yaw rotation) of the blip.
-     */
     public heading: number;
-    /**
-     * Enables the heading indicator on the blip.
-     */
     public headingIndicatorVisible: boolean;
     public highDetail: boolean;
-    /**
-     * Name of the blip.
-     * @remarks This will be the name displayed in the map legend.
-     */
     public name: string;
     public number: number;
-    /**
-     * Enables the outline indicator on the blip.
-     */
     public outlineIndicatorVisible: boolean;
     public priority: number;
     public pulse: boolean;
-    /**
-     * Enables the route to the blip be displayed on the map.
-     * @remarks The displayed route color can be set with {@link routeColor}.
-     */
     public route: boolean;
-    /**
-     * The color of the route to the blip.
-     * @remarks The color is a GTA hud color. (See {@link https://wiki.altv.mp/Blips#Colors})
-     * This needs to be set after setting {@link route} to true.
-     */
     public routeColor: number;
-    /**
-     * Scale of the blip.
-     * @remarks >1 makes the blip bigger, <1 makes the blip smaller
-     */
     public scale: number;
-    /**
-     * Secondary color of the blip.
-     */
     public secondaryColor: number;
-    /**
-     * Sets the blip to be short range.
-     * @remarks If true, the blip is not displayed on the edge of the minimap.
-     */
     public shortRange: boolean;
-    /**
-     * Enables the cone on the blip.
-     * @remarks This displays a little cone in front of the blip to show the direction its facing at.
-     */
     public showCone: boolean;
-    /**
-     * Sets the blip to be shrinked.
-     */
     public shrinked: boolean;
-    /**
-     * Sprite of the blip.
-     * @remarks This resets all blip properties, so this should be set last.
-     */
     public sprite: number;
     public tickVisible: boolean;
 
@@ -964,7 +906,7 @@ declare module "alt-client" {
   export function on(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Gets called when an error occurs on any resource.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -972,7 +914,7 @@ declare module "alt-client" {
   export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets called when any resource starts.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -980,7 +922,7 @@ declare module "alt-client" {
   export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets called when any resource stops.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -988,7 +930,7 @@ declare module "alt-client" {
   export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets called when the player is fully connected to the server.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -996,7 +938,7 @@ declare module "alt-client" {
   export function on(eventName: "connectionComplete", listener: () => void): void;
 
   /**
-   * Gets called when a command is entered into the client console. (F8)
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1004,7 +946,7 @@ declare module "alt-client" {
   export function on(eventName: "consoleCommand", listener: (name: string, ...args: string[]) => void): void;
 
   /**
-   * Gets called when the local player disconnects from the server.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1012,25 +954,23 @@ declare module "alt-client" {
   export function on(eventName: "disconnect", listener: () => void): void;
 
   /**
-   * Gets called when a game entity (e.g. a vehicle) gets created in the world.
+   * Subscribes to client event handler with specified listener.
    *
-   * @remarks This event gets called every time you enter the stream range of an entity.
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: "gameEntityCreate", listener: (entity: Entity) => void): void;
 
   /**
-   * Gets called when a game entity (e.g. a vehicle) gets removed from the world.
+   * Subscribes to client event handler with specified listener.
    *
-   * @remarks This event gets called every time you leave the stream range of an entity.
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: "gameEntityDestroy", listener: (entity: Entity) => void): void;
 
   /**
-   * Gets called when you press down on a button.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1038,7 +978,7 @@ declare module "alt-client" {
   export function on(eventName: "keydown", listener: (key: number) => void): void;
 
   /**
-   * Gets called when you release a button.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1046,34 +986,31 @@ declare module "alt-client" {
   export function on(eventName: "keyup", listener: (key: number) => void): void;
 
   /**
-   * Gets called when an entity gets completely removed.
+   * Subscribes to client event handler with specified listener.
    *
-   * @remarks This is when the entity is completely removed, for a stream out event see gameEntityDestroy event
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
 
   /**
-   * Gets called when the resource starts.
+   * Subscribes to client event handler with specified listener.
    *
-   * @remarks This only fires for the resource that this listener was created in.
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
 
   /**
-   * Gets called when the resource stops.
+   * Subscribes to client event handler with specified listener.
    *
-   * @remarks This only fires for the resource that this listener was created in.
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: "resourceStop", listener: () => void): void;
 
   /**
-   * Gets called when the synced meta on any entity has changed.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1081,7 +1018,7 @@ declare module "alt-client" {
   export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets called when the stream synced meta on any entity has changed.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1089,7 +1026,7 @@ declare module "alt-client" {
   export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets called when any global meta has changed.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1097,7 +1034,7 @@ declare module "alt-client" {
   export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets called when any global synced meta has changed.
+   * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
