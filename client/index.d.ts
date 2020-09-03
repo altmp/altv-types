@@ -915,17 +915,17 @@ declare module "alt-client" {
   export function loadModelAsync(modelHash: number): void;
 
   /**
-   * Prints the arguments to the ingame console. (F8)
+   * Outputs a message to the in-game console.
    */
   export function log(...args: any[]): void;
 
   /**
-   * Prints the arguments to the ingame console as an error. (F8)
+   * Outputs an error message to the in-game console.
    */
   export function logError(...args: any[]): void;
 
   /**
-   * Prints the arguments to the ingame console as a warning. (F8)
+   * Outputs a warning message to the in-game console.
    */
   export function logWarning(...args: any[]): void;
 
