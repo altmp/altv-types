@@ -1405,7 +1405,7 @@ declare module "alt-server" {
   export function on(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Gets fired when an error occurs on any resource.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1413,7 +1413,7 @@ declare module "alt-server" {
   export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets fired when any resource starts.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1421,7 +1421,7 @@ declare module "alt-server" {
   export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets fired when any resource stops.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1429,7 +1429,7 @@ declare module "alt-server" {
   export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
 
   /**
-   * Gets fired when a command gets entered into the server console.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1437,7 +1437,7 @@ declare module "alt-server" {
   export function on(eventName: "consoleCommand", listener: (...args: string[]) => void): void;
 
   /**
-   * Gets fired when an entity enters a colshape.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1445,7 +1445,7 @@ declare module "alt-server" {
   export function on(eventName: "entityEnterColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
 
   /**
-   * Gets fired when an entity leaves a colshape.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1453,7 +1453,7 @@ declare module "alt-server" {
   export function on(eventName: "entityLeaveColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
 
   /**
-   * Gets fired when an explosion gets created.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1461,7 +1461,7 @@ declare module "alt-server" {
   export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number) => boolean | void): void;
 
   /**
-   * Gets fired when a player changes their vehicle seat.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1478,7 +1478,7 @@ declare module "alt-server" {
   export function on(eventName: "playerChangedVehicleSeat", listener: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void): void;
 
   /**
-   * Gets fired when a player connects.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1486,7 +1486,7 @@ declare module "alt-server" {
   export function on(eventName: "playerConnect", listener: (player: Player) => void): void;
 
   /**
-   * Gets fired when a player gets damaged.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1494,7 +1494,7 @@ declare module "alt-server" {
   export function on(eventName: "playerDamage", listener: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void): void;
 
   /**
-   * Gets fired when a player dies.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1502,7 +1502,7 @@ declare module "alt-server" {
   export function on(eventName: "playerDeath", listener: (victim: Player, killer: Entity, weaponHash: number) => void): void;
 
   /**
-   * Gets fired when a player disconnects.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1510,7 +1510,7 @@ declare module "alt-server" {
   export function on(eventName: "playerDisconnect", listener: (player: Player, reason: string) => void): void;
 
   /**
-   * Gets fired when a player enters a vehicle.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1518,7 +1518,7 @@ declare module "alt-server" {
   export function on(eventName: "playerEnteredVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
 
   /**
-   * Gets fired when a player leaves a vehicle.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1526,7 +1526,7 @@ declare module "alt-server" {
   export function on(eventName: "playerLeftVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
 
   /**
-   * Gets fired when an entity gets removed. Usually with the {@link BaseObject.destroy} method.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1534,7 +1534,7 @@ declare module "alt-server" {
   export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
 
   /**
-   * Gets fired when the resource starts.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1542,7 +1542,7 @@ declare module "alt-server" {
   export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
 
   /**
-   * Gets fired when the resource stops.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1550,7 +1550,7 @@ declare module "alt-server" {
   export function on(eventName: "resourceStop", listener: () => void): void;
 
   /**
-   * Gets fired when the synced meta on any entity has changed.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1558,7 +1558,7 @@ declare module "alt-server" {
   export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets fired when the stream synced meta on any entity has changed.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1566,7 +1566,7 @@ declare module "alt-server" {
   export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets fired when any global meta has changed.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1574,7 +1574,7 @@ declare module "alt-server" {
   export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets fired when any global synced meta has changed. 
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1582,7 +1582,7 @@ declare module "alt-server" {
   export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
 
   /**
-   * Gets fired when a vehicle gets destroyed.
+   * Subscribes to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1590,9 +1590,8 @@ declare module "alt-server" {
   export function on(eventName: "vehicleDestroy", listener: (vehicle: Vehicle) => void): void;
 
   /**
-   * Gets fired when a player gets damaged by any source.
+   * Subscribes to server event handler with specified listener.
    *
-   * @remarks weaponHash is the cause, not necessarily a weapon.
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
