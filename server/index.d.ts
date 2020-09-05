@@ -961,7 +961,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function onClient(eventName: string, listener: (...args: any[]) => void): void;
+  export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   export function restartResource(name: string): void;
 
