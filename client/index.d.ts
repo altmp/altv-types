@@ -1,6 +1,26 @@
 declare module "alt-client" {
   type StatName = "stamina" | "strength" | "lung_capacity" | "wheelie_ability" | "flying_ability" | "shooting_ability" | "stealth_ability";
 
+  export interface IClientEvents {
+    anyResourceError: [string];
+    anyResourceStart: [string];
+    anyResourceStop: [string];
+    connectionComplete: [];
+    consoleCommand: [string, string[]];
+    disconnect: [];
+    gameEntityCreate: [Entity];
+    gameEntityDestroy: [Entity];
+    keydown: [number];
+    keyup: [number];
+    removeEntity: [BaseObject];
+    resourceStart: [boolean];
+    resourceStop: [];
+    syncedMetaChange: [Entity, string, any, any];
+    streamSyncedMetaChange: [Entity, string, any, any];
+    globalMetaChange: [string, any, any];
+    globalSyncedMetaChange: [string, any, any];
+  }
+
   export interface IDiscordOAuth2Token {
     readonly token: string
     readonly expires: number;
@@ -733,143 +753,8 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: string, listener: (...args: any[]) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "connectionComplete", listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "consoleCommand", listener: (name: string, ...args: string[]) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "disconnect", listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "gameEntityCreate", listener: (entity: Entity) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "gameEntityDestroy", listener: (entity: Entity) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "keydown", listener: (key: number) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "keyup", listener: (key: number) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "resourceStop", listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+  export function on<K extends keyof IClientEvents>(eventName: K, listener: (...args: IClientEvents[K]) => void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IClientEvents>, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
