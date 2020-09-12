@@ -18,7 +18,7 @@ declare module "alt-server" {
   export const GlobalDimension: number;
 
   /**
-   * @alpha
+   * @rc
    */
   export interface IFireInfo {
     pos: Vector3;
@@ -796,7 +796,7 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   * @alpha
+   * @rc
    */
   export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number, target: Entity) => boolean | void): void;
 
@@ -933,7 +933,7 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   * @alpha
+   * @rc
    */
   export function on(eventName: "startFire", listener: (player: Player, fires: Array<IFireInfo>) => boolean | void): void;
 
@@ -942,7 +942,7 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   * @alpha
+   * @rc
    */
   export function on(eventName: "startProjectile", listener: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void): void;
 
@@ -951,7 +951,7 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   * @alpha
+   * @rc
    */
   export function on(eventName: "playerWeaponChange", listener: (player: Player, oldWeapon: number, newWeapon: number) => void): void;
 
