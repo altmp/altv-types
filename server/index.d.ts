@@ -251,45 +251,36 @@ declare module "alt-server" {
     Halloween
   }
 
-  export const enum EventType {
-    // Shared
-    PlayerConnect = "playerConnect",
-    PlayerDisconnect = "playerDisconnect",
-
-    AnyResourceStart = "anyResourceStart",
-    AnyResourceStop = "anyResourceStop",
-    AnyResourceError = "anyResourceError",
-
-    ResourceStart = "resourceStart",
-    ResourceStop = "resourceStop",
-
-    MetaChange = "",
-    SyncedMetaChange = "syncedMetaChange",
-    StreamSyncedMetaChange = "streamSyncedMetaChange",
-    GlobalMetaChange = "globalMetaChange",
-    GlobalSyncedMetaChange = "globalSyncedMetaChange",
-
-    PlayerDamage = "playerDamage",
-    PlayerDeath = "playerDeath",
-    /** @internal */
-    Fire = "startFire",
-    Explosion = "explosion",
-    /** @internal */
-    StartProjectile = "startProjectile",
-    WeaponDamage = "weaponDamage",
-    VehicleDestroy = "vehicleDestroy",
-
-    ColshapeEnter = "entityEnterColshape",
-    ColshapeLeave = "entityLeaveColshape",
-    PlayerEnterVehicle = "playerEnteredVehicle",
-    PlayerLeaveVehicle = "playerLeftVehicle",
-    PlayerChangeVehicleSeat = "playerChangedVehicleSeat",
-    /** @internal */
-    PlayerWeaponChange = "playerWeaponChange",
-
-    RemoveEntity = "removeEntity",
-
-    ConsoleCommand = "consoleCommand",
+  export interface IServerEvent {
+    anyResourceError: (resourceName: string) => void;
+    anyResourceStart: (resourceName: string) => void;
+    anyResourceStop: (resourceName: string) => void;
+    consoleCommand: (...args: string[]) => void;
+    colshapeEnter: (colshape: Colshape, entity: Entity) => void;
+    colshapeLeave: (colshape: Colshape, entity: Entity) => void;
+    explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
+    playerChangeVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
+    playerConnect: (player: Player) => void;
+    playerDamage: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void;
+    playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
+    playerDisconnect: (player: Player, reason: string) => void;
+    playerEnterVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    playerLeaveVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    removeEntity: (object: BaseObject) => void;
+    resourceStart: (errored: boolean) => void;
+    resourceStop: () => void;
+    syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    globalMetaChange: (key: string, value: any, oldValue: any) => void;
+    globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
+    vehicleDestroy: (vehicle: Vehicle) => void;
+    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: BodyPart) => boolean | void;
+    /** @beta */
+    startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
+    /** @beta */
+    startProjectile: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void;
+    /** @beta */
+    playerWeaponChange: (player: Player, oldWeapon: number, newWeapon: number) => void;
   }
 
   /**
@@ -1002,7 +993,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: string, listener: (...args: any[]) => void): void;
+  export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -1010,219 +1001,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: EventType.AnyResourceError, listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.AnyResourceStart, listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.AnyResourceStop, listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ConsoleCommand, listener: (...args: string[]) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ColshapeEnter, listener: (colshape: Colshape, entity: Entity) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ColshapeLeave, listener: (colshape: Colshape, entity: Entity) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.Explosion, listener: (source: Player, type: ExplosionType, pos: Vector3, fx: number) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @alpha
-   */
-  export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number, target: Entity) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.PlayerChangeVehicleSeat, listener: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.PlayerConnect, listener: (player: Player) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.PlayerDamage, listener: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.PlayerDeath, listener: (victim: Player, killer: Entity, weaponHash: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.PlayerDisconnect, listener: (player: Player, reason: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.PlayerEnterVehicle, listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.PlayerLeaveVehicle, listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.RemoveEntity, listener: (object: BaseObject) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ResourceStart, listener: (errored: boolean) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ResourceStop, listener: () => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.SyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.StreamSyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.GlobalMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.GlobalSyncedMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.VehicleDestroy, listener: (vehicle: Vehicle) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.WeaponDamage, listener: (source: Player, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: BodyPart) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @alpha
-   */
-  export function on(eventName: "startFire", listener: (player: Player, fires: Array<IFireInfo>) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @alpha
-   */
-  export function on(eventName: "startProjectile", listener: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @alpha
-   */
-  export function on(eventName: "playerWeaponChange", listener: (player: Player, oldWeapon: number, newWeapon: number) => void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void): void;
 
   /**
    * Subscribes to client event handler with specified listener.

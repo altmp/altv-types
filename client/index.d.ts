@@ -60,33 +60,24 @@ declare module "alt-client" {
     Checkpoint
   }
 
-  export const enum EventType {
-    // Shared
-    AnyResourceStart = "anyResourceStart",
-    AnyResourceStop = "anyResourceStop",
-    AnyResourceError = "anyResourceError",
-
-    ResourceStart = "resourceStart",
-    ResourceStop = "resourceStop",
-
-    // MetaChange = "",
-    SyncedMetaChange = "syncedMetaChange",
-    StreamSyncedMetaChange = "streamSyncedMetaChange",
-    GlobalMetaChange = "globalMetaChange",
-    GlobalSyncedMetaChange = "globalSyncedMetaChange",
-
-    RemoveEntity = "removeEntity",
-
-    ConsoleCommand = "consoleCommand",
-
-    // Client
-    ConnectionComplete = "connectionComplete",
-    Disconnect = "disconnect",
-    WebViewLoad = "load",
-    KeyUp = "keyup",
-    KeyDown = "keydown",
-    GameEntityCreate = "gameEntityCreate",
-    GameEntityDestroy = "gameEntityDestroy"
+  export interface IClientEvent {
+    anyResourceError: (resourceName: string) => void;
+    anyResourceStart: (resourceName: string) => void;
+    anyResourceStop: (resourceName: string) => void;
+    connectionComplete: () => void;
+    consoleCommand: (name: string, ...args: string[]) => void;
+    disconnect: () => void;
+    gameEntityCreate: (entity: Entity) => void;
+    gameEntityDestroy: (entity: Entity) => void;
+    keyDown: (key: number) => void;
+    keyUp: (key: number) => void;
+    removeEntity: (object: BaseObject) => void;
+    resourceStart: (errored: boolean) => void;
+    resourceStop: () => void;
+    syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    globalMetaChange: (key: string, value: any, oldValue: any) => void;
+    globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
   }
 
   export interface DiscordOAuth2Token {
@@ -817,7 +808,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: string, listener: (...args: any[]) => void): void;
+  export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -825,135 +816,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: EventType.AnyResourceError, listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.AnyResourceStart, listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.AnyResourceStop, listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ConnectionComplete, listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ConsoleCommand, listener: (name: string, ...args: string[]) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.Disconnect, listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.GameEntityCreate, listener: (entity: Entity) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.GameEntityDestroy, listener: (entity: Entity) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.KeyDown, listener: (key: number) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.KeyUp, listener: (key: number) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.RemoveEntity, listener: (object: BaseObject) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ResourceStart, listener: (errored: boolean) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.ResourceStop, listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.SyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.StreamSyncedMetaChange, listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.GlobalMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: EventType.GlobalSyncedMetaChange, listener: (key: string, value: any, oldValue: any) => void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
