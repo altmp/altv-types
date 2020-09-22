@@ -371,7 +371,7 @@ declare module "alt-client" {
     public antiRollBarForce: number;
     public brakeBiasFront: number;
     public brakeBiasRear: number;
-    public breakForce: number;
+    public brakeForce: number;
     public camberStiffnesss: number;
     public centreOfMassOffset: Vector3;
     public clutchChangeRateScaleDownShift: number;
@@ -432,7 +432,7 @@ declare module "alt-client" {
     public unkFloat5: number;
     public weaponDamageMult: number;
 
-    public static getForModel(handlingHash: number): HandlingData;
+    public static getForHandlingName(handlingHash: number): HandlingData;
   }
 
   export class MapZoomData {
