@@ -252,7 +252,6 @@ declare module "alt-server" {
   }
 
   export interface IServerEvent {
-    [key: string]: (...args: any[]) => boolean | void;
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
@@ -995,6 +994,14 @@ declare module "alt-server" {
    * @param listener Listener that should be added.
    */
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+
+  /**
+   * Subscribes to server event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void): void;
 
   /**
    * Subscribes to client event handler with specified listener.

@@ -61,7 +61,6 @@ declare module "alt-client" {
   }
 
   export interface IClientEvent {
-    [key: string]: (...args: any[]) => void;
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
@@ -810,6 +809,14 @@ declare module "alt-client" {
    * @param listener Listener that should be added.
    */
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
+
+  /**
+   * Subscribes to client event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
