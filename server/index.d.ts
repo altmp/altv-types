@@ -183,6 +183,58 @@ declare module "alt-server" {
     RingWhirl
   }
 
+  export const enum RadioStation {
+    LosSantosRockRadio,
+    NonStopPopFm,
+    RadioLosSantos,
+    ChannelX,
+    WestCoastTalkRadio,
+    RebelRadio,
+    SoulwaxFm,
+    EastLosFm,
+    WestCoastClassics,
+    BlaineCountyRadio,
+    TheBlueArk,
+    WorldWideFm,
+    FlyloFm,
+    TheLowdown,
+    RadioMirrorPark,
+    Space,
+    VinewoodBoulevardRadio,
+    SelfRadio,
+    TheLab,
+    RadioOff = 255
+  }
+
+  export const enum NumberPlateStyle {
+    BlueWhite,
+    YellowBlack,
+    YellowBlue,
+    BlueWhite2,
+    BlueWhite3,
+    Yankton
+  }
+
+  export const enum VehicleBumper {
+    Front,
+    Rear
+  }
+
+  export const enum VehicleBumperDamage {
+    NotDamaged,
+    Damaged,
+    None
+  }
+
+  export const enum VehicleDoor {
+    DriverFront,
+    PassengerFront,
+    DriverRear,
+    PassengerRear,
+    Hood,
+    Trunk
+  }
+
   export const enum VehicleDoorState {
     Closed,
     OpenedLevel1,
@@ -206,15 +258,56 @@ declare module "alt-server" {
     LockedCanBeDamaged
   }
 
-  export const enum VehicleBumper {
-    Front,
-    Rear
-  }
-
-  export const enum VehicleBumperDamage {
-    NotDamaged,
-    Damaged,
-    None
+  export enum VehicleModType {
+    Spoiler,
+    FrontBumper,
+    RearBumper,
+    SideSkirt,
+    Exhaust,
+    Frame,
+    Grille,
+    Hood,
+    Fender,
+    RightFender,
+    Roof,
+    Engine,
+    Brakes,
+    Transmission,
+    Horn,
+    Suspension,
+    Armor,
+    Unk1,
+    Turbo,
+    Unk2,
+    TireSmoke,
+    Unk3,
+    XenonLights,
+    FrontWheels,
+    BackWheels,
+    Plateholder,
+    VanityPlates,
+    TrimDesign,
+    Ornaments,
+    Dashboard,
+    Dial,
+    DoorSpeaker,
+    Seats,
+    SteeringWheel,
+    ColumnShifterLeavers,
+    Plaques,
+    Speakers,
+    Trunk,
+    Hydraulics,
+    EngineBlock,
+    AirFilter,
+    Struts,
+    ArchCover,
+    Aerials,
+    Trim,
+    Tank,
+    Windows,
+    Unk4,
+    Livery
   }
 
   export const enum VehiclePart {
@@ -249,6 +342,16 @@ declare module "alt-server" {
     Snowlight,
     Xmas,
     Halloween
+  }
+
+  export const enum WindowTint {
+    None,
+    PureBlack,
+    DarkSmoke,
+    LightSmoke,
+    Stock,
+    Limo,
+    Green
   }
 
   export interface IServerEvent {
@@ -566,14 +669,14 @@ declare module "alt-server" {
 
     public setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
 
-    public setWeather(weatherId: WeatherType): void;
+    public setWeather(weatherType: WeatherType): void;
 
     public spawn(x: number, y: number, z: number, delay: number): void;
   }
 
   export class Vehicle extends Entity {
     public static readonly all: Array<Vehicle>;
-    public activeRadioStation: number;
+    public activeRadioStation: RadioStation;
     public bodyAdditionalHealth: number;
     public bodyHealth: number;
     public customPrimaryColor: RGBA;
@@ -594,14 +697,14 @@ declare module "alt-server" {
     public interiorColor: number;
     public lightsMultiplier: number;
     public livery: number;
-    public lockState: number;
+    public lockState: VehicleLockState;
     public manualEngineControl: boolean;
     public modKit: number;
     public readonly modKitsCount: number;
     public neon: VehicleNeon;
     public neonColor: RGBA;
     public readonly nightlightOn: boolean;
-    public numberPlateIndex: number;
+    public numberPlateIndex: NumberPlateStyle;
     public numberPlateText: string;
     public pearlColor: number;
     public petrolTankHealth: number;
@@ -617,7 +720,7 @@ declare module "alt-server" {
     public readonly wheelType: number;
     public readonly frontWheels: number;
     public readonly rearWheels: number;
-    public windowTint: number;
+    public windowTint: WindowTint;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
 
@@ -641,17 +744,17 @@ declare module "alt-server" {
 
     public getDamageStatusBase64(): string;
 
-    public getDoorState(doorId: number): VehicleDoorState;
+    public getDoorState(doorId: VehicleDoor): VehicleDoorState;
 
-    public getExtra(category: number): boolean;
+    public getExtra(extraId: number): boolean;
 
     public getGamestateDataBase64(): string;
 
     public getHealthDataBase64(): string;
 
-    public getMod(category: number): number;
+    public getMod(modType: VehicleModType): number;
 
-    public getModsCount(category: number): number;
+    public getModsCount(modType: VehicleModType): number;
 
     public getPartBulletHoles(partId: VehiclePart): number;
 
@@ -685,9 +788,9 @@ declare module "alt-server" {
 
     public setDamageStatusBase64(data: string): void;
 
-    public setDoorState(doorId: number, state: VehicleDoorState): void;
+    public setDoorState(doorId: VehicleDoor, state: VehicleDoorState): void;
 
-    public setExtra(category: number, state: boolean): void;
+    public setExtra(extraId: number, state: boolean): void;
 
     public setGamestateDataBase64(data: string): void;
 
@@ -695,13 +798,13 @@ declare module "alt-server" {
 
     public setLightDamaged(lightId: number, isDamaged: boolean): void;
 
-    public setMod(category: number, id: number): void;
+    public setMod(modType: VehicleModType, modId: number): void;
 
     public setPartBulletHoles(partId: VehiclePart, count: number): void;
 
     public setPartDamageLevel(partId: VehiclePart, level: VehiclePartDamage): void;
 
-    public setRearWheels(variation: number): void;
+    public setRearWheels(wheelId: number): void;
 
     public setScriptDataBase64(data: string): void;
 
@@ -717,7 +820,7 @@ declare module "alt-server" {
 
     public setWheelOnFire(wheelId: number, state: boolean): void;
 
-    public setWheels(type: number, variation: number): void;
+    public setWheels(wheelType: number, wheelId: number): void;
 
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
 
