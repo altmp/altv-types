@@ -80,41 +80,45 @@ declare module "alt-client" {
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
   }
 
-  export interface DiscordOAuth2Token {
+  export interface IDiscordOAuth2Token {
     readonly token: string
     readonly expires: number;
     readonly scopes: string;
   }
 
-  export interface DiscordUser {
+  export interface IDiscordUser {
     readonly id: string;
     readonly name: string;
     readonly discriminator: string;
     readonly avatar: string;
   }
 
-  export interface Vector2 {
-    /** x component of Vector2 */
+  export interface IVector2 {
     readonly x: number;
 
-    /** y component of Vector2 */
     readonly y: number;
   }
 
+  export interface IVector3 {
+    readonly x: number;
+
+    readonly y: number;
+
+    readonly z: number;
+  }
+
   export class Vector3 {
-    /** x component of Vector3 */
     public readonly x: number;
-    /** y component of Vector3 */
+
     public readonly y: number;
-    /** z component of Vector3 */
+
     public readonly z: number;
 
-    /**
-     * @param x An x component.
-     * @param y An y component.
-     * @param z An z component.
-     */
     constructor(x: number, y: number, z: number);
+
+    constructor(arr: number[]);
+
+    constructor(obj: IVector3);
   }
 
   export class RGBA {
@@ -567,12 +571,12 @@ declare module "alt-client" {
   }
 
   export class Discord {
-    public static readonly currentUser: DiscordUser | null;
+    public static readonly currentUser: IDiscordUser | null;
 
     /**
      * @deprecated
      */
-    public static requestOAuth2Token(): Promise<DiscordOAuth2Token>;
+    public static requestOAuth2Token(): Promise<IDiscordOAuth2Token>;
   }
 
   export class File {
@@ -713,7 +717,7 @@ declare module "alt-client" {
 
   export function gameControlsEnabled(): boolean;
 
-  export function getCursorPos(): Vector2;
+  export function getCursorPos(): IVector2;
 
   export function getGxtText(key: string): string;
 
@@ -850,7 +854,7 @@ declare module "alt-client" {
 
   export function setCamFrozen(state: boolean): void;
 
-  export function setCursorPos(pos: Vector2): void;
+  export function setCursorPos(pos: IVector2): void;
 
   /**
    * Schedules execution of handler in specified intervals.

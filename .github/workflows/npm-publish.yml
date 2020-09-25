@@ -24,13 +24,13 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-          package: ./package.json
+          package: ./client/package.json
   webview:
     name: Publish webview
     runs-on: ubuntu-latest
@@ -51,13 +51,13 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-          package: ./package.json
+          package: ./webview/package.json
   natives:
     name: Publish natives
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Checkout generator
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: actions/checkout@v2
@@ -118,7 +118,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-          package: ./package.json
+          package: ./natives/package.json
   server:
     name: Publish server
     runs-on: ubuntu-latest
@@ -139,7 +139,7 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(yarn info $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1

@@ -395,26 +395,40 @@ declare module "alt-server" {
   export const GlobalDimension: number;
 
   /**
-   * @alpha
+   * @beta
    */
   export interface IFireInfo {
     pos: Vector3;
     weapon: number;
   }
 
-  export interface VehicleNeon {
+  export interface IVehicleNeon {
     left: boolean;
     right: boolean;
     front: boolean;
     back: boolean;
   }
 
-  export class Vector3 {
+  export interface IVector3 {
     readonly x: number;
+
     readonly y: number;
+
     readonly z: number;
+  }
+
+  export class Vector3 {
+    public readonly x: number;
+
+    public readonly y: number;
+
+    public readonly z: number;
 
     constructor(x: number, y: number, z: number);
+
+    constructor(arr: number[]);
+
+    constructor(obj: IVector3);
   }
 
   export class RGBA {
@@ -701,7 +715,7 @@ declare module "alt-server" {
     public manualEngineControl: boolean;
     public modKit: number;
     public readonly modKitsCount: number;
-    public neon: VehicleNeon;
+    public neon: IVehicleNeon;
     public neonColor: RGBA;
     public readonly nightlightOn: boolean;
     public numberPlateIndex: NumberPlateStyle;
@@ -1112,7 +1126,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function onClient(eventName: string, listener: (...args: any[]) => void): void;
+  export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   export function restartResource(name: string): void;
 
