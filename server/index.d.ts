@@ -822,7 +822,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "playerDamage", listener: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void): void;
+  export function on(eventName: "playerDamage", listener: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void): void;
 
   /**
    * Subscribes to server event handler with specified listener.
