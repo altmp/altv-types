@@ -4,10 +4,387 @@ declare module "alt-server" {
   type DateTimeMinute = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
       22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
       45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
-  type DateTimeSecond = DateTimeMinute;
+  type DateTimeSecond = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
+      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
+      45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
   type DateTimeDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
       22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30;
   type DateTimeMonth = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+
+  export const enum ExplosionType {
+    Grenade,
+    GrenadeLauncher,
+    StickyBomb,
+    Molotov,
+    Rocket,
+    TankShell,
+    HiOctane,
+    Car,
+    Plane,
+    PetrolPump,
+    Bike,
+    DirSteam,
+    DirFlame,
+    DirWaterHydrant,
+    DirGasCanister,
+    Boat,
+    ShipDestroy,
+    Truck,
+    Bullet,
+    SmokeGrenadeLauncher,
+    SmokeGrenade,
+    BzGas,
+    Flare,
+    GasCanister,
+    Extinguisher,
+    ProgrammableAr,
+    Train,
+    Barrel,
+    Propane,
+    Blimp,
+    DirFlameExplode,
+    Tanker,
+    PlaneRocket,
+    VehicleBullet,
+    GasTank,
+    Firework,
+    Snowball,
+    ProxMine,
+    ValkyrieCannon,
+    Unknown = -1
+  }
+
+  export const enum BodyPart {
+    Pelvis,
+    LeftHip,
+    LeftLeg,
+    LeftFoot,
+    RightHip,
+    RightLeg,
+    RightFoot,
+    LowerTorso,
+    UpperTorso,
+    Chest,
+    UnderNeck,
+    LeftShoulder,
+    LeftUpperArm,
+    LeftElbrow,
+    LeftWrist,
+    RightShoulder,
+    RightUpperArm,
+    RightElbrow,
+    RightWrist,
+    Neck,
+    Head,
+    Unknown = -1
+  }
+
+  export const enum BlipType {
+    Vehicle = 1,
+    Ped,
+    Object,
+    Destination,
+    Cont,
+    PickupUnk,
+    Radius,
+    Pickup,
+    Cop,
+    Area,
+    Gallery,
+    PickupObject
+  }
+
+  export const enum ColShapeType {
+    Sphere,
+    Cylinder,
+    Circle,
+    Cuboid,
+    Rectangle,
+    CheckpointCylinder
+  }
+
+  export const enum BaseObjectType {
+    Player,
+    Vehicle,
+    Blip,
+    WebView,
+    VoiceChannel,
+    Colshape,
+    Checkpoint
+  }
+
+  export const enum CheckpointType {
+    CylinderSingleArrow,
+    CylinderDoubleArrow,
+    CylinderTripleArrow,
+    CylinderCycleArrow,
+    CylinderCheckerboard,
+    CylinderWrench,
+    CylinderSingleArrow2,
+    CylinderDoubleArrow2,
+    CylinderTripleArrow2,
+    CylinderCycleArrow2,
+    CylinderCheckerboard2,
+    CylinderWrench2,
+    RingSingleArrow,
+    RingDoubleArrow,
+    RingTripleArrow,
+    RingCycleArrow,
+    RingCheckerboard,
+    SingleArrow,
+    DoubleArrow,
+    TripleArrow,
+    CycleArrow,
+    Checkerboard,
+    CylinderSingleArrow3,
+    CylinderDoubleArrow3,
+    CylinderTripleArrow3,
+    CylinderCycleArrow3,
+    CylinderCheckerboard3,
+    CylinderSingleArrow4,
+    CylinderDoubleArrow4,
+    CylinderTripleArrow4,
+    CylinderCycleArrow4,
+    CylinderCheckerboard4,
+    CylinderSingleArrow5,
+    CylinderDoubleArrow5,
+    CylinderTripleArrow5,
+    CylinderCycleArrow5,
+    CylinderCheckerboard5,
+    RingPlaneUp,
+    RingPlaneLeft,
+    RingPlaneRight,
+    RingPlaneDown,
+    Empty,
+    Ring,
+    Empty2,
+    Cylinder,
+    Cylinder1,
+    Cylinder2,
+    Cylinder3,
+    Cylinder4,
+    Cylinder5,
+    Empty3,
+    Empty4,
+    Empty5,
+    Empty6,
+    RingDollar,
+    RingWolf,
+    RingQuestionMark,
+    RingPlane,
+    RingChopper,
+    RingBoat,
+    RingCar,
+    RingBike,
+    RingBicycle,
+    RingTruck,
+    RingParachute,
+    RingJetpack,
+    RingWhirl
+  }
+
+  export const enum RadioStation {
+    LosSantosRockRadio,
+    NonStopPopFm,
+    RadioLosSantos,
+    ChannelX,
+    WestCoastTalkRadio,
+    RebelRadio,
+    SoulwaxFm,
+    EastLosFm,
+    WestCoastClassics,
+    BlaineCountyRadio,
+    TheBlueArk,
+    WorldWideFm,
+    FlyloFm,
+    TheLowdown,
+    RadioMirrorPark,
+    Space,
+    VinewoodBoulevardRadio,
+    SelfRadio,
+    TheLab,
+    RadioOff = 255
+  }
+
+  export const enum NumberPlateStyle {
+    BlueWhite,
+    YellowBlack,
+    YellowBlue,
+    BlueWhite2,
+    BlueWhite3,
+    Yankton
+  }
+
+  export const enum VehicleBumper {
+    Front,
+    Rear
+  }
+
+  export const enum VehicleBumperDamage {
+    NotDamaged,
+    Damaged,
+    None
+  }
+
+  export const enum VehicleDoor {
+    DriverFront,
+    PassengerFront,
+    DriverRear,
+    PassengerRear,
+    Hood,
+    Trunk
+  }
+
+  export const enum VehicleDoorState {
+    Closed,
+    OpenedLevel1,
+    OpenedLevel2,
+    OpenedLevel3,
+    OpenedLevel4,
+    OpenedLevel5,
+    OpenedLevel6,
+    OpenedLevel7,
+    Unknown = 255
+  }
+
+  export const enum VehicleLockState {
+    None,
+    Unlocked,
+    Locked,
+    LockoutPlayerOnly,
+    LockPlayerInside,
+    InitiallyLocked,
+    ForceDoorsShut,
+    LockedCanBeDamaged
+  }
+
+  export enum VehicleModType {
+    Spoiler,
+    FrontBumper,
+    RearBumper,
+    SideSkirt,
+    Exhaust,
+    Frame,
+    Grille,
+    Hood,
+    Fender,
+    RightFender,
+    Roof,
+    Engine,
+    Brakes,
+    Transmission,
+    Horn,
+    Suspension,
+    Armor,
+    Unk1,
+    Turbo,
+    Unk2,
+    TireSmoke,
+    Unk3,
+    XenonLights,
+    FrontWheels,
+    BackWheels,
+    Plateholder,
+    VanityPlates,
+    TrimDesign,
+    Ornaments,
+    Dashboard,
+    Dial,
+    DoorSpeaker,
+    Seats,
+    SteeringWheel,
+    ColumnShifterLeavers,
+    Plaques,
+    Speakers,
+    Trunk,
+    Hydraulics,
+    EngineBlock,
+    AirFilter,
+    Struts,
+    ArchCover,
+    Aerials,
+    Trim,
+    Tank,
+    Windows,
+    Unk4,
+    Livery
+  }
+
+  export const enum VehiclePart {
+    FrontLeft,
+    FrontRight,
+    MiddleLeft,
+    MiddleRight,
+    RearLeft,
+    RearRight
+  }
+
+  export const enum VehiclePartDamage {
+    NotDamaged,
+    DamagedLevel1,
+    DamagedLevel2,
+    DamagedLevel3
+  }
+
+  export const enum WeatherType {
+    ExtraSunny,
+    Clear,
+    Clouds,
+    Smog,
+    Foggy,
+    Overcast,
+    Rain,
+    Thunder,
+    Clearing,
+    Neutral,
+    Snow,
+    Blizzard,
+    Snowlight,
+    Xmas,
+    Halloween
+  }
+
+  export const enum WindowTint {
+    None,
+    PureBlack,
+    DarkSmoke,
+    LightSmoke,
+    Stock,
+    Limo,
+    Green
+  }
+
+  export interface IServerEvent {
+    anyResourceError: (resourceName: string) => void;
+    anyResourceStart: (resourceName: string) => void;
+    anyResourceStop: (resourceName: string) => void;
+    consoleCommand: (...args: string[]) => void;
+    colshapeEnter: (colshape: Colshape, entity: Entity) => void;
+    colshapeLeave: (colshape: Colshape, entity: Entity) => void;
+    explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
+    playerChangeVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
+    playerConnect: (player: Player) => void;
+    playerDamage: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void;
+    playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
+    playerDisconnect: (player: Player, reason: string) => void;
+    playerEnterVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    playerLeaveVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    removeEntity: (object: BaseObject) => void;
+    resourceStart: (errored: boolean) => void;
+    resourceStop: () => void;
+    syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    globalMetaChange: (key: string, value: any, oldValue: any) => void;
+    globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
+    vehicleDestroy: (vehicle: Vehicle) => void;
+    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: BodyPart) => boolean | void;
+    /** @beta */
+    startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
+    /** @beta */
+    startProjectile: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void;
+    /** @beta */
+    playerWeaponChange: (player: Player, oldWeapon: number, newWeapon: number) => void;
+  }
 
   /**
    * Resource name of the executing entity
@@ -67,7 +444,7 @@ declare module "alt-server" {
     /**
      * Type of the object.
      */
-    public readonly type: number;
+    public readonly type: BaseObjectType;
 
     /**
      * Object usability.
@@ -306,14 +683,14 @@ declare module "alt-server" {
 
     public setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
 
-    public setWeather(weatherHash: number): void;
+    public setWeather(weatherType: WeatherType): void;
 
     public spawn(x: number, y: number, z: number, delay: number): void;
   }
 
   export class Vehicle extends Entity {
     public static readonly all: Array<Vehicle>;
-    public activeRadioStation: number;
+    public activeRadioStation: RadioStation;
     public bodyAdditionalHealth: number;
     public bodyHealth: number;
     public customPrimaryColor: RGBA;
@@ -334,14 +711,14 @@ declare module "alt-server" {
     public interiorColor: number;
     public lightsMultiplier: number;
     public livery: number;
-    public lockState: number;
+    public lockState: VehicleLockState;
     public manualEngineControl: boolean;
     public modKit: number;
     public readonly modKitsCount: number;
     public neon: IVehicleNeon;
     public neonColor: RGBA;
     public readonly nightlightOn: boolean;
-    public numberPlateIndex: number;
+    public numberPlateIndex: NumberPlateStyle;
     public numberPlateText: string;
     public pearlColor: number;
     public petrolTankHealth: number;
@@ -357,7 +734,7 @@ declare module "alt-server" {
     public readonly wheelType: number;
     public readonly frontWheels: number;
     public readonly rearWheels: number;
-    public windowTint: number;
+    public windowTint: WindowTint;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
 
@@ -377,25 +754,25 @@ declare module "alt-server" {
 
     public getArmoredWindowShootCount(windowId: number): number;
 
-    public getBumperDamageLevel(bumperId: number): number;
+    public getBumperDamageLevel(bumperId: VehicleBumper): VehicleBumperDamage;
 
     public getDamageStatusBase64(): string;
 
-    public getDoorState(doorId: number): number;
+    public getDoorState(doorId: VehicleDoor): VehicleDoorState;
 
-    public getExtra(category: number): boolean;
+    public getExtra(extraId: number): boolean;
 
     public getGamestateDataBase64(): string;
 
     public getHealthDataBase64(): string;
 
-    public getMod(category: number): number;
+    public getMod(modType: VehicleModType): number;
 
-    public getModsCount(category: number): number;
+    public getModsCount(modType: VehicleModType): number;
 
-    public getPartBulletHoles(partId: number): number;
+    public getPartBulletHoles(partId: VehiclePart): number;
 
-    public getPartDamageLevel(partId: number): number;
+    public getPartDamageLevel(partId: VehiclePart): VehiclePartDamage;
 
     public getScriptDataBase64(): string;
 
@@ -421,13 +798,13 @@ declare module "alt-server" {
 
     public setArmoredWindowShootCount(windowId: number, count: number): void;
 
-    public setBumperDamageLevel(bumperId: number, level: number): void;
+    public setBumperDamageLevel(bumperId: VehicleBumper, level: VehicleBumperDamage): void;
 
     public setDamageStatusBase64(data: string): void;
 
-    public setDoorState(doorId: number, state: number): void;
+    public setDoorState(doorId: VehicleDoor, state: VehicleDoorState): void;
 
-    public setExtra(category: number, state: boolean): void;
+    public setExtra(extraId: number, state: boolean): void;
 
     public setGamestateDataBase64(data: string): void;
 
@@ -435,13 +812,13 @@ declare module "alt-server" {
 
     public setLightDamaged(lightId: number, isDamaged: boolean): void;
 
-    public setMod(category: number, id: number): void;
+    public setMod(modType: VehicleModType, modId: number): void;
 
-    public setPartBulletHoles(partId: number, count: number): void;
+    public setPartBulletHoles(partId: VehiclePart, count: number): void;
 
-    public setPartDamageLevel(partId: number, level: number): void;
+    public setPartDamageLevel(partId: VehiclePart, level: VehiclePartDamage): void;
 
-    public setRearWheels(variation: number): void;
+    public setRearWheels(wheelId: number): void;
 
     public setScriptDataBase64(data: string): void;
 
@@ -457,7 +834,7 @@ declare module "alt-server" {
 
     public setWheelOnFire(wheelId: number, state: boolean): void;
 
-    public setWheels(type: number, variation: number): void;
+    public setWheels(wheelType: number, wheelId: number): void;
 
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
 
@@ -469,11 +846,11 @@ declare module "alt-server" {
   }
 
   export class PointBlip extends Blip {
-    constructor(type: number, x: number, y: number, z: number);
+    constructor(type: BlipType, x: number, y: number, z: number);
   }
 
   export class Colshape extends WorldObject {
-    public colshapeType: number;
+    public colshapeType: ColShapeType;
 
     public playersOnly: boolean;
 
@@ -733,7 +1110,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: string, listener: (...args: any[]) => void): void;
+  export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
    * Subscribes to server event handler with specified listener.
@@ -741,219 +1118,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "consoleCommand", listener: (...args: string[]) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "entityEnterColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "entityLeaveColshape", listener: (colshape: Colshape, entity: Entity) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @beta
-   */
-  export function on(eventName: "explosion", listener: (source: Entity, type: number, pos: Vector3, fx: number, target: Entity) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "playerChangedVehicleSeat", listener: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "playerConnect", listener: (player: Player) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "playerDamage", listener: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "playerDeath", listener: (victim: Player, killer: Entity, weaponHash: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "playerDisconnect", listener: (player: Player, reason: string) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "playerEnteredVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "playerLeftVehicle", listener: (player: Player, vehicle: Vehicle, seat: number) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "resourceStop", listener: () => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "vehicleDestroy", listener: (vehicle: Vehicle) => void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "weaponDamage", listener: (source: Entity, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: number) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @beta
-   */
-  export function on(eventName: "startFire", listener: (player: Player, fires: Array<IFireInfo>) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @beta
-   */
-  export function on(eventName: "startProjectile", listener: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void): void;
-
-  /**
-   * Subscribes to server event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   * @beta
-   */
-  export function on(eventName: "playerWeaponChange", listener: (player: Player, oldWeapon: number, newWeapon: number) => void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void): void;
 
   /**
    * Subscribes to client event handler with specified listener.
