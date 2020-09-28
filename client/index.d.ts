@@ -78,6 +78,10 @@ declare module "alt-client" {
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     globalMetaChange: (key: string, value: any, oldValue: any) => void;
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
+    /**
+     * No particular usage for now, stick to {@link everyTick} instead.
+     */
+    render: () => void;
   }
 
   export interface IDiscordOAuth2Token {
@@ -749,11 +753,18 @@ declare module "alt-client" {
   export function isConsoleOpen(): boolean;
 
   /**
-   * Sandbox mode
+   * Sandbox mode.
    *
    * @returns True when alt:V client is launched in sandbox mode.
    */
   export function isInSandbox(): boolean;
+
+  /**
+   * Streamer mode.
+   *
+   * @returns True when alt:V client is launched in streamer mode.
+   */
+  export function isInStreamerMode(): boolean;
 
   /**
    * Returns state of user interface and console window.
@@ -765,12 +776,12 @@ declare module "alt-client" {
   export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
 
   /**
-   * @ignore Should not be used until fixed
+   * @ignore Should not be used until fixed.
    */
   export function loadModel(modelHash: number): void;
 
   /**
-   * @ignore Should not be used until fixed
+   * @ignore Should not be used until fixed.
    */
   export function loadModelAsync(modelHash: number): void;
 
@@ -839,11 +850,17 @@ declare module "alt-client" {
   /**
    * Output is saved to screenshots folder in root directory.
    *
-   * @remarks Only available in sandbox mode.
    * @param stem Filename without extension.
    * @return Return is dependent on the success of the operation.
    */
-  export function saveScreenshot(stem: string): boolean;
+  export function takeScreenshot(stem: string): Promise<boolean>;
+
+  /**
+   * Output is returned as string.
+   *
+   * @return Return is dependent on the success of the operation.
+   */
+  export function takeScreenshotBase64(): Promise<string>;
 
   /**
    * Resets a statistic to its default value.

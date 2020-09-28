@@ -725,7 +725,7 @@ declare module "alt-server" {
     public primaryColor: number;
     public readonly repairsCount: number;
     public roofLivery: number;
-    public roofOpened: boolean;
+    public roofState: boolean;
     public secondaryColor: number;
     public sirenActive: boolean;
     public tireSmokeColor: RGBA;
