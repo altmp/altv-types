@@ -387,14 +387,6 @@ declare module "alt-server" {
   }
 
   /**
-   * Resource name of the executing entity
-   */
-  export const resourceName: string;
-  export const rootDir: string;
-  export const DefaultDimension: number;
-  export const GlobalDimension: number;
-
-  /**
    * @beta
    */
   export interface IFireInfo {
@@ -416,6 +408,14 @@ declare module "alt-server" {
 
     readonly z: number;
   }
+
+  /**
+   * Resource name of the executing entity
+   */
+  export const resourceName: string;
+  export const rootDir: string;
+  export const DefaultDimension: number;
+  export const GlobalDimension: number;
 
   export class Vector3 {
     public readonly x: number;

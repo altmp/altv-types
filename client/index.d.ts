@@ -198,6 +198,18 @@ declare module "alt-client" {
     readonly z: number;
   }
 
+  /**
+   * Represents the current client version.
+   *
+   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   */
+  export const Version: string;
+
+  /**
+   * Represents the current client branch.
+   */
+  export const Branch: string;
+
   export class Vector3 {
     public readonly x: number;
 
