@@ -411,8 +411,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
-     *
-     * @remarks Not modified properties will be inherited from {@link HandlingData}.
      */
     public handling: IVehicleHandling;
 
