@@ -97,6 +97,93 @@ declare module "alt-client" {
     readonly avatar: string;
   }
 
+  /**
+   * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
+   * This handling applies to particular vehicle instance, as opposed to the {@link HandlingData}.
+   *
+   * @remarks Changes will be reflected only on a particular instance of the vehicle. On creation, model handling will be used as a base and changed properties will be added on top of it.
+   */
+  export interface IVehicleHandling {
+    acceleration: number;
+    antiRollBarBiasFront: number;
+    antiRollBarBiasRear: number;
+    antiRollBarForce: number;
+    brakeBiasFront: number;
+    brakeBiasRear: number;
+    brakeForce: number;
+    camberStiffnesss: number;
+    centreOfMassOffset: Vector3;
+    clutchChangeRateScaleDownShift: number;
+    clutchChangeRateScaleUpShift: number;
+    collisionDamageMult: number;
+    damageFlags: number;
+    deformationDamageMult: number;
+    downforceModifier: number;
+    driveBiasFront: number;
+    driveInertia: number;
+    driveMaxFlatVel: number;
+    engineDamageMult: number;
+    handBrakeForce: number;
+    handlingFlags: number;
+    readonly handlingNameHash: number;
+    inertiaMultiplier: Vector3;
+    initialDragCoeff: number;
+    initialDriveForce: number;
+    initialDriveGears: number;
+    initialDriveMaxFlatVel: number;
+    lowSpeedTractionLossMult: number;
+    mass: number;
+    modelFlags: number;
+    monetaryValue: number;
+    oilVolume: number;
+    percentSubmerged: number;
+    percentSubmergedRatio: number;
+    petrolTankVolume: number;
+    rollCentreHeightFront: number;
+    rollCentreHeightRear: number;
+    seatOffsetDistX: number;
+    seatOffsetDistY: number;
+    seatOffsetDistZ: number;
+    steeringLock: number;
+    steeringLockRatio: number;
+    suspensionBiasFront: number;
+    suspensionBiasRear: number;
+    suspensionCompDamp: number;
+    suspensionForce: number;
+    suspensionLowerLimit: number;
+    suspensionRaise: number;
+    suspensionReboundDamp: number;
+    suspensionUpperLimit: number;
+    tractionBiasFront: number;
+    tractionBiasRear: number;
+    tractionCurveLateral: number;
+    tractionCurveLateralRatio: number;
+    tractionCurveMax: number;
+    tractionCurveMaxRatio: number;
+    tractionCurveMin: number;
+    tractionCurveMinRatio: number;
+    tractionLossMult: number;
+    tractionSpringDeltaMax: number;
+    tractionSpringDeltaMaxRatio: number;
+    unkFloat1: number;
+    unkFloat2: number;
+    unkFloat4: number;
+    unkFloat5: number;
+    weaponDamageMult: number;
+
+    /**
+     * Indicates whether vehicle handling was modified.
+     *
+     * @returns `true` if vehicle handling was modified; otherwise, `false`.
+     */
+    isModified(): boolean;
+
+    /**
+     * Resets the vehicle handling back to a model handling.
+     */
+    reset(): void;
+  }
+
   export interface IVector2 {
     readonly x: number;
 
@@ -310,6 +397,13 @@ declare module "alt-client" {
     /** Vehicle gear */
     public gear: number;
 
+    /**
+     * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
+     *
+     * @remarks Not modified properties will be inherited from {@link HandlingData}.
+     */
+    public handling: IVehicleHandling;
+
     /** Vehicle RPM [0, 1] */
     public readonly rpm: number;
 
@@ -447,6 +541,12 @@ declare module "alt-client" {
     constructor(x: number, y: number, z: number);
   }
 
+  /**
+   * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
+   * This handling applies to all vehicle instances, as opposed to the {@link Vehicle.handling}.
+   *
+   * @remarks Changes will be reflected on every vehicle using this particular handling, but might require vehicle recreating for changes to apply properly.
+   */
   export class HandlingData {
     public acceleration: number;
     public antiRollBarBiasFront: number;
@@ -515,6 +615,9 @@ declare module "alt-client" {
     public unkFloat5: number;
     public weaponDamageMult: number;
 
+    /**
+     * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
+     */
     public static getForHandlingName(handlingHash: number): HandlingData;
   }
 
