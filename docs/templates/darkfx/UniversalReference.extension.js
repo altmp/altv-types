@@ -25,14 +25,12 @@ exports.postTransform = function (model) {
 function handleReleaseStages(vm) {
   if(vm.releaseStage) {
     if(vm.releaseStage.indexOf('beta') !== -1) {
-      vm.releaseStage.push(releaseStages[0]);
+      vm.releaseStage.unshift(releaseStages[0]);
     }
     if(vm.releaseStage.indexOf('public') !== -1) {
-      vm.releaseStage = vm.releaseStage.concat(releaseStages);
+      vm.releaseStage = releaseStages;
     }
-    vm.releaseStage = vm.releaseStage.filter(function (v, i) {
-      return vm.releaseStage.indexOf(v) === i;
-    }).reverse();
+    vm.releaseStage = vm.releaseStage.reverse();
   } else {
     vm.releaseStage = null;
   }
