@@ -202,11 +202,13 @@ declare module "alt-client" {
    * Represents the current client version.
    *
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   * @beta
    */
   export const Version: string;
 
   /**
    * Represents the current client branch.
+   * @beta
    */
   export const Branch: string;
 
@@ -411,6 +413,7 @@ declare module "alt-client" {
 
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
+     * @beta
      */
     public handling: IVehicleHandling;
 
