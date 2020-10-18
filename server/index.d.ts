@@ -258,7 +258,7 @@ declare module "alt-server" {
     LockedCanBeDamaged
   }
 
-  export enum VehicleModType {
+  export const enum VehicleModType {
     Spoiler,
     FrontBumper,
     RearBumper,
@@ -367,8 +367,8 @@ declare module "alt-server" {
     playerDamage: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
-    playerEnterVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
-    playerLeaveVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;

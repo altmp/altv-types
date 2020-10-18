@@ -694,7 +694,7 @@ declare module "alt-client" {
     public static readonly currentUser: IDiscordUser | null;
 
     /**
-     * @deprecated
+     * @deprecated Seriously, don't use it because it might get removed someday in most unexpected moment.
      */
     public static requestOAuth2Token(): Promise<IDiscordOAuth2Token>;
   }
