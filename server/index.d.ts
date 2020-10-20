@@ -359,8 +359,8 @@ declare module "alt-server" {
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
     consoleCommand: (...args: string[]) => void;
-    colshapeEnter: (colshape: Colshape, entity: Entity) => void;
-    colshapeLeave: (colshape: Colshape, entity: Entity) => void;
+    entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
+    entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
     playerChangeVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
     playerConnect: (player: Player) => void;
