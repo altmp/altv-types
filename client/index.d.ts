@@ -69,8 +69,8 @@ declare module "alt-client" {
     disconnect: () => void;
     gameEntityCreate: (entity: Entity) => void;
     gameEntityDestroy: (entity: Entity) => void;
-    keyDown: (key: number) => void;
-    keyUp: (key: number) => void;
+    keydown: (key: number) => void;
+    keyup: (key: number) => void;
     removeEntity: (object: BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
