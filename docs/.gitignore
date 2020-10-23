@@ -1,0 +1,9 @@
+# Build results
+api/**.yml
+_site/
+[Oo]bj/
+output.json
+
+# Others
+docfx/
+templates/
