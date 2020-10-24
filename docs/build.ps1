@@ -1,6 +1,7 @@
 param(
     [Switch] $disableChecks = $false,
-    [Switch] $debug = $false
+    [Switch] $debug = $false,
+    [string] $port = "8080"
 )
 
 function Cleanup() {
@@ -13,41 +14,60 @@ function Cleanup() {
 }
 
 function GetAssemblyVersion([string] $file) {
-    $ver=(Get-Item -Path $file | Select-Object -ExpandProperty VersionInfo).ProductVersion
-    $ver.Substring(0, $ver.LastIndexOf('.'))
+    if(-not (Test-Path -Path $file)) { throw "Cannot find path $file because it does not exist." }
+    $ver=(Get-Item -Path $file | Select-Object -ExpandProperty VersionInfo).FileVersion.Split('.')
+    if($ver.Length -lt 4) {
+        $ver -Join '.'
+    } else {
+        ($ver | Select -SkipLast 1) -Join '.'
+    }
 }
 
 function FetchAndDownloadRelease([string] $repo, [string] $file) {
     $global:ProgressPreference='SilentlyContinue'
     $tag=(Invoke-WebRequest -UseBasicParsing "https://api.github.com/repos/$repo/releases" | ConvertFrom-Json)[0].tag_name
-    Invoke-WebRequest -UseBasicParsing "https://github.com/$repo/releases/download/$tag/$file" -Out $file
+    Invoke-WebRequest -UseBasicParsing "https://github.com/$repo/releases/download/$tag/$file" -OutFile $file
     $global:ProgressPreference='Continue'
-    # Get-Item -Path $file
+    return ([int]$? - 1)
 }
 
-function ExtractArchive([System.IO.FileInfo] $file, [string] $dest) {
+
+function ExtractArchive([string] $path, [string] $dest) {
+    if(-not (Test-Path -Path $path)) { throw "Cannot find path $path because it does not exist." }
+    $file=Get-Item -Path $path
     if(!$dest) {
         $dest=$file.FullName.Substring(0, $file.FullName.LastIndexOf('.'))
     }
-    Write-Host $file $dest
     $global:ProgressPreference='SilentlyContinue'
     Expand-Archive -Path $file -DestinationPath $dest -Force
     $global:ProgressPreference='Continue'
-    Remove-Item $file -Force 2>&1 > $null
+    return ([int]$? - 1)
 }
 
-function LogWrap([string] $msg, [ScriptBlock] $action) {
+function LogWrap([string] $msg, [ScriptBlock] $action, [boolean] $disResult=$false) {
     Write-Host -NoNewline "$msg . . . "
     try {
-        Invoke-Command -NoNewScope -ScriptBlock $action > $null
-        if($LastExitCode -eq 0) {
-            Write-Host -NoNewline -ForegroundColor 'green' "done`n"
-        } else {
-            Write-Host -NoNewline -ForegroundColor 'yellow' "skipped`n"
-        }
+        $errcode, $msg=Invoke-Command -ScriptBlock $action
     } catch {
-        Write-Host -NoNewline -ForegroundColor 'red' "failed`n"
-        Write-Host -ForegroundColor 'red' $_
+        $err=$true
+        $errcode=1
+        $msg=$_
+    }
+    if(-not $err) {
+        if(-not ($errcode -is [int])) {
+            $errcode=$LastExitCode
+        }
+        if(-not $msg) {
+            $msg=$Error[0].Exception.Message
+        }
+    }
+    if(-not $disResult -and $errcode -eq 0x0) {
+        Write-Host -NoNewline -ForegroundColor 'green' "done`n"
+    } elseif($errcode -eq -0x1) {
+        Write-Host -NoNewline -ForegroundColor 'yellow' "skipped`n"
+    } elseif($errcode -gt 0x0) {
+        Write-Host -NoNewline -ForegroundColor 'red' "failed"
+        Write-Host -ForegroundColor 'red' " with code $($errcode):`n$($msg)"
         exit
     }
 }
@@ -55,97 +75,54 @@ function LogWrap([string] $msg, [ScriptBlock] $action) {
 try
 {
     LogWrap "Downloading DocFx package" {
-        if(Test-Path "./docfx") { return -1 }
-        $buff=FetchAndDownloadRelease "dotnet/docfx" "docfx.zip" 2>&1 6>$null
-        if($LastExitCode -ne 0) { throw $buff }
+        if(Test-Path "./docfx/docfx.exe") { return -0x1 }
+        FetchAndDownloadRelease "dotnet/docfx" "docfx.zip" 2>$null
     }
     LogWrap "Extracting DocFx package" {
-        if(Test-Path "./docfx") { return -1 }
-        $buff=ExtractArchive (Get-Item -Path "docfx.zip") 2>&1
-        if($LastExitCode -ne 0) { throw $buff }
+        if(Test-Path "./docfx/docfx.exe") { return -0x1 }
+        ExtractArchive "docfx.zip" 2>$null
     }
-    # Write-Host -NoNewline "Downloading DocFx package . . . "
-    # if(!(Test-Path "./docfx")) {
-    #     $file=FetchAndDownloadRelease "dotnet/docfx" "docfx.zip"
-    #     if($LastExitCode -eq 1) {
-    #         Write-Host -NoNewline -ForegroundColor 'green' "done`n"
-    #     } else {
-    #         Write-Host -NoNewline -ForegroundColor 'red' "failed`n"
-    #     }
-    # } else {
-    #     Write-Host -NoNewline -ForegroundColor 'yellow' "skipped`n"
-    # }
-    # Write-Host -NoNewline "Extracting DocFx package . . . "
-    # if(!(Test-Path "./docfx")) {
-    #     ExtractArchive $file
-    #     if($LastExitCode -lt 1) {
-    #         Write-Host -NoNewline -ForegroundColor 'green' "done`n"
-    #     } else {
-    #         Write-Host -NoNewline -ForegroundColor 'red' "failed`n"
-    #     }
-    # } else {
-    #     Write-Host -NoNewline -ForegroundColor 'yellow' "skipped`n"
-    # }
 
     LogWrap "Downloading DocFx TypeScriptReference package" {
-        if(Test-Path "./templates/docfx-plugins-typescriptreference") { return -1 }
-        $buff=FetchAndDownloadRelease "Lhoerion/DocFx.Plugins.TypeScriptReference" "docfx-plugins-typescriptreference.zip" 2>&1 6>$null
-        if($LastExitCode -ne 0) { throw $buff }
+        if(Test-Path "./templates/docfx-plugins-typescriptreference") { return -0x1 }
+        FetchAndDownloadRelease "Lhoerion/DocFx.Plugins.TypeScriptReference" "docfx-plugins-typescriptreference.zip" 2>&1 6>$null
     }
     LogWrap "Extracting DocFx TypeScriptReference package" {
-        if(Test-Path "./templates/docfx-plugins-typescriptreference") { return -1 }
-        $buff=ExtractArchive (Get-Item -Path "docfx-plugins-typescriptreference.zip") 2>&1 6>$null
-        if($LastExitCode -ne 0) { throw $buff }
+        if(Test-Path "./templates/docfx-plugins-typescriptreference") { return -0x1 }
+        ExtractArchive "docfx-plugins-typescriptreference.zip" 2>&1 6>$null
     }
-    # Write-Host -NoNewline "Downloading DocFx TypeScriptReference package . . . "
-    # if(!(Test-Path "./templates/docfx-plugins-typescriptreference")) {
-    #     $file=FetchAndDownloadRelease "Lhoerion/DocFx.Plugins.TypeScriptReference" "docfx-plugins-typescriptreference.zip"
-    #     if($LastExitCode -lt 1) {
-    #         Write-Host -NoNewline -ForegroundColor 'green' "done`n"
-    #     } else {
-    #         Write-Host -NoNewline -ForegroundColor 'red' "failed`n"
-    #     }
-    # } else {
-    #     Write-Host -NoNewline -ForegroundColor 'yellow' "skipped`n"
-    # }
-    # Write-Host -NoNewline "Extracting DocFx TypeScriptReference package . . . "
-    # if(!(Test-Path "./templates/docfx-plugins-typescriptreference")) {
-    #     ExtractArchive $file "./templates"
-    #     if($LastExitCode -lt 1) {
-    #         Write-Host -NoNewline -ForegroundColor 'green' "done`n"
-    #     } else {
-    #         Write-Host -NoNewline -ForegroundColor 'red' "failed`n"
-    #     }
-    # } else {
-    #     Write-Host -NoNewline -ForegroundColor 'yellow' "skipped`n"
-    # }
 
-    # npm init -y > $null
-    # LogWrap "Downloading node dependencies" {
-    #     $buff=npm i -D "typescript" 2>&1 6>$null
-    #     if($LastExitCode -ne 0) { throw $buff }
-    #     $buff=npm i -D "typedoc" 2>&1 6>$null
-    #     if($LastExitCode -ne 0) { throw $buff }
-    #     $buff=npm i -D "git://github.com/Lhoerion/type2docfx.git#patch-1" 2>&1 6>$null
-    #     if($LastExitCode -ne 0) { throw $buff }
-    # }
     LogWrap "Installing node dependencies" {
-        ($buff=yarn install 6>$null) -or ($buff=npm install 6>$null) >$null
-        if($LastExitCode -ne 0) { throw $buff }
-    }
-
-    LogWrap "Generating project metadata" {
-        $buff=npx typedoc --options './typedoc.json' 2>&1 6>$null
-        if($LastExitCode -ne 0) { throw $buff }
-        $buff=npx type2docfx './output.json' './api' --basePath '.' --sourceUrl 'https://github.com/altmp/altv-types' --sourceBranch 'master' --disableAlphabetOrder 2>&1 6>$null
-        if($LastExitCode -ne 0) { throw $buff }
+        yarn --version 2>$null
+        if($?) {
+            yarn install 2>$null
+        } else {
+            npm install 2>$null
+        }
     }
 
     LogWrap "Tools version" {
-        Write-Host "DocFx v$(GetAssemblyVersion ""docfx/docfx.exe"")"
+        $dotnetVersion=dotnet --version
+        $docfxVer=GetAssemblyVersion "./docfx/docfx.exe"
+        $pluginVer=GetAssemblyVersion "./templates/docfx-plugins-typescriptreference/plugins/*.dll"
+        $typedocVer=npm view typedoc version
+        $type2docfxVer=npm view typedoc version
+        Write-Host -NoNewline -ForegroundColor "green" "done`n"
+        Write-Host ".NET Core v$dotnetVersion"
+        Write-Host "DocFx v$docfxVer"
+        Write-Host "DocFx TypescriptReference v$pluginVer"
+        Write-Host "TypeDoc v$typedocVer"
+        Write-Host "type2docfx v$type2docfxVer"
+    } $true
+
+    LogWrap "Generating project metadata" {
+        $stderr=npx typedoc --options './typedoc.json' 2>$null
+        if($LastExitCode -gt 0x0) { return $LastExitCode, $stderr }
+        $stderr=npx type2docfx './output.json' './api' --basePath '.' --sourceUrl 'https://github.com/altmp/altv-types' --sourceBranch 'master' --disableAlphabetOrder 2>&1 6>$null
+        return $LastExitCode, $buff
     }
 
-    ./docfx/docfx "docfx.json" --serve -p 8080
+    ./docfx/docfx "docfx.json" --serve -p $port
 }
 finally
 {

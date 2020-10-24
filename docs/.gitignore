@@ -3,6 +3,7 @@ api/**.yml
 _site/
 [Oo]bj/
 output.json
+**.zip
 
 # Others
 docfx/
