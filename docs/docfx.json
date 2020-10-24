@@ -39,7 +39,9 @@
     ],
     "template": [
       "default",
-      "templates/darkfx"
+      "templates/docfx-plugins-typescriptreference",
+      "templates/discordfx",
+      "templates/altmp"
     ],
     "dest": "_site",
     "globalMetadata": {
