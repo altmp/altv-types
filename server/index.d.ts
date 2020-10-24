@@ -364,7 +364,7 @@ declare module "alt-server" {
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
     playerChangeVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
     playerConnect: (player: Player) => void;
-    playerDamage: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void;
+    playerDamage: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
