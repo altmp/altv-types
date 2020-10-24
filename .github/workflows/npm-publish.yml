@@ -184,7 +184,7 @@ jobs:
       - name: Generate JS metadata
         run: |
           yarn run typedoc --options "./docs/typedoc.json"
-          yarn run type2docfx "./type2docfx/dist/main.js" "./docs/output.json" "./docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
+          yarn run type2docfx "./docs/output.json" "./docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
       - name: Build docs
         run: ./docfx/docfx "./docs/docfx.json"
       - name: Pack files
