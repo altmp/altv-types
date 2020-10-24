@@ -169,6 +169,7 @@ jobs:
         run: |
           Expand-Archive -Path 'docfx.zip' -DestinationPath 'docfx/'
           Remove-Item -Path 'docfx.zip'
+          Get-ChildItem -Path "./docfx/" -Directory
       - name: Download DocFx TypeScriptReference
         uses: robinraju/release-downloader@v1
         with:
@@ -179,6 +180,7 @@ jobs:
         run: |
           Expand-Archive -Path 'docfx-plugins-typescriptreference.zip' -DestinationPath 'templates/'
           Remove-Item -Path 'docfx-plugins-typescriptreference.zip'
+          Get-ChildItem -Path "./templates/" -Directory
       - name: Install dependencies
         run: yarn install
       - name: Generate JS metadata
