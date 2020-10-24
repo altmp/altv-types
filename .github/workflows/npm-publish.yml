@@ -155,48 +155,38 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Set up .Net SDK
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-      - name: Checkout DocFX
-        uses: actions/checkout@v2
+      - name: Download DocFx
+        uses: robinraju/release-downloader@v1
         with:
-          persist-credentials: false
-          repository: Lhoerion/docfx
-          ref: patch-1
-          path: ./docfx
-      - name: Checkout type2docfx
-        uses: actions/checkout@v2
+          repository: dotnet/docfx
+          latest: true
+          fileName: docfx.zip
+      - name: Unzip DocFx package
+        run: |
+          Expand-Archive -Path 'docfx.zip' -DestinationPath 'docfx/'
+          Remove-Item -Path 'docfx.zip'
+      - name: Download DocFx TypeScriptReference
+        uses: robinraju/release-downloader@v1
         with:
-          persist-credentials: false
-          repository: Lhoerion/type2docfx
-          ref: patch-1
-          path: ./type2docfx
+          repository: Lhoerion/DocFx.Plugins.TypeScriptReference
+          latest: true
+          fileName: docfx-plugins-typescriptreference.zip
+      - name: Unzip DocFx TypeScriptReference package
+        run: |
+          Expand-Archive -Path 'docfx-plugins-typescriptreference.zip' -DestinationPath 'templates/'
+          Remove-Item -Path 'docfx-plugins-typescriptreference.zip'
       - name: Install dependencies
         run: yarn install
-      - name: Install type2docfx dependencies
-        run: npm install
-        working-directory: ./type2docfx
-      - name: Install DocFX dependencies
-        run: ./UpdateTemplate
-        shell: powershell
-        working-directory: ./docfx
-        env:
-          TF_BUILD: true
-      - name: Generate JSON
-        run: yarn run typedoc --options "./docs/typedoc.json"
-      - name: Compile type2docfx
-        run: npm run build
-        working-directory: ./type2docfx
-      - name: Generate YAML
-        run: node "./type2docfx/dist/main.js" "./docs/output.json" "./docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
-      - name: Run generator
-        run: dotnet run -p "./docfx/src/docfx/docfx.csproj" "./docs/docfx.json"
+      - name: Generate JS metadata
+        run: |
+          yarn run typedoc --options "./docs/typedoc.json"
+          yarn run type2docfx "./type2docfx/dist/main.js" "./docs/output.json" "./docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
+      - name: Build docs
+        run: ./docfx/docfx "./docs/docfx.json"
       - name: Pack files
         run: tar -cvf _site.tar _site
         working-directory: ./docs

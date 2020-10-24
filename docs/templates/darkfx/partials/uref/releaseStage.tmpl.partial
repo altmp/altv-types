@@ -1,8 +1,0 @@
-{{#releaseStage}}
-<span class="release-stage {{{.}}}"></span>
-{{/releaseStage}}
-{{^releaseStage}}
-<span class="release-stage public"></span>
-<span class="release-stage beta"></span>
-<span class="release-stage alpha"></span>
-{{/releaseStage}}
