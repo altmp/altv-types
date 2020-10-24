@@ -91,7 +91,7 @@ try
     }
     LogWrap "Extracting DocFx TypeScriptReference package" {
         if(Test-Path "./templates/docfx-plugins-typescriptreference") { return -0x1 }
-        ExtractArchive "docfx-plugins-typescriptreference.zip" 2>&1 6>$null
+        ExtractArchive "docfx-plugins-typescriptreference.zip" "templates/" 2>&1 6>$null
     }
 
     LogWrap "Installing node dependencies" {
