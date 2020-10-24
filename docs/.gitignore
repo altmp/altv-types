@@ -1,5 +1,6 @@
 # Build results
-api/**.yml
+api/**
+!api/**.md
 _site/
 [Oo]bj/
 output.json

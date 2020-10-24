@@ -23,9 +23,11 @@ function GetAssemblyVersion([string] $file) {
     }
 }
 
-function FetchAndDownloadRelease([string] $repo, [string] $file) {
+function FetchAndDownloadRelease([string] $repo, [string] $file, [string] $tag=$null) {
     $global:ProgressPreference='SilentlyContinue'
-    $tag=(Invoke-WebRequest -UseBasicParsing "https://api.github.com/repos/$repo/releases" | ConvertFrom-Json)[0].tag_name
+    if(-not $tag) {
+        $tag=(Invoke-WebRequest -UseBasicParsing "https://api.github.com/repos/$repo/releases" | ConvertFrom-Json)[0].tag_name
+    }
     Invoke-WebRequest -UseBasicParsing "https://github.com/$repo/releases/download/$tag/$file" -OutFile $file
     $global:ProgressPreference='Continue'
     return ([int]$? - 1)
@@ -122,7 +124,7 @@ try
         return $LastExitCode, $buff
     }
 
-    ./docfx/docfx "docfx.json" --serve -p $port
+    ./docfx/docfx build "docfx.json" --serve -p $port
 }
 finally
 {
