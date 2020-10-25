@@ -690,6 +690,7 @@ declare module "alt-server" {
 
   export class Vehicle extends Entity {
     public static readonly all: Array<Vehicle>;
+    public readonly model: number | string;
     public activeRadioStation: RadioStation;
     public bodyAdditionalHealth: number;
     public bodyHealth: number;
