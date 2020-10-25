@@ -690,6 +690,11 @@ declare module "alt-server" {
 
   export class Vehicle extends Entity {
     public static readonly all: Array<Vehicle>;
+    /**
+     * Entity model hash.
+     *
+     * @remarks Only setter accepts string or number as input, getter returns value as number.
+     */
     public readonly model: number | string;
     public activeRadioStation: RadioStation;
     public bodyAdditionalHealth: number;
