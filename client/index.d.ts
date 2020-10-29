@@ -964,17 +964,17 @@ declare module "alt-client" {
   export function requestIpl(iplName: string): void;
 
   /**
-   * Output is returned as string.
+   * The output is returned as a string.
    *
    * @return Return is dependent on the success of the operation.
    */
   export function takeScreenshot(): Promise<string>;
 
   /**
-   * Output is returned as string.
+   * The output is returned as a string.
    *
    * @return Return is dependent on the success of the operation.
-   * @remarks This only takes a screenshot of the raw GTA:V window, webviews etc. are not visible.
+   * @remarks This only takes a screenshot of the raw GTA:V window. WebViews, game overlays etc. won't be captured.
    */
   export function takeScreenshotGameOnly(): Promise<string>;
 
