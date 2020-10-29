@@ -1,5 +1,6 @@
 param(
     [string] $port = "8080",
+    [Switch] $cleanMetadata = $false,
     [Switch] $cleanOnly = $false
 )
 
@@ -7,14 +8,11 @@ function PostCleanup() {
     Remove-Item -Path 'docfx.zip' -Force 2>&1 > $null
     Remove-Item -Path 'docfx-plugins-typescriptreference.zip' -Force 2>&1 > $null
     Remove-Item -Path 'docfx-tmpls-discordfx.zip' -Force 2>&1 > $null
-    Remove-Item -Path 'package.json' -Force 2>&1 > $null
-    Remove-Item -Path 'package-lock.json' -Force 2>&1 > $null
-    Remove-Item -Path './node_modules/' -Recurse -Force 2>&1 > $null
-    if($cleanOnly) {
+    if($cleanMetadata) {
         Remove-Item -Path './_site/' -Recurse -Force 2>&1 > $null
         Remove-Item -Path './obj' -Recurse -Force 2>&1 > $null
         Remove-Item -Path './api/**.yml' -Force 2>&1 > $null
-        Remove-Item -Path 'output.json' -Force 2>&1 > $null
+        Remove-Item -Path './api/.manifest' -Force 2>&1 > $null
     }
 }
 
@@ -138,7 +136,7 @@ try
     LogWrap "Generating project metadata" {
         $stderr=npx typedoc --options './typedoc.json' 2>$null
         if($LastExitCode -gt 0x0) { return $LastExitCode, $stderr }
-        $stderr=npx type2docfx './output.json' './api/' --basePath '.' --sourceUrl 'https://github.com/altmp/altv-types' --sourceBranch 'master' --disableAlphabetOrder 2>&1 6>$null
+        $stderr=npx type2docfx './api/.manifest' './api/' --basePath '.' --sourceUrl 'https://github.com/altmp/altv-types' --sourceBranch 'master' --disableAlphabetOrder 2>&1 6>$null
         return $LastExitCode, $buff
     }
 

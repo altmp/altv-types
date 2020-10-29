@@ -1,0 +1,28 @@
+name: Documentation
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'docs/api/**.md'
+      - 'docs/articles/**.md'
+      - 'docs/images/**'
+      - 'docs/*.json'
+      - 'docs/filterConfig.yml'
+      - 'docs/index.md'
+      - 'docs/toc.yml'
+      - 'client/**.ts'
+      - 'server/**.ts'
+      - '!docs/build.*'
+      - '!docs/.gitignore'
+jobs:
+  docs:
+    name: Update documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch event to altv-docs repo
+        uses: peter-evans/repository-dispatch@v1.1.2
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: altmp/altv-docs
+          event-type: Update JS documentation
