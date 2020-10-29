@@ -8,6 +8,6 @@
     "../server"
   ],
   "out": "",
-  "json": "output.json",
+  "json": "api/.manifest",
   "name": "@altmp/altv-types"
 }
