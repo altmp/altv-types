@@ -1002,6 +1002,14 @@ declare module "alt-client" {
 
   export function setMsPerGameMinute(miliseconds: number): void;
 
+  /**
+   * Sets the rotation velocity for the specified entity.
+   * 
+   * @param scriptID The script id of the entity.
+   * @param x The rotation velocity on the X axis.
+   * @param y The rotation velocity on the Y axis.
+   * @param z The rotation velocity on the Z axis.
+   */
   export function setRotationVelocity(scriptID: number, x: number, y: number, z: number): void;
 
   /**
