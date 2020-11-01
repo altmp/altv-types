@@ -101,8 +101,9 @@ declare module "alt-client" {
    * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
    * This handling applies to particular vehicle instance, as opposed to the {@link HandlingData}.
    * 
-   * @beta
    * @remarks Changes will be reflected only on a particular instance of the vehicle. On creation, model handling will be used as a base and changed properties will be added on top of it.
+   * 
+   * @beta
    */
   export interface IVehicleHandling {
     acceleration: number;
