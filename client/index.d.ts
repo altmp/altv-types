@@ -1002,6 +1002,8 @@ declare module "alt-client" {
 
   export function setMsPerGameMinute(miliseconds: number): void;
 
+  export function setRotationVelocity(scriptID: number, x: number, y: number, z: number): void;
+
   /**
    * Sets a statistic to desired value.
    *
