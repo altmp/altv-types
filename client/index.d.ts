@@ -632,8 +632,15 @@ declare module "alt-client" {
 
     /**
      * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
+     *
+     * @beta
      */
     public static getForHandlingName(handlingHash: number): HandlingData;
+
+    /**
+     * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
+     */
+    public static getForModelName(handlingHash: number): HandlingData;
   }
 
   export class MapZoomData {
@@ -949,7 +956,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
    * Subscribes to client event handler with specified listener.
