@@ -639,6 +639,8 @@ declare module "alt-client" {
 
     /**
      * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
+     *
+     * @deprecated See {@link getForHandlingName}.
      */
     public static getForModelName(handlingHash: number): HandlingData;
   }
