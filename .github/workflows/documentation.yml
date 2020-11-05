@@ -20,6 +20,7 @@ jobs:
   docs:
     name: Update documentation
     runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'Bump version') || contains(github.event.head_commit.message, 'Update documentation')"
     steps:
       - name: Dispatch event to altv-docs repo
         uses: peter-evans/repository-dispatch@v1.1.2
