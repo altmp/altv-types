@@ -184,6 +184,13 @@ declare module "alt-client" {
     reset(): void;
   }
 
+  export interface IVehicleNeon {
+    left: boolean;
+    right: boolean;
+    front: boolean;
+    back: boolean;
+  }
+
   export interface IVector2 {
     readonly x: number;
 
@@ -478,6 +485,135 @@ declare module "alt-client" {
 
     /** Vehicle wheel count */
     public readonly wheelsCount: number;
+
+    /** Is the vehicle destroyed */
+    public readonly destroyed: boolean;
+
+    /** Available modkits for the vehicle */
+    public readonly modKitsCount: number;
+
+    /** Current vehicle modkit */
+    public readonly modKit: number;
+
+    /** Vehicle primary color */
+    public readonly primaryColor: number;
+
+    /** Custom (RGB) vehicle primary color */
+    public readonly customPrimaryColor: RGBA;
+
+    /** Vehicle secondary color */
+    public readonly secondaryColor: number;
+
+    /** Custom (RGB) vehicle secondary color */
+    public readonly customSecondaryColor: RGBA;
+
+    /** Vehicle pearl color */
+    public readonly pearlColor: number;
+
+    /** Vehicle wheel color */
+    public readonly wheelColor: number;
+
+    /** Vehicle interior color */
+    public readonly interiorColor: number;
+
+    /** Vehicle dashboard color */
+    public readonly dashboardColor: number;
+
+    /** Vehicle tire smoke color */
+    public readonly tireSmokeColor: number;
+
+    /** Vehicle wheel type */
+    public readonly wheelType: number;
+
+    /** Vehicle front wheels variation */
+    public readonly frontWheels: number;
+
+    /** Vehicle rear wheels variation */
+    public readonly rearWheels: number;
+
+    /** Are custom tires active */
+    public readonly customTires: boolean;
+
+    /** Vehicle darkness */
+    public readonly darkness: number;
+
+    /** Vehicle numberplate type index */
+    public readonly numberPlateIndex: number;
+
+    /** Vehicle numberplate text */
+    public readonly numberPlateText: string;
+
+    /** Vehicle window tint */
+    public readonly windowTint: number;
+
+    /** Vehicle dirt level */
+    public readonly dirtLevel: number;
+
+    /** Vehicle neon */
+    public readonly neon: IVehicleNeon;
+
+    /** Vehicle neon color */
+    public readonly neonColor: RGBA;
+
+    /** Vehicle livery */
+    public readonly livery: number;
+
+    /** Vehicle roof livery */
+    public readonly roofLivery: number;
+
+    /** Vehicle engine state */
+    public readonly engineOn: boolean;
+
+    /** Vehicle handbrake state */
+    public readonly handbrakeActive: boolean;
+
+    /** Vehicle headlight color */
+    public readonly headlightColor: number;
+
+    /** Active radio station */
+    public readonly activeRadioStation: number;
+
+    /** Vehicle siren state */
+    public readonly sirenActive: boolean;
+
+    /** Vehicle lock state */
+    public readonly lockState: number;
+
+    /** Vehicle daylight state */
+    public readonly daylightOn: boolean;
+
+    /** Vehicle nightlight state */
+    public readonly nightlightOn: boolean;
+
+    /** Vehicle roof state */
+    public readonly roofState: number;
+
+    /** Vehicle flamethrower state */
+    public readonly flamethrowerActive: boolean;
+
+    /** Vehicle lights multiplier */
+    public readonly lightsMultiplier: number;
+
+    /** Vehicle engine health */
+    public readonly engineHealth: number;
+
+    /** Vehicle petrol talk health */
+    public readonly petrolTankHealth: number;
+
+    /** Vehicle repairs count */
+    public readonly repairsCount: number;
+
+    /** Vehicle body health */
+    public readonly bodyHealth: number;
+
+    /** Vehicle additional body health */
+    public readonly bodyAdditionalHealth: number;
+
+    /** Vehicle armored windows state */
+    public readonly hasArmoredWindows: boolean;
+
+    /** Vehicle manual engine control state */
+    public readonly manualEngineControl: boolean;
 
     /**
      * Retrieves the vehicle from the pool.
