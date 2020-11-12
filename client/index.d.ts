@@ -387,6 +387,56 @@ declare module "alt-client" {
     /** Player's vehicle, null if player is not in any vehicle */
     public readonly vehicle: Vehicle | null;
 
+    /** Current weapon components */
+    public readonly currentWeaponComponents: Array<number>;
+
+    /** Tint index for currently equipeed weapon */
+    public readonly currentWeaponTintIndex: number;
+
+    /* Currently equipped weapon */
+    public readonly currentWeapon: number;
+
+    /** Is the player currently jumping */
+    public readonly isJumping: boolean;
+
+    /** Is the player currently in ragdoll */
+    public readonly isInRagdoll: boolean;
+
+    /** Is the player currently aiming */
+    public readonly isAiming: boolean;
+
+    /** Is the player currently shooting with a weapon */
+    public readonly isShooting: boolean;
+
+    /** Is the player currently reloading their weapon */
+    public readonly isReloading: boolean;
+
+    /** Current armour */
+    public readonly armour: number;
+
+    /** Max available armour value */
+    public readonly maxArmour: number;
+
+    /** Current player movement speed */
+    public readonly moveSpeed: number;
+
+    /** Position the player is currently aiming at */
+    public readonly aimPos: Vector3;
+
+    /** Rotation of the head of the player */
+    public readonly headRot: Vector3;
+
+    /** Curent seat the player is sitting in */
+    public readonly seat: number;
+
+    /** The entity the player is aiming at */
+    public readonly entityAimingAt: Entity | null;
+
+    public readonly entityAimOffset: Vector3 | null;
+
+    /** Is the flashlight of the player activated */
+    public readonly flashlightActive: boolean;
+
     /**
      * Retrieves the player from the pool.
      *
