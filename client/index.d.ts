@@ -1,41 +1,231 @@
 declare module "alt-client" {
-  type StatName = "stamina" | "strength" | "lung_capacity" | "wheelie_ability" | "flying_ability" | "shooting_ability" | "stealth_ability";
+  export const enum Locale {
+    Arabic = "ar",
+    Belarusian = "by",
+    Czech = "cz",
+    German = "de",
+    English = "en",
+    Spanish = "es",
+    Farsi = "fa",
+    French = "fr",
+    Hebrew = "he",
+    Hungarian = "hu",
+    Indonesian = "id",
+    Hindi = "in_hd", // Wrong tag (hi_in)
+    Malayalam = "in_ml", // Wrong tag (ml_in)
+    Telugu = "in_tl", // Wrong tag (te_in)
+    Tamil = "in_tm", // Wrong tag (ta_in)
+    Italian = "it",
+    Lithuanian = "lt",
+    Latvian = "lv",
+    NorwegianBokmal = "nb_no",
+    NorwegianNynorsk = "nn_no",
+    Polish = "pl",
+    Portugese = "pt",
+    BrazilianPortuguese = "pt_br",
+    Romanian = "ro",
+    Serbian = "rs", // Wrong tag (sr)
+    Russian = "ru",
+    Slovak = "sk",
+    Thai = "th",
+    Turkish = "tr",
+    Ukrainian = "ua", // Wrong tag (uk)
+    ChineseSimplified = "zh_cn",
+    ChineseTraditional = "zh_tw"
+  }
 
-  export interface DiscordOAuth2Token {
+  export const enum StatName {
+    Stamina = "stamina",
+    Strength = "strength",
+    LungCapacity = "lung_capacity",
+    Wheelie = "wheelie_ability",
+    Flying = "flying_ability",
+    Shooting = "shooting_ability",
+    Stealth = "stealth_ability"
+  }
+
+  export const enum FileEncoding {
+    Utf8 = "utf-8",
+    Utf16 = "utf-16",
+    Binary = "binary"
+  }
+
+  export const enum BaseObjectType {
+    Player,
+    Vehicle,
+    Blip,
+    WebView,
+    VoiceChannel,
+    Colshape,
+    Checkpoint
+  }
+
+  export interface IClientEvent {
+    anyResourceError: (resourceName: string) => void;
+    anyResourceStart: (resourceName: string) => void;
+    anyResourceStop: (resourceName: string) => void;
+    connectionComplete: () => void;
+    consoleCommand: (name: string, ...args: string[]) => void;
+    disconnect: () => void;
+    gameEntityCreate: (entity: Entity) => void;
+    gameEntityDestroy: (entity: Entity) => void;
+    keydown: (key: number) => void;
+    keyup: (key: number) => void;
+    removeEntity: (object: BaseObject) => void;
+    resourceStart: (errored: boolean) => void;
+    resourceStop: () => void;
+    syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    globalMetaChange: (key: string, value: any, oldValue: any) => void;
+    globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
+    /**
+     * No particular usage for now, stick to {@link everyTick} instead.
+     */
+    render: () => void;
+  }
+
+  export interface IDiscordOAuth2Token {
     readonly token: string
     readonly expires: number;
     readonly scopes: string;
   }
 
-  export interface DiscordUser {
+  export interface IDiscordUser {
     readonly id: string;
     readonly name: string;
     readonly discriminator: string;
     readonly avatar: string;
   }
 
-  export interface Vector2 {
-    /** x component of Vector2 */
+  /**
+   * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
+   * This handling applies to particular vehicle instance, as opposed to the {@link HandlingData}.
+   * 
+   * @remarks Changes will be reflected only on a particular instance of the vehicle. On creation, model handling will be used as a base and changed properties will be added on top of it.
+   * 
+   * @beta
+   */
+  export interface IVehicleHandling {
+    acceleration: number;
+    antiRollBarBiasFront: number;
+    antiRollBarBiasRear: number;
+    antiRollBarForce: number;
+    brakeBiasFront: number;
+    brakeBiasRear: number;
+    brakeForce: number;
+    camberStiffnesss: number;
+    centreOfMassOffset: Vector3;
+    clutchChangeRateScaleDownShift: number;
+    clutchChangeRateScaleUpShift: number;
+    collisionDamageMult: number;
+    damageFlags: number;
+    deformationDamageMult: number;
+    downforceModifier: number;
+    driveBiasFront: number;
+    driveInertia: number;
+    driveMaxFlatVel: number;
+    engineDamageMult: number;
+    handBrakeForce: number;
+    handlingFlags: number;
+    readonly handlingNameHash: number;
+    inertiaMultiplier: Vector3;
+    initialDragCoeff: number;
+    initialDriveForce: number;
+    initialDriveGears: number;
+    initialDriveMaxFlatVel: number;
+    lowSpeedTractionLossMult: number;
+    mass: number;
+    modelFlags: number;
+    monetaryValue: number;
+    oilVolume: number;
+    percentSubmerged: number;
+    percentSubmergedRatio: number;
+    petrolTankVolume: number;
+    rollCentreHeightFront: number;
+    rollCentreHeightRear: number;
+    seatOffsetDistX: number;
+    seatOffsetDistY: number;
+    seatOffsetDistZ: number;
+    steeringLock: number;
+    steeringLockRatio: number;
+    suspensionBiasFront: number;
+    suspensionBiasRear: number;
+    suspensionCompDamp: number;
+    suspensionForce: number;
+    suspensionLowerLimit: number;
+    suspensionRaise: number;
+    suspensionReboundDamp: number;
+    suspensionUpperLimit: number;
+    tractionBiasFront: number;
+    tractionBiasRear: number;
+    tractionCurveLateral: number;
+    tractionCurveLateralRatio: number;
+    tractionCurveMax: number;
+    tractionCurveMaxRatio: number;
+    tractionCurveMin: number;
+    tractionCurveMinRatio: number;
+    tractionLossMult: number;
+    tractionSpringDeltaMax: number;
+    tractionSpringDeltaMaxRatio: number;
+    unkFloat1: number;
+    unkFloat2: number;
+    unkFloat4: number;
+    unkFloat5: number;
+    weaponDamageMult: number;
+
+    /**
+     * Indicates whether vehicle handling was modified.
+     *
+     * @returns `true` if vehicle handling was modified; otherwise, `false`.
+     */
+    isModified(): boolean;
+
+    /**
+     * Resets the vehicle handling back to a model handling.
+     */
+    reset(): void;
+  }
+
+  export interface IVector2 {
     readonly x: number;
 
-    /** y component of Vector2 */
     readonly y: number;
   }
 
+  export interface IVector3 {
+    readonly x: number;
+
+    readonly y: number;
+
+    readonly z: number;
+  }
+
+  /**
+   * Represents the current client version.
+   *
+   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   * @beta
+   */
+  export const Version: string;
+
+  /**
+   * Represents the current client branch.
+   * @beta
+   */
+  export const Branch: string;
+
   export class Vector3 {
-    /** x component of Vector3 */
     public readonly x: number;
-    /** y component of Vector3 */
+
     public readonly y: number;
-    /** z component of Vector3 */
+
     public readonly z: number;
 
-    /**
-     * @param x An x component.
-     * @param y An y component.
-     * @param z An z component.
-     */
     constructor(x: number, y: number, z: number);
+
+    constructor(arr: number[]);
+
+    constructor(obj: IVector3);
   }
 
   export class RGBA {
@@ -62,7 +252,7 @@ declare module "alt-client" {
     /**
      * Type of the object.
      */
-    public readonly type: number;
+    public readonly type: BaseObjectType;
 
     /**
      * Object usability.
@@ -224,6 +414,12 @@ declare module "alt-client" {
     /** Vehicle gear */
     public gear: number;
 
+    /**
+     * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
+     * @beta
+     */
+    public handling: IVehicleHandling;
+
     /** Vehicle RPM [0, 1] */
     public readonly rpm: number;
 
@@ -373,6 +569,12 @@ declare module "alt-client" {
     constructor(x: number, y: number, z: number);
   }
 
+  /**
+   * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
+   * This handling applies to all vehicle instances, as opposed to the {@link Vehicle.handling}.
+   *
+   * @remarks Changes will be reflected on every vehicle using this particular handling, but might require vehicle recreating for changes to apply properly.
+   */
   export class HandlingData {
     public acceleration: number;
     public antiRollBarBiasFront: number;
@@ -380,7 +582,7 @@ declare module "alt-client" {
     public antiRollBarForce: number;
     public brakeBiasFront: number;
     public brakeBiasRear: number;
-    public breakForce: number;
+    public brakeForce: number;
     public camberStiffnesss: number;
     public centreOfMassOffset: Vector3;
     public clutchChangeRateScaleDownShift: number;
@@ -442,11 +644,18 @@ declare module "alt-client" {
     public weaponDamageMult: number;
 
     /**
-     * Gets the handling data for the specified handling name.
+     * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
      *
-     * @param handlingHash Hash of the handling name.
+     * @beta
      */
-    public static getForModel(handlingHash: number): HandlingData;
+    public static getForHandlingName(handlingHash: number): HandlingData;
+
+    /**
+     * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
+     *
+     * @deprecated See {@link getForHandlingName}.
+     */
+    public static getForModelName(handlingHash: number): HandlingData;
   }
 
   export class MapZoomData {
@@ -615,12 +824,12 @@ declare module "alt-client" {
   }
 
   export class Discord {
-    public static readonly currentUser: DiscordUser | null;
+    public static readonly currentUser: IDiscordUser | null;
 
     /**
-     * @deprecated
+     * @deprecated Seriously, don't use it because it might get removed someday in most unexpected moment.
      */
-    public static requestOAuth2Token(): Promise<DiscordOAuth2Token>;
+    public static requestOAuth2Token(): Promise<IDiscordOAuth2Token>;
   }
 
   export class File {
@@ -638,7 +847,7 @@ declare module "alt-client" {
      * @param filename The name of the file.
      * @param encoding The encoding of the file. If not specified, it defaults to "utf-8".
      */
-    public static read(filename: string, encoding?: "utf-8" | "utf-16"): string;
+    public static read(filename: string, encoding?: FileEncoding.Utf8 | FileEncoding.Utf16): string;
 
     /**
      * Reads content of the file.
@@ -646,7 +855,7 @@ declare module "alt-client" {
      * @param filename The name of the file.
      * @param encoding The encoding of the file.
      */
-    public static read(filename: string, encoding: "binary"): ArrayBuffer;
+    public static read(filename: string, encoding: FileEncoding.Binary): ArrayBuffer;
   }
 
   /**
@@ -780,7 +989,7 @@ declare module "alt-client" {
   /**
    * Gets the current position of the cursor.
    */
-  export function getCursorPos(): Vector2;
+  export function getCursorPos(): IVector2;
 
   /**
    * Gets a GXT value. (localized string)
@@ -826,11 +1035,18 @@ declare module "alt-client" {
   export function isConsoleOpen(): boolean;
 
   /**
-   * Sandbox mode
+   * Sandbox mode.
    *
    * @returns True when alt:V client is launched in sandbox mode.
    */
   export function isInSandbox(): boolean;
+
+  /**
+   * Streamer mode.
+   *
+   * @returns True when alt:V client is launched in streamer mode.
+   */
+  export function isInStreamerMode(): boolean;
 
   /**
    * Returns state of user interface and console window.
@@ -847,12 +1063,12 @@ declare module "alt-client" {
   export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
 
   /**
-   * @ignore Should not be used until fixed
+   * @ignore Should not be used until fixed.
    */
   export function loadModel(modelHash: number): void;
 
   /**
-   * @ignore Should not be used until fixed
+   * @ignore Should not be used until fixed.
    */
   export function loadModelAsync(modelHash: number): void;
 
@@ -903,7 +1119,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: string, listener: (...args: any[]) => void): void;
+  export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -911,135 +1127,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: "anyResourceError", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "anyResourceStart", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "anyResourceStop", listener: (resourceName: string) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "connectionComplete", listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "consoleCommand", listener: (name: string, ...args: string[]) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "disconnect", listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "gameEntityCreate", listener: (entity: Entity) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "gameEntityDestroy", listener: (entity: Entity) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "keydown", listener: (key: number) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "keyup", listener: (key: number) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "removeEntity", listener: (object: BaseObject) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "resourceStart", listener: (errored: boolean) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "resourceStop", listener: () => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "syncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "streamSyncedMetaChange", listener: (entity: Entity, key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "globalMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
-
-  /**
-   * Subscribes to client event handler with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on(eventName: "globalSyncedMetaChange", listener: (key: string, value: any, oldValue: any) => void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -1078,13 +1166,19 @@ declare module "alt-client" {
   export function requestIpl(iplName: string): void;
 
   /**
-   * Output is saved to screenshots folder in root directory.
+   * The output is returned as a string.
    *
-   * @remarks Only available in sandbox mode.
-   * @param stem Filename without extension.
    * @return Return is dependent on the success of the operation.
    */
-  export function saveScreenshot(stem: string): boolean;
+  export function takeScreenshot(): Promise<string>;
+
+  /**
+   * The output is returned as a string.
+   *
+   * @return Return is dependent on the success of the operation.
+   * @remarks This only takes a screenshot of the raw GTA:V window. WebViews, game overlays etc. won't be captured.
+   */
+  export function takeScreenshotGameOnly(): Promise<string>;
 
   /**
    * Resets a statistic to its default value.
@@ -1105,7 +1199,7 @@ declare module "alt-client" {
    *
    * @param pos A 2 dimensional vector representing a point on the screen.
    */
-  export function setCursorPos(pos: Vector2): void;
+  export function setCursorPos(pos: IVector2): void;
 
   /**
    * Schedules execution of handler in specified intervals.
@@ -1129,6 +1223,16 @@ declare module "alt-client" {
    * @param miliseconds Amount of milliseconds that should pass every game minute.
    */
   export function setMsPerGameMinute(miliseconds: number): void;
+
+  /**
+   * Sets the rotation velocity for the specified entity.
+   * 
+   * @param scriptID The script id of the entity.
+   * @param x The rotation velocity on the X axis.
+   * @param y The rotation velocity on the Y axis.
+   * @param z The rotation velocity on the Z axis.
+   */
+  export function setRotationVelocity(scriptID: number, x: number, y: number, z: number): void;
 
   /**
    * Sets a statistic to desired value.

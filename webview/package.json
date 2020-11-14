@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "test": "tsc",
-    "preversion": "npm run test",
-    "release": "npm version --no-git-tag-version"
+    "preversion": "yarn run test",
+    "release": "yarn version --no-git-tag-version"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "altmp",
     "altv",
     "webview",
+    "v8",
     "cef",
     "gta",
     "gta5",

@@ -4,57 +4,46 @@
       {
         "files": [
           "api/**.yml",
-          "api/index.md"
+          "api/index.md",
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "index.md"
         ],
         "exclude": [
           "api/index.yml"
         ]
-      },
-      {
-        "files": [
-          "articles/**.md",
-          "articles/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
       }
     ],
     "resource": [
-        {
-          "files": [
-            "CNAME"
-          ]
-        }
+      {
+        "files": [
+          "CNAME"
+        ]
+      }
     ],
     "overwrite": [
       {
         "files": [
-          "apidoc/**.md"
-        ],
-        "exclude": [
-          "obj/**",
-          "_site/**"
+          "apidoc/**.yml"
         ]
       }
     ],
+    "globalMetadata": {
+      "_disableSideFilter": true,
+      "_gitContribute": {
+        "branch": "master",
+        "apiSpecFolder": "docs/apidoc"
+      },
+      "_gitUrlPattern": "github"
+    },
     "template": [
       "default",
-      "templates/darkfx"
-    ],
-    "dest": "_site",
-    "globalMetadata": {
-      "_disableAffix": "true",
-      "_enableSearch": "true"
-    },
-    "globalMetadataFiles": [],
-    "fileMetadataFiles": [],
-    "postProcessors": [
-      "ExtractSearchIndex"
+      "templates/docfx-plugins-typescriptreference",
+      "templates/discordfx",
+      "templates/altmp"
     ],
     "markdownEngineName": "markdig",
-    "noLangKeyword": false,
-    "keepFileLink": false,
-    "cleanupCacheHistory": false,
-    "disableGitFeatures": false
+    "dest": "_site"
   }
 }

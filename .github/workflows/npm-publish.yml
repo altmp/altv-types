@@ -24,13 +24,13 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-          package: ./package.json
+          package: ./client/package.json
   webview:
     name: Publish webview
     runs-on: ubuntu-latest
@@ -51,13 +51,13 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-          package: ./package.json
+          package: ./webview/package.json
   natives:
     name: Publish natives
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Checkout generator
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: actions/checkout@v2
@@ -118,7 +118,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
-          package: ./package.json
+          package: ./natives/package.json
   server:
     name: Publish server
     runs-on: ubuntu-latest
@@ -139,98 +139,10 @@ jobs:
         id: pkgver
         run: |
           echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-          echo "::set-output name=remote::$(npm show $(node -p -e "require('./package.json').name") version)"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./server/package.json
-  docs:
-    name: Publish documentation
-    runs-on: windows-latest
-    if: "contains(github.event.head_commit.message, 'Bump version') || contains(github.event.head_commit.message, 'Update documentation')"
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      - name: Set up .Net SDK
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-      - name: Checkout DocFX
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          repository: Lhoerion/docfx
-          ref: patch-1
-          path: ./docfx
-      - name: Checkout type2docfx
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          repository: Lhoerion/type2docfx
-          ref: patch-1
-          path: ./type2docfx
-      - name: Install dependencies
-        run: npm install
-      - name: Install type2docfx dependencies
-        run: npm install
-        working-directory: ./type2docfx
-      - name: Install DocFX dependencies
-        run: ./UpdateTemplate
-        shell: powershell
-        working-directory: ./docfx
-        env:
-          TF_BUILD: true
-      - name: Generate JSON
-        run: npx typedoc --options "./docs/typedoc.json"
-      - name: Compile type2docfx
-        run: npm run build
-        working-directory: ./type2docfx
-      - name: Generate YAML
-        run: node "./type2docfx/dist/main.js" "./docs/output.json" "./docs/api" --basePath "." --sourceUrl "https://github.com/altmp/altv-types" --sourceBranch "master" --disableAlphabetOrder
-      - name: Run generator
-        run: dotnet run -p "./docfx/src/docfx/docfx.csproj" "./docs/docfx.json"
-      - name: Pack files
-        run: tar -cvf _site.tar _site
-        working-directory: ./docs
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: site
-          path: ./docs/_site.tar
-  deploy:
-    name: Deploy GitHub Pages
-    runs-on: ubuntu-latest
-    needs: [docs]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-      - name: Download artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: site
-          path: ./docs
-      - name: Unpack files
-        run: tar -xvf _site.tar
-        working-directory: ./docs
-      - name: Cleanup artifacts
-        uses: geekyeggo/delete-artifact@v1
-        with:
-          name: site
-      - name: Deploy page
-        uses: JamesIves/github-pages-deploy-action@3.5.9
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: docs/_site
-          clean: true
