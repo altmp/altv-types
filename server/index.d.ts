@@ -417,7 +417,7 @@ declare module "alt-server" {
   export const DefaultDimension: number;
   export const GlobalDimension: number;
 
-  export class Vector3 implements IVector3 {
+  export class Vector3 {
     public readonly x: number;
 
     public readonly y: number;
