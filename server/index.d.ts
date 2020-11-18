@@ -431,29 +431,23 @@ declare module "alt-server" {
     constructor(obj: IVector3);
 
     public get length(): number;
-    
     public toArray(): [number, number, number];
-
     public add(x: number, y: number, z: number): Vector3;
     public add(value: number): Vector3;
     public add(array: [number, number, number]): Vector3;
     public add(vector: IVector3): Vector3;
-  
     public sub(x: number, y: number, z: number): Vector3;
     public sub(value: number): Vector3;
     public sub(array: [number, number, number]): Vector3;
     public sub(vector: IVector3): Vector3;
-
     public div(x: number, y: number, z: number): Vector3;
     public div(value: number): Vector3;
     public div(array: [number, number, number]): Vector3;
     public div(vector: IVector3): Vector3;
-
     public mul(x: number, y: number, z: number): Vector3;
     public mul(value: number): Vector3;
     public mul(array: [number, number, number]): Vector3;
     public mul(vector: IVector3): Vector3;
-
     public negative(): Vector3;
     public normalize(): Vector3;
     public distanceTo(vector: IVector3): Vector3;
@@ -461,7 +455,7 @@ declare module "alt-server" {
     public angleToDegrees(vector: IVector3): Vector3;
     public toRadians(): Vector3;
     public toDegrees(): Vector3;
-    public isInRange(vector: IVector3, range: number): Vector3;
+    public isInRange(vector: IVector3, range: number): boolean;
   }
 
   export class RGBA {
