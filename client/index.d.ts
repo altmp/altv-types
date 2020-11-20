@@ -571,258 +571,301 @@ declare module "alt-client" {
 
     /**
      * Is the vehicle destroyed
+     * 
      * @alpha
      */
     public readonly destroyed: boolean;
 
     /**
      * Available modkits for the vehicle
+     * 
      * @alpha
      */
     public readonly modKitsCount: number;
 
     /**
      * Current vehicle modkit
+     * 
      * @alpha
      */
     public readonly modKit: number;
 
     /**
      * Vehicle primary color
+     * 
      * @alpha
      */
     public readonly primaryColor: number;
 
     /**
      * Custom (RGB) vehicle primary color
+     * 
      * @alpha
      */
     public readonly customPrimaryColor: RGBA;
 
     /**
      * Vehicle secondary color
+     * 
      * @alpha
      */
     public readonly secondaryColor: number;
 
     /**
      * Custom (RGB) vehicle secondary color
+     * 
      * @alpha
      */
     public readonly customSecondaryColor: RGBA;
 
     /**
      * Vehicle pearl color
+     * 
      * @alpha
      */
     public readonly pearlColor: number;
 
     /**
      * Vehicle wheel color
+     * 
      * @alpha
      */
     public readonly wheelColor: number;
 
     /**
      * Vehicle interior color
+     * 
      * @alpha
      */
     public readonly interiorColor: number;
 
     /**
      * Vehicle dashboard color
+     * 
      * @alpha
      */
     public readonly dashboardColor: number;
 
     /**
      * Vehicle tire smoke color
+     * 
      * @alpha
      */
     public readonly tireSmokeColor: number;
 
     /**
      * Vehicle wheel type
+     * 
      * @alpha
      */
     public readonly wheelType: number;
 
     /**
      * Vehicle front wheels variation
+     * 
      * @alpha
      */
     public readonly frontWheels: number;
 
     /**
      * Vehicle rear wheels variation
+     * 
      * @alpha
      */
     public readonly rearWheels: number;
 
     /**
      * Are custom tires active
+     * 
      * @alpha
      */
     public readonly customTires: boolean;
 
     /**
      * Vehicle darkness
+     * 
      * @alpha
      */
     public readonly darkness: number;
 
     /**
      * Vehicle numberplate type index
+     * 
      * @alpha
      */
     public readonly numberPlateIndex: number;
 
     /**
      * Vehicle numberplate text
+     * 
      * @alpha
      */
     public readonly numberPlateText: string;
 
     /**
      * Vehicle window tint
+     * 
      * @alpha
      */
     public readonly windowTint: number;
 
     /**
      * Vehicle dirt level
+     * 
      * @alpha
      */
     public readonly dirtLevel: number;
 
     /**
      * Vehicle neon
+     * 
      * @alpha
      */
     public readonly neon: IVehicleNeon;
 
     /**
      * Vehicle neon color
+     * 
      * @alpha
      */
     public readonly neonColor: RGBA;
 
     /**
      * Vehicle livery
+     * 
      * @alpha
      */
     public readonly livery: number;
 
     /**
      * Vehicle roof livery
+     * 
      * @alpha
      */
     public readonly roofLivery: number;
 
     /**
      * Vehicle engine state
+     * 
      * @alpha
      */
     public readonly engineOn: boolean;
 
     /**
      * Vehicle handbrake state
+     * 
      * @alpha
      */
     public readonly handbrakeActive: boolean;
 
     /**
      * Vehicle headlight color
+     * 
      * @alpha
      */
     public readonly headlightColor: number;
 
     /**
      * Active radio station
+     * 
      * @alpha
      */
     public readonly activeRadioStation: number;
 
     /**
      * Vehicle siren state
+     * 
      * @alpha
      */
     public readonly sirenActive: boolean;
 
     /**
      * Vehicle lock state
+     * 
      * @alpha
      */
     public readonly lockState: number;
 
     /**
      * Vehicle daylight state
+     * 
      * @alpha
      */
     public readonly daylightOn: boolean;
 
     /**
      * Vehicle nightlight state
+     * 
      * @alpha
      */
     public readonly nightlightOn: boolean;
 
     /**
      * Vehicle roof state
+     * 
      * @alpha
      */
     public readonly roofState: number;
 
     /**
      * Vehicle flamethrower state
+     * 
      * @alpha
      */
     public readonly flamethrowerActive: boolean;
 
     /**
      * Vehicle lights multiplier
+     * 
      * @alpha
      */
     public readonly lightsMultiplier: number;
 
     /**
      * Vehicle engine health
+     * 
      * @alpha
      */
     public readonly engineHealth: number;
 
     /**
-     * Vehicle petrol talk health
+     * Vehicle petrol tank health
+     * 
      * @alpha
      */
     public readonly petrolTankHealth: number;
 
     /**
      * Vehicle repairs count
+     * 
      * @alpha
      */
     public readonly repairsCount: number;
 
     /**
      * Vehicle body health
+     * 
      * @alpha
      */
     public readonly bodyHealth: number;
 
     /**
      * Vehicle additional body health
+     * 
      * @alpha
      */
     public readonly bodyAdditionalHealth: number;
 
     /**
      * Vehicle armored windows state
+     * 
      * @alpha
      */
     public readonly hasArmoredWindows: boolean;
 
     /**
      * Vehicle manual engine control state
+     * 
      * @alpha
      */
     public readonly manualEngineControl: boolean;
