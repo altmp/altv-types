@@ -394,55 +394,138 @@ declare module "alt-client" {
     /** Player's vehicle, null if player is not in any vehicle */
     public readonly vehicle: Vehicle | null;
 
-    /** Current weapon components */
+    /** 
+     * Current weapon components 
+     * 
+     * @alpha
+     */
     public readonly currentWeaponComponents: Array<number>;
 
-    /** Tint index for currently equipeed weapon */
+    /** 
+     * Tint index for currently equipeed weapon
+     * 
+     * @alpha
+     */
     public readonly currentWeaponTintIndex: number;
 
-    /* Currently equipped weapon */
+    /**
+     * Currently equipped weapon
+     *
+     * @alpha
+     */
     public readonly currentWeapon: number;
 
-    /** Is the player currently jumping */
+    /** 
+     * Is the player currently jumping 
+     * 
+     * @alpha
+     */
     public readonly isJumping: boolean;
 
-    /** Is the player currently in ragdoll */
+    /** 
+     * Is the player currently in ragdoll 
+     * 
+     * @alpha
+     */
     public readonly isInRagdoll: boolean;
 
-    /** Is the player currently aiming */
+    /** 
+     * Is the player currently aiming 
+     * 
+     * @alpha
+     */
     public readonly isAiming: boolean;
 
-    /** Is the player currently shooting with a weapon */
+    /** 
+     * Is the player currently shooting with a weapon 
+     * 
+     * @alpha
+     */
     public readonly isShooting: boolean;
 
-    /** Is the player currently reloading their weapon */
+    /** 
+     * Is the player currently reloading their weapon 
+     * 
+     * @alpha
+     */
     public readonly isReloading: boolean;
 
-    /** Current armour */
+    /** 
+     * Current armour 
+     * 
+     * @alpha
+     */
     public readonly armour: number;
 
-    /** Max available armour value */
+    /** 
+     * Max available armour value 
+     * 
+     * @alpha
+     */
     public readonly maxArmour: number;
 
-    /** Current player movement speed */
+    /** 
+     * Current player movement speed 
+     * 
+     * @alpha
+     */
     public readonly moveSpeed: number;
 
-    /** Position the player is currently aiming at */
+    /** 
+     * Position the player is currently aiming at 
+     * 
+     * @alpha
+     */
     public readonly aimPos: Vector3;
 
-    /** Rotation of the head of the player */
+    /** 
+     * Rotation of the head of the player 
+     * 
+     * @alpha
+     */
     public readonly headRot: Vector3;
 
-    /** Curent seat the player is sitting in */
+    /** 
+     * Curent seat the player is sitting in 
+     * 
+     * @alpha
+     */
     public readonly seat: number;
 
-    /** The entity the player is aiming at */
+    /** 
+     * The entity the player is aiming at 
+     * 
+     * @alpha
+     */
     public readonly entityAimingAt: Entity | null;
 
+    /**
+     * The current aim offset of the player
+     *
+     * @alpha
+     */
     public readonly entityAimOffset: Vector3 | null;
 
-    /** Is the flashlight of the player activated */
+    /** 
+     * Is the flashlight of the player activated 
+     * 
+     * @alpha
+     */
     public readonly flashlightActive: boolean;
+
+    /**
+     * Current health of the player
+     *
+     * @alpha
+     */
+    public readonly health: number;
+
+    /**
+     * Current max health of the player
+     *
+     * @alpha
+     */
+    public readonly maxHealth: number;
 
     /**
      * Retrieves the player from the pool.
