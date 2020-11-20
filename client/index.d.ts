@@ -100,8 +100,10 @@ declare module "alt-client" {
   /**
    * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
    * This handling applies to particular vehicle instance, as opposed to the {@link HandlingData}.
-   *
+   * 
    * @remarks Changes will be reflected only on a particular instance of the vehicle. On creation, model handling will be used as a base and changed properties will be added on top of it.
+   * 
+   * @beta
    */
   export interface IVehicleHandling {
     acceleration: number;
@@ -231,6 +233,33 @@ declare module "alt-client" {
     constructor(arr: number[]);
 
     constructor(obj: IVector3);
+
+    public get length(): number;
+    public toArray(): [number, number, number];
+    public add(x: number, y: number, z: number): Vector3;
+    public add(value: number): Vector3;
+    public add(array: [number, number, number]): Vector3;
+    public add(vector: IVector3): Vector3;
+    public sub(x: number, y: number, z: number): Vector3;
+    public sub(value: number): Vector3;
+    public sub(array: [number, number, number]): Vector3;
+    public sub(vector: IVector3): Vector3;
+    public div(x: number, y: number, z: number): Vector3;
+    public div(value: number): Vector3;
+    public div(array: [number, number, number]): Vector3;
+    public div(vector: IVector3): Vector3;
+    public mul(x: number, y: number, z: number): Vector3;
+    public mul(value: number): Vector3;
+    public mul(array: [number, number, number]): Vector3;
+    public mul(vector: IVector3): Vector3;
+    public negative(): Vector3;
+    public normalize(): Vector3;
+    public distanceTo(vector: IVector3): Vector3;
+    public angleTo(vector: IVector3): Vector3;
+    public angleToDegrees(vector: IVector3): Vector3;
+    public toRadians(): Vector3;
+    public toDegrees(): Vector3;
+    public isInRange(vector: IVector3, range: number): boolean;
   }
 
   export class RGBA {
@@ -1071,8 +1100,17 @@ declare module "alt-client" {
 
     /**
      * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
+     *
+     * @beta
      */
     public static getForHandlingName(handlingHash: number): HandlingData;
+
+    /**
+     * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
+     *
+     * @deprecated See {@link getForHandlingName}.
+     */
+    public static getForModelName(handlingHash: number): HandlingData;
   }
 
   export class MapZoomData {
@@ -1388,7 +1426,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
    * Subscribes to client event handler with specified listener.
@@ -1405,19 +1443,19 @@ declare module "alt-client" {
   export function requestIpl(iplName: string): void;
 
   /**
-   * Output is saved to screenshots folder in root directory.
+   * The output is returned as a string.
    *
-   * @param stem Filename without extension.
    * @return Return is dependent on the success of the operation.
    */
-  export function takeScreenshot(stem: string): Promise<boolean>;
+  export function takeScreenshot(): Promise<string>;
 
   /**
-   * Output is returned as string.
+   * The output is returned as a string.
    *
    * @return Return is dependent on the success of the operation.
+   * @remarks This only takes a screenshot of the raw GTA:V window. WebViews, game overlays etc. won't be captured.
    */
-  export function takeScreenshotBase64(): Promise<string>;
+  export function takeScreenshotGameOnly(): Promise<string>;
 
   /**
    * Resets a statistic to its default value.
@@ -1442,6 +1480,16 @@ declare module "alt-client" {
   export function setModel(modelName: string): void;
 
   export function setMsPerGameMinute(miliseconds: number): void;
+
+  /**
+   * Sets the rotation velocity for the specified entity.
+   * 
+   * @param scriptID The script id of the entity.
+   * @param x The rotation velocity on the X axis.
+   * @param y The rotation velocity on the Y axis.
+   * @param z The rotation velocity on the Z axis.
+   */
+  export function setRotationVelocity(scriptID: number, x: number, y: number, z: number): void;
 
   /**
    * Sets a statistic to desired value.

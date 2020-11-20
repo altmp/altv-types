@@ -4,10 +4,10 @@
   "includeDeclarations": true,
   "excludeExternals": true,
   "inputFiles": [
-    "client",
-    "server"
+    "../client",
+    "../server"
   ],
   "out": "",
-  "json": "docs/output.json",
+  "json": "api/.manifest",
   "name": "@altmp/altv-types"
 }
