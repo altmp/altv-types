@@ -1204,6 +1204,15 @@ declare module "alt-client" {
     public static read(filename: string, encoding: FileEncoding.Binary): ArrayBuffer;
   }
 
+  export class Voice {
+    /**
+     * Toggles whether the microphone input is muted
+     *
+     * @static
+     */
+    static muteInput: boolean;
+  }
+
   /**
    * Removes the specified key.
    *
