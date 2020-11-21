@@ -213,13 +213,13 @@ declare module "alt-client" {
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
    * @beta
    */
-  export const Version: string;
+  export const version: string;
 
   /**
    * Represents the current client branch.
    * @beta
    */
-  export const Branch: string;
+  export const branch: string;
 
   export class Vector3 {
     public readonly x: number;

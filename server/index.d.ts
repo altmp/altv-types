@@ -414,8 +414,8 @@ declare module "alt-server" {
    */
   export const resourceName: string;
   export const rootDir: string;
-  export const DefaultDimension: number;
-  export const GlobalDimension: number;
+  export const defaultDimension: number;
+  export const globalDimension: number;
 
   export class Vector3 {
     public readonly x: number;
