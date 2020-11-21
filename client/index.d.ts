@@ -1206,9 +1206,7 @@ declare module "alt-client" {
 
   export class Voice {
     /**
-     * Toggles whether the microphone input is muted
-     *
-     * @static
+     * Toggles whether the microphone input is muted.
      */
     static muteInput: boolean;
   }
