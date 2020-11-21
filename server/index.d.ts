@@ -417,6 +417,29 @@ declare module "alt-server" {
   export const DefaultDimension: number;
   export const GlobalDimension: number;
 
+  /**
+   * Represents the current server version.
+   *
+   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   * @beta
+   */
+  export const Version: string;
+
+  /**
+   * Represents the current server sdk version.
+   * 
+   * @remarks It's the version of the CPP SDK the server module was compiled with.
+   * @beta
+   */
+  export const SDKVersion: number;
+
+  /**
+   * Represents the current server branch.
+   * 
+   * @beta
+   */
+  export const Branch: string;
+
   export class Vector3 {
     public readonly x: number;
 
