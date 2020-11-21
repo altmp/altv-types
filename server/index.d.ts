@@ -431,7 +431,7 @@ declare module "alt-server" {
    * @remarks It's the version of the CPP SDK the server module was compiled with.
    * @beta
    */
-  export const SDKVersion: number;
+  export const sdkVersion: number;
 
   /**
    * Represents the current server branch.

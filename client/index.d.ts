@@ -216,18 +216,18 @@ declare module "alt-client" {
   export const Version: string;
 
   /**
-   * Represents the current client branch.
-   * @beta
-   */
-  export const Branch: string;
-
-  /**
    * Represents the current client sdk version.
    * 
    * @remarks It's the version of the CPP SDK the client module was compiled with.
    * @beta
    */
-  export const SDKVersion: number;
+  export const sdkVersion: number;
+
+  /**
+   * Represents the current client branch.
+   * @beta
+   */
+  export const Branch: string;
 
   export class Vector3 {
     public readonly x: number;
