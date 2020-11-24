@@ -1598,6 +1598,7 @@ declare module "alt-client" {
    * Creates a Checkpoint.
    *
    * @param type Checkpoint type, see [CheckpointTypes](https://wiki.altv.mp/wiki/CheckpointTypes).
+   * @alpha
    */
   export class Checkpoint extends WorldObject {
 
