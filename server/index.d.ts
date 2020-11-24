@@ -359,12 +359,12 @@ declare module "alt-server" {
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
     consoleCommand: (...args: string[]) => void;
-    colshapeEnter: (colshape: Colshape, entity: Entity) => void;
-    colshapeLeave: (colshape: Colshape, entity: Entity) => void;
+    entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
+    entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
     playerChangeVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
     playerConnect: (player: Player) => void;
-    playerDamage: (victim: Player, attacker: Entity, weaponHash: number, damage: number) => void;
+    playerDamage: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
@@ -429,6 +429,33 @@ declare module "alt-server" {
     constructor(arr: number[]);
 
     constructor(obj: IVector3);
+
+    public get length(): number;
+    public toArray(): [number, number, number];
+    public add(x: number, y: number, z: number): Vector3;
+    public add(value: number): Vector3;
+    public add(array: [number, number, number]): Vector3;
+    public add(vector: IVector3): Vector3;
+    public sub(x: number, y: number, z: number): Vector3;
+    public sub(value: number): Vector3;
+    public sub(array: [number, number, number]): Vector3;
+    public sub(vector: IVector3): Vector3;
+    public div(x: number, y: number, z: number): Vector3;
+    public div(value: number): Vector3;
+    public div(array: [number, number, number]): Vector3;
+    public div(vector: IVector3): Vector3;
+    public mul(x: number, y: number, z: number): Vector3;
+    public mul(value: number): Vector3;
+    public mul(array: [number, number, number]): Vector3;
+    public mul(vector: IVector3): Vector3;
+    public negative(): Vector3;
+    public normalize(): Vector3;
+    public distanceTo(vector: IVector3): Vector3;
+    public angleTo(vector: IVector3): Vector3;
+    public angleToDegrees(vector: IVector3): Vector3;
+    public toRadians(): Vector3;
+    public toDegrees(): Vector3;
+    public isInRange(vector: IVector3, range: number): boolean;
   }
 
   export class RGBA {
@@ -690,6 +717,12 @@ declare module "alt-server" {
 
   export class Vehicle extends Entity {
     public static readonly all: Array<Vehicle>;
+    /**
+     * Entity model hash.
+     *
+     * @remarks Only setter accepts string or number as input, getter returns value as number.
+     */
+    public readonly model: number | string;
     public activeRadioStation: RadioStation;
     public bodyAdditionalHealth: number;
     public bodyHealth: number;
@@ -1118,7 +1151,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void): void;
+  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
    * Subscribes to client event handler with specified listener.
