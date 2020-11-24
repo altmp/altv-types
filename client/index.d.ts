@@ -1616,6 +1616,6 @@ declare module "alt-client" {
     public set color(color: RGBA);
 
     public isEntityIn(entity: Entity): boolean;
-    public isPointIn(vec3: Vector3): boolean;
+    public isPointIn(pos: Vector3): boolean;
   }
 }
