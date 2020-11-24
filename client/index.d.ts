@@ -60,7 +60,7 @@ declare module "alt-client" {
     Checkpoint
   }
 
-  export enum Checkpoints {
+  export const enum CheckpointType {
     CylinderSingleArrow,
     CylinderDoubleArrow,
     CylinderTripleArrow,
@@ -105,12 +105,12 @@ declare module "alt-client" {
     Empty,
     Ring,
     Empty2,
-    Cyclinder4,
-    Cyclinder5,
-    Cyclinder6,
-    Cyclinder,
-    Cyclinder2,
-    Cyclinder3,
+    Cylinder,
+    Cylinder1,
+    Cylinder2,
+    Cylinder3,
+    Cylinder4,
+    Cylinder5,
     Empty3,
     Empty4,
     Empty5,
@@ -405,6 +405,24 @@ declare module "alt-client" {
      * Object position
      */
     public pos: Vector3;
+  }
+
+  /**
+  * Creates a Checkpoint.
+  * 
+  * @alpha
+  */
+  export class Checkpoint extends WorldObject {
+    public checkpointType: CheckpointType;
+    public nextPos: Vector3;
+    public radius: number;
+    public height: number;
+    public color: RGBA;
+
+    constructor(type: CheckpointType, pos: Vector3, nextPos: Vector3, radius: number, height: number, rgbcolor: RGBA);
+
+    public isEntityIn(entity: Entity): boolean;
+    public isPointIn(pos: Vector3): boolean;
   }
 
   export class Entity extends WorldObject {
@@ -1593,30 +1611,4 @@ declare module "alt-client" {
   export function toggleGameControls(state: boolean): void;
 
   export function toggleVoiceControls(state: boolean): void;
-
-  /**
-   * Creates a Checkpoint.
-   *
-   * @param type Checkpoint type, see [CheckpointTypes](https://wiki.altv.mp/wiki/CheckpointTypes).
-   * @alpha
-   */
-  export class Checkpoint extends WorldObject {
-
-    constructor(type: Checkpoints, pos: Vector3, nextPos: Vector3, radius: number, height: number, rgbcolor: RGBA);
-
-    public get checkpointType(): Checkpoints;
-    public get nextPos(): Vector3;
-    public get radius(): number;
-    public get height(): number;
-    public get color(): RGBA;
-
-    public set checkpointType(type: Checkpoints);
-    public set nextPos(pos: Vector3);
-    public set radius(radius: number);
-    public set height(height: number);
-    public set color(color: RGBA);
-
-    public isEntityIn(entity: Entity): boolean;
-    public isPointIn(pos: Vector3): boolean;
-  }
 }
