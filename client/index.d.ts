@@ -60,6 +60,76 @@ declare module "alt-client" {
     Checkpoint
   }
 
+  export enum Checkpoints {
+    CylinderSingleArrow,
+    CylinderDoubleArrow,
+    CylinderTripleArrow,
+    CylinderCycleArrow,
+    CylinderCheckerboard,
+    CylinderWrench,
+    CylinderSingleArrow2,
+    CylinderDoubleArrow2,
+    CylinderTripleArrow2,
+    CylinderCycleArrow2,
+    CylinderCheckerboard2,
+    CylinderWrench2,
+    RingSingleArrow,
+    RingDoubleArrow,
+    RingTripleArrow,
+    RingCycleArrow,
+    RingCheckerboard,
+    SingleArrow,
+    DoubleArrow,
+    TripleArrow,
+    CycleArrow,
+    Checkerboard,
+    CylinderSingleArrow3,
+    CylinderDoubleArrow3,
+    CylinderTripleArrow3,
+    CylinderCycleArrow3,
+    CylinderCheckerboard3,
+    CylinderSingleArrow4,
+    CylinderDoubleArrow4,
+    CylinderTripleArrow4,
+    CylinderCycleArrow4,
+    CylinderCheckerboard4,
+    CylinderSingleArrow5,
+    CylinderDoubleArrow5,
+    CylinderTripleArrow5,
+    CylinderCycleArrow5,
+    CylinderCheckerboard5,
+    RingPlaneUp,
+    RingPlaneLeft,
+    RingPlaneRight,
+    RingPlaneDown,
+    Empty,
+    Ring,
+    Empty2,
+    Cyclinder4,
+    Cyclinder5,
+    Cyclinder6,
+    Cyclinder,
+    Cyclinder2,
+    Cyclinder3,
+    Empty3,
+    Empty4,
+    Empty5,
+    Empty6,
+    RingDollar,
+    RingWolf,
+    RingQuestionMark,
+    RingPlane,
+    RingChopper,
+    RingBoat,
+    RingCar,
+    RingBike,
+    RingBicycle,
+    RingTruck,
+    RingParachute,
+    RingJetpack,
+    RingWhirl
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -85,7 +155,7 @@ declare module "alt-client" {
   }
 
   export interface IDiscordOAuth2Token {
-    readonly token: string
+    readonly token: string;
     readonly expires: number;
     readonly scopes: string;
   }
@@ -1523,4 +1593,29 @@ declare module "alt-client" {
   export function toggleGameControls(state: boolean): void;
 
   export function toggleVoiceControls(state: boolean): void;
+
+  /**
+   * Creates a Checkpoint.
+   *
+   * @param type Checkpoint type, see [CheckpointTypes](https://wiki.altv.mp/wiki/CheckpointTypes).
+   */
+  export class Checkpoint extends WorldObject {
+
+    constructor(type: Checkpoints, pos: Vector3, nextPos: Vector3, radius: number, height: number, rgbcolor: RGBA);
+
+    public get checkpointType(): Checkpoints;
+    public get nextPos(): Vector3;
+    public get radius(): number;
+    public get height(): number;
+    public get color(): RGBA;
+
+    public set checkpointType(type: Checkpoints);
+    public set nextPos(pos: Vector3);
+    public set radius(radius: number);
+    public set height(height: number);
+    public set color(color: RGBA);
+
+    isEntityIn(entity: Entity): boolean;
+    isPointIn(vec3: Vector3): boolean;
+  }
 }
