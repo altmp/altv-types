@@ -408,8 +408,6 @@ declare module "alt-client" {
   }
 
   /**
-  * Creates a Checkpoint.
-  * 
   * @alpha
   */
   export class Checkpoint extends WorldObject {
