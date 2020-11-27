@@ -362,7 +362,7 @@ declare module "alt-server" {
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
-    playerChangeVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
+    playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
     playerConnect: (player: Player) => void;
     playerDamage: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
