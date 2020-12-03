@@ -438,9 +438,9 @@ declare module "alt-server" {
   export const version: string;
 
   /**
-   * Represents the current server sdk version.
+   * Represents the current server SDK version.
    * 
-   * @remarks It's the version of the CPP SDK the server module was compiled with.
+   * @remarks It's the version of the SDK the current runtime was compiled with.
    * @beta
    */
   export const sdkVersion: number;

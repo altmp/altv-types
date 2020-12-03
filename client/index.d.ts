@@ -224,9 +224,9 @@ declare module "alt-client" {
   export const version: string;
 
   /**
-   * Represents the current client sdk version.
+   * Represents the current client SDK version.
    * 
-   * @remarks It's the version of the CPP SDK the client module was compiled with.
+   * @remarks It's the version of the SDK the current runtime was compiled with.
    * @beta
    */
   export const sdkVersion: number;
