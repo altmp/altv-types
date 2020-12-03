@@ -415,7 +415,11 @@ declare module "alt-server" {
   export const resourceName: string;
   export const rootDir: string;
   export const DefaultDimension: number;
+  /** @alpha */
+  export const defaultDimension: number;
   export const GlobalDimension: number;
+  /** @alpha */
+  export const globalDimension: number;
 
   /**
    * Represents the current server version.
@@ -424,6 +428,14 @@ declare module "alt-server" {
    * @beta
    */
   export const Version: string;
+
+  /**
+   * Represents the current server version.
+   *
+   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   * @alpha
+   */
+  export const version: string;
 
   /**
    * Represents the current server sdk version.
@@ -439,6 +451,13 @@ declare module "alt-server" {
    * @beta
    */
   export const Branch: string;
+
+  /**
+   * Represents the current server branch.
+   * 
+   * @alpha
+   */
+  export const branch: string;
 
   export class Vector3 {
     public readonly x: number;
