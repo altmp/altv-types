@@ -283,6 +283,14 @@ declare module "alt-client" {
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
    * @beta
    */
+  export const Version: string;
+
+  /**
+   * Represents the current client version.
+   *
+   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   * @alpha
+   */
   export const version: string;
 
   /**
@@ -292,6 +300,13 @@ declare module "alt-client" {
    * @beta
    */
   export const sdkVersion: number;
+
+  /**
+   * Represents the current client branch.
+   * 
+   * @beta
+   */
+  export const Branch: string;
 
   /**
    * Represents the current client branch.
