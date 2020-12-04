@@ -60,6 +60,76 @@ declare module "alt-client" {
     Checkpoint
   }
 
+  export const enum CheckpointType {
+    CylinderSingleArrow,
+    CylinderDoubleArrow,
+    CylinderTripleArrow,
+    CylinderCycleArrow,
+    CylinderCheckerboard,
+    CylinderWrench,
+    CylinderSingleArrow2,
+    CylinderDoubleArrow2,
+    CylinderTripleArrow2,
+    CylinderCycleArrow2,
+    CylinderCheckerboard2,
+    CylinderWrench2,
+    RingSingleArrow,
+    RingDoubleArrow,
+    RingTripleArrow,
+    RingCycleArrow,
+    RingCheckerboard,
+    SingleArrow,
+    DoubleArrow,
+    TripleArrow,
+    CycleArrow,
+    Checkerboard,
+    CylinderSingleArrow3,
+    CylinderDoubleArrow3,
+    CylinderTripleArrow3,
+    CylinderCycleArrow3,
+    CylinderCheckerboard3,
+    CylinderSingleArrow4,
+    CylinderDoubleArrow4,
+    CylinderTripleArrow4,
+    CylinderCycleArrow4,
+    CylinderCheckerboard4,
+    CylinderSingleArrow5,
+    CylinderDoubleArrow5,
+    CylinderTripleArrow5,
+    CylinderCycleArrow5,
+    CylinderCheckerboard5,
+    RingPlaneUp,
+    RingPlaneLeft,
+    RingPlaneRight,
+    RingPlaneDown,
+    Empty,
+    Ring,
+    Empty2,
+    Cylinder,
+    Cylinder1,
+    Cylinder2,
+    Cylinder3,
+    Cylinder4,
+    Cylinder5,
+    Empty3,
+    Empty4,
+    Empty5,
+    Empty6,
+    RingDollar,
+    RingWolf,
+    RingQuestionMark,
+    RingPlane,
+    RingChopper,
+    RingBoat,
+    RingCar,
+    RingBike,
+    RingBicycle,
+    RingTruck,
+    RingParachute,
+    RingJetpack,
+    RingWhirl
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -85,7 +155,7 @@ declare module "alt-client" {
   }
 
   export interface IDiscordOAuth2Token {
-    readonly token: string
+    readonly token: string;
     readonly expires: number;
     readonly scopes: string;
   }
@@ -216,8 +286,17 @@ declare module "alt-client" {
   export const version: string;
 
   /**
-   * Represents the current client branch.
+   * Represents the current client SDK version.
+   * 
+   * @remarks It's the version of the SDK the current runtime was compiled with.
    * @beta
+   */
+  export const sdkVersion: number;
+
+  /**
+   * Represents the current client branch.
+   * 
+   * @alpha
    */
   export const branch: string;
 
@@ -335,6 +414,22 @@ declare module "alt-client" {
      * Object position
      */
     public pos: Vector3;
+  }
+
+  /**
+  * @alpha
+  */
+  export class Checkpoint extends WorldObject {
+    public checkpointType: CheckpointType;
+    public nextPos: Vector3;
+    public radius: number;
+    public height: number;
+    public color: RGBA;
+
+    constructor(type: CheckpointType, pos: Vector3, nextPos: Vector3, radius: number, height: number, rgbcolor: RGBA);
+
+    public isEntityIn(entity: Entity): boolean;
+    public isPointIn(pos: Vector3): boolean;
   }
 
   export class Entity extends WorldObject {

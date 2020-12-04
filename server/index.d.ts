@@ -362,7 +362,7 @@ declare module "alt-server" {
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
-    playerChangeVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
+    playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
     playerConnect: (player: Player) => void;
     playerDamage: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
@@ -414,8 +414,50 @@ declare module "alt-server" {
    */
   export const resourceName: string;
   export const rootDir: string;
+  export const DefaultDimension: number;
+  /** @alpha */
   export const defaultDimension: number;
+  export const GlobalDimension: number;
+  /** @alpha */
   export const globalDimension: number;
+
+  /**
+   * Represents the current server version.
+   *
+   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   * @beta
+   */
+  export const Version: string;
+
+  /**
+   * Represents the current server version.
+   *
+   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
+   * @alpha
+   */
+  export const version: string;
+
+  /**
+   * Represents the current server SDK version.
+   * 
+   * @remarks It's the version of the SDK the current runtime was compiled with.
+   * @beta
+   */
+  export const sdkVersion: number;
+
+  /**
+   * Represents the current server branch.
+   * 
+   * @beta
+   */
+  export const Branch: string;
+
+  /**
+   * Represents the current server branch.
+   * 
+   * @alpha
+   */
+  export const branch: string;
 
   export class Vector3 {
     public readonly x: number;
