@@ -1314,6 +1314,13 @@ declare module "alt-client" {
     public static read(filename: string, encoding: FileEncoding.Binary): ArrayBuffer;
   }
 
+  export class Voice {
+    /**
+     * Determines whether the microphone input is currently disabled.
+     */
+    static muteInput: boolean;
+  }
+
   /**
    * Removes the specified key.
    *
