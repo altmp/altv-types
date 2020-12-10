@@ -418,15 +418,26 @@ declare module "alt-server" {
   }
 
   /**
-   * Resource name of the executing entity
+   * Resource name of the executing entity.
    */
   export const resourceName: string;
+
   export const rootDir: string;
+
+  /**
+   * @deprecated This variable was renamed to {@link defaultDimension} on the other branches than release.
+   */
   export const DefaultDimension: number;
-  /** @alpha */
+
+  /** @beta */
   export const defaultDimension: number;
+
+  /**
+   * @deprecated This variable was renamed to {@link globalDimension} on the other branches than release.
+   */
   export const GlobalDimension: number;
-  /** @alpha */
+
+  /** @beta */
   export const globalDimension: number;
 
   /**
@@ -435,19 +446,11 @@ declare module "alt-server" {
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
    * @beta
    */
-  export const Version: string;
-
-  /**
-   * Represents the current server version.
-   *
-   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
-   * @alpha
-   */
   export const version: string;
 
   /**
    * Represents the current server SDK version.
-   * 
+   *
    * @remarks It's the version of the SDK the current runtime was compiled with.
    * @beta
    */
@@ -455,15 +458,8 @@ declare module "alt-server" {
 
   /**
    * Represents the current server branch.
-   * 
+   *
    * @beta
-   */
-  export const Branch: string;
-
-  /**
-   * Represents the current server branch.
-   * 
-   * @alpha
    */
   export const branch: string;
 
@@ -1195,6 +1191,8 @@ declare module "alt-server" {
    */
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
+  export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+
   /**
    * Subscribes to server event handler with specified listener.
    *
@@ -1202,6 +1200,8 @@ declare module "alt-server" {
    * @param listener Listener that should be added.
    */
   export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
+
+  export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
    * Subscribes to client event handler with specified listener.

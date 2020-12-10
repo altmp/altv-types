@@ -34,6 +34,20 @@ declare module "alt-client" {
     ChineseTraditional = "zh_tw"
   }
 
+  export const enum Permission {
+    None,
+    ScreenCapture,
+    WebRTC,
+    All
+  }
+
+  export const enum PermissionState {
+    Allowed,
+    Denied,
+    Unspecified,
+    Failed
+  }
+
   export const enum StatName {
     Stamina = "stamina",
     Strength = "strength",
@@ -286,40 +300,34 @@ declare module "alt-client" {
   }
 
   /**
-   * Represents the current client version.
+   * Resource name of the executing entity.
    *
-   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
    * @beta
    */
-  export const Version: string;
+  export const resourceName: string;
 
   /**
    * Represents the current client version.
    *
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
-   * @alpha
+   *
+   * @beta
    */
   export const version: string;
 
   /**
    * Represents the current client SDK version.
-   * 
+   *
    * @remarks It's the version of the SDK the current runtime was compiled with.
+   *
    * @beta
    */
   export const sdkVersion: number;
 
   /**
    * Represents the current client branch.
-   * 
+   *
    * @beta
-   */
-  export const Branch: string;
-
-  /**
-   * Represents the current client branch.
-   * 
-   * @alpha
    */
   export const branch: string;
 
@@ -1451,6 +1459,8 @@ declare module "alt-client" {
 
   export function getMsPerGameMinute(): number;
 
+  export function getPermissionState(permId: Permission): PermissionState;
+
   /**
    * Gets a value of the specified statistic.
    *
@@ -1473,6 +1483,13 @@ declare module "alt-client" {
   export function isConsoleOpen(): boolean;
 
   /**
+   * Returns state of game window.
+   *
+   * @returns True when game window is focused.
+   */
+  export function isGameFocused(): boolean;
+
+  /**
    * Sandbox mode.
    *
    * @returns True when alt:V client is launched in sandbox mode.
@@ -1483,6 +1500,8 @@ declare module "alt-client" {
    * Streamer mode.
    *
    * @returns True when alt:V client is launched in streamer mode.
+   *
+   * @beta
    */
   export function isInStreamerMode(): boolean;
 
@@ -1545,6 +1564,8 @@ declare module "alt-client" {
    */
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
+  export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
+
   /**
    * Subscribes to client event handler with specified listener.
    *
@@ -1553,6 +1574,8 @@ declare module "alt-client" {
    */
   export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
+  export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
+
   /**
    * Subscribes to client event handler with specified listener.
    *
@@ -1560,6 +1583,8 @@ declare module "alt-client" {
    * @param listener Listener that should be added.
    */
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
+
+  export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
 
   export function removeGxtText(key: string): void;
 
@@ -1571,6 +1596,8 @@ declare module "alt-client" {
    * The output is returned as a string.
    *
    * @return Return is dependent on the success of the operation.
+   *
+   * @beta
    */
   export function takeScreenshot(): Promise<string>;
 
@@ -1579,6 +1606,8 @@ declare module "alt-client" {
    *
    * @return Return is dependent on the success of the operation.
    * @remarks This only takes a screenshot of the raw GTA:V window. WebViews, game overlays etc. won't be captured.
+   *
+   * @beta
    */
   export function takeScreenshotGameOnly(): Promise<string>;
 
@@ -1608,11 +1637,13 @@ declare module "alt-client" {
 
   /**
    * Sets the rotation velocity for the specified entity.
-   * 
+   *
    * @param scriptID The script id of the entity.
    * @param x The rotation velocity on the X axis.
    * @param y The rotation velocity on the Y axis.
    * @param z The rotation velocity on the Z axis.
+   *
+   * @beta
    */
   export function setRotationVelocity(scriptID: number, x: number, y: number, z: number): void;
 
