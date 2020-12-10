@@ -134,13 +134,19 @@ declare module "alt-client" {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
+    /** @beta */
+    changedVehicleSeat: (vehicle: Vehicle, oldSeat: number, seat: number) => void;
     connectionComplete: () => void;
     consoleCommand: (name: string, ...args: string[]) => void;
     disconnect: () => void;
+    /** @beta */
+    enteredVehicle: (vehicle: Vehicle, seat: number) => void;
     gameEntityCreate: (entity: Entity) => void;
     gameEntityDestroy: (entity: Entity) => void;
     keydown: (key: number) => void;
     keyup: (key: number) => void;
+    /** @beta */
+    leftVehicle: (vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
@@ -150,6 +156,8 @@ declare module "alt-client" {
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
     /**
      * No particular usage for now, stick to {@link everyTick} instead.
+     *
+     * @beta
      */
     render: () => void;
   }

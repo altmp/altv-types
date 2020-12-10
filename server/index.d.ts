@@ -362,12 +362,16 @@ declare module "alt-server" {
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
-    playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, newSeat: number) => void;
+    /** @beta */
+    netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
+    playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
     playerDamage: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    /** @beta */
+    playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: BaseObject) => void;
     resourceStart: (errored: boolean) => void;
@@ -376,14 +380,18 @@ declare module "alt-server" {
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     globalMetaChange: (key: string, value: any, oldValue: any) => void;
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
+    /** @beta */
+    vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
+    /** @beta */
+    vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
     weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: BodyPart) => boolean | void;
     /** @beta */
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     /** @beta */
     startProjectile: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     /** @beta */
-    playerWeaponChange: (player: Player, oldWeapon: number, newWeapon: number) => void;
+    playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
   }
 
   /**
