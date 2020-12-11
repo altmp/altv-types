@@ -476,31 +476,82 @@ declare module "alt-server" {
 
     constructor(obj: IVector3);
 
+    /** @beta */
     public get length(): number;
+
+    /** @beta */
     public toArray(): [number, number, number];
+
+    /** @beta */
     public add(x: number, y: number, z: number): Vector3;
+
+    /** @beta */
     public add(value: number): Vector3;
+
+    /** @beta */
     public add(array: [number, number, number]): Vector3;
+
+    /** @beta */
     public add(vector: IVector3): Vector3;
+
+    /** @beta */
     public sub(x: number, y: number, z: number): Vector3;
+
+    /** @beta */
     public sub(value: number): Vector3;
+
+    /** @beta */
     public sub(array: [number, number, number]): Vector3;
+
+    /** @beta */
     public sub(vector: IVector3): Vector3;
+
+    /** @beta */
     public div(x: number, y: number, z: number): Vector3;
+
+    /** @beta */
     public div(value: number): Vector3;
+
+    /** @beta */
     public div(array: [number, number, number]): Vector3;
+
+    /** @beta */
     public div(vector: IVector3): Vector3;
+
+    /** @beta */
     public mul(x: number, y: number, z: number): Vector3;
+
+    /** @beta */
     public mul(value: number): Vector3;
+
+    /** @beta */
     public mul(array: [number, number, number]): Vector3;
+
+    /** @beta */
     public mul(vector: IVector3): Vector3;
+
+    /** @beta */
     public negative(): Vector3;
+
+    /** @beta */
     public normalize(): Vector3;
+
+    /** @beta */
     public distanceTo(vector: IVector3): Vector3;
+
+    /** @beta */
     public angleTo(vector: IVector3): Vector3;
+
+    /** @beta */
     public angleToDegrees(vector: IVector3): Vector3;
+
+    /** @beta */
     public toRadians(): Vector3;
+
+    /** @beta */
     public toDegrees(): Vector3;
+
+    /** @beta */
     public isInRange(vector: IVector3, range: number): boolean;
   }
 
@@ -575,6 +626,9 @@ declare module "alt-server" {
   }
 
   export class Entity extends WorldObject {
+    /** @beta */
+    public static readonly all: Array<Entity>;
+
     /**
      * Internal identificator of the entity which is identical on both sides.
      */
@@ -603,6 +657,9 @@ declare module "alt-server" {
      * @remarks Values are provided in radians .
      */
     public rot: Vector3;
+
+    /** @beta */
+    public visible: boolean;
 
     /**
      * Retrieves the entity from the pool.
@@ -736,6 +793,9 @@ declare module "alt-server" {
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
+    /** @beta */
+    public clearBloodDamage(): void;
+
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
     /**
@@ -829,6 +889,12 @@ declare module "alt-server" {
 
     public getAppearanceDataBase64(): string;
 
+    /** @beta */
+    public getAttached(): Vehicle;
+
+    /** @beta */
+    public getAttachedTo(): Vehicle;
+
     public getArmoredWindowHealth(windowId: number): number;
 
     public getArmoredWindowShootCount(windowId: number): number;
@@ -870,6 +936,9 @@ declare module "alt-server" {
     public isWindowDamaged(windowId: number): boolean;
 
     public isWindowOpened(windowId: number): boolean;
+
+    /** @beta */
+    public repair(): void;
 
     public setAppearanceDataBase64(data: string): void;
 
