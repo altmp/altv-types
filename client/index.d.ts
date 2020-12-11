@@ -1642,6 +1642,7 @@ declare module "alt-client" {
    */
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
+  /** @beta */
   export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
@@ -1652,6 +1653,7 @@ declare module "alt-client" {
    */
   export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
+  /** @beta */
   export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
@@ -1662,6 +1664,7 @@ declare module "alt-client" {
    */
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
+  /** @beta */
   export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
 
   export function removeGxtText(key: string): void;

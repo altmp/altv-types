@@ -1260,6 +1260,7 @@ declare module "alt-server" {
    */
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
+  /** @beta */
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
@@ -1270,6 +1271,7 @@ declare module "alt-server" {
    */
   export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
+  /** @beta */
   export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
