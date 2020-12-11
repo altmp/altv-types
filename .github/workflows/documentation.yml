@@ -13,7 +13,9 @@ on:
       - 'docs/index.md'
       - 'docs/toc.yml'
       - 'client/**.d.ts'
+      - 'client/package.json'
       - 'server/**.d.ts'
+      - 'server/package.json'
       - '!docs/build.*'
       - '!docs/.gitignore'
 jobs:
