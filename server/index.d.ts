@@ -1282,6 +1282,9 @@ declare module "alt-server" {
    */
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
+  /** @beta */
+  export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
+
   export function restartResource(name: string): void;
 
   /**
