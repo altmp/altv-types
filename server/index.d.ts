@@ -394,9 +394,7 @@ declare module "alt-server" {
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
   }
 
-  /**
-   * @beta
-   */
+  /** @beta */
   export interface IFireInfo {
     pos: Vector3;
     weapon: number;

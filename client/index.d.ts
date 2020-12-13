@@ -1172,45 +1172,85 @@ declare module "alt-client" {
   }
 
   export class Blip extends WorldObject {
-    /**
-     * @beta
-     */
+    /** @beta */
     public static routeColor: RGBA;
+
     public alpha: number;
+
     public asMissionCreator: boolean;
+
     public bright: boolean;
+
     public category: number;
+
     public color: number;
+
     public crewIndicatorVisible: boolean;
-    public flashInterval: number;
-    public flashTimer: number;
+
+    /** @beta */
+    public display: number;
+
     public flashes: boolean;
+
     public flashesAlternate: boolean;
+
+    public flashInterval: number;
+
+    public flashTimer: number;
+
     public friendIndicatorVisible: boolean;
+
+    /**
+     * @deprecated This property was removed on the other branches than release.
+     */
     public friendly: boolean;
+
     public gxtName: string;
+
     public heading: number;
+
     public headingIndicatorVisible: boolean;
+
     public highDetail: boolean;
+
     public name: string;
+
     public number: number;
+
     public outlineIndicatorVisible: boolean;
+
     public priority: number;
+
     public pulse: boolean;
+
     public route: boolean;
+
     /**
      * @deprecated This property was changed from instance member to static.
      */
     public routeColor: number;
+
+    /**
+     * @deprecated This property was renamed to {@link size} on the other branches than release.
+     */
     public scale: number;
+
     /**
      * @remarks This property will expect and return RGBA object on the other branches than release.
      */
     public secondaryColor: number | RGBA;
+
     public shortRange: boolean;
+
     public showCone: boolean;
+
     public shrinked: boolean;
+
+    /** @beta */
+    public size: number;
+
     public sprite: number;
+
     public tickVisible: boolean;
 
     public fade(opacity: number, duration: number): void;
