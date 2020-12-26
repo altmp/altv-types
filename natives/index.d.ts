@@ -17743,6 +17743,8 @@ declare module "natives" {
   * @param iplName Name of IPL you want to remove.
   */
   export function removeIpl(iplName: string): void;
+  
+  export function setIplSetEnabled(iplName: string, toggle: boolean): void;
 
   export function isIplActive(iplName: string): boolean;
 
