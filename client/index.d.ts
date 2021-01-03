@@ -55,7 +55,8 @@ declare module "alt-client" {
     Wheelie = "wheelie_ability",
     Flying = "flying_ability",
     Shooting = "shooting_ability",
-    Stealth = "stealth_ability"
+    Stealth = "stealth_ability",
+    Driving = "driving_ability"
   }
 
   export const enum FileEncoding {
