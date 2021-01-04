@@ -1,2 +1,8 @@
 - name: Getting Started
   href: index.md
+  items:
+  - name: Setup
+    href: setup.md
+  - name: Create your first resource
+    href: create-your-first-resource.md
+    
