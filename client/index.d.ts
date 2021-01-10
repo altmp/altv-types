@@ -1867,8 +1867,6 @@ declare module "alt-client" {
   export class WebSocketClient extends BaseObject {
     constructor(url: string);
 
-    public on(eventName: string, listener: (...args: any[]) => void): void;
-
     public on(eventName: "open", listener: () => void): void;
 
     public on(eventName: "close", listener: (reason: number) => void): void;
