@@ -1800,4 +1800,11 @@ declare module "alt-client" {
   export function toggleGameControls(state: boolean): void;
 
   export function toggleVoiceControls(state: boolean): void;
+
+  /**
+   * Determines whether the specified key is pressed
+   *
+   * @param key Code of the key.
+   */
+  export function isKeyDown(key: number): boolean;
 }
