@@ -1804,7 +1804,7 @@ declare module "alt-client" {
   /**
    * Determines whether the specified key is pressed.
    *
-   * @param keycode of the key.
+   * @param Keycode of the key.
    */
   export function isKeyDown(key: number): boolean;
 }
