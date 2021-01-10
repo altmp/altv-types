@@ -1802,9 +1802,9 @@ declare module "alt-client" {
   export function toggleVoiceControls(state: boolean): void;
 
   /**
-   * Determines whether the specified key is pressed
+   * Determines whether the specified key is pressed.
    *
-   * @param key Code of the key.
+   * @param keycode of the key.
    */
   export function isKeyDown(key: number): boolean;
 }
