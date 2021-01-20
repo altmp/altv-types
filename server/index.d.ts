@@ -415,6 +415,12 @@ declare module "alt-server" {
     readonly z: number;
   }
 
+  export interface ICloth {
+    readonly drawable: number;
+    readonly texture: number;
+    readonly palette: number;
+  }
+
   /**
    * Resource name of the executing entity.
    */
@@ -817,6 +823,12 @@ declare module "alt-server" {
     public setWeather(weatherType: WeatherType): void;
 
     public spawn(x: number, y: number, z: number, delay: number): void;
+
+    public getClothes(component: number): ICloth;
+
+    public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
+
+    public isEntityInStreamRange(entity: Entity): boolean;
   }
 
   export class Vehicle extends Entity {
