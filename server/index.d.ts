@@ -1205,6 +1205,8 @@ declare module "alt-server" {
    */
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
+  export function setPassword(password: string): void;
+
   /**
    * Schedules execution of handler on every tick.
    *
