@@ -1634,6 +1634,13 @@ declare module "alt-client" {
    * @param key Keycode.
    */
   export function isKeyToggled(key: number): boolean;
+  
+  /**
+   * Determines whether the specified key is pressed.
+   *
+   * @param Keycode of the key.
+   */
+  export function isKeyDown(key: number): boolean;
 
   /**
    * Returns state of user interface and console window.
@@ -1874,11 +1881,4 @@ declare module "alt-client" {
 
     public readonly readyState: WebSocketReadyState;
   }
-  
-  /**
-   * Determines whether the specified key is pressed.
-   *
-   * @param Keycode of the key.
-   */
-  export function isKeyDown(key: number): boolean;
 }
