@@ -1345,7 +1345,9 @@ declare module "alt-client" {
     public fScrollSpeed: number;
     public vTilesX: number;
     public vTilesY: number;
-
+    
+    constructor(zoomDataId: number);
+    
     public static get(zoomData: string): MapZoomData;
 
     public static resetAll(): void;
