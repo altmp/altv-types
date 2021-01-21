@@ -1850,6 +1850,18 @@ declare module "alt-client" {
 
   /** @alpha */
   export class WebSocketClient extends BaseObject {
+    public autoReconnect: boolean;
+
+    public perMessageDeflate: boolean;
+
+    public pingInterval: number;
+
+    public url: string;
+
+    public readonly readyState: WebSocketReadyState;
+
+    constructor(url: string);
+
     public on(eventName: "open", listener: () => void): void;
 
     public on(eventName: "close", listener: (code: number, reason: string) => void): void;
@@ -1867,21 +1879,9 @@ declare module "alt-client" {
     public send(message: string | ArrayBuffer | ArrayBufferView): boolean;
 
     public addSubProtocol(protocol: string): void;
-
+    
     public getSubProtocols(): string[];
-
+    
     public setExtraHeader(header: string, value: string): void;
-
-    public autoReconnect: boolean;
-
-    public perMessageDeflate: boolean;
-
-    public pingInterval: number;
-
-    public url: string;
-
-    public readonly readyState: WebSocketReadyState;
-
-    constructor(url: string);
   }
 }
