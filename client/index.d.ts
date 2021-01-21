@@ -1848,6 +1848,7 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
+  /** @alpha */
   export class WebSocketClient extends BaseObject {
     constructor(url: string);
 
