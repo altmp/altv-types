@@ -824,13 +824,13 @@ declare module "alt-server" {
 
     public spawn(x: number, y: number, z: number, delay: number): void;
 
-    /** @beta */
+    /** @alpha */
     public getClothes(component: number): ICloth;
 
-    /** @beta */
+    /** @alpha */
     public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
 
-    /** @beta */
+    /** @alpha */
     public isEntityInStreamRange(entity: Entity): boolean;
   }
 
@@ -1209,10 +1209,11 @@ declare module "alt-server" {
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
   /**
-   * Change the server password in runtime
+   * Change the server password at runtime
    *
    * @param password The new server password
-   * @beta
+   *
+   * @alpha
    */
   export function setPassword(password: string): void;
 
