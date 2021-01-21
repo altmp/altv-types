@@ -541,7 +541,7 @@ declare module "alt-server" {
     public normalize(): Vector3;
 
     /** @beta */
-    public distanceTo(vector: IVector3): Vector3;
+    public distanceTo(vector: IVector3): number;
 
     /** @beta */
     public angleTo(vector: IVector3): Vector3;
