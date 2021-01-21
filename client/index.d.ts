@@ -761,7 +761,7 @@ declare module "alt-client" {
     public static readonly all: Array<Vehicle>;
 
     /** Vehicle gear */
-    public gear: number;
+    public readonly gear: number;
 
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
