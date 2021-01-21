@@ -1850,8 +1850,6 @@ declare module "alt-client" {
 
   /** @alpha */
   export class WebSocketClient extends BaseObject {
-    constructor(url: string);
-
     public on(eventName: "open", listener: () => void): void;
 
     public on(eventName: "close", listener: (code: number, reason: string) => void): void;
@@ -1883,5 +1881,7 @@ declare module "alt-client" {
     public url: string;
 
     public readonly readyState: WebSocketReadyState;
+
+    constructor(url: string);
   }
 }
