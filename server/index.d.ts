@@ -1209,9 +1209,9 @@ declare module "alt-server" {
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
   /**
-   * Change the serverpassword in runtime
+   * Change the server password in runtime
    *
-   * @param password The new serverpassword
+   * @param password The new server password
    * @beta
    */
   export function setPassword(password: string): void;
