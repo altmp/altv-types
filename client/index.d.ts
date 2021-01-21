@@ -1851,7 +1851,7 @@ declare module "alt-client" {
 
     public on(eventName: "open", listener: () => void): void;
 
-    public on(eventName: "close", listener: (reason: number) => void): void;
+    public on(eventName: "close", listener: (code: number, reason: string) => void): void;
 
     public on(eventName: "message", listener: (message: string) => void): void;
 
