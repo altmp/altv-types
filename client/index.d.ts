@@ -144,6 +144,13 @@ declare module "alt-client" {
     RingWhirl
   }
 
+  export const enum WebSocketReadyState {
+    Connecting,
+    Open,
+    Closing,
+    Closed
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -1353,6 +1360,11 @@ declare module "alt-client" {
 
     public deleteAll(): void;
 
+    /**
+     * @remarks Alias for deleteAll.
+     */
+    public clear(): void;
+
     public get(key: string): any;
 
     public save(): void;
@@ -1384,6 +1396,8 @@ declare module "alt-client" {
     public ulong(offset: number): bigint;
 
     public ushort(offset: number): number;
+
+    public address(offset: number): bigint;
 
     public free(): boolean;
   }
@@ -1599,6 +1613,29 @@ declare module "alt-client" {
   export function isInStreamerMode(): boolean;
 
   /**
+   * Debug mode.
+   * 
+   * @returns True when alt:V client is launched with debug mode enabled.
+   */
+  export function isInDebug(): boolean;
+
+  /**
+   * Returns whether voice activity input is enabled in alt:V settings.
+   * 
+   * @returns True when voice activity input is enabled in alt:V settings.
+   * 
+   * @deprecated Use alt.Voice.activityInputEnabled instead
+   */
+  export function isVoiceActivityInputEnabled(): boolean;
+
+  /**
+   * Returns whether the specified key is toggled.
+   * 
+   * @param key Keycode.
+   */
+  export function isKeyToggled(key: number): boolean;
+
+  /**
    * Returns state of user interface and console window.
    *
    * @returns True when user interface or console window is opened.
@@ -1716,6 +1753,32 @@ declare module "alt-client" {
 
   export function setCamFrozen(state: boolean): void;
 
+  /**
+   * Sets the specified config flag to the specified state.
+   * 
+   * @param flag Config flag name.
+   * @param state Config flag state.
+   */
+  export function setConfigFlag(flag: string, state: boolean): void;
+
+  /**
+   * Returns the state of the specified config flag.
+   * 
+   * @param flag Config flag name.
+   * 
+   * @returns State of the specified config flag.
+   */
+  export function getConfigFlag(flag: string): boolean;
+
+  /**
+   * Returns whether the specified config flag exists.
+   * 
+   * @param flag Config flag name.
+   * 
+   * @returns True when the config flag exists.
+   */
+  export function doesConfigFlagExist(flag: string): boolean;
+
   export function setCursorPos(pos: IVector2): void;
 
   /**
@@ -1775,4 +1838,40 @@ declare module "alt-client" {
   export function toggleGameControls(state: boolean): void;
 
   export function toggleVoiceControls(state: boolean): void;
+
+  export class WebSocketClient extends BaseObject {
+    constructor(url: string);
+
+    public on(eventName: "open", listener: () => void): void;
+
+    public on(eventName: "close", listener: (reason: number) => void): void;
+
+    public on(eventName: "message", listener: (message: string) => void): void;
+
+    public on(eventName: "error", listener: (error: string) => void): void;
+
+    public off(eventName: string, listener: (...args: any[]) => void): void;
+
+    public start(): void;
+
+    public stop(): void;
+
+    public send(message: string | ArrayBuffer | ArrayBufferView): boolean;
+
+    public addSubProtocol(protocol: string): void;
+
+    public getSubProtocols(): string[];
+
+    public setExtraHeader(header: string, value: string): void;
+
+    public autoReconnect: boolean;
+
+    public perMessageDeflate: boolean;
+
+    public pingInterval: number;
+
+    public url: string;
+
+    public readonly readyState: WebSocketReadyState;
+  }
 }
