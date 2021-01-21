@@ -144,22 +144,26 @@ declare module "alt-client" {
     RingWhirl
   }
 
+  export const enum WebSocketReadyState {
+    Connecting,
+    Open,
+    Closing,
+    Closed
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
-    /** @beta */
     changedVehicleSeat: (vehicle: Vehicle, oldSeat: number, seat: number) => void;
     connectionComplete: () => void;
     consoleCommand: (name: string, ...args: string[]) => void;
     disconnect: () => void;
-    /** @beta */
     enteredVehicle: (vehicle: Vehicle, seat: number) => void;
     gameEntityCreate: (entity: Entity) => void;
     gameEntityDestroy: (entity: Entity) => void;
     keydown: (key: number) => void;
     keyup: (key: number) => void;
-    /** @beta */
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: BaseObject) => void;
     resourceStart: (errored: boolean) => void;
@@ -302,7 +306,6 @@ declare module "alt-client" {
   /**
    * Resource name of the executing entity.
    *
-   * @beta
    */
   export const resourceName: string;
 
@@ -311,7 +314,6 @@ declare module "alt-client" {
    *
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
    *
-   * @beta
    */
   export const version: string;
 
@@ -320,7 +322,6 @@ declare module "alt-client" {
    *
    * @remarks It's the version of the SDK the current runtime was compiled with.
    *
-   * @beta
    */
   export const sdkVersion: number;
 
@@ -405,7 +406,7 @@ declare module "alt-client" {
     public normalize(): Vector3;
 
     /** @beta */
-    public distanceTo(vector: IVector3): Vector3;
+    public distanceTo(vector: IVector3): number;
 
     /** @beta */
     public angleTo(vector: IVector3): Vector3;
@@ -609,21 +610,18 @@ declare module "alt-client" {
     /**
      * Current weapon components
      *
-     * @beta
      */
     public readonly currentWeaponComponents: Array<number>;
 
     /**
      * Tint index for currently equipeed weapon
      *
-     * @beta
      */
     public readonly currentWeaponTintIndex: number;
 
     /**
      * Currently equipped weapon
      *
-     * @beta
      */
     public readonly currentWeapon: number;
 
@@ -637,14 +635,12 @@ declare module "alt-client" {
     /**
      * Is the player currently in ragdoll
      *
-     * @beta
      */
     public readonly isInRagdoll: boolean;
 
     /**
      * Is the player currently aiming
      *
-     * @beta
      */
     public readonly isAiming: boolean;
 
@@ -665,77 +661,66 @@ declare module "alt-client" {
     /**
      * Current armour
      *
-     * @beta
      */
     public readonly armour: number;
 
     /**
      * Max available armour value
      *
-     * @beta
      */
     public readonly maxArmour: number;
 
     /**
      * Current player movement speed
      *
-     * @beta
      */
     public readonly moveSpeed: number;
 
     /**
      * Position the player is currently aiming at
      *
-     * @beta
      */
     public readonly aimPos: Vector3;
 
     /**
      * Rotation of the head of the player
      *
-     * @beta
      */
     public readonly headRot: Vector3;
 
     /**
      * Curent seat the player is sitting in
      *
-     * @beta
      */
     public readonly seat: number;
 
     /**
      * The entity the player is aiming at
      *
-     * @beta
      */
     public readonly entityAimingAt: Entity | null;
 
     /**
      * The current aim offset of the player
      *
-     * @beta
      */
     public readonly entityAimOffset: Vector3 | null;
 
     /**
      * Is the flashlight of the player activated
      *
-     * @beta
      */
     public readonly flashlightActive: boolean;
 
     /**
      * Current health of the player
      *
-     * @beta
      */
     public readonly health: number;
 
     /**
      * Current max health of the player
      *
-     * @beta
      */
     public readonly maxHealth: number;
 
@@ -761,7 +746,7 @@ declare module "alt-client" {
     public static readonly all: Array<Vehicle>;
 
     /** Vehicle gear */
-    public gear: number;
+    public readonly gear: number;
 
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
@@ -1230,9 +1215,6 @@ declare module "alt-client" {
      */
     public routeColor: number;
 
-    /**
-     * @deprecated This property was renamed to {@link size} on the other branches than release.
-     */
     public scale: number;
 
     /**
@@ -1378,6 +1360,11 @@ declare module "alt-client" {
 
     public deleteAll(): void;
 
+    /**
+     * @remarks Alias for deleteAll.
+     */
+    public clear(): void;
+
     public get(key: string): any;
 
     public save(): void;
@@ -1409,6 +1396,8 @@ declare module "alt-client" {
     public ulong(offset: number): bigint;
 
     public ushort(offset: number): number;
+
+    public address(offset: number): bigint;
 
     public free(): boolean;
   }
@@ -1624,6 +1613,29 @@ declare module "alt-client" {
   export function isInStreamerMode(): boolean;
 
   /**
+   * Debug mode.
+   * 
+   * @returns True when alt:V client is launched with debug mode enabled.
+   */
+  export function isInDebug(): boolean;
+
+  /**
+   * Returns whether voice activity input is enabled in alt:V settings.
+   * 
+   * @returns True when voice activity input is enabled in alt:V settings.
+   * 
+   * @deprecated Use alt.Voice.activityInputEnabled instead
+   */
+  export function isVoiceActivityInputEnabled(): boolean;
+
+  /**
+   * Returns whether the specified key is toggled.
+   * 
+   * @param key Keycode.
+   */
+  export function isKeyToggled(key: number): boolean;
+
+  /**
    * Returns state of user interface and console window.
    *
    * @returns True when user interface or console window is opened.
@@ -1741,6 +1753,32 @@ declare module "alt-client" {
 
   export function setCamFrozen(state: boolean): void;
 
+  /**
+   * Sets the specified config flag to the specified state.
+   * 
+   * @param flag Config flag name.
+   * @param state Config flag state.
+   */
+  export function setConfigFlag(flag: string, state: boolean): void;
+
+  /**
+   * Returns the state of the specified config flag.
+   * 
+   * @param flag Config flag name.
+   * 
+   * @returns State of the specified config flag.
+   */
+  export function getConfigFlag(flag: string): boolean;
+
+  /**
+   * Returns whether the specified config flag exists.
+   * 
+   * @param flag Config flag name.
+   * 
+   * @returns True when the config flag exists.
+   */
+  export function doesConfigFlagExist(flag: string): boolean;
+
   export function setCursorPos(pos: IVector2): void;
 
   /**
@@ -1801,6 +1839,42 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
+  export class WebSocketClient extends BaseObject {
+    constructor(url: string);
+
+    public on(eventName: "open", listener: () => void): void;
+
+    public on(eventName: "close", listener: (reason: number) => void): void;
+
+    public on(eventName: "message", listener: (message: string) => void): void;
+
+    public on(eventName: "error", listener: (error: string) => void): void;
+
+    public off(eventName: string, listener: (...args: any[]) => void): void;
+
+    public start(): void;
+
+    public stop(): void;
+
+    public send(message: string | ArrayBuffer | ArrayBufferView): boolean;
+
+    public addSubProtocol(protocol: string): void;
+
+    public getSubProtocols(): string[];
+
+    public setExtraHeader(header: string, value: string): void;
+
+    public autoReconnect: boolean;
+
+    public perMessageDeflate: boolean;
+
+    public pingInterval: number;
+
+    public url: string;
+
+    public readonly readyState: WebSocketReadyState;
+  }
+  
   /**
    * Determines whether the specified key is pressed.
    *

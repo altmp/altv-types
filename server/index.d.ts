@@ -415,6 +415,12 @@ declare module "alt-server" {
     readonly z: number;
   }
 
+  export interface ICloth {
+    readonly drawable: number;
+    readonly texture: number;
+    readonly palette: number;
+  }
+
   /**
    * Resource name of the executing entity.
    */
@@ -535,7 +541,7 @@ declare module "alt-server" {
     public normalize(): Vector3;
 
     /** @beta */
-    public distanceTo(vector: IVector3): Vector3;
+    public distanceTo(vector: IVector3): number;
 
     /** @beta */
     public angleTo(vector: IVector3): Vector3;
@@ -817,6 +823,12 @@ declare module "alt-server" {
     public setWeather(weatherType: WeatherType): void;
 
     public spawn(x: number, y: number, z: number, delay: number): void;
+
+    public getClothes(component: number): ICloth;
+
+    public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
+
+    public isEntityInStreamRange(entity: Entity): boolean;
   }
 
   export class Vehicle extends Entity {
@@ -1192,6 +1204,8 @@ declare module "alt-server" {
    * @param args Rest parameters for emit to send.
    */
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
+
+  export function setPassword(password: string): void;
 
   /**
    * Schedules execution of handler on every tick.
