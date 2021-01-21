@@ -148,18 +148,15 @@ declare module "alt-client" {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
-    /** @beta */
     changedVehicleSeat: (vehicle: Vehicle, oldSeat: number, seat: number) => void;
     connectionComplete: () => void;
     consoleCommand: (name: string, ...args: string[]) => void;
     disconnect: () => void;
-    /** @beta */
     enteredVehicle: (vehicle: Vehicle, seat: number) => void;
     gameEntityCreate: (entity: Entity) => void;
     gameEntityDestroy: (entity: Entity) => void;
     keydown: (key: number) => void;
     keyup: (key: number) => void;
-    /** @beta */
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: BaseObject) => void;
     resourceStart: (errored: boolean) => void;
@@ -302,7 +299,6 @@ declare module "alt-client" {
   /**
    * Resource name of the executing entity.
    *
-   * @beta
    */
   export const resourceName: string;
 
@@ -311,7 +307,6 @@ declare module "alt-client" {
    *
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
    *
-   * @beta
    */
   export const version: string;
 
@@ -320,7 +315,6 @@ declare module "alt-client" {
    *
    * @remarks It's the version of the SDK the current runtime was compiled with.
    *
-   * @beta
    */
   export const sdkVersion: number;
 
@@ -609,21 +603,18 @@ declare module "alt-client" {
     /**
      * Current weapon components
      *
-     * @beta
      */
     public readonly currentWeaponComponents: Array<number>;
 
     /**
      * Tint index for currently equipeed weapon
      *
-     * @beta
      */
     public readonly currentWeaponTintIndex: number;
 
     /**
      * Currently equipped weapon
      *
-     * @beta
      */
     public readonly currentWeapon: number;
 
@@ -637,14 +628,12 @@ declare module "alt-client" {
     /**
      * Is the player currently in ragdoll
      *
-     * @beta
      */
     public readonly isInRagdoll: boolean;
 
     /**
      * Is the player currently aiming
      *
-     * @beta
      */
     public readonly isAiming: boolean;
 
@@ -665,77 +654,66 @@ declare module "alt-client" {
     /**
      * Current armour
      *
-     * @beta
      */
     public readonly armour: number;
 
     /**
      * Max available armour value
      *
-     * @beta
      */
     public readonly maxArmour: number;
 
     /**
      * Current player movement speed
      *
-     * @beta
      */
     public readonly moveSpeed: number;
 
     /**
      * Position the player is currently aiming at
      *
-     * @beta
      */
     public readonly aimPos: Vector3;
 
     /**
      * Rotation of the head of the player
      *
-     * @beta
      */
     public readonly headRot: Vector3;
 
     /**
      * Curent seat the player is sitting in
      *
-     * @beta
      */
     public readonly seat: number;
 
     /**
      * The entity the player is aiming at
      *
-     * @beta
      */
     public readonly entityAimingAt: Entity | null;
 
     /**
      * The current aim offset of the player
      *
-     * @beta
      */
     public readonly entityAimOffset: Vector3 | null;
 
     /**
      * Is the flashlight of the player activated
      *
-     * @beta
      */
     public readonly flashlightActive: boolean;
 
     /**
      * Current health of the player
      *
-     * @beta
      */
     public readonly health: number;
 
     /**
      * Current max health of the player
      *
-     * @beta
      */
     public readonly maxHealth: number;
 
@@ -1230,9 +1208,6 @@ declare module "alt-client" {
      */
     public routeColor: number;
 
-    /**
-     * @deprecated This property was renamed to {@link size} on the other branches than release.
-     */
     public scale: number;
 
     /**
