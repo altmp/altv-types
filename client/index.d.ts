@@ -1885,4 +1885,24 @@ declare module "alt-client" {
     
     public setExtraHeader(header: string, value: string): void;
   }
+
+  /**
+   * Load a specific ytyp file.
+   *
+   * @param path Relative path to the game folder
+   * @remarks Example: alt.loadYtyp("x64u.rpf/levels/gta5/_hills/country_06/country_06_metadata.rpf/cs6_08_interior_cs6_08_mine_int.ytyp")
+   *
+   * @alpha
+   */
+  export function loadYtyp(path: string): void;
+
+  /**
+   * Unload a specific ytyp file.
+   *
+   * @param path Relative path to the game folder
+   * @remarks Example: alt.unloadYtyp("x64u.rpf/levels/gta5/_hills/country_06/country_06_metadata.rpf/cs6_08_interior_cs6_08_mine_int.ytyp")
+   *
+   * @alpha
+   */
+   export function unloadYtyp(path: string): void;
 }
