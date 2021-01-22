@@ -1717,7 +1717,7 @@ declare module "alt-client" {
   export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
-   * Subscribes from server to client event handler with specified listener.
+   * Subscribes to server event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1725,7 +1725,7 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes from server to client event handler with specified listener, which only triggers once.
+   * Subscribes to server event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
