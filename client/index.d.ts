@@ -1685,7 +1685,7 @@ declare module "alt-client" {
   export function offServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event handler with specified listener.
+   * Subscribes to client event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1693,7 +1693,7 @@ declare module "alt-client" {
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to client event handler with specified listener, which only triggers once.
+   * Subscribes to client event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1701,7 +1701,7 @@ declare module "alt-client" {
   export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to client event handler with specified listener.
+   * Subscribes to client event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1709,7 +1709,7 @@ declare module "alt-client" {
   export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
-   * Subscribes to client event handler with specified listener, which only triggers once.
+   * Subscribes to client event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
