@@ -1224,7 +1224,7 @@ declare module "alt-server" {
   export function nextTick(handler: () => void): number;
 
   /**
-   * Unsubscribes from server event handler with specified listener.
+   * Unsubscribes from server event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
@@ -1233,7 +1233,7 @@ declare module "alt-server" {
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from client event handler with specified listener.
+   * Unsubscribes from client event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
