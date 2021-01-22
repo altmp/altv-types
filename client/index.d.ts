@@ -1434,6 +1434,17 @@ declare module "alt-client" {
      * Determines whether the microphone input is currently disabled.
      */
     static muteInput: boolean;
+    
+    /**
+     * Determines if voice acitvation is enabled
+     */
+    static activityInputEnabled: boolean;
+
+    /**
+     * Returns the keycode of the voice activation key
+     * @alpha
+     */
+    static activationKey: number;
   }
 
   /**
