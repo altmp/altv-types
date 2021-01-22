@@ -1436,12 +1436,15 @@ declare module "alt-client" {
     static muteInput: boolean;
     
     /**
-     * Determines if the voice activation is enabled
+     * Determines if the voice activation is enabled.
+     * 
+     * @alpha
      */
     static activityInputEnabled: boolean;
 
     /**
-     * Returns the keycode of the voice activation key
+     * Returns the keycode of the voice activation key.
+     * 
      * @alpha
      */
     static activationKey: number;
