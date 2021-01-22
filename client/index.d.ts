@@ -1894,7 +1894,7 @@ declare module "alt-client" {
    *
    * @alpha
    */
-  export function loadYtyp(path: string): void;
+  export function loadYtyp(path: string): boolean;
 
   /**
    * Unload a specific ytyp file.
@@ -1904,5 +1904,5 @@ declare module "alt-client" {
    *
    * @alpha
    */
-   export function unloadYtyp(path: string): void;
+   export function unloadYtyp(path: string): boolean;
 }
