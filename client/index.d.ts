@@ -1077,6 +1077,33 @@ declare module "alt-client" {
     constructor(url: string, isOverlay?: boolean);
 
     /**
+     * Creates a WebView
+     *
+     * @param url URL.
+     * @param pos x, y coordinates of the position
+     */
+    constructor(url: string, pos: IVector2);
+
+    /**
+     * Creates a custom size WebView and specific pos.
+     *
+     * @param url URL.
+     * @param pos x, y coordinates of the position
+     * @param size x, y to define the size
+     */
+    constructor(url: string, pos: IVector2, size: IVector2);
+
+    /**
+     * Creates a custom size WebView and specific pos.
+     *
+     * @param url URL.
+     * @param isOverlay true to render as overlay, false to render on game's GUI stage
+     * @param pos x, y coordinates of the position
+     * @param size x, y to define the size
+     */
+    constructor(url: string, isOverlay: boolean, pos: IVector2, size: IVector2);
+
+    /**
      * Creates a WebView rendered on game object.
      *
      * @param url URL.
