@@ -758,7 +758,7 @@ declare module "alt-server" {
     public clearBloodDamage(): void;
 
     /**
-     * Add weapon to the player.
+     * Gives the specified weapon to the player.
      * @param weaponHash Weaponhash of the weapon.
      * @param ammo Count of the ammo to add.
      * @param equipNow Equip it immediately to player.
@@ -774,7 +774,7 @@ declare module "alt-server" {
     public kick(reason?: string): void;
 
     /**
-     * Removes every weapon from the player, except animal weapons.
+     * Removes every weapon from the player.
      */
     public removeAllWeapons(): void;
 
