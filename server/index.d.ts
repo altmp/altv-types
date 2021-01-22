@@ -362,7 +362,6 @@ declare module "alt-server" {
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
-    /** @beta */
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
@@ -370,7 +369,6 @@ declare module "alt-server" {
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
-    /** @beta */
     playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: BaseObject) => void;
@@ -380,21 +378,15 @@ declare module "alt-server" {
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     globalMetaChange: (key: string, value: any, oldValue: any) => void;
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
-    /** @beta */
     vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
-    /** @beta */
     vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
     weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: BodyPart) => boolean | void;
-    /** @beta */
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
-    /** @beta */
     startProjectile: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void;
-    /** @beta */
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
   }
 
-  /** @beta */
   export interface IFireInfo {
     pos: Vector3;
     weapon: number;
@@ -405,6 +397,12 @@ declare module "alt-server" {
     right: boolean;
     front: boolean;
     back: boolean;
+  }
+
+  export interface IVector2 {
+    readonly x: number;
+
+    readonly y: number;
   }
 
   export interface IVector3 {
@@ -428,27 +426,14 @@ declare module "alt-server" {
 
   export const rootDir: string;
 
-  /**
-   * @deprecated This variable was renamed to {@link defaultDimension} on the other branches than release.
-   */
-  export const DefaultDimension: number;
-
-  /** @beta */
   export const defaultDimension: number;
 
-  /**
-   * @deprecated This variable was renamed to {@link globalDimension} on the other branches than release.
-   */
-  export const GlobalDimension: number;
-
-  /** @beta */
   export const globalDimension: number;
 
   /**
    * Represents the current server version.
    *
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
-   * @beta
    */
   export const version: string;
 
@@ -456,14 +441,12 @@ declare module "alt-server" {
    * Represents the current server SDK version.
    *
    * @remarks It's the version of the SDK the current runtime was compiled with.
-   * @beta
    */
   export const sdkVersion: number;
 
   /**
    * Represents the current server branch.
    *
-   * @beta
    */
   export const branch: string;
 
@@ -480,82 +463,56 @@ declare module "alt-server" {
 
     constructor(obj: IVector3);
 
-    /** @beta */
     public get length(): number;
 
-    /** @beta */
     public toArray(): [number, number, number];
 
-    /** @beta */
     public add(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public add(value: number): Vector3;
 
-    /** @beta */
     public add(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public add(vector: IVector3): Vector3;
 
-    /** @beta */
     public sub(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public sub(value: number): Vector3;
 
-    /** @beta */
     public sub(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public sub(vector: IVector3): Vector3;
 
-    /** @beta */
     public div(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public div(value: number): Vector3;
 
-    /** @beta */
     public div(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public div(vector: IVector3): Vector3;
 
-    /** @beta */
     public mul(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public mul(value: number): Vector3;
 
-    /** @beta */
     public mul(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public mul(vector: IVector3): Vector3;
 
-    /** @beta */
     public negative(): Vector3;
 
-    /** @beta */
     public normalize(): Vector3;
 
-    /** @beta */
     public distanceTo(vector: IVector3): number;
 
-    /** @beta */
     public angleTo(vector: IVector3): Vector3;
 
-    /** @beta */
     public angleToDegrees(vector: IVector3): Vector3;
 
-    /** @beta */
     public toRadians(): Vector3;
 
-    /** @beta */
     public toDegrees(): Vector3;
 
-    /** @beta */
     public isInRange(vector: IVector3, range: number): boolean;
   }
 
@@ -630,7 +587,6 @@ declare module "alt-server" {
   }
 
   export class Entity extends WorldObject {
-    /** @beta */
     public static readonly all: Array<Entity>;
 
     /**
@@ -662,7 +618,6 @@ declare module "alt-server" {
      */
     public rot: Vector3;
 
-    /** @beta */
     public visible: boolean;
 
     /**
@@ -797,9 +752,17 @@ declare module "alt-server" {
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
-    /** @beta */
+    /**
+     * Removes the visible blood on the player body.
+     */
     public clearBloodDamage(): void;
 
+    /**
+     * Gives the specified weapon to the player.
+     * @param weaponHash Weaponhash of the weapon.
+     * @param ammo Count of the ammo to add.
+     * @param equipNow Equip it immediately to player.
+     */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
     /**
@@ -810,8 +773,15 @@ declare module "alt-server" {
      */
     public kick(reason?: string): void;
 
+    /**
+     * Removes every weapon from the player.
+     */
     public removeAllWeapons(): void;
 
+    /**
+     * Removes the specified weapon from the player.
+     * @param weaponHash Weaponhash of the weapon.
+     */
     public removeWeapon(weaponHash: number): void;
 
     public removeWeaponComponent(weaponHash: number, component: number): void;
@@ -902,10 +872,8 @@ declare module "alt-server" {
 
     public getAppearanceDataBase64(): string;
 
-    /** @beta */
     public getAttached(): Vehicle;
 
-    /** @beta */
     public getAttachedTo(): Vehicle;
 
     public getArmoredWindowHealth(windowId: number): number;
@@ -950,7 +918,6 @@ declare module "alt-server" {
 
     public isWindowOpened(windowId: number): boolean;
 
-    /** @beta */
     public repair(): void;
 
     public setAppearanceDataBase64(data: string): void;
@@ -1257,7 +1224,7 @@ declare module "alt-server" {
   export function nextTick(handler: () => void): number;
 
   /**
-   * Unsubscribes from server event handler with specified listener.
+   * Unsubscribes from server event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
@@ -1266,7 +1233,7 @@ declare module "alt-server" {
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from client event handler with specified listener.
+   * Unsubscribes from client event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
@@ -1275,36 +1242,51 @@ declare module "alt-server" {
   export function offClient(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event handler with specified listener.
+   * Subscribes to server event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
-  /** @beta */
+  /**
+   * Subscribes to server event with specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event handler with specified listener.
+   * Subscribes to server event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
-  /** @beta */
+  /**
+   * Subscribes to server event with specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
   export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
-   * Subscribes to client event handler with specified listener.
+   * Subscribes to client event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
-  /** @beta */
+  /**
+   * Subscribes to client event with specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
   export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   export function restartResource(name: string): void;
