@@ -1434,6 +1434,17 @@ declare module "alt-client" {
      * Determines whether the microphone input is currently disabled.
      */
     static muteInput: boolean;
+    
+    /**
+     * Determines if voice acitvation is enabled
+     */
+    static activityInputEnabled: boolean;
+
+    /**
+     * Returns the keycode of the voice activation key
+     * @beta
+     */
+    static activationKey: number;
   }
 
   /**
@@ -1880,9 +1891,9 @@ declare module "alt-client" {
     public send(message: string | ArrayBuffer | ArrayBufferView): boolean;
 
     public addSubProtocol(protocol: string): void;
-    
+
     public getSubProtocols(): string[];
-    
+
     public setExtraHeader(header: string, value: string): void;
   }
 }
