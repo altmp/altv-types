@@ -759,9 +759,9 @@ declare module "alt-server" {
 
     /**
      * Add weapon to the player.
-     * @param weaponHash Weaponhash of the weapon
-     * @param ammo Count of the ammo to add
-     * @param equipNow Equip it immediately to player
+     * @param weaponHash Weaponhash of the weapon.
+     * @param ammo Count of the ammo to add.
+     * @param equipNow Equip it immediately to player.
      */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
@@ -774,13 +774,13 @@ declare module "alt-server" {
     public kick(reason?: string): void;
 
     /**
-     * Remove every weapon from the player, except animal weapons.
+     * Removes every weapon from the player, except animal weapons.
      */
     public removeAllWeapons(): void;
 
     /**
-     * Remove a specific weapon from the player.
-     * @param weaponHash Weaponhash of the weapon
+     * Removes the specified weapon from the player.
+     * @param weaponHash Weaponhash of the weapon.
      */
     public removeWeapon(weaponHash: number): void;
 
