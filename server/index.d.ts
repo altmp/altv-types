@@ -434,18 +434,8 @@ declare module "alt-server" {
 
   export const rootDir: string;
 
-  /**
-   * @deprecated This variable was renamed to {@link defaultDimension} on the other branches than release.
-   */
-  export const DefaultDimension: number;
-
   /** @beta */
   export const defaultDimension: number;
-
-  /**
-   * @deprecated This variable was renamed to {@link globalDimension} on the other branches than release.
-   */
-  export const GlobalDimension: number;
 
   /** @beta */
   export const globalDimension: number;
