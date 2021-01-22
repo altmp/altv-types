@@ -752,8 +752,17 @@ declare module "alt-server" {
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
+    /**
+     * Clears the player from every visible blood on the body
+     */
     public clearBloodDamage(): void;
 
+    /**
+     * Add weapon to the player
+     * @param weaponHash Weaponhash of the weapon
+     * @param ammo Count of the ammo to add
+     * @param equipNow Equip it immediately to player
+     */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
     /**
@@ -764,8 +773,15 @@ declare module "alt-server" {
      */
     public kick(reason?: string): void;
 
+    /**
+     * Remove every weapon from the player, except animal weapons
+     */
     public removeAllWeapons(): void;
 
+    /**
+     * Remove a specific weapon from the player
+     * @param weaponHash Weaponhash of the weapon
+     */
     public removeWeapon(weaponHash: number): void;
 
     public removeWeaponComponent(weaponHash: number, component: number): void;
@@ -1233,6 +1249,12 @@ declare module "alt-server" {
    */
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
+  /**
+   * Subscribes to server event handler with specified listener, which only only trigger once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
@@ -1243,16 +1265,28 @@ declare module "alt-server" {
    */
   export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
+  /**
+   * Subscribes to server event handler with specified listener, which only only trigger once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
   export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
-   * Subscribes to client event handler with specified listener.
+   * Subscribes from client to server event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
+  /**
+   * Subscribes from client to server event handler with specified listener, which will only trigger once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
   export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   export function restartResource(name: string): void;
