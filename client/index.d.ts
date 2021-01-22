@@ -1071,15 +1071,15 @@ declare module "alt-client" {
     /**
      * Creates a fullscreen WebView.
      *
-     * @param url URL.
+     * @param url URL of the html file.
      * @param isOverlay true to render as overlay, false to render on game's GUI stage
      */
     constructor(url: string, isOverlay?: boolean);
 
     /**
-     * Creates a WebView
+     * Creates a WebView.
      *
-     * @param url URL.
+     * @param url URL of the html file.
      * @param pos x, y coordinates of the position
      */
     constructor(url: string, pos: IVector2);
@@ -1087,7 +1087,7 @@ declare module "alt-client" {
     /**
      * Creates a custom size WebView and specific pos.
      *
-     * @param url URL.
+     * @param url URL of the html file.
      * @param pos x, y coordinates of the position
      * @param size x, y to define the size
      */
@@ -1096,7 +1096,7 @@ declare module "alt-client" {
     /**
      * Creates a custom size WebView and specific pos.
      *
-     * @param url URL.
+     * @param url URL of the html file.
      * @param isOverlay true to render as overlay, false to render on game's GUI stage
      * @param pos x, y coordinates of the position
      * @param size x, y to define the size
@@ -1106,7 +1106,7 @@ declare module "alt-client" {
     /**
      * Creates a WebView rendered on game object.
      *
-     * @param url URL.
+     * @param url URL of the html file.
      * @param propHash Hash of object to render on.
      * @param targetTexture Name of object's texture to replace.
      */
@@ -1678,7 +1678,7 @@ declare module "alt-client" {
   export function nextTick(handler: () => void): number;
 
   /**
-   * Unsubscribes from client event handler with specified listener.
+   * Unsubscribes from client event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
@@ -1687,7 +1687,7 @@ declare module "alt-client" {
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from server event handler with specified listener.
+   * Unsubscribes from server event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
@@ -1696,7 +1696,7 @@ declare module "alt-client" {
   export function offServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event handler with specified listener.
+   * Subscribes to client event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1704,7 +1704,7 @@ declare module "alt-client" {
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to client event handler with specified listener, which only only trigger once.
+   * Subscribes to client event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1712,7 +1712,7 @@ declare module "alt-client" {
   export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to client event handler with specified listener.
+   * Subscribes to client event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1720,7 +1720,7 @@ declare module "alt-client" {
   export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
-   * Subscribes to client event handler with specified listener, which only only trigger once.
+   * Subscribes to client event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1728,7 +1728,7 @@ declare module "alt-client" {
   export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
-   * Subscribes from server to client event handler with specified listener.
+   * Subscribes to server event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1736,7 +1736,7 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes from server to client event handler with specified listener, which only only trigger once.
+   * Subscribes to server event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.

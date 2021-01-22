@@ -753,15 +753,15 @@ declare module "alt-server" {
     public addWeaponComponent(weaponHash: number, component: number): void;
 
     /**
-     * Clears the player from every visible blood on the body
+     * Removes the visible blood on the player body.
      */
     public clearBloodDamage(): void;
 
     /**
-     * Add weapon to the player
-     * @param weaponHash Weaponhash of the weapon
-     * @param ammo Count of the ammo to add
-     * @param equipNow Equip it immediately to player
+     * Gives the specified weapon to the player.
+     * @param weaponHash Weaponhash of the weapon.
+     * @param ammo Count of the ammo to add.
+     * @param equipNow Equip it immediately to player.
      */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
@@ -774,13 +774,13 @@ declare module "alt-server" {
     public kick(reason?: string): void;
 
     /**
-     * Remove every weapon from the player, except animal weapons
+     * Removes every weapon from the player.
      */
     public removeAllWeapons(): void;
 
     /**
-     * Remove a specific weapon from the player
-     * @param weaponHash Weaponhash of the weapon
+     * Removes the specified weapon from the player.
+     * @param weaponHash Weaponhash of the weapon.
      */
     public removeWeapon(weaponHash: number): void;
 
@@ -1224,7 +1224,7 @@ declare module "alt-server" {
   export function nextTick(handler: () => void): number;
 
   /**
-   * Unsubscribes from server event handler with specified listener.
+   * Unsubscribes from server event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
@@ -1233,7 +1233,7 @@ declare module "alt-server" {
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from client event handler with specified listener.
+   * Unsubscribes from client event with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
@@ -1242,7 +1242,7 @@ declare module "alt-server" {
   export function offClient(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event handler with specified listener.
+   * Subscribes to server event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1250,7 +1250,7 @@ declare module "alt-server" {
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event handler with specified listener, which only only trigger once.
+   * Subscribes to server event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1258,7 +1258,7 @@ declare module "alt-server" {
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event handler with specified listener.
+   * Subscribes to server event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1266,7 +1266,7 @@ declare module "alt-server" {
   export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
-   * Subscribes to server event handler with specified listener, which only only trigger once.
+   * Subscribes to server event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1274,7 +1274,7 @@ declare module "alt-server" {
   export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
-   * Subscribes from client to server event handler with specified listener.
+   * Subscribes to client event with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1282,7 +1282,7 @@ declare module "alt-server" {
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes from client to server event handler with specified listener, which will only trigger once.
+   * Subscribes to client event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
