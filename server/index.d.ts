@@ -407,6 +407,12 @@ declare module "alt-server" {
     back: boolean;
   }
 
+  export interface IVector2 {
+    readonly x: number;
+
+    readonly y: number;
+  }
+
   export interface IVector3 {
     readonly x: number;
 
