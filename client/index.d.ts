@@ -199,7 +199,6 @@ declare module "alt-client" {
    *
    * @remarks Changes will be reflected only on a particular instance of the vehicle. On creation, model handling will be used as a base and changed properties will be added on top of it.
    *
-   * @beta
    */
   export interface IVehicleHandling {
     readonly handlingNameHash: number;
@@ -328,7 +327,6 @@ declare module "alt-client" {
   /**
    * Represents the current client branch.
    *
-   * @beta
    */
   export const branch: string;
 
@@ -345,82 +343,56 @@ declare module "alt-client" {
 
     constructor(obj: IVector3);
 
-    /** @beta */
     public get length(): number;
 
-    /** @beta */
     public toArray(): [number, number, number];
 
-    /** @beta */
     public add(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public add(value: number): Vector3;
 
-    /** @beta */
     public add(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public add(vector: IVector3): Vector3;
 
-    /** @beta */
     public sub(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public sub(value: number): Vector3;
 
-    /** @beta */
     public sub(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public sub(vector: IVector3): Vector3;
 
-    /** @beta */
     public div(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public div(value: number): Vector3;
 
-    /** @beta */
     public div(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public div(vector: IVector3): Vector3;
 
-    /** @beta */
     public mul(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public mul(value: number): Vector3;
 
-    /** @beta */
     public mul(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public mul(vector: IVector3): Vector3;
 
-    /** @beta */
     public negative(): Vector3;
 
-    /** @beta */
     public normalize(): Vector3;
 
-    /** @beta */
     public distanceTo(vector: IVector3): number;
 
-    /** @beta */
     public angleTo(vector: IVector3): Vector3;
 
-    /** @beta */
     public angleToDegrees(vector: IVector3): Vector3;
 
-    /** @beta */
     public toRadians(): Vector3;
 
-    /** @beta */
     public toDegrees(): Vector3;
 
-    /** @beta */
     public isInRange(vector: IVector3, range: number): boolean;
   }
 
@@ -499,9 +471,6 @@ declare module "alt-client" {
     public pos: Vector3;
   }
 
-  /**
-  * @beta
-  */
   export class Checkpoint extends WorldObject {
     public checkpointType: CheckpointType;
     public nextPos: Vector3;
@@ -516,7 +485,6 @@ declare module "alt-client" {
   }
 
   export class Entity extends WorldObject {
-    /** @beta */
     public static readonly all: Array<Entity>;
 
     /** Entity unique id */
@@ -536,7 +504,6 @@ declare module "alt-client" {
     /** Entity rotation in radians */
     public readonly rot: Vector3;
 
-    /** @beta */
     public readonly visible: boolean;
 
     /**
@@ -616,8 +583,9 @@ declare module "alt-client" {
     /**
      * Tint index for currently equipeed weapon
      *
+     * @alpha
      */
-    public readonly currentWeaponTintIndex: number;
+    //public readonly currentWeaponTintIndex: number;
 
     /**
      * Currently equipped weapon
@@ -628,9 +596,9 @@ declare module "alt-client" {
     /**
      * Is the player currently jumping
      *
-     * @beta
+     * @alpha
      */
-    public readonly isJumping: boolean;
+    //public readonly isJumping: boolean;
 
     /**
      * Is the player currently in ragdoll
@@ -647,16 +615,16 @@ declare module "alt-client" {
     /**
      * Is the player currently shooting with a weapon
      *
-     * @beta
+     * @alpha
      */
-    public readonly isShooting: boolean;
+    //public readonly isShooting: boolean;
 
     /**
      * Is the player currently reloading their weapon
      *
-     * @beta
+     * @alpha
      */
-    public readonly isReloading: boolean;
+    //public readonly isReloading: boolean;
 
     /**
      * Current armour
@@ -751,7 +719,6 @@ declare module "alt-client" {
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
      *
-     * @beta
      */
     public handling: IVehicleHandling;
 
@@ -780,303 +747,303 @@ declare module "alt-client" {
     /**
      * Is the vehicle destroyed.
      *
-     * @beta
+     * @alpha
      */
-    public readonly destroyed: boolean;
+    //public readonly isDestroyed: boolean;
 
     /**
      * Available modkits for the vehicle.
      *
-     * @beta
+     * @alpha
      */
-    public readonly modKitsCount: number;
+    //public readonly modKitsCount: number;
 
     /**
      * Current vehicle modkit.
      *
-     * @beta
+     * @alpha
      */
-    public readonly modKit: number;
+    //public readonly modKit: number;
 
     /**
      * Vehicle primary color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly primaryColor: number;
+    //public readonly primaryColor: number;
 
     /**
      * Custom (RGB) vehicle primary color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly customPrimaryColor: RGBA;
+    //public readonly customPrimaryColor: RGBA;
 
     /**
      * Vehicle secondary color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly secondaryColor: number;
+    //public readonly secondaryColor: number;
 
     /**
      * Custom (RGB) vehicle secondary color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly customSecondaryColor: RGBA;
+    //public readonly customSecondaryColor: RGBA;
 
     /**
      * Vehicle pearl color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly pearlColor: number;
+    //public readonly pearlColor: number;
 
     /**
      * Vehicle wheel color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly wheelColor: number;
+    //public readonly wheelColor: number;
 
     /**
      * Vehicle interior color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly interiorColor: number;
+    //public readonly interiorColor: number;
 
     /**
      * Vehicle dashboard color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly dashboardColor: number;
+    //public readonly dashboardColor: number;
 
     /**
      * Vehicle tire smoke color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly tireSmokeColor: number;
+    //public readonly tireSmokeColor: number;
 
     /**
      * Vehicle wheel type.
      *
-     * @beta
+     * @alpha
      */
-    public readonly wheelType: number;
+    //public readonly wheelType: number;
 
     /**
      * Vehicle front wheels variation.
      *
-     * @beta
+     * @alpha
      */
-    public readonly frontWheels: number;
+    //public readonly frontWheels: number;
 
     /**
      * Vehicle rear wheels variation.
      *
-     * @beta
+     * @alpha
      */
-    public readonly rearWheels: number;
+    //public readonly rearWheels: number;
 
     /**
      * Are custom tires active.
      *
-     * @beta
+     * @alpha
      */
-    public readonly customTires: boolean;
+    //public readonly customTires: boolean;
 
     /**
      * Vehicle darkness.
      *
-     * @beta
+     * @alpha
      */
-    public readonly darkness: number;
+    //public readonly darkness: number;
 
     /**
      * Vehicle number plate type index.
      *
-     * @beta
+     * @alpha
      */
-    public readonly numberPlateIndex: number;
+    //public readonly numberPlateIndex: number;
 
     /**
      * Vehicle number plate text.
      *
-     * @beta
+     * @alpha
      */
-    public readonly numberPlateText: string;
+    //public readonly numberPlateText: string;
 
     /**
      * Vehicle window tint.
      *
-     * @beta
+     * @alpha
      */
-    public readonly windowTint: number;
+    //public readonly windowTint: number;
 
     /**
      * Vehicle dirt level.
      *
-     * @beta
+     * @alpha
      */
-    public readonly dirtLevel: number;
+    //public readonly dirtLevel: number;
 
     /**
      * Vehicle neon.
      *
-     * @beta
+     * @alpha
      */
-    public readonly neon: IVehicleNeon;
+    //public readonly neon: IVehicleNeon;
 
     /**
      * Vehicle neon color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly neonColor: RGBA;
+    //public readonly neonColor: RGBA;
 
     /**
      * Vehicle livery.
      *
-     * @beta
+     * @alpha
      */
-    public readonly livery: number;
+    //public readonly livery: number;
 
     /**
      * Vehicle roof livery.
      *
-     * @beta
+     * @alpha
      */
-    public readonly roofLivery: number;
+    //public readonly roofLivery: number;
 
     /**
      * Vehicle engine state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly engineOn: boolean;
+    //public readonly engineOn: boolean;
 
     /**
      * Vehicle handbrake state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly handbrakeActive: boolean;
+    //public readonly handbrakeActive: boolean;
 
     /**
      * Vehicle headlight color.
      *
-     * @beta
+     * @alpha
      */
-    public readonly headlightColor: number;
+    //public readonly headlightColor: number;
 
     /**
      * Vehicle active radio station.
      *
-     * @beta
+     * @alpha
      */
-    public readonly activeRadioStation: number;
+    //public readonly activeRadioStation: number;
 
     /**
      * Vehicle siren state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly sirenActive: boolean;
+    //public readonly sirenActive: boolean;
 
     /**
      * Vehicle lock state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly lockState: number;
+    //public readonly lockState: number;
 
     /**
      * Vehicle daylight state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly daylightOn: boolean;
+    //public readonly daylightOn: boolean;
 
     /**
      * Vehicle nightlight state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly nightlightOn: boolean;
+    //public readonly nightlightOn: boolean;
 
     /**
      * Vehicle roof state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly roofState: number;
+    //public readonly roofState: number;
 
     /**
      * Vehicle flamethrower state.
      *
-     * @beta
+     * @alpha
      */
-    public readonly flamethrowerActive: boolean;
+    //public readonly flamethrowerActive: boolean;
 
     /**
      * Vehicle lights multiplier.
      *
-     * @beta
+     * @alpha
      */
-    public readonly lightsMultiplier: number;
+    //public readonly lightsMultiplier: number;
 
     /**
      * The vehicle's engine health.
      *
-     * @beta
+     * @alpha
      */
-    public readonly engineHealth: number;
+    //public readonly engineHealth: number;
 
     /**
      * The vehicle's petrol tank health.
      *
-     * @beta
+     * @alpha
      */
-    public readonly petrolTankHealth: number;
+    //public readonly petrolTankHealth: number;
 
     /**
      * Vehicle repairs count.
      *
-     * @beta
+     * @alpha
      */
-    public readonly repairsCount: number;
+    //public readonly repairsCount: number;
 
     /**
      * The vehicle's body health.
      *
-     * @beta
+     * @alpha
      */
-    public readonly bodyHealth: number;
+    //public readonly bodyHealth: number;
 
     /**
      * The vehicle's additional body health.
      *
-     * @beta
+     * @alpha
      */
-    public readonly bodyAdditionalHealth: number;
+    //public readonly bodyAdditionalHealth: number;
 
     /**
      * Does the vehicle currently have the bulletproof windows?
      *
-     * @beta
+     * @alpha
      */
-    public readonly hasArmoredWindows: boolean;
+    //public readonly hasArmoredWindows: boolean;
 
     /**
      * Determines whether the vehicle's engine should be turned on/off automatically.
      *
-     * @beta
+     * @alpha
      */
-    public readonly manualEngineControl: boolean;
+    //public readonly manualEngineControl: boolean;
 
     /**
      * Retrieves the vehicle from the pool.
@@ -1157,7 +1124,6 @@ declare module "alt-client" {
   }
 
   export class Blip extends WorldObject {
-    /** @beta */
     public static routeColor: RGBA;
 
     public alpha: number;
@@ -1172,7 +1138,6 @@ declare module "alt-client" {
 
     public crewIndicatorVisible: boolean;
 
-    /** @beta */
     public display: number;
 
     public flashes: boolean;
@@ -1228,7 +1193,6 @@ declare module "alt-client" {
 
     public shrinked: boolean;
 
-    /** @beta */
     public size: number;
 
     public sprite: number;
@@ -1327,7 +1291,6 @@ declare module "alt-client" {
     /**
      * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
      *
-     * @beta
      */
     public static getForHandlingName(handlingHash: number): HandlingData;
 
@@ -1610,7 +1573,6 @@ declare module "alt-client" {
    *
    * @returns True when alt:V client is launched in streamer mode.
    *
-   * @beta
    */
   export function isInStreamerMode(): boolean;
 
@@ -1703,7 +1665,6 @@ declare module "alt-client" {
    */
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
-  /** @beta */
   export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
@@ -1714,7 +1675,6 @@ declare module "alt-client" {
    */
   export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
-  /** @beta */
   export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
@@ -1725,7 +1685,6 @@ declare module "alt-client" {
    */
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
-  /** @beta */
   export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
 
   export function removeGxtText(key: string): void;
@@ -1735,21 +1694,19 @@ declare module "alt-client" {
   export function requestIpl(iplName: string): void;
 
   /**
-   * The output is returned as a string.
+   * The output is returned as a base64 string.
    *
    * @return Return is dependent on the success of the operation.
    *
-   * @beta
    */
   export function takeScreenshot(): Promise<string>;
 
   /**
-   * The output is returned as a string.
+   * The output is returned as a base64 string.
    *
    * @return Return is dependent on the success of the operation.
    * @remarks This only takes a screenshot of the raw GTA:V window. WebViews, game overlays etc. won't be captured.
    *
-   * @beta
    */
   export function takeScreenshotGameOnly(): Promise<string>;
 
@@ -1811,7 +1768,6 @@ declare module "alt-client" {
    * @param y The rotation velocity on the Y axis.
    * @param z The rotation velocity on the Z axis.
    *
-   * @beta
    */
   export function setRotationVelocity(scriptID: number, x: number, y: number, z: number): void;
 
