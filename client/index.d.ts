@@ -1442,7 +1442,7 @@ declare module "alt-client" {
 
     /**
      * Returns the keycode of the voice activation key
-     * @beta
+     * @alpha
      */
     static activationKey: number;
   }
