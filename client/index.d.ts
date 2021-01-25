@@ -1905,7 +1905,9 @@ declare module "alt-client" {
    *
    * @param path Relative path to the game folder.
    * @example
+   * ```js
    * alt.loadYtyp("x64u.rpf/levels/gta5/_hills/country_06/country_06_metadata.rpf/cs6_08_interior_cs6_08_mine_int.ytyp")
+   * ```
    *
    * @alpha
    */
@@ -1916,7 +1918,9 @@ declare module "alt-client" {
    *
    * @param path Relative path to the game folder.
    * @example
+   * ```js
    * alt.unloadYtyp("x64u.rpf/levels/gta5/_hills/country_06/country_06_metadata.rpf/cs6_08_interior_cs6_08_mine_int.ytyp")
+   * ```
    *
    * @alpha
    */
