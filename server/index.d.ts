@@ -417,6 +417,13 @@ declare module "alt-server" {
     readonly drawable: number;
     readonly texture: number;
     readonly palette: number;
+    readonly dlc?: string;
+  }
+
+  export interface IProp {
+    readonly drawable: number;
+    readonly texture: number;
+    readonly dlc?: string;
   }
 
   /**
@@ -795,11 +802,36 @@ declare module "alt-server" {
     public spawn(x: number, y: number, z: number, delay: number): void;
 
     /** @alpha */
-    public getClothes(component: number): ICloth;
+    public getClothes(component: number, dlc?: string): ICloth;
+
+    /**
+     * Set clothes to the player, that it will be synced across all clients.
+     * 
+     * @param component 
+     * @param drawable 
+     * @param texture 
+     * @param palette 
+     * @param dlc Needed if the cloth is modded.
+     * 
+     * @alpha
+     */
+    public setClothes(component: number, drawable: number, texture: number, palette?: number, dlc?: string): void;
 
     /** @alpha */
-    public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
+    public getProp(component: number, dlc?: string): IProp;
 
+    /**
+     * Set prop to the player, that it will be synced across all clients.
+     * 
+     * @param component 
+     * @param drawable 
+     * @param texture 
+     * @param dlc Needed if the prop is modded.
+     * 
+     * @alpha
+     */
+    public setProp(component: number, drawable: number, texture: number, dlc?: string): void;
+  
     /** @alpha */
     public isEntityInStreamRange(entity: Entity): boolean;
   }
