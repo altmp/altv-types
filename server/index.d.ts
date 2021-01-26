@@ -437,10 +437,13 @@ declare module "alt-server" {
   }
 
   /**
-   * Resource name of the executing entity.
+   * Resource name of the executing resource.
    */
   export const resourceName: string;
 
+  /**
+   * The root directory of the server.
+   */
   export const rootDir: string;
 
   export const defaultDimension: number;
@@ -633,10 +636,13 @@ declare module "alt-server" {
     /**
      * Entity rotation.
      *
-     * @remarks Values are provided in radians .
+     * @remarks Values are provided in radians.
      */
     public rot: Vector3;
 
+    /**
+     * Whether the entity is visible.
+     */
     public visible: boolean;
 
     /**
@@ -740,6 +746,9 @@ declare module "alt-server" {
   }
 
   export class Player extends Entity {
+    /**
+     * An array containing all players connected to the server.
+     */
     public static all: Array<Player>;
     public armour: number;
     public currentWeapon: number;
@@ -779,9 +788,9 @@ declare module "alt-server" {
     /**
      * Gives the specified weapon to the player.
      * 
-     * @param weaponHash Weaponhash of the weapon.
-     * @param ammo Count of the ammo to add.
-     * @param equipNow Equip it immediately to player.
+     * @param weaponHash Hash of the weapon.
+     * @param ammo Amount of ammo to spawn the weapon with.
+     * @param equipNow Should the weapon be equipped immediately.
      */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
 
@@ -801,10 +810,16 @@ declare module "alt-server" {
     /**
      * Removes the specified weapon from the player.
      * 
-     * @param weaponHash Weaponhash of the weapon.
+     * @param weaponHash Hash of the weapon.
      */
     public removeWeapon(weaponHash: number): void;
 
+    /**
+     * Removes the specified weapon component from the specified weapon.
+     * 
+     * @param weaponHash Hash of the weapon.
+     * @param component Hash of the weapon component.
+     */
     public removeWeaponComponent(weaponHash: number, component: number): void;
 
     public setDateTime(day: DateTimeDay, month: DateTimeMonth, year: number, hour: DateTimeHour, minute: DateTimeMinute, second: DateTimeSecond): void;
@@ -813,6 +828,15 @@ declare module "alt-server" {
 
     public setWeather(weatherType: WeatherType): void;
 
+    /**
+     * Spawns the player in the world.
+     * 
+     * @remarks The player has to have a model set before being spawned.
+     * @param x The x position where the player gets spawned.
+     * @param y The y position where the player gets spawned.
+     * @param z The z position where the player gets spawned.
+     * @param delay The delay at which the player gets spawned after calling this function.
+     */
     public spawn(x: number, y: number, z: number, delay: number): void;
 
     /** 
@@ -1069,6 +1093,9 @@ declare module "alt-server" {
   export class Colshape extends WorldObject {
     public colshapeType: ColShapeType;
 
+    /**
+     * Whether this colshape should only trigger its enter/leave events for players or all entities.
+     */
     public playersOnly: boolean;
 
     public isEntityIn(entity: Entity): boolean;
@@ -1101,6 +1128,13 @@ declare module "alt-server" {
   }
 
   export class VoiceChannel extends BaseObject {
+    /**
+     * Creates a new voice channel.
+     * 
+     * @remarks This throws an error when the voice chat is not activated on serverside.
+     * @param isSpatial Whether the voice channel should be 3D (e.g. talking in person) or 1D (e.g. talking over a telephone).
+     * @param maxDistance The max distance at which you can hear each other.
+     */
     constructor(isSpatial: boolean, maxDistance: number);
 
     public addPlayer(player: Player): void;
