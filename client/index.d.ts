@@ -334,7 +334,7 @@ declare module "alt-client" {
 
     constructor(x: number, y: number, z: number);
 
-    constructor(arr: number[]);
+    constructor(arr: [number, number, number]);
 
     constructor(obj: IVector3);
 
@@ -389,6 +389,70 @@ declare module "alt-client" {
     public toDegrees(): Vector3;
 
     public isInRange(vector: IVector3, range: number): boolean;
+  }
+
+  export class Vector2 {
+    public readonly x: number;
+
+    public readonly y: number;
+
+    constructor(x: number, y: number);
+
+    constructor(arr: [number, number]);
+
+    constructor(obj: IVector2);
+
+    public get length(): number;
+
+    public toArray(): [number, number];
+
+    public add(x: number, y: number): Vector2;
+
+    public add(value: number): Vector2;
+
+    public add(array: [number, number]): Vector2;
+
+    public add(vector: IVector2): Vector2;
+
+    public sub(x: number, y: number): Vector2;
+
+    public sub(value: number): Vector2;
+
+    public sub(array: [number, number]): Vector2;
+
+    public sub(vector: IVector2): Vector2;
+
+    public div(x: number, y: number): Vector2;
+
+    public div(value: number): Vector2;
+
+    public div(array: [number, number]): Vector2;
+
+    public div(vector: IVector2): Vector2;
+
+    public mul(x: number, y: number): Vector2;
+
+    public mul(value: number): Vector2;
+
+    public mul(array: [number, number]): Vector2;
+
+    public mul(vector: IVector2): Vector2;
+
+    public negative(): Vector2;
+
+    public normalize(): Vector2;
+
+    public distanceTo(vector: IVector2): number;
+
+    public angleTo(vector: IVector2): Vector2;
+
+    public angleToDegrees(vector: IVector2): Vector2;
+
+    public toRadians(): Vector2;
+
+    public toDegrees(): Vector2;
+
+    public isInRange(vector: IVector2, range: number): boolean;
   }
 
   export class RGBA {
