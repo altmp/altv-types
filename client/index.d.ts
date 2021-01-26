@@ -748,6 +748,11 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): Player | null;
+
+    /**
+     * @alpha
+     */
+    public toString(): string;
   }
 
   export class Vehicle extends Entity {
@@ -1100,6 +1105,11 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): Vehicle | null;
+
+    /**
+     * @alpha
+     */
+    public toString(): string;
   }
 
   export class WebView extends BaseObject {
@@ -1194,6 +1204,11 @@ declare module "alt-client" {
      * Unfocuses the webview so it ignores user input.
      */
     public unfocus(): void;
+
+    /**
+     * @alpha
+     */
+    public toString(): string;
   }
 
   export class Blip extends WorldObject {
@@ -1260,6 +1275,11 @@ declare module "alt-client" {
     public tickVisible: boolean;
 
     public fade(opacity: number, duration: number): void;
+
+    /**
+     * @alpha
+     */
+    public toString(): string;
   }
 
   export class AreaBlip extends Blip {
