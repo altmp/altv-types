@@ -1281,14 +1281,37 @@ declare module "alt-server" {
    */
   export function everyTick(handler: () => void): number;
 
+  /**
+   * Gets the amount of milliseconds since the server was started.
+   */
   export function getNetTime(): number;
 
+  /**
+   * Gets the exports of the specified resource.
+   * 
+   * @param name Name of the resource.
+   */
   export function getResourceExports(name: string): any;
 
+  /**
+   * Gets the main file of the specified resource.
+   * 
+   * @param name Name of the resource.
+   */
   export function getResourceMain(name: string): string;
 
+  /**
+   * Gets the path to the specified resource.
+   * 
+   * @param name Name of the resource.
+   */
   export function getResourcePath(name: string): string;
 
+  /**
+   * Returns whether the specified resource exists.
+   * 
+   * @param name Name of the resource.
+   */
   export function hasResource(name: string): boolean;
 
   /**
@@ -1298,10 +1321,19 @@ declare module "alt-server" {
    */
   export function hash(str: string): number;
 
+  /**
+   * Logs the specified arguments to the console.
+   */
   export function log(...args: any[]): void;
 
+  /**
+   * Logs the specified arguments as an error to the console.
+   */
   export function logError(...args: any[]): void;
 
+  /**
+   * Logs the specified arguments as a warning to the console.
+   */
   export function logWarning(...args: any[]): void;
 
   /**
@@ -1398,7 +1430,17 @@ declare module "alt-server" {
    */
   export function setTimeout(handler: () => void, miliseconds: number): number;
 
+  /**
+   * Starts the specified resource.
+   * 
+   * @param name Name of the resource.
+   */
   export function startResource(name: string): void;
 
+  /**
+   * Stops the specified resource.
+   * 
+   * @param name Name of the resource.
+   */
   export function stopResource(name: string): void;
 }
