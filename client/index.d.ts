@@ -1790,7 +1790,10 @@ declare module "alt-client" {
 
   export function setModel(modelName: string): void;
 
-  export function setMsPerGameMinute(miliseconds: number): void;
+  /**
+   * Sets the amount of real milliseconds that have to pass every game minute.
+   */
+  export function setMsPerGameMinute(milliseconds: number): void;
 
   /**
    * Sets the rotation velocity for the specified entity.
@@ -1832,6 +1835,12 @@ declare module "alt-client" {
    */
   export function showCursor(state: boolean): void;
 
+  /**
+   * Toggles the game controls.
+   * 
+   * @remarks When this is set to false, all controls are disabled, so you can't move your character or the camera.
+   * @param state True to enable controls, false to disable controls.
+   */
   export function toggleGameControls(state: boolean): void;
 
   export function toggleVoiceControls(state: boolean): void;
@@ -1860,16 +1869,42 @@ declare module "alt-client" {
 
     public off(eventName: string, listener: (...args: any[]) => void): void;
 
+    /**
+     * Starts the websocket connection.
+     */
     public start(): void;
 
+    /**
+     * Stops the websocket connection.
+     */
     public stop(): void;
 
+    /**
+     * Sends the specified message to the websocket server.
+     * 
+     * @param message The message to send.
+     * @returns Whether sending the message was successful.
+     */
     public send(message: string | ArrayBuffer | ArrayBufferView): boolean;
 
+    /**
+     * Adds a sub protocol to the websocket.
+     * 
+     * @param protocol Name of the protocol.
+     */
     public addSubProtocol(protocol: string): void;
     
+    /**
+     * Gets all added sub protocols.
+     */
     public getSubProtocols(): string[];
     
+    /**
+     * Sets the specified header to the specified value.
+     * 
+     * @param header Header name.
+     * @param value Header value.
+     */
     public setExtraHeader(header: string, value: string): void;
   }
 
