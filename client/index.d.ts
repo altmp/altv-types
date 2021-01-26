@@ -1158,11 +1158,6 @@ declare module "alt-client" {
 
     public friendIndicatorVisible: boolean;
 
-    /**
-     * @deprecated This property was removed on the other branches than release.
-     */
-    public friendly: boolean;
-
     public gxtName: string;
 
     public heading: number;
