@@ -1788,8 +1788,6 @@ declare module "alt-client" {
    */
   export function setInterval(handler: () => void, miliseconds: number): number;
 
-  export function setModel(modelName: string): void;
-
   /**
    * Sets the amount of real milliseconds that have to pass every game minute.
    */
