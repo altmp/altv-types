@@ -1303,6 +1303,8 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
+   * 
+   * @alpha
    */
   export function emitAllClients(eventName: string, ...args: any[]): void;
 
