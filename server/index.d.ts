@@ -769,6 +769,9 @@ declare module "alt-server" {
      * @deprecated See {@link socialID}.
      */
     public readonly socialId: string;
+    /**
+     * @alpha
+     */
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
