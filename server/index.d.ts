@@ -425,6 +425,17 @@ declare module "alt-server" {
     readonly dlc?: number;
   }
 
+  export interface IProp {
+    readonly drawable: number;
+    readonly texture: number;
+    /** 
+     * Dlc hash of the prop.
+     * 
+     * @remarks This is only set when it is a dlc prop.
+     */
+    readonly dlc?: number;
+  }
+
   /**
    * Resource name of the executing entity.
    */
@@ -834,7 +845,47 @@ declare module "alt-server" {
      */
     public setClothes(component: number, drawable: number, texture: number, palette?: number, dlc?: number): void;
 
-    /** @alpha */
+    /**
+     * Gets the specified prop component.
+     * 
+     * @param component Component id of the prop.
+     * @param dlc True to get the dlc prop, false to get the normal prop.
+     * @example
+     * ```js
+     * let prop = player.getProp(0); // Gets the hat prop of the player
+     * alt.log(prop.drawable); // Logs the drawable id of the current hat prop of the player
+     * ```
+     * 
+     * @alpha
+     */
+    public getProp(component: number, dlc?: boolean): IProp;
+
+    /**
+     * Sets the specified prop component.
+     * 
+     * @param component Component id of the prop.
+     * @param drawable Drawable id of the prop.
+     * @param texture Texture id of the prop.
+     * @param dlc Dlc hash of the prop.
+     * @example
+     * ```js
+     * player.setProp(0, 13, 0); // sets the players hat prop to a blue cowboy hat
+     * ```
+     * 
+     * @alpha
+     */
+    public setProp(component: number, drawable: number, texture: number, dlc?: number): void;
+
+    /** 
+     * Checks whether the given entity is in the stream range of the player.
+     * 
+     * @example
+     * ```js
+     * if(player.vehicle) alt.log(player.isEntityInStreamRange(player.vehicle)); // This always logs true, because their own vehicle is always in stream range of the player
+     * ```
+     * 
+     * @alpha 
+     */
     public isEntityInStreamRange(entity: Entity): boolean;
   }
 
