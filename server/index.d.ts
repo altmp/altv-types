@@ -1306,6 +1306,16 @@ declare module "alt-server" {
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
   /**
+   * Emits specified event to all clients.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   * 
+   * @alpha
+   */
+  export function emitAllClients(eventName: string, ...args: any[]): void;
+
+  /**
    * Change the server password at runtime
    *
    * @param password The new server password
