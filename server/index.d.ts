@@ -476,7 +476,7 @@ declare module "alt-server" {
 
     constructor(x: number, y: number, z: number);
 
-    constructor(arr: number[]);
+    constructor(arr: [number, number, number]);
 
     constructor(obj: IVector3);
 
