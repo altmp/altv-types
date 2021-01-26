@@ -1410,8 +1410,6 @@ declare module "alt-server" {
    */
   export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
-  export function restartResource(name: string): void;
-
   /**
    * Schedules execution of handler in specified intervals.
    *
@@ -1436,6 +1434,13 @@ declare module "alt-server" {
    * @param name Name of the resource.
    */
   export function startResource(name: string): void;
+
+  /**
+   * Restarts the specified resource.
+   * 
+   * @param name Name of the resource.
+   */
+  export function restartResource(name: string): void;
 
   /**
    * Stops the specified resource.
