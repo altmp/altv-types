@@ -1253,7 +1253,7 @@ declare module "alt-client" {
 
     public shrinked: boolean;
 
-    public size: number;
+    public size: Vector2;
 
     public sprite: number;
 
