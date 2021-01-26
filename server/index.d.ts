@@ -417,6 +417,12 @@ declare module "alt-server" {
     readonly drawable: number;
     readonly texture: number;
     readonly palette: number;
+    /** 
+     * Dlc hash of the cloth.
+     * 
+     * @remarks This is only set when it is a dlc cloth.
+     */
+    readonly dlc?: number;
   }
 
   /**
@@ -794,11 +800,39 @@ declare module "alt-server" {
 
     public spawn(x: number, y: number, z: number, delay: number): void;
 
-    /** @alpha */
-    public getClothes(component: number): ICloth;
+    /** 
+     * Gets the specified clothing component.
+     * 
+     * @param component Component id of the clothing.
+     * @param dlc True to get the dlc clothing, false to get the normal clothing.
+     * @example
+     * ```js
+     * let cloth = player.getClothes(1); // Gets the currently equipped mask
+     * alt.log(cloth.drawable); // Logs the drawable of the currently equipped mask
+     * ```
+     * 
+     * @alpha 
+     */
+    public getClothes(component: number, dlc?: boolean): ICloth;
 
-    /** @alpha */
-    public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
+    /** 
+     * Sets the specified clothing component.
+     * 
+     * @remarks The dlc hash is only required when setting dlc clothing.
+     * 
+     * @param component Component id of the clothing.
+     * @param drawable Drawable id of the clothing.
+     * @param texture Texture id of the clothing.
+     * @param palette Palette of the clothing.
+     * @param dlc Dlc hash of the clothing.
+     * @example
+     * ```js
+     * player.setClothes(1, 14, 0); // Sets the players mask to a blue hockey mask
+     * ```
+     * 
+     * @alpha 
+     */
+    public setClothes(component: number, drawable: number, texture: number, palette?: number, dlc?: number): void;
 
     /** @alpha */
     public isEntityInStreamRange(entity: Entity): boolean;
