@@ -1628,7 +1628,7 @@ declare module "alt-client" {
   /**
    * Gets the current position of the cursor.
    */
-  export function getCursorPos(): IVector2;
+  export function getCursorPos(): Vector2;
 
   /**
    * Gets the value of the specified gxt text.
