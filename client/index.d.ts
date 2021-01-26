@@ -198,7 +198,6 @@ declare module "alt-client" {
    * This handling applies to particular vehicle instance, as opposed to the {@link HandlingData}.
    *
    * @remarks Changes will be reflected only on a particular instance of the vehicle. On creation, model handling will be used as a base and changed properties will be added on top of it.
-   *
    */
   export interface IVehicleHandling {
     readonly handlingNameHash: number;
@@ -303,8 +302,7 @@ declare module "alt-client" {
   }
 
   /**
-   * Resource name of the executing entity.
-   *
+   * Resource name of the executing resource.
    */
   export const resourceName: string;
 
@@ -312,7 +310,6 @@ declare module "alt-client" {
    * Represents the current client version.
    *
    * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
-   *
    */
   export const version: string;
 
@@ -320,13 +317,11 @@ declare module "alt-client" {
    * Represents the current client SDK version.
    *
    * @remarks It's the version of the SDK the current runtime was compiled with.
-   *
    */
   export const sdkVersion: number;
 
   /**
    * Represents the current client branch.
-   *
    */
   export const branch: string;
 
@@ -1126,8 +1121,14 @@ declare module "alt-client" {
      */
     public on(eventName: "load", listener: () => void): void;
 
+    /**
+     * Focuses the webview so it can be interacted with.
+     */
     public focus(): void;
 
+    /**
+     * Unfocuses the webview so it ignores user input.
+     */
     public unfocus(): void;
   }
 
