@@ -765,7 +765,14 @@ declare module "alt-server" {
     public readonly ping: number;
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
+    /**
+     * @deprecated See {@link socialID}.
+     */
     public readonly socialId: string;
+    /**
+     * @alpha
+     */
+    public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;
