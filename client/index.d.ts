@@ -1190,9 +1190,6 @@ declare module "alt-client" {
 
     public scale: number;
 
-    /**
-     * @remarks This property will expect and return RGBA object on the other branches than release.
-     */
     public secondaryColor: number | RGBA;
 
     public shortRange: boolean;
@@ -1327,10 +1324,19 @@ declare module "alt-client" {
   }
 
   export class LocalStorage {
+    /**
+     * Gets the local storage instance.
+     */
     public static get(): LocalStorage;
 
+    /**
+     * Deletes the specified key from the local storage.
+     */
     public delete(key: string): void;
 
+    /**
+     * Deletes all keys from the local storage.
+     */
     public deleteAll(): void;
 
     /**
@@ -1338,10 +1344,19 @@ declare module "alt-client" {
      */
     public clear(): void;
 
+    /**
+     * Gets the value from the specified key in the local storage.
+     */
     public get(key: string): any;
 
+    /**
+     * Saves the changes to the disk.
+     */
     public save(): void;
 
+    /**
+     * Sets the specified key to the specified value in the local storage.
+     */
     public set(key: string, value: any): void;
   }
 
@@ -1478,8 +1493,17 @@ declare module "alt-client" {
    */
   export function hasSyncedMeta(key: string): boolean;
 
+  /**
+   * Adds a new gxt text with the specified value.
+   * 
+   * @param key Gxt text name.
+   * @param value Gxt text value.
+   */
   export function addGxtText(key: string, value: string): void;
 
+  /**
+   * Executes the specified scaleform method on the minimap.
+   */
   export function beginScaleformMovieMethodMinimap(methodName: string): boolean;
 
   /**
@@ -1541,14 +1565,28 @@ declare module "alt-client" {
    */
   export function everyTick(handler: () => void): number;
 
+  /**
+   * Returns whether the game controls are currently enabled.
+   */
   export function gameControlsEnabled(): boolean;
 
+  /**
+   * Gets the current position of the cursor.
+   */
   export function getCursorPos(): IVector2;
 
+  /**
+   * Gets the value of the specified gxt text.
+   * 
+   * @param key Gxt text name.
+   */
   export function getGxtText(key: string): string;
 
   export function getLicenseHash(): string;
 
+  /**
+   * Gets the current alt:V locale.
+   */
   export function getLocale(): string;
 
   export function getMsPerGameMinute(): number;
@@ -1637,8 +1675,18 @@ declare module "alt-client" {
 
   export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
 
+  /**
+   * Loads a model into memory synchronously.
+   * 
+   * @param modelHash Hash of the model.
+   */
   export function loadModel(modelHash: number): void;
 
+  /**
+   * Loads a model into memory asynchronously.
+   * 
+   * @param modelHash Hash of the model.
+   */
   export function loadModelAsync(modelHash: number): void;
 
   export function log(...args: any[]): void;
@@ -1721,10 +1769,25 @@ declare module "alt-client" {
    */
   export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
 
+  /**
+   * Removes the specified gxt text.
+   * 
+   * @param key Gxt text name.
+   */
   export function removeGxtText(key: string): void;
 
+  /**
+   * Unloads the specified ipl.
+   * 
+   * @param iplName Name of the ipl.
+   */
   export function removeIpl(iplName: string): void;
 
+  /**
+   * Loads the specified ipl.
+   * 
+   * @param iplName Name of the ipl.
+   */
   export function requestIpl(iplName: string): void;
 
   /**
@@ -1751,6 +1814,12 @@ declare module "alt-client" {
    */
   export function resetStat(statName: StatName): void;
 
+  /**
+   * Freezes the camera in place so it doesn't change position or rotation.
+   * 
+   * @remarks You can still move your character even if your camera is frozen.
+   * @param state True to freeze the camera, false to unfreeze the camera.
+   */
   export function setCamFrozen(state: boolean): void;
 
   /**
