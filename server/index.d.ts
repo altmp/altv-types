@@ -829,7 +829,14 @@ declare module "alt-server" {
     public readonly ping: number;
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
+    /**
+     * @deprecated See {@link socialID}.
+     */
     public readonly socialId: string;
+    /**
+     * @alpha
+     */
+    public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;
@@ -1361,6 +1368,16 @@ declare module "alt-server" {
    * @param args Rest parameters for emit to send.
    */
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
+
+  /**
+   * Emits specified event to all clients.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   * 
+   * @alpha
+   */
+  export function emitAllClients(eventName: string, ...args: any[]): void;
 
   /**
    * Change the server password at runtime
