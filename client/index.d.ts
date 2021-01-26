@@ -1183,11 +1183,6 @@ declare module "alt-client" {
 
     public route: boolean;
 
-    /**
-     * @deprecated This property was changed from instance member to static.
-     */
-    public routeColor: number;
-
     public scale: number;
 
     public secondaryColor: number | RGBA;
