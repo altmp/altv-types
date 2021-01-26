@@ -423,6 +423,7 @@ declare module "alt-client" {
 
     /**
      * Object usability.
+     * 
      * @returns False if object is no longer usable.
      */
     public readonly valid: boolean;
@@ -575,120 +576,101 @@ declare module "alt-client" {
     public readonly vehicle: Vehicle | null;
 
     /**
-     * Current weapon components
-     *
+     * Current weapon components.
      */
     public readonly currentWeaponComponents: Array<number>;
 
     /**
-     * Tint index for currently equipeed weapon
+     * Tint index for currently equipped weapon.
      *
      * @alpha
      */
     //public readonly currentWeaponTintIndex: number;
 
     /**
-     * Currently equipped weapon
-     *
+     * Currently equipped weapon.
      */
     public readonly currentWeapon: number;
 
     /**
-     * Is the player currently jumping
+     * Is the player currently jumping.
      *
      * @alpha
      */
     //public readonly isJumping: boolean;
 
     /**
-     * Is the player currently in ragdoll
-     *
+     * Is the player currently in ragdoll.
      */
     public readonly isInRagdoll: boolean;
 
     /**
-     * Is the player currently aiming
-     *
+     * Is the player currently aiming.
      */
     public readonly isAiming: boolean;
 
     /**
-     * Is the player currently shooting with a weapon
-     *
-     * @alpha
+     * Is the player currently shooting with a weapon.
      */
     //public readonly isShooting: boolean;
 
     /**
-     * Is the player currently reloading their weapon
-     *
-     * @alpha
+     * Is the player currently reloading their weapon.
      */
     //public readonly isReloading: boolean;
 
     /**
-     * Current armour
-     *
+     * Current armour.
      */
     public readonly armour: number;
 
     /**
-     * Max available armour value
-     *
+     * Max available armour value.
      */
     public readonly maxArmour: number;
 
     /**
-     * Current player movement speed
-     *
+     * Current player movement speed.
      */
     public readonly moveSpeed: number;
 
     /**
-     * Position the player is currently aiming at
-     *
+     * Position the player is currently aiming at.
      */
     public readonly aimPos: Vector3;
 
     /**
-     * Rotation of the head of the player
-     *
+     * Rotation of the head of the player.
      */
     public readonly headRot: Vector3;
 
     /**
-     * Curent seat the player is sitting in
-     *
+     * Curent seat the player is sitting in.
      */
     public readonly seat: number;
 
     /**
-     * The entity the player is aiming at
-     *
+     * The entity the player is aiming at.
      */
     public readonly entityAimingAt: Entity | null;
 
     /**
-     * The current aim offset of the player
-     *
+     * The current aim offset of the player.
      */
     public readonly entityAimOffset: Vector3 | null;
 
     /**
-     * Is the flashlight of the player activated
-     *
+     * Is the flashlight of the player activated.
      */
     public readonly flashlightActive: boolean;
 
     /**
-     * Current health of the player
-     *
+     * Current health of the player.
      */
     public readonly health: number;
 
     /**
-     * Current max health of the player
-     *
+     * Current max health of the player.
      */
     public readonly maxHealth: number;
 
@@ -718,29 +700,28 @@ declare module "alt-client" {
 
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
-     *
      */
     public handling: IVehicleHandling;
 
     /**
-      * Vehicle RPM
+      * Vehicle RPM.
       *
       * @returns Normalised value on a scale of [0, 1].
       */
     public readonly rpm: number;
 
     /**
-      * Vehicle wheels speed
-      */
+     * Vehicle wheels speed.
+     */
     public readonly speed: number;
 
     /**
-     * Vehicle speed vector
+     * Vehicle speed vector.
      */
     public readonly speedVector: Vector3;
 
     /**
-      * Vehicle wheels count
+      * Vehicle wheels count.
       */
     public readonly wheelsCount: number;
 
@@ -1072,7 +1053,7 @@ declare module "alt-client" {
      * Creates a fullscreen WebView.
      *
      * @param url URL of the html file.
-     * @param isOverlay true to render as overlay, false to render on game's GUI stage
+     * @param isOverlay true to render as overlay, false to render on game's GUI stage.
      */
     constructor(url: string, isOverlay?: boolean);
 
@@ -1080,7 +1061,7 @@ declare module "alt-client" {
      * Creates a WebView.
      *
      * @param url URL of the html file.
-     * @param pos x, y coordinates of the position
+     * @param pos x, y coordinates of the position.
      */
     constructor(url: string, pos: IVector2);
 
@@ -1088,8 +1069,8 @@ declare module "alt-client" {
      * Creates a custom size WebView and specific pos.
      *
      * @param url URL of the html file.
-     * @param pos x, y coordinates of the position
-     * @param size x, y to define the size
+     * @param pos x, y coordinates of the position.
+     * @param size x, y to define the size.
      */
     constructor(url: string, pos: IVector2, size: IVector2);
 
@@ -1097,9 +1078,9 @@ declare module "alt-client" {
      * Creates a custom size WebView and specific pos.
      *
      * @param url URL of the html file.
-     * @param isOverlay true to render as overlay, false to render on game's GUI stage
-     * @param pos x, y coordinates of the position
-     * @param size x, y to define the size
+     * @param isOverlay true to render as overlay, false to render on game's GUI stage.
+     * @param pos x, y coordinates of the position.
+     * @param size x, y to define the size.
      */
     constructor(url: string, isOverlay: boolean, pos: IVector2, size: IVector2);
 
@@ -1119,8 +1100,6 @@ declare module "alt-client" {
      * @param args Rest parameters for emit to send.
      */
     public emit(eventName: string, ...args: any[]): void;
-
-    public focus(): void;
 
     /**
      * Unsubscribes from WebView event handler with specified listener.
@@ -1146,6 +1125,8 @@ declare module "alt-client" {
      * @param listener Listener that should be added.
      */
     public on(eventName: "load", listener: () => void): void;
+
+    public focus(): void;
 
     public unfocus(): void;
   }
@@ -1656,14 +1637,8 @@ declare module "alt-client" {
 
   export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
 
-  /**
-   * @ignore Should not be used until fixed.
-   */
   export function loadModel(modelHash: number): void;
 
-  /**
-   * @ignore Should not be used until fixed.
-   */
   export function loadModelAsync(modelHash: number): void;
 
   export function log(...args: any[]): void;
@@ -1790,7 +1765,6 @@ declare module "alt-client" {
    * Returns the state of the specified config flag.
    * 
    * @param flag Config flag name.
-   * 
    * @returns State of the specified config flag.
    */
   export function getConfigFlag(flag: string): boolean;
@@ -1799,7 +1773,6 @@ declare module "alt-client" {
    * Returns whether the specified config flag exists.
    * 
    * @param flag Config flag name.
-   * 
    * @returns True when the config flag exists.
    */
   export function doesConfigFlagExist(flag: string): boolean;

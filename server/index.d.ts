@@ -550,6 +550,7 @@ declare module "alt-server" {
 
     /**
      * Object usability.
+     * 
      * @returns False if object is no longer usable.
      */
     public readonly valid: boolean;
@@ -613,6 +614,7 @@ declare module "alt-server" {
 
     /**
      * Network owner of the entity.
+     * 
      * @remarks Network owner is responsible for syncing entity with the server.
      * It changes when actual network owner passes the migration range,
      * then the new one is determined based on distance from the entity
@@ -776,6 +778,7 @@ declare module "alt-server" {
 
     /**
      * Gives the specified weapon to the player.
+     * 
      * @param weaponHash Weaponhash of the weapon.
      * @param ammo Count of the ammo to add.
      * @param equipNow Equip it immediately to player.
@@ -797,6 +800,7 @@ declare module "alt-server" {
 
     /**
      * Removes the specified weapon from the player.
+     * 
      * @param weaponHash Weaponhash of the weapon.
      */
     public removeWeapon(weaponHash: number): void;
