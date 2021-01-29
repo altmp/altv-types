@@ -17746,6 +17746,9 @@ declare module "natives" {
 
   export function isIplActive(iplName: string): boolean;
 
+  // Currently only enabling the DLC Cayo Percio Map
+  export function setIslandHopperEnabled(iplSetName: string, toggle: boolean): void;
+
   export function setStreaming(toggle: boolean): void;
 
   export function setGamePausesForStreaming(toggle: boolean): void;
