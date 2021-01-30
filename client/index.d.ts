@@ -1924,7 +1924,6 @@ declare module "alt-client" {
    * @param x The rotation velocity on the X axis.
    * @param y The rotation velocity on the Y axis.
    * @param z The rotation velocity on the Z axis.
-   *
    */
   export function setRotationVelocity(scriptID: number, x: number, y: number, z: number): void;
 
@@ -1947,6 +1946,12 @@ declare module "alt-client" {
 
   export function setWeatherCycle(weathers: Array<any>, multipliers: Array<any>): void;
 
+  /**
+   * Sets whether the weather sync is active.
+   * 
+   * @remarks The weather sync has to be set by using the {@link setWeatherCycle} function.
+   * @param isActive Whether the weather sync should be active.
+   */
   export function setWeatherSyncActive(isActive: boolean): void;
 
   /**
