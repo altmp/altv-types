@@ -1,5 +1,5 @@
 # altv-types
-This repository contains types definitions for alt:V JavaScript modules.
+This repository contains types definitions for the alt:V JavaScript modules.
 
 # Installation
 Client-side
