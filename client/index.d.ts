@@ -667,14 +667,9 @@ declare module "alt-client" {
      * Is the player currently aiming.
      *
      * @remarks
-     * returns true if:
+     * returns \`\`true\`\` ONLY if:
      *  - you are in first person with a gun equipped and you are not sprinting
      *  - you are in third person and aiming/shooting
-     *
-     * returns false if:
-     *  - you are in first person with a gun equipped and you are unable to shoot (eg. sprinting, climbing)
-     *  - you are in first person with fist in fight mode
-     *  - you are in third person and not aiming/shooting
      */
     public readonly isAiming: boolean;
 
