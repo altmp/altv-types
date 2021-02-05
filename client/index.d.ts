@@ -667,7 +667,7 @@ declare module "alt-client" {
      * Is the player currently aiming.
      *
      * @remarks
-     * returns ``true`` ONLY if:
+     * Returns ``true`` _ONLY_ if:
      *  - you are in first person with a gun equipped and you are not sprinting
      *  - you are in third person and aiming/shooting
      */
