@@ -5,4 +5,36 @@
     href: setup.md
   - name: Create your first resource
     href: create-your-first-resource.md
+  - name: Events
+    href: understanding-events.md
+- name: Player
+  href: player/index.md
+  items:
+  - name: Player Server Props
+    href: player/server-player-props.md
+  - name: Player Server Functions
+    href: player/server-player-funcs.md
+  - name: Local Player ScriptID
+    href: player/player-script-id.md
+- name: Snippets
+  href: snippets/index.md
+  items:
+  - name: Encryption
+    href: snippets/encryption.md
+  - name: Help Text
+    href: snippets/helptext.md
+  - name: Markers
+    href: snippets/markers.md
+  - name: Math & Distance
+    href: snippets/math.md
+  - name: Notifications
+    href: snippets/notifications.md
+  - name: Prototyping
+    href: snippets/prototyping.md
+  - name: Shuffle
+    href: snippets/shuffle.md
+  - name: Text Labels
+    href: snippets/textlabels.md
+  - name: Voice
+    href: snippets/voice.md
     
