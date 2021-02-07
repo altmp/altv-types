@@ -25,7 +25,7 @@ Within the Dropdown navigate to: **Release**, **Release candidate** OR **Develop
 Tick the following elements:
 ```
 [x] Data Files
-[x] NodeJS Module
+[x] JS Module
 [ ] C# Module
 [x] Sample Config File
 [x] Example Resource Pack
