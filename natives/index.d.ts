@@ -22801,4 +22801,6 @@ declare module "natives" {
   * @returns Returns a hash representing which part of the map the given coords are located.
   */
   export function getHashOfMapAreaAtCoords(x: number, y: number, z: number): number;
+  
+  export function setIslandHopperEnabled(IslandName: string, enabled: boolean): void;
 }
