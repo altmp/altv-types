@@ -2,8 +2,6 @@
 
 Used to draw text on your screen or in a 3D space. This only works on **client-side**.
 
-![](./images/drawtext.jpg)
-
 **Client Side**
 
 ```js
