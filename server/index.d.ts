@@ -109,7 +109,7 @@ declare module "alt-server" {
     Blip,
     WebView,
     VoiceChannel,
-    Colshape,
+    ColShape,
     Checkpoint
   }
 
@@ -359,8 +359,8 @@ declare module "alt-server" {
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
     consoleCommand: (...args: string[]) => void;
-    entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
-    entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
+    entityEnterColShape: (colShape: ColShape, entity: Entity) => void;
+    entityLeaveColShape: (colShape: ColShape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
@@ -1161,11 +1161,11 @@ declare module "alt-server" {
     constructor(type: BlipType, x: number, y: number, z: number);
   }
 
-  export class Colshape extends WorldObject {
-    public colshapeType: ColShapeType;
+  export class ColShape extends WorldObject {
+    public colShapeType: ColShapeType;
 
     /**
-     * Whether this colshape should only trigger its enter/leave events for players or all entities.
+     * Whether this colShape should only trigger its enter/leave events for players or all entities.
      */
     public playersOnly: boolean;
 
@@ -1174,27 +1174,27 @@ declare module "alt-server" {
     public isPointIn(position: Vector3): boolean;
   }
 
-  export class ColshapeCylinder extends Colshape {
+  export class ColShapeCylinder extends ColShape {
     constructor(x: number, y: number, z: number, radius: number, height: number);
   }
 
-  export class ColshapeSphere extends Colshape {
+  export class ColShapeSphere extends ColShape {
     constructor(x: number, y: number, z: number, radius: number);
   }
 
-  export class ColshapeCircle extends Colshape {
+  export class ColShapeCircle extends ColShape {
     constructor(x: number, y: number, radius: number);
   }
 
-  export class ColshapeCuboid extends Colshape {
+  export class ColShapeCuboid extends ColShape {
     constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
   }
 
-  export class ColshapeRectangle extends Colshape {
+  export class ColShapeRectangle extends ColShape {
     constructor(x1: number, y1: number, x2: number, y2: number);
   }
 
-  export class Checkpoint extends Colshape {
+  export class Checkpoint extends ColShape {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
   }
 

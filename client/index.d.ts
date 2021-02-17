@@ -70,7 +70,7 @@ declare module "alt-client" {
     Blip,
     WebView,
     VoiceChannel,
-    Colshape,
+    ColShape,
     Checkpoint
   }
 
