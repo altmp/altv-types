@@ -1394,7 +1394,7 @@ declare module "alt-server" {
    * @param handler Handler that should be scheduled for execution.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearEveryTick} function to cancel the timer.
    */
-  export function everyTick(handler: () => void): number;
+  export function everyTick(handler: (...args: any[]) => void): number;
 
   /**
    * Gets the amount of milliseconds since the server was started.
@@ -1457,7 +1457,7 @@ declare module "alt-server" {
    * @param handler Handler that should be scheduled for execution.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearNextTick} function to cancel the timer.
    */
-  export function nextTick(handler: () => void): number;
+  export function nextTick(handler: (...args: any[]) => void): number;
 
   /**
    * Unsubscribes from server event with specified listener.
@@ -1532,7 +1532,7 @@ declare module "alt-server" {
    * @param miliseconds The time, in milliseconds, between execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearInterval} function to cancel the timer.
    */
-  export function setInterval(handler: () => void, miliseconds: number): number;
+  export function setInterval(handler: (...args: any[]) => void, miliseconds: number): number;
 
   /**
    * Schedules execution of handler once after the expiration of interval.
@@ -1541,7 +1541,7 @@ declare module "alt-server" {
    * @param miliseconds The time, in milliseconds, before execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
    */
-  export function setTimeout(handler: () => void, miliseconds: number): number;
+  export function setTimeout(handler: (...args: any[]) => void, miliseconds: number): number;
 
   /**
    * Starts the specified resource.
