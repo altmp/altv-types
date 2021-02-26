@@ -1551,7 +1551,7 @@ declare module "alt-client" {
   /**
    * Adds a new gxt text with the specified value. 
    *
-   * @remarks FE_THDR_GTAO is locked and cannot be changed.
+   * @remarks The GXT Text FE_THDR_GTAO is locked and cannot be changed.
    * @param key Gxt text name.
    * @param value Gxt text value.
    */
