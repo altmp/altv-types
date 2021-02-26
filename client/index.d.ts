@@ -1549,8 +1549,9 @@ declare module "alt-client" {
   export function hasSyncedMeta(key: string): boolean;
 
   /**
-   * Adds a new gxt text with the specified value. FE_THDR_GTAO is locked and cannot be changed.
-   * 
+   * Adds a new gxt text with the specified value. 
+   *
+   * @remarks FE_THDR_GTAO is locked and cannot be changed.
    * @param key Gxt text name.
    * @param value Gxt text value.
    */
