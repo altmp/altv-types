@@ -756,11 +756,15 @@ declare module "alt-client" {
 
     /**
      * Set & get the volume for 3D Voice
+     * 
+     * @remarks Value needs to be between 0-1
      */
     public spatialVolume: number
 
     /**
      * Set & get the volume for 2D Voice
+     * 
+     * @remarks Value needs to be between 0-1
      */
     public nonSpatialVolume: number
   }
