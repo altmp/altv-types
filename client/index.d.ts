@@ -755,14 +755,14 @@ declare module "alt-client" {
     public static getByScriptID(scriptID: number): Player | null;
 
     /**
-     * Set & get the volume for 3D Voice
+     * Set & get the volume for 3D Voice.
      * 
      * @remarks Value needs to be between 0-1.
      */
     public spatialVolume: number
 
     /**
-     * Set & get the volume for 2D Voice
+     * Set & get the volume for 2D Voice.
      * 
      * @remarks Value needs to be between 0-1.
      */
