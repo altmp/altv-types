@@ -975,6 +975,19 @@ declare module "alt-server" {
      */
     public setProp(component: number, drawable: number, texture: number, dlc?: number): void;
 
+    /**
+     * Removes a specified prop component.
+     * 
+     * @param component Component id of the prop.
+     * @example
+     * ```js
+     * player.clearProp(0); // removes the player hat prop
+     * ```
+     * 
+     * @alpha
+     */
+    public clearProp(component: number): void;
+
     /** 
      * Checks whether the given entity is in the stream range of the player.
      * 
