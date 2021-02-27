@@ -753,6 +753,20 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): Player | null;
+
+    /**
+     * Set & get the volume for 3D Voice.
+     * 
+     * @remarks Value needs to be between 0-1.
+     */
+    public spatialVolume: number
+
+    /**
+     * Set & get the volume for 2D Voice.
+     * 
+     * @remarks Value needs to be between 0-1.
+     */
+    public nonSpatialVolume: number
   }
 
   export class Vehicle extends Entity {
