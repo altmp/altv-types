@@ -7,6 +7,8 @@ declare module "natives" {
 
   type MemoryBuffer = object;
   type vectorPtr = Vector3;
+  
+  export function setIslandHopperEnabled(ipl: string, enabled: boolean): void;
 
   /**
   * NOTE: Debugging functions are not present in the retail version of the game.
