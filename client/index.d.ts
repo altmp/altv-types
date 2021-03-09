@@ -1563,11 +1563,11 @@ declare module "alt-client" {
   export function hasSyncedMeta(key: string): boolean;
 
   /**
-   * Adds a new gxt text with the specified value. 
+   * Adds a new GXT entry with the specified value. 
    *
-   * @remarks The GXT Text FE_THDR_GTAO is locked and cannot be changed.
-   * @param key Gxt text name.
-   * @param value Gxt text value.
+   * @remarks The GXT entry FE_THDR_GTAO is locked and cannot be changed.
+   * @param key GXT entry name.
+   * @param value GXT entry value.
    */
   export function addGxtText(key: string, value: string): void;
 
@@ -1646,9 +1646,9 @@ declare module "alt-client" {
   export function getCursorPos(): Vector2;
 
   /**
-   * Gets the value of the specified gxt text.
+   * Gets the value of the specified GXT entry.
    * 
-   * @param key Gxt text name.
+   * @param key GXT entry name.
    */
   export function getGxtText(key: string): string;
 
@@ -1853,9 +1853,9 @@ declare module "alt-client" {
   export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Removes the specified gxt text.
+   * Removes the specified GXT entry.
    * 
-   * @param key Gxt text name.
+   * @param key GXT entry name.
    */
   export function removeGxtText(key: string): void;
 
