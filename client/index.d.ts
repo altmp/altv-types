@@ -1956,7 +1956,7 @@ declare module "alt-client" {
    * @param flag Config flag name.
    * @param state Config flag state.
    */
-  export function setConfigFlag(flag: string, state: boolean): void;
+  export function setConfigFlag(flag: string | PedConfigFlags, state: boolean): void;
 
   /**
    * Returns the state of the specified ped config flag of the local player.
@@ -1966,7 +1966,7 @@ declare module "alt-client" {
    * @param flag Config flag name.
    * @returns State of the specified config flag.
    */
-  export function getConfigFlag(flag: string): boolean;
+  export function getConfigFlag(flag: string | PedConfigFlags): boolean;
 
   /**
    * Returns whether the specified config flag exists.
@@ -1976,7 +1976,7 @@ declare module "alt-client" {
    * @param flag Config flag name.
    * @returns True when the config flag exists.
    */
-  export function doesConfigFlagExist(flag: string): boolean;
+  export function doesConfigFlagExist(flag: string | PedConfigFlags): boolean;
 
   /**
    * Sets the current position of the cursor.
