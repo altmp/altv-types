@@ -156,7 +156,7 @@ declare module "alt-client" {
    * 
    * See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
    */
-  export const enum PedConfigFlagNames {
+  export const enum PedConfigFlags {
     CanPunch = "PED_FLAG_CAN_PUNCH",
     FlyThroughWindscreen = "PED_FLAG_CAN_FLY_THRU_WINDSCREEN",
     DiesByRagdoll = "PED_FLAG_DIES_BY_RAGDOLL",
