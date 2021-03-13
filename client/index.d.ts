@@ -151,6 +151,49 @@ declare module "alt-client" {
     Closed
   }
 
+  /**
+   * An enum that provides mappings to ped config flag names.
+   * 
+   * See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
+   */
+  export const enum PedConfigFlagNames {
+    CanPunch = "PED_FLAG_CAN_PUNCH",
+    FlyThroughWindscreen = "PED_FLAG_CAN_FLY_THRU_WINDSCREEN",
+    DiesByRagdoll = "PED_FLAG_DIES_BY_RAGDOLL",
+    PutOnMotorcycleHelmet = "PED_FLAG_PUT_ON_MOTORCYCLE_HELMET",
+    NoCollision = "PED_FLAG_NO_COLLISION",
+    IsShooting = "PED_FLAG_IS_SHOOTING",
+    IsOnGround = "PED_FLAG_IS_ON_GROUND",
+    NoCollide = "PED_FLAG_NO_COLLIDE",
+    Dead = "PED_FLAG_DEAD",
+    IsSniperScopeActive = "PED_FLAG_IS_SNIPER_SCOPE_ACTIVE",
+    SuperDead = "PED_FLAG_SUPER_DEAD",
+    IsInAir = "PED_FLAG_IS_IN_AIR",
+    IsAiming = "PED_FLAG_IS_AIMING",
+    Drunk = "PED_FLAG_DRUNK",
+    IsNotRagdollAndNotPlayingAnim = "PED_FLAG_IS_NOT_RAGDOLL_AND_NOT_PLAYING_ANIM",
+    NoPlayerMelee = "PED_FLAG_NO_PLAYER_MELEE",
+    NMMessage466 = "PED_FLAG_NM_MESSAGE_466",
+    InjuredLimp = "PED_FLAG_INJURED_LIMP",
+    InjuredLimp2 = "PED_FLAG_INJURED_LIMP_2",
+    DisableShufflingToDriverSeat = "PED_FLAG_DISABLE_SHUFFLING_TO_DRIVER_SEAT",
+    InjuredDown = "PED_FLAG_INJURED_DOWN",
+    Shrink = "PED_FLAG_SHRINK",
+    MeleeCombat = "PED_FLAG_MELEE_COMBAT",
+    DisableStoppingVehicleEngine = "PED_FLAG_DISABLE_STOPPING_VEH_ENGINE",
+    IsOnStairs = "PED_FLAG_IS_ON_STAIRS",
+    HasOneLegOnGround = "PED_FLAG_HAS_ONE_LEG_ON_GROUND",
+    NoWrithe = "PED_FLAG_NO_WRITHE",
+    Freeze = "PED_FLAG_FREEZE",
+    IsStill = "PED_FLAG_IS_STILL",
+    NoPedMelee = "PED_FLAG_NO_PED_MELEE",
+    SwitchingWeapon = "PED_FLAG_SWITCHING_WEAPON",
+    Alpha = "PED_FLAG_ALPHA",
+    DisablePropKnockOff = "PED_FLAG_DISABLE_PROP_KNOCK_OFF",
+    DisableStartingVehicleEngine = "PED_FLAG_DISABLE_STARTING_VEH_ENGINE",
+    FlamingFootprints = "PED_FLAG_FLAMING_FOOTPRINTS"
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -1387,9 +1430,9 @@ declare module "alt-client" {
     public fScrollSpeed: number;
     public vTilesX: number;
     public vTilesY: number;
-    
+
     constructor(zoomDataId: number);
-    
+
     public static get(zoomData: string): MapZoomData;
 
     public static resetAll(): void;
@@ -1499,7 +1542,7 @@ declare module "alt-client" {
      * Determines whether the microphone input is currently disabled.
      */
     static muteInput: boolean;
-    
+
     /**
      * Determines if the voice activation is enabled.
      * 
@@ -1732,7 +1775,7 @@ declare module "alt-client" {
    * @param key Keycode.
    */
   export function isKeyToggled(key: number): boolean;
-  
+
   /**
    * Determines whether the specified key is pressed.
    *
@@ -2067,12 +2110,12 @@ declare module "alt-client" {
      * @param protocol Name of the protocol.
      */
     public addSubProtocol(protocol: string): void;
-    
+
     /**
      * Gets all added sub protocols.
      */
     public getSubProtocols(): string[];
-    
+
     /**
      * Sets the specified header to the specified value.
      * 
@@ -2106,5 +2149,5 @@ declare module "alt-client" {
    *
    * @alpha
    */
-   export function unloadYtyp(path: string): boolean;
+  export function unloadYtyp(path: string): boolean;
 }
