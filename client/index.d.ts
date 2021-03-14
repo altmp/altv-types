@@ -1633,7 +1633,7 @@ declare module "alt-client" {
    * @param handler Handler that should be scheduled for execution.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearEveryTick} function to cancel the timer.
    */
-  export function everyTick(handler: () => void): number;
+  export function everyTick(handler: (...args: any[]) => void): number;
 
   /**
    * Returns whether the game controls are currently enabled.
@@ -1784,7 +1784,7 @@ declare module "alt-client" {
    * @param handler Handler that should be scheduled for execution.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearNextTick} function to cancel the timer.
    */
-  export function nextTick(handler: () => void): number;
+  export function nextTick(handler: (...args: any[]) => void): number;
 
   /**
    * Unsubscribes from client event with specified listener.
@@ -1943,7 +1943,7 @@ declare module "alt-client" {
    * @param miliseconds The time, in milliseconds, between execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearInterval} function to cancel the timer.
    */
-  export function setInterval(handler: () => void, miliseconds: number): number;
+  export function setInterval(handler: (...args: any[]) => void, miliseconds: number): number;
 
   /**
    * Sets the amount of real milliseconds that have to pass every game minute.
@@ -1975,7 +1975,7 @@ declare module "alt-client" {
    * @param miliseconds The time, in milliseconds, before execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
    */
-  export function setTimeout(handler: () => void, miliseconds: number): number;
+  export function setTimeout(handler: (...args: any[]) => void, miliseconds: number): number;
 
   /**
    * Sets the current weather cycle.
