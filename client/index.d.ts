@@ -1951,8 +1951,7 @@ declare module "alt-client" {
   /**
    * Sets the specified ped config flag of the local player to the specified state.
    *
-   * See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
-   * 
+   * @remarks See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
    * @param flag Config flag name.
    * @param state Config flag state.
    */
@@ -1961,8 +1960,7 @@ declare module "alt-client" {
   /**
    * Returns the state of the specified ped config flag of the local player.
    *
-   * See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
-   * 
+   * @remarks See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
    * @param flag Config flag name.
    * @returns State of the specified config flag.
    */
@@ -1971,8 +1969,7 @@ declare module "alt-client" {
   /**
    * Returns whether the specified config flag exists.
    *
-   * See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
-   * 
+   * @remarks See this list for reference: https://wiki.altv.mp/wiki/GTA:Ped_Config_Flags
    * @param flag Config flag name.
    * @returns True when the config flag exists.
    */
