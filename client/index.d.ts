@@ -151,13 +151,6 @@ declare module "alt-client" {
     Closed
   }
 
-  /**
-   * An enum that provides mappings to ped config flag names.
-   */
-  export const enum PedConfigFlag {
-    DisablePropKnockOff = "PED_FLAG_DISABLE_PROP_KNOCK_OFF"
-  }
-
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -1918,7 +1911,7 @@ declare module "alt-client" {
    * @param flag Config flag name.
    * @param state Config flag state.
    */
-  export function setConfigFlag(flag: string | PedConfigFlag, state: boolean): void;
+  export function setConfigFlag(flag: 'PED_FLAG_DISABLE_PROP_KNOCK_OFF', state: boolean): void;
 
   /**
    * Returns the state of the specified ped config flag of the local player.
@@ -1926,7 +1919,7 @@ declare module "alt-client" {
    * @param flag Config flag name.
    * @returns State of the specified config flag.
    */
-  export function getConfigFlag(flag: string | PedConfigFlag): boolean;
+  export function getConfigFlag(flag: 'PED_FLAG_DISABLE_PROP_KNOCK_OFF'): boolean;
 
   /**
    * Returns whether the specified config flag exists.
@@ -1934,7 +1927,7 @@ declare module "alt-client" {
    * @param flag Config flag name.
    * @returns True when the config flag exists.
    */
-  export function doesConfigFlagExist(flag: string | PedConfigFlag): boolean;
+  export function doesConfigFlagExist(flag: 'PED_FLAG_DISABLE_PROP_KNOCK_OFF'): boolean;
 
   /**
    * Sets the current position of the cursor.
