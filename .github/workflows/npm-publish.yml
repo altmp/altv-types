@@ -109,8 +109,10 @@ jobs:
       - name: Commit changes
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add "./index.d.ts"
-          git commit -m "chore: Update natives/index.d.ts" -m "Co-authored-by: $(git diff-tree ${{ github.sha }} --pretty='format:%an <%ae>' -s)" --author "GitHub Action <action@github.com>"
+          git commit -m "chore: Update natives/index.d.ts" -m "Co-authored-by: $(git diff-tree ${{ github.sha }} --pretty='format:%an <%ae>' -s)"
       - name: Push changes
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: ad-m/github-push-action@master
