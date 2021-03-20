@@ -101,8 +101,8 @@ jobs:
         #   ref: a6990af2f7a0c364b2fbeb272726875c58a14393
         #   path: ./nativedb
         run: |
-          mkdir "./nativedb"
-          curl "https://natives.altv.mp/natives"  -A "AltPublicAgent" > "./nativedb/natives.json"
+          mkdir "../nativedb"
+          curl "https://natives.altv.mp/natives"  -A "AltPublicAgent" > "../nativedb/natives.json"
       - name: Run generator
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         run: dotnet run -p "../gen/Durty.AltV.NativesTypingsGenerator.Console" --disableHeader --nativesPath "../nativedb/natives.json" --outPath "./natives/index.d.ts" --outIndent "  "
