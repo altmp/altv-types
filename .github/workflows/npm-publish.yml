@@ -115,7 +115,9 @@ jobs:
           git commit -m "chore: Update natives/index.d.ts" -m "Co-authored-by: $(git diff-tree ${{ github.sha }} --pretty='format:%an <%ae>' -s)"
       - name: Push changes
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
