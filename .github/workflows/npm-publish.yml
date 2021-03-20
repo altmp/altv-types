@@ -89,27 +89,28 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-          repository: altmp/altv-native-typings
-          ref: e91e1716a3cf6ec70a74402231cc2d905262de66
+          repository: altmp/altv-native-gen
+          ref: b9c7ec036466e03015e666c7426e59dc655c85cd
           path: ./gen
       - name: Checkout nativedb
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          repository: altmp/natives
-          ref: a6990af2f7a0c364b2fbeb272726875c58a14393
-          path: ./nativedb
+        # uses: actions/checkout@v2
+        # with:
+        #   persist-credentials: false
+        #   repository: altmp/natives
+        #   ref: a6990af2f7a0c364b2fbeb272726875c58a14393
+        #   path: ./nativedb
+        run: |
+          mkdir "./nativedb"
+          curl "https://natives.altv.mp/natives"  -A "AltPublicAgent" > "./nativedb/natives.json"
       - name: Run generator
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         run: dotnet run -p "../gen/Durty.AltV.NativesTypingsGenerator.Console" --disableHeader --nativesPath "../nativedb/natives.json" --outPath "./natives/index.d.ts" --outIndent "  "
       - name: Commit changes
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git add "./index.d.ts"
-          git commit -m "chore: Update natives/index.d.ts" -m "Co-authored-by: Lhoerion <7252614+Lhoerion@users.noreply.github.com>"
+          git commit -m "chore: Update natives/index.d.ts" -m "Co-authored-by: $(git diff-tree ${{ github.sha }} --pretty='format:%an <%ae>' -s)" --author "GitHub Action <action@github.com>"
       - name: Push changes
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: ad-m/github-push-action@master
