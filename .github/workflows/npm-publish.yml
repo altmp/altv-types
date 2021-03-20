@@ -105,7 +105,7 @@ jobs:
           curl "https://natives.altv.mp/natives"  -A "AltPublicAgent" > "../nativedb/natives.json"
       - name: Run generator
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
-        run: dotnet run -p "../gen/Durty.AltV.NativesTypingsGenerator.Console" --disableHeader --nativesPath "../nativedb/natives.json" --outPath "./natives/index.d.ts" --outIndent "  "
+        run: dotnet run -p "../gen/Durty.AltV.NativesTypingsGenerator.Console" --disableHeader --nativesPath "../nativedb/natives.json" --outPath "./index.d.ts" --outIndent "  "
       - name: Commit changes
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         run: |
