@@ -10,4 +10,4 @@ Read [Understanding Events](understanding-events.md) for an introduction about h
 
 Read [Player](player/index.md) for a introduction to the player.
 
-Read [Snippets](snippets/index.md) for usefull snippets.
+Read [Snippets](snippets/index.md) for useful snippets.
