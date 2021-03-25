@@ -8,6 +8,6 @@ Read [Create Resource](create-your-first-resource.md) for creating your first JS
 
 Read [Understanding Events](understanding-events.md) for an introduction about handling alt:V standard events.
 
-Read [Player](player/index.md) for a introduction to the Player.
+Read [Player](player/index.md) for a introduction to the player.
 
 Read [Snippets](snippets/index.md) for usefull snippets.
