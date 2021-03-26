@@ -2,11 +2,11 @@
 
 This is the documentation for getting started with developing JS resources.
 
-Read [Setup](setup.md) for setting up the basics and getting ready for work.
+Read [Setup](setup.md) for setting up the basics.
 
-Read [Create Resource](create-your-first-resource.md) for creating your first JS resource.
+Read [Create Resource](create-your-first-resource.md) for an information on how to create your first JS resource.
 
-Read [Understanding Events](understanding-events.md) for an introduction about handling alt:V standard events.
+Read [Understanding Events](understanding-events.md) for an introduction on handling alt:V events.
 
 Read [Player](player/index.md) for a introduction to the player.
 
