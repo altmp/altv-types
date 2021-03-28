@@ -8,6 +8,6 @@ Read [Create Resource](create-your-first-resource.md) for information on how to 
 
 Read [Understanding Events](understanding-events.md) for an introduction on handling alt:V events.
 
-Read [Player](player/index.md) for a introduction to the player.
+Read [Player](player/index.md) for an introduction to the player.
 
 Read [Snippets](snippets/index.md) for useful snippets.
