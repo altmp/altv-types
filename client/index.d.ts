@@ -1140,6 +1140,8 @@ declare module "alt-client" {
      *
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
+     * 
+     * @alpha
      */
     constructor(url: string, pos: IVector2);
 
@@ -1149,6 +1151,8 @@ declare module "alt-client" {
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
+     * 
+     * @alpha
      */
     constructor(url: string, pos: IVector2, size: IVector2);
 
@@ -1159,6 +1163,8 @@ declare module "alt-client" {
      * @param isOverlay true to render as overlay, false to render on game's GUI stage.
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
+     * 
+     * @alpha
      */
     constructor(url: string, isOverlay: boolean, pos: IVector2, size: IVector2);
 
