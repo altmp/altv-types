@@ -6,6 +6,8 @@ A General Overview
 - The LocalStorage is a persistent client cached storage.
 - If the player deletes his cache folder the LocalStorage data will get lost!
 
+**Never use the LocalStorage for sensitive data. Someone could always inject code that reads LocalStorage values!**
+
 | Function Name          | Description                                                         |
 | ---------------------- | ------------------------------------------------------------------- |
 | alt.LocalStorage.get   | Gets the local storage instance.                                    |
