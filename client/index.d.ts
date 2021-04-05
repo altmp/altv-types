@@ -391,6 +391,9 @@ declare module "alt-client" {
     public isInRange(vector: IVector3, range: number): boolean;
   }
 
+  /**
+   * @alpha
+   */
   export class Vector2 {
     public readonly x: number;
 
