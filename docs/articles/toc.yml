@@ -7,7 +7,7 @@
       href: create-your-first-resource.md
     - name: Events
       href: understanding-events.md
-    - name: LocalStorage
+    - name: Local storage
       href: localstorage.md
 - name: Player
   href: player/index.md
