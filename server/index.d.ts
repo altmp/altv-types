@@ -1526,6 +1526,26 @@ declare module "alt-server" {
   export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
 
   /**
+   * Subscribes a generic event listener.
+   * 
+   * @remarks The generic event listeners get called for every event manually emitted by any resource.
+   * @param listener Listener that should be added.
+   * 
+   * @alpha
+   */
+  export function on(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
+   * Subscribes a generic event listener, which only triggers once.
+   * 
+   * @remarks The generic event listeners get called for every event manually emitted by any resource.
+   * @param listener Listener that should be added.
+   * 
+   * @alpha
+   */
+   export function once(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
    * Subscribes to client event with specified listener.
    *
    * @param eventName Name of the event.
@@ -1534,12 +1554,32 @@ declare module "alt-server" {
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
+   * Subscribes a generic client event listener.
+   * 
+   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * @param listener Listener that should be added.
+   * 
+   * @alpha
+   */
+   export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
+
+  /**
    * Subscribes to client event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
+
+  /**
+   * Subscribes a generic client event listener, which only triggers once.
+   * 
+   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * @param listener Listener that should be added.
+   * 
+   * @alpha
+   */
+   export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
   /**
    * Schedules execution of handler in specified intervals.
