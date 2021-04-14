@@ -1,12 +1,6 @@
 declare module "natives" {
-  interface Vector3 {
-    x: number;
-    y: number;
-    z: number;
-  }
+  import { Vector3 } from "alt-client";
 
-  type MemoryBuffer = object;
-  type vectorPtr = Vector3;
 
   /**
   * NOTE: Debugging functions are not present in the retail version of the game.
