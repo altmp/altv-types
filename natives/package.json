@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/altmp/altv/issues"
   },
-  "homepage": "https://github.com/altmp/altv-types#readme"
+  "homepage": "https://github.com/altmp/altv-types#readme",
+  "peerDependencies": {
+    "@altv/types-client": ">=1.5.5"
+  }
 }
