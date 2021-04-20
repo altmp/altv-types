@@ -1949,10 +1949,10 @@ declare module "alt-client" {
    * Schedules execution of handler in specified intervals.
    *
    * @param handler Handler that should be scheduled for execution.
-   * @param miliseconds The time, in milliseconds, between execution of specified handler.
+   * @param milliseconds The time, in milliseconds, between execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearInterval} function to cancel the timer.
    */
-  export function setInterval(handler: (...args: any[]) => void, miliseconds: number): number;
+  export function setInterval(handler: (...args: any[]) => void, milliseconds: number): number;
 
   /**
    * Sets the amount of real milliseconds that have to pass every game minute.
@@ -1981,10 +1981,10 @@ declare module "alt-client" {
    * Schedules execution of handler once after the expiration of interval.
    *
    * @param handler Handler that should be scheduled for execution.
-   * @param miliseconds The time, in milliseconds, before execution of specified handler.
+   * @param milliseconds The time, in milliseconds, before execution of specified handler.
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
    */
-  export function setTimeout(handler: (...args: any[]) => void, miliseconds: number): number;
+  export function setTimeout(handler: (...args: any[]) => void, milliseconds: number): number;
 
   /**
    * Sets the current weather cycle.
