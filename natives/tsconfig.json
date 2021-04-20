@@ -13,7 +13,7 @@
         "typeRoots": [
             "../"
         ],
-        "types": [],
+        "types": ["@altv/types-client"],
         "noEmit": true,
         "forceConsistentCasingInFileNames": true
     },
