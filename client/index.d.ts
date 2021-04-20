@@ -2165,4 +2165,17 @@ declare module "alt-client" {
    * @alpha
    */
   export function unloadYtyp(path: string): boolean;
+
+  /**
+   * Evaluates and executes the given JavaScript code.
+   * 
+   * @remarks 
+   * The code is evaluated in its own context, so it cannot access variables, functions
+   * etc. from the calling file.
+   * @param code The JavaScript code.
+   * @returns The exports of the evaluated module.
+   * 
+   * @alpha
+   */
+  export function evalModule(code: string): Record<string, any>;
 }
