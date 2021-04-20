@@ -1409,36 +1409,91 @@ declare module "alt-client" {
   export class LocalStorage {
     /**
      * Gets the local storage instance.
+     * 
+     * @deprecated Use the static methods instead.
      */
     public static get(): LocalStorage;
 
     /**
+     * Gets the value from the specified key in the local storage.
+     * 
+     * @alpha
+     */
+    public static get(key: string): any;
+
+    /**
      * Deletes the specified key from the local storage.
+     * 
+     * @alpha
+     */
+    public static delete(key: string): void;
+
+     /**
+      * Deletes all keys from the local storage.
+      * 
+      * @alpha
+      */
+    public static deleteAll(): void;
+ 
+     /**
+      * @remarks Alias for deleteAll.
+      * @alpha
+      */
+    public static clear(): void;
+
+    /**
+     * Saves the changes to the disk.
+     * 
+     * @alpha
+     */
+    public static save(): void;
+
+     /**
+      * Sets the specified key to the specified value in the local storage.
+      * 
+      * @alpha
+      */
+    public static set(key: string, value: any): void;
+
+    /**
+     * Deletes the specified key from the local storage.
+     * 
+     * @deprecated Use the static methods instead.
      */
     public delete(key: string): void;
 
     /**
      * Deletes all keys from the local storage.
+     * 
+     * @deprecated Use the static methods instead.
      */
     public deleteAll(): void;
 
     /**
      * @remarks Alias for deleteAll.
+     * 
+     * @deprecated Use the static methods instead.
      */
     public clear(): void;
 
     /**
      * Gets the value from the specified key in the local storage.
+     * 
+     * @deprecated Use the static methods instead.
      */
     public get(key: string): any;
 
     /**
      * Saves the changes to the disk.
+     * 
+     * @deprecated Use the static methods instead.
      */
     public save(): void;
 
     /**
      * Sets the specified key to the specified value in the local storage.
+     * 
+     * @deprecated Use the static methods instead.
      */
     public set(key: string, value: any): void;
   }
