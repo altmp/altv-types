@@ -1777,7 +1777,7 @@ declare module "alt-client" {
   /**
    * Returns if alt:V is in debug mode.
    * 
-   * @returns True when alt:V client is launched with debug mode enabled.
+   * @returns True when the alt:V client is launched with debug mode enabled.
    */
   export function isInDebug(): boolean;
 
