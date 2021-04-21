@@ -2178,4 +2178,13 @@ declare module "alt-client" {
    * @alpha
    */
   export function evalModule(code: string): Record<string, any>;
+
+  /**
+   * Returns whether the specified resource exists.
+   * 
+   * @param name Name of the resource.
+   * 
+   * @alpha
+   */
+  export function hasResource(name: string): boolean;
 }
