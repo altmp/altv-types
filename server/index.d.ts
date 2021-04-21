@@ -1619,4 +1619,11 @@ declare module "alt-server" {
    * @param name Name of the resource.
    */
   export function stopResource(name: string): void;
+
+  /**
+   * Returns if the server is in debug mode.
+   * 
+   * @returns True when the server is launched with debug mode enabled.
+   */
+  export function isInDebug(): boolean;
 }
