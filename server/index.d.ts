@@ -1624,6 +1624,8 @@ declare module "alt-server" {
    * Returns if the server is in debug mode.
    * 
    * @returns True when the server is launched with debug mode enabled.
+   * 
+   * @alpha
    */
   export function isInDebug(): boolean;
 }
