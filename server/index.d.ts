@@ -388,8 +388,8 @@ declare module "alt-server" {
   }
 
   export interface IFireInfo {
-    pos: Vector3;
-    weapon: number;
+    readonly pos: Vector3;
+    readonly weapon: number;
   }
 
   export interface IVehicleNeon {
