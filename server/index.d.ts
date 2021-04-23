@@ -401,15 +401,12 @@ declare module "alt-server" {
 
   export interface IVector2 {
     readonly x: number;
-
     readonly y: number;
   }
 
   export interface IVector3 {
     readonly x: number;
-
     readonly y: number;
-
     readonly z: number;
   }
 
@@ -417,6 +414,7 @@ declare module "alt-server" {
     readonly drawable: number;
     readonly texture: number;
     readonly palette: number;
+
     /** 
      * Dlc hash of the cloth.
      * 
@@ -428,6 +426,7 @@ declare module "alt-server" {
   export interface IProp {
     readonly drawable: number;
     readonly texture: number;
+
     /** 
      * Dlc hash of the prop.
      * 

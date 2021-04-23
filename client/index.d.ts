@@ -289,15 +289,12 @@ declare module "alt-client" {
 
   export interface IVector2 {
     readonly x: number;
-
     readonly y: number;
   }
 
   export interface IVector3 {
     readonly x: number;
-
     readonly y: number;
-
     readonly z: number;
   }
 
