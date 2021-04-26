@@ -208,7 +208,7 @@ declare module "alt-client" {
     brakeBiasFront: number;
     brakeBiasRear: number;
     brakeForce: number;
-    camberStiffnesss: number;
+    camberStiffness: number;
     centreOfMassOffset: Vector3;
     clutchChangeRateScaleDownShift: number;
     clutchChangeRateScaleUpShift: number;
