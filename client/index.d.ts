@@ -1211,6 +1211,14 @@ declare module "alt-client" {
     public on(eventName: "load", listener: () => void): void;
 
     /**
+     * Subscribes to WebView event with specified listener, which only triggers once.
+     *
+     * @param eventName Name of the event.
+     * @param listener Listener that should be added.
+     */
+    public once(eventName: string, listener: (...args: any[]) => void): void;
+
+    /**
      * Focuses the webview so it can be interacted with.
      */
     public focus(): void;
