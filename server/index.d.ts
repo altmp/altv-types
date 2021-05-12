@@ -1167,6 +1167,9 @@ declare module "alt-server" {
 
     public setWindowOpened(windowId: number, state: boolean): void;
 
+    /**
+     * @alpha
+     */
     public setWheelFixed(wheelId: number): void;
   }
 
