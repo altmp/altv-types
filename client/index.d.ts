@@ -298,6 +298,12 @@ declare module "alt-client" {
     readonly z: number;
   }
 
+  export interface IHttpResponse {
+    readonly statusCode: number;
+    readonly body: string;
+    readonly headers: Record<string, string>;
+  }
+
   /**
    * Resource name of the executing resource.
    */
@@ -2257,4 +2263,31 @@ declare module "alt-client" {
    * @alpha
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
+
+  /** @alpha */
+  export class HttpClient extends BaseObject {
+    public constructor();
+
+    public setExtraHeader(header: string, value: string): void;
+
+    public getExtraHeaders(): Record<string, string>;
+
+    public get(url: string): IHttpResponse;
+
+    public head(url: string): IHttpResponse;
+
+    public post(url: string, body: string): IHttpResponse;
+
+    public put(url: string, body: string): IHttpResponse;
+
+    public delete(url: string, body: string): IHttpResponse;
+
+    public connect(url: string, body: string): IHttpResponse;
+
+    public options(url: string, body: string): IHttpResponse;
+
+    public trace(url: string, body: string): IHttpResponse;
+
+    public patch(url: string, body: string): IHttpResponse;
+  }
 }
