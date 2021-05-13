@@ -1241,6 +1241,16 @@ declare module "alt-client" {
      * Unfocuses the webview so it ignores user input.
      */
     public unfocus(): void;
+
+    /**
+     * Gets all the listeners for the specified webview event.
+     * 
+     * @param eventName Name of the event.
+     * @returns Array of listener functions for that event.
+     * 
+     * @alpha
+     */
+    public getEventListeners(eventName: string | null): Function[];
   }
 
   export class Blip extends WorldObject {
@@ -2157,6 +2167,16 @@ declare module "alt-client" {
      * @param value Header value.
      */
     public setExtraHeader(header: string, value: string): void;
+
+    /**
+     * Gets all the listeners for the specified websocket event.
+     * 
+     * @param eventName Name of the event.
+     * @returns Array of listener functions for that event.
+     * 
+     * @alpha
+     */
+     public getEventListeners(eventName: string | null): Function[];
   }
 
   /**
