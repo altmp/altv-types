@@ -2279,4 +2279,15 @@ declare module "alt-client" {
 
     public patch(url: string, body: string): IHttpResponse;
   }
+
+  /**
+   * Gets the Base64 encoded string of the headshot with the specified ID.
+   * 
+   * @remarks The headshot ID is returned by the `registerPedheadshot3`, `registerPedheadshotTransparent` or `registerPedheadshot` native.
+   * @param id ID of the headshot.
+   * @returns The Base64 string of the headshot image.
+   * 
+   * @alpha
+   */
+  export function getHeadshotBase64(id: number): string;
 }
