@@ -619,6 +619,13 @@ declare module "alt-client" {
     /** Array with all players */
     public static readonly all: Array<Player>;
 
+    /** 
+     * Array with all streamed in players 
+     * 
+     * @alpha
+     */
+    public static readonly streamedIn: Array<Player>;
+
     /** Local player */
     public static readonly local: Player;
 
@@ -772,6 +779,13 @@ declare module "alt-client" {
   export class Vehicle extends Entity {
     /** Array with all vehicles */
     public static readonly all: Array<Vehicle>;
+
+    /** 
+     * Array with all streamed in vehicles 
+     * 
+     * @alpha
+     */
+    public static readonly streamedIn: Array<Vehicle>;
 
     /** Vehicle gear */
     public readonly gear: number;
