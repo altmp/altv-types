@@ -2234,17 +2234,6 @@ declare module "alt-client" {
   export function hasResource(name: string): boolean;
 
   /**
-   * Gets the base64 string of the headshot with the specified id.
-   * 
-   * @remarks The headshot id is returned by the `registerPedheadshot3` native.
-   * @param id ID of the headshot.
-   * @returns The base64 string of the headshot image.
-   * 
-   * @alpha
-   */
-  export function getHeadshotBase64(id: number): string;
-
-  /**
    * Gets all the listeners for the specified local event.
    * 
    * @param eventName Name of the event or null for generic event.

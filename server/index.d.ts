@@ -1166,8 +1166,6 @@ declare module "alt-server" {
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
 
     public setWindowOpened(windowId: number, state: boolean): void;
-
-    public setWheelFixed(wheelId: number): void;
   }
 
   export class Blip extends WorldObject {
