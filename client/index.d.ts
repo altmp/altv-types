@@ -2192,4 +2192,15 @@ declare module "alt-client" {
    * @alpha
    */
   export function hasResource(name: string): boolean;
+
+  /**
+   * Gets the Base64 encoded string of the headshot with the specified ID.
+   * 
+   * @remarks The headshot ID is returned by the `registerPedheadshot3`, `registerPedheadshotTransparent` or `registerPedheadshot` native.
+   * @param id ID of the headshot.
+   * @returns The Base64 string of the headshot image.
+   * 
+   * @alpha
+   */
+  export function getHeadshotBase64(id: number): string;
 }
