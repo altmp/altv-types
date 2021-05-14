@@ -298,6 +298,12 @@ declare module "alt-client" {
     readonly z: number;
   }
 
+  export interface IHttpResponse {
+    readonly statusCode: number;
+    readonly body: string;
+    readonly headers: Record<string, string>;
+  }
+
   /**
    * Resource name of the executing resource.
    */
@@ -619,6 +625,13 @@ declare module "alt-client" {
     /** Array with all players */
     public static readonly all: Array<Player>;
 
+    /** 
+     * Array with all streamed in players 
+     * 
+     * @alpha
+     */
+    public static readonly streamedIn: Array<Player>;
+
     /** Local player */
     public static readonly local: Player;
 
@@ -772,6 +785,13 @@ declare module "alt-client" {
   export class Vehicle extends Entity {
     /** Array with all vehicles */
     public static readonly all: Array<Vehicle>;
+
+    /** 
+     * Array with all streamed in vehicles 
+     * 
+     * @alpha
+     */
+    public static readonly streamedIn: Array<Vehicle>;
 
     /** Vehicle gear */
     public readonly gear: number;
@@ -1227,6 +1247,16 @@ declare module "alt-client" {
      * Unfocuses the webview so it ignores user input.
      */
     public unfocus(): void;
+
+    /**
+     * Gets all the listeners for the specified webview event.
+     * 
+     * @param eventName Name of the event.
+     * @returns Array of listener functions for that event.
+     * 
+     * @alpha
+     */
+    public getEventListeners(eventName: string | null): Function[];
   }
 
   export class Blip extends WorldObject {
@@ -2143,6 +2173,16 @@ declare module "alt-client" {
      * @param value Header value.
      */
     public setExtraHeader(header: string, value: string): void;
+
+    /**
+     * Gets all the listeners for the specified websocket event.
+     * 
+     * @param eventName Name of the event.
+     * @returns Array of listener functions for that event.
+     * 
+     * @alpha
+     */
+     public getEventListeners(eventName: string | null): Function[];
   }
 
   /**
@@ -2192,6 +2232,53 @@ declare module "alt-client" {
    * @alpha
    */
   export function hasResource(name: string): boolean;
+
+  /**
+   * Gets all the listeners for the specified local event.
+   * 
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   * 
+   * @alpha
+   */
+  export function getEventListeners(eventName: string | null): Function[];
+
+  /**
+   * Gets all the listeners for the specified remote event.
+   * 
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   * 
+   * @alpha
+   */
+  export function getRemoteEventListeners(eventName: string | null): Function[];
+
+  /** @alpha */
+  export class HttpClient extends BaseObject {
+    public constructor();
+
+    public setExtraHeader(header: string, value: string): void;
+
+    public getExtraHeaders(): Record<string, string>;
+
+    public get(url: string): IHttpResponse;
+
+    public head(url: string): IHttpResponse;
+
+    public post(url: string, body: string): IHttpResponse;
+
+    public put(url: string, body: string): IHttpResponse;
+
+    public delete(url: string, body: string): IHttpResponse;
+
+    public connect(url: string, body: string): IHttpResponse;
+
+    public options(url: string, body: string): IHttpResponse;
+
+    public trace(url: string, body: string): IHttpResponse;
+
+    public patch(url: string, body: string): IHttpResponse;
+  }
 
   /**
    * Gets the Base64 encoded string of the headshot with the specified ID.
