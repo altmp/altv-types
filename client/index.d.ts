@@ -1936,6 +1936,26 @@ declare module "alt-client" {
   export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
 
   /**
+   * Subscribes to all client events with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function on(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
+   * Subscribes to all client events with specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function once(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
    * Subscribes to server event with specified listener.
    *
    * @param eventName Name of the event.
@@ -1944,12 +1964,32 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
+   * Subscribes to all server events with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function onServer(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
    * Subscribes to server event with specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
+   * Subscribes to all server events with specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function onceServer(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
    * Removes the specified GXT entry.
