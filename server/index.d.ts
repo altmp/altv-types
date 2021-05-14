@@ -385,6 +385,7 @@ declare module "alt-server" {
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
+    [name: string]: (...args: any[]) => void;
   }
 
   export interface IFireInfo {
@@ -1480,25 +1481,27 @@ declare module "alt-server" {
   export function nextTick(handler: (...args: any[]) => void): number;
 
   /**
-   * Unsubscribes from server event with specified listener.
+   * Unsubscribes from a server event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from client event with specified listener.
+   * Unsubscribes from a client event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function offClient(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event with specified listener.
+   * Subscribes to a server event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1506,33 +1509,10 @@ declare module "alt-server" {
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event with specified listener, which only triggers once.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
-
-  /**
-   * Subscribes to server event with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
-
-  /**
-   * Subscribes to server event with specified listener, which only triggers once.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
-
-  /**
-   * Subscribes to all server events with specified listener.
+   * Subscribes to all server events with the specified listener.
    * 
-   * @remarks The generic event listeners get called for every event manually emitted by any resource.
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
    *
    * @alpha
@@ -1540,9 +1520,18 @@ declare module "alt-server" {
   export function on(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to all events with specified listener, which only triggers once.
+   * Subscribes to a server event with the specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+
+  /**
+   * Subscribes to all events with the specified listener, which only triggers once.
    * 
-   * @remarks The generic event listeners get called for every event manually emitted by any resource.
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
    *
    * @alpha
@@ -1550,7 +1539,7 @@ declare module "alt-server" {
    export function once(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event with specified listener.
+   * Subscribes to a client event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1558,9 +1547,10 @@ declare module "alt-server" {
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to all client events with specified listener.
+   * Subscribes to all client events with the specified listener.
    * 
-   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
    *
    * @alpha
@@ -1568,7 +1558,7 @@ declare module "alt-server" {
    export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event with specified listener, which only triggers once.
+   * Subscribes to a client event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1576,9 +1566,10 @@ declare module "alt-server" {
   export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to all client events with specified listener, which only triggers once.
+   * Subscribes to all client events with the specified listener, which only triggers once.
    * 
-   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
    *
    * @alpha

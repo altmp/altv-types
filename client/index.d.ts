@@ -178,6 +178,7 @@ declare module "alt-client" {
      * @beta
      */
     render: () => void;
+    [name: string]: (...args: any[]) => void;
   }
 
   export interface IDiscordOAuth2Token {
@@ -1886,25 +1887,27 @@ declare module "alt-client" {
   export function nextTick(handler: (...args: any[]) => void): number;
 
   /**
-   * Unsubscribes from client event with specified listener.
+   * Unsubscribes from a client event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from server event with specified listener.
+   * Unsubscribes from a server event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function offServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event with specified listener.
+   * Subscribes to a client event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1912,31 +1915,9 @@ declare module "alt-client" {
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to client event with specified listener, which only triggers once.
+   * Subscribes to all client events with the specified listener.
    *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
-
-  /**
-   * Subscribes to client event with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
-
-  /**
-   * Subscribes to client event with specified listener, which only triggers once.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
-
-  /**
-   * Subscribes to all client events with specified listener.
+   * @remarks Listener will be only called for user-created events.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1946,7 +1927,17 @@ declare module "alt-client" {
   export function on(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to all client events with specified listener, which only triggers once.
+   * Subscribes to a client event with the specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
+
+  /**
+   * Subscribes to all client events with the specified listener, which only triggers once.
+   *
+   * @remarks Listener will be only called for user-created events.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1956,7 +1947,7 @@ declare module "alt-client" {
   export function once(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event with specified listener.
+   * Subscribes to a server event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1964,7 +1955,9 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to all server events with specified listener.
+   * Subscribes to all server events with the specified listener.
+   *
+   * @remarks Listener will be only called for user-created events.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1974,7 +1967,7 @@ declare module "alt-client" {
   export function onServer(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event with specified listener, which only triggers once.
+   * Subscribes to a server event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1982,7 +1975,9 @@ declare module "alt-client" {
   export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to all server events with specified listener, which only triggers once.
+   * Subscribes to all server events with the specified listener, which only triggers once.
+   *
+   * @remarks Listener will be only called for user-created events.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
