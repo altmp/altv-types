@@ -2211,9 +2211,9 @@ declare module "alt-client" {
      * 
      * @param source The source url of the audio.
      * @param volume The volume of the audio. Ranges from 0 to 1.
-     * @param category The category of the audio, default should be 'radio'.
+     * @param category The category of the audio. Defaults to 'radio'.
      */
-    public constructor(source: string, volume: number, category: string);
+    public constructor(source: string, volume: number, category?: string);
 
     public source: string;
 
