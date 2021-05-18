@@ -178,6 +178,7 @@ declare module "alt-client" {
      * @beta
      */
     render: () => void;
+    [name: string]: (...args: any[]) => void;
   }
 
   export interface IDiscordOAuth2Token {
@@ -296,6 +297,12 @@ declare module "alt-client" {
     readonly x: number;
     readonly y: number;
     readonly z: number;
+  }
+
+  export interface IHttpResponse {
+    readonly statusCode: number;
+    readonly body: string;
+    readonly headers: Record<string, string>;
   }
 
   /**
@@ -619,6 +626,13 @@ declare module "alt-client" {
     /** Array with all players */
     public static readonly all: Array<Player>;
 
+    /** 
+     * Array with all streamed in players 
+     * 
+     * @alpha
+     */
+    public static readonly streamedIn: Array<Player>;
+
     /** Local player */
     public static readonly local: Player;
 
@@ -772,6 +786,13 @@ declare module "alt-client" {
   export class Vehicle extends Entity {
     /** Array with all vehicles */
     public static readonly all: Array<Vehicle>;
+
+    /** 
+     * Array with all streamed in vehicles 
+     * 
+     * @alpha
+     */
+    public static readonly streamedIn: Array<Vehicle>;
 
     /** Vehicle gear */
     public readonly gear: number;
@@ -1227,6 +1248,16 @@ declare module "alt-client" {
      * Unfocuses the webview so it ignores user input.
      */
     public unfocus(): void;
+
+    /**
+     * Gets all the listeners for the specified webview event.
+     * 
+     * @param eventName Name of the event.
+     * @returns Array of listener functions for that event.
+     * 
+     * @alpha
+     */
+    public getEventListeners(eventName: string | null): Function[];
   }
 
   export class Blip extends WorldObject {
@@ -1856,25 +1887,27 @@ declare module "alt-client" {
   export function nextTick(handler: (...args: any[]) => void): number;
 
   /**
-   * Unsubscribes from client event with specified listener.
+   * Unsubscribes from a client event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from server event with specified listener.
+   * Unsubscribes from a server event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function offServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event with specified listener.
+   * Subscribes to a client event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1882,7 +1915,19 @@ declare module "alt-client" {
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to client event with specified listener, which only triggers once.
+   * Subscribes to all client events with the specified listener.
+   *
+   * @remarks Listener will be only called for user-created events.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function on(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
+   * Subscribes to a client event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1890,23 +1935,19 @@ declare module "alt-client" {
   export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to client event with specified listener.
+   * Subscribes to all client events with the specified listener, which only triggers once.
+   *
+   * @remarks Listener will be only called for user-created events.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   */
-  export function on<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
-
-  /**
-   * Subscribes to client event with specified listener, which only triggers once.
    *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
+   * @alpha
    */
-  export function once<S extends string>(event: Exclude<S, keyof IClientEvent>, listener: (...args: any[]) => void | Promise<void>): void;
+  export function once(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event with specified listener.
+   * Subscribes to a server event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1914,12 +1955,36 @@ declare module "alt-client" {
   export function onServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event with specified listener, which only triggers once.
+   * Subscribes to all server events with the specified listener.
+   *
+   * @remarks Listener will be only called for user-created events.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function onServer(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
+   * Subscribes to a server event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function onceServer(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
+   * Subscribes to all server events with the specified listener, which only triggers once.
+   *
+   * @remarks Listener will be only called for user-created events.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function onceServer(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
    * Removes the specified GXT entry.
@@ -2143,6 +2208,16 @@ declare module "alt-client" {
      * @param value Header value.
      */
     public setExtraHeader(header: string, value: string): void;
+
+    /**
+     * Gets all the listeners for the specified websocket event.
+     * 
+     * @param eventName Name of the event.
+     * @returns Array of listener functions for that event.
+     * 
+     * @alpha
+     */
+     public getEventListeners(eventName: string | null): Function[];
   }
 
   /**
@@ -2192,4 +2267,62 @@ declare module "alt-client" {
    * @alpha
    */
   export function hasResource(name: string): boolean;
+
+  /**
+   * Gets all the listeners for the specified local event.
+   * 
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   * 
+   * @alpha
+   */
+  export function getEventListeners(eventName: string | null): Function[];
+
+  /**
+   * Gets all the listeners for the specified remote event.
+   * 
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   * 
+   * @alpha
+   */
+  export function getRemoteEventListeners(eventName: string | null): Function[];
+
+  /** @alpha */
+  export class HttpClient extends BaseObject {
+    public constructor();
+
+    public setExtraHeader(header: string, value: string): void;
+
+    public getExtraHeaders(): Record<string, string>;
+
+    public get(url: string): IHttpResponse;
+
+    public head(url: string): IHttpResponse;
+
+    public post(url: string, body: string): IHttpResponse;
+
+    public put(url: string, body: string): IHttpResponse;
+
+    public delete(url: string, body: string): IHttpResponse;
+
+    public connect(url: string, body: string): IHttpResponse;
+
+    public options(url: string, body: string): IHttpResponse;
+
+    public trace(url: string, body: string): IHttpResponse;
+
+    public patch(url: string, body: string): IHttpResponse;
+  }
+
+  /**
+   * Gets the Base64 encoded string of the headshot with the specified ID.
+   * 
+   * @remarks The headshot ID is returned by the `registerPedheadshot3`, `registerPedheadshotTransparent` or `registerPedheadshot` native.
+   * @param id ID of the headshot.
+   * @returns The Base64 string of the headshot image.
+   * 
+   * @alpha
+   */
+  export function getHeadshotBase64(id: number): string;
 }

@@ -385,6 +385,7 @@ declare module "alt-server" {
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
+    [name: string]: (...args: any[]) => void;
   }
 
   export interface IFireInfo {
@@ -1166,6 +1167,11 @@ declare module "alt-server" {
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
 
     public setWindowOpened(windowId: number, state: boolean): void;
+
+    /**
+     * @alpha
+     */
+    public setWheelFixed(wheelId: number): void;
   }
 
   export class Blip extends WorldObject {
@@ -1475,25 +1481,27 @@ declare module "alt-server" {
   export function nextTick(handler: (...args: any[]) => void): number;
 
   /**
-   * Unsubscribes from server event with specified listener.
+   * Unsubscribes from a server event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Unsubscribes from client event with specified listener.
+   * Unsubscribes from a client event with the specified listener.
    *
-   * @remarks Listener should be of the same reference as when event was subscribed.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function offClient(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event with specified listener.
+   * Subscribes to a server event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1501,7 +1509,18 @@ declare module "alt-server" {
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event with specified listener, which only triggers once.
+   * Subscribes to all server events with the specified listener.
+   * 
+   * @remarks Listener will be only called for user-created events.
+   *
+   * @param listener Listener that should be added.
+   *
+   * @alpha
+   */
+  export function on(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
+   * Subscribes to a server event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1509,43 +1528,18 @@ declare module "alt-server" {
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event with specified listener.
+   * Subscribes to all events with the specified listener, which only triggers once.
+   * 
+   * @remarks Listener will be only called for user-created events.
    *
-   * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   */
-  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
-
-  /**
-   * Subscribes to server event with specified listener, which only triggers once.
    *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
-
-  /**
-   * Subscribes a generic event listener.
-   * 
-   * @remarks The generic event listeners get called for every event manually emitted by any resource.
-   * @param listener Listener that should be added.
-   * 
-   * @alpha
-   */
-  export function on(listener: (eventName: string, ...args: any[]) => void): void;
-
-  /**
-   * Subscribes a generic event listener, which only triggers once.
-   * 
-   * @remarks The generic event listeners get called for every event manually emitted by any resource.
-   * @param listener Listener that should be added.
-   * 
    * @alpha
    */
    export function once(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event with specified listener.
+   * Subscribes to a client event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1553,17 +1547,18 @@ declare module "alt-server" {
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes a generic client event listener.
+   * Subscribes to all client events with the specified listener.
    * 
-   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
-   * 
+   *
    * @alpha
    */
    export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event with specified listener, which only triggers once.
+   * Subscribes to a client event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1571,11 +1566,12 @@ declare module "alt-server" {
   export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes a generic client event listener, which only triggers once.
+   * Subscribes to all client events with the specified listener, which only triggers once.
    * 
-   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
-   * 
+   *
    * @alpha
    */
    export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
@@ -1627,4 +1623,24 @@ declare module "alt-server" {
    * @alpha
    */
   export function isInDebug(): boolean;
+
+  /**
+   * Gets all the listeners for the specified local event.
+   * 
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   * 
+   * @alpha
+   */
+   export function getEventListeners(eventName: string | null): Function[];
+
+   /**
+    * Gets all the listeners for the specified remote event.
+    * 
+    * @param eventName Name of the event or null for generic event.
+    * @returns Array of listener functions for that event.
+    * 
+    * @alpha
+    */
+   export function getRemoteEventListeners(eventName: string | null): Function[];
 }
