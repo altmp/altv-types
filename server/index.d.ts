@@ -1391,6 +1391,17 @@ declare module "alt-server" {
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
   /**
+   * Emits specified event to specific clients.
+   *
+   * @param player Event is sent to every player in array.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   * 
+   * @alpha
+   */
+	export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
+
+  /**
    * Emits specified event to all clients.
    *
    * @param eventName Name of the event.
