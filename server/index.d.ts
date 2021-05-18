@@ -1399,7 +1399,7 @@ declare module "alt-server" {
    * 
    * @alpha
    */
-	export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
+  export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
