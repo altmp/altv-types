@@ -560,6 +560,14 @@ declare module "alt-client" {
     /** Internal game id that can be used in native calls */
     public readonly scriptID: number;
 
+    /**
+     * Returns whether the entity is spawned in the game world.
+     * 
+     * @remarks This does the same thing as checking if the {@link scriptID} is 0.
+     * @alpha
+     */
+    public readonly isSpawned: boolean;
+
     /** Hash of entity model */
     public readonly model: number;
 
