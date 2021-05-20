@@ -1002,6 +1002,16 @@ declare module "alt-server" {
      * @alpha 
      */
     public isEntityInStreamRange(entity: Entity): boolean;
+
+    /**
+     * Emits specified event to the player.
+     *
+     * @param eventName Name of the event.
+     * @param args Rest parameters for emit to send.
+     * 
+     * @alpha
+     */
+     public emit(eventName: string, ...args: any[]): void;
   }
 
   export class Vehicle extends Entity {
