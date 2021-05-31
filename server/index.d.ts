@@ -1637,15 +1637,6 @@ declare module "alt-server" {
   export function stopResource(name: string): void;
 
   /**
-   * Returns if the server is in debug mode.
-   * 
-   * @returns True when the server is launched with debug mode enabled.
-   * 
-   * @alpha
-   */
-  export function isInDebug(): boolean;
-
-  /**
    * Gets all the listeners for the specified local event.
    * 
    * @param eventName Name of the event or null for generic event.
@@ -1664,4 +1655,13 @@ declare module "alt-server" {
     * @alpha
     */
    export function getRemoteEventListeners(eventName: string | null): Function[];
+
+    /**
+     * Returns if the server is in debug mode.
+     * 
+     * @returns True when the alt:V server is launched with debug mode enabled.
+     * 
+     * @alpha
+     */
+  export const debug: boolean;
 }
