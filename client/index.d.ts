@@ -1,3 +1,6 @@
+/**
+ * @module alt-client
+ */
 declare module "alt-client" {
   export const enum Locale {
     Arabic = "ar",

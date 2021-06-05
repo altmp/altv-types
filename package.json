@@ -1,5 +1,5 @@
 {
-  "name": "altv-types",
+  "name": "@altmp/altv-types",
   "version": "1.0.0",
   "description": "This repository contains types definitions for alt:V JavaScript modules.",
   "main": "",
@@ -26,8 +26,8 @@
   "homepage": "https://github.com/altmp/altv-types#readme",
   "devDependencies": {
     "type2docfx": "git://github.com/Lhoerion/type2docfx.git#dist",
-    "typedoc": "0.19.2",
-    "typescript": "4.0.7"
+    "typedoc": "^0.20.36",
+    "typescript": "4.2.4"
   },
   "dependencies": {}
 }

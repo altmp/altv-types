@@ -134,7 +134,9 @@ try
     } $true
 
     LogWrap "Generating project metadata" {
-        $stderr=npx typedoc --options './typedoc.json' 2>$null
+        Push-Location -Path "../"
+        $stderr=npx typedoc --options './docs/typedoc.json' 2>$null
+        Pop-Location
         if($LastExitCode -gt 0x0) { return $LastExitCode, $stderr }
         $stderr=npx type2docfx './api/.manifest' './api/' --basePath '.' --sourceUrl 'https://github.com/altmp/altv-types' --sourceBranch 'master' --disableAlphabetOrder 2>&1 6>$null
         return $LastExitCode, $buff
