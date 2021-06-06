@@ -17,13 +17,19 @@ function PostCleanup() {
 }
 
 function GetAssemblyVersion([string] $file) {
-    if(-not (Test-Path -Path $file)) { throw "Cannot find path $file because it does not exist." }
+    if(-not (Test-Path -Path $file)) { throw "Cannot find path $file, because it does not exist." }
     $ver=(Get-Item -Path $file | Select-Object -ExpandProperty VersionInfo).FileVersion.Split('.')
     if($ver.Length -lt 4) {
         $ver -Join '.'
     } else {
         ($ver | Select -SkipLast 1) -Join '.'
     }
+}
+
+function GetPackageVersion([string] $pkgname) {
+    $json=(npm list $pkgname --silent --json | ConvertFrom-Json)
+    if(-not ($json.dependencies)) { throw "Cannot find package $pkgname, because it does not exist." }
+    $json.dependencies.$($pkgname).version
 }
 
 function FetchAndDownloadRelease([string] $repo, [string] $file, [string] $tag=$null) {
@@ -122,8 +128,8 @@ try
         $docfxVer=GetAssemblyVersion "./docfx/docfx.exe"
         $pluginVer=GetAssemblyVersion "./templates/docfx-plugins-typescriptreference/plugins/*.dll"
         $themeVer=cat "./templates/discordfx/version.txt"
-        $typedocVer=npm view typedoc version
-        $type2docfxVer=npm view typedoc version
+        $typedocVer=GetPackageVersion "typedoc"
+        $type2docfxVer=GetPackageVersion "type2docfx"
         Write-Host -NoNewline -ForegroundColor "green" "done`n"
         Write-Host ".NET Core v$dotnetVersion"
         Write-Host "DocFx v$docfxVer"
