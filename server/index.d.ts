@@ -514,6 +514,18 @@ declare module "alt-server" {
 
     public div(vector: IVector3): Vector3;
 
+    /** @alpha */
+    public dot(x: number, y: number, z: number): Vector3;
+
+    /** @alpha */
+    public dot(value: number): Vector3;
+
+    /** @alpha */
+    public dot(array: [number, number, number]): Vector3;
+
+    /** @alpha */
+    public dot(vector: IVector3): Vector3;
+
     public mul(x: number, y: number, z: number): Vector3;
 
     public mul(value: number): Vector3;
