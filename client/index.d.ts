@@ -410,9 +410,7 @@ declare module "alt-client" {
     public isInRange(vector: IVector3, range: number): boolean;
   }
 
-  /**
-   * @alpha
-   */
+  /** @alpha */
   export class Vector2 {
     public readonly x: number;
 
@@ -541,6 +539,7 @@ declare module "alt-client" {
      * Stores the given value with the specified key.
      *
      * @remarks The given value will be shared locally.
+     *
      * @param key The key of the value to store.
      */
     public setMeta(key: string, value: any): void;
@@ -1256,6 +1255,7 @@ declare module "alt-client" {
      * Unsubscribes from WebView event handler with specified listener.
      *
      * @remarks Listener should be of the same reference as when event was subscribed.
+     *
      * @param eventName Name of the event.
      * @param listener Listener that should be removed.
      */
@@ -1491,8 +1491,6 @@ declare module "alt-client" {
   export class LocalStorage {
     /**
      * Gets the local storage instance.
-     *
-     * @deprecated Use the static methods instead.
      */
     public static get(): LocalStorage;
 
@@ -1518,7 +1516,8 @@ declare module "alt-client" {
     public static deleteAll(): void;
 
     /**
-     * @remarks Alias for deleteAll.
+     * Alias for {@link deleteAll}.
+     *
      * @alpha
      */
     public static clear(): void;
@@ -1688,6 +1687,7 @@ declare module "alt-client" {
    * Stores the given value with the specified key.
    *
    * @remarks The given value will be shared locally to all resources.
+   *
    * @param key The key of the value to store.
    */
   export function setMeta(key: string, value: any): void;
@@ -1712,6 +1712,7 @@ declare module "alt-client" {
    * Adds a new GXT entry with the specified value.
    *
    * @remarks The GXT entry FE_THDR_GTAO is locked and cannot be changed.
+   *
    * @param key GXT entry name.
    * @param value GXT entry value.
    */
@@ -1860,6 +1861,7 @@ declare module "alt-client" {
    * Returns if alt:V is in debug mode.
    *
    * @returns True when the alt:V client is launched with debug mode enabled.
+   *
    * @deprecated In dev branch, use {@link debug}.
    */
   export function isInDebug(): boolean;
@@ -2057,7 +2059,7 @@ declare module "alt-client" {
   /**
    * The output is returned as a base64 string.
    *
-   * @return Return is dependent on the success of the operation.
+   * @returns Return is dependent on the success of the operation.
    *
    */
   export function takeScreenshot(): Promise<string>;
@@ -2065,9 +2067,9 @@ declare module "alt-client" {
   /**
    * The output is returned as a base64 string.
    *
-   * @return Return is dependent on the success of the operation.
    * @remarks This only takes a screenshot of the raw GTA:V window. WebViews, game overlays etc. won't be captured.
    *
+   * @returns Return is dependent on the success of the operation.
    */
   export function takeScreenshotGameOnly(): Promise<string>;
 
@@ -2082,6 +2084,7 @@ declare module "alt-client" {
    * Freezes the camera in place so it doesn't change position or rotation.
    *
    * @remarks You can still move your character even if your camera is frozen.
+   *
    * @param state True to freeze the camera, false to unfreeze the camera.
    */
   export function setCamFrozen(state: boolean): void;
@@ -2163,6 +2166,7 @@ declare module "alt-client" {
    *
    * @remarks This has to be activated after using it by using the {@link setWeatherSyncActive} function.
    * The weathers and multipliers array has to be of the same length.
+   *
    * @param weathers An array containing the weather ids for the weather cycle.
    * @param multipliers An array containing the multipliers for the weather cycle.
    */
@@ -2172,6 +2176,7 @@ declare module "alt-client" {
    * Sets whether the weather sync is active.
    *
    * @remarks The weather sync has to be set by using the {@link setWeatherCycle} function.
+   *
    * @param isActive Whether the weather sync should be active.
    */
   export function setWeatherSyncActive(isActive: boolean): void;
@@ -2180,6 +2185,7 @@ declare module "alt-client" {
    * Changes the visibility of cursor.
    *
    * @remarks This is handled by resource scoped internal integer, which gets increased/decreased by every function call. When you show your cursor 5 times, to hide it you have to do that 5 times accordingly.
+   *
    * @param state A boolean indicating whenever cursor should be visible or not.
    */
   export function showCursor(state: boolean): void;
@@ -2188,6 +2194,7 @@ declare module "alt-client" {
    * Toggles the game controls.
    *
    * @remarks When this is set to false, all controls are disabled, so you can't move your character or the camera.
+   *
    * @param state True to enable controls, false to disable controls.
    */
   export function toggleGameControls(state: boolean): void;
@@ -2270,11 +2277,12 @@ declare module "alt-client" {
   /**
    * Load a specific ytyp file.
    *
-   * @param path Relative path to the game folder.
    * @example
    * ```js
    * alt.loadYtyp("x64u.rpf/levels/gta5/_hills/country_06/country_06_metadata.rpf/cs6_08_interior_cs6_08_mine_int.ytyp")
    * ```
+   *
+   * @param path Relative path to the game folder.
    *
    * @alpha
    */
@@ -2283,11 +2291,12 @@ declare module "alt-client" {
   /**
    * Unload a specific ytyp file.
    *
-   * @param path Relative path to the game folder.
    * @example
    * ```js
    * alt.unloadYtyp("x64u.rpf/levels/gta5/_hills/country_06/country_06_metadata.rpf/cs6_08_interior_cs6_08_mine_int.ytyp")
    * ```
+   *
+   * @param path Relative path to the game folder.
    *
    * @alpha
    */
@@ -2296,9 +2305,8 @@ declare module "alt-client" {
   /**
    * Evaluates and executes the given JavaScript code.
    *
-   * @remarks
-   * The code is evaluated in its own context, so it cannot access variables, functions
-   * etc. from the calling file.
+   * @remarks The code is evaluated in its own context, so it cannot access variables, functions etc. from the calling file.
+   *
    * @param code The JavaScript code.
    * @returns The exports of the evaluated module.
    *
@@ -2366,6 +2374,7 @@ declare module "alt-client" {
    * Gets the Base64 encoded string of the headshot with the specified ID.
    *
    * @remarks The headshot ID is returned by the `registerPedheadshot3`, `registerPedheadshotTransparent` or `registerPedheadshot` native.
+   *
    * @param id ID of the headshot.
    * @returns The Base64 string of the headshot image.
    *

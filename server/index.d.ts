@@ -463,7 +463,6 @@ declare module "alt-server" {
 
   /**
    * Represents the current server branch.
-   *
    */
   export const branch: string;
 
@@ -666,6 +665,7 @@ declare module "alt-server" {
      * Stores the given value with the specified key.
      *
      * @remarks The given value will be shared locally.
+     *
      * @param key The key of the value to store.
      */
     public setMeta(key: string, value: any): void;
@@ -756,6 +756,7 @@ declare module "alt-server" {
      * Stores the given value with the specified key.
      *
      * @remarks The given value will be shared with all clients.
+     *
      * @param key The key of the value to store.
      */
     public setSyncedMeta(key: string, value: any): void;
@@ -787,6 +788,7 @@ declare module "alt-server" {
      * Stores the given value with the specified key.
      *
      * @remarks The given value will be shared with all clients in streaming range.
+     *
      * @param key The key of the value to store.
      */
     public setStreamSyncedMeta(key: string, value: any): void;
@@ -801,8 +803,7 @@ declare module "alt-server" {
      * </b></p>
      *
      * @param player The given player that will be set as new network owner.
-     * @param disableMigration Pass true to disable migration, false to keep it enabled.
-     * If not specified, it defaults to "false".
+     * @param disableMigration Pass true to disable migration, false to keep it enabled. If not specified, it defaults to "false".
      */
     public setNetOwner(player: Player, disableMigration?: boolean): void;
 
@@ -815,8 +816,7 @@ declare module "alt-server" {
      * the network owner gets out of the streaming range.
      * </b></p>
      *
-     * @param disableMigration Pass true to disable migration, false to keep it enabled.
-     * If not specified, it defaults to "false".
+     * @param disableMigration Pass true to disable migration, false to keep it enabled. If not specified, it defaults to "false".
      */
     public resetNetOwner(disableMigration?: boolean): void;
 
@@ -851,9 +851,7 @@ declare module "alt-server" {
      * @deprecated See {@link socialID}.
      */
     public readonly socialId: string;
-    /**
-     * @alpha
-     */
+    /** @alpha */
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
@@ -886,8 +884,7 @@ declare module "alt-server" {
     /**
      * Forcefully disconnects the player with a reason message.
      *
-     * @param reason The reason that will display to the player on the disconnect screen.
-     * If not specified, it defaults to "KICKED_OUT".
+     * @param reason The reason that will display to the player on the disconnect screen. If not specified, it defaults to "KICKED_OUT".
      */
     public kick(reason?: string): void;
 
@@ -921,6 +918,7 @@ declare module "alt-server" {
      * Spawns the player in the world.
      *
      * @remarks The player has to have a model set before being spawned.
+     *
      * @param x The x position where the player gets spawned.
      * @param y The y position where the player gets spawned.
      * @param z The z position where the player gets spawned.
@@ -931,13 +929,14 @@ declare module "alt-server" {
     /**
      * Gets the specified clothing component.
      *
-     * @param component Component id of the clothing.
-     * @param dlc True to get the dlc clothing, false to get the normal clothing.
      * @example
      * ```js
      * let cloth = player.getClothes(1); // Gets the currently equipped mask
      * alt.log(cloth.drawable); // Logs the drawable of the currently equipped mask
      * ```
+     *
+     * @param component Component id of the clothing.
+     * @param dlc True to get the dlc clothing, false to get the normal clothing.
      *
      * @alpha
      */
@@ -947,16 +946,16 @@ declare module "alt-server" {
      * Sets the specified clothing component.
      *
      * @remarks The dlc hash is only required when setting dlc clothing.
+     * @example
+     * ```js
+     * player.setClothes(1, 14, 0); // Sets the players mask to a blue hockey mask
+     * ```
      *
      * @param component Component id of the clothing.
      * @param drawable Drawable id of the clothing.
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
      * @param dlc Dlc hash of the clothing.
-     * @example
-     * ```js
-     * player.setClothes(1, 14, 0); // Sets the players mask to a blue hockey mask
-     * ```
      *
      * @alpha
      */
@@ -965,13 +964,14 @@ declare module "alt-server" {
     /**
      * Gets the specified prop component.
      *
-     * @param component Component id of the prop.
-     * @param dlc True to get the dlc prop, false to get the normal prop.
      * @example
      * ```js
      * let prop = player.getProp(0); // Gets the hat prop of the player
      * alt.log(prop.drawable); // Logs the drawable id of the current hat prop of the player
      * ```
+     *
+     * @param component Component id of the prop.
+     * @param dlc True to get the dlc prop, false to get the normal prop.
      *
      * @alpha
      */
@@ -980,14 +980,15 @@ declare module "alt-server" {
     /**
      * Sets the specified prop component.
      *
-     * @param component Component id of the prop.
-     * @param drawable Drawable id of the prop.
-     * @param texture Texture id of the prop.
-     * @param dlc Dlc hash of the prop.
      * @example
      * ```js
      * player.setProp(0, 13, 0); // sets the players hat prop to a blue cowboy hat
      * ```
+     *
+     * @param component Component id of the prop.
+     * @param drawable Drawable id of the prop.
+     * @param texture Texture id of the prop.
+     * @param dlc Dlc hash of the prop.
      *
      * @alpha
      */
@@ -996,11 +997,12 @@ declare module "alt-server" {
     /**
      * Removes a specified prop component.
      *
-     * @param component Component id of the prop.
      * @example
      * ```js
      * player.clearProp(0); // removes the player hat prop
      * ```
+     *
+     * @param component Component id of the prop.
      *
      * @alpha
      */
@@ -1193,9 +1195,7 @@ declare module "alt-server" {
 
     public setWindowOpened(windowId: number, state: boolean): void;
 
-    /**
-     * @alpha
-     */
+    /** @alpha */
     public setWheelFixed(wheelId: number): void;
   }
 
@@ -1247,6 +1247,7 @@ declare module "alt-server" {
      * Creates a new voice channel.
      *
      * @remarks This throws an error when the voice chat is not activated on serverside.
+     *
      * @param isSpatial Whether the voice channel should be 3D (e.g. talking in person) or 1D (e.g. talking over a telephone).
      * @param maxDistance The max distance at which you can hear each other.
      */
@@ -1318,6 +1319,7 @@ declare module "alt-server" {
    * Stores the given value with the specified key.
    *
    * @remarks The given value will be shared locally to all resources.
+   *
    * @param key The key of the value to store.
    */
   export function setMeta(key: string, value: any): void;
@@ -1349,6 +1351,7 @@ declare module "alt-server" {
    * Stores the given value with the specified key.
    *
    * @remarks The given value will be shared with all client resources.
+   *
    * @param key The key of the value to store.
    */
   export function setSyncedMeta(key: string, value: any): void;

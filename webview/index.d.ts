@@ -11,6 +11,7 @@ interface Alt {
    * Unsubscribes from client event handler with specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed.
+   *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
