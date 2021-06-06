@@ -806,8 +806,30 @@ declare module "alt-client" {
      */
     public static readonly streamedIn: Array<Vehicle>;
 
-    /** Vehicle gear */
-    public readonly gear: number;
+    /**
+     * Vehicle gear
+     *
+     * @remarks Setter is only available in dev branch.
+     *
+     * @param value The desired gear.
+     *
+     * @alpha
+     */
+    public set gear(value: number);
+
+    /**
+     * Vehicle gear
+     *
+     * @returns A number indicating actual gear.
+     */
+    public get gear(): number;
+
+    /**
+     * Vehicle max gear.
+     *
+     * @alpha
+     */
+    public maxGear: number;
 
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
