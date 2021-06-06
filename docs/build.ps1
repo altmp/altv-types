@@ -36,13 +36,12 @@ function GetPackageVersion([string] $pkgname) {
 function FetchAndDownloadRelease([string] $repo, [string] $file, [string] $tag=$null) {
     $global:ProgressPreference='SilentlyContinue'
     if(-not $tag) {
-        $tag=(Invoke-WebRequest -UseBasicParsing "https://api.github.com/repos/$repo/releases" | ConvertFrom-Json)[0].tag_name
+        $tag=((Invoke-WebRequest -UseBasicParsing "https://api.github.com/repos/$repo/releases" | ConvertFrom-Json) | Where-Object { -not $_.prerelease } | Select-Object -First 1 -ExpandProperty "tag_name")
     }
     Invoke-WebRequest -UseBasicParsing "https://github.com/$repo/releases/download/$tag/$file" -OutFile $file
     $global:ProgressPreference='Continue'
     return ([int]$? - 1)
 }
-
 
 function ExtractArchive([string] $path, [string] $dest) {
     if(-not (Test-Path -Path $path)) { throw "Cannot find path $path because it does not exist." }
