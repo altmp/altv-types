@@ -825,6 +825,12 @@ declare module "alt-server" {
      * If not specified, it defaults to "false".
      */
     public resetNetOwner(disableMigration?: boolean): void;
+
+    /** @alpha */
+    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: Vector3, rot: Vector3, enableCollisions: boolean, noFixedRotation: boolean): void;
+
+    /** @alpha */
+    public detach(): void;
   }
 
   export class Player extends Entity {
