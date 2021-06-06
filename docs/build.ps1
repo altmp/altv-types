@@ -28,6 +28,7 @@ function GetAssemblyVersion([string] $file) {
 
 function GetPackageVersion([string] $pkgname) {
     $json=(npm list $pkgname --silent --json | ConvertFrom-Json)
+    $global:LastExitCode=0 # npm list failing on GitHub package workaround
     if(-not ($json.dependencies)) { throw "Cannot find package $pkgname, because it does not exist." }
     $json.dependencies.$($pkgname).version
 }
