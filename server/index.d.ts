@@ -2,16 +2,10 @@
  * @module alt-server
  */
 declare module "alt-server" {
-  type DateTimeHour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23;
-  type DateTimeMinute = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
-      45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
-  type DateTimeSecond = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
-      45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
-  type DateTimeDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30;
+  type DateTimeHour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
+  type DateTimeMinute = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
+  type DateTimeSecond = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
+  type DateTimeDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30;
   type DateTimeMonth = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
   export const enum ExplosionType {
@@ -54,7 +48,7 @@ declare module "alt-server" {
     Snowball,
     ProxMine,
     ValkyrieCannon,
-    Unknown = -1
+    Unknown = -1,
   }
 
   export const enum BodyPart {
@@ -79,7 +73,7 @@ declare module "alt-server" {
     RightWrist,
     Neck,
     Head,
-    Unknown = -1
+    Unknown = -1,
   }
 
   export const enum BlipType {
@@ -94,7 +88,7 @@ declare module "alt-server" {
     Cop,
     Area,
     Gallery,
-    PickupObject
+    PickupObject,
   }
 
   export const enum ColShapeType {
@@ -103,7 +97,7 @@ declare module "alt-server" {
     Circle,
     Cuboid,
     Rectangle,
-    CheckpointCylinder
+    CheckpointCylinder,
   }
 
   export const enum BaseObjectType {
@@ -113,7 +107,7 @@ declare module "alt-server" {
     WebView,
     VoiceChannel,
     Colshape,
-    Checkpoint
+    Checkpoint,
   }
 
   export const enum CheckpointType {
@@ -183,7 +177,7 @@ declare module "alt-server" {
     RingTruck,
     RingParachute,
     RingJetpack,
-    RingWhirl
+    RingWhirl,
   }
 
   export const enum RadioStation {
@@ -206,7 +200,7 @@ declare module "alt-server" {
     VinewoodBoulevardRadio,
     SelfRadio,
     TheLab,
-    RadioOff = 255
+    RadioOff = 255,
   }
 
   export const enum NumberPlateStyle {
@@ -215,18 +209,18 @@ declare module "alt-server" {
     YellowBlue,
     BlueWhite2,
     BlueWhite3,
-    Yankton
+    Yankton,
   }
 
   export const enum VehicleBumper {
     Front,
-    Rear
+    Rear,
   }
 
   export const enum VehicleBumperDamage {
     NotDamaged,
     Damaged,
-    None
+    None,
   }
 
   export const enum VehicleDoor {
@@ -235,7 +229,7 @@ declare module "alt-server" {
     DriverRear,
     PassengerRear,
     Hood,
-    Trunk
+    Trunk,
   }
 
   export const enum VehicleDoorState {
@@ -247,7 +241,7 @@ declare module "alt-server" {
     OpenedLevel5,
     OpenedLevel6,
     OpenedLevel7,
-    Unknown = 255
+    Unknown = 255,
   }
 
   export const enum VehicleLockState {
@@ -258,7 +252,7 @@ declare module "alt-server" {
     LockPlayerInside,
     InitiallyLocked,
     ForceDoorsShut,
-    LockedCanBeDamaged
+    LockedCanBeDamaged,
   }
 
   export const enum VehicleModType {
@@ -310,7 +304,7 @@ declare module "alt-server" {
     Tank,
     Windows,
     Unk4,
-    Livery
+    Livery,
   }
 
   export const enum VehiclePart {
@@ -319,14 +313,14 @@ declare module "alt-server" {
     MiddleLeft,
     MiddleRight,
     RearLeft,
-    RearRight
+    RearRight,
   }
 
   export const enum VehiclePartDamage {
     NotDamaged,
     DamagedLevel1,
     DamagedLevel2,
-    DamagedLevel3
+    DamagedLevel3,
   }
 
   export const enum WeatherType {
@@ -344,7 +338,7 @@ declare module "alt-server" {
     Blizzard,
     Snowlight,
     Xmas,
-    Halloween
+    Halloween,
   }
 
   export const enum WindowTint {
@@ -354,7 +348,7 @@ declare module "alt-server" {
     LightSmoke,
     Stock,
     Limo,
-    Green
+    Green,
   }
 
   export interface IServerEvent {
@@ -419,9 +413,9 @@ declare module "alt-server" {
     readonly texture: number;
     readonly palette: number;
 
-    /** 
+    /**
      * Dlc hash of the cloth.
-     * 
+     *
      * @remarks This is only set when it is a dlc cloth.
      */
     readonly dlc?: number;
@@ -431,9 +425,9 @@ declare module "alt-server" {
     readonly drawable: number;
     readonly texture: number;
 
-    /** 
+    /**
      * Dlc hash of the prop.
-     * 
+     *
      * @remarks This is only set when it is a dlc prop.
      */
     readonly dlc?: number;
@@ -635,7 +629,7 @@ declare module "alt-server" {
 
     /**
      * Object usability.
-     * 
+     *
      * @returns False if object is no longer usable.
      */
     public readonly valid: boolean;
@@ -699,7 +693,7 @@ declare module "alt-server" {
 
     /**
      * Network owner of the entity.
-     * 
+     *
      * @remarks Network owner is responsible for syncing entity with the server.
      * It changes when actual network owner passes the migration range,
      * then the new one is determined based on distance from the entity
@@ -882,7 +876,7 @@ declare module "alt-server" {
 
     /**
      * Gives the specified weapon to the player.
-     * 
+     *
      * @param weaponHash Hash of the weapon.
      * @param ammo Amount of ammo to spawn the weapon with.
      * @param equipNow Should the weapon be equipped immediately.
@@ -904,14 +898,14 @@ declare module "alt-server" {
 
     /**
      * Removes the specified weapon from the player.
-     * 
+     *
      * @param weaponHash Hash of the weapon.
      */
     public removeWeapon(weaponHash: number): void;
 
     /**
      * Removes the specified weapon component from the specified weapon.
-     * 
+     *
      * @param weaponHash Hash of the weapon.
      * @param component Hash of the weapon component.
      */
@@ -925,7 +919,7 @@ declare module "alt-server" {
 
     /**
      * Spawns the player in the world.
-     * 
+     *
      * @remarks The player has to have a model set before being spawned.
      * @param x The x position where the player gets spawned.
      * @param y The y position where the player gets spawned.
@@ -934,9 +928,9 @@ declare module "alt-server" {
      */
     public spawn(x: number, y: number, z: number, delay: number): void;
 
-    /** 
+    /**
      * Gets the specified clothing component.
-     * 
+     *
      * @param component Component id of the clothing.
      * @param dlc True to get the dlc clothing, false to get the normal clothing.
      * @example
@@ -944,16 +938,16 @@ declare module "alt-server" {
      * let cloth = player.getClothes(1); // Gets the currently equipped mask
      * alt.log(cloth.drawable); // Logs the drawable of the currently equipped mask
      * ```
-     * 
-     * @alpha 
+     *
+     * @alpha
      */
     public getClothes(component: number, dlc?: boolean): ICloth;
 
-    /** 
+    /**
      * Sets the specified clothing component.
-     * 
+     *
      * @remarks The dlc hash is only required when setting dlc clothing.
-     * 
+     *
      * @param component Component id of the clothing.
      * @param drawable Drawable id of the clothing.
      * @param texture Texture id of the clothing.
@@ -963,14 +957,14 @@ declare module "alt-server" {
      * ```js
      * player.setClothes(1, 14, 0); // Sets the players mask to a blue hockey mask
      * ```
-     * 
-     * @alpha 
+     *
+     * @alpha
      */
     public setClothes(component: number, drawable: number, texture: number, palette?: number, dlc?: number): void;
 
     /**
      * Gets the specified prop component.
-     * 
+     *
      * @param component Component id of the prop.
      * @param dlc True to get the dlc prop, false to get the normal prop.
      * @example
@@ -978,14 +972,14 @@ declare module "alt-server" {
      * let prop = player.getProp(0); // Gets the hat prop of the player
      * alt.log(prop.drawable); // Logs the drawable id of the current hat prop of the player
      * ```
-     * 
+     *
      * @alpha
      */
     public getProp(component: number, dlc?: boolean): IProp;
 
     /**
      * Sets the specified prop component.
-     * 
+     *
      * @param component Component id of the prop.
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
@@ -994,33 +988,33 @@ declare module "alt-server" {
      * ```js
      * player.setProp(0, 13, 0); // sets the players hat prop to a blue cowboy hat
      * ```
-     * 
+     *
      * @alpha
      */
     public setProp(component: number, drawable: number, texture: number, dlc?: number): void;
 
     /**
      * Removes a specified prop component.
-     * 
+     *
      * @param component Component id of the prop.
      * @example
      * ```js
      * player.clearProp(0); // removes the player hat prop
      * ```
-     * 
+     *
      * @alpha
      */
     public clearProp(component: number): void;
 
-    /** 
+    /**
      * Checks whether the given entity is in the stream range of the player.
-     * 
+     *
      * @example
      * ```js
      * if(player.vehicle) alt.log(player.isEntityInStreamRange(player.vehicle)); // This always logs true, because their own vehicle is always in stream range of the player
      * ```
-     * 
-     * @alpha 
+     *
+     * @alpha
      */
     public isEntityInStreamRange(entity: Entity): boolean;
 
@@ -1029,10 +1023,10 @@ declare module "alt-server" {
      *
      * @param eventName Name of the event.
      * @param args Rest parameters for emit to send.
-     * 
+     *
      * @alpha
      */
-     public emit(eventName: string, ...args: any[]): void;
+    public emit(eventName: string, ...args: any[]): void;
   }
 
   export class Vehicle extends Entity {
@@ -1205,9 +1199,7 @@ declare module "alt-server" {
     public setWheelFixed(wheelId: number): void;
   }
 
-  export class Blip extends WorldObject {
-
-  }
+  export class Blip extends WorldObject {}
 
   export class PointBlip extends Blip {
     constructor(type: BlipType, x: number, y: number, z: number);
@@ -1253,7 +1245,7 @@ declare module "alt-server" {
   export class VoiceChannel extends BaseObject {
     /**
      * Creates a new voice channel.
-     * 
+     *
      * @remarks This throws an error when the voice chat is not activated on serverside.
      * @param isSpatial Whether the voice channel should be 3D (e.g. talking in person) or 1D (e.g. talking over a telephone).
      * @param maxDistance The max distance at which you can hear each other.
@@ -1427,7 +1419,7 @@ declare module "alt-server" {
    * @param player Event is sent to every player in array.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
-   * 
+   *
    * @alpha
    */
   export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
@@ -1437,7 +1429,7 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
-   * 
+   *
    * @alpha
    */
   export function emitAllClients(eventName: string, ...args: any[]): void;
@@ -1466,28 +1458,28 @@ declare module "alt-server" {
 
   /**
    * Gets the exports of the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function getResourceExports(name: string): any;
 
   /**
    * Gets the main file of the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function getResourceMain(name: string): string;
 
   /**
    * Gets the path to the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function getResourcePath(name: string): string;
 
   /**
    * Returns whether the specified resource exists.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function hasResource(name: string): boolean;
@@ -1552,7 +1544,7 @@ declare module "alt-server" {
 
   /**
    * Subscribes to all server events with the specified listener.
-   * 
+   *
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
@@ -1571,14 +1563,14 @@ declare module "alt-server" {
 
   /**
    * Subscribes to all events with the specified listener, which only triggers once.
-   * 
+   *
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
    *
    * @alpha
    */
-   export function once(listener: (eventName: string, ...args: any[]) => void): void;
+  export function once(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
    * Subscribes to a client event with the specified listener.
@@ -1590,14 +1582,14 @@ declare module "alt-server" {
 
   /**
    * Subscribes to all client events with the specified listener.
-   * 
+   *
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
    *
    * @alpha
    */
-   export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
+  export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
   /**
    * Subscribes to a client event with the specified listener, which only triggers once.
@@ -1609,14 +1601,14 @@ declare module "alt-server" {
 
   /**
    * Subscribes to all client events with the specified listener, which only triggers once.
-   * 
+   *
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
    *
    * @alpha
    */
-   export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
+  export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
   /**
    * Schedules execution of handler in specified intervals.
@@ -1638,51 +1630,51 @@ declare module "alt-server" {
 
   /**
    * Starts the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function startResource(name: string): void;
 
   /**
    * Restarts the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function restartResource(name: string): void;
 
   /**
    * Stops the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function stopResource(name: string): void;
 
   /**
    * Gets all the listeners for the specified local event.
-   * 
+   *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   * 
+   *
    * @alpha
    */
-   export function getEventListeners(eventName: string | null): Function[];
+  export function getEventListeners(eventName: string | null): Function[];
 
-   /**
-    * Gets all the listeners for the specified remote event.
-    * 
-    * @param eventName Name of the event or null for generic event.
-    * @returns Array of listener functions for that event.
-    * 
-    * @alpha
-    */
-   export function getRemoteEventListeners(eventName: string | null): Function[];
+  /**
+   * Gets all the listeners for the specified remote event.
+   *
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   *
+   * @alpha
+   */
+  export function getRemoteEventListeners(eventName: string | null): Function[];
 
-    /**
-     * Returns if the server is in debug mode.
-     * 
-     * @returns True when the alt:V server is launched with debug mode enabled.
-     * 
-     * @alpha
-     */
+  /**
+   * Returns if the server is in debug mode.
+   *
+   * @returns True when the alt:V server is launched with debug mode enabled.
+   *
+   * @alpha
+   */
   export const debug: boolean;
 }

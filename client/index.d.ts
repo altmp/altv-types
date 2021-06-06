@@ -34,21 +34,21 @@ declare module "alt-client" {
     Turkish = "tr",
     Ukrainian = "ua", // Wrong tag (uk)
     ChineseSimplified = "zh_cn",
-    ChineseTraditional = "zh_tw"
+    ChineseTraditional = "zh_tw",
   }
 
   export const enum Permission {
     None,
     ScreenCapture,
     WebRTC,
-    All
+    All,
   }
 
   export const enum PermissionState {
     Allowed,
     Denied,
     Unspecified,
-    Failed
+    Failed,
   }
 
   export const enum StatName {
@@ -58,13 +58,13 @@ declare module "alt-client" {
     Wheelie = "wheelie_ability",
     Flying = "flying_ability",
     Shooting = "shooting_ability",
-    Stealth = "stealth_ability"
+    Stealth = "stealth_ability",
   }
 
   export const enum FileEncoding {
     Utf8 = "utf-8",
     Utf16 = "utf-16",
-    Binary = "binary"
+    Binary = "binary",
   }
 
   export const enum BaseObjectType {
@@ -74,7 +74,7 @@ declare module "alt-client" {
     WebView,
     VoiceChannel,
     Colshape,
-    Checkpoint
+    Checkpoint,
   }
 
   export const enum CheckpointType {
@@ -144,14 +144,14 @@ declare module "alt-client" {
     RingTruck,
     RingParachute,
     RingJetpack,
-    RingWhirl
+    RingWhirl,
   }
 
   export const enum WebSocketReadyState {
     Connecting,
     Open,
     Closing,
-    Closed
+    Closed,
   }
 
   export interface IClientEvent {
@@ -504,7 +504,7 @@ declare module "alt-client" {
 
     /**
      * Object usability.
-     * 
+     *
      * @returns False if object is no longer usable.
      */
     public readonly valid: boolean;
@@ -577,9 +577,9 @@ declare module "alt-client" {
 
     /**
      * Returns whether the entity is spawned in the game world.
-     * 
+     *
      * @remarks This does the same thing as checking if the {@link scriptID} is 0.
-     * 
+     *
      * @alpha
      */
     public readonly isSpawned: boolean;
@@ -650,9 +650,9 @@ declare module "alt-client" {
     /** Array with all players */
     public static readonly all: Array<Player>;
 
-    /** 
-     * Array with all streamed in players 
-     * 
+    /**
+     * Array with all streamed in players
+     *
      * @alpha
      */
     public static readonly streamedIn: Array<Player>;
@@ -794,26 +794,26 @@ declare module "alt-client" {
 
     /**
      * Set & get the volume for 3D Voice.
-     * 
+     *
      * @remarks Value needs to be between 0-1.
      */
-    public spatialVolume: number
+    public spatialVolume: number;
 
     /**
      * Set & get the volume for 2D Voice.
-     * 
+     *
      * @remarks Value needs to be between 0-1.
      */
-    public nonSpatialVolume: number
+    public nonSpatialVolume: number;
   }
 
   export class Vehicle extends Entity {
     /** Array with all vehicles */
     public static readonly all: Array<Vehicle>;
 
-    /** 
-     * Array with all streamed in vehicles 
-     * 
+    /**
+     * Array with all streamed in vehicles
+     *
      * @alpha
      */
     public static readonly streamedIn: Array<Vehicle>;
@@ -849,10 +849,10 @@ declare module "alt-client" {
     public handling: IVehicleHandling;
 
     /**
-      * Vehicle RPM.
-      *
-      * @returns Normalised value on a scale of [0, 1].
-      */
+     * Vehicle RPM.
+     *
+     * @returns Normalised value on a scale of [0, 1].
+     */
     public readonly rpm: number;
 
     /**
@@ -866,8 +866,8 @@ declare module "alt-client" {
     public readonly speedVector: Vector3;
 
     /**
-      * Vehicle wheels count.
-      */
+     * Vehicle wheels count.
+     */
     public readonly wheelsCount: number;
 
     /**
@@ -1207,7 +1207,7 @@ declare module "alt-client" {
      *
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
-     * 
+     *
      * @alpha
      */
     constructor(url: string, pos: IVector2);
@@ -1218,7 +1218,7 @@ declare module "alt-client" {
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
-     * 
+     *
      * @alpha
      */
     constructor(url: string, pos: IVector2, size: IVector2);
@@ -1230,7 +1230,7 @@ declare module "alt-client" {
      * @param isOverlay true to render as overlay, false to render on game's GUI stage.
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
-     * 
+     *
      * @alpha
      */
     constructor(url: string, isOverlay: boolean, pos: IVector2, size: IVector2);
@@ -1297,10 +1297,10 @@ declare module "alt-client" {
 
     /**
      * Gets all the listeners for the specified webview event.
-     * 
+     *
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
-     * 
+     *
      * @alpha
      */
     public getEventListeners(eventName: string | null): Function[];
@@ -1491,90 +1491,90 @@ declare module "alt-client" {
   export class LocalStorage {
     /**
      * Gets the local storage instance.
-     * 
+     *
      * @deprecated Use the static methods instead.
      */
     public static get(): LocalStorage;
 
     /**
      * Gets the value from the specified key in the local storage.
-     * 
+     *
      * @alpha
      */
     public static get(key: string): any;
 
     /**
      * Deletes the specified key from the local storage.
-     * 
+     *
      * @alpha
      */
     public static delete(key: string): void;
 
-     /**
-      * Deletes all keys from the local storage.
-      * 
-      * @alpha
-      */
+    /**
+     * Deletes all keys from the local storage.
+     *
+     * @alpha
+     */
     public static deleteAll(): void;
- 
-     /**
-      * @remarks Alias for deleteAll.
-      * @alpha
-      */
+
+    /**
+     * @remarks Alias for deleteAll.
+     * @alpha
+     */
     public static clear(): void;
 
     /**
      * Saves the changes to the disk.
-     * 
+     *
      * @alpha
      */
     public static save(): void;
 
-     /**
-      * Sets the specified key to the specified value in the local storage.
-      * 
-      * @alpha
-      */
+    /**
+     * Sets the specified key to the specified value in the local storage.
+     *
+     * @alpha
+     */
     public static set(key: string, value: any): void;
 
     /**
      * Deletes the specified key from the local storage.
-     * 
+     *
      * @deprecated Use the static methods instead.
      */
     public delete(key: string): void;
 
     /**
      * Deletes all keys from the local storage.
-     * 
+     *
      * @deprecated Use the static methods instead.
      */
     public deleteAll(): void;
 
     /**
      * @remarks Alias for deleteAll.
-     * 
+     *
      * @deprecated Use the static methods instead.
      */
     public clear(): void;
 
     /**
      * Gets the value from the specified key in the local storage.
-     * 
+     *
      * @deprecated Use the static methods instead.
      */
     public get(key: string): any;
 
     /**
      * Saves the changes to the disk.
-     * 
+     *
      * @deprecated Use the static methods instead.
      */
     public save(): void;
 
     /**
      * Sets the specified key to the specified value in the local storage.
-     * 
+     *
      * @deprecated Use the static methods instead.
      */
     public set(key: string, value: any): void;
@@ -1648,14 +1648,14 @@ declare module "alt-client" {
 
     /**
      * Determines if the voice activation is enabled.
-     * 
+     *
      * @alpha
      */
     static activityInputEnabled: boolean;
 
     /**
      * Returns the keycode of the voice activation key.
-     * 
+     *
      * @alpha
      */
     static activationKey: number;
@@ -1709,7 +1709,7 @@ declare module "alt-client" {
   export function hasSyncedMeta(key: string): boolean;
 
   /**
-   * Adds a new GXT entry with the specified value. 
+   * Adds a new GXT entry with the specified value.
    *
    * @remarks The GXT entry FE_THDR_GTAO is locked and cannot be changed.
    * @param key GXT entry name.
@@ -1793,7 +1793,7 @@ declare module "alt-client" {
 
   /**
    * Gets the value of the specified GXT entry.
-   * 
+   *
    * @param key GXT entry name.
    */
   export function getGxtText(key: string): string;
@@ -1807,14 +1807,14 @@ declare module "alt-client" {
 
   /**
    * Gets the current milliseconds per game minute.
-   * 
+   *
    * @remarks This is set with the {@link setMsPerGameMinute} function.
    */
   export function getMsPerGameMinute(): number;
 
   /**
    * Gets the state of the specified permission.
-   * 
+   *
    * @param permId Permission id.
    * @returns Permission state.
    */
@@ -1858,7 +1858,7 @@ declare module "alt-client" {
 
   /**
    * Returns if alt:V is in debug mode.
-   * 
+   *
    * @returns True when the alt:V client is launched with debug mode enabled.
    * @deprecated In dev branch, use {@link debug}.
    */
@@ -1866,16 +1866,16 @@ declare module "alt-client" {
 
   /**
    * Returns whether voice activity input is enabled in alt:V settings.
-   * 
+   *
    * @returns True when voice activity input is enabled in alt:V settings.
-   * 
+   *
    * @deprecated Use alt.Voice.activityInputEnabled instead.
    */
   export function isVoiceActivityInputEnabled(): boolean;
 
   /**
    * Returns whether the specified key is toggled.
-   * 
+   *
    * @param key Keycode.
    */
   export function isKeyToggled(key: number): boolean;
@@ -1898,14 +1898,14 @@ declare module "alt-client" {
 
   /**
    * Loads a model into memory synchronously.
-   * 
+   *
    * @param modelHash Hash of the model.
    */
   export function loadModel(modelHash: number): void;
 
   /**
    * Loads a model into memory asynchronously.
-   * 
+   *
    * @param modelHash Hash of the model.
    */
   export function loadModelAsync(modelHash: number): void;
@@ -2035,21 +2035,21 @@ declare module "alt-client" {
 
   /**
    * Removes the specified GXT entry.
-   * 
+   *
    * @param key GXT entry name.
    */
   export function removeGxtText(key: string): void;
 
   /**
    * Unloads the specified ipl.
-   * 
+   *
    * @param iplName Name of the ipl.
    */
   export function removeIpl(iplName: string): void;
 
   /**
    * Loads the specified ipl.
-   * 
+   *
    * @param iplName Name of the ipl.
    */
   export function requestIpl(iplName: string): void;
@@ -2080,7 +2080,7 @@ declare module "alt-client" {
 
   /**
    * Freezes the camera in place so it doesn't change position or rotation.
-   * 
+   *
    * @remarks You can still move your character even if your camera is frozen.
    * @param state True to freeze the camera, false to unfreeze the camera.
    */
@@ -2112,7 +2112,7 @@ declare module "alt-client" {
 
   /**
    * Sets the current position of the cursor.
-   * 
+   *
    * @remarks The cursor has to be visible for this to take effect.
    */
   export function setCursorPos(pos: IVector2): void;
@@ -2160,7 +2160,7 @@ declare module "alt-client" {
 
   /**
    * Sets the current weather cycle.
-   * 
+   *
    * @remarks This has to be activated after using it by using the {@link setWeatherSyncActive} function.
    * The weathers and multipliers array has to be of the same length.
    * @param weathers An array containing the weather ids for the weather cycle.
@@ -2170,7 +2170,7 @@ declare module "alt-client" {
 
   /**
    * Sets whether the weather sync is active.
-   * 
+   *
    * @remarks The weather sync has to be set by using the {@link setWeatherCycle} function.
    * @param isActive Whether the weather sync should be active.
    */
@@ -2186,7 +2186,7 @@ declare module "alt-client" {
 
   /**
    * Toggles the game controls.
-   * 
+   *
    * @remarks When this is set to false, all controls are disabled, so you can't move your character or the camera.
    * @param state True to enable controls, false to disable controls.
    */
@@ -2230,7 +2230,7 @@ declare module "alt-client" {
 
     /**
      * Sends the specified message to the websocket server.
-     * 
+     *
      * @param message The message to send.
      * @returns Whether sending the message was successful.
      */
@@ -2238,7 +2238,7 @@ declare module "alt-client" {
 
     /**
      * Adds a sub protocol to the websocket.
-     * 
+     *
      * @param protocol Name of the protocol.
      */
     public addSubProtocol(protocol: string): void;
@@ -2250,7 +2250,7 @@ declare module "alt-client" {
 
     /**
      * Sets the specified header to the specified value.
-     * 
+     *
      * @param header Header name.
      * @param value Header value.
      */
@@ -2258,13 +2258,13 @@ declare module "alt-client" {
 
     /**
      * Gets all the listeners for the specified websocket event.
-     * 
+     *
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
-     * 
+     *
      * @alpha
      */
-     public getEventListeners(eventName: string | null): Function[];
+    public getEventListeners(eventName: string | null): Function[];
   }
 
   /**
@@ -2295,42 +2295,42 @@ declare module "alt-client" {
 
   /**
    * Evaluates and executes the given JavaScript code.
-   * 
-   * @remarks 
+   *
+   * @remarks
    * The code is evaluated in its own context, so it cannot access variables, functions
    * etc. from the calling file.
    * @param code The JavaScript code.
    * @returns The exports of the evaluated module.
-   * 
+   *
    * @alpha
    */
   export function evalModule(code: string): Record<string, any>;
 
   /**
    * Returns whether the specified resource exists.
-   * 
+   *
    * @param name Name of the resource.
-   * 
+   *
    * @alpha
    */
   export function hasResource(name: string): boolean;
 
   /**
    * Gets all the listeners for the specified local event.
-   * 
+   *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   * 
+   *
    * @alpha
    */
   export function getEventListeners(eventName: string | null): Function[];
 
   /**
    * Gets all the listeners for the specified remote event.
-   * 
+   *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   * 
+   *
    * @alpha
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
@@ -2364,20 +2364,20 @@ declare module "alt-client" {
 
   /**
    * Gets the Base64 encoded string of the headshot with the specified ID.
-   * 
+   *
    * @remarks The headshot ID is returned by the `registerPedheadshot3`, `registerPedheadshotTransparent` or `registerPedheadshot` native.
    * @param id ID of the headshot.
    * @returns The Base64 string of the headshot image.
-   * 
+   *
    * @alpha
    */
   export function getHeadshotBase64(id: number): string;
 
   /**
    * Returns if alt:V is in debug mode.
-   * 
+   *
    * @returns True when the alt:V client is launched with debug mode enabled.
-   * 
+   *
    * @alpha
    */
   export const debug: boolean;

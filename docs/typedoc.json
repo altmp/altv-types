@@ -1,8 +1,5 @@
 {
-  "entryPoints": [
-    "client",
-    "server"
-  ],
+  "entryPoints": ["client", "server"],
   "excludeExternals": true,
   "json": "docs/api/.manifest"
 }

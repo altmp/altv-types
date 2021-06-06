@@ -1,7 +1,9 @@
 # altv-types
+
 This repository contains types definitions for the alt:V JavaScript modules.
 
 # Installation
+
 Client-side
 
 ```bash
@@ -21,13 +23,11 @@ yarn add -D @altv/types-server
 ```
 
 To make these types detectable, you've to add `typeRoots` property below to your project's `tsconfig.json`
+
 ```json
 {
   "compilerOptions": {
-    "typeRoots": [
-      "./node_modules/@types",
-      "./node_modules/@altv"
-    ]
+    "typeRoots": ["./node_modules/@types", "./node_modules/@altv"]
   }
 }
 ```
