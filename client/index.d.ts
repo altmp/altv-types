@@ -1,7 +1,10 @@
+/// <reference types="@altv/types-shared"/>
 /**
  * @module alt-client
  */
 declare module "alt-client" {
+  import * as shared from "alt-shared";
+
   export const enum Locale {
     Arabic = "ar",
     Belarusian = "by",
@@ -59,22 +62,6 @@ declare module "alt-client" {
     Flying = "flying_ability",
     Shooting = "shooting_ability",
     Stealth = "stealth_ability",
-  }
-
-  export const enum FileEncoding {
-    Utf8 = "utf-8",
-    Utf16 = "utf-16",
-    Binary = "binary",
-  }
-
-  export const enum BaseObjectType {
-    Player,
-    Vehicle,
-    Blip,
-    WebView,
-    VoiceChannel,
-    Colshape,
-    Checkpoint,
   }
 
   export const enum CheckpointType {
@@ -168,7 +155,7 @@ declare module "alt-client" {
     keydown: (key: number) => void;
     keyup: (key: number) => void;
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
-    removeEntity: (object: BaseObject) => void;
+    removeEntity: (object: shared.BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
@@ -213,7 +200,7 @@ declare module "alt-client" {
     brakeBiasRear: number;
     brakeForce: number;
     camberStiffness: number;
-    centreOfMassOffset: Vector3;
+    centreOfMassOffset: shared.Vector3;
     clutchChangeRateScaleDownShift: number;
     clutchChangeRateScaleUpShift: number;
     collisionDamageMult: number;
@@ -226,7 +213,7 @@ declare module "alt-client" {
     engineDamageMult: number;
     handBrakeForce: number;
     handlingFlags: number;
-    inertiaMultiplier: Vector3;
+    inertiaMultiplier: shared.Vector3;
     initialDragCoeff: number;
     initialDriveForce: number;
     initialDriveGears: number;
@@ -284,285 +271,30 @@ declare module "alt-client" {
     reset(): void;
   }
 
-  export interface IVehicleNeon {
-    left: boolean;
-    right: boolean;
-    front: boolean;
-    back: boolean;
-  }
-
-  export interface IVector2 {
-    readonly x: number;
-    readonly y: number;
-  }
-
-  export interface IVector3 {
-    readonly x: number;
-    readonly y: number;
-    readonly z: number;
-  }
-
   export interface IHttpResponse {
     readonly statusCode: number;
     readonly body: string;
     readonly headers: Record<string, string>;
   }
 
-  /**
-   * Resource name of the executing resource.
-   */
-  export const resourceName: string;
-
-  /**
-   * Represents the current client version.
-   *
-   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
-   */
-  export const version: string;
-
-  /**
-   * Represents the current client SDK version.
-   *
-   * @remarks It's the version of the SDK the current runtime was compiled with.
-   */
-  export const sdkVersion: number;
-
-  /**
-   * Represents the current client branch.
-   */
-  export const branch: string;
-
-  export class Vector3 {
-    public readonly x: number;
-
-    public readonly y: number;
-
-    public readonly z: number;
-
-    constructor(x: number, y: number, z: number);
-
-    constructor(arr: [number, number, number]);
-
-    constructor(obj: IVector3);
-
-    public get length(): number;
-
-    public toArray(): [number, number, number];
-
-    public add(x: number, y: number, z: number): Vector3;
-
-    public add(value: number): Vector3;
-
-    public add(array: [number, number, number]): Vector3;
-
-    public add(vector: IVector3): Vector3;
-
-    public sub(x: number, y: number, z: number): Vector3;
-
-    public sub(value: number): Vector3;
-
-    public sub(array: [number, number, number]): Vector3;
-
-    public sub(vector: IVector3): Vector3;
-
-    public div(x: number, y: number, z: number): Vector3;
-
-    public div(value: number): Vector3;
-
-    public div(array: [number, number, number]): Vector3;
-
-    public div(vector: IVector3): Vector3;
-
-    /** @alpha */
-    public dot(x: number, y: number, z: number): Vector3;
-
-    /** @alpha */
-    public dot(value: number): Vector3;
-
-    /** @alpha */
-    public dot(array: [number, number, number]): Vector3;
-
-    /** @alpha */
-    public dot(vector: IVector3): Vector3;
-
-    public mul(x: number, y: number, z: number): Vector3;
-
-    public mul(value: number): Vector3;
-
-    public mul(array: [number, number, number]): Vector3;
-
-    public mul(vector: IVector3): Vector3;
-
-    public negative(): Vector3;
-
-    public normalize(): Vector3;
-
-    public distanceTo(vector: IVector3): number;
-
-    public angleTo(vector: IVector3): Vector3;
-
-    public angleToDegrees(vector: IVector3): Vector3;
-
-    public toRadians(): Vector3;
-
-    public toDegrees(): Vector3;
-
-    public isInRange(vector: IVector3, range: number): boolean;
-  }
-
-  /** @alpha */
-  export class Vector2 {
-    public readonly x: number;
-
-    public readonly y: number;
-
-    constructor(x: number, y: number);
-
-    constructor(arr: [number, number]);
-
-    constructor(obj: IVector2);
-
-    public get length(): number;
-
-    public toArray(): [number, number];
-
-    public add(x: number, y: number): Vector2;
-
-    public add(value: number): Vector2;
-
-    public add(array: [number, number]): Vector2;
-
-    public add(vector: IVector2): Vector2;
-
-    public sub(x: number, y: number): Vector2;
-
-    public sub(value: number): Vector2;
-
-    public sub(array: [number, number]): Vector2;
-
-    public sub(vector: IVector2): Vector2;
-
-    public div(x: number, y: number): Vector2;
-
-    public div(value: number): Vector2;
-
-    public div(array: [number, number]): Vector2;
-
-    public div(vector: IVector2): Vector2;
-
-    public mul(x: number, y: number): Vector2;
-
-    public mul(value: number): Vector2;
-
-    public mul(array: [number, number]): Vector2;
-
-    public mul(vector: IVector2): Vector2;
-
-    public negative(): Vector2;
-
-    public normalize(): Vector2;
-
-    public distanceTo(vector: IVector2): number;
-
-    public angleTo(vector: IVector2): Vector2;
-
-    public angleToDegrees(vector: IVector2): Vector2;
-
-    public toRadians(): Vector2;
-
-    public toDegrees(): Vector2;
-
-    public isInRange(vector: IVector2, range: number): boolean;
-  }
-
-  export class RGBA {
-    /** r component of RGBA */
-    public r: number;
-    /** g component of RGBA */
-    public g: number;
-    /** b component of RGBA */
-    public b: number;
-    /** a component of RGBA */
-    public a: number;
-
-    /**
-     * @param r An r component.
-     * @param g An g component.
-     * @param b An b component.
-     * @param a An a component.
-     */
-    constructor(r: number, g: number, b: number, a: number);
-  }
-
-  export class BaseObject {
-    /**
-     * Type of the object.
-     */
-    public readonly type: BaseObjectType;
-
-    /**
-     * Object usability.
-     *
-     * @returns False if object is no longer usable.
-     */
-    public readonly valid: boolean;
-
-    /**
-     * Removes the object from the world.
-     */
-    public destroy(): void;
-
-    /**
-     * Removes the specified key.
-     *
-     * @param key The key of the value to remove.
-     */
-    public deleteMeta(key: string): void;
-
-    /**
-     * Gets a value using the specified key.
-     *
-     * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
-     */
-    public getMeta(key: string): any;
-
-    /**
-     * Determines whether contains the specified key.
-     *
-     * @param key The key of the value to locate.
-     * @returns True when element associated with the specified key is stored.
-     */
-    public hasMeta(key: string): boolean;
-
-    /**
-     * Stores the given value with the specified key.
-     *
-     * @remarks The given value will be shared locally.
-     *
-     * @param key The key of the value to store.
-     */
-    public setMeta(key: string, value: any): void;
-  }
-
-  export class WorldObject extends BaseObject {
+  export class WorldObject extends shared.BaseObject {
     /**
      * Object position
      */
-    public pos: Vector3;
+    public pos: shared.Vector3;
   }
 
   export class Checkpoint extends WorldObject {
     public checkpointType: CheckpointType;
-    public nextPos: Vector3;
+    public nextPos: shared.Vector3;
     public radius: number;
     public height: number;
-    public color: RGBA;
+    public color: shared.RGBA;
 
-    constructor(type: CheckpointType, pos: Vector3, nextPos: Vector3, radius: number, height: number, rgbcolor: RGBA);
+    constructor(type: CheckpointType, pos: shared.Vector3, nextPos: shared.Vector3, radius: number, height: number, rgbcolor: shared.RGBA);
 
     public isEntityIn(entity: Entity): boolean;
-    public isPointIn(pos: Vector3): boolean;
+    public isPointIn(pos: shared.Vector3): boolean;
   }
 
   export class Entity extends WorldObject {
@@ -589,10 +321,10 @@ declare module "alt-client" {
     /**
      * Object position
      */
-    public readonly pos: Vector3;
+    public readonly pos: shared.Vector3;
 
     /** Entity rotation in radians */
-    public readonly rot: Vector3;
+    public readonly rot: shared.Vector3;
 
     public readonly visible: boolean;
 
@@ -738,12 +470,12 @@ declare module "alt-client" {
     /**
      * Position the player is currently aiming at.
      */
-    public readonly aimPos: Vector3;
+    public readonly aimPos: shared.Vector3;
 
     /**
      * Rotation of the head of the player.
      */
-    public readonly headRot: Vector3;
+    public readonly headRot: shared.Vector3;
 
     /**
      * Curent seat the player is sitting in.
@@ -758,7 +490,7 @@ declare module "alt-client" {
     /**
      * The current aim offset of the player.
      */
-    public readonly entityAimOffset: Vector3 | null;
+    public readonly entityAimOffset: shared.Vector3 | null;
 
     /**
      * Is the flashlight of the player activated.
@@ -862,7 +594,7 @@ declare module "alt-client" {
     /**
      * Vehicle speed vector.
      */
-    public readonly speedVector: Vector3;
+    public readonly speedVector: shared.Vector3;
 
     /**
      * Vehicle wheels count.
@@ -902,7 +634,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    //public readonly customPrimaryColor: RGBA;
+    //public readonly customPrimaryColor: shared.RGBA;
 
     /**
      * Vehicle secondary color.
@@ -916,7 +648,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    //public readonly customSecondaryColor: RGBA;
+    //public readonly customSecondaryColor: shared.RGBA;
 
     /**
      * Vehicle pearl color.
@@ -1028,7 +760,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    //public readonly neonColor: RGBA;
+    //public readonly neonColor: shared.RGBA;
 
     /**
      * Vehicle livery.
@@ -1187,7 +919,7 @@ declare module "alt-client" {
     public static getByScriptID(scriptID: number): Vehicle | null;
   }
 
-  export class WebView extends BaseObject {
+  export class WebView extends shared.BaseObject {
     /** View visibility state */
     public isVisible: boolean;
     /** View URL */
@@ -1209,7 +941,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    constructor(url: string, pos: IVector2);
+    constructor(url: string, pos: shared.IVector2);
 
     /**
      * Creates a custom size WebView and specific pos.
@@ -1220,7 +952,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    constructor(url: string, pos: IVector2, size: IVector2);
+    constructor(url: string, pos: shared.IVector2, size: shared.IVector2);
 
     /**
      * Creates a custom size WebView and specific pos.
@@ -1232,7 +964,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    constructor(url: string, isOverlay: boolean, pos: IVector2, size: IVector2);
+    constructor(url: string, isOverlay: boolean, pos: shared.IVector2, size: shared.IVector2);
 
     /**
      * Creates a WebView rendered on game object.
@@ -1307,7 +1039,7 @@ declare module "alt-client" {
   }
 
   export class Blip extends WorldObject {
-    public static routeColor: RGBA;
+    public static routeColor: shared.RGBA;
 
     public alpha: number;
 
@@ -1355,7 +1087,7 @@ declare module "alt-client" {
 
     public scale: number;
 
-    public secondaryColor: number | RGBA;
+    public secondaryColor: number | shared.RGBA;
 
     public shortRange: boolean;
 
@@ -1363,7 +1095,7 @@ declare module "alt-client" {
 
     public shrinked: boolean;
 
-    public size: Vector2;
+    public size: shared.Vector2;
 
     public sprite: number;
 
@@ -1400,7 +1132,7 @@ declare module "alt-client" {
     public brakeBiasRear: number;
     public brakeForce: number;
     public camberStiffnesss: number;
-    public centreOfMassOffset: Vector3;
+    public centreOfMassOffset: shared.Vector3;
     public clutchChangeRateScaleDownShift: number;
     public clutchChangeRateScaleUpShift: number;
     public collisionDamageMult: number;
@@ -1413,7 +1145,7 @@ declare module "alt-client" {
     public engineDamageMult: number;
     public handBrakeForce: number;
     public handlingFlags: number;
-    public inertiaMultiplier: Vector3;
+    public inertiaMultiplier: shared.Vector3;
     public initialDragCoeff: number;
     public initialDriveForce: number;
     public initialDriveGears: number;
@@ -1613,32 +1345,6 @@ declare module "alt-client" {
     public static readonly currentUser: IDiscordUser | null;
   }
 
-  export class File {
-    /**
-     * Determines whether file exists with the specified filename.
-     *
-     * @param filename The name of the file.
-     * @returns Return is dependent on whether file with the specified filename exists.
-     */
-    public static exists(filename: string): boolean;
-
-    /**
-     * Reads content of the file.
-     *
-     * @param filename The name of the file.
-     * @param encoding The encoding of the file. If not specified, it defaults to "utf-8".
-     */
-    public static read(filename: string, encoding?: FileEncoding.Utf8 | FileEncoding.Utf16): string;
-
-    /**
-     * Reads content of the file.
-     *
-     * @param filename The name of the file.
-     * @param encoding The encoding of the file.
-     */
-    public static read(filename: string, encoding: FileEncoding.Binary): ArrayBuffer;
-  }
-
   export class Voice {
     /**
      * Determines whether the microphone input is currently disabled.
@@ -1661,54 +1367,6 @@ declare module "alt-client" {
   }
 
   /**
-   * Removes the specified key.
-   *
-   * @param key The key of the value to remove.
-   */
-  export function deleteMeta(key: string): void;
-
-  /**
-   * Gets a value using the specified key.
-   *
-   * @param key The key of the value to get.
-   * @returns Dynamic value associated with the specified key.
-   */
-  export function getMeta(key: string): any;
-
-  /**
-   * Determines whether contains the specified key.
-   *
-   * @param key The key of the value to locate.
-   * @returns True when element associated with the specified key is stored.
-   */
-  export function hasMeta(key: string): boolean;
-
-  /**
-   * Stores the given value with the specified key.
-   *
-   * @remarks The given value will be shared locally to all resources.
-   *
-   * @param key The key of the value to store.
-   */
-  export function setMeta(key: string, value: any): void;
-
-  /**
-   * Gets a value using the specified key.
-   *
-   * @param key The key of the value to get.
-   * @returns Dynamic value associated with the specified key.
-   */
-  export function getSyncedMeta(key: string): any;
-
-  /**
-   * Determines whether contains the specified key.
-   *
-   * @param key The key of the value to locate.
-   * @returns Return is dependent on whether element associated with the specified key is stored.
-   */
-  export function hasSyncedMeta(key: string): boolean;
-
-  /**
    * Adds a new GXT entry with the specified value.
    *
    * @remarks The GXT entry FE_THDR_GTAO is locked and cannot be changed.
@@ -1724,48 +1382,6 @@ declare module "alt-client" {
   export function beginScaleformMovieMethodMinimap(methodName: string): boolean;
 
   /**
-   * Clears a timer set with the {@link everyTick} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearEveryTick(id: number): void;
-
-  /**
-   * Clears a timer set with the {@link setInterval} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearInterval(id: number): void;
-
-  /**
-   * Clears a timer set with the {@link nextTick} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearNextTick(id: number): void;
-
-  /**
-   * Clears a timer set with the {@link setTimeout} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearTimeout(id: number): void;
-
-  /**
-   * @hidden
-   */
-  export function clearTimer(id: number): void;
-
-  /**
-   * Emits specified event across client resources.
-   *
-   * @param player Event is sent to specific player.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emit(name: string, ...args: any[]): void;
-
-  /**
    * Emits specified event to server.
    *
    * @param player Event is sent to specific player.
@@ -1775,14 +1391,6 @@ declare module "alt-client" {
   export function emitServer(name: string, ...args: any[]): void;
 
   /**
-   * Schedules execution of handler on every frame.
-   *
-   * @param handler Handler that should be scheduled for execution.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearEveryTick} function to cancel the timer.
-   */
-  export function everyTick(handler: (...args: any[]) => void): number;
-
-  /**
    * Returns whether the game controls are currently enabled.
    */
   export function gameControlsEnabled(): boolean;
@@ -1790,7 +1398,7 @@ declare module "alt-client" {
   /**
    * Gets the current position of the cursor.
    */
-  export function getCursorPos(): Vector2;
+  export function getCursorPos(): shared.Vector2;
 
   /**
    * Gets the value of the specified GXT entry.
@@ -1827,13 +1435,6 @@ declare module "alt-client" {
    * @param statName Name of the statistic.
    */
   export function getStat(statName: StatName): number;
-
-  /**
-   * Creates a hash using Jenkins one-at-a-time algorithm.
-   *
-   * @param str A string from which hash will be created.
-   */
-  export function hash(str: string): number;
 
   /**
    * Returns state of console window.
@@ -1913,39 +1514,6 @@ declare module "alt-client" {
   export function loadModelAsync(modelHash: number): void;
 
   /**
-   * Logs the specified arguments to the console.
-   */
-  export function log(...args: any[]): void;
-
-  /**
-   * Logs the specified arguments as an error to the console.
-   */
-  export function logError(...args: any[]): void;
-
-  /**
-   * Logs the specified arguments as a warning to the console.
-   */
-  export function logWarning(...args: any[]): void;
-
-  /**
-   * Schedules execution of handler on next frame.
-   *
-   * @param handler Handler that should be scheduled for execution.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearNextTick} function to cancel the timer.
-   */
-  export function nextTick(handler: (...args: any[]) => void): number;
-
-  /**
-   * Unsubscribes from a client event with the specified listener.
-   *
-   * @remarks Listener should be of the same reference as when event was subscribed to.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be removed.
-   */
-  export function off(eventName: string, listener: (...args: any[]) => void): void;
-
-  /**
    * Unsubscribes from a server event with the specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed to.
@@ -1964,36 +1532,12 @@ declare module "alt-client" {
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
-   * Subscribes to all client events with the specified listener.
-   *
-   * @remarks Listener will be only called for user-created events.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   *
-   * @alpha
-   */
-  export function on(listener: (eventName: string, ...args: any[]) => void): void;
-
-  /**
    * Subscribes to a client event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
-
-  /**
-   * Subscribes to all client events with the specified listener, which only triggers once.
-   *
-   * @remarks Listener will be only called for user-created events.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   *
-   * @alpha
-   */
-  export function once(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
    * Subscribes to a server event with the specified listener.
@@ -2118,16 +1662,7 @@ declare module "alt-client" {
    *
    * @remarks The cursor has to be visible for this to take effect.
    */
-  export function setCursorPos(pos: IVector2): void;
-
-  /**
-   * Schedules execution of handler in specified intervals.
-   *
-   * @param handler Handler that should be scheduled for execution.
-   * @param milliseconds The time, in milliseconds, between execution of specified handler.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearInterval} function to cancel the timer.
-   */
-  export function setInterval(handler: (...args: any[]) => void, milliseconds: number): number;
+  export function setCursorPos(pos: shared.IVector2): void;
 
   /**
    * Sets the amount of real milliseconds that have to pass every game minute.
@@ -2151,15 +1686,6 @@ declare module "alt-client" {
    * @param value Value of the statistic you want to set.
    */
   export function setStat(statName: StatName, value: number): void;
-
-  /**
-   * Schedules execution of handler once after the expiration of interval.
-   *
-   * @param handler Handler that should be scheduled for execution.
-   * @param milliseconds The time, in milliseconds, before execution of specified handler.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
-   */
-  export function setTimeout(handler: (...args: any[]) => void, milliseconds: number): number;
 
   /**
    * Sets the current weather cycle.
@@ -2202,7 +1728,7 @@ declare module "alt-client" {
   export function toggleVoiceControls(state: boolean): void;
 
   /** @alpha */
-  export class WebSocketClient extends BaseObject {
+  export class WebSocketClient extends shared.BaseObject {
     public autoReconnect: boolean;
 
     public perMessageDeflate: boolean;
@@ -2315,15 +1841,6 @@ declare module "alt-client" {
   export function evalModule(code: string): Record<string, any>;
 
   /**
-   * Returns whether the specified resource exists.
-   *
-   * @param name Name of the resource.
-   *
-   * @alpha
-   */
-  export function hasResource(name: string): boolean;
-
-  /**
    * Gets all the listeners for the specified local event.
    *
    * @param eventName Name of the event or null for generic event.
@@ -2344,7 +1861,7 @@ declare module "alt-client" {
   export function getRemoteEventListeners(eventName: string | null): Function[];
 
   /** @alpha */
-  export class HttpClient extends BaseObject {
+  export class HttpClient extends shared.BaseObject {
     public constructor();
 
     public setExtraHeader(header: string, value: string): void;
@@ -2382,12 +1899,5 @@ declare module "alt-client" {
    */
   export function getHeadshotBase64(id: number): string;
 
-  /**
-   * Returns if alt:V is in debug mode.
-   *
-   * @returns True when the alt:V client is launched with debug mode enabled.
-   *
-   * @alpha
-   */
-  export const debug: boolean;
+  export * from "alt-shared";
 }

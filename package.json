@@ -5,6 +5,7 @@
   "main": "",
   "private": true,
   "workspaces": [
+    "shared",
     "client",
     "webview",
     "natives",
@@ -28,7 +29,7 @@
   "devDependencies": {
     "prettier": "^2.3.1",
     "type2docfx": "git://github.com/Lhoerion/type2docfx.git#dist",
-    "typedoc": "^0.20.36",
+    "typedoc": "0.21.0-beta.2",
     "typescript": "4.2.4"
   },
   "dependencies": {}

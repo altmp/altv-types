@@ -9,7 +9,7 @@
     "strictNullChecks": true,
     "baseUrl": "../",
     "typeRoots": ["../"],
-    "types": ["@altv/types-shared"],
+    "types": [],
     "noEmit": true,
     "forceConsistentCasingInFileNames": true
   },
