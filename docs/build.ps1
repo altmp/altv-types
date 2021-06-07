@@ -141,14 +141,14 @@ try
 
     LogWrap "Generating project metadata" {
         Push-Location -Path "../"
-        $stderr=npx typedoc --options './docs/typedoc.json' 2>$null
+        $stderr=& node "D:\Projects\typedoc\bin\typedoc" --options './docs/typedoc.json' 2>$null
         Pop-Location
         if($LastExitCode -gt 0x0) { return $LastExitCode, $stderr }
         $stderr=npx type2docfx './api/.manifest' './api/' --basePath '.' --sourceUrl 'https://github.com/altmp/altv-types' --sourceBranch 'master' --disableAlphabetOrder 2>&1 6>$null
         return $LastExitCode, $buff
     }
 
-    ./docfx/docfx build "docfx.json" --serve -p $port
+    # ./docfx/docfx build "docfx.json" --serve -p $port
 }
 finally
 {

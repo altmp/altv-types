@@ -1,5 +1,6 @@
 {
   "entryPoints": ["client", "server"],
   "excludeExternals": true,
+  "disableAliases": true,
   "json": "docs/api/.manifest"
 }
