@@ -148,7 +148,7 @@ try
         return $LastExitCode, $buff
     }
 
-    # ./docfx/docfx build "docfx.json" --serve -p $port
+    ./docfx/docfx build "docfx.json" --serve -p $port
 }
 finally
 {
