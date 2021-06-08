@@ -2244,5 +2244,8 @@ declare module "alt-client" {
     public reset(): void;
 
     public seek(time: number): void;
+
+    public on(event: "streamEnded", callback: () => void): void;
+    public on(event: "error", callback: (code: number, message: string) => void): void;
   }
 }
