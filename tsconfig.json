@@ -13,5 +13,5 @@
     "noEmit": true,
     "forceConsistentCasingInFileNames": true
   },
-  "files": ["./shared/index.d.ts","./client/index.d.ts", "./server/index.d.ts"]
+  "files": ["./shared/index.d.ts", "./client/index.d.ts", "./server/index.d.ts"]
 }
