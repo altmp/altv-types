@@ -268,13 +268,6 @@ declare module "alt-shared" {
     public setMeta(key: string, value: any): void;
   }
 
-  export class WorldObject extends BaseObject {
-    /**
-     * Object position
-     */
-    public pos: Vector3;
-  }
-
   /**
    * Resource name of the executing resource.
    */
