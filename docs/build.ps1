@@ -105,6 +105,15 @@ try
         ExtractArchive "docfx-plugins-typescriptreference.zip" "./templates/" 2>&1 6>$null
     }
 
+    LogWrap "Downloading DocFx ExtractSearchIndex package" {
+        if(Test-Path "./templates/docfx-plugins-extractsearchindex/") { return -0x1 }
+        FetchAndDownloadRelease "Lhoerion/DocFx.Plugins.ExtractSearchIndex" "docfx-plugins-extractsearchindex.zip" "v1.0.0" 2>&1 6>$null
+    }
+    LogWrap "Extracting DocFx ExtractSearchIndex package" {
+        if(Test-Path "./templates/docfx-plugins-extractsearchindex/") { return -0x1 }
+        ExtractArchive "docfx-plugins-extractsearchindex.zip" "./templates/" 2>&1 6>$null
+    }
+
     LogWrap "Downloading DocFx DiscordFX package" {
         if(Test-Path "./templates/discordfx/") { return -0x1 }
         FetchAndDownloadRelease "Lhoerion/DiscordFX" "docfx-tmpls-discordfx.zip" 2>&1 6>$null
@@ -127,6 +136,7 @@ try
         $dotnetVersion=dotnet --version
         $docfxVer=GetAssemblyVersion "./docfx/docfx.exe"
         $pluginVer=GetAssemblyVersion "./templates/docfx-plugins-typescriptreference/plugins/*.dll"
+        $plugin2Ver=GetAssemblyVersion "./templates/docfx-plugins-extractsearchindex/plugins/DocFx.*.dll"
         $themeVer=cat "./templates/discordfx/version.txt"
         $typedocVer=GetPackageVersion "typedoc"
         $type2docfxVer=GetPackageVersion "type2docfx"
@@ -134,6 +144,7 @@ try
         Write-Host ".NET Core v$dotnetVersion"
         Write-Host "DocFx v$docfxVer"
         Write-Host "DocFx TypescriptReference v$pluginVer"
+        Write-Host "DocFx ExtractSearchIndex v$plugin2Ver"
         Write-Host "DocFx DiscordFX v$themeVer"
         Write-Host "TypeDoc v$typedocVer"
         Write-Host "type2docfx v$type2docfxVer"
