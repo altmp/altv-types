@@ -135,7 +135,7 @@ try
     LogWrap "Tools version" {
         $dotnetVersion=dotnet --version
         $docfxVer=GetAssemblyVersion "./docfx/docfx.exe"
-        $pluginVer=GetAssemblyVersion "./templates/docfx-plugins-typescriptreference/plugins/*.dll"
+        $pluginVer=GetAssemblyVersion "./templates/docfx-plugins-typescriptreference/plugins/DocFx.*.dll"
         $plugin2Ver=GetAssemblyVersion "./templates/docfx-plugins-extractsearchindex/plugins/DocFx.*.dll"
         $themeVer=cat "./templates/discordfx/version.txt"
         $typedocVer=GetPackageVersion "typedoc"
