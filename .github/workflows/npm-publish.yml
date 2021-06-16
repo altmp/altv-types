@@ -31,6 +31,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./shared/package.json
+          access: public
   client:
     name: Publish client
     runs-on: ubuntu-latest
