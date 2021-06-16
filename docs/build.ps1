@@ -7,6 +7,7 @@ param(
 function PostCleanup() {
     Remove-Item -Path 'docfx.zip' -Force 2>&1 > $null
     Remove-Item -Path 'docfx-plugins-typescriptreference.zip' -Force 2>&1 > $null
+    Remove-Item -Path 'docfx-plugins-extractsearchindex.zip' -Force 2>&1 > $null
     Remove-Item -Path 'docfx-tmpls-discordfx.zip' -Force 2>&1 > $null
     if($cleanMetadata) {
         Remove-Item -Path './_site/' -Recurse -Force 2>&1 > $null
