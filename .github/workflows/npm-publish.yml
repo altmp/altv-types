@@ -4,6 +4,33 @@ on:
     branches:
       - master
 jobs:
+  shared:
+    name: Publish shared
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'Bump version')"
+    defaults:
+      run:
+        working-directory: ./shared
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Check package version
+        id: pkgver
+        run: |
+          echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
+      - name: Publish package
+        if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          package: ./shared/package.json
   client:
     name: Publish client
     runs-on: ubuntu-latest
