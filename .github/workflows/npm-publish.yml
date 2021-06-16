@@ -59,6 +59,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./client/package.json
+          access: public
   webview:
     name: Publish webview
     runs-on: ubuntu-latest
@@ -86,6 +87,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./webview/package.json
+          access: public
   natives:
     name: Publish natives
     runs-on: ubuntu-latest
@@ -152,6 +154,7 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./natives/package.json
+          access: public
   server:
     name: Publish server
     runs-on: ubuntu-latest
@@ -179,3 +182,4 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./server/package.json
+          access: public
