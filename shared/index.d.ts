@@ -147,6 +147,18 @@ declare module "alt-shared" {
 
     public div(vector: IVector2): Vector2;
 
+    /** @alpha */
+    public dot(x: number, y: number): Vector2;
+
+    /** @alpha */
+    public dot(value: number): Vector2;
+
+    /** @alpha */
+    public dot(array: [number, number]): Vector2;
+
+    /** @alpha */
+    public dot(vector: IVector2): Vector2;
+
     public mul(x: number, y: number): Vector2;
 
     public mul(value: number): Vector2;
