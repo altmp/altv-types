@@ -8,18 +8,18 @@ Client-side
 
 ```bash
 # With npm
-npm i -D @altv/types-client @altv/types-natives @altv/types-webview
+npm i -D @altv/types-shared @altv/types-client @altv/types-natives @altv/types-webview
 # With yarn
-yarn add -D @altv/types-client @altv/types-natives @altv/types-webview
+yarn add -D @altv/types-shared @altv/types-client @altv/types-natives @altv/types-webview
 ```
 
 Server-side
 
 ```bash
 # With npm
-npm i -D @altv/types-server
+npm i -D @altv/types-shared @altv/types-server
 # With yarn
-yarn add -D @altv/types-server
+yarn add -D @altv/types-shared @altv/types-server
 ```
 
 To make these types detectable, you've to add `typeRoots` property below to your project's `tsconfig.json`
