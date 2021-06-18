@@ -103,5 +103,13 @@ dist
 # TernJS port file
 .tern-port
 
-# VSCode workspace settings
+# Visual Studio Code
 .vscode/
+
+# JetBrains IDEs
+.idea/
+.idea_modules/
+out/
+*.iws
+*.iml
+*.ipr
