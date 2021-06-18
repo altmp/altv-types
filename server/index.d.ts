@@ -574,7 +574,7 @@ declare module "alt-server" {
     public resetNetOwner(disableMigration?: boolean): void;
 
     /**
-     *  Attaches this entity to another entity.
+     * Attaches this entity to another entity.
      *
      * @param entity Target entity.
      * @param entityBoneId Target bone id.
@@ -589,7 +589,7 @@ declare module "alt-server" {
     public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.Vector3, rot: shared.Vector3, enableCollisions: boolean, fixedRotation: boolean): void;
 
     /**
-     *  Detaches this entity if attached to another entity.
+     * Detaches this entity if attached to another entity.
      *
      * @beta
      */
