@@ -939,8 +939,9 @@ declare module "alt-client" {
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
      *
-     * @hidden
      * @beta
+     *
+     * @hidden
      */
     constructor(url: string, pos: shared.IVector2);
 
@@ -951,8 +952,9 @@ declare module "alt-client" {
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
      *
-     * @hidden
      * @beta
+     *
+     * @hidden
      */
     constructor(url: string, pos: shared.IVector2, size: shared.IVector2);
 
@@ -964,8 +966,9 @@ declare module "alt-client" {
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
      *
-     * @hidden
      * @beta
+     *
+     * @hidden
      */
     constructor(url: string, isOverlay: boolean, pos: shared.IVector2, size: shared.IVector2);
 

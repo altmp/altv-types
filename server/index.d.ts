@@ -583,7 +583,6 @@ declare module "alt-server" {
      * @param rot Rotation
      * @param enableCollisions If true the attached entity has a collision
      * @param fixedRotation If true the entity is attached with a fixed rotation (no bouncing)
-     * @memberof Entity
      *
      * @beta
      */
