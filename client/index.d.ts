@@ -1903,7 +1903,7 @@ declare module "alt-client" {
   export class Audio {
     /**
      * Creates a new Audio instance.
-     * 
+     *
      * @param source The source url of the audio.
      * @param volume The volume of the audio. Ranges from 0 to 1.
      * @param category The category of the audio. Defaults to 'radio'.
