@@ -70,16 +70,16 @@ declare module "alt-shared" {
 
     public div(vector: IVector3): Vector3;
 
-    /** @alpha */
+    /** @beta */
     public dot(x: number, y: number, z: number): Vector3;
 
-    /** @alpha */
+    /** @beta */
     public dot(value: number): Vector3;
 
-    /** @alpha */
+    /** @beta */
     public dot(array: [number, number, number]): Vector3;
 
-    /** @alpha */
+    /** @beta */
     public dot(vector: IVector3): Vector3;
 
     public mul(x: number, y: number, z: number): Vector3;
@@ -107,7 +107,7 @@ declare module "alt-shared" {
     public isInRange(vector: IVector3, range: number): boolean;
   }
 
-  /** @alpha */
+  /** @beta */
   export class Vector2 {
     public readonly x: number;
 
@@ -147,16 +147,16 @@ declare module "alt-shared" {
 
     public div(vector: IVector2): Vector2;
 
-    /** @alpha */
+    /** @beta */
     public dot(x: number, y: number): Vector2;
 
-    /** @alpha */
+    /** @beta */
     public dot(value: number): Vector2;
 
-    /** @alpha */
+    /** @beta */
     public dot(array: [number, number]): Vector2;
 
-    /** @alpha */
+    /** @beta */
     public dot(vector: IVector2): Vector2;
 
     public mul(x: number, y: number): Vector2;
@@ -309,7 +309,7 @@ declare module "alt-shared" {
    *
    * @returns True when the resource is launched with debug mode enabled.
    *
-   * @alpha
+   * @beta
    */
   export const debug: boolean;
 
@@ -422,7 +422,7 @@ declare module "alt-shared" {
    *
    * @param name Name of the resource.
    *
-   * @alpha
+   * @beta
    */
   export function hasResource(name: string): boolean;
 
@@ -466,7 +466,7 @@ declare module "alt-shared" {
    *
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function on(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -477,7 +477,7 @@ declare module "alt-shared" {
    *
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function once(listener: (eventName: string, ...args: any[]) => void): void;
 

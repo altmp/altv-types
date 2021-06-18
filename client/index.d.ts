@@ -311,7 +311,7 @@ declare module "alt-client" {
      *
      * @remarks This does the same thing as checking if the {@link scriptID} is 0.
      *
-     * @alpha
+     * @beta
      */
     public readonly isSpawned: boolean;
 
@@ -384,7 +384,7 @@ declare module "alt-client" {
     /**
      * Array with all streamed in players
      *
-     * @alpha
+     * @beta
      */
     public static readonly streamedIn: Array<Player>;
 
@@ -545,18 +545,18 @@ declare module "alt-client" {
     /**
      * Array with all streamed in vehicles
      *
-     * @alpha
+     * @beta
      */
     public static readonly streamedIn: Array<Vehicle>;
 
     /**
      * Vehicle gear
      *
-     * @remarks Setter is only available in dev branch.
+     * @remarks Setter is only available in dev and rc branch.
      *
      * @param value The desired gear.
      *
-     * @alpha
+     * @beta
      */
     public set gear(value: number);
 
@@ -939,7 +939,9 @@ declare module "alt-client" {
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
      *
-     * @alpha
+     * @beta
+     *
+     * @hidden
      */
     constructor(url: string, pos: shared.IVector2);
 
@@ -950,7 +952,9 @@ declare module "alt-client" {
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
      *
-     * @alpha
+     * @beta
+     *
+     * @hidden
      */
     constructor(url: string, pos: shared.IVector2, size: shared.IVector2);
 
@@ -962,7 +966,9 @@ declare module "alt-client" {
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
      *
-     * @alpha
+     * @beta
+     *
+     * @hidden
      */
     constructor(url: string, isOverlay: boolean, pos: shared.IVector2, size: shared.IVector2);
 
@@ -1033,7 +1039,7 @@ declare module "alt-client" {
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
      *
-     * @alpha
+     * @beta
      */
     public getEventListeners(eventName: string | null): Function[];
   }
@@ -1229,42 +1235,42 @@ declare module "alt-client" {
     /**
      * Gets the value from the specified key in the local storage.
      *
-     * @alpha
+     * @beta
      */
     public static get(key: string): any;
 
     /**
      * Deletes the specified key from the local storage.
      *
-     * @alpha
+     * @beta
      */
     public static delete(key: string): void;
 
     /**
      * Deletes all keys from the local storage.
      *
-     * @alpha
+     * @beta
      */
     public static deleteAll(): void;
 
     /**
      * Alias for {@link deleteAll}.
      *
-     * @alpha
+     * @beta
      */
     public static clear(): void;
 
     /**
      * Saves the changes to the disk.
      *
-     * @alpha
+     * @beta
      */
     public static save(): void;
 
     /**
      * Sets the specified key to the specified value in the local storage.
      *
-     * @alpha
+     * @beta
      */
     public static set(key: string, value: any): void;
 
@@ -1354,14 +1360,14 @@ declare module "alt-client" {
     /**
      * Determines if the voice activation is enabled.
      *
-     * @alpha
+     * @beta
      */
     static activityInputEnabled: boolean;
 
     /**
      * Returns the keycode of the voice activation key.
      *
-     * @alpha
+     * @beta
      */
     static activationKey: number;
   }
@@ -1555,7 +1561,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function onServer(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -1575,7 +1581,7 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function onceServer(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -1727,7 +1733,7 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
-  /** @alpha */
+  /** @beta */
   export class WebSocketClient extends shared.BaseObject {
     public autoReconnect: boolean;
 
@@ -1795,7 +1801,7 @@ declare module "alt-client" {
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
      *
-     * @alpha
+     * @beta
      */
     public getEventListeners(eventName: string | null): Function[];
   }
@@ -1810,7 +1816,7 @@ declare module "alt-client" {
    *
    * @param path Relative path to the game folder.
    *
-   * @alpha
+   * @beta
    */
   export function loadYtyp(path: string): boolean;
 
@@ -1824,7 +1830,7 @@ declare module "alt-client" {
    *
    * @param path Relative path to the game folder.
    *
-   * @alpha
+   * @beta
    */
   export function unloadYtyp(path: string): boolean;
 
@@ -1836,7 +1842,7 @@ declare module "alt-client" {
    * @param code The JavaScript code.
    * @returns The exports of the evaluated module.
    *
-   * @alpha
+   * @beta
    */
   export function evalModule(code: string): Record<string, any>;
 
@@ -1846,7 +1852,7 @@ declare module "alt-client" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    *
-   * @alpha
+   * @beta
    */
   export function getEventListeners(eventName: string | null): Function[];
 
@@ -1856,11 +1862,11 @@ declare module "alt-client" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    *
-   * @alpha
+   * @beta
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
 
-  /** @alpha */
+  /** @beta */
   export class HttpClient extends shared.BaseObject {
     public constructor();
 
@@ -1895,11 +1901,11 @@ declare module "alt-client" {
    * @param id ID of the headshot.
    * @returns The Base64 string of the headshot image.
    *
-   * @alpha
+   * @beta
    */
   export function getHeadshotBase64(id: number): string;
 
-  /** @alpha */
+  /** @beta */
   export class Audio {
     /**
      * Creates a new Audio instance.
