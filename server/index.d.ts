@@ -573,10 +573,27 @@ declare module "alt-server" {
      */
     public resetNetOwner(disableMigration?: boolean): void;
 
-    /** @alpha */
-    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.Vector3, rot: shared.Vector3, enableCollisions: boolean, noFixedRotation: boolean): void;
+    /**
+     *  Attaches this entity to another entity
+     *
+     * @param entity Target entity
+     * @param entityBoneId Target bone id
+     * @param ownBoneId Origin bone id
+     * @param pos Position offset
+     * @param rot Rotation
+     * @param enableCollisions If true the attached entity has a collision
+     * @param fixedRotation If true the entity is attached with a fixed rotation (no bouncing)
+     * @memberof Entity
+     *
+     * @beta
+     */
+    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.Vector3, rot: shared.Vector3, enableCollisions: boolean, fixedRotation: boolean): void;
 
-    /** @alpha */
+    /**
+     *  Detaches this entity if attached to antoher entity
+     *
+     * @beta
+     */
     public detach(): void;
   }
 
@@ -604,7 +621,7 @@ declare module "alt-server" {
      * @deprecated See {@link socialID}.
      */
     public readonly socialId: string;
-    /** @alpha */
+    /** @beta */
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
@@ -691,7 +708,7 @@ declare module "alt-server" {
      * @param component Component id of the clothing.
      * @param dlc True to get the dlc clothing, false to get the normal clothing.
      *
-     * @alpha
+     * @beta
      */
     public getClothes(component: number, dlc?: boolean): ICloth;
 
@@ -710,7 +727,7 @@ declare module "alt-server" {
      * @param palette Palette of the clothing.
      * @param dlc Dlc hash of the clothing.
      *
-     * @alpha
+     * @beta
      */
     public setClothes(component: number, drawable: number, texture: number, palette?: number, dlc?: number): void;
 
@@ -726,7 +743,7 @@ declare module "alt-server" {
      * @param component Component id of the prop.
      * @param dlc True to get the dlc prop, false to get the normal prop.
      *
-     * @alpha
+     * @beta
      */
     public getProp(component: number, dlc?: boolean): IProp;
 
@@ -743,7 +760,7 @@ declare module "alt-server" {
      * @param texture Texture id of the prop.
      * @param dlc Dlc hash of the prop.
      *
-     * @alpha
+     * @beta
      */
     public setProp(component: number, drawable: number, texture: number, dlc?: number): void;
 
@@ -757,7 +774,7 @@ declare module "alt-server" {
      *
      * @param component Component id of the prop.
      *
-     * @alpha
+     * @beta
      */
     public clearProp(component: number): void;
 
@@ -769,7 +786,7 @@ declare module "alt-server" {
      * if(player.vehicle) alt.log(player.isEntityInStreamRange(player.vehicle)); // This always logs true, because their own vehicle is always in stream range of the player
      * ```
      *
-     * @alpha
+     * @beta
      */
     public isEntityInStreamRange(entity: Entity): boolean;
 
@@ -779,7 +796,7 @@ declare module "alt-server" {
      * @param eventName Name of the event.
      * @param args Rest parameters for emit to send.
      *
-     * @alpha
+     * @beta
      */
     public emit(eventName: string, ...args: any[]): void;
   }
@@ -948,7 +965,7 @@ declare module "alt-server" {
 
     public setWindowOpened(windowId: number, state: boolean): void;
 
-    /** @alpha */
+    /** @beta */
     public setWheelFixed(wheelId: number): void;
   }
 
@@ -1053,7 +1070,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
-   * @alpha
+   * @beta
    */
   export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
 
@@ -1063,7 +1080,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
-   * @alpha
+   * @beta
    */
   export function emitAllClients(eventName: string, ...args: any[]): void;
 
@@ -1072,7 +1089,7 @@ declare module "alt-server" {
    *
    * @param password The new server password
    *
-   * @alpha
+   * @beta
    */
   export function setPassword(password: string): void;
 
@@ -1143,7 +1160,7 @@ declare module "alt-server" {
    *
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
@@ -1162,7 +1179,7 @@ declare module "alt-server" {
    *
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
@@ -1193,7 +1210,7 @@ declare module "alt-server" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    *
-   * @alpha
+   * @beta
    */
   export function getEventListeners(eventName: string | null): Function[];
 
@@ -1203,7 +1220,7 @@ declare module "alt-server" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    *
-   * @alpha
+   * @beta
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
 
