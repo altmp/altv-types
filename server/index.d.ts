@@ -589,7 +589,7 @@ declare module "alt-server" {
     public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.Vector3, rot: shared.Vector3, enableCollisions: boolean, fixedRotation: boolean): void;
 
     /**
-     *  Detaches this entity if attached to antoher entity
+     *  Detaches this entity if attached to another entity
      *
      * @beta
      */
