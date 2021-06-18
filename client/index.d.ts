@@ -1899,5 +1899,49 @@ declare module "alt-client" {
    */
   export function getHeadshotBase64(id: number): string;
 
+  /** @alpha */
+  export class Audio {
+    /**
+     * Creates a new Audio instance.
+     *
+     * @param source The source url of the audio.
+     * @param volume The volume of the audio. Ranges from 0 to 1.
+     * @param category The category of the audio. Defaults to 'radio'.
+     */
+    public constructor(source: string, volume: number, category?: string);
+
+    public source: string;
+
+    public looped: boolean;
+
+    public volume: number;
+
+    public category: string;
+
+    public frontendPlay: boolean;
+
+    public readonly currentTime: number;
+
+    public readonly maxTime: number;
+
+    public readonly playing: boolean;
+
+    public addOutput(scriptID: number): void;
+    public addOutput(entity: Entity): void;
+
+    public removeOutput(scriptID: number): void;
+    public removeOutput(entity: Entity): void;
+
+    public getOutputs(): Array<Entity | number>;
+
+    public play(): void;
+    public pause(): void;
+    public reset(): void;
+
+    public seek(time: number): void;
+
+    public on(event: "streamEnded", callback: () => void): void;
+    public on(event: "error", callback: (code: number, message: string) => void): void;
+  }
   export * from "alt-shared";
 }
