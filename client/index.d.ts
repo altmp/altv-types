@@ -277,6 +277,50 @@ declare module "alt-client" {
     readonly headers: Record<string, string>;
   }
 
+  /** @beta */
+  export class Audio {
+    /**
+     * Creates a new Audio instance.
+     *
+     * @param source The source url of the audio.
+     * @param volume The volume of the audio. Ranges from 0 to 1.
+     * @param category The category of the audio. Defaults to 'radio'.
+     * @param play2D If the sound will be played in 2D, if false it will be 3D.
+     */
+    public constructor(source: string, volume: number, category?: string, play2D?: boolean);
+
+    public source: string;
+
+    public looped: boolean;
+
+    public volume: number;
+
+    public category: string;
+
+    public readonly frontendPlay: boolean;
+
+    public readonly currentTime: number;
+
+    public readonly maxTime: number;
+
+    public readonly playing: boolean;
+
+    public addOutput(entity: Entity | number): void;
+
+    public removeOutput(entity: Entity | number): void;
+
+    public getOutputs(): Array<Entity | number>;
+
+    public play(): void;
+    public pause(): void;
+    public reset(): void;
+
+    public seek(time: number): void;
+
+    public on(event: "streamEnded", callback: () => void): void;
+    public on(event: "error", callback: (code: number, message: string) => void): void;
+  }
+
   export class WorldObject extends shared.BaseObject {
     /**
      * Object position
@@ -1905,50 +1949,5 @@ declare module "alt-client" {
    */
   export function getHeadshotBase64(id: number): string;
 
-  /** @beta */
-  export class Audio {
-    /**
-     * Creates a new Audio instance.
-     *
-     * @param source The source url of the audio.
-     * @param volume The volume of the audio. Ranges from 0 to 1.
-     * @param category The category of the audio. Defaults to 'radio'.
-     * @param play2D If the sound will be played in 2D, if false it will be 3D.
-     */
-    public constructor(source: string, volume: number, category?: string, play2D?: boolean);
-
-    public source: string;
-
-    public looped: boolean;
-
-    public volume: number;
-
-    public category: string;
-
-    public readonly frontendPlay: boolean;
-
-    public readonly currentTime: number;
-
-    public readonly maxTime: number;
-
-    public readonly playing: boolean;
-
-    public addOutput(scriptID: number): void;
-    public addOutput(entity: Entity): void;
-
-    public removeOutput(scriptID: number): void;
-    public removeOutput(entity: Entity): void;
-
-    public getOutputs(): Array<Entity | number>;
-
-    public play(): void;
-    public pause(): void;
-    public reset(): void;
-
-    public seek(time: number): void;
-
-    public on(event: "streamEnded", callback: () => void): void;
-    public on(event: "error", callback: (code: number, message: string) => void): void;
-  }
   export * from "alt-shared";
 }
