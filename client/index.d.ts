@@ -278,7 +278,7 @@ declare module "alt-client" {
   }
 
   /** @beta */
-  export class Audio {
+  export class Audio extends shared.BaseObject {
     /**
      * Creates a new Audio instance.
      *
@@ -305,10 +305,19 @@ declare module "alt-client" {
 
     public readonly playing: boolean;
 
+    /**
+     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     */
     public addOutput(entity: Entity | number): void;
 
+    /**
+     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     */
     public removeOutput(entity: Entity | number): void;
 
+    /**
+     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     */
     public getOutputs(): Array<Entity | number>;
 
     public play(): void;
