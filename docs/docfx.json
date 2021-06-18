@@ -2,31 +2,18 @@
   "build": {
     "content": [
       {
-        "files": [
-          "api/**.yml",
-          "api/index.md",
-          "articles/**.md",
-          "articles/**/toc.yml",
-          "toc.yml",
-          "index.md"
-        ],
-        "exclude": [
-          "api/index.yml"
-        ]
+        "files": ["api/**.yml", "api/index.md", "articles/**.md", "articles/**/toc.yml", "toc.yml", "index.md"],
+        "exclude": ["api/index.yml"]
       }
     ],
     "resource": [
       {
-        "files": [
-          "CNAME"
-        ]
+        "files": ["CNAME"]
       }
     ],
     "overwrite": [
       {
-        "files": [
-          "apidoc/**.yml"
-        ]
+        "files": ["apidoc/**.yml"]
       }
     ],
     "globalMetadata": {
@@ -37,12 +24,7 @@
       },
       "_gitUrlPattern": "github"
     },
-    "template": [
-      "default",
-      "templates/docfx-plugins-typescriptreference",
-      "templates/discordfx",
-      "templates/altmp"
-    ],
+    "template": ["default", "templates/docfx-plugins-typescriptreference", "templates/discordfx", "templates/altmp"],
     "markdownEngineName": "markdig",
     "dest": "_site"
   }

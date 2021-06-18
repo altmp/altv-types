@@ -1,7 +1,7 @@
 {
-  "name": "@altv/types-client",
-  "version": "1.7.0",
-  "description": "This package contains types definitions for alt:V client-side module.",
+  "name": "@altv/types-shared",
+  "version": "1.0.0",
+  "description": "This package contains types definitions for alt:V JS module shared types.",
   "types": "index.d.ts",
   "files": [
     "index.d.ts"
@@ -30,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/altmp/altv/issues"
   },
-  "homepage": "https://github.com/altmp/altv-types#readme",
-  "peerDependencies": {
-    "@altv/types-shared": "1.0.x"
-  }
+  "homepage": "https://github.com/altmp/altv-types#readme"
 }

@@ -1,13 +1,5 @@
 {
-  "mode": "file",
-  "readme": "none",
-  "includeDeclarations": true,
+  "packages": ["../client", "../server"],
   "excludeExternals": true,
-  "inputFiles": [
-    "../client",
-    "../server"
-  ],
-  "out": "",
-  "json": "api/.manifest",
-  "name": "@altmp/altv-types"
+  "json": "./api/.manifest"
 }

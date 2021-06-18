@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-natives",
-  "version": "1.3.0",
+  "version": "1.4.2",
   "description": "This package contains types definitions for alt:V client-side natives.",
   "types": "index.d.ts",
   "files": [
@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/altmp/altv-types#readme",
   "peerDependencies": {
-    "@altv/types-client": ">=1.5.5"
+    "@altv/types-client": ">=1.7.0"
   }
 }

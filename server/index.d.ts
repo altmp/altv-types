@@ -1,14 +1,14 @@
+/// <reference types="@altv/types-shared"/>
+/**
+ * @module alt-server
+ */
 declare module "alt-server" {
-  type DateTimeHour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23;
-  type DateTimeMinute = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
-      45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
-  type DateTimeSecond = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 |
-      45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
-  type DateTimeDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
-      22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30;
+  import * as shared from "alt-shared";
+
+  type DateTimeHour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
+  type DateTimeMinute = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
+  type DateTimeSecond = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59;
+  type DateTimeDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30;
   type DateTimeMonth = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
   export const enum ExplosionType {
@@ -51,7 +51,7 @@ declare module "alt-server" {
     Snowball,
     ProxMine,
     ValkyrieCannon,
-    Unknown = -1
+    Unknown = -1,
   }
 
   export const enum BodyPart {
@@ -76,7 +76,7 @@ declare module "alt-server" {
     RightWrist,
     Neck,
     Head,
-    Unknown = -1
+    Unknown = -1,
   }
 
   export const enum BlipType {
@@ -91,7 +91,7 @@ declare module "alt-server" {
     Cop,
     Area,
     Gallery,
-    PickupObject
+    PickupObject,
   }
 
   export const enum ColShapeType {
@@ -100,17 +100,7 @@ declare module "alt-server" {
     Circle,
     Cuboid,
     Rectangle,
-    CheckpointCylinder
-  }
-
-  export const enum BaseObjectType {
-    Player,
-    Vehicle,
-    Blip,
-    WebView,
-    VoiceChannel,
-    Colshape,
-    Checkpoint
+    CheckpointCylinder,
   }
 
   export const enum CheckpointType {
@@ -180,7 +170,7 @@ declare module "alt-server" {
     RingTruck,
     RingParachute,
     RingJetpack,
-    RingWhirl
+    RingWhirl,
   }
 
   export const enum RadioStation {
@@ -203,7 +193,7 @@ declare module "alt-server" {
     VinewoodBoulevardRadio,
     SelfRadio,
     TheLab,
-    RadioOff = 255
+    RadioOff = 255,
   }
 
   export const enum NumberPlateStyle {
@@ -212,18 +202,18 @@ declare module "alt-server" {
     YellowBlue,
     BlueWhite2,
     BlueWhite3,
-    Yankton
+    Yankton,
   }
 
   export const enum VehicleBumper {
     Front,
-    Rear
+    Rear,
   }
 
   export const enum VehicleBumperDamage {
     NotDamaged,
     Damaged,
-    None
+    None,
   }
 
   export const enum VehicleDoor {
@@ -232,7 +222,7 @@ declare module "alt-server" {
     DriverRear,
     PassengerRear,
     Hood,
-    Trunk
+    Trunk,
   }
 
   export const enum VehicleDoorState {
@@ -244,7 +234,7 @@ declare module "alt-server" {
     OpenedLevel5,
     OpenedLevel6,
     OpenedLevel7,
-    Unknown = 255
+    Unknown = 255,
   }
 
   export const enum VehicleLockState {
@@ -255,7 +245,7 @@ declare module "alt-server" {
     LockPlayerInside,
     InitiallyLocked,
     ForceDoorsShut,
-    LockedCanBeDamaged
+    LockedCanBeDamaged,
   }
 
   export const enum VehicleModType {
@@ -307,7 +297,7 @@ declare module "alt-server" {
     Tank,
     Windows,
     Unk4,
-    Livery
+    Livery,
   }
 
   export const enum VehiclePart {
@@ -316,14 +306,14 @@ declare module "alt-server" {
     MiddleLeft,
     MiddleRight,
     RearLeft,
-    RearRight
+    RearRight,
   }
 
   export const enum VehiclePartDamage {
     NotDamaged,
     DamagedLevel1,
     DamagedLevel2,
-    DamagedLevel3
+    DamagedLevel3,
   }
 
   export const enum WeatherType {
@@ -341,7 +331,7 @@ declare module "alt-server" {
     Blizzard,
     Snowlight,
     Xmas,
-    Halloween
+    Halloween,
   }
 
   export const enum WindowTint {
@@ -351,7 +341,7 @@ declare module "alt-server" {
     LightSmoke,
     Stock,
     Limo,
-    Green
+    Green,
   }
 
   export interface IServerEvent {
@@ -361,7 +351,7 @@ declare module "alt-server" {
     consoleCommand: (...args: string[]) => void;
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
-    explosion: (source: Player, type: ExplosionType, pos: Vector3, fx: number, target: Entity) => boolean | void;
+    explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
@@ -371,7 +361,7 @@ declare module "alt-server" {
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
-    removeEntity: (object: BaseObject) => void;
+    removeEntity: (object: shared.BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
@@ -381,14 +371,15 @@ declare module "alt-server" {
     vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
     vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
-    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: Vector3, bodyPart: BodyPart) => boolean | void;
+    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: BodyPart) => boolean | void;
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
-    startProjectile: (player: Player, pos: Vector3, dir: Vector3, ammoHash: number, weaponHash: number) => boolean | void;
+    startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
+    [name: string]: (...args: any[]) => void;
   }
 
   export interface IFireInfo {
-    readonly pos: Vector3;
+    readonly pos: shared.Vector3;
     readonly weapon: number;
   }
 
@@ -399,25 +390,14 @@ declare module "alt-server" {
     back: boolean;
   }
 
-  export interface IVector2 {
-    readonly x: number;
-    readonly y: number;
-  }
-
-  export interface IVector3 {
-    readonly x: number;
-    readonly y: number;
-    readonly z: number;
-  }
-
   export interface ICloth {
     readonly drawable: number;
     readonly texture: number;
     readonly palette: number;
 
-    /** 
+    /**
      * Dlc hash of the cloth.
-     * 
+     *
      * @remarks This is only set when it is a dlc cloth.
      */
     readonly dlc?: number;
@@ -427,18 +407,13 @@ declare module "alt-server" {
     readonly drawable: number;
     readonly texture: number;
 
-    /** 
+    /**
      * Dlc hash of the prop.
-     * 
+     *
      * @remarks This is only set when it is a dlc prop.
      */
     readonly dlc?: number;
   }
-
-  /**
-   * Resource name of the executing resource.
-   */
-  export const resourceName: string;
 
   /**
    * The root directory of the server.
@@ -449,219 +424,7 @@ declare module "alt-server" {
 
   export const globalDimension: number;
 
-  /**
-   * Represents the current server version.
-   *
-   * @remarks It's a slighty modified semantic versioning specification, which can be matched using this regular expression pattern `^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))$`.
-   */
-  export const version: string;
-
-  /**
-   * Represents the current server SDK version.
-   *
-   * @remarks It's the version of the SDK the current runtime was compiled with.
-   */
-  export const sdkVersion: number;
-
-  /**
-   * Represents the current server branch.
-   *
-   */
-  export const branch: string;
-
-  export class Vector3 {
-    public readonly x: number;
-
-    public readonly y: number;
-
-    public readonly z: number;
-
-    constructor(x: number, y: number, z: number);
-
-    constructor(arr: [number, number, number]);
-
-    constructor(obj: IVector3);
-
-    public get length(): number;
-
-    public toArray(): [number, number, number];
-
-    public add(x: number, y: number, z: number): Vector3;
-
-    public add(value: number): Vector3;
-
-    public add(array: [number, number, number]): Vector3;
-
-    public add(vector: IVector3): Vector3;
-
-    public sub(x: number, y: number, z: number): Vector3;
-
-    public sub(value: number): Vector3;
-
-    public sub(array: [number, number, number]): Vector3;
-
-    public sub(vector: IVector3): Vector3;
-
-    public div(x: number, y: number, z: number): Vector3;
-
-    public div(value: number): Vector3;
-
-    public div(array: [number, number, number]): Vector3;
-
-    public div(vector: IVector3): Vector3;
-
-    public mul(x: number, y: number, z: number): Vector3;
-
-    public mul(value: number): Vector3;
-
-    public mul(array: [number, number, number]): Vector3;
-
-    public mul(vector: IVector3): Vector3;
-
-    public negative(): Vector3;
-
-    public normalize(): Vector3;
-
-    public distanceTo(vector: IVector3): number;
-
-    public angleTo(vector: IVector3): Vector3;
-
-    public angleToDegrees(vector: IVector3): Vector3;
-
-    public toRadians(): Vector3;
-
-    public toDegrees(): Vector3;
-
-    public isInRange(vector: IVector3, range: number): boolean;
-  }
-
-  /**
-   * @alpha
-   */
-  export class Vector2 {
-    public readonly x: number;
-
-    public readonly y: number;
-
-    constructor(x: number, y: number);
-
-    constructor(arr: [number, number]);
-
-    constructor(obj: IVector2);
-
-    public get length(): number;
-
-    public toArray(): [number, number];
-
-    public add(x: number, y: number): Vector2;
-
-    public add(value: number): Vector2;
-
-    public add(array: [number, number]): Vector2;
-
-    public add(vector: IVector2): Vector2;
-
-    public sub(x: number, y: number): Vector2;
-
-    public sub(value: number): Vector2;
-
-    public sub(array: [number, number]): Vector2;
-
-    public sub(vector: IVector2): Vector2;
-
-    public div(x: number, y: number): Vector2;
-
-    public div(value: number): Vector2;
-
-    public div(array: [number, number]): Vector2;
-
-    public div(vector: IVector2): Vector2;
-
-    public mul(x: number, y: number): Vector2;
-
-    public mul(value: number): Vector2;
-
-    public mul(array: [number, number]): Vector2;
-
-    public mul(vector: IVector2): Vector2;
-
-    public negative(): Vector2;
-
-    public normalize(): Vector2;
-
-    public distanceTo(vector: IVector2): number;
-
-    public angleTo(vector: IVector2): Vector2;
-
-    public angleToDegrees(vector: IVector2): Vector2;
-
-    public toRadians(): Vector2;
-
-    public toDegrees(): Vector2;
-
-    public isInRange(vector: IVector2, range: number): boolean;
-  }
-
-  export class RGBA {
-    public r: number;
-    public g: number;
-    public b: number;
-    public a: number;
-
-    constructor(r: number, g: number, b: number, a: number);
-  }
-
-  export class BaseObject {
-    /**
-     * Type of the object.
-     */
-    public readonly type: BaseObjectType;
-
-    /**
-     * Object usability.
-     * 
-     * @returns False if object is no longer usable.
-     */
-    public readonly valid: boolean;
-
-    /**
-     * Removes the object from the world.
-     */
-    public destroy(): void;
-
-    /**
-     * Removes the specified key.
-     *
-     * @param key The key of the value to remove.
-     */
-    public deleteMeta(key: string): void;
-
-    /**
-     * Gets a value using the specified key.
-     *
-     * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
-     */
-    public getMeta(key: string): any;
-
-    /**
-     * Determines whether contains the specified key.
-     *
-     * @param key The key of the value to locate.
-     * @returns True when element associated with the specified key is stored.
-     */
-    public hasMeta(key: string): boolean;
-
-    /**
-     * Stores the given value with the specified key.
-     *
-     * @remarks The given value will be shared locally.
-     * @param key The key of the value to store.
-     */
-    public setMeta(key: string, value: any): void;
-  }
-
-  export class WorldObject extends BaseObject {
+  export class WorldObject extends shared.BaseObject {
     /**
      * Object dimension.
      */
@@ -670,7 +433,7 @@ declare module "alt-server" {
     /**
      * Object position.
      */
-    public pos: Vector3;
+    public pos: shared.Vector3;
   }
 
   export class Entity extends WorldObject {
@@ -683,7 +446,7 @@ declare module "alt-server" {
 
     /**
      * Network owner of the entity.
-     * 
+     *
      * @remarks Network owner is responsible for syncing entity with the server.
      * It changes when actual network owner passes the migration range,
      * then the new one is determined based on distance from the entity
@@ -704,7 +467,7 @@ declare module "alt-server" {
      *
      * @remarks Values are provided in radians.
      */
-    public rot: Vector3;
+    public rot: shared.Vector3;
 
     /**
      * Whether the entity is visible.
@@ -746,6 +509,7 @@ declare module "alt-server" {
      * Stores the given value with the specified key.
      *
      * @remarks The given value will be shared with all clients.
+     *
      * @param key The key of the value to store.
      */
     public setSyncedMeta(key: string, value: any): void;
@@ -777,6 +541,7 @@ declare module "alt-server" {
      * Stores the given value with the specified key.
      *
      * @remarks The given value will be shared with all clients in streaming range.
+     *
      * @param key The key of the value to store.
      */
     public setStreamSyncedMeta(key: string, value: any): void;
@@ -791,8 +556,7 @@ declare module "alt-server" {
      * </b></p>
      *
      * @param player The given player that will be set as new network owner.
-     * @param disableMigration Pass true to disable migration, false to keep it enabled.
-     * If not specified, it defaults to "false".
+     * @param disableMigration Pass true to disable migration, false to keep it enabled. If not specified, it defaults to "false".
      */
     public setNetOwner(player: Player, disableMigration?: boolean): void;
 
@@ -805,10 +569,15 @@ declare module "alt-server" {
      * the network owner gets out of the streaming range.
      * </b></p>
      *
-     * @param disableMigration Pass true to disable migration, false to keep it enabled.
-     * If not specified, it defaults to "false".
+     * @param disableMigration Pass true to disable migration, false to keep it enabled. If not specified, it defaults to "false".
      */
     public resetNetOwner(disableMigration?: boolean): void;
+
+    /** @alpha */
+    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.Vector3, rot: shared.Vector3, enableCollisions: boolean, noFixedRotation: boolean): void;
+
+    /** @alpha */
+    public detach(): void;
   }
 
   export class Player extends Entity {
@@ -820,7 +589,7 @@ declare module "alt-server" {
     public currentWeapon: number;
     public readonly currentWeaponComponents: Array<number>;
     public readonly currentWeaponTintIndex: number;
-    public readonly entityAimOffset: Vector3;
+    public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
     public readonly flashlightActive: boolean;
     public health: number;
@@ -835,9 +604,7 @@ declare module "alt-server" {
      * @deprecated See {@link socialID}.
      */
     public readonly socialId: string;
-    /**
-     * @alpha
-     */
+    /** @alpha */
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
@@ -860,7 +627,7 @@ declare module "alt-server" {
 
     /**
      * Gives the specified weapon to the player.
-     * 
+     *
      * @param weaponHash Hash of the weapon.
      * @param ammo Amount of ammo to spawn the weapon with.
      * @param equipNow Should the weapon be equipped immediately.
@@ -870,8 +637,7 @@ declare module "alt-server" {
     /**
      * Forcefully disconnects the player with a reason message.
      *
-     * @param reason The reason that will display to the player on the disconnect screen.
-     * If not specified, it defaults to "KICKED_OUT".
+     * @param reason The reason that will display to the player on the disconnect screen. If not specified, it defaults to "KICKED_OUT".
      */
     public kick(reason?: string): void;
 
@@ -882,14 +648,14 @@ declare module "alt-server" {
 
     /**
      * Removes the specified weapon from the player.
-     * 
+     *
      * @param weaponHash Hash of the weapon.
      */
     public removeWeapon(weaponHash: number): void;
 
     /**
      * Removes the specified weapon component from the specified weapon.
-     * 
+     *
      * @param weaponHash Hash of the weapon.
      * @param component Hash of the weapon component.
      */
@@ -903,8 +669,9 @@ declare module "alt-server" {
 
     /**
      * Spawns the player in the world.
-     * 
+     *
      * @remarks The player has to have a model set before being spawned.
+     *
      * @param x The x position where the player gets spawned.
      * @param y The y position where the player gets spawned.
      * @param z The z position where the player gets spawned.
@@ -912,95 +679,109 @@ declare module "alt-server" {
      */
     public spawn(x: number, y: number, z: number, delay: number): void;
 
-    /** 
+    /**
      * Gets the specified clothing component.
-     * 
-     * @param component Component id of the clothing.
-     * @param dlc True to get the dlc clothing, false to get the normal clothing.
+     *
      * @example
      * ```js
      * let cloth = player.getClothes(1); // Gets the currently equipped mask
      * alt.log(cloth.drawable); // Logs the drawable of the currently equipped mask
      * ```
-     * 
-     * @alpha 
+     *
+     * @param component Component id of the clothing.
+     * @param dlc True to get the dlc clothing, false to get the normal clothing.
+     *
+     * @alpha
      */
     public getClothes(component: number, dlc?: boolean): ICloth;
 
-    /** 
+    /**
      * Sets the specified clothing component.
-     * 
+     *
      * @remarks The dlc hash is only required when setting dlc clothing.
-     * 
+     * @example
+     * ```js
+     * player.setClothes(1, 14, 0); // Sets the players mask to a blue hockey mask
+     * ```
+     *
      * @param component Component id of the clothing.
      * @param drawable Drawable id of the clothing.
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
      * @param dlc Dlc hash of the clothing.
-     * @example
-     * ```js
-     * player.setClothes(1, 14, 0); // Sets the players mask to a blue hockey mask
-     * ```
-     * 
-     * @alpha 
+     *
+     * @alpha
      */
     public setClothes(component: number, drawable: number, texture: number, palette?: number, dlc?: number): void;
 
     /**
      * Gets the specified prop component.
-     * 
-     * @param component Component id of the prop.
-     * @param dlc True to get the dlc prop, false to get the normal prop.
+     *
      * @example
      * ```js
      * let prop = player.getProp(0); // Gets the hat prop of the player
      * alt.log(prop.drawable); // Logs the drawable id of the current hat prop of the player
      * ```
-     * 
+     *
+     * @param component Component id of the prop.
+     * @param dlc True to get the dlc prop, false to get the normal prop.
+     *
      * @alpha
      */
     public getProp(component: number, dlc?: boolean): IProp;
 
     /**
      * Sets the specified prop component.
-     * 
-     * @param component Component id of the prop.
-     * @param drawable Drawable id of the prop.
-     * @param texture Texture id of the prop.
-     * @param dlc Dlc hash of the prop.
+     *
      * @example
      * ```js
      * player.setProp(0, 13, 0); // sets the players hat prop to a blue cowboy hat
      * ```
-     * 
+     *
+     * @param component Component id of the prop.
+     * @param drawable Drawable id of the prop.
+     * @param texture Texture id of the prop.
+     * @param dlc Dlc hash of the prop.
+     *
      * @alpha
      */
     public setProp(component: number, drawable: number, texture: number, dlc?: number): void;
 
     /**
      * Removes a specified prop component.
-     * 
-     * @param component Component id of the prop.
+     *
      * @example
      * ```js
      * player.clearProp(0); // removes the player hat prop
      * ```
-     * 
+     *
+     * @param component Component id of the prop.
+     *
      * @alpha
      */
     public clearProp(component: number): void;
 
-    /** 
+    /**
      * Checks whether the given entity is in the stream range of the player.
-     * 
+     *
      * @example
      * ```js
      * if(player.vehicle) alt.log(player.isEntityInStreamRange(player.vehicle)); // This always logs true, because their own vehicle is always in stream range of the player
      * ```
-     * 
-     * @alpha 
+     *
+     * @alpha
      */
     public isEntityInStreamRange(entity: Entity): boolean;
+
+    /**
+     * Emits specified event to the player.
+     *
+     * @param eventName Name of the event.
+     * @param args Rest parameters for emit to send.
+     *
+     * @alpha
+     */
+    public emit(eventName: string, ...args: any[]): void;
   }
 
   export class Vehicle extends Entity {
@@ -1014,8 +795,8 @@ declare module "alt-server" {
     public activeRadioStation: RadioStation;
     public bodyAdditionalHealth: number;
     public bodyHealth: number;
-    public customPrimaryColor: RGBA;
-    public customSecondaryColor: RGBA;
+    public customPrimaryColor: shared.RGBA;
+    public customSecondaryColor: shared.RGBA;
     public customTires: boolean;
     public darkness: number;
     public dashboardColor: number;
@@ -1037,7 +818,7 @@ declare module "alt-server" {
     public modKit: number;
     public readonly modKitsCount: number;
     public neon: IVehicleNeon;
-    public neonColor: RGBA;
+    public neonColor: shared.RGBA;
     public readonly nightlightOn: boolean;
     public numberPlateIndex: NumberPlateStyle;
     public numberPlateText: string;
@@ -1049,7 +830,7 @@ declare module "alt-server" {
     public roofState: boolean;
     public secondaryColor: number;
     public sirenActive: boolean;
-    public tireSmokeColor: RGBA;
+    public tireSmokeColor: shared.RGBA;
     public wheelColor: number;
     public readonly wheelsCount: number;
     public readonly wheelType: number;
@@ -1167,15 +948,11 @@ declare module "alt-server" {
 
     public setWindowOpened(windowId: number, state: boolean): void;
 
-    /**
-     * @alpha
-     */
+    /** @alpha */
     public setWheelFixed(wheelId: number): void;
   }
 
-  export class Blip extends WorldObject {
-
-  }
+  export class Blip extends WorldObject {}
 
   export class PointBlip extends Blip {
     constructor(type: BlipType, x: number, y: number, z: number);
@@ -1191,7 +968,7 @@ declare module "alt-server" {
 
     public isEntityIn(entity: Entity): boolean;
 
-    public isPointIn(position: Vector3): boolean;
+    public isPointIn(position: shared.Vector3): boolean;
   }
 
   export class ColshapeCylinder extends Colshape {
@@ -1218,11 +995,12 @@ declare module "alt-server" {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
   }
 
-  export class VoiceChannel extends BaseObject {
+  export class VoiceChannel extends shared.BaseObject {
     /**
      * Creates a new voice channel.
-     * 
+     *
      * @remarks This throws an error when the voice chat is not activated on serverside.
+     *
      * @param isSpatial Whether the voice channel should be 3D (e.g. talking in person) or 1D (e.g. talking over a telephone).
      * @param maxDistance The max distance at which you can hear each other.
      */
@@ -1241,135 +1019,14 @@ declare module "alt-server" {
     public unmutePlayer(player: Player): void;
   }
 
-  export class File {
-    /**
-     * Determines whether file exists with the specified filename.
-     *
-     * @param filename The name of the file.
-     * @returns Return is dependent on whether file with the specified filename exists.
-     */
-    public static exists(filename: string): boolean;
-
-    /**
-     * Reads content of the file.
-     *
-     * @param filename The name of the file.
-     * @param encoding The encoding of the file. If not specified, it defaults to "utf-8".
-     */
-    public static read(filename: string, encoding?: "utf-8" | "utf-16"): string;
-
-    /**
-     * Reads content of the file.
-     *
-     * @param filename The name of the file.
-     * @param encoding The encoding of the file.
-     */
-    public static read(filename: string, encoding: "binary"): ArrayBuffer;
-  }
-
-  /**
-   * Removes the specified key.
-   *
-   * @param key The key of the value to remove.
-   */
-  export function deleteMeta(key: string): void;
-
-  /**
-   * Gets a value using the specified key.
-   *
-   * @param key The key of the value to get.
-   * @returns Dynamic value associated with the specified key.
-   */
-  export function getMeta(key: string): any;
-
-  /**
-   * Determines whether contains the specified key.
-   *
-   * @param key The key of the value to locate.
-   * @returns True when element associated with the specified key is stored.
-   */
-  export function hasMeta(key: string): boolean;
-
-  /**
-   * Stores the given value with the specified key.
-   *
-   * @remarks The given value will be shared locally to all resources.
-   * @param key The key of the value to store.
-   */
-  export function setMeta(key: string, value: any): void;
-
-  /**
-   * Removes the specified key.
-   *
-   * @param key The key of the value to remove.
-   */
-  export function deleteSyncedMeta(key: string): void;
-
-  /**
-   * Gets a value using the specified key.
-   *
-   * @param key The key of the value to get.
-   * @returns Dynamic value associated with the specified key.
-   */
-  export function getSyncedMeta(key: string): any;
-
-  /**
-   * Determines whether contains the specified key.
-   *
-   * @param key The key of the value to locate.
-   * @returns Return is dependent on whether element associated with the specified key is stored.
-   */
-  export function hasSyncedMeta(key: string): boolean;
-
   /**
    * Stores the given value with the specified key.
    *
    * @remarks The given value will be shared with all client resources.
+   *
    * @param key The key of the value to store.
    */
   export function setSyncedMeta(key: string, value: any): void;
-
-  /**
-   * Clears a timer set with the {@link everyTick} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearEveryTick(id: number): void;
-
-  /**
-   * Clears a timer set with the {@link setInterval} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearInterval(id: number): void;
-
-  /**
-   * Clears a timer set with the {@link nextTick} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearNextTick(id: number): void;
-
-  /**
-   * Clears a timer set with the {@link setTimeout} function.
-   *
-   * @param id The id of a timer.
-   */
-  export function clearTimeout(id: number): void;
-
-  /**
-   * @hidden
-   */
-  export function clearTimer(id: number): void;
-
-  /**
-   * Emits specified event across server resources.
-   *
-   * @param player Event is sent to specific player.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emit(eventName: string, ...args: any[]): void;
 
   /**
    * Emits specified event to specific client.
@@ -1390,11 +1047,22 @@ declare module "alt-server" {
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
   /**
+   * Emits specified event to specific clients.
+   *
+   * @param player Event is sent to every player in array.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @alpha
+   */
+  export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
+
+  /**
    * Emits specified event to all clients.
    *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
-   * 
+   *
    * @alpha
    */
   export function emitAllClients(eventName: string, ...args: any[]): void;
@@ -1409,96 +1077,43 @@ declare module "alt-server" {
   export function setPassword(password: string): void;
 
   /**
-   * Schedules execution of handler on every tick.
-   *
-   * @param handler Handler that should be scheduled for execution.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearEveryTick} function to cancel the timer.
-   */
-  export function everyTick(handler: (...args: any[]) => void): number;
-
-  /**
    * Gets the amount of milliseconds since the server was started.
    */
   export function getNetTime(): number;
 
   /**
    * Gets the exports of the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function getResourceExports(name: string): any;
 
   /**
    * Gets the main file of the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function getResourceMain(name: string): string;
 
   /**
    * Gets the path to the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function getResourcePath(name: string): string;
 
   /**
-   * Returns whether the specified resource exists.
-   * 
-   * @param name Name of the resource.
-   */
-  export function hasResource(name: string): boolean;
-
-  /**
-   *  Creates a hash using Jenkins one-at-a-time algorithm.
+   * Unsubscribes from a client event with the specified listener.
    *
-   * @param str A string, from which hash will be created.
-   */
-  export function hash(str: string): number;
-
-  /**
-   * Logs the specified arguments to the console.
-   */
-  export function log(...args: any[]): void;
-
-  /**
-   * Logs the specified arguments as an error to the console.
-   */
-  export function logError(...args: any[]): void;
-
-  /**
-   * Logs the specified arguments as a warning to the console.
-   */
-  export function logWarning(...args: any[]): void;
-
-  /**
-   * Schedules execution of handler on next tick.
+   * @remarks Listener should be of the same reference as when event was subscribed to.
    *
-   * @param handler Handler that should be scheduled for execution.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearNextTick} function to cancel the timer.
-   */
-  export function nextTick(handler: (...args: any[]) => void): number;
-
-  /**
-   * Unsubscribes from server event with specified listener.
-   *
-   * @remarks Listener should be of the same reference as when event was subscribed.
-   * @param eventName Name of the event.
-   * @param listener Listener that should be removed.
-   */
-  export function off(eventName: string, listener: (...args: any[]) => void): void;
-
-  /**
-   * Unsubscribes from client event with specified listener.
-   *
-   * @remarks Listener should be of the same reference as when event was subscribed.
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
   export function offClient(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
-   * Subscribes to server event with specified listener.
+   * Subscribes to a server event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1506,7 +1121,7 @@ declare module "alt-server" {
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event with specified listener, which only triggers once.
+   * Subscribes to a server event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1514,43 +1129,7 @@ declare module "alt-server" {
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
-   * Subscribes to server event with specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function on<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
-
-  /**
-   * Subscribes to server event with specified listener, which only triggers once.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  export function once<S extends string>(event: Exclude<S, keyof IServerEvent>, listener: (...args: any[]) => boolean | void | Promise<boolean | void>): void;
-
-  /**
-   * Subscribes a generic event listener.
-   * 
-   * @remarks The generic event listeners get called for every event manually emitted by any resource.
-   * @param listener Listener that should be added.
-   * 
-   * @alpha
-   */
-  export function on(listener: (eventName: string, ...args: any[]) => void): void;
-
-  /**
-   * Subscribes a generic event listener, which only triggers once.
-   * 
-   * @remarks The generic event listeners get called for every event manually emitted by any resource.
-   * @param listener Listener that should be added.
-   * 
-   * @alpha
-   */
-   export function once(listener: (eventName: string, ...args: any[]) => void): void;
-
-  /**
-   * Subscribes to client event with specified listener.
+   * Subscribes to a client event with the specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1558,17 +1137,18 @@ declare module "alt-server" {
   export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes a generic client event listener.
-   * 
-   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * Subscribes to all client events with the specified listener.
+   *
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
-   * 
+   *
    * @alpha
    */
-   export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
+  export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes to client event with specified listener, which only triggers once.
+   * Subscribes to a client event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
@@ -1576,60 +1156,56 @@ declare module "alt-server" {
   export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
-   * Subscribes a generic client event listener, which only triggers once.
-   * 
-   * @remarks The generic event listeners get called for every event manually emitted by any client.
+   * Subscribes to all client events with the specified listener, which only triggers once.
+   *
+   * @remarks Listener will be only called for user-created events.
+   *
    * @param listener Listener that should be added.
-   * 
+   *
    * @alpha
    */
-   export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
-
-  /**
-   * Schedules execution of handler in specified intervals.
-   *
-   * @param handler Handler that should be scheduled for execution.
-   * @param miliseconds The time, in milliseconds, between execution of specified handler.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearInterval} function to cancel the timer.
-   */
-  export function setInterval(handler: (...args: any[]) => void, miliseconds: number): number;
-
-  /**
-   * Schedules execution of handler once after the expiration of interval.
-   *
-   * @param handler Handler that should be scheduled for execution.
-   * @param miliseconds The time, in milliseconds, before execution of specified handler.
-   * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
-   */
-  export function setTimeout(handler: (...args: any[]) => void, miliseconds: number): number;
+  export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
   /**
    * Starts the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function startResource(name: string): void;
 
   /**
    * Restarts the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function restartResource(name: string): void;
 
   /**
    * Stops the specified resource.
-   * 
+   *
    * @param name Name of the resource.
    */
   export function stopResource(name: string): void;
 
   /**
-   * Returns if the server is in debug mode.
-   * 
-   * @returns True when the server is launched with debug mode enabled.
-   * 
+   * Gets all the listeners for the specified local event.
+   *
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   *
    * @alpha
    */
-  export function isInDebug(): boolean;
+  export function getEventListeners(eventName: string | null): Function[];
+
+  /**
+   * Gets all the listeners for the specified remote event.
+   *
+   * @param eventName Name of the event or null for generic event.
+   * @returns Array of listener functions for that event.
+   *
+   * @alpha
+   */
+  export function getRemoteEventListeners(eventName: string | null): Function[];
+
+  export * from "alt-shared";
 }

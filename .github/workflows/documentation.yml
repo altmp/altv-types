@@ -4,18 +4,18 @@ on:
     branches:
       - master
     paths:
-      - 'docs/api/**.md'
-      - 'docs/articles/**.md'
-      - 'docs/apidoc/**.md'
-      - 'docs/images/**'
-      - 'docs/docfx.json'
-      - 'docs/filterConfig.yml'
-      - 'docs/index.md'
-      - 'docs/toc.yml'
-      - 'client/package.json'
-      - 'server/package.json'
-      - '!docs/build.*'
-      - '!docs/.gitignore'
+      - "docs/api/**.md"
+      - "docs/articles/**.md"
+      - "docs/apidoc/**.md"
+      - "docs/images/**"
+      - "docs/docfx.json"
+      - "docs/filterConfig.yml"
+      - "docs/index.md"
+      - "docs/toc.yml"
+      - "client/package.json"
+      - "server/package.json"
+      - "!docs/build.*"
+      - "!docs/.gitignore"
 jobs:
   docs:
     name: Update documentation

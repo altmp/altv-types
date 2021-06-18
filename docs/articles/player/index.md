@@ -17,7 +17,7 @@ This documentation may not reflect all properties available on the player.
 | Property Name | Description                                                               |
 | ------------- | ------------------------------------------------------------------------- |
 | armour        | Set player armour. 0 - 100                                                |
-| currentWeapon | Get player's current armour.                                              |
+| currentWeapon | Get player's current weapon.                                              |
 | dimension     | Player's Virtual World. 0 By Default                                      |
 | health        | Set player's health. 100-200                                              |
 | hwidHash      | Unique Hardware Hash                                                      |

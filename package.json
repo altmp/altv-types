@@ -1,10 +1,11 @@
 {
-  "name": "altv-types",
+  "name": "@altmp/altv-types",
   "version": "1.0.0",
   "description": "This repository contains types definitions for alt:V JavaScript modules.",
   "main": "",
   "private": true,
   "workspaces": [
+    "shared",
     "client",
     "webview",
     "natives",
@@ -12,7 +13,8 @@
   ],
   "scripts": {
     "test": "yarn workspaces run test",
-    "release": "yarn workspaces run release"
+    "release": "yarn workspaces run release",
+    "lint": "yarn run prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -25,9 +27,10 @@
   },
   "homepage": "https://github.com/altmp/altv-types#readme",
   "devDependencies": {
+    "prettier": "^2.3.1",
     "type2docfx": "git://github.com/Lhoerion/type2docfx.git#dist",
-    "typedoc": "0.19.2",
-    "typescript": "4.0.7"
+    "typedoc": "0.21.0-beta.3",
+    "typescript": "4.2.4"
   },
   "dependencies": {}
 }

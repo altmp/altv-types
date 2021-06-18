@@ -7,6 +7,7 @@ param(
 function PostCleanup() {
     Remove-Item -Path 'docfx.zip' -Force 2>&1 > $null
     Remove-Item -Path 'docfx-plugins-typescriptreference.zip' -Force 2>&1 > $null
+    Remove-Item -Path 'docfx-plugins-extractsearchindex.zip' -Force 2>&1 > $null
     Remove-Item -Path 'docfx-tmpls-discordfx.zip' -Force 2>&1 > $null
     if($cleanMetadata) {
         Remove-Item -Path './_site/' -Recurse -Force 2>&1 > $null
@@ -17,7 +18,7 @@ function PostCleanup() {
 }
 
 function GetAssemblyVersion([string] $file) {
-    if(-not (Test-Path -Path $file)) { throw "Cannot find path $file because it does not exist." }
+    if(-not (Test-Path -Path $file)) { throw "Cannot find path $file, because it does not exist." }
     $ver=(Get-Item -Path $file | Select-Object -ExpandProperty VersionInfo).FileVersion.Split('.')
     if($ver.Length -lt 4) {
         $ver -Join '.'
@@ -26,16 +27,22 @@ function GetAssemblyVersion([string] $file) {
     }
 }
 
+function GetPackageVersion([string] $pkgname) {
+    $json=(npm list $pkgname --silent --json | ConvertFrom-Json)
+    $global:LastExitCode=0 # npm list failing on GitHub package workaround
+    if(-not ($json.dependencies)) { throw "Cannot find package $pkgname, because it does not exist." }
+    $json.dependencies.$($pkgname).version
+}
+
 function FetchAndDownloadRelease([string] $repo, [string] $file, [string] $tag=$null) {
     $global:ProgressPreference='SilentlyContinue'
     if(-not $tag) {
-        $tag=(Invoke-WebRequest -UseBasicParsing "https://api.github.com/repos/$repo/releases" | ConvertFrom-Json)[0].tag_name
+        $tag=((Invoke-WebRequest -UseBasicParsing "https://api.github.com/repos/$repo/releases" | ConvertFrom-Json) | Where-Object { -not $_.prerelease } | Select-Object -First 1 -ExpandProperty "tag_name")
     }
     Invoke-WebRequest -UseBasicParsing "https://github.com/$repo/releases/download/$tag/$file" -OutFile $file
     $global:ProgressPreference='Continue'
     return ([int]$? - 1)
 }
-
 
 function ExtractArchive([string] $path, [string] $dest) {
     if(-not (Test-Path -Path $path)) { throw "Cannot find path $path because it does not exist." }
@@ -83,7 +90,7 @@ try
 
     LogWrap "Downloading DocFx package" {
         if(Test-Path "./docfx/docfx.exe") { return -0x1 }
-        FetchAndDownloadRelease "dotnet/docfx" "docfx.zip" 2>$null
+        FetchAndDownloadRelease "dotnet/docfx" "docfx.zip" "v2.56.7" 2>$null
     }
     LogWrap "Extracting DocFx package" {
         if(Test-Path "./docfx/docfx.exe") { return -0x1 }
@@ -92,11 +99,20 @@ try
 
     LogWrap "Downloading DocFx TypeScriptReference package" {
         if(Test-Path "./templates/docfx-plugins-typescriptreference/") { return -0x1 }
-        FetchAndDownloadRelease "Lhoerion/DocFx.Plugins.TypeScriptReference" "docfx-plugins-typescriptreference.zip" 2>&1 6>$null
+        FetchAndDownloadRelease "Lhoerion/DocFx.Plugins.TypeScriptReference" "docfx-plugins-typescriptreference.zip" "v1.1.2" 2>&1 6>$null
     }
     LogWrap "Extracting DocFx TypeScriptReference package" {
         if(Test-Path "./templates/docfx-plugins-typescriptreference/") { return -0x1 }
         ExtractArchive "docfx-plugins-typescriptreference.zip" "./templates/" 2>&1 6>$null
+    }
+
+    LogWrap "Downloading DocFx ExtractSearchIndex package" {
+        if(Test-Path "./templates/docfx-plugins-extractsearchindex/") { return -0x1 }
+        FetchAndDownloadRelease "Lhoerion/DocFx.Plugins.ExtractSearchIndex" "docfx-plugins-extractsearchindex.zip" "v1.0.0" 2>&1 6>$null
+    }
+    LogWrap "Extracting DocFx ExtractSearchIndex package" {
+        if(Test-Path "./templates/docfx-plugins-extractsearchindex/") { return -0x1 }
+        ExtractArchive "docfx-plugins-extractsearchindex.zip" "./templates/" 2>&1 6>$null
     }
 
     LogWrap "Downloading DocFx DiscordFX package" {
@@ -120,14 +136,16 @@ try
     LogWrap "Tools version" {
         $dotnetVersion=dotnet --version
         $docfxVer=GetAssemblyVersion "./docfx/docfx.exe"
-        $pluginVer=GetAssemblyVersion "./templates/docfx-plugins-typescriptreference/plugins/*.dll"
+        $pluginVer=GetAssemblyVersion "./templates/docfx-plugins-typescriptreference/plugins/DocFx.*.dll"
+        $plugin2Ver=GetAssemblyVersion "./templates/docfx-plugins-extractsearchindex/plugins/DocFx.*.dll"
         $themeVer=cat "./templates/discordfx/version.txt"
-        $typedocVer=npm view typedoc version
-        $type2docfxVer=npm view typedoc version
+        $typedocVer=GetPackageVersion "typedoc"
+        $type2docfxVer=GetPackageVersion "type2docfx"
         Write-Host -NoNewline -ForegroundColor "green" "done`n"
         Write-Host ".NET Core v$dotnetVersion"
         Write-Host "DocFx v$docfxVer"
         Write-Host "DocFx TypescriptReference v$pluginVer"
+        Write-Host "DocFx ExtractSearchIndex v$plugin2Ver"
         Write-Host "DocFx DiscordFX v$themeVer"
         Write-Host "TypeDoc v$typedocVer"
         Write-Host "type2docfx v$type2docfxVer"

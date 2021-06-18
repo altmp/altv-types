@@ -12,8 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          repository: 'altmp/altv-types'
+          repository: "altmp/altv-types"
       - name: Install dependencies
         run: yarn install
       - name: Test
         run: yarn run test
+      - name: Lint
+        run: yarn run lint
