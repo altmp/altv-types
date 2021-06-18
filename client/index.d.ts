@@ -1913,8 +1913,9 @@ declare module "alt-client" {
      * @param source The source url of the audio.
      * @param volume The volume of the audio. Ranges from 0 to 1.
      * @param category The category of the audio. Defaults to 'radio'.
+     * @param play2D If the sound will be played in 2D, if false it will be 3D.
      */
-    public constructor(source: string, volume: number, category?: string);
+    public constructor(source: string, volume: number, category?: string, play2D?: boolean);
 
     public source: string;
 
@@ -1924,7 +1925,7 @@ declare module "alt-client" {
 
     public category: string;
 
-    public frontendPlay: boolean;
+    public readonly frontendPlay: boolean;
 
     public readonly currentTime: number;
 
