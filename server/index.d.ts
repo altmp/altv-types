@@ -576,13 +576,13 @@ declare module "alt-server" {
     /**
      *  Attaches this entity to another entity.
      *
-     * @param entity Target entity
-     * @param entityBoneId Target bone id
-     * @param ownBoneId Origin bone id
-     * @param pos Position offset
-     * @param rot Rotation
-     * @param enableCollisions If true the attached entity has a collision
-     * @param fixedRotation If true the entity is attached with a fixed rotation (no bouncing)
+     * @param entity Target entity.
+     * @param entityBoneId Target bone id.
+     * @param ownBoneId Origin bone id.
+     * @param pos Position offset.
+     * @param rot Rotation.
+     * @param enableCollisions If true the attached entity has a collision.
+     * @param fixedRotation If true the entity is attached with a fixed rotation (no bouncing).
      *
      * @beta
      */
