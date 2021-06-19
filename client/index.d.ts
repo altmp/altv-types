@@ -1395,7 +1395,7 @@ declare module "alt-client" {
 
     public ushort(offset: number): number;
 
-    public address(offset: number): bigint;
+    public address(): bigint;
 
     public free(): boolean;
   }
