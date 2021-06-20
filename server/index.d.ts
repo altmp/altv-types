@@ -821,6 +821,7 @@ declare module "alt-server" {
      * @param args Rest parameters for emit to send.
      *
      * @beta
+     * @deprecated Use {@link emitClient} instead.
      */
     public emit(eventName: string, ...args: any[]): void;
   }
