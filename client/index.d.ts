@@ -663,7 +663,7 @@ declare module "alt-client" {
     /**
      * Vehicle max gear.
      *
-     * @alpha
+     * @beta
      */
     public maxGear: number;
 
@@ -671,6 +671,24 @@ declare module "alt-client" {
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
      */
     public handling: IVehicleHandling;
+
+    /**
+     * Vehicle indicator lights
+     *
+     * @param value The desired indicator light state.
+     *
+     * @beta
+     */
+    public set indicatorLights(value: number);
+
+    /**
+     * Vehicle indicator lights
+     *
+     * @returns A number indicating actual indicator light state.
+     *
+     * @beta
+     */
+    public get indicatorLights(): number;
 
     /**
      * Vehicle RPM.
