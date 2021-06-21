@@ -673,7 +673,9 @@ declare module "alt-client" {
     public handling: IVehicleHandling;
 
     /**
-     * Vehicle indicator lights
+     * Vehicle indicator lights.
+     *
+     * Set & get the state for indicator lights.
      *
      * @beta
      */
