@@ -675,20 +675,9 @@ declare module "alt-client" {
     /**
      * Vehicle indicator lights
      *
-     * @param value The desired indicator light state.
-     *
      * @beta
      */
-    public set indicatorLights(value: number);
-
-    /**
-     * Vehicle indicator lights
-     *
-     * @returns A number indicating actual indicator light state.
-     *
-     * @beta
-     */
-    public get indicatorLights(): number;
+    public indicatorLights: number;
 
     /**
      * Vehicle RPM.
