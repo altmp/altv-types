@@ -675,8 +675,6 @@ declare module "alt-client" {
     /**
      * Vehicle indicator lights.
      *
-     * Set & get the state for indicator lights.
-     *
      * @beta
      */
     public indicatorLights: number;
