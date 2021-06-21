@@ -437,6 +437,20 @@ declare module "alt-server" {
   }
 
   export class Entity extends WorldObject {
+    /**
+     * Array with all entities.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const entities = alt.Entity.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < entities.length; i++)
+     * {
+     *   alt.log(`${entities[i].id}`); // Logs the id of every entity
+     * }
+     * ```
+     */
     public static readonly all: Array<Entity>;
 
     /**
@@ -598,7 +612,18 @@ declare module "alt-server" {
 
   export class Player extends Entity {
     /**
-     * An array containing all players connected to the server.
+     * Array with all players connected to the server.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const players = alt.Player.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < players.length; i++)
+     * {
+     *   alt.log(`${players[i].name}`); // Logs the name of every player
+     * }
+     * ```
      */
     public static all: Array<Player>;
     public armour: number;
@@ -796,11 +821,27 @@ declare module "alt-server" {
      * @param args Rest parameters for emit to send.
      *
      * @beta
+     *
+     * @deprecated Use {@link emitClient} instead.
      */
     public emit(eventName: string, ...args: any[]): void;
   }
 
   export class Vehicle extends Entity {
+    /**
+     * Array with all vehicles.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const vehicles = alt.Vehicle.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < vehicles.length; i++)
+     * {
+     *   alt.log(`${vehicles[i].model}`); // Logs the model of every vehicle
+     * }
+     * ```
+     */
     public static readonly all: Array<Vehicle>;
     /**
      * Entity model hash.

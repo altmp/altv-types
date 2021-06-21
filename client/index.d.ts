@@ -277,6 +277,59 @@ declare module "alt-client" {
     readonly headers: Record<string, string>;
   }
 
+  /** @beta */
+  export class Audio extends shared.BaseObject {
+    /**
+     * Creates a new Audio instance.
+     *
+     * @param source The source url of the audio.
+     * @param volume The volume of the audio. Ranges from 0 to 1.
+     * @param category The category of the audio. Defaults to 'radio'.
+     * @param play2D If the sound will be played in 2D, if false it will be 3D.
+     */
+    public constructor(source: string, volume: number, category?: string, play2D?: boolean);
+
+    public source: string;
+
+    public looped: boolean;
+
+    public volume: number;
+
+    public category: string;
+
+    public readonly frontendPlay: boolean;
+
+    public readonly currentTime: number;
+
+    public readonly maxTime: number;
+
+    public readonly playing: boolean;
+
+    /**
+     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     */
+    public addOutput(entity: Entity | number): void;
+
+    /**
+     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     */
+    public removeOutput(entity: Entity | number): void;
+
+    /**
+     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     */
+    public getOutputs(): Array<Entity | number>;
+
+    public play(): void;
+    public pause(): void;
+    public reset(): void;
+
+    public seek(time: number): void;
+
+    public on(event: "streamEnded", callback: () => void): void;
+    public on(event: "error", callback: (code: number, message: string) => void): void;
+  }
+
   export class WorldObject extends shared.BaseObject {
     /**
      * Object position
@@ -298,6 +351,20 @@ declare module "alt-client" {
   }
 
   export class Entity extends WorldObject {
+    /**
+     * Array with all entities.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const entities = alt.Entity.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < entities.length; i++)
+     * {
+     *   alt.log(`${entities[i].id}`); // Logs the id of every entity
+     * }
+     * ```
+     */
     public static readonly all: Array<Entity>;
 
     /** Entity unique id */
@@ -378,11 +445,24 @@ declare module "alt-client" {
   }
 
   export class Player extends Entity {
-    /** Array with all players */
+    /**
+     * Array with all players.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const players = alt.Player.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < players.length; i++)
+     * {
+     *   alt.log(`${players[i].name}`); // Logs the name of every player
+     * }
+     * ```
+     */
     public static readonly all: Array<Player>;
 
     /**
-     * Array with all streamed in players
+     * Array with all streamed in players.
      *
      * @beta
      */
@@ -539,11 +619,24 @@ declare module "alt-client" {
   }
 
   export class Vehicle extends Entity {
-    /** Array with all vehicles */
+    /**
+     * Array with all vehicles.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const vehicles = alt.Vehicle.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < vehicles.length; i++)
+     * {
+     *   alt.log(`${vehicles[i].model}`); // Logs the model of every vehicle
+     * }
+     * ```
+     */
     public static readonly all: Array<Vehicle>;
 
     /**
-     * Array with all streamed in vehicles
+     * Array with all streamed in vehicles.
      *
      * @beta
      */
@@ -1342,7 +1435,7 @@ declare module "alt-client" {
 
     public ushort(offset: number): number;
 
-    public address(offset: number): bigint;
+    public address(): bigint;
 
     public free(): boolean;
   }
@@ -1905,49 +1998,5 @@ declare module "alt-client" {
    */
   export function getHeadshotBase64(id: number): string;
 
-  /** @beta */
-  export class Audio {
-    /**
-     * Creates a new Audio instance.
-     *
-     * @param source The source url of the audio.
-     * @param volume The volume of the audio. Ranges from 0 to 1.
-     * @param category The category of the audio. Defaults to 'radio'.
-     */
-    public constructor(source: string, volume: number, category?: string);
-
-    public source: string;
-
-    public looped: boolean;
-
-    public volume: number;
-
-    public category: string;
-
-    public frontendPlay: boolean;
-
-    public readonly currentTime: number;
-
-    public readonly maxTime: number;
-
-    public readonly playing: boolean;
-
-    public addOutput(scriptID: number): void;
-    public addOutput(entity: Entity): void;
-
-    public removeOutput(scriptID: number): void;
-    public removeOutput(entity: Entity): void;
-
-    public getOutputs(): Array<Entity | number>;
-
-    public play(): void;
-    public pause(): void;
-    public reset(): void;
-
-    public seek(time: number): void;
-
-    public on(event: "streamEnded", callback: () => void): void;
-    public on(event: "error", callback: (code: number, message: string) => void): void;
-  }
   export * from "alt-shared";
 }
