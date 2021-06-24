@@ -716,9 +716,21 @@ declare module "alt-server" {
      * @param x The x position where the player gets spawned.
      * @param y The y position where the player gets spawned.
      * @param z The z position where the player gets spawned.
-     * @param delay The delay at which the player gets spawned after calling this function.
+     * @param delay The delay at which the player gets spawned after calling this function. Defaults to 0.
      */
-    public spawn(x: number, y: number, z: number, delay: number): void;
+    public spawn(x: number, y: number, z: number, delay?: number): void;
+
+    /**
+     * Spawns the player in the world.
+     *
+     * @remarks The player has to have a model set before being spawned.
+     *
+     * @param pos The position where the player gets spawned.
+     * @param delay The delay at which the player gets spawned after calling this function. Defaults to 0.
+     * 
+     * @beta
+     */
+    public spawn(pos: shared.Vector3, delay?: number): void;
 
     /**
      * Gets the specified clothing component.
