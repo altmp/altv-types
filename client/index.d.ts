@@ -1026,6 +1026,27 @@ declare module "alt-client" {
     public url: string;
 
     /**
+     * Is the webview a overlay.
+     *
+     * @alpha
+     */
+    public readonly isOverlay: boolean;
+
+    /**
+     * Is the webview ready.
+     *
+     * @alpha
+     */
+    public readonly ready: boolean;
+
+    /**
+     * Is the webview focused.
+     *
+     * @alpha
+     */
+    public readonly focused: boolean;
+
+    /**
      * Creates a fullscreen WebView.
      *
      * @param url URL of the html file.
