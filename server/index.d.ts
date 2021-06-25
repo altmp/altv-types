@@ -727,7 +727,7 @@ declare module "alt-server" {
      *
      * @param pos The position where the player gets spawned.
      * @param delay The delay at which the player gets spawned after calling this function. Defaults to 0.
-     * 
+     *
      * @beta
      */
     public spawn(pos: shared.Vector3, delay?: number): void;
