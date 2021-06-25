@@ -1044,7 +1044,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    public readonly focused: boolean;
+    public focused: boolean;
 
     /**
      * Creates a fullscreen WebView.
