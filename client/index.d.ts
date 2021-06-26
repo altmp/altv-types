@@ -1037,7 +1037,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    public readonly ready: boolean;
+    public readonly isReady: boolean;
 
     /**
      * Is the webview focused.
