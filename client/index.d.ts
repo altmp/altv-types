@@ -5,6 +5,8 @@
 declare module "alt-client" {
   import * as shared from "alt-shared";
 
+  type StackFrameType = "script" | "constructor" | "eval" | "wasm"; 
+
   export const enum Locale {
     Arabic = "ar",
     Belarusian = "by",
@@ -281,7 +283,7 @@ declare module "alt-client" {
     readonly script: string;
     readonly line: number;
     readonly function: string;
-    readonly type: string;
+    readonly type: StackFrameType;
   }
 
   /** @beta */
