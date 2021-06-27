@@ -5,7 +5,7 @@
 declare module "alt-client" {
   import * as shared from "alt-shared";
 
-  type StackFrameType = "script" | "constructor" | "eval" | "wasm"; 
+  type StackFrameType = "script" | "constructor" | "eval" | "wasm";
 
   export const enum Locale {
     Arabic = "ar",
@@ -2037,10 +2037,10 @@ declare module "alt-client" {
 
   /**
    * Gets the current V8 stack trace.
-   * 
+   *
    * @param maxDepth Maximum depth of the stack trace. Defaults to 16.
-   * @returns Array of stack frames, starting at the latest frame. 
-   * 
+   * @returns Array of stack frames, starting at the latest frame.
+   *
    * @alpha
    */
   export function getStackTrace(maxDepth?: number): Array<IStackFrame>;
