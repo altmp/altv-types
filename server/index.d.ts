@@ -1028,7 +1028,7 @@ declare module "alt-server" {
   }
 
   export class Colshape extends WorldObject {
-    public colshapeType: ColShapeType;
+    public readonly colshapeType: ColShapeType;
 
     /**
      * Whether this colshape should only trigger its enter/leave events for players or all entities.
