@@ -1251,13 +1251,15 @@ declare module "alt-client" {
     constructor(x: number, y: number, z: number);
   }
 
-  export class PedBlip extends Blip {
-    constructor(ped: number);
-  }
+  // /** @alpha */
+  // export class PedBlip extends Blip {
+  //   constructor(ped: number);
+  // }
 
-  export class VehicleBlip extends Blip {
-    constructor(vehicle: number);
-  }
+  // /** @alpha */
+  // export class VehicleBlip extends Blip {
+  //   constructor(vehicle: number);
+  // }
 
   /**
    * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
