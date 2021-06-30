@@ -134,6 +134,14 @@ declare module "alt-client" {
     RingWhirl,
   }
 
+  export const enum VehicleIndicatorLights {
+    BlinkLeft = 1,
+    BlinkRight = 2,
+    BlinkPermBoth = 4,
+    StaticBoth = 8,
+    Interior = 64,
+  }
+
   export const enum WebSocketReadyState {
     Connecting,
     Open,
@@ -677,7 +685,7 @@ declare module "alt-client" {
      *
      * @beta
      */
-    public indicatorLights: number;
+    public indicatorLights: VehicleIndicatorLights;
 
     /**
      * Vehicle RPM.
