@@ -204,7 +204,7 @@ sprintf-js@~1.0.2:
 
 "type2docfx@git://github.com/Lhoerion/type2docfx.git#dist":
   version "0.10.5"
-  resolved "git://github.com/Lhoerion/type2docfx.git#72aa812e02f09dea037be4bedbc6b5d2b37003dd"
+  resolved "git://github.com/Lhoerion/type2docfx.git#ae83de40790e284395cf861b291ddd098ddc027c"
   dependencies:
     commander "^5.0.0"
     fs-extra "^9.0.0"
