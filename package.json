@@ -14,7 +14,7 @@
   "scripts": {
     "test": "yarn workspaces run test",
     "release": "yarn workspaces run release",
-    "lint": "yarn run prettier --check ."  
+    "lint": "yarn run prettier --check ."
   },
   "repository": {
     "type": "git",
