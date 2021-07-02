@@ -721,7 +721,7 @@ declare module "alt-client" {
     ArenaSlamvan,
     ArenaZr,
   }
-  
+
   export enum BlipColor {
     White = 0,
     Red = 1,
