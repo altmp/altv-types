@@ -134,9 +134,8 @@ declare module "alt-client" {
     RingWhirl,
   }
 
-  export enum BlipSprites {
+  export enum BlipSprite {
     Higher,
-    Level,
     Lower,
     PolicePed,
     WantedRadius,
@@ -723,7 +722,7 @@ declare module "alt-client" {
     ArenaZr,
   }
   
-  export enum BlipColors {
+  export enum BlipColor {
     White = 0,
     Red = 1,
     Green = 2,
@@ -1828,7 +1827,7 @@ declare module "alt-client" {
 
     public category: number;
 
-    public color: number;
+    public color: BlipColor;
 
     public crewIndicatorVisible: boolean;
 
@@ -1876,7 +1875,7 @@ declare module "alt-client" {
 
     public size: shared.Vector2;
 
-    public sprite: number;
+    public sprite: BlipSprite;
 
     public tickVisible: boolean;
 
