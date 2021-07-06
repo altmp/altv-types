@@ -777,7 +777,6 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the prop.
-     * @param dlc True to get the dlc prop, false to get the normal prop.
      *
      * @beta
      */
