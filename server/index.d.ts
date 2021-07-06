@@ -795,7 +795,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-     public getDlcProp(component: number): IProp;
+    public getDlcProp(component: number): IProp;
 
     /**
      * Sets the specified prop component.
@@ -828,7 +828,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-     public setDlcProp(component: number, drawable: number, texture: number, dlc: number): void;
+    public setDlcProp(component: number, drawable: number, texture: number, dlc: number): void;
 
     /**
      * Removes a specified prop component.
