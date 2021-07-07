@@ -760,7 +760,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-     public getDlcClothes(component: number): IClothDlc;
+    public getDlcClothes(component: number): IClothDlc;
 
     /**
      * Sets the specified clothing component.
@@ -797,7 +797,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-     public setDlcClothes(component: number, drawable: number, texture: number, dlc: number, palette?: number): void;
+    public setDlcClothes(component: number, drawable: number, texture: number, dlc: number, palette?: number): void;
 
     /**
      * Gets the specified prop component.
