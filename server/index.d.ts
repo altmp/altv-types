@@ -760,7 +760,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-    public getDlcClothes(component: number): IClothDlc;
+    public getDlcClothes(component: number): IDlcCloth;
 
     /**
      * Sets the specified clothing component.
