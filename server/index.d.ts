@@ -406,13 +406,12 @@ declare module "alt-server" {
   export interface IProp {
     readonly drawable: number;
     readonly texture: number;
+  }
 
-    /**
-     * Dlc hash of the prop.
-     *
-     * @remarks This is only set when it is a dlc prop.
-     */
-    readonly dlc?: number;
+  export interface IPropDlc {
+    readonly drawable: number;
+    readonly texture: number;
+    readonly dlc: number;
   }
 
   /**
@@ -795,7 +794,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-    public getDlcProp(component: number): IProp;
+    public getDlcProp(component: number): IPropDlc;
 
     /**
      * Sets the specified prop component.
