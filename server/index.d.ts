@@ -400,7 +400,7 @@ declare module "alt-server" {
     readonly drawable: number;
     readonly texture: number;
     readonly palette: number;
-    readonly dlc?: number;
+    readonly dlc: number;
   }
 
   export interface IProp {
