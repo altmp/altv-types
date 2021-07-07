@@ -396,7 +396,7 @@ declare module "alt-server" {
     readonly palette: number;
   }
 
-  export interface IClothDlc {
+  export interface IDlcCloth {
     readonly drawable: number;
     readonly texture: number;
     readonly palette: number;
