@@ -408,7 +408,7 @@ declare module "alt-server" {
     readonly texture: number;
   }
 
-  export interface IPropDlc {
+  export interface IDlcProp {
     readonly drawable: number;
     readonly texture: number;
     readonly dlc: number;
