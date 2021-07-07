@@ -394,12 +394,12 @@ declare module "alt-server" {
     readonly drawable: number;
     readonly texture: number;
     readonly palette: number;
+  }
 
-    /**
-     * Dlc hash of the cloth.
-     *
-     * @remarks This is only set when it is a dlc cloth.
-     */
+  export interface IClothDlc {
+    readonly drawable: number;
+    readonly texture: number;
+    readonly palette: number;
     readonly dlc?: number;
   }
 
@@ -742,11 +742,25 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the clothing.
-     * @param dlc True to get the dlc clothing, false to get the normal clothing.
      *
      * @beta
      */
-    public getClothes(component: number, dlc?: boolean): ICloth;
+    public getClothes(component: number): ICloth;
+
+    /**
+     * Gets the specified dlc clothing component.
+     *
+     * @example
+     * ```js
+     * let cloth = player.getDlcClothes(1); // Gets the currently equipped mask
+     * alt.log(cloth.drawable); // Logs the drawable of the currently equipped mask
+     * ```
+     *
+     * @param component Component id of the clothing.
+     *
+     * @alpha
+     */
+     public getDlcClothes(component: number): IClothDlc;
 
     /**
      * Sets the specified clothing component.
@@ -761,11 +775,29 @@ declare module "alt-server" {
      * @param drawable Drawable id of the clothing.
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
-     * @param dlc Dlc hash of the clothing.
      *
      * @beta
      */
-    public setClothes(component: number, drawable: number, texture: number, palette?: number, dlc?: number): void;
+    public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
+
+    /**
+     * Sets the specified dlc clothing component.
+     *
+     * @remarks The dlc hash is only required when setting dlc clothing.
+     * @example
+     * ```js
+     * player.setDlcClothes(1, 14, 0, alt.hash('dlcname'));
+     * ```
+     *
+     * @param component Component id of the clothing.
+     * @param drawable Drawable id of the clothing.
+     * @param texture Texture id of the clothing.
+     * @param dlc Dlc hash of the clothing.
+     * @param palette Palette of the clothing.
+     *
+     * @alpha
+     */
+     public setDlcClothes(component: number, drawable: number, texture: number, dlc: number, palette?: number): void;
 
     /**
      * Gets the specified prop component.
