@@ -794,7 +794,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-    public getDlcProp(component: number): IPropDlc;
+    public getDlcProp(component: number): IDlcProp;
 
     /**
      * Sets the specified prop component.
