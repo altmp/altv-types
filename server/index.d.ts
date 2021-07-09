@@ -859,7 +859,7 @@ declare module "alt-server" {
      *
      * @beta
      */
-    public setDlcProp(component: number, drawable: number, texture: number, dlc: number): void;
+    public setDlcProp(dlc: number, component: number, drawable: number, texture: number): void;
 
     /**
      * Removes a specified prop component.
