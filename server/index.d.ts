@@ -785,18 +785,18 @@ declare module "alt-server" {
      * @remarks The dlc hash is only required when setting dlc clothing.
      * @example
      * ```js
-     * player.setDlcClothes(1, 14, 0, alt.hash('dlcname'));
+     * player.setDlcClothes(alt.hash('dlcname'), 1, 14, 0);
      * ```
      *
+     * @param dlc Dlc hash of the clothing.
      * @param component Component id of the clothing.
      * @param drawable Drawable id of the clothing.
      * @param texture Texture id of the clothing.
-     * @param dlc Dlc hash of the clothing.
      * @param palette Palette of the clothing.
      *
      * @beta
      */
-    public setDlcClothes(component: number, drawable: number, texture: number, dlc: number, palette?: number): void;
+    public setDlcClothes(dlc: number, component: number, drawable: number, texture: number, palette?: number): void;
 
     /**
      * Gets the specified prop component.
@@ -849,13 +849,13 @@ declare module "alt-server" {
      *
      * @example
      * ```js
-     * player.setDlcProp(0, 13, 0, alt.hash('dlcname'));
+     * player.setDlcProp(alt.hash('dlcname'), 0, 13, 0);
      * ```
      *
+     * @param dlc Dlc hash of the prop.
      * @param component Component id of the prop.
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
-     * @param dlc Dlc hash of the prop.
      *
      * @beta
      */
