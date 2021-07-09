@@ -758,7 +758,7 @@ declare module "alt-server" {
      *
      * @param component Component id of the clothing.
      *
-     * @alpha
+     * @beta
      */
     public getDlcClothes(component: number): IDlcCloth;
 
@@ -795,7 +795,7 @@ declare module "alt-server" {
      * @param dlc Dlc hash of the clothing.
      * @param palette Palette of the clothing.
      *
-     * @alpha
+     * @beta
      */
     public setDlcClothes(component: number, drawable: number, texture: number, dlc: number, palette?: number): void;
 
