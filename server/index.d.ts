@@ -406,13 +406,12 @@ declare module "alt-server" {
   export interface IProp {
     readonly drawable: number;
     readonly texture: number;
+  }
 
-    /**
-     * Dlc hash of the prop.
-     *
-     * @remarks This is only set when it is a dlc prop.
-     */
-    readonly dlc?: number;
+  export interface IDlcProp {
+    readonly drawable: number;
+    readonly texture: number;
+    readonly dlc: number;
   }
 
   /**
@@ -777,11 +776,25 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the prop.
-     * @param dlc True to get the dlc prop, false to get the normal prop.
      *
      * @beta
      */
-    public getProp(component: number, dlc?: boolean): IProp;
+    public getProp(component: number): IProp;
+
+    /**
+     * Gets the specified dlc prop component.
+     *
+     * @example
+     * ```js
+     * let prop = player.getDlcProp(0); // Gets the hat prop of the player
+     * alt.log(prop.drawable); // Logs the drawable id of the current hat prop of the player
+     * ```
+     *
+     * @param component Component id of the prop.
+     *
+     * @beta
+     */
+    public getDlcProp(component: number): IDlcProp;
 
     /**
      * Sets the specified prop component.
@@ -794,11 +807,27 @@ declare module "alt-server" {
      * @param component Component id of the prop.
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
+     *
+     * @beta
+     */
+    public setProp(component: number, drawable: number, texture: number): void;
+
+    /**
+     * Sets the specified dlc prop component.
+     *
+     * @example
+     * ```js
+     * player.setDlcProp(0, 13, 0, alt.hash('dlcname'));
+     * ```
+     *
+     * @param component Component id of the prop.
+     * @param drawable Drawable id of the prop.
+     * @param texture Texture id of the prop.
      * @param dlc Dlc hash of the prop.
      *
      * @beta
      */
-    public setProp(component: number, drawable: number, texture: number, dlc?: number): void;
+    public setDlcProp(component: number, drawable: number, texture: number, dlc: number): void;
 
     /**
      * Removes a specified prop component.
