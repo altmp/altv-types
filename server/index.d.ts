@@ -792,7 +792,7 @@ declare module "alt-server" {
      *
      * @param component Component id of the prop.
      *
-     * @alpha
+     * @beta
      */
     public getDlcProp(component: number): IDlcProp;
 
@@ -825,7 +825,7 @@ declare module "alt-server" {
      * @param texture Texture id of the prop.
      * @param dlc Dlc hash of the prop.
      *
-     * @alpha
+     * @beta
      */
     public setDlcProp(component: number, drawable: number, texture: number, dlc: number): void;
 
