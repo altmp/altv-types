@@ -1808,7 +1808,7 @@ declare module "alt-client" {
    * @param flag Config flag name.
    * @returns True when the config flag exists.
    */
-  export function doesConfigFlagExist(flag: ConfigFlag): string;
+  export function doesConfigFlagExist(flag: string): boolean;
 
   /**
    * Sets the current position of the cursor.
