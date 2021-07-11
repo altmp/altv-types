@@ -150,9 +150,7 @@ declare module "alt-client" {
   }
 
   export const enum ConfigFlag {
-    /**
-     * @alpha
-     */
+    /** @alpha */
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
   }
