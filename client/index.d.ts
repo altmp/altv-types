@@ -722,7 +722,7 @@ declare module "alt-client" {
     ArenaZr,
   }
 
-export enum BlipColor {
+  export enum BlipColor {
     White,
     Red,
     Green,
@@ -737,7 +737,7 @@ export enum BlipColor {
     LightBlue,
     LightPurple,
     DarkPurple,
-    Cyan ,
+    Cyan,
     LightYellow,
     Organe,
     DarkPink = 19,
