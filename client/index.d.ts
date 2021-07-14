@@ -793,7 +793,7 @@ declare module "alt-client" {
   }
 
   export const enum ConfigFlag {
-    /** @alpha */
+    /** @beta */
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
   }
@@ -1685,21 +1685,21 @@ declare module "alt-client" {
     /**
      * Is the webview a overlay.
      *
-     * @alpha
+     * @beta
      */
     public readonly isOverlay: boolean;
 
     /**
      * Is the webview ready.
      *
-     * @alpha
+     * @beta
      */
     public readonly isReady: boolean;
 
     /**
      * Is the webview focused.
      *
-     * @alpha
+     * @beta
      */
     public focused: boolean;
 
