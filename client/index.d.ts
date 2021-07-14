@@ -1125,8 +1125,12 @@ declare module "alt-client" {
      */
     public static readonly streamedIn: Array<Player>;
 
-    /** Local player */
-    public static readonly local: Player;
+    /**
+     * The local player instance.
+     *
+     * @remarks Returns {@link LocalPlayer} in dev / rc.
+     */
+    public static readonly local: Player | LocalPlayer;
 
     /** Player talking state */
     public readonly isTalking: boolean;
@@ -1273,6 +1277,18 @@ declare module "alt-client" {
      * @remarks Value needs to be between 0-1.
      */
     public nonSpatialVolume: number;
+  }
+
+  /**
+   * @beta
+   */
+  export class LocalPlayer extends Player {
+    /**
+     * Ammo of the currently held weapon.
+     *
+     * @returns Total ammo of the currently held weapon. 0 if no weapon is equipped.
+     */
+    public readonly currentAmmo: number;
   }
 
   export class Vehicle extends Entity {
