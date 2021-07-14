@@ -2709,5 +2709,42 @@ declare module "alt-client" {
    */
   export function getHeadshotBase64(id: number): string;
 
+  /**
+   * Sets the specified dlc clothing component to a ped.
+   *
+   * @param scriptID ScriptID of the Ped.
+   * @param dlc Dlc hash of the clothing.
+   * @param component Component id of the clothing.
+   * @param drawable Drawable id of the clothing.
+   * @param texture Texture id of the clothing.
+   * @param palette Palette of the clothing.
+   *
+   * @beta
+   */
+  export function setPedDlcClothes(scriptID: number, dlc: number, component: number, drawable: number, texture: number, palette?: number): void;
+
+  /**
+   * Sets the specified dlc prop component to a ped.
+   *
+   * @param scriptID ScriptID of the Ped.
+   * @param dlc Dlc hash of the prop.
+   * @param component Component id of the prop.
+   * @param drawable Drawable id of the prop.
+   * @param texture Texture id of the prop.
+   *
+   * @beta
+   */
+  export function setPedDlcProp(scriptID: number, dlc: number, component: number, drawable: number, texture: number): void;
+
+  /**
+   * Removes a specified prop component from a ped.
+   *
+   * @param scriptID ScriptID of the Ped.
+   * @param component Component id of the prop.
+   *
+   * @beta
+   */
+  export function clearPedProp(scriptID: number, component: number): void;
+
   export * from "alt-shared";
 }
