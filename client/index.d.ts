@@ -2696,7 +2696,7 @@ declare module "alt-client" {
   /**
    * Sets the specified dlc clothing component to a ped.
    *
-   * @param scriptID ScriptID of the Ped
+   * @param scriptID ScriptID of the Ped.
    * @param dlc Dlc hash of the clothing.
    * @param component Component id of the clothing.
    * @param drawable Drawable id of the clothing.
@@ -2710,7 +2710,7 @@ declare module "alt-client" {
   /**
    * Sets the specified dlc prop component to a ped.
    *
-   * @param scriptID ScriptID of the Ped
+   * @param scriptID ScriptID of the Ped.
    * @param dlc Dlc hash of the prop.
    * @param component Component id of the prop.
    * @param drawable Drawable id of the prop.
@@ -2723,7 +2723,7 @@ declare module "alt-client" {
   /**
    * Removes a specified prop component from a ped.
    *
-   * @param scriptID ScriptID of the Ped
+   * @param scriptID ScriptID of the Ped.
    * @param component Component id of the prop.
    *
    * @beta
