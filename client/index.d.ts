@@ -1158,6 +1158,12 @@ declare module "alt-client" {
     public readonly currentWeapon: number;
 
     /**
+     * Ammo of the current weapon.
+     * @beta
+     */
+    public readonly currentAmmo: number;
+
+    /**
      * Is the player currently jumping.
      *
      * @alpha
