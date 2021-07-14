@@ -20,6 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/altmp/altv-types.git"
   },
+  "keywords": [],
   "author": "altMP Team",
   "license": "MIT",
   "bugs": {
