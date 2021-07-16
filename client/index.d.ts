@@ -2014,7 +2014,7 @@ declare module "alt-client" {
     /**
      * Gets the local storage instance.
      *
-     * @deprecated See {@link get}
+     * @deprecated See {@link get}.
      */
     public static get(): LocalStorage;
 
