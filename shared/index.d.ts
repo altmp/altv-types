@@ -70,16 +70,12 @@ declare module "alt-shared" {
 
     public div(vector: IVector3): Vector3;
 
-    /** @beta */
     public dot(x: number, y: number, z: number): Vector3;
 
-    /** @beta */
     public dot(value: number): Vector3;
 
-    /** @beta */
     public dot(array: [number, number, number]): Vector3;
 
-    /** @beta */
     public dot(vector: IVector3): Vector3;
 
     public mul(x: number, y: number, z: number): Vector3;
@@ -107,7 +103,6 @@ declare module "alt-shared" {
     public isInRange(vector: IVector3, range: number): boolean;
   }
 
-  /** @beta */
   export class Vector2 {
     public readonly x: number;
 
@@ -147,16 +142,12 @@ declare module "alt-shared" {
 
     public div(vector: IVector2): Vector2;
 
-    /** @beta */
     public dot(x: number, y: number): Vector2;
 
-    /** @beta */
     public dot(value: number): Vector2;
 
-    /** @beta */
     public dot(array: [number, number]): Vector2;
 
-    /** @beta */
     public dot(vector: IVector2): Vector2;
 
     public mul(x: number, y: number): Vector2;
@@ -308,8 +299,6 @@ declare module "alt-shared" {
    * Returns if the resource is in debug mode.
    *
    * @returns True when the resource is launched with debug mode enabled.
-   *
-   * @beta
    */
   export const debug: boolean;
 
@@ -421,8 +410,6 @@ declare module "alt-shared" {
    * Returns whether the specified resource exists.
    *
    * @param name Name of the resource.
-   *
-   * @beta
    */
   export function hasResource(name: string): boolean;
 
@@ -465,8 +452,6 @@ declare module "alt-shared" {
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
-   *
-   * @beta
    */
   export function on(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -476,8 +461,6 @@ declare module "alt-shared" {
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
-   *
-   * @beta
    */
   export function once(listener: (eventName: string, ...args: any[]) => void): void;
 

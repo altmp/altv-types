@@ -596,15 +596,11 @@ declare module "alt-server" {
      * @param rot Rotation.
      * @param enableCollisions If true the attached entity has a collision.
      * @param fixedRotation If true the entity is attached with a fixed rotation (no bouncing).
-     *
-     * @beta
      */
     public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.Vector3, rot: shared.Vector3, enableCollisions: boolean, fixedRotation: boolean): void;
 
     /**
      * Detaches this entity if attached to another entity.
-     *
-     * @beta
      */
     public detach(): void;
   }
@@ -644,7 +640,6 @@ declare module "alt-server" {
      * @deprecated See {@link socialID}.
      */
     public readonly socialId: string;
-    /** @beta */
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
@@ -726,8 +721,6 @@ declare module "alt-server" {
      *
      * @param pos The position where the player gets spawned.
      * @param delay The delay at which the player gets spawned after calling this function. Defaults to 0.
-     *
-     * @beta
      */
     public spawn(pos: shared.Vector3, delay?: number): void;
 
@@ -741,8 +734,6 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the clothing.
-     *
-     * @beta
      */
     public getClothes(component: number): ICloth;
 
@@ -756,8 +747,6 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the clothing.
-     *
-     * @beta
      */
     public getDlcClothes(component: number): IDlcCloth;
 
@@ -774,8 +763,6 @@ declare module "alt-server" {
      * @param drawable Drawable id of the clothing.
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
-     *
-     * @beta
      */
     public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
 
@@ -793,8 +780,6 @@ declare module "alt-server" {
      * @param drawable Drawable id of the clothing.
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
-     *
-     * @beta
      */
     public setDlcClothes(dlc: number, component: number, drawable: number, texture: number, palette?: number): void;
 
@@ -808,8 +793,6 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the prop.
-     *
-     * @beta
      */
     public getProp(component: number): IProp;
 
@@ -823,8 +806,6 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the prop.
-     *
-     * @beta
      */
     public getDlcProp(component: number): IDlcProp;
 
@@ -839,8 +820,6 @@ declare module "alt-server" {
      * @param component Component id of the prop.
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
-     *
-     * @beta
      */
     public setProp(component: number, drawable: number, texture: number): void;
 
@@ -856,8 +835,6 @@ declare module "alt-server" {
      * @param component Component id of the prop.
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
-     *
-     * @beta
      */
     public setDlcProp(dlc: number, component: number, drawable: number, texture: number): void;
 
@@ -870,8 +847,6 @@ declare module "alt-server" {
      * ```
      *
      * @param component Component id of the prop.
-     *
-     * @beta
      */
     public clearProp(component: number): void;
 
@@ -882,22 +857,8 @@ declare module "alt-server" {
      * ```js
      * if(player.vehicle) alt.log(player.isEntityInStreamRange(player.vehicle)); // This always logs true, because their own vehicle is always in stream range of the player
      * ```
-     *
-     * @beta
      */
     public isEntityInStreamRange(entity: Entity): boolean;
-
-    /**
-     * Emits specified event to the player.
-     *
-     * @param eventName Name of the event.
-     * @param args Rest parameters for emit to send.
-     *
-     * @beta
-     *
-     * @deprecated Use {@link emitClient} instead.
-     */
-    public emit(eventName: string, ...args: any[]): void;
   }
 
   export class Vehicle extends Entity {
@@ -1078,7 +1039,6 @@ declare module "alt-server" {
 
     public setWindowOpened(windowId: number, state: boolean): void;
 
-    /** @beta */
     public setWheelFixed(wheelId: number): void;
   }
 
@@ -1182,8 +1142,6 @@ declare module "alt-server" {
    * @param player Event is sent to every player in array.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
-   *
-   * @beta
    */
   export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
 
@@ -1192,8 +1150,6 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
-   *
-   * @beta
    */
   export function emitAllClients(eventName: string, ...args: any[]): void;
 
@@ -1201,8 +1157,6 @@ declare module "alt-server" {
    * Change the server password at runtime
    *
    * @param password The new server password
-   *
-   * @beta
    */
   export function setPassword(password: string): void;
 
@@ -1272,8 +1226,6 @@ declare module "alt-server" {
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
-   *
-   * @beta
    */
   export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
@@ -1291,8 +1243,6 @@ declare module "alt-server" {
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
-   *
-   * @beta
    */
   export function onceClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
@@ -1322,8 +1272,6 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   *
-   * @beta
    */
   export function getEventListeners(eventName: string | null): Function[];
 
@@ -1332,8 +1280,6 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   *
-   * @beta
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
 

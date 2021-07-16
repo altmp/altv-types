@@ -793,7 +793,6 @@ declare module "alt-client" {
   }
 
   export const enum ConfigFlag {
-    /** @beta */
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
   }
@@ -1034,8 +1033,6 @@ declare module "alt-client" {
      * Returns whether the entity is spawned in the game world.
      *
      * @remarks This does the same thing as checking if the {@link scriptID} is 0.
-     *
-     * @beta
      */
     public readonly isSpawned: boolean;
 
@@ -1120,8 +1117,6 @@ declare module "alt-client" {
 
     /**
      * Array with all streamed in players.
-     *
-     * @beta
      */
     public static readonly streamedIn: Array<Player>;
 
@@ -1279,9 +1274,6 @@ declare module "alt-client" {
     public nonSpatialVolume: number;
   }
 
-  /**
-   * @beta
-   */
   export class LocalPlayer extends Player {
     /**
      * Ammo of the currently held weapon.
@@ -1310,8 +1302,6 @@ declare module "alt-client" {
 
     /**
      * Array with all streamed in vehicles.
-     *
-     * @beta
      */
     public static readonly streamedIn: Array<Vehicle>;
 
@@ -1321,8 +1311,6 @@ declare module "alt-client" {
      * @remarks Setter is only available in dev and rc branch.
      *
      * @param value The desired gear.
-     *
-     * @beta
      */
     public set gear(value: number);
 
@@ -1335,8 +1323,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle max gear.
-     *
-     * @beta
      */
     public maxGear: number;
 
@@ -1347,8 +1333,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle indicator lights.
-     *
-     * @beta
      */
     public indicatorLights: VehicleIndicatorLights;
 
@@ -1700,22 +1684,16 @@ declare module "alt-client" {
 
     /**
      * Is the webview a overlay.
-     *
-     * @beta
      */
     public readonly isOverlay: boolean;
 
     /**
      * Is the webview ready.
-     *
-     * @beta
      */
     public readonly isReady: boolean;
 
     /**
      * Is the webview focused.
-     *
-     * @beta
      */
     public focused: boolean;
 
@@ -1733,8 +1711,6 @@ declare module "alt-client" {
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
      *
-     * @beta
-     *
      * @hidden
      */
     constructor(url: string, pos: shared.IVector2);
@@ -1745,8 +1721,6 @@ declare module "alt-client" {
      * @param url URL of the html file.
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
-     *
-     * @beta
      *
      * @hidden
      */
@@ -1759,8 +1733,6 @@ declare module "alt-client" {
      * @param isOverlay true to render as overlay, false to render on game's GUI stage.
      * @param pos x, y coordinates of the position.
      * @param size x, y to define the size.
-     *
-     * @beta
      *
      * @hidden
      */
@@ -1832,8 +1804,6 @@ declare module "alt-client" {
      *
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
-     *
-     * @beta
      */
     public getEventListeners(eventName: string | null): Function[];
   }
@@ -2033,48 +2003,38 @@ declare module "alt-client" {
   export class LocalStorage {
     /**
      * Gets the local storage instance.
+     *
+     * @deprecated See {@link get}.
      */
     public static get(): LocalStorage;
 
     /**
      * Gets the value from the specified key in the local storage.
-     *
-     * @beta
      */
     public static get(key: string): any;
 
     /**
      * Deletes the specified key from the local storage.
-     *
-     * @beta
      */
     public static delete(key: string): void;
 
     /**
      * Deletes all keys from the local storage.
-     *
-     * @beta
      */
     public static deleteAll(): void;
 
     /**
      * Alias for {@link deleteAll}.
-     *
-     * @beta
      */
     public static clear(): void;
 
     /**
      * Saves the changes to the disk.
-     *
-     * @beta
      */
     public static save(): void;
 
     /**
      * Sets the specified key to the specified value in the local storage.
-     *
-     * @beta
      */
     public static set(key: string, value: any): void;
 
@@ -2163,15 +2123,11 @@ declare module "alt-client" {
 
     /**
      * Determines if the voice activation is enabled.
-     *
-     * @beta
      */
     static activityInputEnabled: boolean;
 
     /**
      * Returns the keycode of the voice activation key.
-     *
-     * @beta
      */
     static activationKey: number;
   }
@@ -2264,7 +2220,6 @@ declare module "alt-client" {
    * Returns if alt:V is in streamer mode.
    *
    * @returns True when alt:V client is launched in streamer mode.
-   *
    */
   export function isInStreamerMode(): boolean;
 
@@ -2364,8 +2319,6 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   *
-   * @beta
    */
   export function onServer(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -2384,8 +2337,6 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   *
-   * @beta
    */
   export function onceServer(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -2414,7 +2365,6 @@ declare module "alt-client" {
    * The output is returned as a base64 string.
    *
    * @returns Return is dependent on the success of the operation.
-   *
    */
   export function takeScreenshot(): Promise<string>;
 
@@ -2537,7 +2487,6 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
-  /** @beta */
   export class WebSocketClient extends shared.BaseObject {
     public autoReconnect: boolean;
 
@@ -2604,8 +2553,6 @@ declare module "alt-client" {
      *
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
-     *
-     * @beta
      */
     public getEventListeners(eventName: string | null): Function[];
   }
@@ -2619,8 +2566,6 @@ declare module "alt-client" {
    * ```
    *
    * @param path Relative path to the game folder.
-   *
-   * @beta
    */
   export function loadYtyp(path: string): boolean;
 
@@ -2633,8 +2578,6 @@ declare module "alt-client" {
    * ```
    *
    * @param path Relative path to the game folder.
-   *
-   * @beta
    */
   export function unloadYtyp(path: string): boolean;
 
@@ -2645,8 +2588,6 @@ declare module "alt-client" {
    *
    * @param code The JavaScript code.
    * @returns The exports of the evaluated module.
-   *
-   * @beta
    */
   export function evalModule(code: string): Record<string, any>;
 
@@ -2655,8 +2596,6 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   *
-   * @beta
    */
   export function getEventListeners(eventName: string | null): Function[];
 
@@ -2665,12 +2604,9 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   *
-   * @beta
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
 
-  /** @beta */
   export class HttpClient extends shared.BaseObject {
     public constructor();
 
@@ -2704,8 +2640,6 @@ declare module "alt-client" {
    *
    * @param id ID of the headshot.
    * @returns The Base64 string of the headshot image.
-   *
-   * @beta
    */
   export function getHeadshotBase64(id: number): string;
 
@@ -2718,8 +2652,6 @@ declare module "alt-client" {
    * @param drawable Drawable id of the clothing.
    * @param texture Texture id of the clothing.
    * @param palette Palette of the clothing.
-   *
-   * @beta
    */
   export function setPedDlcClothes(scriptID: number, dlc: number, component: number, drawable: number, texture: number, palette?: number): void;
 
@@ -2731,8 +2663,6 @@ declare module "alt-client" {
    * @param component Component id of the prop.
    * @param drawable Drawable id of the prop.
    * @param texture Texture id of the prop.
-   *
-   * @beta
    */
   export function setPedDlcProp(scriptID: number, dlc: number, component: number, drawable: number, texture: number): void;
 
@@ -2741,8 +2671,6 @@ declare module "alt-client" {
    *
    * @param scriptID ScriptID of the Ped.
    * @param component Component id of the prop.
-   *
-   * @beta
    */
   export function clearPedProp(scriptID: number, component: number): void;
 
