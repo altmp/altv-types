@@ -299,7 +299,6 @@ declare module "alt-shared" {
    * Returns if the resource is in debug mode.
    *
    * @returns True when the resource is launched with debug mode enabled.
-   *
    */
   export const debug: boolean;
 
@@ -411,7 +410,6 @@ declare module "alt-shared" {
    * Returns whether the specified resource exists.
    *
    * @param name Name of the resource.
-   *
    */
   export function hasResource(name: string): boolean;
 
@@ -454,7 +452,6 @@ declare module "alt-shared" {
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
-   *
    */
   export function on(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -464,7 +461,6 @@ declare module "alt-shared" {
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
-   *
    */
   export function once(listener: (eventName: string, ...args: any[]) => void): void;
 

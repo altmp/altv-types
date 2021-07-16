@@ -2220,7 +2220,6 @@ declare module "alt-client" {
    * Returns if alt:V is in streamer mode.
    *
    * @returns True when alt:V client is launched in streamer mode.
-   *
    */
   export function isInStreamerMode(): boolean;
 
@@ -2366,7 +2365,6 @@ declare module "alt-client" {
    * The output is returned as a base64 string.
    *
    * @returns Return is dependent on the success of the operation.
-   *
    */
   export function takeScreenshot(): Promise<string>;
 

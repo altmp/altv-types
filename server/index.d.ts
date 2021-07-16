@@ -1226,7 +1226,6 @@ declare module "alt-server" {
    * @remarks Listener will be only called for user-created events.
    *
    * @param listener Listener that should be added.
-   *
    */
   export function onClient(listener: (eventName: string, player: Player, ...args: any[]) => void): void;
 
