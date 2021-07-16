@@ -1033,7 +1033,6 @@ declare module "alt-client" {
      * Returns whether the entity is spawned in the game world.
      *
      * @remarks This does the same thing as checking if the {@link scriptID} is 0.
-     *
      */
     public readonly isSpawned: boolean;
 
@@ -1118,7 +1117,6 @@ declare module "alt-client" {
 
     /**
      * Array with all streamed in players.
-     *
      */
     public static readonly streamedIn: Array<Player>;
 
@@ -1304,7 +1302,6 @@ declare module "alt-client" {
 
     /**
      * Array with all streamed in vehicles.
-     *
      */
     public static readonly streamedIn: Array<Vehicle>;
 
@@ -1314,7 +1311,6 @@ declare module "alt-client" {
      * @remarks Setter is only available in dev and rc branch.
      *
      * @param value The desired gear.
-     *
      */
     public set gear(value: number);
 
@@ -1327,7 +1323,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle max gear.
-     *
      */
     public maxGear: number;
 
@@ -1338,7 +1333,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle indicator lights.
-     *
      */
     public indicatorLights: VehicleIndicatorLights;
 
@@ -1690,19 +1684,16 @@ declare module "alt-client" {
 
     /**
      * Is the webview a overlay.
-     *
      */
     public readonly isOverlay: boolean;
 
     /**
      * Is the webview ready.
-     *
      */
     public readonly isReady: boolean;
 
     /**
      * Is the webview focused.
-     *
      */
     public focused: boolean;
 
@@ -1813,7 +1804,6 @@ declare module "alt-client" {
      *
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
-     *
      */
     public getEventListeners(eventName: string | null): Function[];
   }
@@ -2020,37 +2010,31 @@ declare module "alt-client" {
 
     /**
      * Gets the value from the specified key in the local storage.
-     *
      */
     public static get(key: string): any;
 
     /**
      * Deletes the specified key from the local storage.
-     *
      */
     public static delete(key: string): void;
 
     /**
      * Deletes all keys from the local storage.
-     *
      */
     public static deleteAll(): void;
 
     /**
      * Alias for {@link deleteAll}.
-     *
      */
     public static clear(): void;
 
     /**
      * Saves the changes to the disk.
-     *
      */
     public static save(): void;
 
     /**
      * Sets the specified key to the specified value in the local storage.
-     *
      */
     public static set(key: string, value: any): void;
 
@@ -2139,13 +2123,11 @@ declare module "alt-client" {
 
     /**
      * Determines if the voice activation is enabled.
-     *
      */
     static activityInputEnabled: boolean;
 
     /**
      * Returns the keycode of the voice activation key.
-     *
      */
     static activationKey: number;
   }
@@ -2338,7 +2320,6 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   *
    */
   export function onServer(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -2357,7 +2338,6 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
-   *
    */
   export function onceServer(listener: (eventName: string, ...args: any[]) => void): void;
 
@@ -2575,7 +2555,6 @@ declare module "alt-client" {
      *
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
-     *
      */
     public getEventListeners(eventName: string | null): Function[];
   }
@@ -2589,7 +2568,6 @@ declare module "alt-client" {
    * ```
    *
    * @param path Relative path to the game folder.
-   *
    */
   export function loadYtyp(path: string): boolean;
 
@@ -2602,7 +2580,6 @@ declare module "alt-client" {
    * ```
    *
    * @param path Relative path to the game folder.
-   *
    */
   export function unloadYtyp(path: string): boolean;
 
@@ -2613,7 +2590,6 @@ declare module "alt-client" {
    *
    * @param code The JavaScript code.
    * @returns The exports of the evaluated module.
-   *
    */
   export function evalModule(code: string): Record<string, any>;
 
@@ -2622,7 +2598,6 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   *
    */
   export function getEventListeners(eventName: string | null): Function[];
 
@@ -2631,7 +2606,6 @@ declare module "alt-client" {
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
-   *
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
 
@@ -2668,7 +2642,6 @@ declare module "alt-client" {
    *
    * @param id ID of the headshot.
    * @returns The Base64 string of the headshot image.
-   *
    */
   export function getHeadshotBase64(id: number): string;
 
@@ -2681,7 +2654,6 @@ declare module "alt-client" {
    * @param drawable Drawable id of the clothing.
    * @param texture Texture id of the clothing.
    * @param palette Palette of the clothing.
-   *
    */
   export function setPedDlcClothes(scriptID: number, dlc: number, component: number, drawable: number, texture: number, palette?: number): void;
 
@@ -2693,7 +2665,6 @@ declare module "alt-client" {
    * @param component Component id of the prop.
    * @param drawable Drawable id of the prop.
    * @param texture Texture id of the prop.
-   *
    */
   export function setPedDlcProp(scriptID: number, dlc: number, component: number, drawable: number, texture: number): void;
 
@@ -2702,7 +2673,6 @@ declare module "alt-client" {
    *
    * @param scriptID ScriptID of the Ped.
    * @param component Component id of the prop.
-   *
    */
   export function clearPedProp(scriptID: number, component: number): void;
 
