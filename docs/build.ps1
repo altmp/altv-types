@@ -45,7 +45,7 @@ if($err -ne $null -or -not (Test-Path "./common.ps1")) { throw "Script common.ps
 try
 {
     $cwd=(Get-Location).Path
-    $tmpd="${env:TMP}/altv-types"
+    $tmpd="${env:TMP}/altv-docs"
     New-Item -ItemType "Directory" -Path "$tmpd" 2>&1 >$null
 
     if($cleanOnly) { exit }
