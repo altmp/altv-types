@@ -46,7 +46,7 @@ export function drawText2d(
         native.setTextDropShadow();
     }
 
-    native.endTextCommandDisplayText(x, y);
+    native.endTextCommandDisplayText(x, y, 0);
 }
 
 export function drawText3d(
@@ -90,7 +90,7 @@ export function drawText3d(
         native.setTextDropShadow();
     }
 
-    native.endTextCommandDisplayText(0, 0);
+    native.endTextCommandDisplayText(0, 0, 0);
     native.clearDrawOrigin();
 }
 ```
