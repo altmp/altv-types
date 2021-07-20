@@ -484,11 +484,15 @@ declare module "alt-shared" {
 
   /**
    * A boolean indicating whether the current script is executed on the clientside.
+   *
+   * @alpha
    */
   export const isClient: boolean;
 
   /**
    * A boolean indicating whether the current script is executed on the serverside.
+   *
+   * @alpha
    */
   export const isServer: boolean;
 }
