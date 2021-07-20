@@ -481,4 +481,14 @@ declare module "alt-shared" {
    * @returns A number representing the id value of the timer that is set. Use this value with the {@link clearTimeout} function to cancel the timer.
    */
   export function setTimeout(handler: (...args: any[]) => void, miliseconds: number): number;
+
+  /**
+   * A boolean indicating whether the current script is executed on the clientside.
+   */
+  export const isClient: boolean;
+
+  /**
+   * A boolean indicating whether the current script is executed on the serverside.
+   */
+  export const isServer: boolean;
 }
