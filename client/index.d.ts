@@ -814,6 +814,8 @@ declare module "alt-client" {
     removeEntity: (object: shared.BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
+    /** @alpha */
+    resourceError: (error: string, file: string, line: number) => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     globalMetaChange: (key: string, value: any, oldValue: any) => void;
