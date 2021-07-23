@@ -2726,6 +2726,9 @@ declare module "alt-client" {
   /** @alpha */
   export class Profiler {
     public static readonly heapStats: IHeapStats;
+    /** Sampling interval in microseconds. Defaults to 100. */
+    public static samplingInterval: number;
+    public static readonly profilesRunning: number;
 
     /**
      * Starts a new profile with the specified name.
