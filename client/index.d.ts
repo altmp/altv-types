@@ -797,6 +797,14 @@ declare module "alt-client" {
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
   }
 
+  export const enum ProfileSourceType {
+    Script = "script",
+    Builtin = "builtins",
+    Native = "native-callback",
+    Internal = "internal",
+    Unknown = "unknown",
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -933,6 +941,45 @@ declare module "alt-client" {
     readonly statusCode: number;
     readonly body: string;
     readonly headers: Record<string, string>;
+  }
+
+  /** @alpha */
+  export interface IHeapStats {
+    readonly heapSizeLimit: number;
+    readonly totalHeapSize: number;
+    readonly usedHeapSize: number;
+    readonly mallocedMemory: number;
+    readonly peakMallocedMemory: number;
+  }
+
+  /** @alpha */
+  export interface IProfile {
+    readonly id: number;
+    readonly type: string;
+    readonly start: number;
+    readonly end: number;
+    readonly samples: number;
+    readonly root: IProfileNode;
+  }
+
+  /** @alpha */
+  export interface IProfileNode {
+    readonly id: number;
+    readonly function: string;
+    readonly source: string;
+    readonly sourceType: ProfileSourceType;
+    readonly line: number;
+    readonly bailoutReason: string | null;
+    readonly hitCount: number;
+    readonly timestamp: number;
+    readonly children: Array<IProfileNode> | null;
+    readonly lineTicks: Array<ILineTick> | null;
+  }
+
+  /** @alpha */
+  export interface ILineTick {
+    readonly line: number;
+    readonly hitCount: number;
   }
 
   /** @beta */
@@ -2675,6 +2722,30 @@ declare module "alt-client" {
    * @param component Component id of the prop.
    */
   export function clearPedProp(scriptID: number, component: number): void;
+
+  /** @alpha */
+  export class Profiler {
+    public static readonly heapStats: IHeapStats;
+    /** Sampling interval in microseconds. Defaults to 100. */
+    public static samplingInterval: number;
+    public static readonly profilesRunning: number;
+
+    /**
+     * Starts a new profile with the specified name.
+     *
+     * @remarks This can throw an error if starting the profile fails.
+     *
+     * @param profileName Name to be used in {@link stopProfiling}. Defaults to empty string.
+     */
+    public static startProfiling(profileName?: string): void;
+
+    /**
+     * Stops the profile with the specified name.
+     *
+     * @param profileName Name of the profile specified in {@link startProfiling}. Defaults to empty string.
+     */
+    public static stopProfiling(profileName?: string): IProfile;
+  }
 
   export * from "alt-shared";
 }
