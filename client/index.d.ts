@@ -2133,6 +2133,12 @@ declare module "alt-client" {
   export class MemoryBuffer {
     constructor(size: number);
 
+    /** @alpha */
+    public readonly size: number;
+
+    /** @alpha */
+    public readonly address: bigint;
+
     public byte(offset: number): number;
 
     public double(offset: number): number;
@@ -2154,8 +2160,6 @@ declare module "alt-client" {
     public ulong(offset: number): bigint;
 
     public ushort(offset: number): number;
-
-    public address(): bigint;
 
     public free(): boolean;
   }
