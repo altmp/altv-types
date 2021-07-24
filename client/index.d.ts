@@ -1355,20 +1355,11 @@ declare module "alt-client" {
     public static readonly streamedIn: Array<Vehicle>;
 
     /**
-     * Vehicle gear
-     *
-     * @remarks Setter is only available in dev and rc branch.
-     *
-     * @param value The desired gear.
-     */
-    public set gear(value: number);
-
-    /**
-     * Vehicle gear
+     * Vehicle gear.
      *
      * @returns A number indicating actual gear.
      */
-    public get gear(): number;
+    public gear: number;
 
     /**
      * Vehicle max gear.
