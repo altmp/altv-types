@@ -10,6 +10,10 @@ declare module "alt-shared" {
     VoiceChannel,
     Colshape,
     Checkpoint,
+    WebSocketClient,
+    HttpClient,
+    Audio,
+    LocalPlayer,
   }
 
   export const enum FileEncoding {
