@@ -1085,6 +1085,8 @@ declare module "alt-server" {
 
   export class Checkpoint extends Colshape {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
+    /** @alpha */
+    constructor(type: number, pos: shared.Vector3, radius: number, height: number, color: shared.RGBA);
   }
 
   export class VoiceChannel extends shared.BaseObject {
