@@ -194,6 +194,8 @@ declare module "alt-shared" {
      * @param g An g component.
      * @param b An b component.
      * @param a An a component.
+     *
+     * @remarks The RGBA values are allowed to range from 0 to 255.
      */
     constructor(r: number, g: number, b: number, a: number);
   }
