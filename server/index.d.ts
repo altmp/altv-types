@@ -901,7 +901,7 @@ declare module "alt-server" {
     public engineOn: boolean;
     public readonly flamethrowerActive: boolean;
     public readonly handbrakeActive: boolean;
-    public readonly hasArmoredWindows: number;
+    public readonly hasArmoredWindows: boolean;
     public headlightColor: number;
     public interiorColor: number;
     public lightsMultiplier: number;
