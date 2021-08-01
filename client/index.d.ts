@@ -2268,15 +2268,6 @@ declare module "alt-client" {
   export function isInStreamerMode(): boolean;
 
   /**
-   * Returns if alt:V is in debug mode.
-   *
-   * @returns True when the alt:V client is launched with debug mode enabled.
-   *
-   * @deprecated In dev branch, use {@link debug}.
-   */
-  export function isInDebug(): boolean;
-
-  /**
    * Returns whether voice activity input is enabled in alt:V settings.
    *
    * @returns True when voice activity input is enabled in alt:V settings.
