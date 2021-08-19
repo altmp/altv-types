@@ -1171,10 +1171,8 @@ declare module "alt-client" {
 
     /**
      * The local player instance.
-     *
-     * @remarks Returns {@link LocalPlayer} in dev / rc.
      */
-    public static readonly local: Player | LocalPlayer;
+    public static readonly local: LocalPlayer;
 
     /** Player talking state */
     public readonly isTalking: boolean;
