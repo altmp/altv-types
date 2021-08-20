@@ -355,7 +355,10 @@ declare module "alt-server" {
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
-    playerDamage: (victim: Player, attacker: Entity, damage: number, weaponHash: number) => void;
+    /**
+     * @param armourDamage This parameter is only available on dev branch.
+     */
+    playerDamage: (victim: Player, attacker: Entity, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
