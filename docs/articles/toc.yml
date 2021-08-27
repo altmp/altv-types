@@ -163,3 +163,38 @@
       href: snippets/utility/shuffle.md
     - name: Sha256
       href: snippets/utility/sha256.md
+- name: Tables
+  href: tables/index.md
+  items:
+    - name: Cause of Death
+      href: tables/cause-of-death.md
+    - name: Controls
+      href: tables/controls.md
+    - name: Explosions
+      href: tables/Explosions.md
+    - name: Frontend Sounds
+      href: tables/frontend-sounds.md
+    - name: IPLs
+      href: tables/ipls.md
+    - name: PED Bones
+      href: tables/ped-bones.md
+    - name: Vehicle Bones
+      href: tables/vehicle-bones.md
+    - name: Vehicle Colors
+      href: tables/vehicle-colors.md
+    - name: Vehicle Mods
+      href: tables/vehicle-mods.md
+    - name: Vehicle Seats
+      href: tables/vehicle-seats.md
+    - name: Vehicle Window Tint
+      href: tables/vehicle-window-tint.md
+    - name: Weapon Components
+      href: tables/weapon-components.md
+    - name: Weapon Pickups
+      href: tables/weapon-pickups.md
+    - name: Weapon Tint
+      href: tables/weapon-tint.md
+    - name: Weapons
+      href: tables/weapons.md
+    - name: Weather
+      href: tables/weather.md
