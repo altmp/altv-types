@@ -1,30 +1,22 @@
----
-title: 'Vehicle Mods'
-description: 'List of all vehicle mods.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Vehicle Mods
 
 Vehicle mods require setting a ModKit in order to use them server-side.
 
--   [Vehicle Mods](#vehicle-mods)
-    -   [Mods](#mods)
-    -   [Benny's](#bennys)
-    -   [Los Santos Customs](#los-santos-customs)
-    -   [Horn Types](#horn-types)
-    -   [Engine Types](#engine-types)
-    -   [Break Types](#break-types)
-    -   [Transmission Types](#transmission-types)
-    -   [Suspensions Types](#suspensions-types)
-    -   [Armour Types](#armour-types)
-    -   [Turbo](#turbo)
-    -   [Xenon Headlights](#xenon-headlights)
-    -   [Window Types](#window-types)
-    -   [Plate Types](#plate-types)
-    -   [Boost Types](#boost-types)
+- [Vehicle Mods](#vehicle-mods)
+    - [Mods](#mods)
+    - [Benny's](#bennys)
+    - [Los Santos Customs](#los-santos-customs)
+    - [Horn Types](#horn-types)
+    - [Engine Types](#engine-types)
+    - [Break Types](#break-types)
+    - [Transmission Types](#transmission-types)
+    - [Suspensions Types](#suspensions-types)
+    - [Armour Types](#armour-types)
+    - [Turbo](#turbo)
+    - [Xenon Headlights](#xenon-headlights)
+    - [Window Types](#window-types)
+    - [Plate Types](#plate-types)
+    - [Boost Types](#boost-types)
 
 ### Mods
 

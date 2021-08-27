@@ -1,11 +1,3 @@
----
-title: 'Ped Bones'
-description: 'List of all ped bones.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Ped Bones
 
 Represents the different parts of a player model.

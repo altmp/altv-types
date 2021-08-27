@@ -1,11 +1,3 @@
----
-title: 'Missing Interiors - IPLs'
-description: 'List of all missing interiors to load.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Missing Interiors IPLs
 
 This is taken from [Dzeknjak's Missing Interiors](https://github.com/jovanivanovic/altv-os-missing-interiors/).

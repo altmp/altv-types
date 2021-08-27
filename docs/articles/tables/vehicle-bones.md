@@ -1,11 +1,3 @@
----
-title: 'Vehicle Bones'
-description: 'List of all vehicle bones.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Vehicle Bones
 
 Represents the different part locations by name on a vehicle.

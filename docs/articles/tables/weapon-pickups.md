@@ -1,11 +1,3 @@
----
-title: 'Weapon Pickups'
-description: 'List of weapon pickups.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Weapon Pickups
 
 These are pickup hashes that can be used on **client-side**.

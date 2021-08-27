@@ -1,11 +1,3 @@
----
-title: 'Vehicle Seats'
-description: 'List of all vehicle seats for client-side.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # alt:V Vehicle Seats
 
 This section represents a player's seat on server-side.

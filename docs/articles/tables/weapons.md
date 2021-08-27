@@ -1,11 +1,3 @@
----
-title: 'Weapon List'
-description: 'List of weapons.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # List of Weapons and Hashes
 
 This is a Typescript object that has a list of most weapons in GTA:V. It may not contain all weapons but it was mostly hand constructed.

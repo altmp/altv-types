@@ -1,11 +1,3 @@
----
-title: 'Weapon Tint'
-description: 'List of weapon tints.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Weapon Tint Table
 
 These are weapon tints.

@@ -1,11 +1,3 @@
----
-title: 'Frontend Sounds'
-description: 'List of all frontend sounds.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Frontend Sounds
 
 Keep in mind that not all of these sounds may work. It is suggested to test them individually.

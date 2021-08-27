@@ -1,11 +1,3 @@
----
-title: 'GTA:V Controls'
-description: 'List of all GTA:V Controls'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Input Groups & Controls
 
 These controls are used with various natives on **client-side**.

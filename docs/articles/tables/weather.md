@@ -1,11 +1,3 @@
----
-title: 'Weather IDs'
-description: 'List of weather ids.'
-prefix: '[Table]'
----
-
-[<-- Back to Tables](./README.md)
-
 # Weather IDs
 
 These are the current weather identifiers.
