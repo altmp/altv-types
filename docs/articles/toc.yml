@@ -198,7 +198,9 @@
       href: snippets/client/create-notifications.md
     - name: Create Text Label
       href: snippets/client/create-textlabel.md
-    - name: Spotlight
+    - name: Flickering WebView
+      href: snippets/client/flickering-webview.md
+    - name: Request Model
       href: snippets/client/request-model.md
     - name: Spotlight
       href: snippets/client/spotlight.md
