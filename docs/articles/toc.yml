@@ -40,6 +40,25 @@
       href: bootcamp/012.md
     - name: 013 - Writing Commands
       href: bootcamp/013.md
+- name: Concepts
+  href: concepts/index.md
+  items:
+    - name: Importing alt
+      href: concepts/importing-alt.md
+    - name: Importing Natives
+      href: concepts/importing-natives.md
+    - name: MongoDB Guide
+      href: concepts/mongodb-guide.md
+    - name: RAGE:MP Migration
+      href: concepts/ragemp-migration.md
+    - name: Server Events
+      href: concepts/server-events.md
+    - name: Understanding ScriptID
+      href: concepts/understanding-script-id.md
+    - name: Using Events
+      href: concepts/using-events.md
+    - name: What is Synchronized
+      href: concepts/what-is-synchronized.md
 - name: Player
   href: player/index.md
   items:
