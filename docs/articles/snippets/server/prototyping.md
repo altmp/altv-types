@@ -1,16 +1,18 @@
-# Prototyping
+# How to Prototype a Class
 
 Prototyping allows you to extend default class functionality for Player's, Vehicle's, etc.
 
-It is important to understand that all Prototype files should be loaded immediately after your database initialization.
+It is important to understand that all Prototype files should be loaded immediately after your database initialization. Granted your Prototype has database features.
 
-Granted your Prototype has database features.
+While you are creating prototypes keep in mind that the data stored in a prototype is not accessible in another resource. Prototypes can only be defined in the resource that it is running inside of.
 
-They do **NOT** work in multiple resources. Single resource only.
+This means that if you have a function called `player.subCash` in a resource called `example`. In another resource called `example2` that function is inaccessible.
 
-This means that the data for a prototype is **non-transferrable** between resources.
+## Limitations and Performance with Prototyping
 
-### JavaScript Server Side Example
+While prototypes seem like a handy way to get accessible functions, data, etc. keep in mind that the data that is stored on a player has to be transferred between resources, and sometimes even events. Try to keep the data you store on a Player, or a Vehicle relatively small.
+
+## Javascript Example
 
 ```js
 alt.Player.prototype.emitMeta = function emitMeta(key, value) {
@@ -84,9 +86,9 @@ alt.Player.prototype.addCash = function addCash(value) {
 };
 ```
 
-### Typescript Server Side Example
+## Typescript Server Side Example
 
-```ts
+```js
 // Use `alt-client` to do prototyping on client-side.
 declare module 'alt-server' {
     export interface Player {
@@ -122,8 +124,6 @@ alt.Player.prototype.addToBank = function addToBank(value: number) {
 ```
 
 ## Example Usage
-
-**Server Side**
 
 ```js
 player.init();

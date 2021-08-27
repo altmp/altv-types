@@ -18,24 +18,148 @@
       href: player/server-player-funcs.md
     - name: Local Player ScriptID
       href: player/player-script-id.md
-- name: Snippets
-  href: snippets/index.md
+- name: alt Client Functions
+  href: alt-client/index.md
   items:
-    - name: Encryption
-      href: snippets/encryption.md
-    - name: Help Text
-      href: snippets/helptext.md
-    - name: Markers
-      href: snippets/markers.md
-    - name: Math & Distance
-      href: snippets/math.md
-    - name: Notifications
-      href: snippets/notifications.md
+    - name: addGxtText
+      href: alt-client/addGxtText.md
+    - name: beginScaleformMovieMethodMinimap
+      href: alt-client/beginScaleformMovieMethodMinimap.md
+    - name: clearEveryTick
+      href: alt-client/clearEveryTick.md
+    - name: clearInterval
+      href: alt-client/clearInterval.md
+    - name: clearNextTick
+      href: alt-client/clearNextTick.md
+    - name: clearTimeout
+      href: alt-client/clearTimeout.md
+    - name: doesConfigFlagExist
+      href: alt-client/doesConfigFlagExist.md
+    - name: emitServer
+      href: alt-client/emitServer.md
+    - name: everyTick
+      href: alt-client/everyTick.md
+    - name: gameControlsEnabled
+      href: alt-client/gameControlsEnabled.md
+    - name: getConfigFlag
+      href: alt-client/getConfigFlag.md
+    - name: getCursorPos
+      href: alt-client/getCursorPos.md
+    - name: getGxtText
+      href: alt-client/getGxtText.md
+    - name: hash
+      href: alt-client/hash.md
+    - name: log
+      href: alt-client/log.md
+    - name: logError
+      href: alt-client/logError.md
+    - name: logWarning
+      href: alt-client/logWarning.md
+    - name: on
+      href: alt-client/on.md
+    - name: setInterval
+      href: alt-client/setInterval.md
+    - name: setTimeout
+      href: alt-client/setTimeout.md
+    - name: setWeatherCycle
+      href: alt-client/setWeatherCycle.md
+    - name: takeScreenshot
+      href: alt-client/takeScreenshot.md
+    - name: takeScreenshotGameOnly
+      href: alt-client/takeScreenshotGameOnly.md
+- name: alt Server Functions
+  href: alt-server/index.md
+  items:
+    - name: clearEveryTick
+      href: alt-server/clearEveryTick.md
+    - name: clearInterval
+      href: alt-server/clearInterval.md
+    - name: clearNextTick
+      href: alt-server/clearNextTick.md
+    - name: clearTimeout
+      href: alt-server/clearTimeout.md
+    - name: emit
+      href: alt-server/emit.md
+    - name: emitAllClients
+      href: alt-server/emitAllClients.md
+    - name: emitClient
+      href: alt-server/emitClient.md
+    - name: everyTick
+      href: alt-server/everyTick.md
+    - name: getNetTime
+      href: alt-server/getNetTime.md
+    - name: getResourceExports
+      href: alt-server/getResourceExports.md
+    - name: getResourceMain
+      href: alt-server/getResourceMain.md
+    - name: getResourcePath
+      href: alt-server/getResourcePath.md
+    - name: hash
+      href: alt-server/hash.md
+    - name: hasResource
+      href: alt-server/hasResource.md
+    - name: log
+      href: alt-server/log.md
+    - name: logError
+      href: alt-server/logError.md
+    - name: logWarning
+      href: alt-server/logWarning.md
+    - name: nextTick
+      href: alt-server/nextTick.md
+    - name: on
+      href: alt-server/on.md
+    - name: once
+      href: alt-server/once.md
+    - name: onceClient
+      href: alt-server/onceClient.md
+    - name: onClient
+      href: alt-server/onClient.md
+    - name: restartResource
+      href: alt-server/restartResource.md
+    - name: setInterval
+      href: alt-server/setInterval.md
+    - name: setPassword
+      href: alt-server/setPassword.md
+    - name: setTimeout
+      href: alt-server/setTimeout.md
+    - name: startResource
+      href: alt-server/startResource.md
+    - name: stopResource
+      href: alt-server/stopResource.md
+- name: Server Side Snippets
+  href: snippets/server/index.md
+  items:
+    - name: Forward Vector
+      href: snippets/server/forward-vector.md
+    - name: Password Hashing
+      href: snippets/server/password-hashing.md
     - name: Prototyping
-      href: snippets/prototyping.md
-    - name: Shuffle
-      href: snippets/shuffle.md
-    - name: Text Labels
-      href: snippets/textlabels.md
+      href: snippets/server/prototyping.md
     - name: Voice
-      href: snippets/voice.md
+      href: snippets/server/voice.md
+- name: Client Side Snippets
+  href: snippets/client/index.md
+  items:
+    - name: Create Help Text
+      href: snippets/client/create-help-text.md
+    - name: Create Markers
+      href: snippets/client/create-markers.md
+    - name: Create Notifications
+      href: snippets/client/create-notifications.md
+    - name: Create Text Label
+      href: snippets/client/create-textlabel.md
+    - name: Spotlight
+      href: snippets/client/request-model.md
+    - name: Spotlight
+      href: snippets/client/spotlight.md
+    - name: Use Local Storage
+      href: snippets/client/use-local-storage.md
+- name: Utility Snippets
+  href: snippets/utility/index.md
+  items:
+    - name: Math
+      href: snippets/utility/math.md
+    - name: Shuffle Array Prototype
+      href: snippets/utility/shuffle.md
+    - name: Sha256
+      href: snippets/utility/sha256.md

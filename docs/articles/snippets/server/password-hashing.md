@@ -1,12 +1,12 @@
-# Encryption / Password Hashing
+# Password Hashing
 
-This requires a library called `sjcl`.
+The following method requires a library called `sjcl`, You can install it by running `npm install sjcl` in your terminal.
 
-This will let you perform a PBKDF2 encryption.
+## Snippet
 
-You can install it in your package.json by doing: `npm install sjcl`
+### Hashing a Password
 
-**Server Side**
+Used to create a hash of a password using pbkdf2.
 
 ```js
 import sjcl from 'sjcl';
@@ -16,12 +16,20 @@ import sjcl from 'sjcl';
  * @param {string} password
  * @returns {string} A password hash.
  */
-export function encryptPassword(password) {
+export function hashPassword(password) {
     const saltBits = sjcl.random.randomWords(2, 0);
     const salt = sjcl.codec.base64.fromBits(saltBits);
     const key = sjcl.codec.base64.fromBits(sjcl.misc.pbkdf2(password, saltBits, 2000, 256));
     return `${key}$${salt}`;
 }
+```
+
+### Verifying a Password
+
+Used to verify a password against the hash of that password.
+
+```js
+import sjcl from 'sjcl';
 
 /**
  * Verify a password matches with pbkdf2.
@@ -41,45 +49,17 @@ export function verifyPassword(password, storedPasswordHash) {
 
     return true;
 }
-
-/**
- * Generate a hash based on string.
- * @param {string} data
- */
-export function generateHash(data) {
-    let hashBytes = sjcl.hash.sha256.hash(data + Math.random(0, 900000000));
-    return sjcl.codec.hex.fromBits(hashBytes);
-}
-
-/**
- * Generate a persistent hash based on string.
- * @param {string} data
- */
-export function persistentHash(data) {
-    let hashBytes = sjcl.hash.sha256.hash(data);
-    return sjcl.codec.hex.fromBits(hashBytes);
-}
 ```
 
 ## Example Usage
 
-**Server Side**
+Serverside
 
 ```js
-const hash = encryptPassword('test');
+const hash = hashPassword('test');
 const isCorrectPassword = verifyPassword('test', hash);
 
 if (isCorrectPassword) {
     console.log(`That was a correct password.`);
-}
-
-const randomDataHash = generateHash(`whatever ${hash} ${isCorrectPassword}`);
-console.log(randomDataHash);
-
-const persistent = persistentHash(`whatever`);
-const persistent2 = persistentHash(`whatever`);
-
-if (persistent === persistent2) {
-    console.log(`they match!`);
 }
 ```

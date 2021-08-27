@@ -1,14 +1,17 @@
-# Notifications
+# Create Notifications
 
 Notifications are the black boxes that appear above your map on bottom left-hand side.
 
-They are only accessible from client-side but you can call them from server-side.
+They are only accessible from client-side but you can call them from server-side by creating an event handler that triggers something ont he client-side.
 
 See the example below on how to utilize this in two different ways.
 
-**Client Side**
+## Example
 
 ```js
+import * as alt from 'alt-client';
+import * as native from 'natives';
+
 alt.onServer('drawNotification', drawNotification);
 
 export function drawNotification(imageName, headerMsg, detailsMsg, message) {
