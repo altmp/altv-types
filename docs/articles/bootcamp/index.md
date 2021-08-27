@@ -1,11 +1,3 @@
----
-title: 'Learn to use alt:V'
-description: 'List of Concepts for alt:V'
-prefix: '[Bootcamp]'
----
-
-[<-- Back to Articles](../README.md)
-
 # 💻 Bootcamp
 
 Welcome to the alt:V Bootcamp course. This is going to teach you everything that you need to know while introducing you to the entire alt:V API. This will be your entry point if you are new developer to alt:V who wants to start creating their very own resources, plugins, or even a server.
