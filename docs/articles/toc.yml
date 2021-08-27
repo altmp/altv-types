@@ -9,6 +9,37 @@
       href: understanding-events.md
     - name: Local storage
       href: localstorage.md
+- name: Bootcamp
+  href: bootcamp/index.md
+  items:
+    - name: 000 - Introduction
+      href: bootcamp/index.md
+    - name: 001 - The alt:V Client
+      href: bootcamp/001.md
+    - name: 002 - alt:V Client Configuration
+      href: bootcamp/002.md
+    - name: 003 - alt:V Server Binaries
+      href: bootcamp/003.md
+    - name: 004 - Running Server Binaries
+      href: bootcamp/004.md
+    - name: 005 - Understanding Resource Structure
+      href: bootcamp/005.md
+    - name: 006 - Creating a Resource
+      href: bootcamp/006.md
+    - name: 007 - Adding a Resource
+      href: bootcamp/007.md
+    - name: 008 - Understanding VSCode & Javascript
+      href: bootcamp/008.md
+    - name: 009 - Spawning the Player
+      href: bootcamp/009.md
+    - name: 010 - Respawning the Player
+      href: bootcamp/010.md
+    - name: 011 - Spawning a Vehicle
+      href: bootcamp/011.md
+    - name: 012 - Installing a Chat Resource
+      href: bootcamp/012.md
+    - name: 013 - Writing Commands
+      href: bootcamp/013.md
 - name: Player
   href: player/index.md
   items:

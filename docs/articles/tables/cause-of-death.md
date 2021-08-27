@@ -1,3 +1,5 @@
+
+
 # Cause of Death
 
 This object of Cause of Death represents the weaponHash that kills a player.
