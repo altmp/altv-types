@@ -176,6 +176,146 @@
       href: alt-server/startResource.md
     - name: stopResource
       href: alt-server/stopResource.md
+- name: Player Client
+  href: player-client/index.md
+  items:
+    - name: aimPos
+      href: player-client/aimPos.md
+    - name: all
+      href: player-client/all.md
+    - name: armour
+      href: player-client/armour.md
+    - name: entityAimingAt
+      href: player-client/entityAimingAt.md
+    - name: flashlightActive
+      href: player-client/flashlightActive.md
+    - name: getMeta
+      href: player-client/getMeta.md
+    - name: getStreamSyncedMeta
+      href: player-client/getStreamSyncedMeta.md
+    - name: getSyncedMeta
+      href: player-client/getSyncedMeta.md
+    - name: headRot
+      href: player-client/headRot.md
+    - name: health
+      href: player-client/health.md
+    - name: id
+      href: player-client/id.md
+    - name: isAiming
+      href: player-client/isAiming.md
+    - name: isInRagdoll
+      href: player-client/isInRagdoll.md
+    - name: isTalking
+      href: player-client/isTalking.md
+    - name: local
+      href: player-client/local.md
+    - name: maxArmour
+      href: player-client/maxArmour.md
+    - name: maxHealth
+      href: player-client/maxHealth.md
+    - name: micLevel
+      href: player-client/micLevel.md
+    - name: model
+      href: player-client/model.md
+    - name: moveSpeed
+      href: player-client/moveSpeed.md
+    - name: name
+      href: player-client/name.md
+    - name: pos
+      href: player-client/pos.md
+    - name: rot
+      href: player-client/rot.md
+    - name: scriptID
+      href: player-client/scriptID.md
+    - name: seat
+      href: player-client/seat.md
+    - name: setMeta
+      href: player-client/setMeta.md
+    - name: valid
+      href: player-client/valid.md
+    - name: vehicle
+      href: player-client/vehicle.md
+    - name: visible
+      href: player-client/visible.md
+- name: Player Server
+  href: player-server/index.md
+  items:
+    - name: armour
+      href: player-server/armour.md
+    - name: authToken
+      href: player-server/authToken.md
+    - name: clearBloodDamage
+      href: player-server/clearBloodDamage.md
+    - name: currentWeapon
+      href: player-server/currentWeapon.md
+    - name: dimension
+      href: player-server/dimension.md
+    - name: entityAimingAt
+      href: player-server/entityAimingAt.md
+    - name: flashlightActive
+      href: player-server/flashlightActive.md
+    - name: getMeta
+      href: player-server/getMeta.md
+    - name: getStreamSyncedMeta
+      href: player-server/getStreamSyncedMeta.md
+    - name: getSyncedMeta
+      href: player-server/getSyncedMeta.md
+    - name: giveWeapon
+      href: player-server/giveWeapon.md
+    - name: health
+      href: player-server/health.md
+    - name: hwidExHash
+      href: player-server/hwidExHash.md
+    - name: hwidHash
+      href: player-server/hwidHash.md
+    - name: id
+      href: player-server/id.md
+    - name: ip
+      href: player-server/ip.md
+    - name: kick
+      href: player-server/kick.md
+    - name: maxArmour
+      href: player-server/maxArmour.md
+    - name: maxHealth
+      href: player-server/maxHealth.md
+    - name: model
+      href: player-server/model.md
+    - name: name
+      href: player-server/name.md
+    - name: netOwner
+      href: player-server/netOwner.md
+    - name: ping
+      href: player-server/ping.md
+    - name: pos
+      href: player-server/pos.md
+    - name: removeAllWeapons
+      href: player-server/removeAllWeapons.md
+    - name: removeWeapon
+      href: player-server/removeWeapon.md
+    - name: rot
+      href: player-server/rot.md
+    - name: seat
+      href: player-server/seat.md
+    - name: setDateTime
+      href: player-server/setDateTime.md
+    - name: setMeta
+      href: player-server/setMeta.md
+    - name: setStreamSyncedMeta
+      href: player-server/setStreamSyncedMeta.md
+    - name: setSyncedMeta
+      href: player-server/setSyncedMeta.md
+    - name: setWeather
+      href: player-server/setWeather.md
+    - name: socialId
+      href: player-server/socialId.md
+    - name: spawn
+      href: player-server/spawn.md
+    - name: valid
+      href: player-server/valid.md
+    - name: vehicle
+      href: player-server/vehicle.md
+    - name: visible
+      href: player-server/visible.md
 - name: Server Side Snippets
   href: snippets/server/index.md
   items:
