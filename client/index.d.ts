@@ -2335,12 +2335,28 @@ declare module "alt-client" {
   export function on<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
 
   /**
+   * Subscribes to a custom client event with the specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
    * Subscribes to a client event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function once<K extends keyof IClientEvent>(eventName: K, listener: IClientEvent[K]): void;
+
+  /**
+   * Subscribes to a custom client event with the specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function once(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to a server event with the specified listener.
