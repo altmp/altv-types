@@ -380,7 +380,6 @@ declare module "alt-server" {
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
-    [name: string]: (...args: any[]) => void;
   }
 
   export interface IFireInfo {
@@ -1212,12 +1211,28 @@ declare module "alt-server" {
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
 
   /**
+   * Subscribes to a custom server event with the specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
    * Subscribes to a server event with the specified listener, which only triggers once.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+
+  /**
+   * Subscribes to a custom server event with the specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function once(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to a client event with the specified listener.
