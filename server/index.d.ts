@@ -494,6 +494,13 @@ declare module "alt-server" {
     public visible: boolean;
 
     /**
+     * Whether the entity should be streamed for other entities.
+     *
+     * @alpha
+     */
+    public streamed: boolean;
+
+    /**
      * Retrieves the entity from the pool.
      *
      * @param id The id of the entity.
