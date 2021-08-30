@@ -834,7 +834,6 @@ declare module "alt-client" {
      * @beta
      */
     render: () => void;
-    [name: string]: (...args: any[]) => void;
     /**
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
      *
