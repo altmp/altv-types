@@ -822,7 +822,7 @@ declare module "alt-client" {
     removeEntity: (object: shared.BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
-    /** @alpha */
+    /** @beta */
     resourceError: (error: string, stackTrace: string, file: string, line: number) => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
@@ -837,7 +837,7 @@ declare module "alt-client" {
     /**
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
      *
-     * @alpha
+     * @beta
      */
     taskChange: (oldTask: number, newTask: number) => void;
   }
@@ -948,7 +948,7 @@ declare module "alt-client" {
     readonly headers: Record<string, string>;
   }
 
-  /** @alpha */
+  /** @beta */
   export interface IHeapStats {
     readonly heapSizeLimit: number;
     readonly totalHeapSize: number;
@@ -957,7 +957,7 @@ declare module "alt-client" {
     readonly peakMallocedMemory: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export interface IProfile {
     readonly id: number;
     readonly type: string;
@@ -967,7 +967,7 @@ declare module "alt-client" {
     readonly root: IProfileNode;
   }
 
-  /** @alpha */
+  /** @beta */
   export interface IProfileNode {
     readonly id: number;
     readonly function: string;
@@ -981,7 +981,7 @@ declare module "alt-client" {
     readonly lineTicks: Array<ILineTick> | null;
   }
 
-  /** @alpha */
+  /** @beta */
   export interface ILineTick {
     readonly line: number;
     readonly hitCount: number;
@@ -1934,7 +1934,7 @@ declare module "alt-client" {
     constructor(ped: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class VehicleBlip extends Blip {
     constructor(vehicle: number);
   }
@@ -2127,10 +2127,10 @@ declare module "alt-client" {
   export class MemoryBuffer {
     constructor(size: number);
 
-    /** @alpha */
+    /** @beta */
     public readonly size: number;
 
-    /** @alpha */
+    /** @beta */
     public readonly address: bigint;
 
     public byte(offset: number): number;

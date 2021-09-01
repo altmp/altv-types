@@ -367,7 +367,7 @@ declare module "alt-server" {
     removeEntity: (object: shared.BaseObject) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
-    /** @alpha */
+    /** @beta */
     resourceError: (error: string, stackTrace: string, file: string, line: number) => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
@@ -380,7 +380,7 @@ declare module "alt-server" {
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
-    /** @alpha */
+    /** @beta */
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
   }
 
@@ -496,7 +496,7 @@ declare module "alt-server" {
     /**
      * Whether the entity should be streamed for other entities.
      *
-     * @alpha
+     * @beta
      */
     public streamed: boolean;
 
@@ -1096,7 +1096,7 @@ declare module "alt-server" {
 
   export class Checkpoint extends Colshape {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
-    /** @alpha */
+    /** @beta */
     constructor(type: number, pos: shared.Vector3, radius: number, height: number, color: shared.RGBA);
   }
 
