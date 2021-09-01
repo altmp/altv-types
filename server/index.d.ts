@@ -379,7 +379,7 @@ declare module "alt-server" {
     weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: BodyPart) => boolean | void;
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
-    playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
+    playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     /** @beta */
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
   }
