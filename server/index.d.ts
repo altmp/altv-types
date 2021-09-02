@@ -641,6 +641,11 @@ declare module "alt-server" {
     public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
     public readonly flashlightActive: boolean;
+    public readonly moveSpeed: number;
+    public readonly isInRagdoll: boolean;
+    public readonly isAiming: boolean;
+    public readonly aimPos: shared.Vector3;
+    public readonly headRot: shared.Vector3;
     public health: number;
     public readonly ip: string;
     public maxArmour: number;
