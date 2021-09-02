@@ -2668,23 +2668,23 @@ declare module "alt-client" {
 
     public getExtraHeaders(): Record<string, string>;
 
-    public get(url: string): IHttpResponse;
+    public get(url: string): Promise<IHttpResponse>;
 
-    public head(url: string): IHttpResponse;
+    public head(url: string): Promise<IHttpResponse>;
 
-    public post(url: string, body: string): IHttpResponse;
+    public post(url: string, body: string): Promise<IHttpResponse>;
 
-    public put(url: string, body: string): IHttpResponse;
+    public put(url: string, body: string): Promise<IHttpResponse>;
 
-    public delete(url: string, body: string): IHttpResponse;
+    public delete(url: string, body: string): Promise<IHttpResponse>;
 
-    public connect(url: string, body: string): IHttpResponse;
+    public connect(url: string, body: string): Promise<IHttpResponse>;
 
-    public options(url: string, body: string): IHttpResponse;
+    public options(url: string, body: string): Promise<IHttpResponse>;
 
-    public trace(url: string, body: string): IHttpResponse;
+    public trace(url: string, body: string): Promise<IHttpResponse>;
 
-    public patch(url: string, body: string): IHttpResponse;
+    public patch(url: string, body: string): Promise<IHttpResponse>;
   }
 
   /**
