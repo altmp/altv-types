@@ -1855,6 +1855,8 @@ declare module "alt-client" {
      *
      * @param header Header name.
      * @param value Header value.
+     *
+     * @beta
      */
     public setExtraHeader(header: string, value: string): void;
   }
