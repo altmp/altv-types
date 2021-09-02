@@ -1849,6 +1849,14 @@ declare module "alt-client" {
      * @returns Array of listener functions for that event.
      */
     public getEventListeners(eventName: string | null): Function[];
+
+    /**
+     * Sets the specified header to the specified value.
+     *
+     * @param header Header name.
+     * @param value Header value.
+     */
+    public setExtraHeader(header: string, value: string): void;
   }
 
   export class Blip extends WorldObject {
