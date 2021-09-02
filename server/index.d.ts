@@ -641,10 +641,15 @@ declare module "alt-server" {
     public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
     public readonly flashlightActive: boolean;
+    /** @beta */
     public readonly moveSpeed: number;
+    /** @beta */
     public readonly isInRagdoll: boolean;
+    /** @beta */
     public readonly isAiming: boolean;
+    /** @beta */
     public readonly aimPos: shared.Vector3;
+    /** @beta */
     public readonly headRot: shared.Vector3;
     public health: number;
     public readonly ip: string;
@@ -654,6 +659,8 @@ declare module "alt-server" {
     public readonly ping: number;
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
+    /** @beta */
+    public invincible: boolean;
     /**
      * @deprecated See {@link socialID}.
      */
