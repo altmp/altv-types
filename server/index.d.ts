@@ -647,7 +647,13 @@ declare module "alt-server" {
     public readonly isInRagdoll: boolean;
     /** @beta */
     public readonly isAiming: boolean;
-    /** @beta */
+    /**
+     * Position the player is currently aiming at.
+     *
+     * @remarks Will return {"X":0.0,"Y":0.0,"Z":0.0} if the player is aiming against a entity.
+     *
+     * @beta
+     */
     public readonly aimPos: shared.Vector3;
     /** @beta */
     public readonly headRot: shared.Vector3;
