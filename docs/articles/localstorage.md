@@ -6,7 +6,7 @@
 - The LocalStorage is a persistent client cached storage.
 - If the player deletes his cache folder the LocalStorage data will get lost!
 
-**Never use the LocalStorage for sensitive data. Someone could always inject code that reads LocalStorage values!**
+**Never use the LocalStorage for sensitive data. The content is saved as plain text on the disk.**
 
 | Function Name          | Description                                                         |
 | ---------------------- | ------------------------------------------------------------------- |
