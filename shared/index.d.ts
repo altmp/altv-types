@@ -105,6 +105,36 @@ declare module "alt-shared" {
     public toDegrees(): Vector3;
 
     public isInRange(vector: IVector3, range: number): boolean;
+
+    /** @beta */
+    public static readonly zero: Vector3;
+
+    /** @beta */
+    public static readonly one: Vector3;
+
+    /** @beta */
+    public static readonly forward: Vector3;
+
+    /** @beta */
+    public static readonly back: Vector3;
+
+    /** @beta */
+    public static readonly up: Vector3;
+
+    /** @beta */
+    public static readonly down: Vector3;
+
+    /** @beta */
+    public static readonly left: Vector3;
+
+    /** @beta */
+    public static readonly right: Vector3;
+
+    /** @beta */
+    public static readonly negativeInfinity: Vector3;
+
+    /** @beta */
+    public static readonly positiveInfinity: Vector3;
   }
 
   export class Vector2 {
