@@ -177,6 +177,30 @@ declare module "alt-shared" {
     public toDegrees(): Vector2;
 
     public isInRange(vector: IVector2, range: number): boolean;
+
+    /** @beta */
+    public static readonly zero: Vector2;
+
+    /** @beta */
+    public static readonly one: Vector2;
+
+    /** @beta */
+    public static readonly up: Vector2;
+
+    /** @beta */
+    public static readonly down: Vector2;
+
+    /** @beta */
+    public static readonly left: Vector2;
+
+    /** @beta */
+    public static readonly right: Vector2;
+
+    /** @beta */
+    public static readonly negativeInfinity: Vector2;
+
+    /** @beta */
+    public static readonly positiveInfinity: Vector2;
   }
 
   export class RGBA {
