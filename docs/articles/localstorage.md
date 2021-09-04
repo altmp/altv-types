@@ -10,21 +10,19 @@
 
 | Function Name          | Description                                                         |
 | ---------------------- | ------------------------------------------------------------------- |
-| alt.LocalStorage.get   | Gets the local storage instance.                                    |
-| LocalStorage.get       | Gets the value from the specified key in the local storage..        |
-| LocalStorage.set       | Sets the specified key to the specified value in the local storage. |
-| LocalStorage.delete    | Deletes the specified key from the local storage.                   |
-| LocalStorage.deleteAll | Deletes all keys from the local storage.                            |
-| LocalStorage.save      | Saves the changes to the disk.                                      |
+| alt.LocalStorage.get       | Gets the value from the specified key in the local storage..        |
+| alt.LocalStorage.set       | Sets the specified key to the specified value in the local storage. |
+| alt.LocalStorage.delete    | Deletes the specified key from the local storage.                   |
+| alt.LocalStorage.deleteAll | Deletes all keys from the local storage.                            |
+| alt.LocalStorage.save      | Saves the changes to the disk.                                      |
 
 ## Set a key `.set(key: string, value: any)`
 
 ```js
 import * as alt from "alt-client";
 
-const storage = alt.LocalStorage.get(); // Gets the local storage instance.
-storage.set("testKey", "test"); // Sets the specified key to the specified value in the local storage.
-storage.save(); // Saves the changes to the disk.
+alt.LocalStorage.set("testKey", "test"); // Sets the specified key to the specified value in the local storage.
+alt.LocalStorage.save(); // Saves the changes to the disk.
 ```
 
 ## Get a key `.get(key: string)`
@@ -32,8 +30,7 @@ storage.save(); // Saves the changes to the disk.
 ```js
 import * as alt from "alt-client";
 
-const storage = alt.LocalStorage.get(); // Gets the local storage instance.
-cosnt testKey = storage.get('testKey'); // Gets the value from the specified key in the local storage.
+const testKey = alt.LocalStorage.get('testKey'); // Gets the value from the specified key in the local storage.
 alt.log('testKey:', testKey)
 ```
 
@@ -42,9 +39,8 @@ alt.log('testKey:', testKey)
 ```js
 import * as alt from "alt-client";
 
-const storage = alt.LocalStorage.get(); // Gets the local storage instance.
-storage.delete("testKey"); // Deletes the specified key from the local storage.
-storage.save(); // Saves the changes to the disk.
+alt.LocalStorage.delete("testKey"); // Deletes the specified key from the local storage.
+alt.LocalStorage.save(); // Saves the changes to the disk.
 ```
 
 ## Delete all keys `.deleteAll()`
@@ -52,9 +48,8 @@ storage.save(); // Saves the changes to the disk.
 ```js
 import * as alt from "alt-client";
 
-const storage = alt.LocalStorage.get(); // Gets the local storage instance.
-storage.deleteAll(); // Deletes all keys from the local storage.
-storage.save(); // Saves the changes to the disk.
+alt.LocalStorage.deleteAll(); // Deletes all keys from the local storage.
+alt.LocalStorage.save(); // Saves the changes to the disk.
 ```
 
 ## Example use cases:
