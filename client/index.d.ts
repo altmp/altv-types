@@ -1939,10 +1939,10 @@ declare module "alt-client" {
     constructor(x: number, y: number, z: number);
   }
 
-  /** @hidden */
-  export class PedBlip extends Blip {
-    constructor(ped: number);
-  }
+  // /** @alpha */
+  // export class PedBlip extends Blip {
+  //   constructor(ped: number);
+  // }
 
   /** @beta */
   export class VehicleBlip extends Blip {
