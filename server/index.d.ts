@@ -650,7 +650,7 @@ declare module "alt-server" {
     /**
      * Position the player is currently aiming at.
      *
-     * @remarks Will return {"X":0.0,"Y":0.0,"Z":0.0} if the player is aiming against a entity.
+     * @remarks Will return {@link Vector3.zero} if the player is aiming against a entity.
      *
      * @beta
      */
