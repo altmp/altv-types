@@ -1859,6 +1859,15 @@ declare module "alt-client" {
      * @beta
      */
     public setExtraHeader(header: string, value: string): void;
+
+    /**
+     * Sets the zoom level for webview.
+     *
+     * @param value Zoom level value.
+     *
+     * @beta
+     */
+     public setZoomLevel(value: number): void;
   }
 
   export class Blip extends WorldObject {
