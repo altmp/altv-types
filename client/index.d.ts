@@ -1867,7 +1867,7 @@ declare module "alt-client" {
      *
      * @beta
      */
-     public setZoomLevel(value: number): void;
+    public setZoomLevel(value: number): void;
   }
 
   export class Blip extends WorldObject {
@@ -1948,12 +1948,24 @@ declare module "alt-client" {
     constructor(x: number, y: number, z: number);
   }
 
-  // /** @alpha */
-  // export class PedBlip extends Blip {
-  //   constructor(ped: number);
-  // }
+  /**
+   * Create a attached blip to a ped.
+   *
+   * @param ped Index of the player in alt.Player.all.
+   *
+   * @beta
+   */
+  export class PedBlip extends Blip {
+    constructor(ped: number);
+  }
 
-  /** @beta */
+  /**
+   * Create a attached blip to a vehicle.
+   *
+   * @param vehicle Index of the vehicle in alt.Vehicle.all.
+   *
+   * @beta
+   */
   export class VehicleBlip extends Blip {
     constructor(vehicle: number);
   }
