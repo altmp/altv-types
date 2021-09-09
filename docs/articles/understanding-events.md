@@ -2,30 +2,35 @@
 
 Events work in a very specific way and understanding their communication is very important.
 
-Server can talk to any client.
-Client may only talk to WebViews and the Server.
+The server can talk to any client.
+Clients may only talk to WebViews and the server.
 
 A client **CANNOT** talk to another client.
 
-| Function Name  | Description                                                                                |
-| -------------- | ------------------------------------------------------------------------------------------ |
-| alt.emit       | Emit an event on server or client side. Only received on the side it was emitted from.     |
-| alt.on         | Receives an event. Server only receives server events. Client only receives client events. |
-| alt.onServer   | Receives an event emitted from the server on client-side. Triggered with `alt.emitClient`. |
-| alt.emitClient | Emit an event to a specific client that they receive with `alt.onServer`.                  |
-| alt.onClient   | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`. |
-| alt.emitServer | Emit an event to the server that is received with `alt.onClient`.                          |
+| Function Name      | Description                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| alt.emit           | Emit an event on server or client side. Only received on the side it was emitted from.           |
+| alt.on             | Receives an event. Server only receives server events. Client only receives client events.       |
+| alt.onServer       | Receives an event emitted from the server on client-side. Triggered with `alt.emitClient`.       |
+| alt.emitClient     | Emit an event to a specific client or an array of clients that they receive with `alt.onServer`. |
+| alt.emitAllClients | Emit an event to all clients that they receive with `alt.onServer`.                              |
+| alt.onClient       | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.       |
+| alt.emitServer     | Emit an event to the server that is received with `alt.onClient`.                                |
 
 ## Server to Client
 
-The server may only emit data to the client-side with emitClient which requires a Player.
-However, a player can also be substituted for null which will emit to all players.
+The server may only emit data to the client-side with `emitClient` which requires a Player.
+However, a player can also be substituted for `null` which works the same way as `alt.emitAllClients` by emitting it to all clients.
 
 **Server Side**
 
 ```js
 alt.on('playerConnect', player => {
-    alt.emitClient(player, 'sayHello');
+    alt.emitClient(player, 'sayHello'); // Send an event to a specific player
+
+    // Send an event to all players
+    alt.emitClient(null, 'sayHello');
+    alt.emitAllClients('sayHello');
 });
 ```
 
@@ -39,8 +44,8 @@ alt.onServer('sayHello', () => {
 
 ## Client to Server
 
-The client may only emit data to the server-side with emitServer.
-The server-side onServer event will automatically receive a Player in their event handler.
+The client may only emit data to the server-side with `emitServer`.
+The server-side `onServer` event handlers will automatically receive the player that sent the event as the first argument.
 
 **Client Side**
 
@@ -60,9 +65,8 @@ alt.onClient('sayHello', player => {
 
 ## Server Resource to Server Resource
 
-The server may only communicate with itself with on and emit functions.
-The client may only communicate with itself with on and emit functions.
-They speak across resources as well.
+The server & client may only communicate with itself with the `on` and `emit` functions.
+They are sent and received across resources as well.
 
 **Server Side**
 
@@ -88,7 +92,7 @@ alt.on('hello', msg => {
 
 ## Client to WebView and Back
 
-**Note:** Resource in the HTTP address refers to the resource that you are currently writing code for.
+**Note:** `resource` in the URL of the WebView refers to the resource that you are currently writing code for.
 
 **Client Side**
 
