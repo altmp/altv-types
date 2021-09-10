@@ -894,6 +894,13 @@ declare module "alt-server" {
      * ```
      */
     public isEntityInStreamRange(entity: Entity): boolean;
+
+    /**
+     * Set the player into a vehicle on specific seat.
+     *
+     * @beta
+     */
+    public setIntoVehicle(vehicle: Vehicle, seat: number): void;
   }
 
   export class Vehicle extends Entity {
