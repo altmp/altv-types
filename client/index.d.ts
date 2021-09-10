@@ -2763,7 +2763,7 @@ declare module "alt-client" {
    */
   export function clearPedProp(scriptID: number, component: number): void;
 
-  /** @alpha */
+  /** @beta */
   export class Profiler {
     public static readonly heapStats: IHeapStats;
     /** Sampling interval in microseconds. Defaults to 100. */
