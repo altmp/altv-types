@@ -840,10 +840,6 @@ declare module "alt-client" {
      * @beta
      */
     taskChange: (oldTask: number, newTask: number) => void;
-    /** @beta */
-    baseObjectCreate: (object: shared.BaseObject) => void;
-    /** @beta */
-    baseObjectRemove: (object: shared.BaseObject) => void;
   }
 
   export interface IDiscordOAuth2Token {

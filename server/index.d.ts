@@ -382,10 +382,6 @@ declare module "alt-server" {
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     /** @beta */
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
-    /** @beta */
-    baseObjectCreate: (object: shared.BaseObject) => void;
-    /** @beta */
-    baseObjectRemove: (object: shared.BaseObject) => void;
   }
 
   export interface IFireInfo {
