@@ -2783,5 +2783,12 @@ declare module "alt-client" {
     public static stopProfiling(profileName?: string): IProfile;
   }
 
+  /**
+   * Change the position of the alt:V watermark.
+   *
+   * @param position 0 = bottomright, 1 = topright, 2 = topleft.
+   */
+  export function setWatermarkPosition(position: number): void;
+
   export * from "alt-shared";
 }
