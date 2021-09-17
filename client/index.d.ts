@@ -2758,6 +2758,14 @@ declare module "alt-client" {
    * @param component Component id of the prop.
    */
   export function clearPedProp(scriptID: number, component: number): void;
+  
+  
+  /**
+   * Set the the alt:V to a specified position.
+   *
+   * @param position Position of the Watermark (0 = Bottom Right; 1 = Top Right; 2 = Top Left).
+   */
+  export function setWatermarkPosition(position: number): void;
 
   /** @beta */
   export class Profiler {
