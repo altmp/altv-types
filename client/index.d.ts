@@ -2761,7 +2761,7 @@ declare module "alt-client" {
   
   
   /**
-   * Set the the alt:V to a specified position.
+   * Set the position of the alt:V watermark to a specified position.
    *
    * @param position Position of the Watermark (0 = Bottom Right; 1 = Top Right; 2 = Top Left).
    */
