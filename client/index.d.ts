@@ -1871,6 +1871,9 @@ declare module "alt-client" {
   }
 
   export class Blip extends WorldObject {
+    /** @beta */
+    public readonly scriptID: number;
+
     public static routeColor: shared.RGBA;
 
     public alpha: number;
