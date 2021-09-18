@@ -819,7 +819,7 @@ declare module "alt-client" {
     keydown: (key: number) => void;
     keyup: (key: number) => void;
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
-    removeEntity: (object: shared.BaseObject) => void;
+    removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
     /** @beta */
