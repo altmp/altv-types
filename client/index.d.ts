@@ -2334,7 +2334,7 @@ declare module "alt-client" {
    */
   export function isMenuOpen(): boolean;
 
-  export function isTextureExistInArchetype(modelHash: number, modelName: string): boolean;
+  export function isTextureExistInArchetype(modelHash: number, targetTextureName: string): boolean;
 
   /**
    * Loads a model into memory synchronously.
