@@ -968,7 +968,7 @@ declare module "alt-server" {
     public windowTint: WindowTint;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
-
+    constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3);
     /**
      * Retrieves the vehicle from the pool.
      *
