@@ -1871,6 +1871,24 @@ declare module "alt-client" {
   }
 
   export class Blip extends WorldObject {
+    /**
+     * Array with all blips.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const blips = alt.Blip.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < blips.length; i++)
+     * {
+     *   alt.log(`${blips[i].scriptID}`); // Logs the scriptID of every blip
+     * }
+     * ```
+     *
+     * @alpha
+     */
+    public static readonly all: Array<Blip>;
+
     /** @beta */
     public readonly scriptID: number;
 
