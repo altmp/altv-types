@@ -1083,7 +1083,98 @@ declare module "alt-server" {
   export class Blip extends WorldObject {}
 
   export class PointBlip extends Blip {
-    constructor(type: BlipType, x: number, y: number, z: number);
+    /** @alpha */
+    constructor(x: number, y: number, z: number);
+
+    /** @alpha */
+    public sprite: shared.BlipSprite;
+
+    /** @alpha */
+    public size: shared.Vector2;
+
+    /** @alpha */
+    public scale: number;
+
+    /** @alpha */
+    public color: shared.BlipColor;
+
+    /** @alpha */
+    public secondaryColor: number | shared.RGBA;
+
+    /** @alpha */
+    public alpha: number;
+
+    /** @alpha */
+    public flashTimer: number;
+
+    /** @alpha */
+    public flashInterval: number;
+
+    /** @alpha */
+    public route: boolean;
+
+    /** @alpha */
+    public bright: boolean;
+
+    /** @alpha */
+    public number: number;
+
+    /** @alpha */
+    public display: number;
+
+    /** @alpha */
+    public showCone: boolean;
+
+    /** @alpha */
+    public flashes: boolean;
+
+    /** @alpha */
+    public flashesAlternate: boolean;
+
+    /** @alpha */
+    public shortRange: boolean;
+
+    /** @alpha */
+    public priority: number;
+
+    /** @alpha */
+    public heading: number;
+
+    /** @alpha */
+    public gxtName: string;
+
+    /** @alpha */
+    public name: string;
+
+    /** @alpha */
+    public pulse: boolean;
+
+    /** @alpha */
+    public asMissionCreator: boolean;
+
+    /** @alpha */
+    public tickVisible: boolean;
+
+    /** @alpha */
+    public headingIndicatorVisible: boolean;
+
+    /** @alpha */
+    public outlineIndicatorVisible: boolean;
+
+    /** @alpha */
+    public friendIndicatorVisible: boolean;
+
+    /** @alpha */
+    public crewIndicatorVisible: boolean;
+
+    /** @alpha */
+    public category: number;
+
+    /** @alpha */
+    public highDetail: boolean;
+
+    /** @alpha */
+    public shrinked: boolean;
   }
 
   export class Colshape extends WorldObject {
