@@ -1085,6 +1085,8 @@ declare module "alt-server" {
   export class PointBlip extends Blip {
     /** @alpha */
     constructor(x: number, y: number, z: number);
+    /** @alpha */
+    constructor(entity: Entity);
 
     /** @alpha */
     public sprite: shared.BlipSprite;
