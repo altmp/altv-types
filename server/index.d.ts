@@ -1080,103 +1080,106 @@ declare module "alt-server" {
     public setWheelFixed(wheelId: number): void;
   }
 
-  export class Blip extends WorldObject {}
+  /** @alpha */
+  export class Blip extends WorldObject {
+    /**
+     * Array with all blips.
+     *
+     * @remarks This creates a clone of the array everytime it is called.
+     * It is advised to call this once and store the result in a variable, before iterating over it.
+     * @example
+     * ```js
+     * const blips = alt.Blip.all; // Store it in a variable, so it doesn't create a copy of the array on each iteration
+     * for(let i = 0; i < blips.length; i++)
+     * {
+     *   alt.log(`${blips[i].scriptID}`); // Logs the scriptID of every blip
+     * }
+     * ```
+     */
+    public static readonly all: Array<Blip>;
 
-  export class PointBlip extends Blip {
-    /** @alpha */
-    constructor(x: number, y: number, z: number);
-    /** @alpha */
-    constructor(entity: Entity);
+    public static routeColor: shared.RGBA;
 
-    /** @alpha */
     public sprite: shared.BlipSprite;
 
-    /** @alpha */
     public size: shared.Vector2;
 
-    /** @alpha */
     public scale: number;
 
-    /** @alpha */
     public color: shared.BlipColor;
 
-    /** @alpha */
     public secondaryColor: number | shared.RGBA;
 
-    /** @alpha */
     public alpha: number;
 
-    /** @alpha */
     public flashTimer: number;
 
-    /** @alpha */
     public flashInterval: number;
 
-    /** @alpha */
     public route: boolean;
 
-    /** @alpha */
     public bright: boolean;
 
-    /** @alpha */
     public number: number;
 
-    /** @alpha */
     public display: number;
 
-    /** @alpha */
     public showCone: boolean;
 
-    /** @alpha */
     public flashes: boolean;
 
-    /** @alpha */
     public flashesAlternate: boolean;
 
-    /** @alpha */
     public shortRange: boolean;
 
-    /** @alpha */
     public priority: number;
 
-    /** @alpha */
     public heading: number;
 
-    /** @alpha */
     public gxtName: string;
 
-    /** @alpha */
     public name: string;
 
-    /** @alpha */
     public pulse: boolean;
 
-    /** @alpha */
     public asMissionCreator: boolean;
 
-    /** @alpha */
     public tickVisible: boolean;
 
-    /** @alpha */
     public headingIndicatorVisible: boolean;
 
-    /** @alpha */
     public outlineIndicatorVisible: boolean;
 
-    /** @alpha */
     public friendIndicatorVisible: boolean;
 
-    /** @alpha */
     public crewIndicatorVisible: boolean;
 
-    /** @alpha */
     public category: number;
 
-    /** @alpha */
     public highDetail: boolean;
 
-    /** @alpha */
     public shrinked: boolean;
+
+    public attachedTo: Entity;
+
+    public fade(opacity: number, duration: number): void;
+  }
+
+  /** @alpha */
+  export class AreaBlip extends Blip {
+    constructor(x: number, y: number, z: number, width: number, height: number);
+  }
+
+  /** @alpha */
+  export class RadiusBlip extends Blip {
+    constructor(x: number, y: number, z: number, radius: number);
+  }
+
+  /** @alpha */
+  export class PointBlip extends Blip {
+    constructor(x: number, y: number, z: number);
+
+    constructor(entity: Entity);
   }
 
   export class Colshape extends WorldObject {
