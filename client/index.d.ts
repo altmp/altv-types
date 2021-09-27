@@ -154,6 +154,12 @@ declare module "alt-client" {
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
   }
 
+  export const enum WatermarkPosition {
+    bottomright = 0,
+    topright = 1,
+    topleft = 2
+  }
+
   export const enum ProfileSourceType {
     Script = "script",
     Builtin = "builtins",
@@ -2164,9 +2170,9 @@ declare module "alt-client" {
   /**
    * Change the position of the alt:V watermark.
    *
-   * @param position 0 = bottomright, 1 = topright, 2 = topleft.
+   * @param position Watermarkposition.
    */
-  export function setWatermarkPosition(position: number): void;
+  export function setWatermarkPosition(position: WatermarkPosition): void;
 
   export * from "alt-shared";
 }
