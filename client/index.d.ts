@@ -155,9 +155,9 @@ declare module "alt-client" {
   }
 
   export const enum WatermarkPosition {
-    bottomright = 0,
-    topright = 1,
-    topleft = 2
+    BottomRight = 0,
+    TopRight = 1,
+    TopLeft = 2
   }
 
   export const enum ProfileSourceType {
