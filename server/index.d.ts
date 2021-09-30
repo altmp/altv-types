@@ -367,7 +367,6 @@ declare module "alt-server" {
     removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
-    /** @beta */
     resourceError: (error: string, stackTrace: string, file: string, line: number) => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
@@ -380,7 +379,6 @@ declare module "alt-server" {
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
-    /** @beta */
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
   }
 
@@ -495,8 +493,6 @@ declare module "alt-server" {
 
     /**
      * Whether the entity should be streamed for other entities.
-     *
-     * @beta
      */
     public streamed: boolean;
 
@@ -641,21 +637,15 @@ declare module "alt-server" {
     public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
     public readonly flashlightActive: boolean;
-    /** @beta */
     public readonly moveSpeed: number;
-    /** @beta */
     public readonly isInRagdoll: boolean;
-    /** @beta */
     public readonly isAiming: boolean;
     /**
      * Position the player is currently aiming at.
      *
      * @remarks Will return {@link Vector3.zero} if the player is aiming against a entity.
-     *
-     * @beta
      */
     public readonly aimPos: shared.Vector3;
-    /** @beta */
     public readonly headRot: shared.Vector3;
     public health: number;
     public readonly ip: string;
@@ -665,7 +655,6 @@ declare module "alt-server" {
     public readonly ping: number;
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
-    /** @beta */
     public invincible: boolean;
     /**
      * @deprecated See {@link socialID}.
@@ -893,8 +882,6 @@ declare module "alt-server" {
 
     /**
      * Set the player into a vehicle on specific seat.
-     *
-     * @beta
      */
     public setIntoVehicle(vehicle: Vehicle, seat: number): void;
   }
@@ -1217,7 +1204,6 @@ declare module "alt-server" {
 
   export class Checkpoint extends Colshape {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
-    /** @beta */
     constructor(type: number, pos: shared.Vector3, radius: number, height: number, color: shared.RGBA);
   }
 

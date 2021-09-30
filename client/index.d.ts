@@ -185,7 +185,6 @@ declare module "alt-client" {
     removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
-    /** @beta */
     resourceError: (error: string, stackTrace: string, file: string, line: number) => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
@@ -199,8 +198,6 @@ declare module "alt-client" {
     render: () => void;
     /**
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
-     *
-     * @beta
      */
     taskChange: (oldTask: number, newTask: number) => void;
   }
@@ -311,7 +308,6 @@ declare module "alt-client" {
     readonly headers: Record<string, string>;
   }
 
-  /** @beta */
   export interface IHeapStats {
     readonly heapSizeLimit: number;
     readonly totalHeapSize: number;
@@ -320,7 +316,6 @@ declare module "alt-client" {
     readonly peakMallocedMemory: number;
   }
 
-  /** @beta */
   export interface IProfile {
     readonly id: number;
     readonly type: string;
@@ -330,7 +325,6 @@ declare module "alt-client" {
     readonly root: IProfileNode;
   }
 
-  /** @beta */
   export interface IProfileNode {
     readonly id: number;
     readonly function: string;
@@ -344,7 +338,6 @@ declare module "alt-client" {
     readonly lineTicks: Array<ILineTick> | null;
   }
 
-  /** @beta */
   export interface ILineTick {
     readonly line: number;
     readonly hitCount: number;
@@ -1218,8 +1211,6 @@ declare module "alt-client" {
      *
      * @param header Header name.
      * @param value Header value.
-     *
-     * @beta
      */
     public setExtraHeader(header: string, value: string): void;
 
@@ -1227,8 +1218,6 @@ declare module "alt-client" {
      * Sets the zoom level for webview.
      *
      * @param value Zoom level value.
-     *
-     * @beta
      */
     public setZoomLevel(value: number): void;
   }
@@ -1252,7 +1241,6 @@ declare module "alt-client" {
      */
     public static readonly all: Array<Blip>;
 
-    /** @beta */
     public readonly scriptID: number;
 
     public static routeColor: shared.RGBA;
@@ -1336,8 +1324,6 @@ declare module "alt-client" {
    * Create a attached blip to a ped.
    *
    * @param ped Index of the player in alt.Player.all.
-   *
-   * @beta
    */
   export class PedBlip extends Blip {
     constructor(ped: number);
@@ -1347,8 +1333,6 @@ declare module "alt-client" {
    * Create a attached blip to a vehicle.
    *
    * @param vehicle Index of the vehicle in alt.Vehicle.all.
-   *
-   * @beta
    */
   export class VehicleBlip extends Blip {
     constructor(vehicle: number);
@@ -1542,10 +1526,8 @@ declare module "alt-client" {
   export class MemoryBuffer {
     constructor(size: number);
 
-    /** @beta */
     public readonly size: number;
 
-    /** @beta */
     public readonly address: bigint;
 
     public byte(offset: number): number;
@@ -2143,7 +2125,6 @@ declare module "alt-client" {
    */
   export function clearPedProp(scriptID: number, component: number): void;
 
-  /** @beta */
   export class Profiler {
     public static readonly heapStats: IHeapStats;
     /** Sampling interval in microseconds. Defaults to 100. */
