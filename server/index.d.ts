@@ -656,6 +656,12 @@ declare module "alt-server" {
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
     public invincible: boolean;
+    /** @alpha */
+    public readonly isSuperJumpEnabled: boolean;
+    /** @alpha */
+    public readonly isCrouching: boolean;
+    /** @alpha */
+    public readonly isStealthy: boolean;
     /**
      * @deprecated See {@link socialID}.
      */

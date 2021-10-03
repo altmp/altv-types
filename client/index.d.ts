@@ -157,7 +157,7 @@ declare module "alt-client" {
   export const enum WatermarkPosition {
     BottomRight = 0,
     TopRight = 1,
-    TopLeft = 2
+    TopLeft = 2,
   }
 
   export const enum ProfileSourceType {
@@ -680,6 +680,27 @@ declare module "alt-client" {
      * @remarks Value needs to be between 0-1.
      */
     public nonSpatialVolume: number;
+
+    /**
+     * Has the player superjump enabled.
+     *
+     * @alpha
+     */
+    public readonly isSuperJumpEnabled: boolean;
+
+    /**
+     * Is the player currently crouching.
+     *
+     * @alpha
+     */
+    public readonly isCrouching: boolean;
+
+    /**
+     * Is the player currently stealthy.
+     *
+     * @alpha
+     */
+    public readonly isStealthy: boolean;
   }
 
   export class LocalPlayer extends Player {
@@ -754,7 +775,7 @@ declare module "alt-client" {
 
     /**
      * Vehicle velocity vector.
-     * 
+     *
      * @alpha
      */
     //public readonly velocity: shared.Vector3;
