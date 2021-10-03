@@ -2183,5 +2183,19 @@ declare module "alt-client" {
    */
   export function setWatermarkPosition(position: WatermarkPosition): void;
 
+  /**
+   * Represents the current client ping.
+   *
+   * @alpha
+   */
+  export const ping: number;
+
+  /**
+   * Represents the current client fps.
+   *
+   * @alpha
+   */
+  export const fps: number;
+
   export * from "alt-shared";
 }
