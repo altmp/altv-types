@@ -753,6 +753,13 @@ declare module "alt-client" {
     public readonly speedVector: shared.Vector3;
 
     /**
+     * Vehicle velocity vector.
+     * 
+     * @alpha
+     */
+    //public readonly velocity: shared.Vector3;
+
+    /**
      * Vehicle wheels count.
      */
     public readonly wheelsCount: number;

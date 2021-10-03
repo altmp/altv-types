@@ -953,6 +953,10 @@ declare module "alt-server" {
     public readonly frontWheels: number;
     public readonly rearWheels: number;
     public windowTint: WindowTint;
+    /**
+     * @alpha
+     */
+    public readonly velocity: shared.Vector3;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
     constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3);
