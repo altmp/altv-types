@@ -890,6 +890,19 @@ declare module "alt-server" {
      * Set the player into a vehicle on specific seat.
      */
     public setIntoVehicle(vehicle: Vehicle, seat: number): void;
+
+    /**
+     * Plays ambient speech.
+     *
+     * @Remarks See https://github.com/DurtyFree/gta-v-data-dumps/blob/master/speeches.json for a full list of speeches.
+     *
+     * @param speechName Name of the speach.
+     * @param speechParam Param of the speach.
+     * @param speechDictHash Hash of the speach dict.
+     *
+     * @alpha
+     */
+    public playAmbientSpeech(speechName: string, speechParam: string, speechDictHash: number): void;
   }
 
   export class Vehicle extends Entity {
