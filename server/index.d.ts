@@ -969,6 +969,8 @@ declare module "alt-server" {
     public readonly frontWheels: number;
     public readonly rearWheels: number;
     public windowTint: WindowTint;
+    public readonly attached: Vehicle;
+    public readonly attachedTo: Vehicle;
     /**
      * @alpha
      */
