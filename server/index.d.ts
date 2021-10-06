@@ -633,6 +633,7 @@ declare module "alt-server" {
     public armour: number;
     public currentWeapon: number;
     public readonly currentWeaponComponents: Array<number>;
+    /** @alpha */
     public readonly currentWeaponTintIndex: number;
     public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
@@ -640,6 +641,12 @@ declare module "alt-server" {
     public readonly moveSpeed: number;
     public readonly isInRagdoll: boolean;
     public readonly isAiming: boolean;
+    /** @alpha */
+    public readonly isShooting: boolean;
+    /** @alpha */
+    public readonly isJumping: boolean;
+    /** @alpha */
+    public readonly isReloading: boolean;
     /**
      * Position the player is currently aiming at.
      *
