@@ -191,12 +191,6 @@ declare module "alt-client" {
     globalMetaChange: (key: string, value: any, oldValue: any) => void;
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
     /**
-     * No particular usage for now, stick to {@link everyTick} instead.
-     *
-     * @beta
-     */
-    render: () => void;
-    /**
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
      */
     taskChange: (oldTask: number, newTask: number) => void;
