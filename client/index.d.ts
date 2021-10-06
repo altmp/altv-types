@@ -1445,13 +1445,6 @@ declare module "alt-client" {
      *
      */
     public static getForHandlingName(handlingHash: number): HandlingData;
-
-    /**
-     * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
-     *
-     * @deprecated See {@link getForHandlingName}.
-     */
-    public static getForModelName(handlingHash: number): HandlingData;
   }
 
   export class MapZoomData {
@@ -1471,13 +1464,6 @@ declare module "alt-client" {
   }
 
   export class LocalStorage {
-    /**
-     * Gets the local storage instance.
-     *
-     * @deprecated See {@link get}.
-     */
-    public static get(): LocalStorage;
-
     /**
      * Gets the value from the specified key in the local storage.
      */
@@ -1507,48 +1493,6 @@ declare module "alt-client" {
      * Sets the specified key to the specified value in the local storage.
      */
     public static set(key: string, value: any): void;
-
-    /**
-     * Deletes the specified key from the local storage.
-     *
-     * @deprecated Use the static methods instead.
-     */
-    public delete(key: string): void;
-
-    /**
-     * Deletes all keys from the local storage.
-     *
-     * @deprecated Use the static methods instead.
-     */
-    public deleteAll(): void;
-
-    /**
-     * @remarks Alias for deleteAll.
-     *
-     * @deprecated Use the static methods instead.
-     */
-    public clear(): void;
-
-    /**
-     * Gets the value from the specified key in the local storage.
-     *
-     * @deprecated Use the static methods instead.
-     */
-    public get(key: string): any;
-
-    /**
-     * Saves the changes to the disk.
-     *
-     * @deprecated Use the static methods instead.
-     */
-    public save(): void;
-
-    /**
-     * Sets the specified key to the specified value in the local storage.
-     *
-     * @deprecated Use the static methods instead.
-     */
-    public set(key: string, value: any): void;
   }
 
   export class MemoryBuffer {
@@ -1694,15 +1638,6 @@ declare module "alt-client" {
    * @returns True when alt:V client is launched in streamer mode.
    */
   export function isInStreamerMode(): boolean;
-
-  /**
-   * Returns whether voice activity input is enabled in alt:V settings.
-   *
-   * @returns True when voice activity input is enabled in alt:V settings.
-   *
-   * @deprecated Use alt.Voice.activityInputEnabled instead.
-   */
-  export function isVoiceActivityInputEnabled(): boolean;
 
   /**
    * Returns whether the specified key is toggled.

@@ -662,9 +662,6 @@ declare module "alt-server" {
     public readonly isCrouching: boolean;
     /** @alpha */
     public readonly isStealthy: boolean;
-    /**
-     * @deprecated See {@link socialID}.
-     */
     public readonly socialId: string;
     public readonly socialID: string;
     public readonly hwidHash: string;
@@ -990,10 +987,6 @@ declare module "alt-server" {
     public doesWheelHasTire(wheelId: number): boolean;
 
     public getAppearanceDataBase64(): string;
-
-    public getAttached(): Vehicle;
-
-    public getAttachedTo(): Vehicle;
 
     public getArmoredWindowHealth(windowId: number): number;
 
