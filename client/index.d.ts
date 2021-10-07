@@ -1900,6 +1900,11 @@ declare module "alt-client" {
 
     public perMessageDeflate: boolean;
 
+    /**
+     * Optional heartbeat, sent every x seconds when there isn't any traffic.
+     *
+     * @Remarks This makes sure, that load balancers do not kill an idle connection.
+     */
     public pingInterval: number;
 
     public url: string;
