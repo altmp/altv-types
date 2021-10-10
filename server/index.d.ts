@@ -981,7 +981,7 @@ declare module "alt-server" {
     /** @alpha */
     public readonly velocity: shared.Vector3;
     /** @alpha */
-    public driftModeOn: boolean;
+    public driftModeEnabled: boolean;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
     constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3);
