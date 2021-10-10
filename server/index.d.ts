@@ -978,10 +978,10 @@ declare module "alt-server" {
     public windowTint: WindowTint;
     public readonly attached: Vehicle;
     public readonly attachedTo: Vehicle;
-    /**
-     * @alpha
-     */
+    /** @alpha */
     public readonly velocity: shared.Vector3;
+    /** @alpha */
+    public driftModeOn: boolean;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
     constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3);
