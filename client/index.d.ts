@@ -341,7 +341,7 @@ declare module "alt-client" {
      * @param category The category of the audio. Defaults to 'radio'.
      * @param play2D If the sound will be played in 2D, if false it will be 3D.
      */
-    public constructor(source: string, volume: number, category?: string, play2D?: boolean);
+    public constructor(source: string, volume: number, category?: shared.AudioCategory, play2D?: boolean);
 
     public source: string;
 
@@ -349,7 +349,7 @@ declare module "alt-client" {
 
     public volume: number;
 
-    public category: string;
+    public category: shared.AudioCategory;
 
     public readonly frontendPlay: boolean;
 
