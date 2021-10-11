@@ -13,7 +13,7 @@ declare module "alt-shared" {
     WebSocketClient,
     HttpClient,
     Audio,
-    LocalPlayer
+    LocalPlayer,
   }
 
   export enum BlipSprite {
@@ -601,7 +601,7 @@ declare module "alt-shared" {
     ArenaSasquatch,
     ArenaScarab,
     ArenaSlamvan,
-    ArenaZr
+    ArenaZr,
   }
 
   export enum BlipColor {
@@ -656,7 +656,7 @@ declare module "alt-shared" {
     DeepRed = 76,
     TransparentRed = 79,
     TransparentBlue = 80,
-    Purple = 83
+    Purple = 83,
   }
 
   export enum AudioCategory {
@@ -885,13 +885,13 @@ declare module "alt-shared" {
     x291E7FD7 = "0x291E7FD7",
     x94821026 = "0x94821026",
     xFB40B82B = "0xFB40B82B",
-    xCFF0C1C2 = "0xCFF0C1C2"
+    xCFF0C1C2 = "0xCFF0C1C2",
   }
 
   export const enum FileEncoding {
     Utf8 = "utf-8",
     Utf16 = "utf-16",
-    Binary = "binary"
+    Binary = "binary",
   }
 
   export interface IVector2 {
