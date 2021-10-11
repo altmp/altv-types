@@ -659,7 +659,7 @@ declare module "alt-shared" {
     Purple = 83,
   }
 
-  export enum AudioCategory {
+  export const enum AudioCategory {
     x44E21C90 = "0x44E21C90",
     xBAD598C7 = "0xBAD598C7",
     xA4D158B0 = "0xA4D158B0",
