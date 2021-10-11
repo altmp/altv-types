@@ -196,12 +196,6 @@ declare module "alt-client" {
     taskChange: (oldTask: number, newTask: number) => void;
   }
 
-  export interface IDiscordOAuth2Token {
-    readonly token: string;
-    readonly expires: number;
-    readonly scopes: string;
-  }
-
   export interface IDiscordUser {
     readonly id: string;
     readonly name: string;
