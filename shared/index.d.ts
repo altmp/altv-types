@@ -979,7 +979,7 @@ declare module "alt-shared" {
     public isInRange(vector: IVector3, range: number): boolean;
 
     /** @alpha */
-    public lerp(): Vector3;
+    public lerp(vector: IVector3, ratio: number): Vector3;
 
     public static readonly zero: Vector3;
 
@@ -1074,7 +1074,7 @@ declare module "alt-shared" {
     public isInRange(vector: IVector2, range: number): boolean;
 
     /** @alpha */
-    public lerp(): Vector2;
+    public lerp(vector: IVector2, ratio: number): Vector2;
 
     public static readonly zero: Vector2;
 
