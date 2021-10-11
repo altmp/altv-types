@@ -978,6 +978,9 @@ declare module "alt-shared" {
 
     public isInRange(vector: IVector3, range: number): boolean;
 
+    /** @alpha */
+    public lerp(): Vector3;
+
     public static readonly zero: Vector3;
 
     public static readonly one: Vector3;
@@ -1069,6 +1072,9 @@ declare module "alt-shared" {
     public toDegrees(): Vector2;
 
     public isInRange(vector: IVector2, range: number): boolean;
+
+    /** @alpha */
+    public lerp(): Vector2;
 
     public static readonly zero: Vector2;
 
