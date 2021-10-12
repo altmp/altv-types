@@ -790,7 +790,7 @@ declare module "alt-shared" {
     xC7D71D61 = "0xC7D71D61",
     x2F34D6FC = "0x2F34D6FC",
     ScriptedAlarms = "scripted_alarms",
-    weather_rain_heavy = "weather_rain_heavy",
+    WeatherRainHeavy = "weather_rain_heavy",
     x88EEAE72 = "0x88EEAE72",
     VehiclesHelisDistant = "vehicles_helis_distant",
     VehiclesPlanesProp = "vehicles_planes_prop",
