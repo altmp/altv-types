@@ -430,6 +430,8 @@ declare module "alt-server" {
   export class WorldObject extends shared.BaseObject {
     /**
      * Object dimension.
+     *
+     * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
      */
     public dimension: number;
 
