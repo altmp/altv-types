@@ -692,7 +692,7 @@ declare module "alt-shared" {
     VehiclesChassisRattle = "vehicles_chassis_rattle",
     VehiclesSuspension = "vehicles_suspension",
     xDF9CFFD4 = "0xDF9CFFD4",
-    VehiclesEnginesIntake= "vehicles_engines_intake",
+    VehiclesEnginesIntake = "vehicles_engines_intake",
     xF48DE3B3 = "0xF48DE3B3",
     VehiclesEnginesDamage = "vehicles_engines_damage",
     VehiclesEnginesIgnition = "vehicles_engines_ignition",
@@ -834,7 +834,7 @@ declare module "alt-shared" {
     VehiclesTrainBrakes = "vehicles_train_brakes",
     xD2626419 = "0xD2626419",
     WeaponsExplosionsLoud = "weapons_explosions_loud",
-    PedsCollisionsLoud  = "peds_collisions_loud",
+    PedsCollisionsLoud = "peds_collisions_loud",
     x03D39751 = "0x03D39751",
     CollisionsScripted = "collisions_scripted",
     xE8C16DEA = "0xE8C16DEA",
@@ -1189,6 +1189,15 @@ declare module "alt-shared" {
      * @param key The key of the value to store.
      */
     public setMeta(key: string, value: any): void;
+
+    /**
+     * Returns the ref count of the entity.
+     *
+     * @remarks It's only available in debug-mode.
+     *
+     * @alpha
+     */
+    public readonly refCount: number;
   }
 
   /**
