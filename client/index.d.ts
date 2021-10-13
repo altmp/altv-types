@@ -674,21 +674,21 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    public readonly isSuperJumpEnabled: boolean;
+    //public readonly isSuperJumpEnabled: boolean;
 
     /**
      * Is the player currently crouching.
      *
      * @alpha
      */
-    public readonly isCrouching: boolean;
+    //public readonly isCrouching: boolean;
 
     /**
      * Is the player currently stealthy.
      *
      * @alpha
      */
-    public readonly isStealthy: boolean;
+    //public readonly isStealthy: boolean;
   }
 
   export class LocalPlayer extends Player {
