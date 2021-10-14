@@ -1092,6 +1092,60 @@ declare module "alt-server" {
     public setWindowOpened(windowId: number, state: boolean): void;
 
     public setWheelFixed(wheelId: number): void;
+
+    /** @alpha */
+    public isMissionTrain: boolean;
+
+    /** @alpha */
+    public trainTrackId: number;
+
+    /** @alpha */
+    public readonly trainEngineId: Vehicle | null;
+
+    /** @alpha */
+    public setTrainEngineId(vehicle: Vehicle | null): void;
+
+    /** @alpha */
+    public trainConfigIndex: number;
+
+    /** @alpha */
+    public trainDistanceFromEngine: number;
+
+    /** @alpha */
+    public isTrainEngine: boolean;
+
+    /** @alpha */
+    public isTrainCaboose: boolean;
+
+    /** @alpha */
+    public trainDirection: boolean;
+
+    /** @alpha */
+    public trainPassengerCarriages: boolean;
+
+    /** @alpha */
+    public trainRenderDerailed: boolean;
+
+    /** @alpha */
+    public trainForceDoorsOpen: boolean;
+
+    /** @alpha */
+    public trainCruiseSpeed: number;
+
+    /** @alpha */
+    public trainCarriageConfigIndex: number;
+
+    /** @alpha */
+    public readonly trainLinkedToBackwardId: Vehicle | null;
+
+    /** @alpha */
+    public setTrainLinkedToBackwardId(vehicle: Vehicle | null): void;
+
+    /** @alpha */
+    public readonly trainLinkedToForwardId: Vehicle | null;
+
+    /** @alpha */
+    public setTrainLinkedToForwardId(vehicle: Vehicle | null): void;
   }
 
   /** @alpha */
