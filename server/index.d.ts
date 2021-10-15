@@ -1146,6 +1146,15 @@ declare module "alt-server" {
 
     /** @alpha */
     public setTrainLinkedToForwardId(vehicle: Vehicle | null): void;
+
+    /**
+     * Activates the searchlight and follows the target.
+     *
+     * @remarks This can only be used for helicopter searchlights.
+     *
+     * @alpha
+     */
+    public setSearchLightTo(entity: Entity, state: boolean): void;
   }
 
   /** @alpha */
