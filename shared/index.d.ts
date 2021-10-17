@@ -918,6 +918,9 @@ declare module "alt-shared" {
 
     constructor(obj: IVector3);
 
+    /** @alpha */
+    constructor(value: number);
+
     public get length(): number;
 
     public toArray(): [number, number, number];
@@ -1012,6 +1015,9 @@ declare module "alt-shared" {
     constructor(arr: [number, number]);
 
     constructor(obj: IVector2);
+
+    /** @alpha */
+    constructor(value: number);
 
     public get length(): number;
 
