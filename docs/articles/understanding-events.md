@@ -2,10 +2,10 @@
 
 Events work in a very specific way and understanding their communication is very important.
 
-The server can talk to any client.
-Clients may only talk to WebViews and the server.
+The server can communicate with any client.
+Clients may only communicate with WebViews and the server.
 
-A client **CANNOT** talk to another client.
+A client **CANNOT** communicate with another client.
 
 | Function Name      | Description                                                                                      |
 | ------------------ | ------------------------------------------------------------------------------------------------ |
@@ -17,13 +17,19 @@ A client **CANNOT** talk to another client.
 | alt.onClient       | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.       |
 | alt.emitServer     | Emit an event to the server that is received with `alt.onClient`.                                |
 
-## Server to Client
+## Server to client
 
-The server may only emit data to the client-side with `emitClient` which requires a Player.
+The server may only emit data to the client-side with `emitClient`, which requires a Player.
 However, a player can also be substituted for `null` which works the same way as `alt.emitAllClients` by emitting it to all clients.
 
-**Server Side**
 
+# [Client-side](#tab/tab1-0)
+```js
+alt.onServer('sayHello', () => {
+    alt.log('Hello from server.');
+});
+```
+# [Server-side](#tab/tab1-1)
 ```js
 alt.on('playerConnect', player => {
     alt.emitClient(player, 'sayHello'); // Send an event to a specific player
@@ -34,42 +40,30 @@ alt.on('playerConnect', player => {
 });
 ```
 
-**Client Side**
-
-```js
-alt.onServer('sayHello', () => {
-    alt.log('Hello from server.');
-});
-```
-
-## Client to Server
+## Client to server
 
 The client may only emit data to the server-side with `emitServer`.
 The server-side `onServer` event handlers will automatically receive the player that sent the event as the first argument.
 
-**Client Side**
-
+# [Client-side](#tab/tab2-0)
 ```js
 alt.on('connectionComplete', () => {
     alt.emitServer('sayHello');
 });
 ```
-
-**Server Side**
-
+# [Server-side](#tab/tab2-1)
 ```js
 alt.onClient('sayHello', player => {
     alt.log(`${player.name} is saying hello`);
 });
 ```
 
-## Server Resource to Server Resource
+## Server resource to server resource
 
 The server & client may only communicate with itself with the `on` and `emit` functions.
 They are sent and received across resources as well.
 
-**Server Side**
-
+# [Server-side](#tab/tab3-0)
 ```js
 alt.emit('hello', 'this is a message');
 
@@ -78,10 +72,10 @@ alt.on('hello', msg => {
 });
 ```
 
-## Client Resource to Client Resource
+## Client resource to client resource
 
-**Client Side**
 
+# [Client-side](#tab/tab4-0)
 ```js
 alt.emit('hello', 'this is a message');
 
@@ -90,12 +84,11 @@ alt.on('hello', msg => {
 });
 ```
 
-## Client to WebView and Back
+## Client to WebView and back
 
 **Note:** `resource` in the URL of the WebView refers to the resource that you are currently writing code for.
 
-**Client Side**
-
+# [Client-side code](#tab/tab5-0)
 ```js
 const webview = new alt.WebView('http://resource/client/html/index.html');
 webview.on('test2', handleFromWebview);
@@ -108,9 +101,7 @@ alt.setTimeout(() => {
     webview.emit('test', 'Hello from Client');
 }, 500);
 ```
-
-**Client Side HTML Page**
-
+# [Client-side HTML](#tab/tab5-1)
 ```html
 <html>
     <head>
