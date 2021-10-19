@@ -64,12 +64,12 @@ alt.on('eventName', (...args) => {
 
 worker.js
 ```js
-worker.on('eventName', (...args) => {
-    console.log(args);
-});
+alt.emit('eventName', true, 0, [''], { p1: new Map() });
 ```
 
 client.js
 ```js
-alt.emit('eventName', true, 0, [''], { p1: new Map() });
+worker.on('eventName', (...args) => {
+    console.log(args);
+});
 ```
