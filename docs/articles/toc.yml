@@ -1,3 +1,5 @@
+- name: Workers
+  href: workers.md
 - name: Getting Started
   href: index.md
   items:
