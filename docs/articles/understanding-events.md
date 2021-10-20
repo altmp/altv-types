@@ -39,6 +39,7 @@ alt.on('playerConnect', player => {
     alt.emitAllClients('sayHello');
 });
 ```
+***
 
 ## Client to server
 
@@ -57,6 +58,7 @@ alt.onClient('sayHello', player => {
     alt.log(`${player.name} is saying hello`);
 });
 ```
+***
 
 ## Server resource to server resource
 
@@ -71,6 +73,7 @@ alt.on('hello', msg => {
     alt.log(msg);
 });
 ```
+***
 
 ## Client resource to client resource
 
@@ -83,6 +86,7 @@ alt.on('hello', msg => {
     alt.log(msg);
 });
 ```
+***
 
 ## Client to WebView and back
 
@@ -120,3 +124,4 @@ alt.setTimeout(() => {
     </body>
 </html>
 ```
+***
