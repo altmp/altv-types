@@ -11,10 +11,13 @@ A client **CANNOT** communicate with another client.
 | ------------------ | ------------------------------------------------------------------------------------------------ |
 | alt.emit           | Emit an event on server or client side. Only received on the side it was emitted from.           |
 | alt.on             | Receives an event. Server only receives server events. Client only receives client events.       |
+| alt.off            | Stop listening to custom or built-in events.                                                     |
 | alt.onServer       | Receives an event emitted from the server on client-side. Triggered with `alt.emitClient`.       |
+| alt.offServer      | Stop listening to custom events from the server.                                                 |
 | alt.emitClient     | Emit an event to a specific client or an array of clients that they receive with `alt.onServer`. |
 | alt.emitAllClients | Emit an event to all clients that they receive with `alt.onServer`.                              |
 | alt.onClient       | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.       |
+| alt.offClient      | Stop listening to custom events from the client.                                                 |
 | alt.emitServer     | Emit an event to the server that is received with `alt.onClient`.                                |
 
 ## Server to client
