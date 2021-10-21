@@ -128,3 +128,28 @@ alt.setTimeout(() => {
 </html>
 ```
 ***
+
+## Unsubscribes from events
+
+# [alt.off(Server-side/Client-side)](#tab/tab6-0)
+```js
+alt.on('customEventName', customEventFunction);
+function customEventFunction() {
+    alt.off('customEventName', customEventFunction);
+}
+```
+# [alt.offClient(Server-side)](#tab/tab6-1)
+```js
+alt.onClient('customEventName', customEventFunction);
+function customEventFunction() {
+    alt.offClient('customEventName', customEventFunction);
+}
+```
+# [alt.offServer(Client-side)](#tab/tab6-2)
+```js
+alt.onServer('customEventName', customEventFunction);
+function customEventFunction() {
+    alt.offServer('customEventName', customEventFunction);
+}
+```
+***
