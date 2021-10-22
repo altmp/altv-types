@@ -147,8 +147,6 @@ declare module "natives" {
 
   export function _0xF3F776ADA161E47D(p0: any, p1: any): void;
 
-  export function _0xADD6627C4D325458(p0: any): void;
-
   /**
   * 1 match in 1 script. cellphone_controller.
   * @param unused is -1 in scripts.
@@ -161,7 +159,7 @@ declare module "natives" {
 
   export function _0xCB82A0BF0E3E3265(p0: any): any;
 
-  export function _0x6A12D88881435DCA(): void;
+  export function freeMemoryForLowQualityPhoto(): void;
 
   export function drawLowQualityPhotoToPhone(p0: boolean, p1: boolean): void;
 
@@ -169,10 +167,7 @@ declare module "natives" {
 
   export function getMaximumNumberOfCloudPhotos(): number;
 
-  /**
-  * GET_CURRENT_*
-  */
-  export function getCurrentNumberOfPhotos(): number;
+  export function getCurrentNumberOfCloudPhotos(): number;
 
   /**
   * 2 matches across 2 scripts. Only showed in appcamera & appmedia. Both were 0.
@@ -303,7 +298,7 @@ declare module "natives" {
   */
   export function setCheckpointScale(checkpoint: number, p0: number): void;
 
-  export function _0x44621483FF966526(p0: any, p1: any): void;
+  export function setCheckpointIconScale(checkpoint: number, scale: number): void;
 
   /**
   * Sets the cylinder height of the checkpoint.
@@ -322,7 +317,7 @@ declare module "natives" {
   /**
   * Sets the checkpoint icon color.
   */
-  export function setCheckpointIconRgba(checkpoint: number, red: number, green: number, blue: number, alpha: number): void;
+  export function setCheckpointRgba2(checkpoint: number, red: number, green: number, blue: number, alpha: number): void;
 
   /**
   * This does not move an existing checkpoint... so wtf.
@@ -542,7 +537,7 @@ declare module "natives" {
 
   export function releaseMovieMeshSet(movieMeshSet: number): void;
 
-  export function _0x9B6E70C5CEEF4EEB(p0: any): any;
+  export function queryMovieMeshSetState(p0: any): any;
 
   /**
   * int screenresx,screenresy;
@@ -836,10 +831,7 @@ declare module "natives" {
   */
   export function _0x6A51F78772175A51(toggle: boolean): void;
 
-  /**
-  * TOGGLE_*
-  */
-  export function _0xE63D7C6EECECB66B(toggle: boolean): void;
+  export function togglePlayerDamageOverlay(toggle: boolean): void;
 
   /**
   * Sets an unknown value related to timecycles.
@@ -1157,14 +1149,8 @@ declare module "natives" {
 
   export function getIsPetrolDecalInRange(xCoord: number, yCoord: number, zCoord: number, radius: number): boolean;
 
-  /**
-  * Old name: _OVERRIDE_DECAL_TEXTURE
-  */
   export function patchDecalDiffuseMap(decalType: number, textureDict: string, textureName: string): void;
 
-  /**
-  * Old name: _UNDO_DECAL_TEXTURE_OVERRIDE
-  */
   export function unpatchDecalDiffuseMap(decalType: number): void;
 
   export function moveVehicleDecals(p0: any, p1: any): void;
@@ -1276,10 +1262,7 @@ declare module "natives" {
 
   export function addTcmodifierOverride(modifierName1: string, modifierName2: string): void;
 
-  /**
-  * CLEAR_A*
-  */
-  export function _0x15E33297C3E8DC60(p0: string): void;
+  export function removeTcmodifierOverride(p0: string): void;
 
   /**
   * Full list of timecycle modifiers by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/timecycleModifiers.json
@@ -1509,10 +1492,7 @@ declare module "natives" {
 
   export function scaleformMovieMethodAddParamPlayerNameString(string: string): void;
 
-  /**
-  * DOES_*
-  */
-  export function _0x5E657EF1099EDD65(p0: any): boolean;
+  export function doesLatestBriefStringExist(p0: number): boolean;
 
   export function scaleformMovieMethodAddParamLatestBriefString(value: number): void;
 
@@ -2115,7 +2095,7 @@ declare module "natives" {
   */
   export function setPedVoiceGroup(ped: Player | number, voiceGroupHash: number): void;
 
-  export function _0xA5342D390CDA41D6(ped: Player | number, p1: boolean): void;
+  export function setPedAudioGender(ped: Player | number, p1: boolean): void;
 
   export function stopCurrentPlayingSpeech(ped: Player | number): void;
 
@@ -2180,7 +2160,7 @@ declare module "natives" {
   export function getPlayerRadioStationName(): string;
 
   /**
-  * Returns String with radio station name.
+  * Converts radio station index to string. Use HUD::_GET_LABEL_TEXT to get the user-readable text.
   */
   export function getRadioStationName(radioStation: number): string;
 
@@ -2203,19 +2183,23 @@ declare module "natives" {
   export function _0xDD6BCF9E94425DF9(): void;
 
   /**
-  * For a full list, see here: pastebin.com/Kj9t38KF
+  * List of radio stations that are in the wheel, in clockwise order, as of LS Tuners DLC: https://git.io/J8a3k
+  * An older list including hidden radio stations: https://pastebin.com/Kj9t38KF
   */
   export function setRadioToStationName(stationName: string): void;
 
   /**
-  * For a full list, see here: pastebin.com/Kj9t38KF
+  * List of radio stations that are in the wheel, in clockwise order, as of LS Tuners DLC: https://git.io/J8a3k
+  * An older list including hidden radio stations: https://pastebin.com/Kj9t38KF
   */
   export function setVehRadioStation(vehicle: Vehicle | number, radioStation: string): void;
+
+  export function setVehHasRadioOverride(vehicle: Vehicle | number): void;
 
   /**
   * IS_VEHICLE_*
   */
-  export function _0x0BE4BE946463F917(vehicle: Vehicle | number): boolean;
+  export function isVehicleRadioEnabled(vehicle: Vehicle | number): boolean;
 
   /**
   * SET_VEH*
@@ -2320,7 +2304,7 @@ declare module "natives" {
 
   export function getNumUnlockedRadioStations(): number;
 
-  export function findRadioStationIndex(station: number): number;
+  export function findRadioStationIndex(stationNameHash: number): number;
 
   /**
   * 6 calls in the b617d scripts, removed identical lines:
@@ -2337,6 +2321,8 @@ declare module "natives" {
   */
   export function unlockRadioStationTrackList(radioStation: string, trackListName: string): void;
 
+  export function lockRadioStationTrackList(radioStation: string, trackListName: string): void;
+
   /**
   * Just a nullsub (i.e. does absolutely nothing) since build 1604.
   */
@@ -2348,10 +2334,17 @@ declare module "natives" {
   export function lockRadioStation(radioStationName: string, toggle: boolean): void;
 
   /**
+  * Doesn't have an effect in Story Mode.
+  */
+  export function setRadioStationIsVisible(radioStation: string, toggle: boolean): void;
+
+  /**
   * GET_NE*
   * Gets values from the radio?
   */
   export function _0xC64A06D939F826F5(p0?: number, p1?: number, p2?: number): [boolean, number, number, number];
+
+  export function forceRadioTrackListPosition(radioStation: string, trackListName: string, milliseconds: number): void;
 
   /**
   * GET_CURRENT_*
@@ -2452,6 +2445,9 @@ declare module "natives" {
   */
   export function _0x02E93C796ABD3A97(p0: boolean): void;
 
+  /**
+  * SET_VEHICLE_CONVERSATIONS_PERSIST?
+  */
   export function _0x58BB377BEC7CD5F4(p0: boolean, p1: boolean): void;
 
   export function _0x9BD7BD55E4533183(p0: any, p1: any, p2: any): void;
@@ -2525,6 +2521,8 @@ declare module "natives" {
 
   export function setSirenWithNoDriver(vehicle: Vehicle | number, toggle: boolean): void;
 
+  export function setSirenKeepOn(vehicle: Vehicle | number, toggle: boolean): void;
+
   export function triggerSiren(vehicle: Vehicle | number): void;
 
   /**
@@ -2555,28 +2553,19 @@ declare module "natives" {
 
   export function preloadVehicleAudio(vehicleModel: number): void;
 
-  /**
-  * 2 calls found in the b617d scripts:
-  * AUDIO::_F1F8157B8C3F171C(l_A42, "Franklin_Bike_Rev", "BIG_SCORE_3A_SOUNDS");
-  * AUDIO::_F1F8157B8C3F171C(l_166, "Trevor_Revs_Off", "PALETO_SCORE_SETUP_SOUNDS");
-  */
-  export function _0xF1F8157B8C3F171C(vehicle: Vehicle | number, p1: string, p2: string): void;
+  export function setVehicleStartupRevSound(vehicle: Vehicle | number, p1: string, p2: string): void;
 
-  export function _0xD2DCCD8E16E20997(p0: any): void;
+  export function resetVehicleStartupRevSound(vehicle: Vehicle | number): void;
 
-  export function _0x5DB8010EE71FDEF2(vehicle: Vehicle | number): boolean;
+  export function _0x97FFB4ADEED08066(p0: any, p1: any): void;
+
+  export function isVehicleAudiblyDamaged(vehicle: Vehicle | number): boolean;
 
   export function setVehicleAudioEngineDamageFactor(vehicle: Vehicle | number, damageFactor: number): void;
 
-  /**
-  * SET_VEHICLE_*
-  */
-  export function _0x01BB4D577D38BD9E(vehicle: Vehicle | number, p1: number): void;
+  export function setVehicleAudioBodyDamageFactor(vehicle: Vehicle | number, p1: number): void;
 
-  /**
-  * ENABLE_VEHICLE_*
-  */
-  export function _0x1C073274E065C6D2(vehicle: Vehicle | number, toggle: boolean): void;
+  export function enableVehicleFanbeltDamage(vehicle: Vehicle | number, toggle: boolean): void;
 
   export function enableVehicleExhaustPops(vehicle: Vehicle | number, toggle: boolean): void;
 
@@ -2594,9 +2583,15 @@ declare module "natives" {
 
   export function setScriptUpdateDoorAudio(doorHash: number, toggle: boolean): void;
 
-  export function playVehicleDoorOpenSound(vehicle: Vehicle | number, doorIndex: number): void;
+  /**
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
+  */
+  export function playVehicleDoorOpenSound(vehicle: Vehicle | number, doorId: number): void;
 
-  export function playVehicleDoorCloseSound(vehicle: Vehicle | number, doorIndex: number): void;
+  /**
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
+  */
+  export function playVehicleDoorCloseSound(vehicle: Vehicle | number, doorId: number): void;
 
   /**
   * Works for planes only.
@@ -2640,10 +2635,7 @@ declare module "natives" {
 
   export function setAudioSceneVariable(scene: string, unkVariable: string, value: number): void;
 
-  /**
-  * SET_AUDIO_S*
-  */
-  export function _0xA5F377B175A699C5(p0: number): void;
+  export function setAudioScriptCleanupTime(time: number): void;
 
   /**
   * All found occurrences in b678d:
@@ -2689,10 +2681,7 @@ declare module "natives" {
 
   export function _0x8BF907833BE275DE(p0: number, p1: number): void;
 
-  /**
-  * FORCE_*
-  */
-  export function _0x062D5EAD4DA2FA6A(): void;
+  export function forcePedPanicWalla(): void;
 
   /**
   * Example:
@@ -2744,12 +2733,12 @@ declare module "natives" {
   /**
   * Enables/disables ped's "loud" footstep sound.
   */
-  export function setPedLoudFoostepAudio(ped: Player | number, toggle: boolean): void;
+  export function setPedAudioFootstepLoud(ped: Player | number, toggle: boolean): void;
 
   /**
   * Enables/disables ped's "quiet" footstep sound.
   */
-  export function setPedQuietFootstepAudio(ped: Player | number, toggle: boolean): void;
+  export function setPedAudioFootstepQuiet(ped: Player | number, toggle: boolean): void;
 
   /**
   * Sets audio flag "OverridePlayerGroundMaterial"
@@ -2843,18 +2832,15 @@ declare module "natives" {
   export function removePortalSettingsOverride(p0: string): void;
 
   /**
-  * STOP_S*
+  * STOP_S[MOKE_GRENADE_EXPLOSION_SOUNDS]?
   */
   export function _0xE4E6DD5566D28C82(): void;
 
-  export function _0x3A48AB4445D499BE(): any;
+  export function getMusicVolSlider(): number;
 
-  /**
-  * Speech related.
-  */
-  export function setPedTalk(ped: Player | number): void;
+  export function requestTennisBanks(ped: Player | number): void;
 
-  export function _0x0150B6FF25A9E2E5(): void;
+  export function unrequestTennisBanks(): void;
 
   export function _0xBEF34B1D9624D5DD(p0: boolean): void;
 
@@ -3151,6 +3137,8 @@ declare module "natives" {
   */
   export function setCamDebugName(camera: number, name: string): void;
 
+  export function getDebugCamera(): number;
+
   /**
   * I filled p1-p6 (the floats) as they are as other natives with 6 floats in a row are similar and I see no other method. So if a test from anyone proves them wrong please correct.
   * @param length (length) determines the length of the spline, affects camera path and duration of transition between previous node and this one
@@ -3413,7 +3401,7 @@ declare module "natives" {
 
   export function stopGameplayCamShaking(p0: boolean): void;
 
-  export function setGameplayCamPedThisFrame(ped: Player | number): void;
+  export function setGameplayCamFollowPedThisUpdate(ped: Player | number): void;
 
   /**
   * - During busted screen.
@@ -3438,9 +3426,9 @@ declare module "natives" {
 
   export function isGameplayCamLookingBehind(): boolean;
 
-  export function _0x2AED6301F67007D5(entity: Entity | number): void;
+  export function disableCamCollisionForEntity(entity: Entity | number): void;
 
-  export function _0x49482F9FCD825AAA(entity: Entity | number): void;
+  export function disableCamCollisionForObject(entity: Entity | number): void;
 
   export function _0xA7092AFE81944852(): void;
 
@@ -3502,7 +3490,7 @@ declare module "natives" {
   */
   export function animateGameplayCamZoom(p0: number, distance: number): void;
 
-  export function _0xE9EA16D6E54CDCA4(p0: Vehicle | number, p1: number): void;
+  export function setInVehicleCamStateThisUpdate(p0: Vehicle | number, p1: number): void;
 
   /**
   * Disables first person camera for the current frame.
@@ -3573,28 +3561,28 @@ declare module "natives" {
   export function setFollowVehicleCamViewMode(viewMode: number): void;
 
   /**
-  * interprets the result of CAM::_0x19CAFA3C87F7C2FF()
-  * example: // checks if you're currently in first person
-  * if ((CAM::_EE778F8C7E1142E2(CAM::_19CAFA3C87F7C2FF()) == 4) && (!__463_$28ED382849B17AFC())) {
-  * HUD::_FDEC055AB549E328();
-  * HUD::_SET_NOTIFICATION_TEXT_ENTRY("REC_FEED_WAR");
-  * l_CE[01] = HUD::_DRAW_NOTIFICATION(0, 1);
-  * }
+  * @param context see _GET_CAM_ACTIVE_VIEW_MODE_CONTEXT
   */
-  export function _0xEE778F8C7E1142E2(p0: any): any;
-
-  export function _0x2A2173E46DAECD12(p0: any, p1: any): void;
+  export function getCamViewModeForContext(context: number): number;
 
   /**
-  * example: // checks if you're currently in first person
-  * if ((CAM::_EE778F8C7E1142E2(CAM::_19CAFA3C87F7C2FF()) == 4) && (!__463_$28ED382849B17AFC())) {
-  * HUD::_FDEC055AB549E328();
-  * HUD::_SET_NOTIFICATION_TEXT_ENTRY("REC_FEED_WAR");
-  * l_CE[01] = HUD::_DRAW_NOTIFICATION(0, 1);
-  * }
-  * @returns Seems to return the current type of view
+  * @param context see _GET_CAM_ACTIVE_VIEW_MODE_CONTEXT
   */
-  export function _0x19CAFA3C87F7C2FF(): any;
+  export function setCamViewModeForContext(context: number, viewMode: number): void;
+
+  /**
+  * enum Context
+  * {
+  * ON_FOOT,
+  * IN_VEHICLE,
+  * ON_BIKE,
+  * IN_BOAT,
+  * IN_AIRCRAFT,
+  * IN_SUBMARINE,
+  * IN_HELI,
+  * See NativeDB for reference: http://natives.altv.mp/#/0x19CAFA3C87F7C2FF
+  */
+  export function getCamActiveViewModeContext(): number;
 
   export function useStuntCameraThisFrame(): void;
 
@@ -3628,9 +3616,9 @@ declare module "natives" {
 
   export function setFirstPersonCamPitchRange(p0: number, p1: number): void;
 
-  export function setFirstPersonCamNearClip(p0: number): void;
+  export function setFirstPersonAimCamNearClipThisUpdate(p0: number): void;
 
-  export function setThirdPersonAimCamNearClip(p0: number): void;
+  export function setThirdPersonAimCamNearClipThisUpdate(p0: number): void;
 
   export function _0x4008EDF7D6E48175(p0: boolean): void;
 
@@ -3694,14 +3682,8 @@ declare module "natives" {
 
   export function setGameplayHintFov(FOV: number): void;
 
-  /**
-  * Old name: _SET_GAMEPLAY_HINT_ANIM_OFFSETZ
-  */
   export function setGameplayHintFollowDistanceScalar(value: number): void;
 
-  /**
-  * Old name: _SET_GAMEPLAY_HINT_ANGLE
-  */
   export function setGameplayHintBaseOrbitPitchOffset(value: number): void;
 
   export function setGameplayHintAnimOffsetx(xOffset: number): void;
@@ -4036,7 +4018,7 @@ declare module "natives" {
 
   export function _0x5EDEF0CF8C1DAB3C(): any;
 
-  export function _0x41FAA8FB2ECE8720(p0: boolean): void;
+  export function setCutsceneCanBeSkipped(p0: boolean): void;
 
   export function registerSynchronisedScriptSpeech(): void;
 
@@ -4078,25 +4060,25 @@ declare module "natives" {
 
   export function datafileHasValidFileData(p0: any): boolean;
 
-  export function datafileSelectActiveFile(p0: any): boolean;
+  export function datafileSelectActiveFile(p0: any, p1: any): boolean;
 
   export function datafileDeleteRequestedFile(p0: any): boolean;
 
-  export function ugcCreateContent(data: any | null, dataCount: number, contentName: string, description: string, tagsCsv: string, contentTypeName: string, publish: boolean): [boolean, any];
+  export function ugcCreateContent(data: any | null, dataCount: number, contentName: string, description: string, tagsCsv: string, contentTypeName: string, publish: boolean, p7: any): [boolean, any];
 
-  export function ugcCreateMission(contentName: string, description: string, tagsCsv: string, contentTypeName: string, publish: boolean): boolean;
+  export function ugcCreateMission(contentName: string, description: string, tagsCsv: string, contentTypeName: string, publish: boolean, p5: any): boolean;
 
-  export function ugcUpdateContent(contentId: string, data: any | null, dataCount: number, contentName: string, description: string, tagsCsv: string, contentTypeName: string): [boolean, any];
+  export function ugcUpdateContent(contentId: string, data: any | null, dataCount: number, contentName: string, description: string, tagsCsv: string, contentTypeName: string, p7: any): [boolean, any];
 
-  export function ugcUpdateMission(contentId: string, contentName: string, description: string, tagsCsv: string, contentTypeName: string): boolean;
+  export function ugcUpdateMission(contentId: string, contentName: string, description: string, tagsCsv: string, contentTypeName: string, p5: any): boolean;
 
-  export function ugcSetPlayerData(contentId: string, rating: number, contentTypeName: string): boolean;
+  export function ugcSetPlayerData(contentId: string, rating: number, contentTypeName: string, p3: any): boolean;
 
-  export function datafileSelectUgcData(p0: number): boolean;
+  export function datafileSelectUgcData(p0: number, p1: any): boolean;
 
-  export function datafileSelectUgcStats(p0: number, p1: boolean): boolean;
+  export function datafileSelectUgcStats(p0: number, p1: boolean, p2: any): boolean;
 
-  export function datafileSelectUgcPlayerData(p0: number): boolean;
+  export function datafileSelectUgcPlayerData(p0: number, p1: any): boolean;
 
   /**
   * if ((NETWORK::_597F8DBA9B206FC7() > 0) && DATAFILE::_01095C95CD46B624(0)) {
@@ -4108,7 +4090,7 @@ declare module "natives" {
   * a_0 += 1;
   * }
   */
-  export function datafileSelectCreatorStats(p0: number): boolean;
+  export function datafileSelectCreatorStats(p0: number, p1: any): boolean;
 
   /**
   * Loads a User-Generated Content (UGC) file. These files can be found in "[GTA5]\data\ugc" and "[GTA5]\common\patch\ugc". They seem to follow a naming convention, most likely of "[name]_[part].ugc". See example below for usage.
@@ -4116,19 +4098,19 @@ declare module "natives" {
   * Example:
   * DATAFILE::_LOAD_UGC_FILE("RockstarPlaylists") // loads "rockstarplaylists_00.ugc"
   */
-  export function datafileLoadOfflineUgc(filename: string): boolean;
+  export function datafileLoadOfflineUgc(filename: string, p1: any): boolean;
 
-  export function datafileCreate(): void;
+  export function datafileCreate(p0: number): void;
 
-  export function datafileDelete(): void;
+  export function datafileDelete(p0: number): void;
 
-  export function datafileStoreMissionHeader(): void;
+  export function datafileStoreMissionHeader(p0: number): void;
 
   export function datafileFlushMissionHeader(): void;
 
-  export function datafileGetFileDict(): string;
+  export function datafileGetFileDict(p0: number): string;
 
-  export function datafileStartSaveToCloud(filename: string): boolean;
+  export function datafileStartSaveToCloud(filename: string, p1: any): boolean;
 
   export function datafileUpdateSaveToCloud(p0: boolean): [boolean, boolean];
 
@@ -4369,7 +4351,7 @@ declare module "natives" {
   */
   export function hasEntityClearLosToEntity(entity1: Entity | number, entity2: Entity | number, traceType: number): boolean;
 
-  export function _0x394BDE2A7BBA031E(p0: any, p1: any, p2: any): any;
+  export function hasEntityClearLosToEntity2(entity1: Entity | number, entity2: Entity | number, traceType: number): any;
 
   /**
   * Has the entity1 got a clear line of sight to the other entity2 from the direction entity1 is facing.
@@ -4927,7 +4909,7 @@ declare module "natives" {
   */
   export function setEntityCoords(entity: Entity | number, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
 
-  export function setEntityCoords2(entity: Entity | number, xPos: number, yPos: number, zPos: number, xAxis: boolean, yAxis: boolean, zAxis: boolean, clearArea: boolean): void;
+  export function setEntityCoordsWithoutPlantsReset(entity: Entity | number, xPos: number, yPos: number, zPos: number, alive: boolean, deadFlag: boolean, ragdollFlag: boolean, clearArea: boolean): void;
 
   /**
   * Axis - Invert Axis Flags
@@ -5026,6 +5008,8 @@ declare module "natives" {
   * Note that the third parameter(denoted as z) is "up and down" with positive numbers encouraging upwards movement.
   */
   export function setEntityVelocity(entity: Entity | number, x: number, y: number, z: number): void;
+
+  export function setEntityAngularVelocity(entity: Entity | number, x: number, y: number, z: number): void;
 
   export function setEntityHasGravity(entity: Entity | number, toggle: boolean): void;
 
@@ -5138,7 +5122,7 @@ declare module "natives" {
   /**
   * SET_ENTITY_*
   */
-  export function _0x2C2E3DC128F44309(entity: Entity | number, p1: boolean): void;
+  export function setEntityDecalsDisabled(entity: Entity | number, p1: boolean): void;
 
   /**
   * SET_ENTITY_*
@@ -5824,19 +5808,6 @@ declare module "natives" {
 
   export function endTextCommandThefeedPostCrewtag(p0: boolean, p1: boolean, p2: number | null, p3: number, isLeader: boolean, unk0: boolean, clanDesc: number, R: number, G: number, B: number): [number, number];
 
-  /**
-  * crashes my game...
-  * this is for sending invites to network players - jobs/apartment/ect...
-  * return notification handle
-  * int invite(Player player)
-  * {
-  * networkHandleMgr netHandle;
-  * networkClanMgr clan;
-  * char *playerName = GET_PLAYER_NAME(player);
-  * _SET_NOTIFICATION_TEXT_ENTRY("STRING");
-  * See NativeDB for reference: http://natives.altv.mp/#/0x137BC35589E34E1E
-  * @param p0 = 1 or 0
-  */
   export function endTextCommandThefeedPostCrewtagWithGameName(p0: boolean, p1: boolean, p2: number | null, p3: number, isLeader: boolean, unk0: boolean, clanDesc: number, playerName: string, R: number, G: number, B: number): [number, number];
 
   export function endTextCommandThefeedPostUnlock(p0: any, p1: any, p2: any): any;
@@ -6289,9 +6260,9 @@ declare module "natives" {
   export function _0xBA8D65C1C65702E5(toggle: boolean): void;
 
   /**
-  * This get's the height of the FONT and not the total text. You need to get the number of lines your text uses, and get the height of a newline (I'm using a smaller value) to get the total text height.
+  * This gets the height of the FONT and not the total text. You need to get the number of lines your text uses, and get the height of a newline (I'm using a smaller value) to get the total text height.
   */
-  export function getTextScaleHeight(size: number, font: number): number;
+  export function getRenderedCharacterHeight(size: number, font: number): number;
 
   /**
   * @param scale is unknown and doesn't seem to have an effect, yet in the game scripts it changes to 1.0F sometimes.
@@ -6523,7 +6494,7 @@ declare module "natives" {
   */
   export function setBlipSquaredRotation(blip: number, heading: number): void;
 
-  export function _0x003E92BA477F9D7F(blip: number): number;
+  export function getBlipRotation(blip: number): number;
 
   /**
   * Adds up after viewing multiple R* scripts. I believe that the duration is in miliseconds.
@@ -6686,9 +6657,8 @@ declare module "natives" {
 
   /**
   * Makes a blip go small when off the minimap.
-  * SET_BLIP_AS_*
   */
-  export function setBlipShrink(blip: number, toggle: boolean): void;
+  export function setBlipAsMinimalOnEdge(blip: number, toggle: boolean): void;
 
   /**
   * Enabling this on a radius blip will make it outline only. See https://cdn.discordapp.com/attachments/553235301632573459/575132227935928330/unknown.png
@@ -6752,7 +6722,9 @@ declare module "natives" {
   */
   export function setRadarAsInteriorThisFrame(interior: number, x: number, y: number, z: number, zoom: number): void;
 
-  export function _0x504DFE62A1692296(toggle: boolean): void;
+  export function setInteriorZoomLevelIncreased(toggle: boolean): void;
+
+  export function setInteriorZoomLevelDecreased(toggle: boolean): void;
 
   export function setRadarAsExteriorThisFrame(): void;
 
@@ -6957,7 +6929,7 @@ declare module "natives" {
 
   export function setGpsFlashes(toggle: boolean): void;
 
-  export function _0x7B21E0BB01E8224A(p0: any): void;
+  export function setMainPlayerBlipColour(color: number): void;
 
   /**
   * adds a short flash to the Radar/Minimap
@@ -7225,14 +7197,18 @@ declare module "natives" {
   export function getCurrentWebsiteId(): number;
 
   /**
-  * GET_G*
+  * Returns the ActionScript flagValue.
+  * ActionScript flags are global flags that scaleforms use
+  * Flags found during testing
+  * 1: Returns 1 if the player has clicked back twice on the opening page, otherwise 0 (web_browser)
+  * 2: Returns how many links the player has clicked in the web_browser scaleform, returns 0 when the browser gets closed
+  * 9: Returns the current selection on the mobile phone scaleform
+  * There are 20 flags in total.
+  * @returns 0: Returns 1 if the web_browser keyboard is open, otherwise 0
   */
-  export function _0xE3B05614DCE1D014(p0: any): any;
+  export function getGlobalActionscriptFlag(flagIndex: number): number;
 
-  /**
-  * RESET_*
-  */
-  export function _0xB99C4E4D9499DF29(p0: number): void;
+  export function resetGlobalActionscriptFlag(flagIndex: number): void;
 
   /**
   * IS_WARNING_MESSAGE_*
@@ -7253,9 +7229,18 @@ declare module "natives" {
   export function setWarningMessageWithHeader(entryHeader: string, entryLine1: string, instructionalKey: number, entryLine2: string, p4: boolean, p5: any, showBackground: any | null, p7: any | null, p8: boolean, p9: any): [void, any, any];
 
   /**
-  * You can only use text entries. No custom text.
+  * You can use this native for custom input, without having to use any scaleform-related natives.
+  * The native must be called on tick.
+  * The entryHeader must be a valid label.
+  * For Single lines use JL_INVITE_N as entryLine1, JL_INVITE_ND for multiple.
+  * Notes:
+  * - additionalIntInfo: replaces first occurrence of ~1~ in provided label with an integer
+  * - additionalTextInfoLine1: replaces first occurrence of ~a~ in provided label, with your custom text
+  * - additionalTextInfoLine2: replaces second occurrence of ~a~ in provided label, with your custom text
+  * - showBackground: shows black background of the warning screen
+  * See NativeDB for reference: http://natives.altv.mp/#/0x701919482C74B5AB
   */
-  export function setWarningMessageWithHeaderAndSubstringFlags(entryHeader: string, entryLine1: string, instructionalKey: any, entryLine2: string, p4: boolean, p5: any, p6: any, p7: any | null, p8: any | null, p9: boolean, p10: any): [void, any, any];
+  export function setWarningMessageWithHeaderAndSubstringFlags(entryHeader: string, entryLine1: string, instructionalKey: number, entryLine2: string, p4: boolean, p5: any, additionalIntInfo: any, additionalTextInfoLine1: string, additionalTextInfoLine2: string, showBackground: boolean, errorCode: number): void;
 
   export function setWarningMessageWithHeaderUnk(entryHeader: string, entryLine1: string, flags: number, entryLine2: string, p4: boolean, p5: any, p6: any | null, p7: any | null, showBg: boolean, p9: any, p10: any): [void, any, any];
 
@@ -7438,19 +7423,19 @@ declare module "natives" {
 
   export function pauseMenuIsContextActive(contextHash: number): boolean;
 
-  export function _0x2A25ADC48F87841F(): any;
+  export function pauseMenuIsContextMenuActive(): boolean;
 
-  export function _0xDE03620F8703A9DF(): any;
+  export function _0xDE03620F8703A9DF(): number;
 
-  export function _0x359AF31A4B52F5ED(): any;
+  export function _0x359AF31A4B52F5ED(): number;
 
-  export function _0x13C4B962653A5280(): any;
+  export function _0x13C4B962653A5280(): number;
 
   export function _0xC8E1071177A23BE5(p0?: any, p1?: any, p2?: any): [boolean, any, any, any];
 
   export function _0x4895BDEA16E7C080(p0: number): void;
 
-  export function _0xC78E239AC5B2DDB9(p0: boolean, p1: any, p2: any): void;
+  export function pauseMenuSetBusySpinner(p0: boolean, p1: number, p2: any): void;
 
   export function _0xF06EBB91A81E09E3(p0: boolean): void;
 
@@ -7460,21 +7445,21 @@ declare module "natives" {
   * Disables frontend (works in custom frontends, not sure about regular pause menu) navigation keys on keyboard. Not sure about controller. Does not disable mouse controls. No need to call this every tick.
   * To enable the keys again, use `0x14621BB1DF14E2B2`.
   */
-  export function _0xEC9264727EEC0F28(): void;
+  export function takeControlOfFrontend(): void;
 
   /**
   * Enables frontend (works in custom frontends, not sure about regular pause menu) navigation keys on keyboard if they were disabled using the native below.
   * To disable the keys, use `0xEC9264727EEC0F28`
   */
-  export function _0x14621BB1DF14E2B2(): void;
+  export function releaseControlOfFrontend(): void;
 
-  export function _0x66E7CB63C97B7D20(): any;
+  export function _0x66E7CB63C97B7D20(): boolean;
 
-  export function _0x593FEAE1F73392D4(): any;
+  export function _0x593FEAE1F73392D4(): number;
 
-  export function isNavigatingMenuContent(): any;
+  export function isNavigatingMenuContent(): boolean;
 
-  export function _0xF284AC67940C6812(): any;
+  export function _0xF284AC67940C6812(): boolean;
 
   /**
   * Returns true when the menu state(?) changed this frame.
@@ -7505,22 +7490,22 @@ declare module "natives" {
 
   export function _0xA238192F33110615(p0?: number, p1?: number, p2?: number): [boolean, number, number, number];
 
-  export function _0xEF4CED81CEBEDC6D(p0: any, p1?: any): [boolean, any];
+  export function getMenuPedIntStat(p0: any, p1?: any): [boolean, any];
 
   export function _0xCA6B2F7CE32AB653(p0: any, p1: any | null, p2: any): [boolean, any];
 
-  export function _0x90A6526CF0381030(p0: any, p1: any | null, p2: any, p3: any): [boolean, any];
+  export function getMenuPedMaskedIntStat(p0: number, p1: any | null, p2: any, p3: number): [boolean, any];
 
   export function _0x24A49BEAF468DC90(p0: any, p1: any | null, p2: any, p3: any, p4: any): [boolean, any];
 
-  export function _0x5FBD7095FE7AE57F(p0: any, p1?: number): [boolean, number];
+  export function getMenuPedFloatStat(p0: any, p1?: number): [boolean, number];
 
   export function _0x8F08017F9D7C47BD(p0: any, p1: any | null, p2: any): [boolean, any];
 
   /**
   * @param p0 was always 0xAE2602A3.
   */
-  export function _0x052991E59076E4E4(p0: number, p1?: any): [boolean, any];
+  export function getMenuPedBoolStat(p0: number, p1?: any): [boolean, any];
 
   export function clearPedInPauseMenu(): void;
 
@@ -7828,7 +7813,7 @@ declare module "natives" {
   export function isInteriorCapped(interior: number): boolean;
 
   /**
-  * DISABLE_*
+  * DISABLE_[METRO_SYSTEM]?
   */
   export function _0x9E6542F0CE8E70A3(toggle: boolean): void;
 
@@ -8438,15 +8423,9 @@ declare module "natives" {
 
   export function isAutoSaveInProgress(): boolean;
 
-  /**
-  * HAS_*
-  */
-  export function _0x2107A3773771186D(): boolean;
+  export function hasCodeRequestedAutosave(): boolean;
 
-  /**
-  * CLEAR_*
-  */
-  export function _0x06462A961E94B67C(): void;
+  export function clearCodeRequestedAutosave(): void;
 
   export function beginReplayStats(p0: any, p1: any): void;
 
@@ -8454,9 +8433,9 @@ declare module "natives" {
 
   export function endReplayStats(): void;
 
-  export function _0xD642319C54AADEB6(): any;
+  export function haveReplayStatsBeenStored(): any;
 
-  export function _0x5B1F2E327B6B6FE1(): any;
+  export function getReplayStatMissionId(): any;
 
   export function getReplayStatMissionType(): number;
 
@@ -8466,17 +8445,17 @@ declare module "natives" {
 
   export function clearReplayStats(): void;
 
-  export function _0x72DE52178C291CB5(): any;
+  export function queueMissionRepeatLoad(): boolean;
 
   /**
   * Shows the screen which is visible before you redo a mission? The game will make a restoration point where you will cameback when the mission is over.
   * Returns 1 if the message isn't currently on screen
   */
-  export function _0x44A0BDC559B35F6E(): boolean;
+  export function queueMissionRepeatSave(): boolean;
 
   export function _0xEB2104E905C6F2E9(): any;
 
-  export function _0x2B5E102E4A42F2BF(): any;
+  export function getStatusOfMissionRepeatSave(): number;
 
   export function isMemoryCardInUse(): boolean;
 
@@ -8585,12 +8564,12 @@ declare module "natives" {
 
   export function getCoordsOfProjectileTypeInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, projectileHash: number, projectilePos: Vector3 | null, ownedByPlayer: boolean): [boolean, Vector3];
 
-  export function getCoordsOfProjectileTypeWithinDistance(ped: Player | number, weaponHash: number, radius: number, entity: Entity | number | null, ownedByPlayer: boolean): [Vector3, number];
+  export function getCoordsOfProjectileTypeWithinDistance(ped: Player | number, weaponHash: number, distance: number, outCoords: Vector3 | null, p4: boolean): [boolean, Vector3];
 
   /**
   * GET_PROJECTILE_*
   */
-  export function getProjectileNearPed(ped: Player | number, weaponhash: number, p2: number, p3: number, p4: number, p5: boolean): boolean;
+  export function getProjectileNearPed(ped: Player | number, weaponHash: number, distance: number, outCoords: Vector3 | null, outProjectile: number | null, p5: boolean): [boolean, Vector3, number];
 
   /**
   * For projectiles, see: IS_PROJECTILE_TYPE_IN_ANGLED_AREA
@@ -9324,9 +9303,9 @@ declare module "natives" {
 
   export function networkClearCharacterWallet(characterSlot: number): void;
 
-  export function networkGivePlayerJobshareCash(amount: number, networkHandle?: number): [void, number];
+  export function networkGivePlayerJobshareCash(amount: number, gamerHandle?: any): [void, any];
 
-  export function networkReceivePlayerJobshareCash(value: number, networkHandle?: number): [void, number];
+  export function networkReceivePlayerJobshareCash(value: number, gamerHandle?: any): [void, any];
 
   export function networkCanShareJobCash(): boolean;
 
@@ -9349,8 +9328,6 @@ declare module "natives" {
   export function networkMoneyCanBet(amount: number, p1: boolean, p2: boolean): boolean;
 
   export function networkCanBet(amount: number): boolean;
-
-  export function networkCanBuyLotteryTicket(cost: number): boolean;
 
   /**
   * GTAO_CASINO_HOUSE
@@ -9429,7 +9406,7 @@ declare module "natives" {
 
   export function networkEarnFromChallengeWin(p0: any, p1: any | null, p2: boolean): [void, any];
 
-  export function networkEarnFromBounty(amount: number, networkHandle: number | null, p2: any | null, p3: any): [void, number, any];
+  export function networkEarnFromBounty(amount: number, gamerHandle: any | null, p2: any | null, p3: any): [void, any, any];
 
   export function networkEarnFromImportExport(amount: number, modelHash: number): void;
 
@@ -9456,8 +9433,6 @@ declare module "natives" {
   * Example for p1: "AM_DISTRACT_COPS"
   */
   export function networkEarnFromAmbientJob(p0: number, p1: string, p2?: any): [void, any];
-
-  export function _0xD20D79671A598594(p0: any, p1: any, p2: any): void;
 
   export function networkEarnFromJobBonus(p0: any, p1?: any, p2?: any): [void, any, any];
 
@@ -9603,7 +9578,7 @@ declare module "natives" {
   * bool hasTheMoney = MONEY::_GET_BANK_BALANCE() < carCost.
   * @returns The first parameter is determined by a function named, func_5749 within the freemode script which has a list of all the vehicles and a set price to return which some vehicles deals with globals as well. So the first parameter is basically the set in stone insurance cost it's gonna charge you for that specific vehicle model.
   */
-  export function networkSpentPayVehicleInsurancePremium(amount: number, vehicleModel: number, networkHandle: number | null, notBankrupt: boolean, hasTheMoney: boolean): [void, number];
+  export function networkSpentPayVehicleInsurancePremium(amount: number, vehicleModel: number, gamerHandle: any | null, notBankrupt: boolean, hasTheMoney: boolean): [void, any];
 
   export function networkSpentCallPlayer(p0: any, p1: any | null, p2: boolean, p3: boolean): [void, any];
 
@@ -9618,8 +9593,6 @@ declare module "natives" {
   */
   export function processCashGift(p0: number | null, p1: number | null, p2: string): [string, number, number];
 
-  export function _0xCD4D66B43B1DD28D(p0: any, p1: any, p2: any): void;
-
   export function networkSpentPlayerHealthcare(p0: number, p1: number, p2: boolean, p3: boolean): void;
 
   export function networkSpentNoCops(p0: any, p1: boolean, p2: boolean): void;
@@ -9627,8 +9600,6 @@ declare module "natives" {
   export function networkSpentRequestJob(p0: any, p1: boolean, p2: boolean): void;
 
   export function networkSpentRequestHeist(p0: any, p1: boolean, p2: boolean): void;
-
-  export function networkBuyLotteryTicket(p0: number, p1: number, p2: boolean, p3: boolean): void;
 
   /**
   * The last 3 parameters are,
@@ -9646,11 +9617,11 @@ declare module "natives" {
 
   export function networkSpentPayGoon(p0: number, p1: number, amount: number): void;
 
-  export function _0xDBC966A01C02BCA7(p0: any, p1: any, p2: any): void;
+  export function networkSpentPayBoss(p0: any, p1: any, p2: any): void;
 
   export function networkSpentMoveYacht(amount: number, p1: boolean, p2: boolean): void;
 
-  export function _0xFC4EE00A7B3BFB76(p0: any, p1: any, p2: any): void;
+  export function networkSpentRenameOrganization(p0: any, p1: any, p2: any): void;
 
   export function networkBuyContraband(p0: number, p1: number, p2: number, p3: boolean, p4: boolean): void;
 
@@ -9858,7 +9829,7 @@ declare module "natives" {
 
   export function networkEarnFromCompleteCollection(amount: number): void;
 
-  export function networkEarnFromSellingVehicle(amount: number): void;
+  export function networkEarnFromSellingVehicle(amount: number, p1: any, p2: any): void;
 
   export function networkEarnFromCasinoMissionReward(amount: number): void;
 
@@ -9908,7 +9879,7 @@ declare module "natives" {
 
   export function _0x90CD7C6871FBF1B4(p0: any, p1: any, p2: any, p3: any): void;
 
-  export function _0x89049A84065CE68E(p0: any, p1: any, p2: any, p3: any): void;
+  export function networkSpentUpgradeSub(p0: any, p1: any, p2: any, p3: any): void;
 
   export function networkSpentIslandHeist(p0: any, p1: any, p2: any, p3: any): void;
 
@@ -9917,6 +9888,40 @@ declare module "natives" {
   export function _0xA51338E0DCCD4065(p0: any, p1: any, p2: any): void;
 
   export function _0xE2BB399D90942091(p0: any, p1: any): void;
+
+  export function networkSpentAutoshopPropertyUtilityFee(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpentCarclubMembership(p0: any, p1: any, p2: any, p3: any, p4: any): void;
+
+  export function networkSpentCarclub(p0: any, p1: boolean, p2: boolean, p3: any): void;
+
+  export function networkSpentAutoshopModifications(p0: any, p1: any, p2: any, p3: any, p4: any): void;
+
+  export function networkSpentCarclubTakeover(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpentBuyAutoshop(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpentUpgradeAutoshop(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkEarnFromAutoshopBusiness(p0: any, p1: any): void;
+
+  export function networkEarnFromAutoshopIncome(p0: any): void;
+
+  export function networkEarnFromCarclubMembership(p0: any): void;
+
+  export function networkEarnFromVehicleAutoshop(p0: any, p1: any): void;
+
+  export function networkEarnFromVehicleAutoshopBonus(p0: any): void;
+
+  export function networkEarnFromTunerAward(p0: any, p1: any, p2: any): void;
+
+  export function networkEarnFromTunerFinale(p0: any, p1: any, p2: any, p3: any, p4: any): void;
+
+  export function networkEarnFromUpgradeAutoshopLocation(p0: any, p1: any): void;
+
+  export function networkSpentImAbility(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpentFromBank(p0: any, p1: any, p2: any, p3: boolean): void;
 
   export function networkGetVcBankBalance(): number;
 
@@ -10108,7 +10113,20 @@ declare module "natives" {
 
   export function _0xEBCAB9E5048434F4(): any;
 
-  export function _0x74FB3E29E6D10FA9(): any;
+  /**
+  * ==== PS4 specific info ====
+  * Returns some sort of unavailable reason:
+  * -1 = REASON_INVALID
+  * 0 = REASON_OTHER
+  * 1 = REASON_SYSTEM_UPDATE
+  * 2 = REASON_GAME_UPDATE
+  * 3 = REASON_SIGNED_OUT
+  * 4 = REASON_AGE
+  * 5 = REASON_CONNECTION
+  * =================================
+  * @returns Hardcoded to return zero.
+  */
+  export function _0x74FB3E29E6D10FA9(): number;
 
   export function _0x7808619F31FF22DB(): any;
 
@@ -10271,10 +10289,9 @@ declare module "natives" {
   export function networkSessionGetMatchmakingGroupFree(p0: number): number;
 
   /**
-  * NETWORK_SESSION_*
-  * @param p0 must be <= 4
+  * @param groupId range: [0, 4]
   */
-  export function _0xCAE55F48D3D7875C(p0: number): void;
+  export function networkSessionAddActiveMatchmakingGroup(groupId: number): void;
 
   export function _0xF49ABC20D8552257(p0: any): void;
 
@@ -10309,13 +10326,13 @@ declare module "natives" {
 
   export function networkGetTargetingMode(): number;
 
-  export function _0xE532D6811B3A4D2A(p0: any): boolean;
+  export function networkFindGamersInCrew(p0: any): boolean;
 
   export function networkFindMatchedGamers(p0: any, p1: number, p2: number, p3: number): boolean;
 
   export function networkIsFindingGamers(): boolean;
 
-  export function _0xF9B83B77929D8863(): any;
+  export function networkDidFindGamersSucceed(): boolean;
 
   export function networkGetNumFoundGamers(): number;
 
@@ -10323,16 +10340,13 @@ declare module "natives" {
 
   export function networkClearFoundGamers(): void;
 
-  export function networkGetGamerStatus(p0: any): [boolean, any];
+  export function networkQueueGamerForStatus(p0: any): [boolean, any];
 
-  export function _0x2CC848A861D01493(): any;
+  export function networkGetGamerStatusFromQueue(): boolean;
 
-  /**
-  * NETWORK_IS_*
-  */
-  export function _0x94A8394D150B013A(): any;
+  export function networkIsGettingGamerStatus(): boolean;
 
-  export function _0x5AE17C6B0134B7F1(): any;
+  export function networkDidGetGamerStatusSucceed(): boolean;
 
   export function networkGetGamerStatusResult(p0: any | null, p1: any): [boolean, any];
 
@@ -10356,7 +10370,7 @@ declare module "natives" {
 
   export function networkSessionWasInvited(): boolean;
 
-  export function networkSessionGetInviter(networkHandle: number): [void, number];
+  export function networkSessionGetInviter(gamerHandle: any): [void, any];
 
   /**
   * NETWORK_SESSION_IS_*
@@ -10382,7 +10396,7 @@ declare module "natives" {
 
   export function networkIsOfflineInvitePending(): boolean;
 
-  export function _0x140E6A44870A11CE(): void;
+  export function networkClearOfflineInvitePending(): void;
 
   /**
   * Loads up the map that is loaded when beeing in mission creator
@@ -10454,7 +10468,7 @@ declare module "natives" {
   /**
   * @param message is limited to 64 characters.
   */
-  export function networkSendTextMessage(message: string, networkHandle?: number): [boolean, number];
+  export function networkSendTextMessage(message: string, gamerHandle?: any): [boolean, any];
 
   export function networkSetActivitySpectator(toggle: boolean): void;
 
@@ -10466,7 +10480,7 @@ declare module "natives" {
 
   export function networkGetActivityPlayerNum(p0: boolean): number;
 
-  export function networkIsActivitySpectatorFromHandle(networkHandle: number): [boolean, number];
+  export function networkIsActivitySpectatorFromHandle(gamerHandle: any): [boolean, any];
 
   /**
   * From what I can tell it looks like it does the following:
@@ -10522,7 +10536,7 @@ declare module "natives" {
 
   export function networkInviteGamersToTransition(p0: any | null, p1: any): [boolean, any];
 
-  export function networkSetGamerInvitedToTransition(networkHandle: number): [void, number];
+  export function networkSetGamerInvitedToTransition(gamerHandle: any): [void, any];
 
   export function networkLeaveTransition(): boolean;
 
@@ -10563,15 +10577,15 @@ declare module "natives" {
   * the first arg seems to be the network player handle (&handle) and the second var is pretty much always "" and the third seems to be a number between 0 and ~10 and the 4th is is something like 0 to 5 and I guess the 5th is a bool cuz it is always 0 or 1
   * does this send an invite to a player?
   */
-  export function networkSendTransitionGamerInstruction(networkHandle: number | null, p1: string, p2: number, p3: number, p4: boolean): [boolean, number];
+  export function networkSendTransitionGamerInstruction(gamerHandle: any | null, p1: string, p2: number, p3: number, p4: boolean): [boolean, any];
 
   export function networkMarkTransitionGamerAsFullyJoined(p0: any): [boolean, any];
 
   export function networkIsTransitionHost(): boolean;
 
-  export function networkIsTransitionHostFromHandle(networkHandle: number): [boolean, number];
+  export function networkIsTransitionHostFromHandle(gamerHandle: any): [boolean, any];
 
-  export function networkGetTransitionHost(networkHandle: number): [boolean, number];
+  export function networkGetTransitionHost(gamerHandle: any): [boolean, any];
 
   export function networkIsInTransition(): boolean;
 
@@ -10635,7 +10649,7 @@ declare module "natives" {
   */
   export function _0x4A9FDE3A5A6D0437(toggle: boolean): void;
 
-  export function networkSendPresenceInvite(networkHandle: number | null, p1: any | null, p2: any, p3: any): [boolean, number, any];
+  export function networkSendInviteViaPresence(gamerHandle: any | null, p1: any | null, p2: any, p3: any): [boolean, any, any];
 
   /**
   * String "NETWORK_SEND_PRESENCE_TRANSITION_INVITE" is contained in the function in ida so this one is correct.
@@ -10694,7 +10708,7 @@ declare module "natives" {
   /**
   * NETWORK_HAS_*
   */
-  export function _0x71DC455F5CD1C2B1(networkHandle: any): [boolean, any];
+  export function _0x71DC455F5CD1C2B1(gamerHandle: any): [boolean, any];
 
   export function _0x3855FB5EB2C5E8B2(p0: any): any;
 
@@ -10713,7 +10727,7 @@ declare module "natives" {
   */
   export function _0x0D77A82DC2D0DA59(p0?: any, p1?: any): [void, any, any];
 
-  export function filloutPmPlayerList(networkHandle: number | null, p1: any, p2: any): [boolean, number];
+  export function filloutPmPlayerList(gamerHandle: any | null, p1: any, p2: any): [boolean, any];
 
   export function filloutPmPlayerListWithNames(p0: any | null, p1: any | null, p2: any, p3: any): [boolean, any, any];
 
@@ -10734,7 +10748,7 @@ declare module "natives" {
   * 1) It only becomes true if said person is speaking in that party at the time.
   * 2) It will never, become true unless you are in that party with said person.
   */
-  export function networkIsChattingInPlatformParty(networkHandle: number): [boolean, number];
+  export function networkIsChattingInPlatformParty(gamerHandle: any): [boolean, any];
 
   export function _0x2BF66D2E7414F686(): any;
 
@@ -10749,7 +10763,7 @@ declare module "natives" {
 
   export function _0x25D990F8E0E3F13C(): void;
 
-  export function _0xF1B84178F8674195(p0: any): void;
+  export function networkSeedRandomNumberGenerator(seed: number): void;
 
   export function networkGetRandomInt(): number;
 
@@ -10775,14 +10789,11 @@ declare module "natives" {
 
   export function remoteCheatDetected(player: Player | number, a: number, b: number): boolean;
 
-  export function badSportPlayerLeftDetected(networkHandle: number | null, event: number, amountReceived: number): [boolean, number];
+  export function badSportPlayerLeftDetected(gamerHandle: any | null, event: number, amountReceived: number): [boolean, any];
 
   export function networkApplyPedScarData(ped: Player | number, p1: number): void;
 
-  /**
-  * @param p1 is always 0
-  */
-  export function networkSetThisScriptIsNetworkScript(lobbySize: number, p1: boolean, playerId: number): void;
+  export function networkSetThisScriptIsNetworkScript(maxNumMissionParticipants: number, p1: boolean, instanceId: number): void;
 
   export function networkIsThisScriptMarked(p0: any, p1: boolean, p2: any): boolean;
 
@@ -10812,10 +10823,7 @@ declare module "natives" {
 
   export function networkFinishBroadcastingData(): void;
 
-  /**
-  * NETWORK_HAS_*
-  */
-  export function _0x5D10B3795F3FC886(): boolean;
+  export function networkHasReceivedHostBroadcastData(): boolean;
 
   export function networkGetPlayerIndex(player: Player | number): number;
 
@@ -10858,11 +10866,15 @@ declare module "natives" {
 
   export function networkIsScriptActive(scriptName: string, player: Player | number, p2: boolean, p3: any): boolean;
 
+  export function networkIsScriptActiveByHash(scriptHash: number, p1: number, p2: boolean, p3: number): boolean;
+
   export function _0x560B423D73015E77(p0: any): any;
 
   export function networkGetNumScriptParticipants(p0: any | null, p1: any, p2: any): [number, any];
 
-  export function _0x638A3A81733086DB(): any;
+  export function networkGetInstanceIdOfThisScript(): number;
+
+  export function networkGetPositionHashOfThisScript(): number;
 
   export function networkIsPlayerAParticipantOnScript(player1: Player | number, script: string, player2: Player | number): boolean;
 
@@ -10905,6 +10917,8 @@ declare module "natives" {
 
   export function networkDisableInvincibleFlashing(player: Player | number, toggle: boolean): void;
 
+  export function networkPedForceGameStateUpdate(ped: Player | number): void;
+
   export function networkSetLocalPlayerSyncLookAt(toggle: boolean): void;
 
   export function networkHasEntityBeenRegisteredWithThisThread(entity: Entity | number): boolean;
@@ -10930,12 +10944,9 @@ declare module "natives" {
   export function networkHasControlOfNetworkId(netId: number): boolean;
 
   /**
-  * NETWORK_IS_*
-  * Ff you have control over the entity corresponding to the netId then this will return false (0);
-  * Returns probably a bool, returns 1 if you don't have control over the netId entity.
-  * @returns Probably a bool, returns true if the specified network id is controlled by someone else.
+  * Returns true if the specified network id is controlled by someone else.
   */
-  export function _0x7242F8B741CE1086(netId: number): boolean;
+  export function networkIsNetworkIdAClone(netId: number): boolean;
 
   export function networkRequestControlOfEntity(entity: Entity | number): boolean;
 
@@ -10982,93 +10993,66 @@ declare module "natives" {
   */
   export function netToEnt(netHandle: number): number;
 
-  /**
-  * Retrieves the local player's NetworkHandle* and stores it in the given buffer.
-  * Currently unknown struct
-  */
-  export function networkGetLocalHandle(networkHandle: number | null, bufferSize: number): [void, number];
+  export function networkGetLocalHandle(gamerHandle: any | null, gamerHandleSize: number): [void, any];
 
-  /**
-  * Returns a NetworkHandle* from the specified user ID and stores it in a given buffer.
-  * Currently unknown struct
-  */
-  export function networkHandleFromUserId(userId: string, networkHandle: number | null, bufferSize: number): [void, number];
+  export function networkHandleFromUserId(userId: string, gamerHandle: any | null, gamerHandleSize: number): [void, any];
 
-  /**
-  * Returns a NetworkHandle* from the specified member ID and stores it in a given buffer.
-  * Currently unknown struct
-  */
-  export function networkHandleFromMemberId(memberId: string, networkHandle: number | null, bufferSize: number): [void, number];
+  export function networkHandleFromMemberId(memberId: string, gamerHandle: any | null, gamerHandleSize: number): [void, any];
 
-  /**
-  * Returns a handle to networkHandle* from the specified player handle and stores it in a given buffer.
-  * Currently unknown struct
-  * Example:
-  * std::vector<UINT64> GetPlayerNetworkHandle(Player player) {
-  * const int size = 13;
-  * uint64_t *buffer = std::make_unique<uint64_t[]>(size).get();
-  * for (int i = 0; i < size; i++) {
-  * Log::Msg("networkhandle[%i]: %llx", i, buffer[i]);
-  * }
-  * See NativeDB for reference: http://natives.altv.mp/#/0x388EB2B86C73B6B3
-  * @returns     return result;
-  */
-  export function networkHandleFromPlayer(player: Player | number, networkHandle: number | null, bufferSize: number): [void, number];
+  export function networkHandleFromPlayer(player: Player | number, gamerHandle: any | null, gamerHandleSize: number): [void, any];
 
   export function networkHashFromPlayerHandle(player: Player | number): number;
 
-  export function networkHashFromGamerHandle(networkHandle: number): [number, number];
+  export function networkHashFromGamerHandle(gamerHandle: any): [number, any];
 
-  export function networkHandleFromFriend(friendIndex: number, networkHandle: number | null, bufferSize: number): [void, number];
+  export function networkHandleFromFriend(friendIndex: number, gamerHandle: any | null, gamerHandleSize: number): [void, any];
 
-  export function networkGamertagFromHandleStart(networkHandle: number): [boolean, number];
+  export function networkGamertagFromHandleStart(gamerHandle: any): [boolean, any];
 
   export function networkGamertagFromHandlePending(): boolean;
 
   export function networkGamertagFromHandleSucceeded(): boolean;
 
-  export function networkGetGamertagFromHandle(networkHandle: number): [string, number];
+  export function networkGetGamertagFromHandle(gamerHandle: any): [string, any];
 
-  export function _0xD66C9E72B3CC4982(p0: any | null, p1: any): [number, any];
+  /**
+  * @returns Hardcoded to return -1.
+  */
+  export function networkDisplaynamesFromHandlesStart(p0: any | null, p1: any): [number, any];
 
   /**
   * @returns MulleDK19: This function is hard-coded to always return 0.
   */
   export function networkGetDisplaynamesFromHandles(p0: any, p1: any, p2: any): number;
 
-  export function networkAreHandlesTheSame(netHandle1?: number, netHandle2?: number): [boolean, number, number];
+  export function networkAreHandlesTheSame(gamerHandle1?: any, gamerHandle2?: any): [boolean, any, any];
 
-  export function networkIsHandleValid(networkHandle: number | null, bufferSize: number): [boolean, number];
+  export function networkIsHandleValid(gamerHandle: any | null, gamerHandleSize: number): [boolean, any];
 
-  export function networkGetPlayerFromGamerHandle(networkHandle: number): [number, number];
+  export function networkGetPlayerFromGamerHandle(gamerHandle: any): [number, any];
 
-  export function networkMemberIdFromGamerHandle(networkHandle: number): [string, number];
+  export function networkMemberIdFromGamerHandle(gamerHandle: any): [string, any];
 
-  export function networkIsGamerInMySession(networkHandle: number): [boolean, number];
+  export function networkIsGamerInMySession(gamerHandle: any): [boolean, any];
 
-  /**
-  * Example:
-  * int playerHandle;
-  * NETWORK_HANDLE_FROM_PLAYER(selectedPlayer, &playerHandle, 13);
-  * NETWORK_SHOW_PROFILE_UI(&playerHandle);
-  */
-  export function networkShowProfileUi(networkHandle: number): [void, number];
+  export function networkShowProfileUi(gamerHandle: any): [void, any];
 
   /**
-  * @returns Returns the name of a given player. Returns "**Invalid**" if CPlayerInfo of the given player cannot be retrieved or the player doesn't exist.
+  * @returns Returns the name of a given player. Returns "**Invalid**" if rlGamerInfo of the given player cannot be retrieved or the player doesn't exist.
   */
   export function networkPlayerGetName(player: Player | number): string;
 
   /**
-  * @returns Takes a 24 char buffer. Returns the buffer or "**Invalid**" if CPlayerInfo of the given player cannot be retrieved or the player doesn't exist.
+  * Returns a string of the player's Rockstar Id.
+  * @returns Takes a 24 char buffer. Returns the buffer or "**Invalid**" if rlGamerInfo of the given player cannot be retrieved or the player doesn't exist.
   */
   export function networkPlayerGetUserid(player: Player | number, userID?: number): [string, number];
 
   /**
-  * Checks if a specific value (BYTE) in CPlayerInfo is nonzero.
+  * Checks if a specific value (BYTE) in CNetGamePlayer is nonzero.
   * Returns always false in Singleplayer.
   * No longer used for dev checks since first mods were released on PS3 & 360.
-  * R* now checks with the is_dlc_present native for the dlc hash 2532323046,
+  * R* now checks with the IS_DLC_PRESENT native for the dlc hash 2532323046,
   * if that is present it will unlock dev stuff.
   */
   export function networkPlayerIsRockstarDev(player: Player | number): boolean;
@@ -11098,7 +11082,7 @@ declare module "natives" {
 
   export function networkIsFriendOnline(name: string): boolean;
 
-  export function networkIsFriendHandleOnline(networkHandle: number): [boolean, number];
+  export function networkIsFriendHandleOnline(gamerHandle: any): [boolean, any];
 
   /**
   * In scripts R* calls 'NETWORK_GET_FRIEND_NAME' in this param.
@@ -11107,7 +11091,7 @@ declare module "natives" {
 
   export function networkIsFriendInMultiplayer(friendName: string): boolean;
 
-  export function networkIsFriend(networkHandle: number): [boolean, number];
+  export function networkIsFriend(gamerHandle: any): [boolean, any];
 
   /**
   * @returns This function is hard-coded to always return 0.
@@ -11116,7 +11100,7 @@ declare module "natives" {
 
   export function networkIsAddingFriend(): any;
 
-  export function networkAddFriend(networkHandle: number | null, message: string): [boolean, number];
+  export function networkAddFriend(gamerHandle: any | null, message: string): [boolean, any];
 
   export function networkIsFriendIndexOnline(friendIndex: number): boolean;
 
@@ -11138,33 +11122,33 @@ declare module "natives" {
 
   export function networkIsLocalTalking(): boolean;
 
-  export function networkGamerHasHeadset(networkHandle: any): [boolean, any];
+  export function networkGamerHasHeadset(gamerHandle: any): [boolean, any];
 
-  export function networkIsGamerTalking(networkHandle: any): [boolean, any];
+  export function networkIsGamerTalking(gamerHandle: any): [boolean, any];
 
   /**
   * Same as NETWORK_CAN_COMMUNICATE_WITH_GAMER
   * NETWORK_CAN_*
   */
-  export function networkCanCommunicateWithGamer2(networkHandle: any): [boolean, any];
+  export function networkCanCommunicateWithGamer2(gamerHandle: any): [boolean, any];
 
-  export function networkCanCommunicateWithGamer(networkHandle: any): [boolean, any];
+  export function networkCanCommunicateWithGamer(gamerHandle: any): [boolean, any];
 
-  export function networkIsGamerMutedByMe(networkHandle: any): [boolean, any];
+  export function networkIsGamerMutedByMe(gamerHandle: any): [boolean, any];
 
-  export function networkAmIMutedByGamer(networkHandle: any): [boolean, any];
+  export function networkAmIMutedByGamer(gamerHandle: any): [boolean, any];
 
-  export function networkIsGamerBlockedByMe(networkHandle: any): [boolean, any];
+  export function networkIsGamerBlockedByMe(gamerHandle: any): [boolean, any];
 
-  export function networkAmIBlockedByGamer(networkHandle: any): [boolean, any];
+  export function networkAmIBlockedByGamer(gamerHandle: any): [boolean, any];
 
-  export function networkCanViewGamerUserContent(networkHandle: any): [boolean, any];
+  export function networkCanViewGamerUserContent(gamerHandle: any): [boolean, any];
 
-  export function networkHasViewGamerUserContentResult(networkHandle: any): [boolean, any];
+  export function networkHasViewGamerUserContentResult(gamerHandle: any): [boolean, any];
 
-  export function networkCanPlayMultiplayerWithGamer(networkHandle: any): [boolean, any];
+  export function networkCanPlayMultiplayerWithGamer(gamerHandle: any): [boolean, any];
 
-  export function networkCanGamerPlayMultiplayerWithMe(networkHandle: any): [boolean, any];
+  export function networkCanGamerPlayMultiplayerWithMe(gamerHandle: any): [boolean, any];
 
   /**
   * returns true if someone is screaming or talking in a microphone
@@ -11301,9 +11285,9 @@ declare module "natives" {
   /**
   * @param p4 and p5 are always 0 in scripts
   */
-  export function networkRespawnCoords(player: Player | number, x: number, y: number, z: number, p4: boolean, p5: boolean): void;
+  export function networkLeavePedBehindBeforeWarp(player: Player | number, x: number, y: number, z: number, p4: boolean, p5: boolean): void;
 
-  export function _0xBF22E0F32968E967(player: Player | number, p1: boolean): void;
+  export function networkLeavePedBehindBeforeCutscene(player: Player | number, p1: boolean): void;
 
   /**
   * @param entity must be a valid entity; ped can be NULL
@@ -11316,7 +11300,7 @@ declare module "natives" {
 
   export function networkClanServiceIsValid(): boolean;
 
-  export function networkClanPlayerIsActive(networkHandle: number): [boolean, number];
+  export function networkClanPlayerIsActive(gamerHandle: any): [boolean, any];
 
   /**
   * bufferSize is the elementCount of p0(desc), sizeof(p0) == 280 == p1*8 == 35 * 8, p2(netHandle) is obtained from NETWORK::NETWORK_HANDLE_FROM_PLAYER.  And no, I can't explain why 35 * sizeof(int) == 280 and not 140, but I'll get back to you on that.
@@ -11324,7 +11308,7 @@ declare module "natives" {
   * pastebin.com/cSZniHak
   * @param bufferSize is 35 in the scripts.
   */
-  export function networkClanPlayerGetDesc(clanDesc: number | null, bufferSize: number, networkHandle?: number): [boolean, number, number];
+  export function networkClanPlayerGetDesc(clanDesc: any | null, bufferSize: number, gamerHandle?: any): [boolean, any, any];
 
   /**
   * @param bufferSize is 35 in the scripts.
@@ -11340,11 +11324,11 @@ declare module "natives" {
 
   export function networkClanGetMembershipDesc(memberDesc: number | null, p1: number): [boolean, number];
 
-  export function networkClanDownloadMembership(networkHandle: number): [boolean, number];
+  export function networkClanDownloadMembership(gamerHandle: any): [boolean, any];
 
   export function networkClanDownloadMembershipPending(p0: any): [boolean, any];
 
-  export function networkIsClanMembershipFinishedDownloading(): boolean;
+  export function networkClanAnyDownloadMembershipPending(): boolean;
 
   export function networkClanRemoteMembershipsAreInCache(p0: number): [boolean, number];
 
@@ -11352,19 +11336,7 @@ declare module "natives" {
 
   export function networkClanGetMembershipValid(p0: number | null, p1: any): [boolean, number];
 
-  /**
-  * BOOL DEBUG_MEMBRESHIP(int Param)
-  * {
-  * int membership;
-  * networkHandleMgr handle;
-  * NETWORK_HANDLE_FROM_PLAYER(iSelectedPlayer, &handle.netHandle, 13);
-  * if (!_NETWORK_IS_CLAN_MEMBERSHIP_FINISHED_DOWNLOADING())
-  * {
-  * if (NETWORK_CLAN_REMOTE_MEMBERSHIPS_ARE_IN_CACHE(&Param))
-  * {
-  * See NativeDB for reference: http://natives.altv.mp/#/0xC8BC2011F67B3411
-  */
-  export function networkClanGetMembership(p0: number | null, clanMembership: number | null, p2: number): [boolean, number, number];
+  export function networkClanGetMembership(p0: number | null, clanMembership: any | null, p2: number): [boolean, number, any];
 
   export function networkClanJoin(clanDesc: number): boolean;
 
@@ -11405,10 +11377,7 @@ declare module "natives" {
 
   export function setNetworkIdExistsOnAllMachines(netId: number, toggle: boolean): void;
 
-  /**
-  * not tested....
-  */
-  export function setNetworkIdSyncToPlayer(netId: number, player: Player | number, toggle: boolean): void;
+  export function setNetworkIdAlwaysExistsForPlayer(netId: number, player: Player | number, toggle: boolean): void;
 
   export function _0x9D724B400A7E8FFC(p0: any, p1: any): void;
 
@@ -11632,29 +11601,41 @@ declare module "natives" {
 
   export function setNetworkVehicleAsGhost(vehicle: Vehicle | number, toggle: boolean): void;
 
-  export function _0xA2A707979FE754DC(p0: any, p1: any): void;
-
-  export function _0x838DA0936A24ED4D(p0: any, p1: any): void;
-
-  export function usePlayerColourInsteadOfTeamColour(toggle: boolean, p1: boolean): void;
+  /**
+  * rage::netBlenderLinInterp::GetPositionMaxForUpdateLevel
+  */
+  export function setNetworkVehiclePositionUpdateMultiplier(vehicle: Vehicle | number, multiplier: number): void;
 
   /**
-  * IS_*
+  * Enables a periodic ShapeTest within the NetBlender and invokes rage::netBlenderLinInterp::GoStraightToTarget (or some functional wrapper).
   */
-  export function _0x21D04D7BC538C146(entity: Entity | number): boolean;
+  export function setNetworkEnableVehiclePositionCorrection(vehicle: Vehicle | number, toggle: boolean): void;
+
+  export function setLocalPlayerAsGhost(toggle: boolean, p1: boolean): void;
+
+  export function isEntityGhostedToLocalPlayer(entity: Entity | number): boolean;
 
   /**
   * SET_NETWORK_*
   */
   export function _0x13F1FCB111B820B0(p0: boolean): void;
 
-  export function _0xA7C511FA1C5BDA38(p0: any, p1: any): void;
+  /**
+  * Enables ghosting between specific players
+  */
+  export function setRelationshipToPlayer(player: Player | number, p1: boolean): void;
 
-  export function _0x658500AE6D723A7E(p0: any): void;
+  /**
+  * Must be a value between 1 and 254
+  */
+  export function setGhostedEntityAlpha(alpha: number): void;
 
-  export function _0x17330EBF2F2124A8(): void;
+  /**
+  * Resets the entity ghost alpha to the default value (128)
+  */
+  export function resetGhostedEntityAlpha(): void;
 
-  export function _0x4BA166079D658ED4(p0: any, p1: any): void;
+  export function networkSetEntityGhostedWithOwner(entity: Entity | number, p1: boolean): void;
 
   export function _0xD7B6C73CAD419BCF(p0: boolean): void;
 
@@ -11663,7 +11644,7 @@ declare module "natives" {
   */
   export function _0x7EF7649B64D7FF10(entity: Entity | number): boolean;
 
-  export function _0x77758139EC9B66C7(p0: boolean): void;
+  export function usePlayerColourInsteadOfTeamColour(toggle: boolean): void;
 
   export function networkCreateSynchronisedScene(x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, rotationOrder: number, useOcclusionPortal: boolean, looped: boolean, p9: number, animTime: number, p11: number): number;
 
@@ -11680,7 +11661,7 @@ declare module "natives" {
   */
   export function _0x45F35C0EDC33B03B(netScene: number, modelHash: number, x: number, y: number, z: number, p5: number, p6: string, p7: number, p8: number, flags: number): void;
 
-  export function networkForceLocalUseOfSyncedSceneCamera(netScene: number, animDict: string, animName: string): void;
+  export function networkAddSynchronisedSceneCamera(netScene: number, animDict: string, animName: string): void;
 
   export function networkAttachSynchronisedSceneToEntity(netScene: number, entity: Entity | number, bone: number): void;
 
@@ -11688,10 +11669,7 @@ declare module "natives" {
 
   export function networkStopSynchronisedScene(netScene: number): void;
 
-  /**
-  * @param netScene to scene
-  */
-  export function networkConvertSynchronisedSceneToSynchronizedScene(netScene: number): number;
+  export function networkGetLocalSceneFromNetworkId(netId: number): number;
 
   export function _0xC9B43A33D09CADA7(p0: any): void;
 
@@ -11723,14 +11701,18 @@ declare module "natives" {
   */
   export function networkGetRespawnResult(randomInt: number, coordinates?: Vector3, heading?: number): [void, Vector3, number];
 
-  export function networkGetRespawnResultFlags(p0: any): any;
+  export function networkGetRespawnResultFlags(p0: number): number;
 
   /**
   * *
   */
   export function networkStartSoloTutorialSession(): void;
 
-  export function _0xFB680D403909DC70(p0: any, p1: any): void;
+  /**
+  * NETWORK_A*
+  * @param teamId must be < 3, instanceId must be < 64
+  */
+  export function _0xFB680D403909DC70(teamId: number, instanceId: number): void;
 
   export function networkEndTutorialSession(): void;
 
@@ -11790,7 +11772,7 @@ declare module "natives" {
 
   export function networkEntityAreaIsOccupied(areaHandle: number): boolean;
 
-  export function networkSetNetworkIdDynamic(netID: number, toggle: boolean): void;
+  export function networkUseHighPrecisionBlending(netID: number, toggle: boolean): void;
 
   export function _0xA6FCECCF4721D679(p0: any): void;
 
@@ -11881,7 +11863,7 @@ declare module "natives" {
 
   export function _0x2A5E0621DD815A9A(p0: any, p1: any, p2: any, p3: any): void;
 
-  export function _0xCD71A4ECAB22709E(entity: Entity | number): void;
+  export function networkUseLogarithmicBlendingThisFrame(entity: Entity | number): void;
 
   export function networkOverrideCoordsAndHeading(entity: Entity | number, x: number, y: number, z: number, heading: number): void;
 
@@ -12015,7 +11997,7 @@ declare module "natives" {
 
   export function ugcHasCreateFinished(): boolean;
 
-  export function _0x24E4E51FC16305F9(): any;
+  export function ugcDidCreateSucceed(): any;
 
   export function ugcGetCreateResult(): any;
 
@@ -12025,7 +12007,7 @@ declare module "natives" {
 
   export function ugcQueryMyContent(p0: any, p1: any, p2: any | null, p3: any, p4: any, p5: any): [boolean, any];
 
-  export function _0x692D58DF40657E8C(p0: any, p1: any, p2: any, p3: any | null, p4: any, p5: boolean): [boolean, any];
+  export function _0x692D58DF40657E8C(p0: any, p1: any, p2: any, p3: string, p4: any, p5: boolean): boolean;
 
   export function ugcQueryByContentId(contentId: string, latestVersion: boolean, contentTypeName: string): boolean;
 
@@ -12033,15 +12015,15 @@ declare module "natives" {
 
   export function ugcQueryRecentlyCreatedContent(offset: number, count: number, contentTypeName: string, p3: number): boolean;
 
-  export function ugcGetBookmarkedContent(p0: any, p1: any, p2?: any, p3?: any): [boolean, any, any];
+  export function ugcGetBookmarkedContent(p0: any, p1: any, p2: string, p3?: any): [boolean, any];
 
-  export function ugcGetMyContent(p0: any, p1: any, p2?: any, p3?: any): [boolean, any, any];
+  export function ugcGetMyContent(p0: any, p1: any, p2: string, p3?: any): [boolean, any];
 
-  export function ugcGetFriendContent(p0: any, p1: any, p2?: any, p3?: any): [boolean, any, any];
+  export function ugcGetFriendContent(p0: any, p1: any, p2: string, p3?: any): [boolean, any];
 
-  export function ugcGetCrewContent(p0: any, p1: any, p2: any, p3?: any, p4?: any): [boolean, any, any];
+  export function ugcGetCrewContent(p0: any, p1: any, p2: any, p3: string, p4?: any): [boolean, any];
 
-  export function ugcGetGetByCategory(p0: any, p1: any, p2: any, p3?: any, p4?: any): [boolean, any, any];
+  export function ugcGetGetByCategory(p0: any, p1: any, p2: any, p3: string, p4?: any): [boolean, any];
 
   export function setBalanceAddMachine(contentId: string, contentTypeName: string): boolean;
 
@@ -12075,7 +12057,7 @@ declare module "natives" {
 
   export function ugcGetContentUserId(p0: number): string;
 
-  export function _0x584770794D758C18(p0: any, p1?: any): [boolean, any];
+  export function _0x584770794D758C18(p0: number, p1?: any): [boolean, any];
 
   export function _0x8C8D2739BA44AF0F(p0: any): boolean;
 
@@ -12149,7 +12131,7 @@ declare module "natives" {
 
   export function ugcSetBookmarked(contentId: string, bookmarked: boolean, contentTypeName: string): boolean;
 
-  export function ugcSetDeleted(p0: any | null, p1: boolean, p2?: any): [boolean, any, any];
+  export function ugcSetDeleted(p0: any | null, p1: boolean, p2: string): [boolean, any];
 
   export function _0x45E816772E93A9DB(): any;
 
@@ -12191,11 +12173,11 @@ declare module "natives" {
 
   export function facebookIsAvailable(): boolean;
 
-  export function textureDownloadRequest(PlayerHandle: number | null, FilePath: string, Name: string, p3: boolean): [number, number];
+  export function textureDownloadRequest(gamerHandle: any | null, filePath: string, name: string, p3: boolean): [number, any];
 
-  export function titleTextureDownloadRequest(FilePath: string, Name: string, p2: boolean): number;
+  export function titleTextureDownloadRequest(filePath: string, name: string, p2: boolean): number;
 
-  export function ugcTextureDownloadRequest(p0: any | null, p1: any, p2: any, p3: any, p4: any | null, p5: boolean): [any, any, any];
+  export function ugcTextureDownloadRequest(p0: string, p1: number, p2: number, p3: number, p4: string, p5: boolean): any;
 
   export function textureDownloadRelease(p0: number): void;
 
@@ -12248,7 +12230,10 @@ declare module "natives" {
 
   export function _0x36391F397731595D(p0: any): any;
 
-  export function _0xDEB2B99A1AF1A2A6(p0: any): any;
+  /**
+  * @returns Always returns -1. Seems to be XB1 specific.
+  */
+  export function networkStartUserContentPermissionsCheck(netHandle: any): [number, any];
 
   export function _0x9465E683B12D3F6B(): void;
 
@@ -12265,11 +12250,7 @@ declare module "natives" {
 
   export function networkUpdatePlayerScars(): void;
 
-  /**
-  * NETWORK_D*
-  * Probably NETWORK_DISABLE_*
-  */
-  export function _0xC505036A35AFD01B(toggle: boolean): void;
+  export function networkDisableLeaveRemotePedBehind(toggle: boolean): void;
 
   export function networkAllowLocalEntityAttachment(entity: Entity | number, toggle: boolean): void;
 
@@ -12287,22 +12268,16 @@ declare module "natives" {
 
   export function _0x45A83257ED02D9BC(): void;
 
-  /**
-  * NETWORK_IS_*
-  */
-  export function _0x16D3D49902F697BB(player: Player | number): boolean;
+  export function networkIsConnectionEndpointRelayServer(player: Player | number): boolean;
 
-  export function _0xD414BE129BB81B32(player: Player | number): number;
+  export function networkGetAverageLatencyForPlayer(player: Player | number): number;
 
   /**
-  * alias 0xD414BE129BB81B32
+  * Same as _NETWORK_GET_AVERAGE_LATENCY_FOR_PLAYER (0xD414BE129BB81B32)
   */
-  export function _0x0E3A041ED6AC2B45(player: Player | number): number;
+  export function networkGetAverageLatencyForPlayer2(player: Player | number): number;
 
-  /**
-  * NETWORK_GET_*
-  */
-  export function _0x350C23949E43686C(player: Player | number): number;
+  export function networkGetAveragePacketLossForPlayer(player: Player | number): number;
 
   export function networkGetNumUnackedForPlayer(player: Player | number): number;
 
@@ -12327,9 +12302,9 @@ declare module "natives" {
   export function networkGetPlayerCoords(player: Player | number): Vector3;
 
   /**
-  * NETWORK_GET_*
+  * Used by NetBlender
   */
-  export function _0x33DE49EDF4DDE77A(entity: Entity | number): Vector3;
+  export function networkGetLastVelocityReceived(entity: Entity | number): Vector3;
 
   /**
   * NETWORK_GET_P*
@@ -12352,6 +12327,8 @@ declare module "natives" {
   export function _0x6FD992C4A1C1B986(): any;
 
   export function _0xDB663CC9FF3407A9(player: Player | number): number;
+
+  export function networkUgcNav(p0: any, p1: any): void;
 
   export function createObject(modelHash: number, x: number, y: number, z: number, isNetwork: boolean, bScriptHostObj: boolean, dynamic: boolean): number;
 
@@ -12378,7 +12355,10 @@ declare module "natives" {
 
   export function setObjectTargettable(object: number, targettable: boolean): void;
 
-  export function setObjectSomething(object: number, p1: boolean): void;
+  /**
+  * Overrides a flag on the object which determines if the object should be avoided by a vehicle in task CTaskVehicleGoToPointWithAvoidanceAutomobile.
+  */
+  export function setObjectForceVehiclesToAvoid(object: number, toggle: boolean): void;
 
   /**
   * Has 8 params in the latest patches.
@@ -12555,10 +12535,7 @@ declare module "natives" {
   */
   export function clearGarageArea(garageHash: number, isNetwork: boolean): void;
 
-  /**
-  * CLEAR_*
-  */
-  export function _0x190428512B240692(garageHash: number, vehicles: boolean, peds: boolean, objects: boolean, isNetwork: boolean): void;
+  export function clearObjectsInsideGarage(garageHash: number, vehicles: boolean, peds: boolean, objects: boolean, isNetwork: boolean): void;
 
   /**
   * Sets a flag. A valid id is 0x157DC10D
@@ -12589,7 +12566,7 @@ declare module "natives" {
   /**
   * Overrides the climbing/blocking flags of the object, used in the native scripts mostly for "prop_dock_bouy_*"
   */
-  export function setObjectCanClimbOn(object: number, toggle: boolean): void;
+  export function setObjectAllowLowLodBuoyancy(object: number, toggle: boolean): void;
 
   /**
   * Adjust the physics parameters of a prop, or otherwise known as "object". This is useful for simulated gravity.
@@ -12611,7 +12588,7 @@ declare module "natives" {
 
   export function removeObjectHighDetailModel(object: number): void;
 
-  export function _0xE7E4C198B0185900(p0: number, p1: any, p2: boolean): void;
+  export function breakObjectFragmentChild(p0: number, p1: any, p2: boolean): void;
 
   export function _0xE05F6AEEFEB0BB02(p0: any, p1: any, p2: any): void;
 
@@ -12693,6 +12670,8 @@ declare module "natives" {
   */
   export function createAmbientPickup(pickupHash: number, posX: number, posY: number, posZ: number, flags: number, value: number, modelHash: number, p7: boolean, p8: boolean): number;
 
+  export function createNonNetworkedAmbientPickup(pickupHash: number, posX: number, posY: number, posZ: number, flags: number, value: number, modelHash: number, p7: boolean, p8: boolean): number;
+
   export function _0x1E3F1B1B891A2AAA(p0: any, p1: any): void;
 
   /**
@@ -12702,10 +12681,9 @@ declare module "natives" {
   export function createPortablePickup(pickupHash: number, x: number, y: number, z: number, placeOnGround: boolean, modelHash: number): number;
 
   /**
-  * CREATE_*
   * Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json
   */
-  export function createPortablePickup2(pickupHash: number, x: number, y: number, z: number, placeOnGround: boolean, modelHash: number): number;
+  export function createNonNetworkedPortablePickup(pickupHash: number, x: number, y: number, z: number, placeOnGround: boolean, modelHash: number): number;
 
   export function attachPortablePickupToPed(pickupObject: number, ped: Player | number): void;
 
@@ -12715,7 +12693,7 @@ declare module "natives" {
 
   export function setMaxNumPortablePickupsCarriedByPlayer(modelHash: number, p1: number): void;
 
-  export function _0x78857FC65CADB909(p0: boolean): void;
+  export function setLocalPlayerCanCollectPortablePickups(p0: boolean): void;
 
   export function getSafePickupCoords(x: number, y: number, z: number, p3: number, p4: number): Vector3;
 
@@ -12811,6 +12789,8 @@ declare module "natives" {
 
   export function preventCollectionOfPortablePickup(object: number, p1: boolean, p2: boolean): void;
 
+  export function _0x27F248C3FEBFAAD3(p0: any, p1: any): void;
+
   export function _0x0596843B34B95CE5(p0: any, p1: any): void;
 
   export function _0xA08FE5E49BDC39DD(p0: any, p1: number, p2: boolean): void;
@@ -12818,6 +12798,8 @@ declare module "natives" {
   export function _0x62454A641B41F3C5(p0: any): void;
 
   export function _0x39A5FB7EAF150840(p0: any, p1: any): void;
+
+  export function _0x834344A414C7C85D(p0: any, p1: any): void;
 
   export function _0xDB41D07A45A6D4B7(p0: any): any;
 
@@ -12872,7 +12854,7 @@ declare module "natives" {
   * 4 = nothing
   * 5 = green small
   */
-  export function highlightPlacementCoords(x: number, y: number, z: number, colorIndex: number): void;
+  export function renderFakePickupGlow(x: number, y: number, z: number, colorIndex: number): void;
 
   /**
   * SET_PICKUP_*
@@ -12922,8 +12904,6 @@ declare module "natives" {
   export function setObjectTextureVariation(object: number, textureVariation: number): void;
 
   export function setTextureVariationOfClosestObjectOfType(x: number, y: number, z: number, radius: number, modelHash: number, textureVariation: number): boolean;
-
-  export function _0x31574B1B41268673(p0: any, p1: any): void;
 
   export function setObjectLightColor(object: number, p1: boolean, r: number, g: number, b: number): any;
 
@@ -13150,7 +13130,7 @@ declare module "natives" {
 
   export function stopPadShake(padIndex: number): void;
 
-  export function _0xF239400E16C23E08(p0: any, p1: any): void;
+  export function setPadShakeSuppressedId(padIndex: number, p1: any): void;
 
   export function _0xA0CEFCEA390AAB9B(p0: any): void;
 
@@ -13566,23 +13546,16 @@ declare module "natives" {
   */
   export function deletePed(ped: Player | number): [void, number];
 
-  /**
-  * Example of Cloning Your Player:
-  * CLONE_PED(PLAYER_PED_ID(), GET_ENTITY_HEADING(PLAYER_PED_ID()), 0, 1);
-  */
-  export function clonePed(ped: Player | number, heading: number, isNetwork: boolean, bScriptHostPed: boolean): number;
+  export function clonePed(ped: Player | number, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean): number;
 
-  /**
-  * Used one time in fmmc_launcher.c instead of CLONE_PED because ?
-  */
-  export function clonePedEx(ped: Player | number, heading: number, isNetwork: boolean, bScriptHostPed: boolean, p4: any): number;
+  export function clonePedEx(ped: Player | number, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean, p4: boolean): number;
 
   /**
   * Copies ped's components and props to targetPed.
   */
   export function clonePedToTarget(ped: Player | number, targetPed: Player | number): void;
 
-  export function clonePedToTargetEx(ped: Player | number, targetPed: Player | number, p2: any): void;
+  export function clonePedToTargetEx(ped: Player | number, targetPed: Player | number, p2: boolean): void;
 
   /**
   * Gets a value indicating whether the specified ped is in the specified vehicle.
@@ -13799,10 +13772,7 @@ declare module "natives" {
 
   export function clearPedNonCreationArea(): void;
 
-  /**
-  * Something regarding ped population.
-  */
-  export function _0x4759CC730F947C81(): void;
+  export function instantlyFillPedPopulation(): void;
 
   /**
   * @returns Same function call as PED::GET_MOUNT, aka just returns 0
@@ -13839,9 +13809,12 @@ declare module "natives" {
 
   export function getPedMoney(ped: Player | number): number;
 
+  /**
+  * Related to Peds dropping pickup_health_snack; p0 is a value between [0.0, 1.0] that corresponds to drop rate
+  */
   export function _0xFF4803BC019852D9(p0: number, p1: any): void;
 
-  export function _0x6B0E6172C9A4D902(p0: boolean): void;
+  export function setAmbientPedsDropMoney(p0: boolean): void;
 
   export function _0x9911F4A24485F653(p0: boolean): void;
 
@@ -14078,6 +14051,8 @@ declare module "natives" {
   */
   export function isPedInCombat(ped: Player | number, target: Player | number): boolean;
 
+  export function getPedTaskCombatTarget(ped: Player | number, p1: any): number;
+
   export function canPedInCombatSeeTarget(ped: Player | number, target: Player | number): boolean;
 
   export function isPedDoingDriveby(ped: Player | number): boolean;
@@ -14209,7 +14184,7 @@ declare module "natives" {
   */
   export function getRelationshipBetweenGroups(group1: number, group2: number): number;
 
-  export function _0x5615E0C5EB2BC6E2(p0: any, p1: any): void;
+  export function setRelationshipGroupDontAffectWantedLevel(group: number, p1: boolean): void;
 
   /**
   * Does something with ped relationships
@@ -14459,8 +14434,6 @@ declare module "natives" {
   export function setPedGetOutUpsideDownVehicle(ped: Player | number, toggle: boolean): void;
 
   /**
-  * EDIT 12/24/16:
-  * p2 does absolutely nothing no matter what the value is.
   * List of movement clipsets:
   * Thanks to elsewhat for list.
   * "ANIM_GROUP_MOVE_BALLISTIC"
@@ -14468,10 +14441,12 @@ declare module "natives" {
   * "clipset@move@trash_fast_turn"
   * "FEMALE_FAST_RUNNER"
   * "missfbi4prepp1_garbageman"
+  * "move_characters@franklin@fire"
+  * "move_characters@Jimmy@slow@"
   * See NativeDB for reference: http://natives.altv.mp/#/0xAF8A94EDE7712BEF
-  * @param p2 is usually 1.0f
+  * @param transitionSpeed is the time in seconds it takes to transition from one movement clipset to another.	ransitionSpeed is usually 1.0f
   */
-  export function setPedMovementClipset(ped: Player | number, clipSet: string, p2: number): void;
+  export function setPedMovementClipset(ped: Player | number, clipSet: string, transitionSpeed: number): void;
 
   /**
   * If p1 is 0.0, I believe you are back to normal.
@@ -14647,15 +14622,15 @@ declare module "natives" {
   export function isPedComponentVariationValid(ped: Player | number, componentId: number, drawableId: number, textureId: number): boolean;
 
   /**
-  * enum PedVariationData
+  * enum ePedVarComp
   * {
-  * PED_VARIATION_FACE = 0,
-  * PED_VARIATION_HEAD = 1,
-  * PED_VARIATION_HAIR = 2,
-  * PED_VARIATION_TORSO = 3,
-  * PED_VARIATION_LEGS = 4,
-  * PED_VARIATION_HANDS = 5,
-  * PED_VARIATION_FEET = 6,
+  * PV_COMP_INVALID = -1,
+  * PV_COMP_HEAD,
+  * PV_COMP_BERD,
+  * PV_COMP_HAIR,
+  * PV_COMP_UPPR,
+  * PV_COMP_LOWR,
+  * PV_COMP_HAND,
   * See NativeDB for reference: http://natives.altv.mp/#/0x262B14F48D29DE80
   * @param paletteId 0 to 3.
   */
@@ -14848,7 +14823,7 @@ declare module "natives" {
   /**
   * @param type equals 0 for male non-dlc, 1 for female non-dlc, 2 for male dlc, and 3 for female dlc.
   */
-  export function getNumParentPedsOfType(type: number): number;
+  export function getPedHeadBlendNumHeads(type: number): number;
 
   /**
   * from extreme3.c4
@@ -15058,19 +15033,7 @@ declare module "natives" {
 
   export function isPedRunningMobilePhoneTask(ped: Player | number): boolean;
 
-  /**
-  * Only called once in the scripts:
-  * if (sub_1abd() && (!PED::_A3F3564A5B3646C0(l_8C))) {
-  * if (sub_52e3("RESNA_CELLR", 0)) {
-  * PED::SET_PED_CAN_PLAY_GESTURE_ANIMS(l_8C, 1);
-  * PED::SET_PED_CAN_PLAY_AMBIENT_ANIMS(l_8C, 1);
-  * PED::SET_PED_CAN_PLAY_VISEME_ANIMS(l_8C, 1, 0);
-  * l_184 += 1;
-  * }
-  * }
-  * See NativeDB for reference: http://natives.altv.mp/#/0xA3F3564A5B3646C0
-  */
-  export function _0xA3F3564A5B3646C0(ped: Player | number): boolean;
+  export function isMobilePhoneToPedEar(ped: Player | number): boolean;
 
   /**
   * Works for both player and peds, but some flags don't seem to work for the player (1, for example)
@@ -15156,15 +15119,22 @@ declare module "natives" {
   export function applyPedBloodDamageByZone(ped: Player | number, p1: any, p2: number, p3: number, p4: any): void;
 
   /**
-  * Found one occurence in re_crashrescue.c4
-  * - winject
-  * @param ped :APPLY_PED_BLOOD(l_4B, 3, 0.0, 0.0, 0.0, "wound_sheet");
+  * woundTypes:
+  * - soak_splat
+  * - wound_sheet
+  * - BulletSmall
+  * - BulletLarge
+  * - ShotgunSmall
+  * - ShotgunSmallMonolithic
+  * - ShotgunLarge
+  * - ShotgunLargeMonolithic
+  * See NativeDB for reference: http://natives.altv.mp/#/0x83F7E01C7B769A26
   */
   export function applyPedBlood(ped: Player | number, boneIndex: number, xRot: number, yRot: number, zRot: number, woundType: string): void;
 
-  export function applyPedBloodByZone(ped: Player | number, p1: any, p2: number, p3: number, p4?: any): [void, any];
+  export function applyPedBloodByZone(ped: Player | number, p1: number, p2: number, p3: number, p4: string): void;
 
-  export function applyPedBloodSpecific(ped: Player | number, p1: any, p2: number, p3: number, p4: number, p5: number, p6: any, p7: number, p8?: any): [void, any];
+  export function applyPedBloodSpecific(ped: Player | number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: string): void;
 
   /**
   * enum eDamageZone
@@ -15337,7 +15307,7 @@ declare module "natives" {
 
   export function _0x25361A96E0F7E419(p0: any, p1: any, p2: any, p3: any): any;
 
-  export function _0xEC6935EBE0847B90(p0: any, p1: any, p2: any, p3: any): any;
+  export function setPedShouldPlayDirectedScenarioExit(p0: any, p1: any, p2: any, p3: any): any;
 
   export function setPedShouldPlayNormalScenarioExit(ped: Player | number): void;
 
@@ -15426,15 +15396,15 @@ declare module "natives" {
   export function _0xA660FAF550EB37E5(p0: any, p1: boolean): void;
 
   /**
-  * Research help : pastebin.com/fPL1cSwB
-  * New items added with underscore as first char
-  * -----------------------------------------------------------------------
-  * enum PedConfigFlags
+  * enum ePedConfigFlags
   * {
-  * PED_FLAG_CAN_FLY_THRU_WINDSCREEN = 32,
-  * PED_FLAG_DIES_BY_RAGDOLL = 33,
-  * PED_FLAG_NO_COLLISION = 52,
-  * _PED_FLAG_IS_SHOOTING = 58,
+  * _CPED_CONFIG_FLAG_0x67D1A445 = 0,
+  * _CPED_CONFIG_FLAG_0xC63DE95E = 1,
+  * CPED_CONFIG_FLAG_NoCriticalHits = 2,
+  * CPED_CONFIG_FLAG_DrownsInWater = 3,
+  * CPED_CONFIG_FLAG_DisableReticuleFixedLockon = 4,
+  * _CPED_CONFIG_FLAG_0x37D196F4 = 5,
+  * _CPED_CONFIG_FLAG_0xE2462399 = 6,
   * See NativeDB for reference: http://natives.altv.mp/#/0x1913FE4CBF41C463
   */
   export function setPedConfigFlag(ped: Player | number, flagId: number, value: boolean): void;
@@ -15447,9 +15417,7 @@ declare module "natives" {
   export function setPedResetFlag(ped: Player | number, flagId: number, doReset: boolean): void;
 
   /**
-  * if (GET_PED_CONFIG_FLAG(ped, 78, 1))
-  * @param p2 is always 1 in the scripts.
-  * @returns = returns true if ped is aiming/shooting a gun
+  * See SET_PED_CONFIG_FLAG
   */
   export function getPedConfigFlag(ped: Player | number, flagId: number, p2: boolean): boolean;
 
@@ -15499,10 +15467,7 @@ declare module "natives" {
 
   export function removePedHelmet(ped: Player | number, instantly: boolean): void;
 
-  /**
-  * IS_PED_*
-  */
-  export function _0x14590DDBEDB1EC85(ped: Player | number): boolean;
+  export function isPedTakingOffHelmet(ped: Player | number): boolean;
 
   export function setPedHelmet(ped: Player | number, canWearHelmet: boolean): void;
 
@@ -15525,14 +15490,11 @@ declare module "natives" {
   */
   export function isPedWearingHelmet(ped: Player | number): boolean;
 
-  /**
-  * CLEAR_PED_*
-  */
-  export function _0x687C0B594907D2E8(ped: Player | number): void;
+  export function clearPedStoredHatProp(ped: Player | number): void;
 
-  export function _0x451294E859ECC018(p0: any): any;
+  export function getPedHelmetStoredHatPropIndex(ped: Player | number): any;
 
-  export function _0x9D728C1E12BF5518(p0: any): any;
+  export function getPedHelmetStoredHatTexIndex(ped: Player | number): any;
 
   export function _0xF2385935BFFD4D92(p0: any): boolean;
 
@@ -15572,52 +15534,70 @@ declare module "natives" {
   export function setScriptedAnimSeatOffset(ped: Player | number, p1: number): void;
 
   /**
-  * 0 - Stationary (Will just stand in place)
-  * 1 - Defensive (Will try to find cover and very likely to blind fire)
-  * 2 - Offensive (Will attempt to charge at enemy but take cover as well)
-  * 3 - Suicidal Offensive (Will try to flank enemy in a suicidal attack)
+  * enum eCombatMovement // 0x4F456B61
+  * {
+  * CM_Stationary,
+  * CM_Defensive,
+  * CM_WillAdvance,
+  * CM_WillRetreat
+  * };
   */
   export function setPedCombatMovement(ped: Player | number, combatMovement: number): void;
 
+  /**
+  * See SET_PED_COMBAT_MOVEMENT
+  */
   export function getPedCombatMovement(ped: Player | number): number;
 
   /**
-  * 100 would equal attack
-  * less then 50ish would mean run away
-  * Only the values 0, 1 and 2 occur in the decompiled scripts. Most likely refers directly to the values also described in combatbehaviour.meta:
-  * 0: CA_Poor
-  * 1: CA_Average
-  * 2: CA_Professional
-  * Tested this and got the same results as the first explanation here. Could not find any difference between 0, 1 and 2.
+  * enum eCombatAbility // 0xE793438C
+  * {
+  * CA_Poor,
+  * CA_Average,
+  * CA_Professional,
+  * CA_NumTypes
+  * };
   */
-  export function setPedCombatAbility(ped: Player | number, p1: number): void;
+  export function setPedCombatAbility(ped: Player | number, abilityLevel: number): void;
 
   /**
-  * Only the values 0, 1 and 2 occur in the decompiled scripts. Most likely refers directly to the values also described as AttackRange in combatbehaviour.meta:
-  * 0: CR_Near
-  * 1: CR_Medium
-  * 2: CR_Far
+  * enum eCombatRange // 0xB69160F5
+  * {
+  * CR_Near,
+  * CR_Medium,
+  * CR_Far,
+  * CR_VeryFar,
+  * CR_NumRanges
+  * };
   */
-  export function setPedCombatRange(ped: Player | number, p1: number): void;
+  export function setPedCombatRange(ped: Player | number, combatRange: number): void;
 
+  /**
+  * See SET_PED_COMBAT_RANGE
+  */
   export function getPedCombatRange(ped: Player | number): number;
 
   /**
-  * These combat attributes seem to be the same as the BehaviourFlags from combatbehaviour.meta.
-  * So far, these are the equivalents found:
-  * enum CombatAttributes
+  * enum eCombatAttributes // 0x0E8E7201
   * {
   * BF_CanUseCover = 0,
   * BF_CanUseVehicles = 1,
   * BF_CanDoDrivebys = 2,
   * BF_CanLeaveVehicle = 3,
-  * BF_CanFightArmedPedsWhenNotArmed = 5,
+  * BF_CanUseDynamicStrafeDecisions = 4,
+  * BF_AlwaysFight = 5,
+  * BF_0x66BB9FCC = 6,
   * See NativeDB for reference: http://natives.altv.mp/#/0x9F7794730795E019
   */
-  export function setPedCombatAttributes(ped: Player | number, attributeIndex: number, enabled: boolean): void;
+  export function setPedCombatAttributes(ped: Player | number, attributeId: number, enabled: boolean): void;
 
   /**
-  * Only 1 and 2 appear in the scripts. combatbehaviour.meta seems to only have TLR_SearchForTarget for all peds, but we don't know if that's 1 or 2.
+  * enum eTargetLossResponseType
+  * {
+  * TLR_ExitTask,
+  * TLR_NeverLoseTarget,
+  * TLR_SearchForTarget
+  * };
   */
   export function setPedTargetLossResponse(ped: Player | number, responseType: number): void;
 
@@ -15756,13 +15736,11 @@ declare module "natives" {
 
   /**
   * This native sets the emissive intensity for the given ped. It is used for different 'glow' levels on illuminated clothing.
-  * Old name: _SET_PED_REFLECTION_INTENSITY
   * @param intensity 0.0f - 1.0f
   */
   export function setPedEmissiveIntensity(ped: Player | number, intensity: number): void;
 
   /**
-  * Old name: _GET_PED_REFLECTION_INTENSITY
   * Use 0x4E90D746056E273D to set the illuminated clothing glow intensity for a specific ped.
   * Returns a float between 0.0 and 1.0 representing the current illuminated clothing glow intensity.
   */
@@ -15823,24 +15801,21 @@ declare module "natives" {
   export function disposeSynchronizedScene(scene: number): void;
 
   /**
-  * Some motionstate hashes are
-  * 0xec17e58 (standing idle), 0xbac0f10b (nothing?), 0x3f67c6af (aiming with pistol 2-h), 0x422d7a25 (stealth), 0xbd8817db, 0x916e828c
-  * and those for the strings
-  * "motionstate_idle", "motionstate_walk", "motionstate_run", "motionstate_actionmode_idle", and "motionstate_actionmode_walk".
-  * [31/03/2017] ins1de :
-  * enum MotionState
+  * enum eMotionState // 0x92A659FE
   * {
-  * StopRunning = -530524,
-  * StopWalking = -668482597,
+  * MotionState_None = 0xEE717723,
+  * MotionState_Idle = 0x9072A713,
+  * MotionState_Walk = 0xD827C3DB,
+  * MotionState_Run = 0xFFF7E7A4,
+  * MotionState_Sprint = 0xBD8817DB,
+  * MotionState_Crouch_Idle = 0x43FB099E,
+  * MotionState_Crouch_Walk = 0x08C31A98,
   * See NativeDB for reference: http://natives.altv.mp/#/0xF28965D04F570DCA
-  * @param p2 Most common is 0, 0, 0); followed by 0, 1, 0); and 1, 1, 0); in the scripts. p4 is very rarely something other than 0.
+  * @param p2 Most common is 0, 0, 0); followed by 0, 1, 0); and 1, 1, 0); in R* scripts. p4 is very rarely something other than 0.
   */
   export function forcePedMotionState(ped: Player | number, motionStateHash: number, p2: boolean, p3: number, p4: boolean): boolean;
 
-  /**
-  * seems very related to aiming but GET_PED_CONFIG* to GET_PED_DECORATIONS* and no clue what it might be + no joaat to confirm
-  */
-  export function _0xF60165E1D2C5370B(ped: Player | number, p1?: any, p2?: any): [boolean, any, any];
+  export function getPedCurrentMovementSpeed(ped: Player | number, speedX?: number, speedY?: number): [boolean, number, number];
 
   export function setPedMaxMoveBlendRatio(ped: Player | number, value: number): void;
 
@@ -15976,7 +15951,7 @@ declare module "natives" {
 
   export function spawnpointsGetSearchResult(randomInt: number, x?: number, y?: number, z?: number): [void, number, number, number];
 
-  export function spawnpointsGetSearchResultFlags(p0: any, p1?: any): [void, any];
+  export function spawnpointsGetSearchResultFlags(p0: number, p1?: number): [void, number];
 
   export function setIkTarget(ped: Player | number, ikIndex: number, entityLookAt: Entity | number, boneLookAt: number, offsetX: number, offsetY: number, offsetZ: number, p7: any, blendInDuration: number, blendOutDuration: number): void;
 
@@ -15999,10 +15974,7 @@ declare module "natives" {
 
   export function setPedLodMultiplier(ped: Player | number, multiplier: number): void;
 
-  /**
-  * SET_PED_CAN_*
-  */
-  export function _0xE861D0B05C7662B8(ped: Player | number, p1: boolean, p2: number): void;
+  export function setPedCanLosePropsOnDamage(ped: Player | number, toggle: boolean, p2: number): void;
 
   export function setForceFootstepUpdate(ped: Player | number, toggle: boolean): void;
 
@@ -16010,9 +15982,12 @@ declare module "natives" {
 
   export function isAnyHostilePedNearPoint(ped: Player | number, x: number, y: number, z: number, radius: number): boolean;
 
-  export function _0x820E9892A77E97CD(p0: any, p1: any): void;
+  /**
+  * Toggles config flag CPED_CONFIG_FLAG_CanPlayInCarIdles.
+  */
+  export function setPedCanPlayInCarIdles(ped: Player | number, toggle: boolean): void;
 
-  export function _0x06087579E7AA85A9(p0: any, p1: any, p2: number, p3: number, p4: number, p5: number): boolean;
+  export function isTargetPedInPerceptionArea(ped: Player | number, targetPed: Player | number, p2: number, p3: number, p4: number, p5: number): boolean;
 
   /**
   * @param min and max are usually 100.0 and 200.0
@@ -16027,10 +16002,7 @@ declare module "natives" {
 
   export function _0x288DF530C92DAD6F(p0: any, p1: number): void;
 
-  /**
-  * IS_PED_*
-  */
-  export function _0x3795688A307E1EB6(Ped: Player | number): boolean;
+  export function isPedSwappingWeapon(Ped: Player | number): boolean;
 
   export function _0x0F62619393661D6E(p0: any, p1: any, p2: any): void;
 
@@ -16370,7 +16342,9 @@ declare module "natives" {
 
   export function resetWantedLevelDifficulty(player: Player | number): void;
 
-  export function _0x49B856B1360C47C7(p0: any, p1: any, p2: any): void;
+  export function getWantedLevelParoleDuration(): number;
+
+  export function setWantedLevelHiddenEvasionTime(player: Player | number, wantedLevel: number, lossTime: number): void;
 
   export function _0x823EC8E82BA45986(p0: any): void;
 
@@ -16506,7 +16480,7 @@ declare module "natives" {
 
   export function getPlayerUnderwaterTimeRemaining(player: Player | number): number;
 
-  export function _0xA0D3E4F7AAFB7E78(p0: any, p1: any): any;
+  export function setPlayerUnderwaterTimeRemaining(player: Player | number, time: number): any;
 
   /**
   * Returns the group ID the player is member of.
@@ -16613,24 +16587,35 @@ declare module "natives" {
   export function setPlayerMayNotEnterAnyVehicle(player: Player | number): void;
 
   /**
-  * Achievements from 0-57
-  * more achievements came with update 1.29 (freemode events update), I'd say that they now go to 60, but I'll need to check.
+  * 1 - Welcome to Los Santos
+  * 2 - A Friendship Resurrected
+  * 3 - A Fair Day's Pay
+  * 4 - The Moment of Truth
+  * 5 - To Live or Die in Los Santos
+  * 6 - Diamond Hard
+  * 7 - Subversive
+  * 8 - Blitzed
+  * 9 - Small Town, Big Job
+  * See NativeDB for reference: http://natives.altv.mp/#/0xBEC7076D64130195
   */
-  export function giveAchievementToPlayer(achievement: number): boolean;
+  export function giveAchievementToPlayer(achievementId: number): boolean;
 
   /**
   * For Steam.
   * @returns Does nothing and always returns false in the retail version of the game.
   */
-  export function setAchievementProgress(achievement: number, progress: number): boolean;
+  export function setAchievementProgress(achievementId: number, progress: number): boolean;
 
   /**
   * For Steam.
   * @returns Always returns 0 in retail version of the game.
   */
-  export function getAchievementProgress(achievement: number): number;
+  export function getAchievementProgress(achievementId: number): number;
 
-  export function hasAchievementBeenPassed(achievement: number): boolean;
+  /**
+  * See GIVE_ACHIEVEMENT_TO_PLAYER
+  */
+  export function hasAchievementBeenPassed(achievementId: number): boolean;
 
   /**
   * Returns TRUE if the game is in online mode and FALSE if in offline mode.
@@ -16793,11 +16778,17 @@ declare module "natives" {
   */
   export function setPlayerMaxArmour(player: Player | number, value: number): void;
 
-  export function specialAbilityActivate(p0: any, p1: any): void;
+  /**
+  * @param p1 is always 0 in the scripts
+  */
+  export function specialAbilityActivate(player: Player | number, p1: number): void;
 
   export function setSpecialAbility(player: Player | number, p1: number, p2: any): void;
 
-  export function specialAbilityDeplete(p0: any, p1: any): void;
+  /**
+  * @param p1 is always 0 in the scripts
+  */
+  export function specialAbilityDeplete(player: Player | number, p1: number): void;
 
   export function specialAbilityDeactivate(player: Player | number, p1: any): void;
 
@@ -16907,7 +16898,7 @@ declare module "natives" {
 
   export function setPlayerHealthRechargeLimit(player: Player | number, limit: number): void;
 
-  export function setPlayerFallDistance(p0: any, p1: any): void;
+  export function setPlayerFallDistance(player: Player | number, p1: number): void;
 
   /**
   * This modifies the damage value of your weapon. Whether it is a multiplier or base damage is unknown.
@@ -16951,9 +16942,9 @@ declare module "natives" {
   */
   export function _0x8D768602ADEF2245(player: Player | number, p1: number): void;
 
-  export function _0xD821056B9ACF8052(p0: any, p1: any): void;
+  export function _0xD821056B9ACF8052(player: Player | number, p1: any): void;
 
-  export function _0x31E90B8873A4CD3B(p0: any, p1: any): void;
+  export function _0x31E90B8873A4CD3B(player: Player | number, p1: number): void;
 
   /**
   * Tints:
@@ -17146,13 +17137,17 @@ declare module "natives" {
 
   export function clearPlayerParachuteVariationOverride(player: Player | number): void;
 
-  /**
-  * example:
-  * @param player :SET_PLAYER_PARACHUTE_MODEL_OVERRIDE(PLAYER::PLAYER_ID(), 0x73268708);
-  */
   export function setPlayerParachuteModelOverride(player: Player | number, model: number): void;
 
+  export function setPlayerReserveParachuteModelOverride(player: Player | number, model: number): void;
+
+  export function getPlayerParachuteModelOverride(player: Player | number): number;
+
+  export function getPlayerReserveParachuteModelOverride(player: Player | number): number;
+
   export function clearPlayerParachuteModelOverride(player: Player | number): void;
+
+  export function clearPlayerReserveParachuteModelOverride(player: Player | number): void;
 
   export function setPlayerParachutePackModelOverride(player: Player | number, model: number): void;
 
@@ -17313,7 +17308,7 @@ declare module "natives" {
   /**
   * Please note that you will need to call DO_SCREEN_FADE_IN after exiting the Rockstar Editor when you call this.
   */
-  export function activateRockstarEditor(): void;
+  export function activateRockstarEditor(p0: number): void;
 
   export function requestScript(scriptName: string): void;
 
@@ -17384,14 +17379,17 @@ declare module "natives" {
   export function getEventAtIndex(eventGroup: number, eventIndex: number): number;
 
   /**
+  * Note: eventDataSize is NOT the size in bytes, it is the size determined by the SIZE_OF operator (RAGE Script operator, not C/C++ sizeof). That is, the size in bytes divided by 8 (script variables are always 8-byte aligned!).
   * @param eventGroup 0 = SCRIPT_EVENT_QUEUE_AI (CEventGroupScriptAI), 1 = SCRIPT_EVENT_QUEUE_NETWORK (CEventGroupScriptNetwork)
   */
-  export function getEventData(eventGroup: number, eventIndex: number, argStruct: number | null, argStructSize: number): [boolean, number];
+  export function getEventData(eventGroup: number, eventIndex: number, eventData: any | null, eventDataSize: number): [boolean, any];
 
   /**
+  * Note: eventDataSize is NOT the size in bytes, it is the size determined by the SIZE_OF operator (RAGE Script operator, not C/C++ sizeof). That is, the size in bytes divided by 8 (script variables are always 8-byte aligned!).
   * @param eventGroup 0 = SCRIPT_EVENT_QUEUE_AI (CEventGroupScriptAI), 1 = SCRIPT_EVENT_QUEUE_NETWORK (CEventGroupScriptNetwork)
+  * @param playerBits (also known as playersToBroadcastTo) is a bitset that indicates which players this event should be sent to. In order to send the event to specific players only, use (1 << playerIndex). Set all bits if it should be broadcast to all players.
   */
-  export function triggerScriptEvent(eventGroup: number, args: number | null, argCount: number, bit: number): [void, number];
+  export function triggerScriptEvent(eventGroup: number, eventData: any | null, eventDataSize: number, playerBits: number): [void, any];
 
   export function shutdownLoadingScreen(): void;
 
@@ -17504,9 +17502,9 @@ declare module "natives" {
 
   export function scInboxGetTotalNumMessages(): number;
 
-  export function scInboxMessageInit(p0: number): number;
+  export function scInboxGetMessageTypeAtIndex(msgIndex: number): number;
 
-  export function isScInboxValid(p0: number): boolean;
+  export function scInboxGetMessageIsReadAtIndex(msgIndex: number): boolean;
 
   export function scInboxMessagePop(p0: number): boolean;
 
@@ -17520,11 +17518,11 @@ declare module "natives" {
 
   export function scInboxMessageGetString(p0: number): string;
 
-  export function scInboxMessagePushGamerToEventRecipList(networkHandle: number): [void, number];
+  export function scInboxMessagePushGamerToEventRecipList(gamerHandle: any): [void, any];
 
   export function scInboxMessageSendUgcStatUpdateEvent(data: any): [void, any];
 
-  export function scInboxMessageGetUgcdata(p0: any, p1?: any): [boolean, any];
+  export function scInboxMessageGetUgcdata(p0: number, p1?: any): [boolean, any];
 
   export function scInboxMessageSendBountyPresenceEvent(data: any): [boolean, any];
 
@@ -17540,7 +17538,7 @@ declare module "natives" {
 
   export function _0x44ACA259D67651DB(p0: any | null, p1: any): [void, any];
 
-  export function scEmailMessagePushGamerToRecipList(networkHandle: number): [void, number];
+  export function scEmailMessagePushGamerToRecipList(gamerHandle: any): [void, any];
 
   export function scEmailMessageClearRecipList(): void;
 
@@ -17605,53 +17603,53 @@ declare module "natives" {
 
   export function _0x2E89990DDFF670C3(p0: any, p1: any): any;
 
-  export function _0xD0EE05FE193646EA(p0?: any, p1?: any, p2?: any): [boolean, any, any, any];
+  export function _0xD0EE05FE193646EA(p0: string, p1: string, p2?: any): [boolean, any];
 
-  export function _0x1989C6E6F67E76A8(p0?: any, p1?: any, p2?: any): [boolean, any, any, any];
+  export function _0x1989C6E6F67E76A8(p0: string, p1?: any, p2?: number): [boolean, any, number];
 
   export function _0x07C61676E5BB52CD(p0: any): any;
 
   export function _0x8147FFF6A718E1AD(p0: any): any;
 
-  export function _0x0F73393BAC7E6730(p0?: any, p1?: number): [boolean, any, number];
+  export function _0x0F73393BAC7E6730(p0: string, p1?: number): [boolean, number];
 
-  export function _0xD302E99EDF0449CF(p0: any): any;
+  export function _0xD302E99EDF0449CF(p0: number): number;
 
-  export function _0x5C4EBFFA98BDB41C(p0: any): any;
+  export function _0x5C4EBFFA98BDB41C(p0: number): number;
 
-  export function _0xFF8F3A92B75ED67A(): any;
+  export function _0xFF8F3A92B75ED67A(): boolean;
 
-  export function _0x4ED9C8D6DA297639(): any;
+  export function _0x4ED9C8D6DA297639(): number;
 
-  export function _0x710BCDA8071EDED1(): any;
+  export function _0x710BCDA8071EDED1(p0: string, p1?: number): [boolean, number];
 
-  export function _0x50A8A36201DBF83E(): any;
+  export function _0x50A8A36201DBF83E(p0: string, p1?: number): [boolean, number];
 
-  export function _0x9DE5D2F723575ED0(): any;
+  export function _0x9DE5D2F723575ED0(p0: string, p1?: string): [boolean, string];
 
-  export function _0xC2C97EA97711D1AE(): any;
+  export function _0xC2C97EA97711D1AE(p0: string): [boolean, string];
 
-  export function _0x450819D8CF90C416(): any;
+  export function _0x450819D8CF90C416(p0: string): boolean;
 
-  export function _0x4A7D6E727F941747(p0: any): [any, any];
+  export function _0x4A7D6E727F941747(p0: string): number;
 
-  export function _0xE75A4A2E5E316D86(): any;
+  export function _0xE75A4A2E5E316D86(p0: string, p1: number | null, p2: string): [boolean, number];
 
-  export function _0x2570E26BE63964E3(): any;
+  export function _0x2570E26BE63964E3(p0: string, p1: number | null, p2: string): [boolean, number];
 
-  export function _0x1D12A56FC95BE92E(): any;
+  export function _0x1D12A56FC95BE92E(p0: string, p1: string | null, p2: string): [boolean, string];
 
-  export function _0x33DF47CC0642061B(): any;
+  export function _0x33DF47CC0642061B(p0: string | null, p1: string): [boolean, string];
 
-  export function _0xA468E0BE12B12C70(): any;
+  export function _0xA468E0BE12B12C70(p0: number): boolean;
 
-  export function _0x8CC469AB4D349B7C(p0: number, p1: string, p2?: any): [boolean, any];
+  export function _0x8CC469AB4D349B7C(p0: number, p1: string, p2?: number): [boolean, number];
 
-  export function _0xC5A35C73B68F3C49(): any;
+  export function _0xC5A35C73B68F3C49(p0: number, p1: string, p2?: number): [boolean, number];
 
-  export function _0x699E4A5C8C893A18(p0: number, p1: string, p2?: any): [boolean, any];
+  export function _0x699E4A5C8C893A18(p0: number, p1: string, p2?: string): [boolean, string];
 
-  export function _0x19853B5B17D77BCA(p0: any, p1?: any): [boolean, any];
+  export function _0x19853B5B17D77BCA(p0: number, p1?: string): [boolean, string];
 
   export function _0x6BFB12CE158E3DD4(p0: any): boolean;
 
@@ -17684,7 +17682,7 @@ declare module "natives" {
   /**
   * Same as HAS_ACHIEVEMENT_BEEN_PASSED
   */
-  export function scGetHasAchievementBeenPassed(achievement: number): boolean;
+  export function scGetHasAchievementBeenPassed(achievementId: number): boolean;
 
   /**
   * Example:
@@ -17869,6 +17867,11 @@ declare module "natives" {
   export function statSetProfileSettingValue(profileSetting: number, value: number): void;
 
   /**
+  * This native does absolutely nothing, just a nullsub
+  */
+  export function _0xC01D2470F22CDE5A(): void;
+
+  /**
   * Needs more research. Possibly used to calculate the "mask" when calling "STAT_SET_BOOL_MASKED"?
   */
   export function statGetPackedBoolMask(p0: number): number;
@@ -17882,9 +17885,9 @@ declare module "natives" {
 
   export function getPackedIntStatKey(index: number, spStat: boolean, charStat: boolean, character: number): number;
 
-  export function getPackedTitleUpdateBoolStatKey(index: number, spStat: boolean, charStat: boolean, character: number): number;
+  export function getPackedTuBoolStatKey(index: number, spStat: boolean, charStat: boolean, character: number): number;
 
-  export function getPackedTitleUpdateIntStatKey(index: number, spStat: boolean, charStat: boolean, character: number): number;
+  export function getPackedTuIntStatKey(index: number, spStat: boolean, charStat: boolean, character: number): number;
 
   /**
   * Needs more research. Gets the stat name of a masked bool?
@@ -17931,11 +17934,14 @@ declare module "natives" {
 
   export function playstatsRankUp(rank: number): void;
 
+  /**
+  * PLAYSTATS_START_INVITE_DESPAWNING?
+  */
   export function playstatsStartOfflineMode(): void;
 
-  export function _0xA071E0ED98F91286(p0: any, p1: any): void;
+  export function playstatsActivityDone(p0: any, p1: any): void;
 
-  export function _0xC5BE134EC7BA96A0(p0: any, p1: any, p2: any, p3: any, p4: any): void;
+  export function playstatsLeaveJobChain(p0: any, p1: any, p2: any, p3: any, p4: any): void;
 
   export function playstatsMissionStarted(p0: any | null, p1: any, p2: any, p3: boolean): [void, any];
 
@@ -17958,15 +17964,15 @@ declare module "natives" {
 
   export function playstatsShopItem(p0: any, p1: any, p2: any, p3: any, p4: any): void;
 
-  export function playstatsCrateDrop(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any): void;
+  export function playstatsCrateDropMissionDone(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any): void;
 
-  export function playstatsCrateCreated(p0: number, p1: number, p2: number): void;
+  export function playstatsCrateCreatedMissionDone(p0: number, p1: number, p2: number): void;
 
-  export function playstatsHoldUp(p0: any, p1: any, p2: any, p3: any): void;
+  export function playstatsHoldUpMissionDone(p0: any, p1: any, p2: any, p3: any): void;
 
-  export function playstatsImpExp(p0: any, p1: any, p2: any, p3: any): void;
+  export function playstatsImportExportMissionDone(p0: any, p1: any, p2: any, p3: any): void;
 
-  export function playstatsRaceToPoint(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any): void;
+  export function playstatsRaceToPointMissionDone(p0: any, p1: any, p2: any, p3: any): void;
 
   export function playstatsAcquiredHiddenPackage(p0: any): void;
 
@@ -18127,7 +18133,7 @@ declare module "natives" {
 
   export function _0xC141B8917E0017EC(): void;
 
-  export function _0xB475F27C6A994D65(): void;
+  export function setProfileSettingPrologueComplete(): void;
 
   /**
   * Sets profile setting 939
@@ -18155,7 +18161,7 @@ declare module "natives" {
 
   export function _0x428EAF89E24F6C36(p0: any, p1: number): void;
 
-  export function _0x047CBED6F6F8B63C(): void;
+  export function statSetCheatIsActive(): void;
 
   export function leaderboards2WriteDataForEventType(p0?: any, p1?: any): [boolean, any, any];
 
@@ -18177,8 +18183,6 @@ declare module "natives" {
   export function _0x5BD5F255321C4AAF(p0: any): any;
 
   export function _0xDEAAF77EB3687E97(p0: any, p1?: any): [any, any];
-
-  export function statSaveMigrationStatusStart(): boolean;
 
   export function statGetSaveMigrationStatus(data: any): [number, any];
 
@@ -18461,6 +18465,18 @@ declare module "natives" {
 
   export function _0xD6CA58B3B53A0F22(p0: any): void;
 
+  export function playstatsRobberyPrep(p0: any): void;
+
+  export function playstatsRobberyFinale(p0: any): void;
+
+  export function playstatsExtraEvent(p0: any): void;
+
+  export function playstatsCarclubPoints(p0: any): void;
+
+  export function playstatsCarclubChallenge(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function playstatsCarclubPrize(p0: any, p1: any): void;
+
   export function loadAllObjectsNow(): void;
 
   export function loadScene(x: number, y: number, z: number): void;
@@ -18699,19 +18715,28 @@ declare module "natives" {
   */
   export function _0x4E52E752C76E7E7A(p0: any): void;
 
-  export function formatFocusHeading(x: number, y: number, z: number, rad: number, p4: any, p5: any): any;
+  /**
+  * @returns Always returns zero.
+  */
+  export function streamvolCreateSphere(x: number, y: number, z: number, rad: number, p4: any, p5: any): any;
 
-  export function _0x1F3F018BC3AFA77C(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: any, p8: any): any;
+  /**
+  * @returns Always returns zero.
+  */
+  export function streamvolCreateFrustum(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: any, p8: any): any;
 
-  export function _0x0AD9710CEE2F590F(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: any): any;
+  /**
+  * @returns Always returns zero.
+  */
+  export function streamvolCreateLine(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: any): any;
 
-  export function _0x1EE7D8DF4425F053(p0: any): void;
+  export function streamvolDelete(unused: any): void;
 
-  export function _0x7D41E9D2D17C5B2D(p0: any): any;
+  export function streamvolHasLoaded(unused: any): boolean;
 
-  export function _0x07C313F94746702C(p0: any): any;
+  export function streamvolIsValid(unused: any): boolean;
 
-  export function _0xBC9823AB80A3DCAC(): any;
+  export function isStreamvolActive(): boolean;
 
   /**
   * `radius` value is usually between `3f` and `7000f` in original 1868 scripts.
@@ -18823,7 +18848,7 @@ declare module "natives" {
 
   export function getPlayerSwitchInterpOutDuration(): number;
 
-  export function _0x5B48A06DD0E792A5(): any;
+  export function getPlayerSwitchInterpOutCurrentTime(): any;
 
   export function isSwitchSkippingDescent(): boolean;
 
@@ -18842,7 +18867,7 @@ declare module "natives" {
 
   export function _0x472397322E92A856(): void;
 
-  export function _0x40AEFD1A244741F2(p0: boolean): void;
+  export function setRenderHdOnly(toggle: boolean): void;
 
   export function _0x03F1A106BDA7DD3E(): void;
 
@@ -19217,6 +19242,8 @@ declare module "natives" {
 
   export function setAnimWeight(p0: any, p1: number, p2: any, p3: any, p4: boolean): void;
 
+  export function setAnimPlaybackTime(entity: Entity | number, p1: number, p2: any, p3: boolean): void;
+
   export function setAnimRate(p0: any, p1: number, p2: any, p3: boolean): void;
 
   export function setAnimLooped(p0: any, p1: boolean, p2: any, p3: boolean): void;
@@ -19461,7 +19488,7 @@ declare module "natives" {
 
   export function taskPlaneLand(pilot: Player | number, plane: Vehicle | number, runwayStartX: number, runwayStartY: number, runwayStartZ: number, runwayEndX: number, runwayEndY: number, runwayEndZ: number): void;
 
-  export function _0x6100B3CEFD43452E(p0: any): void;
+  export function _0x6100B3CEFD43452E(p0: Player | number): void;
 
   /**
   * Seems to stop the engine
@@ -19475,21 +19502,29 @@ declare module "natives" {
 
   export function taskPlaneGotoPreciseVtol(ped: Player | number, vehicle: Vehicle | number, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any): void;
 
-  export function taskSubmarineGotoAndStop(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void;
+  /**
+  * Used in am_vehicle_spawn.ysc and am_mp_submarine.ysc.
+  * Speed can be set by calling SET_DRIVE_TASK_CRUISE_SPEED after
+  * @param p0 is always 0, p5 is always 1
+  * @param submarine is the vehicle handle of the submarine. Submarine must have a driver, but the ped handle is not passed to the native.
+  */
+  export function taskSubmarineGotoAndStop(p0: any, submarine: Vehicle | number, x: number, y: number, z: number, p5: any): void;
 
   /**
-  * Needs more research.
-  * Default value of p13 is -1.0 or 0xBF800000.
-  * Default value of p14 is 0.
-  * Modified examples from "fm_mission_controller.ysc", line ~203551:
-  * TASK::TASK_HELI_MISSION(ped, vehicle, 0, 0, posX, posY, posZ, 4, 1.0, -1.0, -1.0, 10, 10, 5.0, 0);
-  * TASK::TASK_HELI_MISSION(ped, vehicle, 0, 0, posX, posY, posZ, 4, 1.0, -1.0, -1.0, 0, ?, 5.0, 4096);
-  * int mode seams to set mission type 4 = coords target, 23 = ped target.
-  * int 14 set to 32 = ped will land at destination.
-  * My findings:
+  * Must have targetVehicle, targetPed, OR destination X/Y/Z set
+  * Will follow targeted vehicle/ped, or fly to destination
+  * Set whichever is not being used to 0
+  * Mission mode type:
+  * - 4, 7: Forces heli to snap to the heading if set, flies to destination or tracks specified entity (mode 4 only works for coordinates, 7 works for coordinates OR ped/vehicle)
+  * - 6: Attacks the target ped/vehicle with mounted weapons. If radius is set, will maintain that distance from target.
+  * - 8: Makes the heli flee from the ped/vehicle/coordinate
+  * - 9: Circles around target ped/vehicle, snaps to angle if set. Behavior flag (last parameter) of 2048 switches from counter-clockwise to clockwise circling. Does not work with coordinate destination.
+  * - 10, 11: Follows ped/vehicle target and imitates target heading. Only works with ped/vehicle target, not coord target
   * See NativeDB for reference: http://natives.altv.mp/#/0xDAD029E187A2BEB4
+  * @param radius affects how closely the heli will follow tracked ped/vehicle, and when circling (mission type 9) sets the radius (in meters) that it will circle the target from
+  * @param unk3 is a float value, you may see -1082130432 for this value in decompiled native scripts, this is the equivalent to -1.0f. Seems to affect acceleration/aggressiveness, but not sure exactly how it works. Higher value seems to result in lower acceleration/less aggressive flying. Almost always -1.0 in native scripts, occasionally 20.0 or 50.0. Setting to 400.0 seems to work well for making the pilot not overshoot the destination when using coordinate destination.
   */
-  export function taskHeliMission(pilot: Player | number, aircraft: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Player | number, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, maxSpeed: number, landingRadius: number, targetHeading: number, unk1: number, unk2: number, unk3: number, landingFlags: number): void;
+  export function taskHeliMission(pilot: Player | number, aircraft: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Player | number, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, maxSpeed: number, radius: number, targetHeading: number, maxHeight: number, minHeight: number, unk3: number, behaviorFlags: number): void;
 
   export function taskHeliEscortHeli(pilot: Player | number, heli1: Vehicle | number, heli2: Vehicle | number, p3: number, p4: number, p5: number): void;
 
@@ -19508,7 +19543,7 @@ declare module "natives" {
   */
   export function taskPlaneMission(pilot: Player | number, aircraft: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Player | number, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, angularDrag: number, unk: number, targetHeading: number, maxZ: number, minZ: number, p13: any): void;
 
-  export function taskPlaneTaxi(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): void;
+  export function taskPlaneTaxi(pilot: Player | number, aircraft: Vehicle | number, p2: any, p3: any, p4: any, p5: any, p6: any): void;
 
   /**
   * You need to call PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS after TASK_BOAT_MISSION in order for the task to execute.
@@ -20367,9 +20402,12 @@ declare module "natives" {
   export function setVehicleAllowNoPassengersLockon(veh: Vehicle | number, toggle: boolean): void;
 
   /**
-  * GET_VEHICLE_*
+  * Returns a value depending on the lock-on state of vehicle weapons.
+  * 0: not locked on
+  * 1: locking on
+  * 2: locked on
   */
-  export function _0xE6B0E8CFC3633BF0(vehicle: Vehicle | number): number;
+  export function getVehicleHomingLockonState(vehicle: Vehicle | number): number;
 
   export function _0x6EAAEFC76ACC311F(p0: any): any;
 
@@ -20500,9 +20538,9 @@ declare module "natives" {
   export function setVehicleDoorsLocked(vehicle: Vehicle | number, doorLockStatus: number): void;
 
   /**
-  * @param destroyType is 1 for opens on damage, 2 for breaks on damage.
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
   */
-  export function setVehicleDoorDestroyType(vehicle: Vehicle | number, doorIndex: number, destroyType: number): void;
+  export function setVehicleIndividualDoorsLocked(vehicle: Vehicle | number, doorId: number, doorLockStatus: number): void;
 
   /**
   * if set to true, prevents vehicle sirens from having sound, leaving only the lights.
@@ -20701,12 +20739,14 @@ declare module "natives" {
   export function getVehicleColours(vehicle: Vehicle | number, colorPrimary?: number, colorSecondary?: number): [void, number, number];
 
   /**
-  * Has an additional BOOL parameter since version [???].
   * Check if a vehicle seat is free.
-  * -1 being the driver seat.
   * Use GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(vehicle) - 1 for last seat index.
+  * @param vehicle on true the function returns already false while a task on the target seat is running (TASK_ENTER_VEHICLE/TASK_SHUFFLE_TO_NEXT_VEHICLE_SEAT) - on false only when a ped is finally sitting in the seat.
+  * @param seatIndex = -1 being the driver seat.
+  * @param isTaskRunning = on true the function returns already false while a task on the target seat is running (TASK_ENTER_VEHICLE/TASK_SHUFFLE_TO_NEXT_VEHICLE_SEAT) - on false only when a ped is finally sitting in the seat.
+  * @returns isTaskRunning = on true the function returns already false while a task on the target seat is running (TASK_ENTER_VEHICLE/TASK_SHUFFLE_TO_NEXT_VEHICLE_SEAT) - on false only when a ped is finally sitting in the seat.
   */
-  export function isVehicleSeatFree(vehicle: Vehicle | number, seatIndex: number, p2: boolean): boolean;
+  export function isVehicleSeatFree(vehicle: Vehicle | number, seatIndex: number, isTaskRunning: boolean): boolean;
 
   /**
   * If there is no ped in the seat, and the game considers the vehicle as ambient population, this will create a random occupant ped in the seat, which may be cleaned up by the game fairly soon if not marked as script-owned mission entity.
@@ -20757,7 +20797,7 @@ declare module "natives" {
   */
   export function bringVehicleToHalt(vehicle: Vehicle | number, distance: number, duration: number, unknown: boolean): void;
 
-  export function _0xDCE97BDF8A0EABC8(p0: any, p1: any): void;
+  export function _0xDCE97BDF8A0EABC8(vehicle: Vehicle | number, p1: any): void;
 
   /**
   * Sets some bit of vehicle.
@@ -20767,13 +20807,16 @@ declare module "natives" {
 
   export function _0x8664170EF165C4A6(p0: any, p1: any): void;
 
-  export function _0x7C06330BFDDA182E(p0: any): void;
+  /**
+  * Stops CTaskBringVehicleToHalt
+  */
+  export function stopBringVehicleToHalt(vehicle: Vehicle | number): void;
 
   /**
-  * Checks for value in vehicle
+  * Returns true if vehicle is halted by BRING_VEHICLE_TO_HALT
   * _IS_VEHICLE_*
   */
-  export function _0xC69BB1D832A710EF(vehicle: Vehicle | number): boolean;
+  export function isVehicleBeingHalted(vehicle: Vehicle | number): boolean;
 
   /**
   * 0.0 = Lowest 1.0 = Highest. This is best to be used if you wanna pick-up a car since un-realistically on GTA V forklifts can't pick up much of anything due to vehicle mass. If you put this under a car then set it above 0.0 to a 'lifted-value' it will raise the car with no issue lol
@@ -20782,7 +20825,7 @@ declare module "natives" {
 
   export function isEntityAttachedToHandlerFrame(vehicle: Vehicle | number, entity: Entity | number): boolean;
 
-  export function _0x62CA17B74C435651(vehicle: Vehicle | number): boolean;
+  export function isAnyEntityAttachedToHandlerFrame(vehicle: Vehicle | number): boolean;
 
   /**
   * Finds the vehicle that is carrying this entity with a handler frame.
@@ -20843,18 +20886,15 @@ declare module "natives" {
   export function setVehicleWheelsCanBreak(vehicle: Vehicle | number, enabled: boolean): void;
 
   /**
-  * 0 = Front Left Door
-  * 1 = Front Right Door
-  * 2 = Back Left Door
-  * 3 = Back Right Door
-  * 4 = Hood
-  * 5 = Trunk
-  * 6 = Back
-  * 7 = Back2
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
   */
-  export function setVehicleDoorOpen(vehicle: Vehicle | number, doorIndex: number, loose: boolean, openInstantly: boolean): void;
+  export function setVehicleDoorOpen(vehicle: Vehicle | number, doorId: number, loose: boolean, openInstantly: boolean): void;
 
-  export function _0x3B458DDB57038F08(p0: any, p1: any, p2: any): void;
+  /**
+  * Usually used alongside other vehicle door natives.
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
+  */
+  export function _0x3B458DDB57038F08(vehicle: Vehicle | number, doorId: number, toggle: boolean): void;
 
   export function _0xA247F9EF01D8082E(p0: any): void;
 
@@ -20923,7 +20963,6 @@ declare module "natives" {
   /**
   * Detaches the vehicle's windscreen.
   * For further information, see : gtaforums.com/topic/859570-glass/#entry1068894566
-  * Old name: _DETACH_VEHICLE_WINDSCREEN
   */
   export function popOutVehicleWindscreen(vehicle: Vehicle | number): void;
 
@@ -21064,7 +21103,7 @@ declare module "natives" {
   * freightcont2
   * freighttrailer
   */
-  export function createMissionTrain(unkVariation: number, x: number, y: number, z: number, direction: boolean): number;
+  export function createMissionTrain(unkVariation: number, x: number, y: number, z: number, direction: boolean, p5: any, p6: any): number;
 
   /**
   * Toggles whether ambient trains can spawn on the specified track or not
@@ -21086,6 +21125,8 @@ declare module "natives" {
   */
   export function setTrainTrackSpawnFrequency(trackIndex: number, frequency: number): void;
 
+  export function _0x2310A8F9421EBF43(p0: any): void;
+
   export function deleteAllTrains(): void;
 
   export function setTrainSpeed(train: Vehicle | number, speed: number): void;
@@ -21093,6 +21134,8 @@ declare module "natives" {
   export function setTrainCruiseSpeed(train: Vehicle | number, speed: number): void;
 
   export function setRandomBoats(toggle: boolean): void;
+
+  export function setRandomBoatsInMp(toggle: boolean): void;
 
   export function setGarbageTrucks(toggle: boolean): void;
 
@@ -21271,6 +21314,8 @@ declare module "natives" {
   */
   export function getTrainCarriage(train: Vehicle | number, trailerNumber: number): number;
 
+  export function isMissionTrain(vehicle: Vehicle | number): boolean;
+
   export function deleteMissionTrain(train: Vehicle | number): [void, number];
 
   /**
@@ -21365,15 +21410,9 @@ declare module "natives" {
   export function isVehicleDamaged(vehicle: Vehicle | number): boolean;
 
   /**
-  * 0 = Front Left Door
-  * 1 = Front Right Door
-  * 2 = Back Left Door
-  * 3 = Back Right Door
-  * 4 = Hood
-  * 5 = Trunk
-  * 6 = Trunk2
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
   */
-  export function isVehicleDoorFullyOpen(vehicle: Vehicle | number, doorIndex: number): boolean;
+  export function isVehicleDoorFullyOpen(vehicle: Vehicle | number, doorId: number): boolean;
 
   /**
   * Starts or stops the engine on the specified vehicle.
@@ -21390,54 +21429,43 @@ declare module "natives" {
   export function setVehicleProvidesCover(vehicle: Vehicle | number, toggle: boolean): void;
 
   /**
-  * 0 = Front Left Door (driver door)
-  * 1 = Front Right Door
-  * 2 = Back Left Door
-  * 3 = Back Right Door
-  * 4 = Hood
-  * 5 = Trunk
-  * 6 = Trunk2
-  * mostly use 0 and 1, very rare using 3 and 5
-  * It seems it is an angle
-  * See NativeDB for reference: http://natives.altv.mp/#/0xF2BFA0430F0A0FCB
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
   */
-  export function setVehicleDoorControl(vehicle: Vehicle | number, doorIndex: number, speed: number, angle: number): void;
-
-  export function setVehicleDoorLatched(vehicle: Vehicle | number, doorIndex: number, p2: boolean, p3: boolean, p4: boolean): void;
+  export function setVehicleDoorControl(vehicle: Vehicle | number, doorId: number, speed: number, angle: number): void;
 
   /**
-  * example in vb:
-  * Public Shared Function Get_Vehicle_Door_Angle(Vehicle As Vehicle, Door As VehicleDoor) As Single
-  * End Function
-  * I'm Not MentaL
-  * @returns         Return Native.Function.Call(Of Single)(Hash.GET_VEHICLE_DOOR_ANGLE_RATIO, Vehicle.Handle, Door)
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
   */
-  export function getVehicleDoorAngleRatio(vehicle: Vehicle | number, door: number): number;
-
-  export function getPedUsingVehicleDoor(vehicle: Vehicle | number, doorIndex: number): number;
+  export function setVehicleDoorLatched(vehicle: Vehicle | number, doorId: number, p2: boolean, p3: boolean, p4: boolean): void;
 
   /**
-  * 0 = Front Left Door
-  * 1 = Front Right Door
-  * 2 = Back Left Door
-  * 3 = Back Right Door
-  * 4 = Hood
-  * 5 = Trunk
-  * 6 = Trunk2
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
   */
-  export function setVehicleDoorShut(vehicle: Vehicle | number, doorIndex: number, closeInstantly: boolean): void;
+  export function getVehicleDoorAngleRatio(vehicle: Vehicle | number, doorId: number): number;
 
   /**
-  * 0 = Front Right Door
-  * 1 = Front Left Door
-  * 2 = Back Right Door
-  * 3 = Back Left Door
-  * 4 = Hood
-  * 5 = Trunk
-  * Changed last paramater from CreateDoorObject To NoDoorOnTheFloor because when on false, the door object is created,and not created when on true...the former parameter name was counter intuitive...(by Calderon)
-  * Calderon is a moron.
+  * doorId: see SET_VEHICLE_DOOR_SHUT
   */
-  export function setVehicleDoorBroken(vehicle: Vehicle | number, doorIndex: number, deleteDoor: boolean): void;
+  export function getPedUsingVehicleDoor(vehicle: Vehicle | number, doord: number): number;
+
+  /**
+  * enum eDoorId
+  * {
+  * VEH_EXT_DOOR_INVALID_ID = -1,
+  * VEH_EXT_DOOR_DSIDE_F,
+  * VEH_EXT_DOOR_DSIDE_R,
+  * VEH_EXT_DOOR_PSIDE_F,
+  * VEH_EXT_DOOR_PSIDE_R,
+  * VEH_EXT_BONNET,
+  * VEH_EXT_BOOT
+  * };
+  */
+  export function setVehicleDoorShut(vehicle: Vehicle | number, doorId: number, closeInstantly: boolean): void;
+
+  /**
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
+  */
+  export function setVehicleDoorBroken(vehicle: Vehicle | number, doorId: number, deleteDoor: boolean): void;
 
   export function setVehicleCanBreak(vehicle: Vehicle | number, toggle: boolean): void;
 
@@ -21516,7 +21544,7 @@ declare module "natives" {
   /**
   * Returns vehicle door destroy type previously set with _SET_VEHICLE_DOOR_DESTROY_TYPE
   */
-  export function getVehicleDoorDestroyType(vehicle: Vehicle | number, doorIndex: number): number;
+  export function getVehicleDoorDestroyType(vehicle: Vehicle | number, doorId: number): number;
 
   /**
   * @param doorID starts at 0, not seeming to skip any numbers. Four door vehicles intuitively range from 0 to 3.
@@ -21524,9 +21552,9 @@ declare module "natives" {
   export function isVehicleDoorDamaged(veh: Vehicle | number, doorID: number): boolean;
 
   /**
-  * Keeps Vehicle Doors/Hood/Trunk from breaking off
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
   */
-  export function setVehicleDoorCanBreak(vehicle: Vehicle | number, doorIndex: number, isBreakable: boolean): void;
+  export function setVehicleDoorCanBreak(vehicle: Vehicle | number, doorId: number, isBreakable: boolean): void;
 
   export function isVehicleBumperBouncing(vehicle: Vehicle | number, frontBumper: boolean): boolean;
 
@@ -21901,7 +21929,7 @@ declare module "natives" {
   */
   export function getHeliTailBoomHealth(vehicle: Vehicle | number): number;
 
-  export function _0x4056EA1105F5ABD7(p0: any, p1: any): void;
+  export function setHeliMainRotorHealth(vehicle: Vehicle | number, health: number): void;
 
   export function setHeliTailRotorHealth(vehicle: Vehicle | number, health: number): void;
 
@@ -22005,9 +22033,9 @@ declare module "natives" {
 
   export function _0x737E398138550FFF(p0: any, p1: any): void;
 
-  export function _0x1093408B4B9D1146(p0: any, p1: number): void;
+  export function setVehicleTurretSpeedThisFrame(vehicle: Vehicle | number, speed: number): void;
 
-  export function disableVehicleTurretMovementThisFrame(p0: any): void;
+  export function disableVehicleTurretMovementThisFrame(vehicle: Vehicle | number): void;
 
   export function setVehicleFlightNozzlePosition(vehicle: Vehicle | number, angleRatio: number): void;
 
@@ -22059,15 +22087,12 @@ declare module "natives" {
 
   export function setVehicleBrake(vehicle: Vehicle | number, toggle: boolean): void;
 
-  /**
-  * INIT_VISIBLE_LATCH_POPULATION?
-  */
-  export function _0x48ADC8A773564670(): void;
+  export function instantlyFillVehiclePopulation(): void;
 
   /**
   * HAS_*
   */
-  export function _0x91D6DD290888CBAB(): boolean;
+  export function hasFilledVehiclePopulation(): boolean;
 
   export function _0x51DB102F4A3BA5E0(toggle: boolean): void;
 
@@ -22161,15 +22186,9 @@ declare module "natives" {
 
   export function getVehicleClassMaxBraking(vehicleClass: number): number;
 
-  /**
-  * ADD_*
-  */
-  export function addSpeedZoneForCoord(x: number, y: number, z: number, radius: number, speed: number, p5: boolean): number;
+  export function addRoadNodeSpeedZone(x: number, y: number, z: number, radius: number, speed: number, p5: boolean): number;
 
-  /**
-  * REMOVE_*
-  */
-  export function removeSpeedZone(speedzone: number): boolean;
+  export function removeRoadNodeSpeedZone(speedzone: number): boolean;
 
   export function openBombBayDoors(vehicle: Vehicle | number): void;
 
@@ -22193,9 +22212,19 @@ declare module "natives" {
 
   export function doesVehicleHaveSearchlight(vehicle: Vehicle | number): boolean;
 
-  export function _0x639431E895B9AA57(ped: Player | number, vehicle: Vehicle | number, p2: boolean, p3: boolean, p4: boolean): boolean;
+  /**
+  * Use GET_VEHICLE_MAX_NUMBER_OF_PASSENGERS(vehicle) - 1 for last seat index.
+  * @param seatIndex = -1 being the driver seat.
+  * @param side = only relevant for bikes/motorcycles to check if the left (false)/right (true) side is blocked.
+  * @param onEnter = check if you can enter (true) or exit (false) a vehicle.
+  * @returns Check if a vehicle seat is accessible. If you park your vehicle near a wall and the ped cannot enter/exit this side, the return value toggles from true (not blocked) to false (blocked).
+  */
+  export function isVehicleSeatAccessible(ped: Player | number, vehicle: Vehicle | number, seatIndex: number, side: boolean, onEnter: boolean): boolean;
 
-  export function getEntryPositionOfDoor(vehicle: Vehicle | number, doorIndex: number): Vector3;
+  /**
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
+  */
+  export function getEntryPositionOfDoor(vehicle: Vehicle | number, doorId: number): Vector3;
 
   export function canShuffleSeat(vehicle: Vehicle | number, seatIndex: number): boolean;
 
@@ -22472,7 +22501,7 @@ declare module "natives" {
 
   export function removeVehicleCombatAvoidanceArea(p0: any): void;
 
-  export function isAnyPassengerRappelingFromVehicle(vehicle: Vehicle | number): boolean;
+  export function isAnyPedRappellingFromHeli(vehicle: Vehicle | number): boolean;
 
   /**
   * <1.0 - Decreased torque
@@ -22556,9 +22585,9 @@ declare module "natives" {
   export function _0x4D9D109F63FEE1D4(p0: any, p1: boolean): void;
 
   /**
-  * SET_VEHICLE_*
+  * Allows creation of CEventShockingPlaneFlyby, CEventShockingHelicopterOverhead, and other(?) Shocking events
   */
-  export function _0x279D50DE5652D935(vehicle: Vehicle | number, toggle: boolean): void;
+  export function setVehicleGeneratesEngineShockingEvents(vehicle: Vehicle | number, toggle: boolean): void;
 
   /**
   * Copies sourceVehicle's damage (broken bumpers, broken lights, etc.) to targetVehicle.
@@ -22644,7 +22673,7 @@ declare module "natives" {
 
   export function arePlanePropellersIntact(plane: Vehicle | number): boolean;
 
-  export function _0x4C815EB175086F84(p0: any, p1: any): any;
+  export function setPlanePropellersHealth(plane: Vehicle | number, health: number): void;
 
   export function setVehicleCanDeformWheels(vehicle: Vehicle | number, toggle: boolean): void;
 
@@ -22859,11 +22888,6 @@ declare module "natives" {
 
   export function _0xF78F94D60248C737(vehicle: Vehicle | number, p1: boolean): boolean;
 
-  /**
-  * Previously named GET_VEHICLE_DEFORMATION_GET_TREE (hash collision)
-  * from Decrypted Scripts I found
-  * @param vehicle :SET_VEHICLE_CEILING_HEIGHT(l_BD9[22], 420.0);
-  */
   export function setVehicleCeilingHeight(vehicle: Vehicle | number, height: number): void;
 
   export function _0x5E569EC46EC21CAE(vehicle: Vehicle | number, toggle: boolean): void;
@@ -22888,7 +22912,7 @@ declare module "natives" {
 
   export function isPedExclusiveDriverOfVehicle(ped: Player | number, vehicle: Vehicle | number, outIndex?: number): [boolean, number];
 
-  export function disablePlanePropeller(vehicle: Vehicle | number, p1: any): void;
+  export function disableIndividualPlanePropeller(vehicle: Vehicle | number, propeller: number): void;
 
   export function setVehicleForceAfterburner(vehicle: Vehicle | number, toggle: boolean): void;
 
@@ -22959,7 +22983,7 @@ declare module "natives" {
 
   export function disableVehicleNeonLights(vehicle: Vehicle | number, toggle: boolean): void;
 
-  export function _0xB088E9A47AE6EDD5(vehicle: Vehicle | number, p1: boolean): void;
+  export function setDisableSuperdummyMode(vehicle: Vehicle | number, p1: boolean): void;
 
   /**
   * REQUEST_VEHICLE_*
@@ -23021,7 +23045,7 @@ declare module "natives" {
   * See NativeDB for reference: http://natives.altv.mp/#/0xB8EF61207C2393A9
   * @returns May return the vehicle health on a scale of 0.0 - 100.0 (needs to be confirmed)
   */
-  export function getVehicleBodyHealth2(vehicle: Vehicle | number, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): number;
+  export function getVehicleBodyHealth2(vehicle: Vehicle | number, maxEngineHealth: number, maxPetrolTankHealth: number, maxBodyHealth: number, maxMainRotorHealth: number, maxTailRotorHealth: number, maxUnkHealth: number): number;
 
   /**
   * Only used like this:
@@ -23048,6 +23072,8 @@ declare module "natives" {
   * Works only on vehicles that support hydraulic.
   */
   export function setHydraulicWheelValue(vehicle: Vehicle | number, wheelId: number, value: number): void;
+
+  export function getHydraulicWheelValue(vehicle: Vehicle | number, wheelId: number): number;
 
   export function setCamberedWheelsDisabled(p0: any, p1: any): void;
 
@@ -23112,7 +23138,10 @@ declare module "natives" {
 
   export function setVehicleRampLaunchModifier(p0: any, p1: any): void;
 
-  export function getIsDoorValid(vehicle: Vehicle | number, doorIndex: number): boolean;
+  /**
+  * @param doorId see SET_VEHICLE_DOOR_SHUT
+  */
+  export function getIsDoorValid(vehicle: Vehicle | number, doorId: number): boolean;
 
   export function setVehicleRocketBoostRefillTime(vehicle: Vehicle | number, seconds: number): void;
 
@@ -23175,14 +23204,25 @@ declare module "natives" {
   export function _0x41290B40FA63E6DA(p0: any): void;
 
   /**
-  * parachuteModel = 230075693
+  * Parachute models:
+  * - sr_prop_specraces_para_s_01
+  * - imp_prop_impexp_para_s (SecuroServ; Default)
+  * Plus, many more props can be used as vehicle parachutes, like umbrellas (prop_beach_parasol_03), and unlike SET_PLAYER_PARACHUTE_MODEL_OVERRIDE, you won't get stuck mid-air when using an umbrella.
   */
   export function setVehicleParachuteModel(vehicle: Vehicle | number, modelHash: number): void;
 
   /**
-  * colorIndex = 0 - 7
+  * Variations available for the generic parachute (sr_prop_specraces_para_s_01):
+  * - 0: Rainbow
+  * - 1: Red
+  * - 2: White, blue, yellow
+  * - 3: Black, red, white
+  * - 4: Red, white, blue
+  * - 5: Blue
+  * - 6: Black
+  * - 7: Black, yellow
   */
-  export function setVehicleParachuteTextureVariatiion(vehicle: Vehicle | number, textureVariation: number): void;
+  export function setVehicleParachuteTextureVariation(vehicle: Vehicle | number, textureVariation: number): void;
 
   export function _0x0419B167EE128F33(p0: any, p1: any): any;
 
@@ -23317,12 +23357,12 @@ declare module "natives" {
   export function findRandomPointInSpace(ped: Player | number): Vector3;
 
   /**
-  * Only used with the "akula" in the decompiled native scripts.
+  * Only used with the "akula" and "annihilator2" in the decompiled native scripts.
   */
-  export function setDeployHeliStubWings(vehicle: Vehicle | number, p1: boolean, p2: boolean): void;
+  export function setDeployHeliStubWings(vehicle: Vehicle | number, deploy: boolean, p2: boolean): void;
 
   /**
-  * Only used with the "akula" in the decompiled native scripts.
+  * Only used with the "akula" and "annihilator2" in the decompiled native scripts.
   */
   export function areHeliStubWingsDeployed(vehicle: Vehicle | number): boolean;
 
@@ -23408,17 +23448,83 @@ declare module "natives" {
 
   export function _0x8F0D5BA1C2CC91D7(toggle: boolean): void;
 
+  /**
+  * Usable wheels:
+  * 0: wheel_lf
+  * 1: wheel_rf
+  * 2: wheel_lm1
+  * 3: wheel_rm1
+  * 4: wheel_lr
+  * 5: wheel_rr
+  */
   export function getTyreHealth(vehicle: Vehicle | number, wheelIndex: number): number;
 
+  /**
+  * _SET_TYRE_WEAR_MULTIPLIER must be active, otherwise values set to <1000.0f will default to 350.0f
+  * Usable wheels:
+  * 0: wheel_lf
+  * 1: wheel_rf
+  * 2: wheel_lm1
+  * 3: wheel_rm1
+  * 4: wheel_lr
+  * 5: wheel_rr
+  */
   export function setTyreHealth(vehicle: Vehicle | number, wheelIndex: number, health: number): void;
 
+  /**
+  * Returns the multiplier value from _SET_TYRE_WEAR_MULTIPLIER
+  * Usable wheels:
+  * 0: wheel_lf
+  * 1: wheel_rf
+  * 2: wheel_lm1
+  * 3: wheel_rm1
+  * 4: wheel_lr
+  * 5: wheel_rr
+  */
   export function getTyreWearMultiplier(vehicle: Vehicle | number, wheelIndex: number): number;
 
+  /**
+  * Needs to be run for tire wear to work. Multiplier affects the downforce and how fast the tires will wear out, higher values essentially make the vehicle slower on straights and its tires will wear down quicker when cornering. Value must be >0f.
+  * Default value in Rockstar's Open Wheel Race JSON's ("owrtws", "owrtwm", "owrtwh") is 1.0
+  * Usable wheels:
+  * 0: wheel_lf
+  * 1: wheel_rf
+  * 2: wheel_lm1
+  * 3: wheel_rm1
+  * 4: wheel_lr
+  * 5: wheel_rr
+  */
   export function setTyreWearMultiplier(vehicle: Vehicle | number, wheelIndex: number, multiplier: number): void;
 
-  export function _0xC970D0E0FC31D768(vehicle: Vehicle | number, wheelIndex: number, p2: number): void;
+  /**
+  * Controls how much traction the wheel loses.
+  * Default values from Rockstar's Open Wheel Race JSON's:
+  * "owrtds" (Soft): 0.05
+  * "owrtdm" (Medium): 0.45
+  * "owrtdh" (Hard): 0.8
+  * Usable wheels:
+  * 0: wheel_lf
+  * 1: wheel_rf
+  * 2: wheel_lm1
+  * See NativeDB for reference: http://natives.altv.mp/#/0xC970D0E0FC31D768
+  */
+  export function setTyreTractionLossMultiplier(vehicle: Vehicle | number, wheelIndex: number, multiplier: number): void;
 
   export function _0xF8B49F5BA7F850E7(vehicle: Vehicle | number, p1: number): void;
+
+  /**
+  * Lowers the vehicle's stance. Only works for vehicles that support this feature.
+  */
+  export function setReduceDriftVehicleSuspension(vehicle: Vehicle | number, enable: boolean): void;
+
+  export function setDriftTyresEnabled(vehicle: Vehicle | number, toggle: boolean): void;
+
+  export function getDriftTyresEnabled(vehicle: Vehicle | number): boolean;
+
+  /**
+  * Implemented only for trains.
+  */
+  export function networkUseHighPrecisionVehicleBlending(vehicle: Vehicle | number, toggle: boolean): void;
 
   /**
   * This function set height to the value of z-axis of the water surface.
@@ -23443,7 +23549,7 @@ declare module "natives" {
   /**
   * Most likely ADD_CURRENT_*
   */
-  export function addCurrentRise(x: number, y: number, z: number, radius: number, unk: number): number;
+  export function addCurrentRise(xLow: number, yLow: number, xHigh: number, yHigh: number, height: number): number;
 
   /**
   * Most likely REMOVE_CURRENT_*
@@ -23752,9 +23858,6 @@ declare module "natives" {
 
   export function isPedWeaponComponentActive(ped: Player | number, weaponHash: number, componentHash: number): boolean;
 
-  /**
-  * Old name: _PED_SKIP_NEXT_RELOADING
-  */
   export function refillAmmoInstantly(ped: Player | number): boolean;
 
   /**
@@ -23922,6 +24025,10 @@ declare module "natives" {
   * Changes the weapon damage output by the given multiplier value. Must be run every frame.
   */
   export function setWeaponDamageModifierThisFrame(weaponHash: number, damageMultiplier: number): void;
+
+  export function setWeaponExplosionRadiusMultiplier(weaponHash: number, multiplier: number): void;
+
+  export function _0xE6D2CEDD370FF98E(p0: any, p1: any): void;
 
   /**
   * @param ped ped = The ped whose weapon you want to check.
