@@ -418,6 +418,26 @@ declare module "alt-server" {
     readonly dlc: number;
   }
 
+  export interface IHeadOverlay {
+    readonly index: number;
+    readonly opacity: number;
+    readonly colorType: number;
+    readonly colorIndex: number;
+    readonly secondColorIndex: number;
+  }
+
+  export interface IHeadBlendData {
+    readonly shapeFirstID: number;
+    readonly shapeSecondID: number;
+    readonly shapeThirdID: number;
+    readonly skinFirstID: number;
+    readonly skinSecondID: number;
+    readonly skinThirdID: number;
+    readonly shapeMix: number;
+    readonly skinMix: number;
+    readonly thirdMix: number;
+  }
+
   /**
    * The root directory of the server.
    */
@@ -909,6 +929,57 @@ declare module "alt-server" {
      * @alpha
      */
     public playAmbientSpeech(speechName: string, speechParam: string, speechDictHash: number): void;
+
+    /** @alpha */
+    public setHeadOverlay(overlayID: number, index: number, opacity: number): void;
+
+    /** @alpha */
+    public removeHeadOverlay(overlayID: number): boolean;
+
+    /** @alpha */
+    public setHeadOverlayColor(overlayID: number, colorType: number, colorIndex: number, secondColorIndex: number): void;
+
+    /** @alpha */
+    public getHeadOverlay(): IHeadOverlay;
+
+    /** @alpha */
+    public setFaceFeature(index: number, scale: number): void;
+
+    /** @alpha */
+    public getFaceFeatureScale(): number;
+
+    /** @alpha */
+    public removeFaceFeature(index: number): boolean;
+
+    /** @alpha */
+    public setHeadBlendPaletteColor(id: number, red: number, green: number, blue: number): void;
+
+    /** @alpha */
+    public getHeadBlendPaletteColor(): shared.RGBA;
+
+    /** @alpha */
+    public setHeadBlendData(shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number): void;
+
+    /** @alpha */
+    public getHeadBlendData(): IHeadBlendData;
+
+    /** @alpha */
+    public setEyeColor(eyeColor: number): void;
+
+    /** @alpha */
+    public getEyeColor(): number;
+
+    /** @alpha */
+    public setHairColor(hairColor: number): void;
+
+    /** @alpha */
+    public getHairColor(): number;
+
+    /** @alpha */
+    public setHairHighlightColor(hairHighlightColor: number): void;
+
+    /** @alpha */
+    public getHairHighlightColor(): number;
   }
 
   export class Vehicle extends Entity {
