@@ -2126,11 +2126,11 @@ declare module "alt-client" {
    */
   export const fps: number;
 
-  /** @alpha */
-  export const totalPacketsSent: number;
+  // /** @alpha */
+  // export const totalPacketsSent: number;
 
-  /** @alpha */
-  export const totalPacketsLost: number;
+  // /** @alpha */
+  // export const totalPacketsLost: number;
 
   export * from "alt-shared";
 }
