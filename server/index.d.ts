@@ -664,9 +664,9 @@ declare module "alt-server" {
     public readonly isInRagdoll: boolean;
     public readonly isAiming: boolean;
     /** @alpha */
-    public readonly isShooting: boolean;
+    //public readonly isShooting: boolean;
     /** @alpha */
-    public readonly isJumping: boolean;
+    //public readonly isJumping: boolean;
     /** @alpha */
     public readonly isReloading: boolean;
     /**
