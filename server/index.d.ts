@@ -1221,7 +1221,7 @@ declare module "alt-server" {
     /**
      * Activates the searchlight and follows the target.
      *
-     * @remarks This can only be used for helicopter searchlights.
+     * @remarks Entity parameter isn't working for now and this can only be used for helicopter searchlights.
      *
      * @alpha
      */
