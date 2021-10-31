@@ -152,6 +152,7 @@ declare module "alt-client" {
   export const enum ConfigFlag {
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
+    DisableIdleCamera = "DISABLE_IDLE_CAMERA",
   }
 
   export const enum WatermarkPosition {
