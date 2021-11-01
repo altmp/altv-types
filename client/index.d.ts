@@ -536,6 +536,8 @@ declare module "alt-client" {
     /** Player's vehicle, null if player is not in any vehicle */
     public readonly vehicle: Vehicle | null;
 
+    public readonly isDead: boolean;
+
     /**
      * Current weapon components.
      */
