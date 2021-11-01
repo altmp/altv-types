@@ -344,6 +344,13 @@ declare module "alt-server" {
     Green,
   }
 
+  /** @alpha */
+  export interface Weapon {
+    readonly hash: number;
+    readonly tintIndex: number;
+    readonly components: number;
+  }
+
   export interface IServerEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -656,6 +663,8 @@ declare module "alt-server" {
     public static all: Array<Player>;
     public armour: number;
     public currentWeapon: number;
+    /** @alpha */
+    public readonly weapons: Array<Weapon>;
     public readonly currentWeaponComponents: Array<number>;
     /** @alpha */
     public readonly currentWeaponTintIndex: number;
@@ -665,6 +674,7 @@ declare module "alt-server" {
     public readonly moveSpeed: number;
     public readonly isInRagdoll: boolean;
     public readonly isAiming: boolean;
+    public readonly isDead: boolean;
     /** @alpha */
     //public readonly isShooting: boolean;
     /** @alpha */
