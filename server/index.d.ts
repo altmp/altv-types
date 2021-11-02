@@ -348,7 +348,7 @@ declare module "alt-server" {
   export interface Weapon {
     readonly hash: number;
     readonly tintIndex: number;
-    readonly components: number;
+    readonly components: Array<number>;
   }
 
   export interface IServerEvent {
