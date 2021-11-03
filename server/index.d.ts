@@ -952,13 +952,13 @@ declare module "alt-server" {
     public setHeadOverlayColor(overlayID: number, colorType: number, colorIndex: number, secondColorIndex: number): void;
 
     /** @alpha */
-    public getHeadOverlay(): IHeadOverlay;
+    public getHeadOverlay(overlayID: number): IHeadOverlay;
 
     /** @alpha */
     public setFaceFeature(index: number, scale: number): void;
 
     /** @alpha */
-    public getFaceFeatureScale(): number;
+    public getFaceFeatureScale(index: number): number;
 
     /** @alpha */
     public removeFaceFeature(index: number): boolean;
@@ -967,7 +967,7 @@ declare module "alt-server" {
     public setHeadBlendPaletteColor(id: number, red: number, green: number, blue: number): void;
 
     /** @alpha */
-    public getHeadBlendPaletteColor(): shared.RGBA;
+    public getHeadBlendPaletteColor(id: number): shared.RGBA;
 
     /** @alpha */
     public setHeadBlendData(shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number): void;
