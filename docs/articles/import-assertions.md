@@ -1,4 +1,4 @@
-# Import assertion
+# Import assertions
 
 This is only available on clientside.
 
