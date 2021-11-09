@@ -1564,6 +1564,17 @@ declare module "alt-client" {
   export function emitServer(name: string, ...args: any[]): void;
 
   /**
+   * Emits specified event to server.
+   *
+   * @param player Event is sent to specific player.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @alpha
+   */
+  export function emitServerRaw(name: string, ...args: any[]): void;
+
+  /**
    * Returns whether the game controls are currently enabled.
    */
   export function gameControlsEnabled(): boolean;
