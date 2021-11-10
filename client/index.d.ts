@@ -1570,6 +1570,8 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
+   * @remarks Works only from JS (Client) to JS (Server)
+   *
    * @alpha
    */
   export function emitServerRaw(name: string, ...args: any[]): void;
