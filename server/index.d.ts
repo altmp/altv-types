@@ -943,19 +943,19 @@ declare module "alt-server" {
     public playAmbientSpeech(speechName: string, speechParam: string, speechDictHash: number): void;
 
     /** @alpha */
-    public setHeadOverlay(overlayID: number, index: number, opacity: number): void;
+    public setHeadOverlay(overlayID: number, index: number, opacity: number): boolean;
 
     /** @alpha */
     public removeHeadOverlay(overlayID: number): boolean;
 
     /** @alpha */
-    public setHeadOverlayColor(overlayID: number, colorType: number, colorIndex: number, secondColorIndex: number): void;
+    public setHeadOverlayColor(overlayID: number, colorType: number, colorIndex: number, secondColorIndex: number): boolean;
 
     /** @alpha */
     public getHeadOverlay(overlayID: number): IHeadOverlay;
 
     /** @alpha */
-    public setFaceFeature(index: number, scale: number): void;
+    public setFaceFeature(index: number, scale: number): boolean;
 
     /** @alpha */
     public getFaceFeatureScale(index: number): number;
@@ -964,7 +964,7 @@ declare module "alt-server" {
     public removeFaceFeature(index: number): boolean;
 
     /** @alpha */
-    public setHeadBlendPaletteColor(id: number, red: number, green: number, blue: number): void;
+    public setHeadBlendPaletteColor(id: number, red: number, green: number, blue: number): boolean;
 
     /** @alpha */
     public getHeadBlendPaletteColor(id: number): shared.RGBA;
@@ -976,7 +976,7 @@ declare module "alt-server" {
     public getHeadBlendData(): IHeadBlendData;
 
     /** @alpha */
-    public setEyeColor(eyeColor: number): void;
+    public setEyeColor(eyeColor: number): boolean;
 
     /** @alpha */
     public getEyeColor(): number;
