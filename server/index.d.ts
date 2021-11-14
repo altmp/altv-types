@@ -1262,6 +1262,9 @@ declare module "alt-server" {
 
     public sprite: shared.BlipSprite;
 
+    /**
+     * @remarks Does't properly work for areablips currently.
+     */
     public size: shared.Vector2;
 
     public scale: number;
