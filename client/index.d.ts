@@ -1256,7 +1256,7 @@ declare module "alt-client" {
      * }
      * ```
      *
-     * @alpha
+     * @beta
      */
     public static readonly all: Array<Blip>;
 
@@ -1572,7 +1572,7 @@ declare module "alt-client" {
    *
    * @remarks Works only from JS (Client) to JS (Server)
    *
-   * @alpha
+   * @beta
    */
   export function emitServerRaw(name: string, ...args: any[]): void;
 
@@ -2130,14 +2130,14 @@ declare module "alt-client" {
   /**
    * Represents the current client ping.
    *
-   * @alpha
+   * @beta
    */
   export const ping: number;
 
   /**
    * Represents the current client fps.
    *
-   * @alpha
+   * @beta
    */
   export const fps: number;
 
