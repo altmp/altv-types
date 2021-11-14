@@ -1327,6 +1327,18 @@ declare module "alt-shared" {
   export function emit(eventName: string, ...args: any[]): void;
 
   /**
+   * Emits specified event across resources.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Works only from JS (Client) to JS (Server)
+   *
+   * @alpha
+   */
+  export function emitRaw(eventName: string, ...args: any[]): void;
+
+  /**
    * Schedules execution of handler on every tick/every frame.
    *
    * @param handler Handler that should be scheduled for execution.
