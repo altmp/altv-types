@@ -1,5 +1,3 @@
-- name: Workers
-  href: workers.md
 - name: Getting Started
   href: index.md
   items:
@@ -43,3 +41,5 @@
       href: snippets/textlabels.md
     - name: Voice
       href: snippets/voice.md
+- name: Workers
+  href: workers.md
