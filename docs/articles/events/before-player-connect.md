@@ -6,7 +6,8 @@ https://docs.altv.mp/js/api/alt-server.IServerEvent.html#_altmp_altv_types_alt_s
 
 This event where servers can kick users before the actual connection. for example if the player is banned.
 
-- When you cancel event you have to use player.kick method. Otherwise undefined behavior happens.
+[!WARNING]
+When you cancel event you have to use player.kick method. Otherwise undefined behavior happens.
 
 ## Example
 
