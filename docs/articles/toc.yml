@@ -44,3 +44,5 @@
       href: snippets/textlabels.md
     - name: Voice
       href: snippets/voice.md
+- name: Workers
+  href: workers.md
