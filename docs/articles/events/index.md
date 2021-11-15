@@ -51,7 +51,7 @@ alt.on('playerConnect', player => {
 ## Client to server
 
 The client may only emit data to the server-side with `emitServer` or `emitServerRaw`.
-`emitServerRaw` It is used for big data and is faster than `emitServer` and emitServerRaw only works, if the server is using javascript.
+`emitServerRaw` is used for big data and is faster than `emitServer` and `emitServerRaw` only works, if the server is using javascript.
 
 The server-side `onServer` event handlers will automatically receive the player that sent the event as the first argument.
 
