@@ -97,7 +97,7 @@ alt.on('connectionComplete', () => {
         { id: 0, name: "test1" },
         { id: 1, name: "test2" }
     ]
-    alt.emitClientRaw(player, 'sayHello', array);
+    alt.emitServerRaw(player, 'sayHello', array);
 });
 ```
 
