@@ -3,23 +3,20 @@
 ## What are the alt:V Workers
 
 The alt:V workers implementation is very similar to the NodeJS one as it allows you to run javascript code in parallel in another thread.
-Workers (threads) are useful for performing CPU-intensive operations but it's important to mention that they do not help much with I/O-intensive work.
+Workers (threads) are useful for performing CPU-intensive operations, while they aren't any big help with I/O-intensive work.
 The V8 asynchronous I/O operations are more efficient than Workers can be.
 
-### important notes
+### Important notes
 
-> [!CAUTION]
-> The imports and the shared array buffer in the workers are not yet implemented
-
-* The alt API / natives are not accessible in a worker
+* Natives are not accessible in workers
+* Only alt.File, alt.Vector2, alt.Vector3 & alt.RGBA are available in workers
 * Creating a worker thread won't make your code perform better, it will just offload it in another thread
 
 ## Usage
 
 ### Functions available in a worker
 
-In the alt:V context, classics ``setInterval`` or ``console.log`` doesn't exist. That's why we expose our own functions for it, but to make it easy
-if you do ``setInterval`` or ``console.log`` it will call the corresponding alt method.
+In the alt:V context, basics like ``setInterval`` or ``console.log`` don't exist. That's why we expose our own functions for it, but to make it easier if you do ``setInterval`` or ``console.log`` it will call the corresponding alt method.
 
 | Function Name     | Description                                                                                              |
 | ----------------- | -------------------------------------------------------------------------------------------------------- |
@@ -37,6 +34,22 @@ if you do ``setInterval`` or ``console.log`` it will call the corresponding alt 
 | alt.clearTimeout  | Clears a timer set with the setTimeout function.                                                         |
 
 ### How to create a worker
+
+# [main.js](#tab/tab1-0)
+```js
+import "console.log('check source import')" assert { type: "source" };
+import "Y29uc29sZS5sb2coJ2NoZWNrIHNvdXJjZSBpbXBvcnQnKQ==" assert { type: "base64" };
+import * as json from "/data.json" assert { type: "json" };
+console.log(json.name); // returns "John Doe"
+```
+# [data.json](#tab/tab1-1)
+```json
+{
+    "name": "John Doe",
+    "age": "42"
+}
+```
+***
 
 Using relative path.
 ```js
@@ -91,5 +104,77 @@ client.js
 ```js
 worker.on('eventName', (...args) => {
     console.log(args);
+});
+```
+
+### Using shared array buffers
+
+An [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) is an object used to represent a generic, fixed-length raw binary data buffer.
+It is an array of bytes, you cannot directly manipulate its content but create a [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) object / [DataView](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) to read and write the buffer content.
+
+A [SharedArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer) is very similar to an array buffer except he is built in a way that they can be used to create views on shared memory, unlike an ArrayBuffer it cannot become detached.
+
+**example usage**
+
+> [!WARNING]
+> You should learn how to use SharedArrayBuffers outside of the alt:V context in order to use them properly. The following example is making use of the [Atomics](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Atomics) API to make the SharedArrayBuffer usage [thread safe](https://en.wikipedia.org/wiki/Thread_safety)
+
+client.js
+```js
+const buffer = createBuffer();
+const sharedArray = new Int32Array(buffer);
+
+worker.on('changedValue', () => {
+     for(let i = 0; i < 10; i++){
+       // Output of the changed values on "main thread"
+       const value = Atomics.load(sharedArray,i);
+       console.log(`[Main thread]: Value of index ${i} is ${value}`);
+    }
+});
+
+function createBuffer() {
+    // Calculating the size of the buffer size depending on the array type
+    const length = 10;
+    const size = Int32Array.BYTES_PER_ELEMENT * length;
+    const sharedBuffer = new SharedArrayBuffer(size);
+    const sharedArray = new Int32Array(sharedBuffer);
+      
+    // applying values to the array
+    for(let i = 0; i< 10; i++){
+        sharedArray[i] = i*20;
+    }
+  
+    const bufferIndex = alt.Worker.addSharedArrayBuffer(sharedBuffer);
+    worker.emit("addedMyBuffer", bufferIndex);
+    alt.log('emitted buffer to worker')
+
+    return sharedBuffer;
+}
+```
+
+worker.js
+```js
+alt.on('addedMyBuffer', (index) => {
+    //Getting the buffer by index and generate a Int32Array 
+    const buffer = alt.getSharedArrayBuffer(index);
+    const sharedArray = new Int32Array(buffer);
+
+    for(let i = 0; i < 10; i++) {
+        //Read the value
+        const arrayValue = Atomics.load(sharedArray, i);
+        console.log(`[Worker] Value from main thread for [${i}] is ${arrayValue}`);
+
+        // Atomics.exchange returns the old value on i.
+        const oldValue = Atomics.exchange(sharedArray, i, 5)
+        console.log(`[Worker] Value change to 5 on [${i}]`);
+
+        // reading the new value
+        const changedValue = Atomics.load(sharedArray, i);
+        console.log(`[Worker] New value on ${i} is ${changedValue} (old value: ${oldValue})`);
+    }
+
+    // You can put this inside the for-loop and it will print out all console.logs that are triggered by this event once the atomics operations are finished.
+    // I put it outside of my for-loop because my console got spammed xd
+    alt.emit('changedValue')
 });
 ```
