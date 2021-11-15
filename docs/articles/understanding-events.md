@@ -15,17 +15,17 @@ A client **CANNOT** communicate with another client.
 | alt.onServer          | Receives an event emitted from the server on client-side. Triggered with `alt.emitClient`.                                                     |
 | alt.offServer         | Stop listening to custom events from the server.                                                                                               |
 | alt.emitClient        | Emit an event to a specific client or an array of clients that they receive with `alt.onServer`.                                               |
-| alt.emitClientRaw     | Emit big data an event to a specific client or an array of clients. It works faster than emitClient. That they receive with `alt.onServer`.    |
+| alt.emitClientRaw     | Emit an event to a specific client or an array of clients. It works faster than `emitAllClients` that they receive with `alt.onServer`.        |
 | alt.emitAllClients    | Emit an event to all clients that they receive with `alt.onServer`.                                                                            |
-| alt.emitAllClientsRaw | Emit big data an event to an event to all clients. It works faster than emitAllClients. That they receive with `alt.onServer`.                 |
+| alt.emitAllClientsRaw | Emit an event to all clients. It works faster than `emitAllClients` that they receive with `alt.onServer`.                                     |
 | alt.onClient          | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.                                                     |
 | alt.offClient         | Stop listening to custom events from the client.                                                                                               |
 | alt.emitServer        | Emit an event to the server that is received with `alt.onClient`.                                                                              |
-| alt.emitServerRaw     | (only works, server is using js)  Emit big data event to the server. It works faster than emitServer. That they receive with `alt.onClient`.   |
+| alt.emitServerRaw     | (only works, server is using js)  Emit an event to the server. It works faster than `emitServer` that they receive with `alt.onClient`         |
 
 ## Server to client
 
-The server may only emit data to the client-side with `emitClient` and `emitClientRaw`, which requires a Player.
+The server may only emit data to the client-side with `emitClient` or `emitClientRaw`, which requires a Player.
 However, a player can also be substituted for `null` which works the same way as `alt.emitAllClients` by emitting it to all clients.
 
 `emitClientRaw` and `emitAllClientsRaw` It is used for big data and is faster than `emitClient` or `emitAllClients`.
@@ -72,8 +72,8 @@ alt.onServer('sayHello', (array) => {
 
 ## Client to server
 
-The client may only emit data to the server-side with `emitServer` and `emitServerRaw`.
-`emitServerRaw` It is used for big data and is faster than `emitServer` and emitServerRaw only works, server is using js.
+The client may only emit data to the server-side with `emitServer` or `emitServerRaw`.
+`emitServerRaw` It is used for big data and is faster than `emitServer` and emitServerRaw only works, the server is using js.
 
 The server-side `onServer` event handlers will automatically receive the player that sent the event as the first argument.
 
