@@ -203,4 +203,3 @@ alt.onClient('sayHello', (player, array) => {
     alt.log(`${player.name} is sended ${array}`);
 });
 ```
-***
