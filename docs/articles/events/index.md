@@ -30,7 +30,6 @@ However, a player can also be substituted for `null` which works the same way as
 
 `emitClientRaw` and `emitAllClientsRaw` It is used for big data and is faster than `emitClient` or `emitAllClients`.
 
-
 # [Client-side](#tab/tab1-0)
 ```js
 alt.onServer('sayHello', () => {
