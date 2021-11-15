@@ -44,5 +44,11 @@
       href: snippets/textlabels.md
     - name: Voice
       href: snippets/voice.md
+- name: Vehicle
+  href: vehicle/index.md
+  items:
+    - name: Train API
+      href: vehicle/train-api.md
 - name: Workers
   href: workers.md
+
