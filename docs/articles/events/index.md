@@ -21,7 +21,7 @@ A client **CANNOT** communicate with another client.
 | alt.onClient          | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.                                                     |
 | alt.offClient         | Stop listening to custom events from the client.                                                                                               |
 | alt.emitServer        | Emit an event to the server that is received with `alt.onClient`.                                                                              |
-| alt.emitServerRaw     | (only works, server is using js)  Emit an event to the server. It works faster than `emitServer` that they receive with `alt.onClient`         |
+| alt.emitServerRaw     | (only works, server is using javascript)  Emit an event to the server. It works faster than `emitServer` that they receive with `alt.onClient` |
 
 ## Server to client
 
@@ -51,7 +51,7 @@ alt.on('playerConnect', player => {
 ## Client to server
 
 The client may only emit data to the server-side with `emitServer` or `emitServerRaw`.
-`emitServerRaw` It is used for big data and is faster than `emitServer` and emitServerRaw only works, if the server is using js.
+`emitServerRaw` It is used for big data and is faster than `emitServer` and emitServerRaw only works, if the server is using javascript.
 
 The server-side `onServer` event handlers will automatically receive the player that sent the event as the first argument.
 
