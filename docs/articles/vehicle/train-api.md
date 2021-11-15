@@ -6,29 +6,31 @@ The Train API has been introduced in version 7.0 and provides properties and met
 
 | Property Name             | Description                                                                                                                           |
 | ------------------------- | -------------------------------------------------------------------                                                                   |
-| isMissionTrain            | Gets or sets if the created vehicle is a mission train.                                                                               |
+| isMissionTrain            | Gets or sets if the created train is a mission train.                                                                                 |
 | trainTrackId              | Gets or sets the track id of the train. [Valid track ids: 0 - 11]                                                                     |
 | trainEngineId             | Gets the engine of the train.                                                                                                         | 
 | trainConfigIndex          | Gets or sets the trains config index. You can find a list of all possible config indices in the trains.xml. [Valid indices: 1 - 25]   |
 | trainDistanceFromEngine   | Gets or sets the distance of the trains to the engine.                                                                                |
-| isTrainEngine             | Gets or sets if the vehicle is the engine of the train.                                                                               |
-| isTrainCaboose            | Gets or sets if the vehicle is a caboose.                                                                                             |
+| isTrainEngine             | Gets or sets if the train is the engine of the train.                                                                                 |
+| isTrainCaboose            | Gets or sets if the train is a caboose.                                                                                               |
 | trainDirection            | Gets or sets the direction of the train. (`true` means forward, `false` means backward)                                               |
 | trainPassengerCarriages   | Gets or sets if the train contains a passenger carriage.                                                                              |
 | trainRenderDerailed       | Gets or sets if the trains is rendered derailed.                                                                                      |
 | trainForceDoorsOpen       | Gets or sets if the doors of the trains should be forced open.                                                                        |
 | trainCruiseSpeed          | Gets or sets the cruise speed of the train.                                                                                           |
 | trainCarriageConfigIndex  | Gets or sets the config index of the train's carriage.                                                                                |
-| trainLinkedToBackwardId   | Gets or sets a vehicle that is linked to the back of the train.                                                                       |
-| trainLinkedToForwardId    | Gets or sets a vehicle that is linked to the front of the train.                                                                      |
+| trainLinkedToBackwardId   | Gets or sets another train that is linked to the back of the train.                                                                   |
+| trainLinkedToForwardId    | Gets or sets another train that is linked to the front of the train.                                                                  |
 
 ## Methods
+>[!WARNING]
+>Please keep in mind that these methods will only work when they are used right on spawn.
 
-| Method Name                   | Description                                   |
-| ----------------------------- | --------------------------------------------- |
-| setTrainEngineId              | Applying a vehicle as an engine of a train.   |
-| setTrainLinkedToBackwardId    | Links a vehicle to the back of the train.     |
-| setTrainLinkedToForwardId     | Links a vehicle to the front of the train.    |  
+| Method Name                   | Description                                       |
+| ----------------------------- | ---------------------------------------------     |
+| setTrainEngineId              | Applying a train as an engine of a train.         |
+| setTrainLinkedToBackwardId    | Links another train to the back of the train.     |
+| setTrainLinkedToForwardId     | Links another train to the front of the train.    |  
 
 ## Example Code
 
