@@ -30,6 +30,7 @@ However, a player can also be substituted for `null` which works the same way as
 
 `emitClientRaw` and `emitAllClientsRaw` It is used for big data and is faster than `emitClient` or `emitAllClients`.
 
+
 # [Client-side](#tab/tab1-0)
 ```js
 alt.onServer('sayHello', () => {
@@ -46,28 +47,6 @@ alt.on('playerConnect', player => {
     alt.emitAllClients('sayHello');
 });
 ```
-
-# [Server-side(emitClientRaw or emitAllClientsRaw)](#tab/tab1-2)
-```js
-alt.on('playerConnect', player => {
-    const array = [
-        { id: 0, name: "test1" },
-        { id: 1, name: "test2" }
-    ]
-    alt.emitClientRaw(player, 'sayHello', array); // Send an event to a specific player
-
-    // Send an event to all players
-    alt.emitClientRaw('sayHello', array);
-});
-```
-
-# [Client-side(emitClientRaw or emitAllClientsRaw listener)](#tab/tab1-3)
-```js
-alt.onServer('sayHello', (array) => {
-    alt.log(array);
-});
-```
-***
 
 ## Client to server
 
@@ -86,24 +65,6 @@ alt.on('connectionComplete', () => {
 ```js
 alt.onClient('sayHello', player => {
     alt.log(`${player.name} is saying hello`);
-});
-```
-
-# [Client-side(emitServerRaw)](#tab/tab1-1)
-```js
-alt.on('connectionComplete', () => {
-    const array = [
-        { id: 0, name: "test1" },
-        { id: 1, name: "test2" }
-    ]
-    alt.emitServerRaw(player, 'sayHello', array);
-});
-```
-
-# [Server-side(emitServerRaw listener)](#tab/tab1-1)
-```js
-alt.onClient('sayHello', (player, array) => {
-    alt.log(`${player.name} is sended ${array}`);
 });
 ```
 ***
@@ -196,5 +157,50 @@ alt.onServer('customEventName', customEventFunction);
 function customEventFunction() {
     alt.offServer('customEventName', customEventFunction);
 }
+```
+***
+
+## Raw Events
+
+Raw event emitters are used in big data transfers.
+
+> [!WARNING]
+> `alt.emitServerRaw` only works if the server is using javascript.
+
+# [Server-side(emitClientRaw or emitAllClientsRaw)](#tab/tab7-0)
+```js
+alt.on('playerConnect', player => {
+    const array = [
+        { id: 0, name: "test1" },
+        { id: 1, name: "test2" }
+    ]
+    alt.emitClientRaw(player, 'sayHello', array); // Send an event to a specific player
+
+    // Send an event to all players
+    alt.emitClientRaw('sayHello', array);
+});
+```
+# [Client-side(emitClientRaw or emitAllClientsRaw listener)](#tab/tab7-1)
+```js
+alt.onServer('sayHello', (array) => {
+    alt.log(array);
+});
+```
+# [Client-side(emitServerRaw)](#tab/tab1-1)
+```js
+alt.on('connectionComplete', () => {
+    const array = [
+        { id: 0, name: "test1" },
+        { id: 1, name: "test2" }
+    ]
+    alt.emitServerRaw(player, 'sayHello', array);
+});
+```
+
+# [Server-side(emitServerRaw listener)](#tab/tab1-1)
+```js
+alt.onClient('sayHello', (player, array) => {
+    alt.log(`${player.name} is sended ${array}`);
+});
 ```
 ***
