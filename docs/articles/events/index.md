@@ -7,23 +7,28 @@ Clients may only communicate with WebViews and the server.
 
 A client **CANNOT** communicate with another client.
 
-| Function Name      | Description                                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------ |
-| alt.emit           | Emit an event on server or client side. Only received on the side it was emitted from.           |
-| alt.on             | Receives an event. Server only receives server events. Client only receives client events.       |
-| alt.off            | Stop listening to custom or built-in events.                                                     |
-| alt.onServer       | Receives an event emitted from the server on client-side. Triggered with `alt.emitClient`.       |
-| alt.offServer      | Stop listening to custom events from the server.                                                 |
-| alt.emitClient     | Emit an event to a specific client or an array of clients that they receive with `alt.onServer`. |
-| alt.emitAllClients | Emit an event to all clients that they receive with `alt.onServer`.                              |
-| alt.onClient       | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.       |
-| alt.offClient      | Stop listening to custom events from the client.                                                 |
-| alt.emitServer     | Emit an event to the server that is received with `alt.onClient`.                                |
+| Function Name      | Description                                                                                                                                       |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| alt.emit              | Emit an event on server or client side. Only received on the side it was emitted from.                                                         |
+| alt.on                | Receives an event. Server only receives server events. Client only receives client events.                                                     |
+| alt.off               | Stop listening to custom or built-in events.                                                                                                   |
+| alt.onServer          | Receives an event emitted from the server on client-side. Triggered with `alt.emitClient`.                                                     |
+| alt.offServer         | Stop listening to custom events from the server.                                                                                               |
+| alt.emitClient        | Emit an event to a specific client or an array of clients that they receive with `alt.onServer`.                                               |
+| alt.emitClientRaw     | Emit an event to a specific client or an array of clients. It works faster than `emitAllClients` that they receive with `alt.onServer`.        |
+| alt.emitAllClients    | Emit an event to all clients that they receive with `alt.onServer`.                                                                            |
+| alt.emitAllClientsRaw | Emit an event to all clients. It works faster than `emitAllClients` that they receive with `alt.onServer`.                                     |
+| alt.onClient          | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.                                                     |
+| alt.offClient         | Stop listening to custom events from the client.                                                                                               |
+| alt.emitServer        | Emit an event to the server that is received with `alt.onClient`.                                                                              |
+| alt.emitServerRaw     | (only works, server is using javascript)  Emit an event to the server. It works faster than `emitServer` that they receive with `alt.onClient` |
 
 ## Server to client
 
-The server may only emit data to the client-side with `emitClient`, which requires a Player.
+The server may only emit data to the client-side with `emitClient` or `emitClientRaw`, which requires a Player.
 However, a player can also be substituted for `null` which works the same way as `alt.emitAllClients` by emitting it to all clients.
+
+`emitClientRaw` and `emitAllClientsRaw` are used for big data and are faster than `emitClient` or `emitAllClients`.
 
 
 # [Client-side](#tab/tab1-0)
@@ -46,7 +51,9 @@ alt.on('playerConnect', player => {
 
 ## Client to server
 
-The client may only emit data to the server-side with `emitServer`.
+The client may only emit data to the server-side with `emitServer` or `emitServerRaw`.
+`emitServerRaw` is used for big data and is faster than `emitServer` and `emitServerRaw` only works, if the server is using javascript.
+
 The server-side `onServer` event handlers will automatically receive the player that sent the event as the first argument.
 
 # [Client-side](#tab/tab2-0)
@@ -153,3 +160,49 @@ function customEventFunction() {
 }
 ```
 ***
+
+## Raw Events
+
+Raw events serialize the values to their raw byte buffer representation instead of converting them to an intermediate value, because of this the raw events can serialize and send big objects / arrays a lot faster than the normal events, BUT the downside is that this only works when both sides are using JavaScript
+
+> [!CAUTION]
+> `alt.emitServerRaw` only works if the server is using javascript.
+
+# [Server-side(emitClientRaw or emitAllClientsRaw)](#tab/tab7-0)
+```js
+alt.on('playerConnect', player => {
+    const array = [
+        { id: 0, name: "test1" },
+        { id: 1, name: "test2" }
+    ]
+    alt.emitClientRaw(player, 'sayHello', array); // Send an event to a specific player
+
+    // Send an event to all players
+    alt.emitAllClientsRaw('sayHello', array);
+});
+```
+
+# [Client-side(emitClientRaw or emitAllClientsRaw listener)](#tab/tab7-1)
+```js
+alt.onServer('sayHello', (array) => {
+    alt.log(array);
+});
+```
+
+# [Client-side(emitServerRaw)](#tab/tab7-2)
+```js
+alt.on('connectionComplete', () => {
+    const array = [
+        { id: 0, name: "test1" },
+        { id: 1, name: "test2" }
+    ]
+    alt.emitServerRaw(player, 'sayHello', array);
+});
+```
+
+# [Server-side(emitServerRaw listener)](#tab/tab7-3)
+```js
+alt.onClient('sayHello', (player, array) => {
+    alt.log(`${player.name} is sended ${array}`);
+});
+```
