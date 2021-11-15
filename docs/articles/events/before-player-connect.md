@@ -7,7 +7,7 @@
 This event is where servers can kick users before the actual connection. For example, if the player is banned.
 
 > [!WARNING]
-> When you cancel the event, you have to use the player.kick method. Otherwise, undefined behavior happens.
+> When you cancel the event, you have to use the player.kick method. Otherwise, undefined behaviour happens.
 
 > [!CAUTION]
 > You can't compare passwordHash with anything yet. A function will come in the future to compare this.
