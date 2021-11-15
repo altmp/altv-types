@@ -20,11 +20,6 @@
       href: player/server-player-funcs.md
     - name: Local Player ScriptID
       href: player/player-script-id.md
-- name: Vehicle
-  href: vehicle/index.md
-  items:
-    - name: Train API
-      href: vehicle/train-api.md
 - name: Snippets
   href: snippets/index.md
   items:
@@ -46,3 +41,8 @@
       href: snippets/textlabels.md
     - name: Voice
       href: snippets/voice.md
+- name: Vehicle
+  href: vehicle/index.md
+  items:
+    - name: Train API
+      href: vehicle/train-api.md
