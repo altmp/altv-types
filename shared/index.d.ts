@@ -918,7 +918,7 @@ declare module "alt-shared" {
 
     constructor(obj: IVector3);
 
-    /** @alpha */
+    /** @beta */
     constructor(value: number);
 
     public get length(): number;
@@ -981,7 +981,7 @@ declare module "alt-shared" {
 
     public isInRange(vector: IVector3, range: number): boolean;
 
-    /** @alpha */
+    /** @beta */
     public lerp(vector: IVector3, ratio: number): Vector3;
 
     public static readonly zero: Vector3;
@@ -1016,7 +1016,7 @@ declare module "alt-shared" {
 
     constructor(obj: IVector2);
 
-    /** @alpha */
+    /** @beta */
     constructor(value: number);
 
     public get length(): number;
@@ -1079,7 +1079,7 @@ declare module "alt-shared" {
 
     public isInRange(vector: IVector2, range: number): boolean;
 
-    /** @alpha */
+    /** @beta */
     public lerp(vector: IVector2, ratio: number): Vector2;
 
     public static readonly zero: Vector2;
@@ -1201,7 +1201,7 @@ declare module "alt-shared" {
      *
      * @remarks It's only available in debug-mode.
      *
-     * @alpha
+     * @beta
      */
     public readonly refCount: number;
   }
@@ -1325,6 +1325,18 @@ declare module "alt-shared" {
    * @param args Rest parameters for emit to send.
    */
   export function emit(eventName: string, ...args: any[]): void;
+
+  /**
+   * Emits specified event across resources.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Works only from JS (Client) to JS (Server)
+   *
+   * @alpha
+   */
+  export function emitRaw(eventName: string, ...args: any[]): void;
 
   /**
    * Schedules execution of handler on every tick/every frame.

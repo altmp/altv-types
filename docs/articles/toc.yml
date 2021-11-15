@@ -11,6 +11,8 @@
       href: understanding-events.md
     - name: Local storage
       href: localstorage.md
+    - name: Import assertions
+      href: import-assertions.md
 - name: Player
   href: player/index.md
   items:

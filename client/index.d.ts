@@ -152,6 +152,7 @@ declare module "alt-client" {
   export const enum ConfigFlag {
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
+    DisableIdleCamera = "DISABLE_IDLE_CAMERA",
   }
 
   export const enum WatermarkPosition {
@@ -360,17 +361,17 @@ declare module "alt-client" {
     public readonly playing: boolean;
 
     /**
-     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
     public addOutput(entity: Entity | number): void;
 
     /**
-     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
     public removeOutput(entity: Entity | number): void;
 
     /**
-     * @remarks This method has no effect if the @{link frontendPlay} property returns true.
+     * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
     public getOutputs(): Array<Entity | number>;
 
@@ -534,6 +535,8 @@ declare module "alt-client" {
 
     /** Player's vehicle, null if player is not in any vehicle */
     public readonly vehicle: Vehicle | null;
+
+    public readonly isDead: boolean;
 
     /**
      * Current weapon components.
@@ -1253,7 +1256,7 @@ declare module "alt-client" {
      * }
      * ```
      *
-     * @alpha
+     * @beta
      */
     public static readonly all: Array<Blip>;
 
@@ -1559,6 +1562,19 @@ declare module "alt-client" {
    * @param args Rest parameters for emit to send.
    */
   export function emitServer(name: string, ...args: any[]): void;
+
+  /**
+   * Emits specified event to server.
+   *
+   * @param player Event is sent to specific player.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Works only from JS (Client) to JS (Server)
+   *
+   * @beta
+   */
+  export function emitServerRaw(name: string, ...args: any[]): void;
 
   /**
    * Returns whether the game controls are currently enabled.
@@ -2114,16 +2130,22 @@ declare module "alt-client" {
   /**
    * Represents the current client ping.
    *
-   * @alpha
+   * @beta
    */
   export const ping: number;
 
   /**
    * Represents the current client fps.
    *
-   * @alpha
+   * @beta
    */
   export const fps: number;
+
+  // /** @alpha */
+  // export const totalPacketsSent: number;
+
+  // /** @alpha */
+  // export const totalPacketsLost: number;
 
   export * from "alt-shared";
 }

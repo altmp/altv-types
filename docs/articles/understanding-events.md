@@ -11,10 +11,13 @@ A client **CANNOT** communicate with another client.
 | ------------------ | ------------------------------------------------------------------------------------------------ |
 | alt.emit           | Emit an event on server or client side. Only received on the side it was emitted from.           |
 | alt.on             | Receives an event. Server only receives server events. Client only receives client events.       |
+| alt.off            | Stop listening to custom or built-in events.                                                     |
 | alt.onServer       | Receives an event emitted from the server on client-side. Triggered with `alt.emitClient`.       |
+| alt.offServer      | Stop listening to custom events from the server.                                                 |
 | alt.emitClient     | Emit an event to a specific client or an array of clients that they receive with `alt.onServer`. |
 | alt.emitAllClients | Emit an event to all clients that they receive with `alt.onServer`.                              |
 | alt.onClient       | Receives an event emitted from the client on server-side. Triggered with `alt.emitServer`.       |
+| alt.offClient      | Stop listening to custom events from the client.                                                 |
 | alt.emitServer     | Emit an event to the server that is received with `alt.onClient`.                                |
 
 ## Server to client
@@ -39,6 +42,7 @@ alt.on('playerConnect', player => {
     alt.emitAllClients('sayHello');
 });
 ```
+***
 
 ## Client to server
 
@@ -57,6 +61,7 @@ alt.onClient('sayHello', player => {
     alt.log(`${player.name} is saying hello`);
 });
 ```
+***
 
 ## Server resource to server resource
 
@@ -71,6 +76,7 @@ alt.on('hello', msg => {
     alt.log(msg);
 });
 ```
+***
 
 ## Client resource to client resource
 
@@ -83,6 +89,7 @@ alt.on('hello', msg => {
     alt.log(msg);
 });
 ```
+***
 
 ## Client to WebView and back
 
@@ -120,3 +127,29 @@ alt.setTimeout(() => {
     </body>
 </html>
 ```
+***
+
+## Unsubscribes from events
+
+# [alt.off(Server-side/Client-side)](#tab/tab6-0)
+```js
+alt.on('customEventName', customEventFunction);
+function customEventFunction() {
+    alt.off('customEventName', customEventFunction);
+}
+```
+# [alt.offClient(Server-side)](#tab/tab6-1)
+```js
+alt.onClient('customEventName', customEventFunction);
+function customEventFunction() {
+    alt.offClient('customEventName', customEventFunction);
+}
+```
+# [alt.offServer(Client-side)](#tab/tab6-2)
+```js
+alt.onServer('customEventName', customEventFunction);
+function customEventFunction() {
+    alt.offServer('customEventName', customEventFunction);
+}
+```
+***
