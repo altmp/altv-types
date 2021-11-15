@@ -9,10 +9,10 @@ The Train API has been introduced in version 7.0 and provides properties and met
 | isMissionTrain            | Gets or sets if the created vehicle is a mission train.                                                                               |
 | trainTrackId              | Gets or sets the track id of the train. [Valid track ids: 0 - 11]                                                                     |
 | trainEngineId             | Gets the engine of the train.                                                                                                         | 
-| trainConfigIndex          | Gets or sets the trains config index. You can find a list of all possible config indices in the trains.xml. [Valid indices: 1-25]     |
+| trainConfigIndex          | Gets or sets the trains config index. You can find a list of all possible config indices in the trains.xml. [Valid indices: 1 - 25]   |
 | trainDistanceFromEngine   | Gets or sets the distance of the trains to the engine.                                                                                |
 | isTrainEngine             | Gets or sets if the vehicle is the engine of the train.                                                                               |
-| isTrainCaboose            | Gets or sets if the vehicle is caboose.                                                                                               |
+| isTrainCaboose            | Gets or sets if the vehicle is a caboose.                                                                                             |
 | trainDirection            | Gets or sets the direction of the train. (`true` means forward, `false` means backward)                                               |
 | trainPassengerCarriages   | Gets or sets if the train contains a passenger carriage.                                                                              |
 | trainRenderDerailed       | Gets or sets if the trains is rendered derailed.                                                                                      |
