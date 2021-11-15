@@ -177,7 +177,7 @@ alt.on('playerConnect', player => {
     alt.emitClientRaw(player, 'sayHello', array); // Send an event to a specific player
 
     // Send an event to all players
-    alt.emitClientRaw('sayHello', array);
+    alt.emitAllClientsRaw('sayHello', array);
 });
 ```
 # [Client-side(emitClientRaw or emitAllClientsRaw listener)](#tab/tab7-1)
