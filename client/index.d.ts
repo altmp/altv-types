@@ -1593,7 +1593,11 @@ declare module "alt-client" {
    */
   export function getGxtText(key: string): string;
 
+  /** @deprecated See {@link licenseHash}. */
   export function getLicenseHash(): string;
+
+  /** @alpha */
+  export const licenseHash: string;
 
   /**
    * Gets the current alt:V locale.
