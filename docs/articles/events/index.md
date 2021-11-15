@@ -164,7 +164,7 @@ function customEventFunction() {
 
 Raw event emitters are used in big data transfers.
 
-> [!WARNING]
+> [!CAUTION]
 > `alt.emitServerRaw` only works if the server is using javascript.
 
 # [Server-side(emitClientRaw or emitAllClientsRaw)](#tab/tab7-0)
