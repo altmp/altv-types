@@ -47,6 +47,7 @@ alt.on('playerConnect', player => {
     alt.emitAllClients('sayHello');
 });
 ```
+***
 
 ## Client to server
 
