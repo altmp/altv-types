@@ -186,7 +186,7 @@ alt.onServer('sayHello', (array) => {
     alt.log(array);
 });
 ```
-# [Client-side(emitServerRaw)](#tab/tab1-1)
+# [Client-side(emitServerRaw)](#tab/tab7-2)
 ```js
 alt.on('connectionComplete', () => {
     const array = [
@@ -197,7 +197,7 @@ alt.on('connectionComplete', () => {
 });
 ```
 
-# [Server-side(emitServerRaw listener)](#tab/tab1-1)
+# [Server-side(emitServerRaw listener)](#tab/tab7-3)
 ```js
 alt.onClient('sayHello', (player, array) => {
     alt.log(`${player.name} is sended ${array}`);
