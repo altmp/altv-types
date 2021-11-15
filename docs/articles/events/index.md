@@ -28,7 +28,7 @@ A client **CANNOT** communicate with another client.
 The server may only emit data to the client-side with `emitClient` or `emitClientRaw`, which requires a Player.
 However, a player can also be substituted for `null` which works the same way as `alt.emitAllClients` by emitting it to all clients.
 
-`emitClientRaw` and `emitAllClientsRaw` It is are used for big data and is are faster than `emitClient` or `emitAllClients`.
+`emitClientRaw` and `emitAllClientsRaw` is are used for big data and is are faster than `emitClient` or `emitAllClients`.
 
 
 # [Client-side](#tab/tab1-0)
@@ -51,7 +51,7 @@ alt.on('playerConnect', player => {
 ## Client to server
 
 The client may only emit data to the server-side with `emitServer` or `emitServerRaw`.
-`emitServerRaw` It is used for big data and is faster than `emitServer` and emitServerRaw only works, the server is using js.
+`emitServerRaw` It is used for big data and is faster than `emitServer` and emitServerRaw only works, if the server is using js.
 
 The server-side `onServer` event handlers will automatically receive the player that sent the event as the first argument.
 
@@ -162,7 +162,7 @@ function customEventFunction() {
 
 ## Raw Events
 
-Raw event emitters are used in big data transfers.
+Raw events are used to send big data faster.
 
 > [!CAUTION]
 > `alt.emitServerRaw` only works if the server is using javascript.
