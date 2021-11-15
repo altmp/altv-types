@@ -1,6 +1,6 @@
 # Train API
 
-The Train API has been introduced in version 7.0 and provides properties and methods to control trains. This article should give you an overview of the API and how to use it.
+The Train API has been introduced in version 7.0 and provides properties and methods to control trains. It is part of the serverside vehicle class and synchronized. This article should give you an overview of the API and how to use it.
 
 ## Properties
 
