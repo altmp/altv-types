@@ -28,7 +28,7 @@ A client **CANNOT** communicate with another client.
 The server may only emit data to the client-side with `emitClient` or `emitClientRaw`, which requires a Player.
 However, a player can also be substituted for `null` which works the same way as `alt.emitAllClients` by emitting it to all clients.
 
-`emitClientRaw` and `emitAllClientsRaw` is are used for big data and are faster than `emitClient` or `emitAllClients`.
+`emitClientRaw` and `emitAllClientsRaw` are used for big data and are faster than `emitClient` or `emitAllClients`.
 
 
 # [Client-side](#tab/tab1-0)
