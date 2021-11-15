@@ -180,12 +180,14 @@ alt.on('playerConnect', player => {
     alt.emitAllClientsRaw('sayHello', array);
 });
 ```
+
 # [Client-side(emitClientRaw or emitAllClientsRaw listener)](#tab/tab7-1)
 ```js
 alt.onServer('sayHello', (array) => {
     alt.log(array);
 });
 ```
+
 # [Client-side(emitServerRaw)](#tab/tab7-2)
 ```js
 alt.on('connectionComplete', () => {
