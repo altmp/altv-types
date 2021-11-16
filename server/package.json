@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/altmp/altv-types#readme",
   "peerDependencies": {
-    "@altv/types-shared": "1.0.x"
+    "@altv/types-shared": "1.1.x"
   }
 }
