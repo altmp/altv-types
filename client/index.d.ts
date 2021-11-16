@@ -1596,7 +1596,7 @@ declare module "alt-client" {
   /** @deprecated See {@link licenseHash}. */
   export function getLicenseHash(): string;
 
-  /** @alpha */
+  /** @beta */
   export const licenseHash: string;
 
   /**

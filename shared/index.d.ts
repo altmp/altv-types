@@ -1334,7 +1334,7 @@ declare module "alt-shared" {
    *
    * @remarks Works only from JS (Client) to JS (Server)
    *
-   * @alpha
+   * @beta
    */
   export function emitRaw(eventName: string, ...args: any[]): void;
 
