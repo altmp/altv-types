@@ -1241,6 +1241,99 @@ declare module "alt-client" {
     public setZoomLevel(value: number): void;
   }
 
+  export class Worker {
+    /** Maximum available workers per resource. */
+    public static readonly maxWorkers: number;
+
+    /**
+     * Adds a shared array buffer to the workers array buffer pool.
+     *
+     * @remarks Make sure to remove the array buffer once you are done with it by calling {@link removeSharedArrayBuffer},
+     * otherwise you are creating a memory leak.
+     *
+     * @param buffer The shared array buffer to make available in workers.
+     * @returns The id of the shared array buffer that can be used in workers to retrieve it.
+     */
+    public static addSharedArrayBuffer(buffer: SharedArrayBuffer): number;
+
+    /**
+     * Removes the shared array buffer from the workers array buffer pool.
+     *
+     * @param id The id of the shared array buffer to remove.
+     */
+    public static removeSharedArrayBuffer(id: number): void;
+
+    /**
+     * Creates a new worker.
+     *
+     * @remarks This will throw an error if the resource has reached its maximum amount of workers. See {@link maxWorkers}.
+     *
+     * @param filePath The path to the worker script file, can be relative or absolute path.
+     */
+    constructor(filePath: string);
+
+    /** Whether this worker is still valid. See {@link destroy}. */
+    public readonly valid: boolean;
+
+    /** The file path that was used to create this worker. */
+    public readonly filePath: string;
+
+    /** Whether the worker is currently paused. See {@link pause} and {@link resume}. */
+    public readonly isPaused: boolean;
+
+    /** Starts the worker script. */
+    public start(): void;
+
+    /**
+     * Destroys the worker and stops it.
+     *
+     * @remarks This permanently sets {@link valid} to false.
+     */
+    public destroy(): void;
+
+    /**
+     * Emits the specified event to the worker.
+     *
+     * @remarks This can be called before the worker is started.
+     */
+    public emit(eventName: string, ...args: any[]): void;
+
+    /**
+     * Listens to an event emitted by the worker.
+     *
+     * @remarks The event handlers should be registered before starting the worker.
+     *
+     * @param eventName The event to listen for.
+     * @param callback The callback to call when the event is received.
+     */
+    public on(eventName: string, callback: (...args: any[]) => void): void;
+
+    /**
+     * Listens to an event emitted by the worker once.
+     *
+     * @remarks See {@link on}.
+     *
+     * @param eventName The event to listen for.
+     * @param callback The callback to call when the event is received.
+     */
+    public once(eventName: string, callback: (...args: any[]) => void): void;
+
+    /**
+     * Pauses execution of the worker.
+     *
+     * @remarks This completely stops the JavaScript event loop of the worker
+     * but events can still be received (and will be handled once the worker is resumed).
+     */
+    public pause(): void;
+
+    /**
+     * Resumes execution of the worker.
+     *
+     * @remarks See {@link pause}.
+     */
+    public resume(): void;
+  }
+
   export class Blip extends WorldObject {
     /**
      * Array with all blips.
