@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          repository: "altmp/altv-types"
+          persist-credentials: false
       - name: Install dependencies
         run: yarn install
       - name: Test
