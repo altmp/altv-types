@@ -1241,8 +1241,13 @@ declare module "alt-client" {
     public setZoomLevel(value: number): void;
   }
 
+  /**
+   * @beta
+   */
   export class Worker {
-    /** Maximum available workers per resource. */
+    /**
+     * Maximum available workers per resource.
+     */
     public static readonly maxWorkers: number;
 
     /**
@@ -1272,16 +1277,24 @@ declare module "alt-client" {
      */
     constructor(filePath: string);
 
-    /** Whether this worker is still valid. See {@link destroy}. */
+    /**
+     * Whether this worker is still valid. See {@link destroy}.
+     */
     public readonly valid: boolean;
 
-    /** The file path that was used to create this worker. */
+    /**
+     * The file path that was used to create this worker.
+     */
     public readonly filePath: string;
 
-    /** Whether the worker is currently paused. See {@link pause} and {@link resume}. */
+    /**
+     * Whether the worker is currently paused. See {@link pause} and {@link resume}.
+     */
     public readonly isPaused: boolean;
 
-    /** Starts the worker script. */
+    /**
+     * Starts the worker script.
+     */
     public start(): void;
 
     /**
