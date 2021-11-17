@@ -30,21 +30,22 @@ Only the following client-side alt API classes that are thread safe are availabl
 
 In the alt:V context, basics like ``setInterval`` or ``console.log`` don't exist. That's why we expose our own functions for it, but to make it easier if you do ``setInterval`` or ``console.log`` it will call the corresponding alt method.
 
-| Function Name     | Description                                                                                              |
-| ----------------- | -------------------------------------------------------------------------------------------------------- |
-| alt.emit          | Emit an event to the client side.                                                                        |
-| alt.on            | Receives an event emitted from the client side.                                                          |
-| alt.once          | Receives an event emitted from the client-side. Once triggered the handler is destroyed.                 |
-| alt.log           | Logs the specified arguments to the console using alt:V logger. (gets printed in the client logs files). |
-| alt.logWarning    | Logs the specified arguments as a warning to the console using alt:V logger.                             |
-| alt.logError      | Logs the specified arguments as an error to the console using alt:V logger.                              |
-| alt.nextTick      | Schedules execution of handler on next tick/next frame.                                                  |
-| alt.setInterval   | Schedules execution of handler in specified intervals.                                                   |
-| alt.setTimeout    | Schedules execution of handler once after the expiration of interval.                                    |
-| alt.clearNextTick | Clears a timer set with the nextTick function.                                                           |
-| alt.clearInterval | Clears a timer set with the setInterval function.                                                        |
-| alt.clearTimeout  | Clears a timer set with the setTimeout function.                                                         |
-| alt.hash          | Creates a hash using Jenkins one-at-a-time algorithm.                                                    |
+| Function Name     | Description                                                                                                     |
+| ----------------- | --------------------------------------------------------------------------------------------------------------- |
+| alt.emit                 | Emit an event to the client side.                                                                        |
+| alt.on                   | Receives an event emitted from the client side.                                                          |
+| alt.once                 | Receives an event emitted from the client-side. Once triggered the handler is destroyed.                 |
+| alt.log                  | Logs the specified arguments to the console using alt:V logger. (gets printed in the client logs files). |
+| alt.logWarning           | Logs the specified arguments as a warning to the console using alt:V logger.                             |
+| alt.logError             | Logs the specified arguments as an error to the console using alt:V logger.                              |
+| alt.nextTick             | Schedules execution of handler on next tick/next frame.                                                  |
+| alt.setInterval          | Schedules execution of handler in specified intervals.                                                   |
+| alt.setTimeout           | Schedules execution of handler once after the expiration of interval.                                    |
+| alt.clearNextTick        | Clears a timer set with the nextTick function.                                                           |
+| alt.clearInterval        | Clears a timer set with the setInterval function.                                                        |
+| alt.clearTimeout         | Clears a timer set with the setTimeout function.                                                         |
+| alt.hash                 | Creates a hash using Jenkins one-at-a-time algorithm.                                                    |
+| alt.getSharedArrayBuffer | Retrieves the shared array buffer instance with the given id.                                            |
 
 ### Properties available in a worker
 
