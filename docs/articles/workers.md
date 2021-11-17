@@ -17,6 +17,15 @@ The V8 asynchronous I/O operations are more efficient than Workers can be.
 [!CAUTION]
 > In order to be able to use the worker alt API, you must import it via ``import * as alt from alt-worker``. You can find the worker typings [here](https://github.com/altmp/altv-types)
 
+### Classes available in a worker
+
+Only the following client-side alt API classes that are thread safe are available in a Worker:
+
+* alt.File
+* alt.RGBA
+* alt.Vector2
+* alt.Vector3
+
 ### Functions available in a worker
 
 In the alt:V context, basics like ``setInterval`` or ``console.log`` don't exist. That's why we expose our own functions for it, but to make it easier if you do ``setInterval`` or ``console.log`` it will call the corresponding alt method.
