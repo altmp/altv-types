@@ -9,7 +9,6 @@ The V8 asynchronous I/O operations are more efficient than Workers can be.
 ### Important notes
 
 * Natives are not accessible in workers
-* Only alt.File, alt.Vector2, alt.Vector3 & alt.RGBA are available in workers
 * Creating a worker thread won't make your code perform better, it will just offload it in another thread
 
 ## Usage
