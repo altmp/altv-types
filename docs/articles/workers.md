@@ -14,6 +14,9 @@ The V8 asynchronous I/O operations are more efficient than Workers can be.
 
 ## Usage
 
+[!CAUTION]
+> In order to be able to use the worker alt API, you must import it via ``import * as alt from alt-worker``. You can find the worker typings [here](https://github.com/altmp/altv-types)
+
 ### Functions available in a worker
 
 In the alt:V context, basics like ``setInterval`` or ``console.log`` don't exist. That's why we expose our own functions for it, but to make it easier if you do ``setInterval`` or ``console.log`` it will call the corresponding alt method.
@@ -32,16 +35,30 @@ In the alt:V context, basics like ``setInterval`` or ``console.log`` don't exist
 | alt.clearNextTick | Clears a timer set with the nextTick function.                                                           |
 | alt.clearInterval | Clears a timer set with the setInterval function.                                                        |
 | alt.clearTimeout  | Clears a timer set with the setTimeout function.                                                         |
+| alt.hash          | Creates a hash using Jenkins one-at-a-time algorithm.                                                    |
+
+### Properties available in a worker
+
+| Property Name  | Description                               |
+| -------------- | ----------------------------------------- |
+| alt.version    | Represents the current version.           |
+| alt.branch     | Represents the current branch.            |
+| alt.sdkVersion | Represents the current SDK version.       |
+| alt.debug      | Returns if the resource is in debug mode. |
 
 ### How to create a worker
 
 # [relative path](#tab/tab1-0)
 ```js
+import * as alt from 'alt-client';
+
 const worker = new alt.Worker('./worker.js');
 worker.start();
 ```
 # [absolute path](#tab/tab1-1)
 ```js
+import * as alt from 'alt-client';
+
 // Path starting from the resource root directory
 const worker = new alt.Worker('/client/worker.js');
 worker.start();
@@ -70,10 +87,17 @@ worker.on('error', (error) => {
 
 # [client](#tab/tab2-0)
 ```js
-worker.emit('eventName', true, 0, [''], { p1: new Map() });
+import * as alt from 'alt-client';
+
+const worker = new alt.Worker('./worker.js');
+worker.start();
+
+worker.on('load', () => worker.emit('eventName', true, 0, [''], { p1: new Map() }));
 ```
 # [worker](#tab/tab2-1)
 ```js
+import * as alt from 'alt-worker';
+
 alt.on('eventName', (...args) => {
     console.log(args);
 });
@@ -84,10 +108,16 @@ alt.on('eventName', (...args) => {
 
 # [worker](#tab/tab3-0)
 ```js
+import * as alt from 'alt-worker';
+
 alt.emit('eventName', true, 0, [''], { p1: new Map() });
 ```
 # [client](#tab/tab3-1)
 ```js
+import * as alt from 'alt-client';
+
+const worker = new alt.Worker('./worker.js');
+
 worker.on('eventName', (...args) => {
     console.log(args);
 });
