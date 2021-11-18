@@ -2,14 +2,14 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "lib": ["es6", "ES2017.SharedMemory"],
+    "lib": ["es6", "es2017.sharedmemory"],
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "baseUrl": "../",
     "typeRoots": ["../"],
-    "types": [],
+    "types": ["@altv/types-client"],
     "noEmit": true,
     "forceConsistentCasingInFileNames": true
   },
