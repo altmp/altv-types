@@ -2242,14 +2242,14 @@ declare module "alt-client" {
    *
    * @beta
    */
-  export const ping: number;
+  export function getPing(): number;
 
   /**
    * Represents the current client fps.
    *
    * @beta
    */
-  export const fps: number;
+  export function getFps(): number;
 
   // /** @alpha */
   // export const totalPacketsSent: number;
