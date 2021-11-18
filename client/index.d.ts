@@ -1699,11 +1699,7 @@ declare module "alt-client" {
    */
   export function getGxtText(key: string): string;
 
-  /** @deprecated See {@link licenseHash}. */
   export function getLicenseHash(): string;
-
-  /** @beta */
-  export const licenseHash: string;
 
   /**
    * Gets the current alt:V locale.
@@ -2251,11 +2247,11 @@ declare module "alt-client" {
    */
   export function getFps(): number;
 
-  // /** @alpha */
-  // export const totalPacketsSent: number;
+  /** @beta */
+  export function getTotalPacketsSent(): number;
 
-  // /** @alpha */
-  // export const totalPacketsLost: number;
+  /** @beta */
+  export function getTotalPacketsLost(): number;
 
   export * from "alt-shared";
 }
