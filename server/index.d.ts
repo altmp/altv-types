@@ -355,7 +355,7 @@ declare module "alt-server" {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
-    consoleCommand: (...args: string[]) => void;
+    consoleCommand: (name: string, ...args: string[]) => void;
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
@@ -564,6 +564,7 @@ declare module "alt-server" {
      * @remarks The given value will be shared with all clients.
      *
      * @param key The key of the value to store.
+     * @param value The value to store.
      */
     public setSyncedMeta(key: string, value: any): void;
 
@@ -596,6 +597,7 @@ declare module "alt-server" {
      * @remarks The given value will be shared with all clients in streaming range.
      *
      * @param key The key of the value to store.
+     * @param value The value to store.
      */
     public setStreamSyncedMeta(key: string, value: any): void;
 
@@ -1016,56 +1018,205 @@ declare module "alt-server" {
      * @remarks Only setter accepts string or number as input, getter returns value as number.
      */
     public readonly model: number | string;
+    /**
+     * Gets or sets the active radio station.
+     */
     public activeRadioStation: RadioStation;
+    /**
+     * Gets or sets the additional body health.
+     */
     public bodyAdditionalHealth: number;
+    /**
+     * Gets or sets the body health.
+     */
     public bodyHealth: number;
+    /**
+     * Gets or sets the custom primary color as a RGBA type.
+     */
     public customPrimaryColor: shared.RGBA;
+    /**
+     * Gets or sets the custom secondary color as a RGBA type.
+     */
     public customSecondaryColor: shared.RGBA;
+    /**
+     * Gets or sets if the vehicle instance has custom tires.
+     */
     public customTires: boolean;
+    /**
+     * Applies some decoration effects to the vehicle (e.g.: It makes the hydra looking rusty or applies snow to the front bumper of `policeold1`). Does not work on every vehicle model.
+     */
     public darkness: number;
+    /**
+     * Gets or sets the dashboard color of the vehicle.
+     */
     public dashboardColor: number;
+    /**
+     * Gets the current state of the daylights.
+     */
     public readonly daylightOn: boolean;
+    /**
+     * Gets if a vehicle is destroyed.
+     */
     public readonly destroyed: boolean;
+    /**
+     * Gets or sets the dirt level of the vehicle.
+     */
     public dirtLevel: number;
+    /**
+     * Gets the current driver of the vehicle. It returns null, if there is no driver.
+     */
     public readonly driver: Player | null;
+    /**
+     * Gets or sets the current engine health.
+     */
     public engineHealth: number;
+    /**
+     * Gets or sets the engine state of the vehicle.
+     */
     public engineOn: boolean;
+    /**
+     * Gets if a flamethrower of a vehicle is active on vehicle models like `cerberus`.
+     */
     public readonly flamethrowerActive: boolean;
+    /**
+     * Gets if the handbrake of a car is active.
+     */
     public readonly handbrakeActive: boolean;
+    /**
+     * Gets if the car has armored windows.
+     */
     public readonly hasArmoredWindows: boolean;
+    /**
+     * Gets or sets the headlight color of a vehicle.
+     */
     public headlightColor: number;
+    /**
+     * Gets or sets the interior color of a vehicle.
+     */
     public interiorColor: number;
+    /**
+     * Gets or sets the lights intensity and distance of a vehicle.
+     */
     public lightsMultiplier: number;
+    /**
+     * Gets or sets the livery of a vehicle.
+     */
     public livery: number;
+    /**
+     * Gets or sets the lock state of a vehicle.
+     */
     public lockState: VehicleLockState;
+    /**
+     * Enables or disables the manual engine control.
+     */
     public manualEngineControl: boolean;
+    /**
+     * Gets or sets the current mod kit of a vehicle.
+     */
     public modKit: number;
+    /**
+     * Gets the maximum amount of vehicle mod kits available.
+     */
     public readonly modKitsCount: number;
+    /**
+     * Enables or disables a neon light on a specific position.
+     */
     public neon: IVehicleNeon;
+    /**
+     * Gets or sets the color of the neon lights.
+     */
     public neonColor: shared.RGBA;
+    /**
+     * Gets the current state of the nightlights.
+     */
     public readonly nightlightOn: boolean;
+    /**
+     * Gets or sets the current number plate style.
+     */
     public numberPlateIndex: NumberPlateStyle;
+    /**
+     * Gets or sets the current text displayed on the number plate.
+     */
     public numberPlateText: string;
+    /**
+     * Gets or sets the pearl color of a vehicle.
+     */
     public pearlColor: number;
+    /**
+     * Gets or sets the current health amount of the petrol tank.
+     */
     public petrolTankHealth: number;
+    /**
+     * Gets or sets the current primary color of a vehicle.
+     */
     public primaryColor: number;
+    /**
+     * Gets how often a vehicle got repaired.
+     */
     public readonly repairsCount: number;
+    /**
+     * Gets or sets the roof livery of a vehicle.
+     */
     public roofLivery: number;
+    /**
+     * Gets or sets the roof state of a vehicle (closed or open).
+     */
     public roofState: boolean;
+    /**
+     * Gets or sets the current secondary color.
+     */
     public secondaryColor: number;
+    /**
+     * Gets or sets the siren state of a vehicle.
+     */
     public sirenActive: boolean;
+    /**
+     * Gets or sets the color of the tire smoke.
+     */
     public tireSmokeColor: shared.RGBA;
+    /**
+     * Gets or sets the wheel color.
+     */
     public wheelColor: number;
+    /**
+     * Gets the amount of wheels of a vehicle.
+     */
     public readonly wheelsCount: number;
+    /**
+     * Gets the wheel type.
+     */
     public readonly wheelType: number;
+    /**
+     * Gets the type of the front wheels.
+     */
     public readonly frontWheels: number;
+    /**
+     * Gets the type of the rear wheels.
+     */
     public readonly rearWheels: number;
+    /**
+     * Gets or sets the window tint of a vehicle.
+     */
     public windowTint: WindowTint;
+    /**
+     * Gets a vehicle that is attached to the vehicle instance.
+     */
     public readonly attached: Vehicle;
+    /**
+     * Gets a vehicle where the vehicle is attached to.
+     */
     public readonly attachedTo: Vehicle;
-    /** @beta */
+    /**
+     * Gets the velocity vector of a vehicle.
+     *
+     * @beta
+     */
     public readonly velocity: shared.Vector3;
-    /** @beta */
+    /**
+     * Gets or sets the drift mode state of the vehicle.
+     *
+     * @beta
+     */
     public driftModeEnabled: boolean;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
@@ -1077,157 +1228,493 @@ declare module "alt-server" {
      * @returns Vehicle if it was found, otherwise null.
      */
     public static getByID(id: number): Vehicle | null;
-
+    /**
+     * Returns if a specific wheel has a tire.
+     *
+     * @param wheelId The specific wheel based on the id
+     * @returns True when the wheel has a tire, otherwise false.
+     */
     public doesWheelHasTire(wheelId: number): boolean;
-
+    /**
+     * Returns the appearance of a vehicle as a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     * @returns A base64 string.
+     */
     public getAppearanceDataBase64(): string;
-
+    /**
+     * Returns the health of a specific armored window.
+     *
+     * @param windowId The window id.
+     * @returns The amount of health.
+     */
     public getArmoredWindowHealth(windowId: number): number;
-
+    /**
+     * Returns the amount of shoots that a specific armoured window received.
+     *
+     * @param windowId The window id.
+     * @returns The amount of shoots that a window received.
+     */
     public getArmoredWindowShootCount(windowId: number): number;
-
+    /**
+     * Returns the damage level of a specific bumper.
+     *
+     * @param bumperId The id of a bumper.
+     * @returns The damage level of a bumper.
+     */
     public getBumperDamageLevel(bumperId: VehicleBumper): VehicleBumperDamage;
-
+    /**
+     * Returns the damage status of a vehicle as a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @returns A base64 string of the damage status.
+     */
     public getDamageStatusBase64(): string;
-
+    /**
+     * Returns the state of a specific door.
+     *
+     * @param doorId The id of the door.
+     * @returns The state of the door.
+     */
     public getDoorState(doorId: VehicleDoor): VehicleDoorState;
-
+    /**
+     * Returns the state of a specific extra of a vehicle.
+     *
+     * @remarks Extras are not available on every vehicle model.
+     *
+     * @param extraId The id of the extra.
+     * @returns True when the extra is enabled, otherwise false.
+     */
     public getExtra(extraId: number): boolean;
-
+    /**
+     * Returns the game state data of a vehicle as a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @returns A base64 string of the game state data.
+     */
     public getGamestateDataBase64(): string;
-
+    /**
+     * Returns the health data of a vehicle as a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @returns A base64 string of the health data.
+     */
     public getHealthDataBase64(): string;
-
+    /**
+     * Returns the mod value for a specific mod type.
+     *
+     * @param modType The id of the mod type.
+     * @returns The value of the mod type.
+     */
     public getMod(modType: VehicleModType): number;
-
+    /**
+     * Returns the amount of possible mod values for a specific mod type.
+     *
+     * @param modType The id of the mod type.
+     * @returns The amount of possible mod values of a mod type.
+     */
     public getModsCount(modType: VehicleModType): number;
-
+    /**
+     * Returns the amount of bullet holes of a vehicle part.
+     *
+     * @param partId The id of a vehicle part.
+     * @returns The amount of bullet holes of a vehicle part.
+     */
     public getPartBulletHoles(partId: VehiclePart): number;
-
+    /**
+     * Returns the damage level of a vehicle part.
+     *
+     * @param partId The id of a vehicle part.
+     * @returns The damage level of a vehicle part.
+     */
     public getPartDamageLevel(partId: VehiclePart): VehiclePartDamage;
-
+    /**
+     * Returns the script data of a vehicle as a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @returns A base64 string of the script data.
+     */
     public getScriptDataBase64(): string;
-
+    /**
+     * Returns the health of a specific wheel.
+     *
+     * @param wheelId The id of the wheel.
+     * @returns The amount of health of a specific wheel.
+     */
     public getWheelHealth(wheelId: number): number;
-
+    /**
+     * Returns if a specific light is damaged.
+     *
+     * @param lightId The id of the light.
+     * @returns True if the light is damaged, otherwise false.
+     */
     public isLightDamaged(lightId: number): boolean;
-
+    /**
+     * Returns if a specific special light is damaged.
+     *
+     * @param specialLightId The id of the special light.
+     * @returns True if the special light is damaged, otherwise false.
+     */
     public isSpecialLightDamaged(specialLightId: number): boolean;
-
+    /**
+     * Returns if a specific wheel is burst.
+     *
+     * @param wheelId The id of the wheel.
+     * @returns True if the wheel is burst, otherwise false.
+     */
     public isWheelBurst(wheelId: number): boolean;
-
+    /**
+     * Returns if a specific wheel is detached.
+     *
+     * @param wheelId The id of the wheel.
+     * @returns True if the wheel is detached, otherwise false.
+     */
     public isWheelDetached(wheelId: number): boolean;
-
+    /**
+     * Returns if a specific wheel is on fire.
+     *
+     * @param wheelId The id of the wheel.
+     * @returns True if the wheel is on fire, otherwise false.
+     */
     public isWheelOnFire(wheelId: number): boolean;
-
+    /**
+     * Returns if a specific window is damaged.
+     *
+     * @param windowId The id of the window.
+     * @returns True if the window is damaged, otherwise false.
+     */
     public isWindowDamaged(windowId: number): boolean;
-
+    /**
+     * Returns if a specific window is open.
+     *
+     * @param windowId The id of the window.
+     * @returns True if the window is open, otherwise false.
+     */
     public isWindowOpened(windowId: number): boolean;
-
+    /**
+     * Repairs the vehicle.
+     */
     public repair(): void;
 
+    /**
+     * Sets the appearance of a vehicle with a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @param data The base64 string of the appearance data.
+     */
     public setAppearanceDataBase64(data: string): void;
-
+    /**
+     * Sets the health of a specific armored window.
+     *
+     * @param windowId The id of the window.
+     * @param health The amount of health.
+     */
     public setArmoredWindowHealth(windowId: number, health: number): void;
-
+    /**
+     * Sets the shoot count of a specific armoured window.
+     *
+     * @param windowId The id of the window.
+     * @param count The amount of shoots.
+     */
     public setArmoredWindowShootCount(windowId: number, count: number): void;
-
+    /**
+     * Sets the damage level of a specific bumper.
+     *
+     * @param bumperId The id of the bumper.
+     * @param level The damage level.
+     */
     public setBumperDamageLevel(bumperId: VehicleBumper, level: VehicleBumperDamage): void;
-
+    /**
+     * Sets the damage status of a vehicle based on a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @param data A base64 string that represents the damage status.
+     */
     public setDamageStatusBase64(data: string): void;
-
+    /**
+     * Sets the state of a specific door
+     *
+     * @param doorId The id of the door.
+     * @param state The state of the door.
+     */
     public setDoorState(doorId: VehicleDoor, state: VehicleDoorState): void;
-
+    /**
+     * Sets the state of an extra of a vehicle.
+     *
+     * @remarks Setting extras on vehicle does not work for every vehicle model. For example you can change the light bar of a police car with this method.
+     *
+     * @param extraId The id of the extra.
+     * @param state The state of the extra.
+     */
     public setExtra(extraId: number, state: boolean): void;
-
+    /**
+     * Sets the game state data of a vehicle with a given base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @param data A base64 string that represents the game state data.
+     */
     public setGamestateDataBase64(data: string): void;
-
+    /**
+     * Sets the health data of a vehicle with a given base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @param data A base64 string that represents the health data.
+     */
     public setHealthDataBase64(data: string): void;
-
+    /**
+     * Sets a specific light of the vehicle either damaged or not.
+     *
+     * @param lightId The id of the light.
+     * @param isDamaged True to damage the specific light, otherwise false.
+     */
     public setLightDamaged(lightId: number, isDamaged: boolean): void;
-
+    /**
+     * Applies a specific mod of a given mod type.
+     *
+     * @param modType The type of the mod.
+     * @param modId The id of the mod.
+     */
     public setMod(modType: VehicleModType, modId: number): void;
-
+    /**
+     * Applies bullet holes to a specific vehicle part.
+     *
+     * @param partId The id of the part.
+     * @param count The amount of bullet holes.
+     */
     public setPartBulletHoles(partId: VehiclePart, count: number): void;
-
+    /**
+     * Sets the damage level of a vehicle part.
+     *
+     * @param partId The id of the part.
+     * @param level The damage level.
+     */
     public setPartDamageLevel(partId: VehiclePart, level: VehiclePartDamage): void;
-
+    /**
+     * Sets type of the rear wheels.
+     *
+     * @param wheelId The id of the rear wheel type.
+     */
     public setRearWheels(wheelId: number): void;
-
+    /**
+     * Sets the script data of a vehicle based on a base64 string.
+     *
+     * @remarks Base64 methods are deprecated.
+     *
+     * @param data A base64 string that represents the script data.
+     */
     public setScriptDataBase64(data: string): void;
-
+    /**
+     * Sets if a special light is damaged.
+     *
+     * @param specialLightId The id of the special light.
+     * @param isDamaged True to damage the specific special light, otherwise false.
+     */
     public setSpecialLightDamaged(specialLightId: number, isDamaged: boolean): void;
-
+    /**
+     * Sets if a specific wheel is burst.
+     *
+     * @param wheelId The id of the wheel.
+     * @param state True to burst the wheel, otherwise false.
+     */
     public setWheelBurst(wheelId: number, state: boolean): void;
-
+    /**
+     * Sets a wheel either detached or attached.
+     *
+     * @param wheelId The id of the wheel.
+     * @param state True to detach the wheel, otherwise false.
+     */
     public setWheelDetached(wheelId: number, state: boolean): void;
-
+    /**
+     * Sets if a specific wheel has a tire.
+     *
+     * @param wheelId The id of the wheel.
+     * @param state True to apply a tire to a wheel, otherwise false.
+     */
     public setWheelHasTire(wheelId: number, state: boolean): void;
-
+    /**
+     * Sets the health of a specific wheel.
+     *
+     * @param wheelId The id of the wheel.
+     * @param health The health of the wheel.
+     */
     public setWheelHealth(wheelId: number, health: number): void;
-
+    /**
+     * Sets a wheel either on fire or not
+     *
+     * @param wheelId The id of the wheel.
+     * @param state True to set the wheel on fire, otherwise false.
+     */
     public setWheelOnFire(wheelId: number, state: boolean): void;
-
+    /**
+     * Applies a wheel style based on the type and variation.
+     *
+     * @param wheelType The type of the wheel.
+     * @param wheelId The variation id of the wheel.
+     */
     public setWheels(wheelType: number, wheelId: number): void;
-
+    /**
+     * Sets if a specific window is damaged.
+     *
+     * @param windowId The id of the window.
+     * @param isDamaged True to damage the specific window, otherwise false.
+     */
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
-
+    /**
+     * Sets if a specific window is open.
+     *
+     * @param windowId The id of the window.
+     * @param state True to open the window, otherwise false.
+     */
     public setWindowOpened(windowId: number, state: boolean): void;
-
+    /**
+     * Repairs a specific wheel.
+     *
+     * @param wheelId The id of the wheel.
+     */
     public setWheelFixed(wheelId: number): void;
 
-    /** @beta */
+    /**
+     * Gets or sets if the created train is a mission train.
+     *
+     * @beta
+     */
     public isMissionTrain: boolean;
 
-    /** @beta */
+    /**
+     * Gets or sets the track id of the train.
+     *
+     * @remarks Valid track ids are between 0 and 11.
+     *
+     * @beta
+     */
     public trainTrackId: number;
 
-    /** @beta */
+    /**
+     * Gets the engine of the train.
+     *
+     * @beta
+     */
     public readonly trainEngineId: Vehicle | null;
 
-    /** @beta */
+    /**
+     * Set a train as an engine of a train.
+     *
+     * @param vehicle The vehicle to set as an engine.
+     *
+     * @beta
+     */
     public setTrainEngineId(vehicle: Vehicle | null): void;
 
-    /** @beta */
+    /**
+     * Gets or sets the trains config index.
+     *
+     * @remarks You can find a list of all possible config indices in the trains.xml. Valid indices are between 1 and 25.
+     *
+     * @beta
+     */
     public trainConfigIndex: number;
 
-    /** @beta */
+    /**
+     * Gets or sets the distance of the trains to the engine.
+     *
+     * @beta
+     */
     public trainDistanceFromEngine: number;
 
-    /** @beta */
+    /**
+     * Gets or sets if the train is the engine of the train.
+     *
+     * @beta
+     */
     public isTrainEngine: boolean;
 
-    /** @beta */
+    /**
+     * Gets or sets if the train is a caboose.
+     *
+     * @beta
+     */
     public isTrainCaboose: boolean;
 
-    /** @beta */
-    public trainDirection: boolean;
-
-    /** @beta */
+    /**
+     * Gets or sets if the train is a passenger carriage.
+     *
+     * @beta
+     */
     public trainPassengerCarriages: boolean;
 
-    /** @beta */
+    /**
+     * Gets or sets the direction of the train.
+     *
+     * @beta
+     */
+    public trainDirection: boolean;
+
+    /**
+     * Gets or sets if the trains is rendered derailed.
+     *
+     * @beta
+     */
     public trainRenderDerailed: boolean;
 
-    /** @beta */
+    /**
+     * Gets or sets if the doors of the trains should be forced open.
+     *
+     * @beta
+     */
     public trainForceDoorsOpen: boolean;
 
-    /** @beta */
+    /**
+     * Gets or sets the cruise speed of the train.
+     *
+     * @beta
+     */
     public trainCruiseSpeed: number;
 
-    /** @beta */
+    /**
+     * Gets or sets the config index of the train's carriage.
+     *
+     * @beta
+     */
     public trainCarriageConfigIndex: number;
 
-    /** @beta */
+    /**
+     * Gets another train that is linked to the back of the train. Returns null if there is no linked train.
+     *
+     * @beta
+     */
     public readonly trainLinkedToBackwardId: Vehicle | null;
 
-    /** @beta */
+    /**
+     * Links another train to the back of the train.
+     *
+     * @param vehicle The vehicle to set as linked to the back of the train.
+     *
+     * @beta
+     */
     public setTrainLinkedToBackwardId(vehicle: Vehicle | null): void;
 
-    /** @beta */
+    /**
+     * Gets another train that is linked to the back of the train. Returns null if there is no linked train in front.
+     *
+     * @beta
+     */
     public readonly trainLinkedToForwardId: Vehicle | null;
 
-    /** @beta */
+    /**
+     * Links another train to the front of the train.
+     *
+     * @param vehicle The vehicle to set as linked to the front of the train.
+     *
+     * @beta
+     */
     public setTrainLinkedToForwardId(vehicle: Vehicle | null): void;
 
     /**
@@ -1413,6 +1900,7 @@ declare module "alt-server" {
    * @remarks The given value will be shared with all client resources.
    *
    * @param key The key of the value to store.
+   * @param value The value to store.
    */
   export function setSyncedMeta(key: string, value: any): void;
 
