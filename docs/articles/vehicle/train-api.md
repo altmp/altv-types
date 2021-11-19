@@ -14,7 +14,7 @@ The Train API has been introduced in version 7.0 and provides properties and met
 | isTrainEngine             | Gets or sets if the train is the engine of the train.                                                                                 |
 | isTrainCaboose            | Gets or sets if the train is a caboose.                                                                                               |
 | trainDirection            | Gets or sets the direction of the train. (`true` means forward, `false` means backward)                                               |
-| trainPassengerCarriages   | Gets or sets if the train contains a passenger carriage.                                                                              |
+| trainPassengerCarriages   | Gets or sets if the train is a passenger carriage.                                                                              |
 | trainRenderDerailed       | Gets or sets if the trains is rendered derailed.                                                                                      |
 | trainForceDoorsOpen       | Gets or sets if the doors of the trains should be forced open.                                                                        |
 | trainCruiseSpeed          | Gets or sets the cruise speed of the train.                                                                                           |
