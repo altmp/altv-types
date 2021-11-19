@@ -1,5 +1,6 @@
 # Vehicle server methods
 
+The following article gives you an overview about the server methods of the vehicle class. Keep in mind, some server methods are related to the train API and are described in the [train API article](train-api.md). Therefore, they are not mentioned here.
 
 ## Methods
 

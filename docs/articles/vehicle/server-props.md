@@ -1,6 +1,6 @@
 # Vehicle server properties
 
-The following article describes the server properties of the vehicle class. Keep in mind, some server properties are related to the train API and are described in the [train API article](train-api.md).
+The following article describes the server properties of the vehicle class. Keep in mind, some server properties are related to the train API and are described in the [train API article](train-api.md). Therefore, they are not mentioned here.
 
 ## Properties
 
