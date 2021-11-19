@@ -47,10 +47,6 @@
 - name: Vehicle
   href: vehicle/index.md
   items:
-    - name: Server methods
-      href: vehicle/server-methods.md
-    - name: Server properties
-      href: vehicle/server-props.md
     - name: Train API
       href: vehicle/train-api.md
 - name: Workers
