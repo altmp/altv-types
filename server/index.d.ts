@@ -355,7 +355,7 @@ declare module "alt-server" {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
-    consoleCommand: (...args: string[]) => void;
+    consoleCommand: (name: string, ...args: string[]) => void;
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
@@ -564,6 +564,7 @@ declare module "alt-server" {
      * @remarks The given value will be shared with all clients.
      *
      * @param key The key of the value to store.
+     * @param value The value to store.
      */
     public setSyncedMeta(key: string, value: any): void;
 
@@ -596,6 +597,7 @@ declare module "alt-server" {
      * @remarks The given value will be shared with all clients in streaming range.
      *
      * @param key The key of the value to store.
+     * @param value The value to store.
      */
     public setStreamSyncedMeta(key: string, value: any): void;
 
@@ -1229,36 +1231,36 @@ declare module "alt-server" {
     /**
      * Returns if a specific wheel has a tire.
      *
-     * @param {number} wheelId
-     * @returns {boolean}
+     * @param wheelId The specific wheel based on the id
+     * @returns true when the wheel has a tire, otherwise false.
      */
     public doesWheelHasTire(wheelId: number): boolean;
     /**
      * Returns the appearance of a vehicle as a base64 string.
      *
      * @remarks Base64 methods are deprecated.
-     * @returns {string}
+     * @returns a base64 string.
      */
     public getAppearanceDataBase64(): string;
     /**
      * Returns the health of a specific armored window.
      *
-     * @param {number} windowId
-     * @returns {number}
+     * @param windowId The window id.
+     * @returns The amount of health.
      */
     public getArmoredWindowHealth(windowId: number): number;
     /**
-     * Returns the amount of shoots that a specific armoured weapon received.
+     * Returns the amount of shoots that a specific armoured window received.
      *
-     * @param {number} windowId
-     * @returns {number}
+     * @param windowId The window id.
+     * @returns The amount of shoots that a window received.
      */
     public getArmoredWindowShootCount(windowId: number): number;
     /**
      * Returns the damage level of a specific bumper.
      *
-     * @param {VehicleBumper} bumperId
-     * @returns {VehicleBumperDamage}
+     * @param bumperId The id of a bumper.
+     * @returns The damage level of a bumper.
      */
     public getBumperDamageLevel(bumperId: VehicleBumper): VehicleBumperDamage;
     /**
@@ -1266,14 +1268,14 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns {string}
+     * @returns a base64 string of the damage status.
      */
     public getDamageStatusBase64(): string;
     /**
      * Returns the state of a specific door.
      *
-     * @param {VehicleDoor} doorId
-     * @returns {VehicleDoorState}
+     * @param doorId The id of the door.
+     * @returns The state of the door.
      */
     public getDoorState(doorId: VehicleDoor): VehicleDoorState;
     /**
@@ -1281,8 +1283,8 @@ declare module "alt-server" {
      *
      * @remarks Extras are not available on every vehicle model.
      *
-     * @param {number} extraId
-     * @returns {boolean}
+     * @param extraId The id of the extra.
+     * @returns true when the extra is enabled, otherwise false.
      */
     public getExtra(extraId: number): boolean;
     /**
@@ -1290,7 +1292,7 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns {string}
+     * @returns base64 string of the game state data.
      */
     public getGamestateDataBase64(): string;
     /**
@@ -1298,35 +1300,35 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns {string}
+     * @returns base64 string of the health data.
      */
     public getHealthDataBase64(): string;
     /**
      * Returns the mod value for a specific mod type.
      *
-     * @param {VehicleModType} modType
-     * @returns {number}
+     * @param modType The id of the mod type.
+     * @returns The value of the mod type.
      */
     public getMod(modType: VehicleModType): number;
     /**
      * Returns the amount of possible mod values for a specific mod type.
      *
-     * @param {VehicleModType} modType
-     * @returns {number}
+     * @param modType The id of the mod type.
+     * @returns The amount of possible mod values of a mod type.
      */
     public getModsCount(modType: VehicleModType): number;
     /**
      * Returns the amount of bullet holes of a vehicle part.
      *
-     * @param {VehiclePart} partId
-     * @returns {number}
+     * @param partId The id of a vehicle part.
+     * @returns The amount of bullet holes of a vehicle part.
      */
     public getPartBulletHoles(partId: VehiclePart): number;
     /**
      * Returns the damage level of a vehicle part.
      *
-     * @param {VehiclePart} partId
-     * @returns {VehiclePartDamage}
+     * @param partId The id of a vehicle part.
+     * @returns The damage level of a vehicle part.
      */
     public getPartDamageLevel(partId: VehiclePart): VehiclePartDamage;
     /**
@@ -1334,63 +1336,63 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns {string}
+     * @returns base64 string of the script data.
      */
     public getScriptDataBase64(): string;
     /**
      * Returns the health of a specific wheel.
      *
-     * @param {number} wheelId
-     * @returns {number}
+     * @param wheelId The id of the wheel.
+     * @returns The amount of health of a specific wheel.
      */
     public getWheelHealth(wheelId: number): number;
     /**
      * Returns if a specific light is damaged.
      *
-     * @param {number} lightId
-     * @returns {boolean}
+     * @param lightId The id of the light.
+     * @returns true if the light is damaged, otherwise false.
      */
     public isLightDamaged(lightId: number): boolean;
     /**
      * Returns if a specific special light is damaged.
      *
-     * @param {number} specialLightId
-     * @returns {boolean}
+     * @param specialLightId The id of the special light.
+     * @returns true if the special light is damaged, otherwise false.
      */
     public isSpecialLightDamaged(specialLightId: number): boolean;
     /**
      * Returns if a specific wheel is burst.
      *
-     * @param {number} wheelId
-     * @returns {boolean}
+     * @param wheelId The id of the wheel.
+     * @returns true if the wheel is burst, otherwise false.
      */
     public isWheelBurst(wheelId: number): boolean;
     /**
      * Returns if a specific wheel is detached.
      *
-     * @param {number} wheelId
-     * @returns {boolean}
+     * @param wheelId The id of the wheel.
+     * @returns true if the wheel is detached, otherwise false.
      */
     public isWheelDetached(wheelId: number): boolean;
     /**
      * Returns if a specific wheel is on fire.
      *
-     * @param {number} wheelId
-     * @returns {boolean}
+     * @param wheelId The id of the wheel.
+     * @returns true if the wheel is on fire, otherwise false.
      */
     public isWheelOnFire(wheelId: number): boolean;
     /**
      * Returns if a specific window is damaged.
      *
-     * @param {number} windowId
-     * @returns {boolean}
+     * @param windowId The id of the window.
+     * @returns true if the window is damaged, otherwise false.
      */
     public isWindowDamaged(windowId: number): boolean;
     /**
      * Returns if a specific window is open.
      *
-     * @param {number} windowId
-     * @returns {boolean}
+     * @param windowId The id of the window.
+     * @returns true if the window is open, otherwise false.
      */
     public isWindowOpened(windowId: number): boolean;
     /**
@@ -1403,28 +1405,28 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @param {string} data
+     * @param data The base64 string of the appearance data.
      */
     public setAppearanceDataBase64(data: string): void;
     /**
      * Sets the health of a specific armored window.
      *
-     * @param {number} windowId
-     * @param {number} health
+     * @param windowId The id of the window.
+     * @param health The amount of health.
      */
     public setArmoredWindowHealth(windowId: number, health: number): void;
     /**
      * Sets the shoot count of a specific armoured window.
      *
-     * @param {number} windowId
-     * @param {number} count
+     * @param windowId The id of the window.
+     * @param count The amount of shoots.
      */
     public setArmoredWindowShootCount(windowId: number, count: number): void;
     /**
      * Sets the damage level of a specific bumper.
      *
-     * @param {VehicleBumper} bumperId
-     * @param {VehicleBumperDamage} level
+     * @param bumperId The id of the bumper.
+     * @param level The damage level.
      */
     public setBumperDamageLevel(bumperId: VehicleBumper, level: VehicleBumperDamage): void;
     /**
@@ -1432,14 +1434,14 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @param {string} data
+     * @param data A base64 string that represents the damage status.
      */
     public setDamageStatusBase64(data: string): void;
     /**
      * Sets the state of a specific door
      *
-     * @param {VehicleDoor} doorId
-     * @param {VehicleDoorState} state
+     * @param doorId The id of the door.
+     * @param state The state of the door.
      */
     public setDoorState(doorId: VehicleDoor, state: VehicleDoorState): void;
     /**
@@ -1447,8 +1449,8 @@ declare module "alt-server" {
      *
      * @remarks Setting extras on vehicle does not work for every vehicle model. For example you can change the light bar of a police car with this method.
      *
-     * @param {number} extraId
-     * @param {boolean} state
+     * @param extraId The id of the extra.
+     * @param state The state of the extra.
      */
     public setExtra(extraId: number, state: boolean): void;
     /**
@@ -1456,7 +1458,7 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @param {string} data
+     * @param data A base64 string that represents the game state data.
      */
     public setGamestateDataBase64(data: string): void;
     /**
@@ -1464,41 +1466,41 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @param {string} data
+     * @param data A base64 string that represents the health data.
      */
     public setHealthDataBase64(data: string): void;
     /**
      * Sets a specific light of the vehicle either damaged or not.
      *
-     * @param {number} lightId
-     * @param {boolean} isDamaged
+     * @param lightId The id of the light.
+     * @param isDamaged true to damage the specific light, otherwise false.
      */
     public setLightDamaged(lightId: number, isDamaged: boolean): void;
     /**
      * Applies a specific mod of a given mod type.
      *
-     * @param {VehicleModType} modType
-     * @param {number} modId
+     * @param modType The type of the mod.
+     * @param modId The id of the mod.
      */
     public setMod(modType: VehicleModType, modId: number): void;
     /**
      * Applies bullet holes to a specific vehicle part.
      *
-     * @param {VehiclePart} partId
-     * @param {number} count
+     * @param partId The id of the part.
+     * @param count The amount of bullet holes.
      */
     public setPartBulletHoles(partId: VehiclePart, count: number): void;
     /**
      * Sets the damage level of a vehicle part.
      *
-     * @param {VehiclePart} partId
-     * @param {VehiclePartDamage} level
+     * @param partId The id of the part.
+     * @param level The damage level.
      */
     public setPartDamageLevel(partId: VehiclePart, level: VehiclePartDamage): void;
     /**
      * Sets type of the rear wheels.
      *
-     * @param {number} wheelId
+     * @param wheelId The id of the rear wheel type.
      */
     public setRearWheels(wheelId: number): void;
     /**
@@ -1506,76 +1508,76 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @param {string} data
+     * @param data A base64 string that represents the script data.
      */
     public setScriptDataBase64(data: string): void;
     /**
      * Sets if a special light is damaged.
      *
-     * @param {number} specialLightId
-     * @param {boolean} isDamaged
+     * @param specialLightId The id of the special light.
+     * @param isDamaged true to damage the specific special light, otherwise false.
      */
     public setSpecialLightDamaged(specialLightId: number, isDamaged: boolean): void;
     /**
      * Sets if a specific wheel is burst.
      *
-     * @param {number} wheelId
-     * @param {boolean} state
+     * @param wheelId The id of the wheel.
+     * @param state true to burst the wheel, otherwise false.
      */
     public setWheelBurst(wheelId: number, state: boolean): void;
     /**
      * Sets a wheel either detached or attached.
      *
-     * @param {number} wheelId
-     * @param {boolean} state
+     * @param wheelId The id of the wheel.
+     * @param state true to detach the wheel, otherwise false.
      */
     public setWheelDetached(wheelId: number, state: boolean): void;
     /**
      * Sets if a specific wheel has a tire.
      *
-     * @param {number} wheelId
-     * @param {boolean} state
+     * @param wheelId The id of the wheel.
+     * @param state true to apply a tire to a wheel, otherwise false.
      */
     public setWheelHasTire(wheelId: number, state: boolean): void;
     /**
      * Sets the health of a specific wheel.
      *
-     * @param {number} wheelId
-     * @param {number} health
+     * @param wheelId The id of the wheel.
+     * @param health The health of the wheel.
      */
     public setWheelHealth(wheelId: number, health: number): void;
     /**
      * Sets a wheel either on fire or not
      *
-     * @param {number} wheelId
-     * @param {boolean} state
+     * @param wheelId The id of the wheel.
+     * @param state true to set the wheel on fire, otherwise false.
      */
     public setWheelOnFire(wheelId: number, state: boolean): void;
     /**
      * Applies a wheel style based on the type and variation.
      *
-     * @param {number} wheelType
-     * @param {number} wheelId
+     * @param wheelType The type of the wheel.
+     * @param wheelId The variation id of the wheel.
      */
     public setWheels(wheelType: number, wheelId: number): void;
     /**
      * Sets if a specific window is damaged.
      *
-     * @param {number} windowId
-     * @param {boolean} isDamaged
+     * @param windowId The id of the window.
+     * @param isDamaged true to damage the specific window, otherwise false.
      */
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
     /**
      * Sets if a specific window is open.
      *
-     * @param {number} windowId
-     * @param {boolean} state
+     * @param windowId The id of the window.
+     * @param state true to open the window, otherwise false.
      */
     public setWindowOpened(windowId: number, state: boolean): void;
     /**
      * Repairs a specific wheel.
      *
-     * @param {number} wheelId
+     * @param wheelId The id of the wheel.
      */
     public setWheelFixed(wheelId: number): void;
 
@@ -1599,8 +1601,6 @@ declare module "alt-server" {
 
     /**
      * Gets the engine of the train.
-     *
-     * @type{Vehicle | null}
      *
      * @beta
      */
@@ -1902,6 +1902,7 @@ declare module "alt-server" {
    * @remarks The given value will be shared with all client resources.
    *
    * @param key The key of the value to store.
+   * @param value The value to store.
    */
   export function setSyncedMeta(key: string, value: any): void;
 
