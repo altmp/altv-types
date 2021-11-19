@@ -1018,297 +1018,202 @@ declare module "alt-server" {
     public readonly model: number | string;
     /**
      * Gets or sets the active radio station.
-     * @type {RadioStation}
      */
     public activeRadioStation: RadioStation;
     /**
      * Gets or sets the additional body health.
-     *
-     * @type {number}
      */
     public bodyAdditionalHealth: number;
     /**
      * Gets or sets the body health.
-     *
-     * @type {number}
      */
     public bodyHealth: number;
     /**
      * Gets or sets the custom primary color as a RGBA type.
-     *
-     * @type {shared.RGBA}
      */
     public customPrimaryColor: shared.RGBA;
     /**
      * Gets or sets the custom secondary color as a RGBA type.
-     *
-     * @type {shared.RGBA}
      */
     public customSecondaryColor: shared.RGBA;
     /**
      * Gets or sets if the vehicle instance has custom tires.
-     *
-     * @type {boolean}
      */
     public customTires: boolean;
     /**
      * Applies some decoration effects to the vehicle (e.g.: It makes the hydra looking rusty or applies snow to the front bumper of `policeold1`). Does not work on every vehicle model.
-     *
-     * @type {number}
      */
     public darkness: number;
     /**
      * Gets or sets the dashboard color of the vehicle.
-     *
-     * @type {number}
      */
     public dashboardColor: number;
     /**
      * Gets the current state of the daylights.
-     *
-     * @type {boolean}
      */
     public readonly daylightOn: boolean;
     /**
      * Gets if a vehicle is destroyed.
-     *
-     * @type {boolean}
      */
     public readonly destroyed: boolean;
     /**
      * Gets or sets the dirt level of the vehicle.
-     *
-     * @type {number}
      */
     public dirtLevel: number;
     /**
      * Gets the current driver of the vehicle. It returns null, if there is no driver.
-     *
-     * @type {Player | null}
      */
     public readonly driver: Player | null;
     /**
      * Gets or sets the current engine health.
-     *
-     * @type {number}
      */
     public engineHealth: number;
     /**
      * Gets or sets the engine state of the vehicle.
-     *
-     * @type {boolean}
      */
     public engineOn: boolean;
     /**
-     * Gets if a flamethrower of a vehicle is active on cars like cerberus.
-     *
-     * @type {boolean}
+     * Gets if a flamethrower of a vehicle is active on vehicle models like `cerberus`.
      */
     public readonly flamethrowerActive: boolean;
     /**
      * Gets if the handbrake of a car is active.
-     *
-     * @type {boolean}
      */
     public readonly handbrakeActive: boolean;
     /**
      * Gets if the car has armoredWindows.
-     *
-     * @type {boolean}
      */
     public readonly hasArmoredWindows: boolean;
     /**
      * Gets or sets the headlight color of a vehicle.
-     *
-     * @type {number}
      */
     public headlightColor: number;
     /**
      * Gets or sets the interior color of a vehicle.
-     *
-     * @type {number}
      */
     public interiorColor: number;
     /**
      * Gets or sets the lights intensity and distance of a vehicle.
-     *
-     * @type {number}
      */
     public lightsMultiplier: number;
     /**
      * Gets or sets the livery of a vehicle.
-     *
-     * @type {number}
      */
     public livery: number;
     /**
      * Gets or sets the lock state of a vehicle.
-     *
-     * @type {VehicleLockState}
      */
     public lockState: VehicleLockState;
     /**
      * Enables or disables the manual engine control.
-     *
-     * @type {boolean}
      */
     public manualEngineControl: boolean;
     /**
      * Gets or sets the current mod kit of a vehicle.
-     *
-     * @type {number}
      */
     public modKit: number;
     /**
      * Gets the maximum amount of vehicle mod kits available.
-     *
-     * @type {number}
      */
     public readonly modKitsCount: number;
     /**
      * Enables or disables a neon light on a specific position.
-     *
-     * @type {IVehicleNeon}
      */
     public neon: IVehicleNeon;
     /**
      * Gets or sets the color of the neon lights.
-     *
-     * @type {shared.RGBA}
      */
     public neonColor: shared.RGBA;
     /**
      * Gets the current state of the nightlights.
-     *
-     * @type {boolean}
      */
     public readonly nightlightOn: boolean;
     /**
      * Gets or sets the current number plate style.
-     *
-     * @type {NumberPlateStyle}
      */
     public numberPlateIndex: NumberPlateStyle;
     /**
      * Gets or sets the current text displayed on the number plate.
-     *
-     * @type {string}
      */
     public numberPlateText: string;
     /**
      * Gets or sets the pearl color of a vehicle.
-     *
-     * @type {number}
      */
     public pearlColor: number;
     /**
      * Gets or sets the current health amount of the petrol tank.
-     *
-     * @type {number}
      */
     public petrolTankHealth: number;
     /**
      * Gets or sets the current primary color of a vehicle.
-     *
-     * @type {number}
      */
     public primaryColor: number;
     /**
      * Gets how often a vehicle got repaired.
-     *
-     * @type {number}
      */
     public readonly repairsCount: number;
     /**
      * Gets or sets the roof livery of a vehicle.
-     *
-     * @type {number}
      */
     public roofLivery: number;
     /**
      * Gets or sets the roof state of a vehicle (closed or open).
-     *
-     * @type {boolean}
      */
     public roofState: boolean;
     /**
      * Gets or sets the current secondary color.
-     *
-     * @type {number}
      */
     public secondaryColor: number;
     /**
      * Gets or sets the siren state of a vehicle.
-     *
-     * @type {boolean}
      */
     public sirenActive: boolean;
     /**
      * Gets or sets the color of the tire smoke.
-     *
-     * @type {shared.RGBA}
      */
     public tireSmokeColor: shared.RGBA;
     /**
      * Gets or sets the wheel color.
-     *
-     * @type {number}
      */
     public wheelColor: number;
     /**
      * Gets the amount of wheels of a vehicle.
-     *
-     * @type {number}
      */
     public readonly wheelsCount: number;
     /**
      * Gets the wheel type.
-     *
-     * @type {number}
      */
     public readonly wheelType: number;
     /**
      * Gets the type of the front wheels.
-     *
-     * @type {number}
      */
     public readonly frontWheels: number;
     /**
      * Gets the type of the rear wheels.
-     *
-     * @type {number}
      */
     public readonly rearWheels: number;
     /**
      * Gets or sets the window tint of a vehicle.
-     *
-     * @type {WindowTint}
      */
     public windowTint: WindowTint;
     /**
      * Gets a vehicle that is attached to the vehicle instance.
-     *
-     * @type {Vehicle}
      */
     public readonly attached: Vehicle;
     /**
      * Gets a vehicle where the vehicle is attached to.
-     *
-     * @type {Vehicle}
      */
     public readonly attachedTo: Vehicle;
-    /** @beta
-     *
+    /**
      * Gets the velocity vector of a vehicle.
      *
-     * @type{Vector3}
+     * @beta
      */
     public readonly velocity: shared.Vector3;
-    /** @beta
-     *
+    /**
      * Gets or sets the drift mode state of the vehicle.
      *
-     * @type{boolean}
+     * @beta
      */
     public driftModeEnabled: boolean;
 
@@ -1332,7 +1237,6 @@ declare module "alt-server" {
      * Returns the appearance of a vehicle as a base64 string.
      *
      * @remarks Base64 methods are deprecated.
-     *
      * @returns {string}
      */
     public getAppearanceDataBase64(): string;
@@ -1678,8 +1582,6 @@ declare module "alt-server" {
     /**
      * Gets or sets if the created train is a mission train.
      *
-     * @type{boolean}
-     *
      * @beta
      */
     public isMissionTrain: boolean;
@@ -1718,16 +1620,12 @@ declare module "alt-server" {
      *
      * @remarks You can find a list of all possible config indices in the trains.xml. Valid indices are between 1 and 25.
      *
-     * @type{number}
-     *
      * @beta
      */
     public trainConfigIndex: number;
 
     /**
      * Gets or sets the distance of the trains to the engine.
-     *
-     * @type{number}
      *
      * @beta
      */
@@ -1736,16 +1634,12 @@ declare module "alt-server" {
     /**
      * Gets or sets if the train is the engine of the train.
      *
-     * @type {boolean}
-     *
      * @beta
      */
     public isTrainEngine: boolean;
 
     /**
      * Gets or sets if the train is a caboose.
-     *
-     * @type{boolean}
      *
      * @beta
      */
@@ -1754,16 +1648,12 @@ declare module "alt-server" {
     /**
      * Gets or sets if the train is a passenger carriage.
      *
-     * @type{boolean}
-     *
      * @beta
      */
     public trainPassengerCarriages: boolean;
 
     /**
      * Gets or sets the direction of the train.
-     *
-     * @type{boolean} `true` means forward, `false` means backward
      *
      * @beta
      */
@@ -1772,16 +1662,12 @@ declare module "alt-server" {
     /**
      * Gets or sets if the trains is rendered derailed.
      *
-     * @type{boolean}
-     *
      * @beta
      */
     public trainRenderDerailed: boolean;
 
     /**
      * Gets or sets if the doors of the trains should be forced open.
-     *
-     * @type{boolean}
      *
      * @beta
      */
@@ -1790,8 +1676,6 @@ declare module "alt-server" {
     /**
      * Gets or sets the cruise speed of the train.
      *
-     * @type{number}
-     *
      * @beta
      */
     public trainCruiseSpeed: number;
@@ -1799,16 +1683,12 @@ declare module "alt-server" {
     /**
      * Gets or sets the config index of the train's carriage.
      *
-     * @type{number}
-     *
      * @beta
      */
     public trainCarriageConfigIndex: number;
 
     /**
      * Gets another train that is linked to the back of the train. Returns null if there is no linked train.
-     *
-     * @type{Vehicle | null}
      *
      * @beta
      */
@@ -1825,8 +1705,6 @@ declare module "alt-server" {
 
     /**
      * Gets another train that is linked to the back of the train. Returns null if there is no linked train in front.
-     *
-     * @type {Vehicle | null}
      *
      * @beta
      */
