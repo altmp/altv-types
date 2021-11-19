@@ -9,39 +9,65 @@ The V8 asynchronous I/O operations are more efficient than Workers can be.
 ### Important notes
 
 * Natives are not accessible in workers
-* Only alt.File, alt.Vector2, alt.Vector3 & alt.RGBA are available in workers
 * Creating a worker thread won't make your code perform better, it will just offload it in another thread
 
 ## Usage
+
+> [!CAUTION]
+> In order to be able to use the alt:V Worker API, you must import it via ``import * as alt from alt-worker``. You can find the whole worker class api [here](https://docs.altv.mp/js/api/alt-client.Worker.html)
+
+### Classes available in a worker
+
+Only the following client-side alt API classes that are thread safe are available in a Worker:
+
+* alt.File
+* alt.RGBA
+* alt.Vector2
+* alt.Vector3
 
 ### Functions available in a worker
 
 In the alt:V context, basics like ``setInterval`` or ``console.log`` don't exist. That's why we expose our own functions for it, but to make it easier if you do ``setInterval`` or ``console.log`` it will call the corresponding alt method.
 
-| Function Name     | Description                                                                                              |
-| ----------------- | -------------------------------------------------------------------------------------------------------- |
-| alt.emit          | Emit an event to the client side.                                                                        |
-| alt.on            | Receives an event emitted from the client side.                                                          |
-| alt.once          | Receives an event emitted from the client-side. Once triggered the handler is destroyed.                 |
-| alt.log           | Logs the specified arguments to the console using alt:V logger. (gets printed in the client logs files). |
-| alt.logWarning    | Logs the specified arguments as a warning to the console using alt:V logger.                             |
-| alt.logError      | Logs the specified arguments as an error to the console using alt:V logger.                              |
-| alt.nextTick      | Schedules execution of handler on next tick/next frame.                                                  |
-| alt.setInterval   | Schedules execution of handler in specified intervals.                                                   |
-| alt.setTimeout    | Schedules execution of handler once after the expiration of interval.                                    |
-| alt.clearNextTick | Clears a timer set with the nextTick function.                                                           |
-| alt.clearInterval | Clears a timer set with the setInterval function.                                                        |
-| alt.clearTimeout  | Clears a timer set with the setTimeout function.                                                         |
+| Function Name     | Description                                                                                                     |
+| ----------------- | --------------------------------------------------------------------------------------------------------------- |
+| alt.emit                 | Emit an event to the client side.                                                                        |
+| alt.on                   | Receives an event emitted from the client side.                                                          |
+| alt.once                 | Receives an event emitted from the client-side. Once triggered the handler is destroyed.                 |
+| alt.log                  | Logs the specified arguments to the console using alt:V logger. (gets printed in the client logs files). |
+| alt.logWarning           | Logs the specified arguments as a warning to the console using alt:V logger.                             |
+| alt.logError             | Logs the specified arguments as an error to the console using alt:V logger.                              |
+| alt.nextTick             | Schedules execution of handler on next tick/next frame.                                                  |
+| alt.setInterval          | Schedules execution of handler in specified intervals.                                                   |
+| alt.setTimeout           | Schedules execution of handler once after the expiration of interval.                                    |
+| alt.clearNextTick        | Clears a timer set with the nextTick function.                                                           |
+| alt.clearInterval        | Clears a timer set with the setInterval function.                                                        |
+| alt.clearTimeout         | Clears a timer set with the setTimeout function.                                                         |
+| alt.hash                 | Creates a hash using Jenkins one-at-a-time algorithm.                                                    |
+| alt.getSharedArrayBuffer | Retrieves the shared array buffer instance with the given id.                                            |
+
+### Properties available in a worker
+
+| Property Name  | Description                               |
+| -------------- | ----------------------------------------- |
+| alt.version    | Represents the current version.           |
+| alt.branch     | Represents the current branch.            |
+| alt.sdkVersion | Represents the current SDK version.       |
+| alt.debug      | Returns if the resource is in debug mode. |
 
 ### How to create a worker
 
 # [relative path](#tab/tab1-0)
 ```js
+import * as alt from 'alt-client';
+
 const worker = new alt.Worker('./worker.js');
 worker.start();
 ```
 # [absolute path](#tab/tab1-1)
 ```js
+import * as alt from 'alt-client';
+
 // Path starting from the resource root directory
 const worker = new alt.Worker('/client/worker.js');
 worker.start();
@@ -70,10 +96,17 @@ worker.on('error', (error) => {
 
 # [client](#tab/tab2-0)
 ```js
-worker.emit('eventName', true, 0, [''], { p1: new Map() });
+import * as alt from 'alt-client';
+
+const worker = new alt.Worker('./worker.js');
+worker.start();
+
+worker.on('load', () => worker.emit('eventName', true, 0, [''], { p1: new Map() }));
 ```
 # [worker](#tab/tab2-1)
 ```js
+import * as alt from 'alt-worker';
+
 alt.on('eventName', (...args) => {
     console.log(args);
 });
@@ -84,10 +117,16 @@ alt.on('eventName', (...args) => {
 
 # [worker](#tab/tab3-0)
 ```js
+import * as alt from 'alt-worker';
+
 alt.emit('eventName', true, 0, [''], { p1: new Map() });
 ```
 # [client](#tab/tab3-1)
 ```js
+import * as alt from 'alt-client';
+
+const worker = new alt.Worker('./worker.js');
+
 worker.on('eventName', (...args) => {
     console.log(args);
 });
