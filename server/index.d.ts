@@ -1083,7 +1083,7 @@ declare module "alt-server" {
      */
     public readonly handbrakeActive: boolean;
     /**
-     * Gets if the car has armoredWindows.
+     * Gets if the car has armored windows.
      */
     public readonly hasArmoredWindows: boolean;
     /**
@@ -1232,14 +1232,14 @@ declare module "alt-server" {
      * Returns if a specific wheel has a tire.
      *
      * @param wheelId The specific wheel based on the id
-     * @returns true when the wheel has a tire, otherwise false.
+     * @returns True when the wheel has a tire, otherwise false.
      */
     public doesWheelHasTire(wheelId: number): boolean;
     /**
      * Returns the appearance of a vehicle as a base64 string.
      *
      * @remarks Base64 methods are deprecated.
-     * @returns a base64 string.
+     * @returns A base64 string.
      */
     public getAppearanceDataBase64(): string;
     /**
@@ -1268,7 +1268,7 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns a base64 string of the damage status.
+     * @returns A base64 string of the damage status.
      */
     public getDamageStatusBase64(): string;
     /**
@@ -1284,7 +1284,7 @@ declare module "alt-server" {
      * @remarks Extras are not available on every vehicle model.
      *
      * @param extraId The id of the extra.
-     * @returns true when the extra is enabled, otherwise false.
+     * @returns True when the extra is enabled, otherwise false.
      */
     public getExtra(extraId: number): boolean;
     /**
@@ -1292,7 +1292,7 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns base64 string of the game state data.
+     * @returns A base64 string of the game state data.
      */
     public getGamestateDataBase64(): string;
     /**
@@ -1300,7 +1300,7 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns base64 string of the health data.
+     * @returns A base64 string of the health data.
      */
     public getHealthDataBase64(): string;
     /**
@@ -1336,7 +1336,7 @@ declare module "alt-server" {
      *
      * @remarks Base64 methods are deprecated.
      *
-     * @returns base64 string of the script data.
+     * @returns A base64 string of the script data.
      */
     public getScriptDataBase64(): string;
     /**
@@ -1350,49 +1350,49 @@ declare module "alt-server" {
      * Returns if a specific light is damaged.
      *
      * @param lightId The id of the light.
-     * @returns true if the light is damaged, otherwise false.
+     * @returns True if the light is damaged, otherwise false.
      */
     public isLightDamaged(lightId: number): boolean;
     /**
      * Returns if a specific special light is damaged.
      *
      * @param specialLightId The id of the special light.
-     * @returns true if the special light is damaged, otherwise false.
+     * @returns True if the special light is damaged, otherwise false.
      */
     public isSpecialLightDamaged(specialLightId: number): boolean;
     /**
      * Returns if a specific wheel is burst.
      *
      * @param wheelId The id of the wheel.
-     * @returns true if the wheel is burst, otherwise false.
+     * @returns True if the wheel is burst, otherwise false.
      */
     public isWheelBurst(wheelId: number): boolean;
     /**
      * Returns if a specific wheel is detached.
      *
      * @param wheelId The id of the wheel.
-     * @returns true if the wheel is detached, otherwise false.
+     * @returns True if the wheel is detached, otherwise false.
      */
     public isWheelDetached(wheelId: number): boolean;
     /**
      * Returns if a specific wheel is on fire.
      *
      * @param wheelId The id of the wheel.
-     * @returns true if the wheel is on fire, otherwise false.
+     * @returns True if the wheel is on fire, otherwise false.
      */
     public isWheelOnFire(wheelId: number): boolean;
     /**
      * Returns if a specific window is damaged.
      *
      * @param windowId The id of the window.
-     * @returns true if the window is damaged, otherwise false.
+     * @returns True if the window is damaged, otherwise false.
      */
     public isWindowDamaged(windowId: number): boolean;
     /**
      * Returns if a specific window is open.
      *
      * @param windowId The id of the window.
-     * @returns true if the window is open, otherwise false.
+     * @returns True if the window is open, otherwise false.
      */
     public isWindowOpened(windowId: number): boolean;
     /**
@@ -1473,7 +1473,7 @@ declare module "alt-server" {
      * Sets a specific light of the vehicle either damaged or not.
      *
      * @param lightId The id of the light.
-     * @param isDamaged true to damage the specific light, otherwise false.
+     * @param isDamaged True to damage the specific light, otherwise false.
      */
     public setLightDamaged(lightId: number, isDamaged: boolean): void;
     /**
@@ -1515,28 +1515,28 @@ declare module "alt-server" {
      * Sets if a special light is damaged.
      *
      * @param specialLightId The id of the special light.
-     * @param isDamaged true to damage the specific special light, otherwise false.
+     * @param isDamaged True to damage the specific special light, otherwise false.
      */
     public setSpecialLightDamaged(specialLightId: number, isDamaged: boolean): void;
     /**
      * Sets if a specific wheel is burst.
      *
      * @param wheelId The id of the wheel.
-     * @param state true to burst the wheel, otherwise false.
+     * @param state True to burst the wheel, otherwise false.
      */
     public setWheelBurst(wheelId: number, state: boolean): void;
     /**
      * Sets a wheel either detached or attached.
      *
      * @param wheelId The id of the wheel.
-     * @param state true to detach the wheel, otherwise false.
+     * @param state True to detach the wheel, otherwise false.
      */
     public setWheelDetached(wheelId: number, state: boolean): void;
     /**
      * Sets if a specific wheel has a tire.
      *
      * @param wheelId The id of the wheel.
-     * @param state true to apply a tire to a wheel, otherwise false.
+     * @param state True to apply a tire to a wheel, otherwise false.
      */
     public setWheelHasTire(wheelId: number, state: boolean): void;
     /**
@@ -1550,7 +1550,7 @@ declare module "alt-server" {
      * Sets a wheel either on fire or not
      *
      * @param wheelId The id of the wheel.
-     * @param state true to set the wheel on fire, otherwise false.
+     * @param state True to set the wheel on fire, otherwise false.
      */
     public setWheelOnFire(wheelId: number, state: boolean): void;
     /**
@@ -1564,14 +1564,14 @@ declare module "alt-server" {
      * Sets if a specific window is damaged.
      *
      * @param windowId The id of the window.
-     * @param isDamaged true to damage the specific window, otherwise false.
+     * @param isDamaged True to damage the specific window, otherwise false.
      */
     public setWindowDamaged(windowId: number, isDamaged: boolean): void;
     /**
      * Sets if a specific window is open.
      *
      * @param windowId The id of the window.
-     * @param state true to open the window, otherwise false.
+     * @param state True to open the window, otherwise false.
      */
     public setWindowOpened(windowId: number, state: boolean): void;
     /**
@@ -1592,8 +1592,6 @@ declare module "alt-server" {
      * Gets or sets the track id of the train.
      *
      * @remarks Valid track ids are between 0 and 11.
-     *
-     * @type{number}
      *
      * @beta
      */
