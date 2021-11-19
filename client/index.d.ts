@@ -1,4 +1,5 @@
 /// <reference types="@altv/types-shared"/>
+/// <reference lib="es2017.sharedmemory"/>
 /**
  * @module alt-client
  */
