@@ -1,6 +1,7 @@
 # Train API
 
-The Train API has been introduced in version 7.0 and provides properties and methods to control trains. It is part of the serverside vehicle class and synchronized. This article should give you an overview of the API and how to use it.
+The Train API has been introduced in version 7.0 and provides properties and methods to control trains. It is part of
+the serverside vehicle class and synchronized. This article should give you an overview of the API and how to use it.
 
 ## Properties
 
@@ -23,8 +24,9 @@ The Train API has been introduced in version 7.0 and provides properties and met
 | trainLinkedToForwardId    | Gets or sets another train that is linked to the front of the train.                                                                  |
 
 ## Methods
->[!WARNING]
->Please keep in mind that these methods will only work when they are used right on spawn.
+
+> [!WARNING]
+> Please keep in mind that these methods will only work when they are used right on spawn.
 
 | Method Name                   | Description                                       |
 | ----------------------------- | ---------------------------------------------     |
@@ -35,6 +37,8 @@ The Train API has been introduced in version 7.0 and provides properties and met
 ## Example Code
 
 The following code creates the metrotrain that drives on track 1. The track goes from the city to Paleto Bay and back.
+
+### Single train
 
 ```js
 let vehicle = new alt.Vehicle(alt.hash("metrotrain"), 0, 0, 0, 0, 0, 0);
@@ -53,4 +57,46 @@ vehicle.trainCruiseSpeed = 5;
 vehicle.trainCarriageConfigIndex = 0;
 vehicle.setTrainLinkedToBackwardId(null);
 vehicle.setTrainLinkedToForwardId(null);
+```
+
+### Linked trains
+
+In order to link two trains to each other you need to use the `setTrainLinkedToBackwardId` and `setTrainLinkedToForwardId` methods. It is also important that one of the trains needs to be the engine of the train and the other one needs to be the carriage. Otherwise, you need to set the distance of the second train via`trainDistanceFromVehicle` manually
+
+```js
+  // The whole train drives on track 3 and starts at the node index 1 of track 3.
+  
+  let vehicle = new alt.Vehicle(alt.hash("metrotrain"), 193, -603, 16, 0, 0, 0);
+  vehicle.isMissionTrain = false;
+  vehicle.trainTrackId = 3;
+  vehicle.setTrainEngineId(null);
+  vehicle.trainConfigIndex = 25;
+  vehicle.trainDistanceFromEngine = 0;
+  vehicle.isTrainEngine = true; // Make this train the engine of the whole train
+  vehicle.isTrainCaboose = false;
+  vehicle.trainDirection = false;
+  vehicle.trainPassengerCarriages = false; // Disable this train as a passenger carriage
+  vehicle.trainRenderDerailed = false;
+  vehicle.trainForceDoorsOpen = false;
+  vehicle.trainCarriageConfigIndex = 1;
+  vehicle.setTrainLinkedToForwardId(null);
+
+  let vehicle2 = new alt.Vehicle(alt.hash("metrotrain"), 193, -603, 16, 0, 0, 0);
+  vehicle2.isMissionTrain = false;
+  vehicle2.trainTrackId = 3;
+  vehicle2.setTrainEngineId(vehicle);
+  vehicle2.trainConfigIndex = 25;
+  vehicle2.trainDistanceFromEngine = 0;
+  vehicle2.isTrainEngine = false; // Disable this train as the engine of the whole train
+  vehicle2.isTrainCaboose = false;
+  vehicle2.trainDirection = false;
+  vehicle2.trainPassengerCarriages = true; // Make this train as a passenger carriage
+  vehicle2.trainRenderDerailed = false;
+  vehicle2.trainForceDoorsOpen = false;
+  vehicle2.trainCarriageConfigIndex = 1;
+  
+  vehicle2.setTrainLinkedToBackwardId(null); // Link no train to the back of this vehicle2
+  vehicle2.setTrainLinkedToForwardId(vehicle); // Link vehicle to the front of the vehicle
+  vehicle.setTrainLinkedToBackwardId(vehicle2); // Link vehicle2 to the back of the vehicle
+
 ```
