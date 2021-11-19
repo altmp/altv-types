@@ -14,7 +14,7 @@ The V8 asynchronous I/O operations are more efficient than Workers can be.
 ## Usage
 
 > [!CAUTION]
-> In order to be able to use the [worker alt API](https://docs.altv.mp/js/api/alt-client.Worker.html), you must import it via ``import * as alt from alt-worker``. You can find the worker typings [here](https://github.com/altmp/altv-types)
+> In order to be able to use the alt:V Worker API, you must import it via ``import * as alt from alt-worker``. You can find the whole Worker class api [here](https://docs.altv.mp/js/api/alt-client.Worker.html)
 
 ### Classes available in a worker
 
