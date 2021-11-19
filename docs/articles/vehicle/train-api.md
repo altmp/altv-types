@@ -1,7 +1,6 @@
 # Train API
 
-The Train API has been introduced in version 7.0 and provides properties and methods to control trains. It is part of
-the serverside vehicle class and synchronized. This article should give you an overview of the API and how to use it.
+The Train API has been introduced in version 7.0 and provides properties and methods to control trains. It is part of the serverside vehicle class and synchronized. This article should give you an overview of the API and how to use it.
 
 ## Properties
 
@@ -61,7 +60,7 @@ vehicle.setTrainLinkedToForwardId(null);
 
 ### Linked trains
 
-In order to link two trains to each other you need to use the `setTrainLinkedToBackwardId` and `setTrainLinkedToForwardId` methods. It is also important that one of the trains needs to be the engine of the train and the other one needs to be the carriage. Otherwise, you need to set the distance of the second train via`trainDistanceFromVehicle` manually
+In order to link two trains to each other you need to use the `setTrainLinkedToBackwardId` and`setTrainLinkedToForwardId` methods. It is also important that one of the trains needs to be the engine of the train and the other one needs to be the carriage. Otherwise, you need to set the distance of the second train via`trainDistanceFromVehicle` manually.
 
 ```js
   // The whole train drives on track 3 and starts at the node index 1 of track 3.
