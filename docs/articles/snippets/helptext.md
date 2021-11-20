@@ -9,10 +9,10 @@ You cannot change the position of this text.
 ```js
 alt.onServer('showHelpText', showHelpText);
 
-export function showHelpText(text, milliseconds) {
-    native.beginTextCommandDisplayHelp('STRING');
-    native.addTextComponentScaleform(text);
-    native.endTextCommandDisplayHelp(0, 0, 0, milliseconds);
+export function showHelpText(text, sound, milliseconds) {
+  native.beginTextCommandDisplayHelp("STRING");
+  native.addTextComponentSubstringPlayerName(text);
+  native.endTextCommandDisplayHelp(0, false, sound, milliseconds);
 }
 ```
 
@@ -22,12 +22,12 @@ export function showHelpText(text, milliseconds) {
 
 ```js
 alt.on('playerConnect', player => {
-    alt.emitClient(player, 'showHelpText', 'Press ~INPUT_MOVE_UP_ONLY~ to move forward.', 5000);
+    alt.emitClient(player, 'showHelpText', 'Press ~INPUT_MOVE_UP_ONLY~ to move forward.', true, 5000);
 });
 ```
 
 **Client Side**
 
 ```js
-showHelpText('Press ~INPUT_MOVE_UP_ONLY~ to move forward.', 5000);
+showHelpText('Press ~INPUT_MOVE_UP_ONLY~ to move forward.', true, 5000);
 ```
