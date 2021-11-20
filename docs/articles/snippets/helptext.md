@@ -12,7 +12,7 @@ alt.onServer('showHelpText', showHelpText);
 export function showHelpText(text, sound, milliseconds) {
   native.beginTextCommandDisplayHelp("STRING");
   native.addTextComponentSubstringPlayerName(text);
-  native.endTextCommandDisplayHelp(0, 0, sound, milliseconds);
+  native.endTextCommandDisplayHelp(0, false, sound, milliseconds);
 }
 ```
 
