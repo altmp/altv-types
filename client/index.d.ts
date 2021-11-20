@@ -160,6 +160,10 @@ declare module "alt-client" {
     BottomRight = 0,
     TopRight = 1,
     TopLeft = 2,
+    /** @beta */
+    TopCenter = 3,
+    /** @beta */
+    BottomCenter = 4,
   }
 
   export const enum ProfileSourceType {
