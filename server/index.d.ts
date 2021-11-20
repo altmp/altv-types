@@ -1943,6 +1943,24 @@ declare module "alt-server" {
   export function emitClientRaw(player: Player[], eventName: string, ...args: any[]): void;
 
   /**
+   * Emits specified event to specific client.
+   *
+   * @param player Event is sent to specific player.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   */
+  export function emitClientRaw(player: Player, eventName: string, ...args: any[]): void;
+
+  /**
+   * Emits specified event to specific client.
+   *
+   * @param player Event is sent to every player.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   */
+  export function emitClientRaw(player: null, eventName: string, ...args: any[]): void;
+
+  /**
    * Emits specified event to all clients.
    *
    * @param eventName Name of the event.
