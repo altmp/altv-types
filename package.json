@@ -8,6 +8,7 @@
     "shared",
     "client",
     "webview",
+    "worker",
     "natives",
     "server"
   ],
