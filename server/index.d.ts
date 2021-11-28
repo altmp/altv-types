@@ -2008,7 +2008,7 @@ declare module "alt-server" {
    *
    * @beta
    */
-  export function hashServerPassword(password: string): number;
+  export function hashServerPassword(password: string): bigint;
 
   /**
    * Gets the amount of milliseconds since the server was started.
