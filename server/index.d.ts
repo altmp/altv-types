@@ -2004,7 +2004,7 @@ declare module "alt-server" {
    *
    * @param password The string you want to hash.
    *
-   * @remarks Can be useful for {@link beforePlayerConnect} to check the received password.
+   * @remarks Can be useful for {@link IServerEvent.beforePlayerConnect} to check the received password.
    *
    * @beta
    */
