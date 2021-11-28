@@ -2253,10 +2253,10 @@ declare module "alt-client" {
   export function getFps(): number;
 
   /** @beta */
-  export function getTotalPacketsSent(): number;
+  export function getTotalPacketsSent(): bigint;
 
   /** @beta */
-  export function getTotalPacketsLost(): number;
+  export function getTotalPacketsLost(): bigint;
 
   export * from "alt-shared";
 }
