@@ -351,6 +351,20 @@ declare module "alt-server" {
     readonly components: Array<number>;
   }
 
+  /** @beta */
+  export interface ConnectionInfo {
+    readonly name: string;
+    readonly socialID: string;
+    readonly hwidHash: string;
+    readonly hwidExHash: string;
+    readonly authToken: string;
+    readonly isDebug: boolean;
+    readonly branch: string;
+    readonly build: number;
+    readonly cdnUrl: string;
+    readonly passwordHash: string;
+  }
+
   export interface IServerEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -363,7 +377,7 @@ declare module "alt-server" {
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
     /** @beta */
-    beforePlayerConnect: (player: Player, passwordHash: string, cdnUrl: string) => boolean | void;
+    beforePlayerConnect: (connectionInfo: ConnectionInfo) => string | void;
     /**
      * @param armourDamage This parameter is only available on dev branch.
      */
