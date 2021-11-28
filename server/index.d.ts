@@ -2004,6 +2004,8 @@ declare module "alt-server" {
    *
    * @param password The string you want to hash.
    *
+   * @remarks Can be usefull for {@link beforePlayerConnect } to check the received password.
+   *
    * @beta
    */
   export function hashServerPassword(password: string): number;
