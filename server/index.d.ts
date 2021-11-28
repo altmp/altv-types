@@ -1993,11 +1993,20 @@ declare module "alt-server" {
   export function emitAllClientsRaw(eventName: string, ...args: any[]): void;
 
   /**
-   * Change the server password at runtime
+   * Change the server password at runtime.
    *
-   * @param password The new server password
+   * @param password The new server password.
    */
   export function setPassword(password: string): void;
+
+  /**
+   * Hash a string with alt:V algorithm.
+   *
+   * @param password The string you want to hash.
+   *
+   * @beta
+   */
+  export function hashServerPassword(password: string): number;
 
   /**
    * Gets the amount of milliseconds since the server was started.
