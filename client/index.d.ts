@@ -1670,7 +1670,6 @@ declare module "alt-client" {
   /**
    * Emits specified event to server.
    *
-   * @param player Event is sent to specific player.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
