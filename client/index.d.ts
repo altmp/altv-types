@@ -2258,11 +2258,11 @@ declare module "alt-client" {
   /** @beta */
   export function getTotalPacketsLost(): bigint;
 
-  // /** @beta */
-  // export function getServerIp(): string;
+  /** @beta */
+  export function getServerIp(): string;
 
-  // /** @beta */
-  // export function getServerPort(): number;
+  /** @beta */
+  export function getServerPort(): number;
 
   export * from "alt-shared";
 }
