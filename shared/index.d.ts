@@ -918,7 +918,6 @@ declare module "alt-shared" {
 
     constructor(obj: IVector3);
 
-    /** @beta */
     constructor(value: number);
 
     public get length(): number;
@@ -981,7 +980,6 @@ declare module "alt-shared" {
 
     public isInRange(vector: IVector3, range: number): boolean;
 
-    /** @beta */
     public lerp(vector: IVector3, ratio: number): Vector3;
 
     public static readonly zero: Vector3;
@@ -1016,7 +1014,6 @@ declare module "alt-shared" {
 
     constructor(obj: IVector2);
 
-    /** @beta */
     constructor(value: number);
 
     public get length(): number;
@@ -1079,7 +1076,6 @@ declare module "alt-shared" {
 
     public isInRange(vector: IVector2, range: number): boolean;
 
-    /** @beta */
     public lerp(vector: IVector2, ratio: number): Vector2;
 
     public static readonly zero: Vector2;
@@ -1200,8 +1196,6 @@ declare module "alt-shared" {
      * Returns the ref count of the entity.
      *
      * @remarks It's only available in debug-mode.
-     *
-     * @beta
      */
     public readonly refCount: number;
   }
@@ -1333,8 +1327,6 @@ declare module "alt-shared" {
    * @param args Rest parameters for emit to send.
    *
    * @remarks Works only from JS (Client) to JS (Server)
-   *
-   * @beta
    */
   export function emitRaw(eventName: string, ...args: any[]): void;
 

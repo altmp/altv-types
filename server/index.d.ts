@@ -344,14 +344,12 @@ declare module "alt-server" {
     Green,
   }
 
-  /** @beta */
   export interface Weapon {
     readonly hash: number;
     readonly tintIndex: number;
     readonly components: Array<number>;
   }
 
-  /** @beta */
   export interface ConnectionInfo {
     readonly name: string;
     readonly socialID: string;
@@ -376,11 +374,7 @@ declare module "alt-server" {
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
-    /** @beta */
     beforePlayerConnect: (connectionInfo: ConnectionInfo) => string | void;
-    /**
-     * @param armourDamage This parameter is only available on dev branch.
-     */
     playerDamage: (victim: Player, attacker: Entity, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
@@ -679,10 +673,8 @@ declare module "alt-server" {
     public static all: Array<Player>;
     public armour: number;
     public currentWeapon: number;
-    /** @beta */
     public readonly weapons: Array<Weapon>;
     public readonly currentWeaponComponents: Array<number>;
-    /** @beta */
     public readonly currentWeaponTintIndex: number;
     public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
@@ -695,7 +687,6 @@ declare module "alt-server" {
     //public readonly isShooting: boolean;
     /** @alpha */
     //public readonly isJumping: boolean;
-    /** @beta */
     public readonly isReloading: boolean;
     /**
      * Position the player is currently aiming at.
@@ -713,11 +704,8 @@ declare module "alt-server" {
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
     public invincible: boolean;
-    /** @beta */
     public readonly isSuperJumpEnabled: boolean;
-    /** @beta */
     public readonly isCrouching: boolean;
-    /** @beta */
     public readonly isStealthy: boolean;
     public readonly socialId: string;
     public readonly socialID: string;
@@ -958,55 +946,38 @@ declare module "alt-server" {
      */
     public playAmbientSpeech(speechName: string, speechParam: string, speechDictHash: number): void;
 
-    /** @beta */
     public setHeadOverlay(overlayID: number, index: number, opacity: number): boolean;
 
-    /** @beta */
     public removeHeadOverlay(overlayID: number): boolean;
 
-    /** @beta */
     public setHeadOverlayColor(overlayID: number, colorType: number, colorIndex: number, secondColorIndex: number): boolean;
 
-    /** @beta */
     public getHeadOverlay(overlayID: number): IHeadOverlay;
 
-    /** @beta */
     public setFaceFeature(index: number, scale: number): boolean;
 
-    /** @beta */
     public getFaceFeatureScale(index: number): number;
 
-    /** @beta */
     public removeFaceFeature(index: number): boolean;
 
-    /** @beta */
     public setHeadBlendPaletteColor(id: number, red: number, green: number, blue: number): boolean;
 
-    /** @beta */
     public getHeadBlendPaletteColor(id: number): shared.RGBA;
 
-    /** @beta */
     public setHeadBlendData(shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number): void;
 
-    /** @beta */
     public getHeadBlendData(): IHeadBlendData;
 
-    /** @beta */
     public setEyeColor(eyeColor: number): boolean;
 
-    /** @beta */
     public getEyeColor(): number;
 
-    /** @beta */
     public setHairColor(hairColor: number): void;
 
-    /** @beta */
     public getHairColor(): number;
 
-    /** @beta */
     public setHairHighlightColor(hairHighlightColor: number): void;
 
-    /** @beta */
     public getHairHighlightColor(): number;
   }
 
@@ -1222,14 +1193,10 @@ declare module "alt-server" {
     public readonly attachedTo: Vehicle;
     /**
      * Gets the velocity vector of a vehicle.
-     *
-     * @beta
      */
     public readonly velocity: shared.Vector3;
     /**
      * Gets or sets the drift mode state of the vehicle.
-     *
-     * @beta
      */
     public driftModeEnabled: boolean;
 
@@ -1597,8 +1564,6 @@ declare module "alt-server" {
 
     /**
      * Gets or sets if the created train is a mission train.
-     *
-     * @beta
      */
     public isMissionTrain: boolean;
 
@@ -1606,15 +1571,11 @@ declare module "alt-server" {
      * Gets or sets the track id of the train.
      *
      * @remarks Valid track ids are between 0 and 11.
-     *
-     * @beta
      */
     public trainTrackId: number;
 
     /**
      * Gets the engine of the train.
-     *
-     * @beta
      */
     public readonly trainEngineId: Vehicle | null;
 
@@ -1622,8 +1583,6 @@ declare module "alt-server" {
      * Set a train as an engine of a train.
      *
      * @param vehicle The vehicle to set as an engine.
-     *
-     * @beta
      */
     public setTrainEngineId(vehicle: Vehicle | null): void;
 
@@ -1631,78 +1590,56 @@ declare module "alt-server" {
      * Gets or sets the trains config index.
      *
      * @remarks You can find a list of all possible config indices in the trains.xml. Valid indices are between 1 and 25.
-     *
-     * @beta
      */
     public trainConfigIndex: number;
 
     /**
      * Gets or sets the distance of the trains to the engine.
-     *
-     * @beta
      */
     public trainDistanceFromEngine: number;
 
     /**
      * Gets or sets if the train is the engine of the train.
-     *
-     * @beta
      */
     public isTrainEngine: boolean;
 
     /**
      * Gets or sets if the train is a caboose.
-     *
-     * @beta
      */
     public isTrainCaboose: boolean;
 
     /**
      * Gets or sets if the train is a passenger carriage.
-     *
-     * @beta
      */
     public trainPassengerCarriages: boolean;
 
     /**
      * Gets or sets the direction of the train.
-     *
-     * @beta
      */
     public trainDirection: boolean;
 
     /**
      * Gets or sets if the trains is rendered derailed.
-     *
-     * @beta
      */
     public trainRenderDerailed: boolean;
 
     /**
      * Gets or sets if the doors of the trains should be forced open.
-     *
-     * @beta
      */
     public trainForceDoorsOpen: boolean;
 
     /**
      * Gets or sets the cruise speed of the train.
-     *
-     * @beta
      */
     public trainCruiseSpeed: number;
 
     /**
      * Gets or sets the config index of the train's carriage.
-     *
-     * @beta
      */
     public trainCarriageConfigIndex: number;
 
     /**
      * Gets another train that is linked to the back of the train. Returns null if there is no linked train.
-     *
-     * @beta
      */
     public readonly trainLinkedToBackwardId: Vehicle | null;
 
@@ -1710,15 +1647,11 @@ declare module "alt-server" {
      * Links another train to the back of the train.
      *
      * @param vehicle The vehicle to set as linked to the back of the train.
-     *
-     * @beta
      */
     public setTrainLinkedToBackwardId(vehicle: Vehicle | null): void;
 
     /**
      * Gets another train that is linked to the back of the train. Returns null if there is no linked train in front.
-     *
-     * @beta
      */
     public readonly trainLinkedToForwardId: Vehicle | null;
 
@@ -1726,8 +1659,6 @@ declare module "alt-server" {
      * Links another train to the front of the train.
      *
      * @param vehicle The vehicle to set as linked to the front of the train.
-     *
-     * @beta
      */
     public setTrainLinkedToForwardId(vehicle: Vehicle | null): void;
 
@@ -1735,13 +1666,10 @@ declare module "alt-server" {
      * Activates the searchlight and follows the target.
      *
      * @remarks Entity parameter isn't working for now and this can only be used for helicopter searchlights.
-     *
-     * @beta
      */
     public setSearchLightTo(entity: Entity, state: boolean): void;
   }
 
-  /** @beta */
   export class Blip extends WorldObject {
     /**
      * Array with all blips.
@@ -1829,17 +1757,14 @@ declare module "alt-server" {
     public fade(opacity: number, duration: number): void;
   }
 
-  /** @beta */
   export class AreaBlip extends Blip {
     constructor(x: number, y: number, z: number, width: number, height: number);
   }
 
-  /** @beta */
   export class RadiusBlip extends Blip {
     constructor(x: number, y: number, z: number, radius: number);
   }
 
-  /** @beta */
   export class PointBlip extends Blip {
     constructor(x: number, y: number, z: number);
 
@@ -1951,8 +1876,6 @@ declare module "alt-server" {
    * @param player Event is sent to every player in array.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
-   *
-   * @beta
    */
   export function emitClientRaw(player: Player[], eventName: string, ...args: any[]): void;
 
@@ -1987,8 +1910,6 @@ declare module "alt-server" {
    *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
-   *
-   * @beta
    */
   export function emitAllClientsRaw(eventName: string, ...args: any[]): void;
 
@@ -2005,8 +1926,6 @@ declare module "alt-server" {
    * @param password The string you want to hash.
    *
    * @remarks Can be useful for {@link IServerEvent.beforePlayerConnect} to check the received password.
-   *
-   * @beta
    */
   export function hashServerPassword(password: string): bigint;
 

@@ -160,9 +160,7 @@ declare module "alt-client" {
     BottomRight = 0,
     TopRight = 1,
     TopLeft = 2,
-    /** @beta */
     TopCenter = 3,
-    /** @beta */
     BottomCenter = 4,
   }
 
@@ -1246,9 +1244,6 @@ declare module "alt-client" {
     public setZoomLevel(value: number): void;
   }
 
-  /**
-   * @beta
-   */
   export class Worker {
     /**
      * Maximum available workers per resource.
@@ -1366,8 +1361,6 @@ declare module "alt-client" {
      *   alt.log(`${blips[i].scriptID}`); // Logs the scriptID of every blip
      * }
      * ```
-     *
-     * @beta
      */
     public static readonly all: Array<Blip>;
 
@@ -1682,8 +1675,6 @@ declare module "alt-client" {
    * @param args Rest parameters for emit to send.
    *
    * @remarks Works only from JS (Client) to JS (Server)
-   *
-   * @beta
    */
   export function emitServerRaw(name: string, ...args: any[]): void;
 
@@ -2240,28 +2231,20 @@ declare module "alt-client" {
 
   /**
    * Represents the current client ping.
-   *
-   * @beta
    */
   export function getPing(): number;
 
   /**
    * Represents the current client fps.
-   *
-   * @beta
    */
   export function getFps(): number;
 
-  /** @beta */
   export function getTotalPacketsSent(): bigint;
 
-  /** @beta */
   export function getTotalPacketsLost(): bigint;
 
-  /** @beta */
   export function getServerIp(): string;
 
-  /** @beta */
   export function getServerPort(): number;
 
   export * from "alt-shared";
