@@ -6,19 +6,25 @@
 
 This event is where servers can kick users before the actual connection. For example, if the player is banned.
 
-> [!WARNING]
-> When you cancel the event, you have to use the player.kick method. Otherwise, undefined behaviour happens.
-
-> [!CAUTION]
-> You can't compare passwordHash with anything yet. A function will come in the future to compare this.
-
 ## Example
 
 ```js
 import alt from "alt-server";
 
-alt.on('beforePlayerConnect', (player, passwordHash, cdnUrl) => {
-  player.kick();
-  return false; // if you want to cancel the connection process you have to return false.
+alt.on('beforePlayerConnect', (connectionInfo) => {
+  alt.log(connectionInfo.branch); // Prints out the current branch.
+  alt.log(connectionInfo.authToken); // Prints out the authToken.
+  alt.log(connectionInfo.build); // Prints out the current build number.
+  alt.log(connectionInfo.cdnUrl); // Prints out the URL of the CDN.
+  alt.log(connectionInfo.hwidExHash); // Prints out the ExHash of the client's HWID.
+  alt.log(connectionInfo.hwidHash); // Prints out the Hash of the client's HWID.
+  alt.log(connectionInfo.isDebug); // Prints out whether the client is in debug mode.
+  alt.log(connectionInfo.passwordHash); // Prints out a hash of the password that was used to connect to the server.
+  alt.log(connectionInfo.socialID); // Prints out the social ID of the client.
+  
+  if(connectionInfo.passwordHash !== alt.hashServerPassword('myPassword')) {
+    // Kicks the player and shows the message "Incorrect password!" if the given password does not match 'myPassword'.
+    return "Incorrect password!"; 
+  }
 });
 ```
