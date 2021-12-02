@@ -26,6 +26,5 @@ alt.on('beforePlayerConnect', (connectionInfo) => {
     // Kicks the player and shows the message "Incorrect password!" if the given password does not match 'myPassword'.
     return "Incorrect password!"; 
   }
-    
 });
 ```
