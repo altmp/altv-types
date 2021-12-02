@@ -23,9 +23,12 @@ alt.on('beforePlayerConnect', (connectionInfo) => {
   alt.log(connectionInfo.socialID); // prints out the social ID of the client
   
   if(connectionInfo.passwordHash !== alt.hashServerPassword('myPassword')) {
-    // kicks the player and shows the message "Incorrect password!" if the given password does not match 'myPassword'
+    // Kicks the player and shows the message "Incorrect password!" if the given password does not match 'myPassword'.
     return "Incorrect password!"; 
   }
+  
+  // Return nothing to allow the connection. You can also return an empty string to allow the connection.
+  return ""; 
   
 });
 ```
