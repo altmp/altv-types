@@ -12,23 +12,20 @@ This event is where servers can kick users before the actual connection. For exa
 import alt from "alt-server";
 
 alt.on('beforePlayerConnect', (connectionInfo) => {
-  alt.log(connectionInfo.branch); // prints out the branch
-  alt.log(connectionInfo.authToken); // prints out the authToken
-  alt.log(connectionInfo.build); // prints out the build number
-  alt.log(connectionInfo.cdnUrl); // prints out the URL of the CDN
-  alt.log(connectionInfo.hwidExHash); // prints out the ExHash of the client's HWID
-  alt.log(connectionInfo.hwidHash); // prints out the Hash of the client's HWID
-  alt.log(connectionInfo.isDebug); // prints out whether the client is in debug mode
-  alt.log(connectionInfo.passwordHash); // prints out a hash of the password that was used to connect to the server
-  alt.log(connectionInfo.socialID); // prints out the social ID of the client
+  alt.log(connectionInfo.branch); // Prints out the current branch.
+  alt.log(connectionInfo.authToken); // Prints out the authToken.
+  alt.log(connectionInfo.build); // Prints out the current build number.
+  alt.log(connectionInfo.cdnUrl); // Prints out the URL of the CDN.
+  alt.log(connectionInfo.hwidExHash); // Prints out the ExHash of the client's HWID.
+  alt.log(connectionInfo.hwidHash); // Prints out the Hash of the client's HWID.
+  alt.log(connectionInfo.isDebug); // Prints out whether the client is in debug mode.
+  alt.log(connectionInfo.passwordHash); // Prints out a hash of the password that was used to connect to the server.
+  alt.log(connectionInfo.socialID); // Prints out the social ID of the client.
   
   if(connectionInfo.passwordHash !== alt.hashServerPassword('myPassword')) {
     // Kicks the player and shows the message "Incorrect password!" if the given password does not match 'myPassword'.
     return "Incorrect password!"; 
   }
-  
-  // Return nothing to allow the connection. You can also return an empty string to allow the connection.
-  return ""; 
-  
+    
 });
 ```
