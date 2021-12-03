@@ -23,8 +23,7 @@ alt.on('beforePlayerConnect', (connectionInfo) => {
   alt.log(connectionInfo.socialID); // Prints out the social ID of the client.
   
   if(connectionInfo.passwordHash !== alt.hashServerPassword('myPassword')) {
-    // Kicks the player and shows the message "Incorrect password!" if the given password does not match 'myPassword'.
-    return "Incorrect password!"; 
+    return false; 
   }
 });
 ```
