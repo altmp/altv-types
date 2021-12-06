@@ -1353,6 +1353,13 @@ declare module "alt-shared" {
   export function hasResource(name: string): boolean;
 
   /**
+   * Gets the exports of the specified resource.
+   *
+   * @param name Name of the resource.
+   */
+  export function getResourceExports(name: string): any;
+
+  /**
    * Logs the specified arguments to the console.
    */
   export function log(...args: any[]): void;

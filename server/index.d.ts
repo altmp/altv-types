@@ -1935,13 +1935,6 @@ declare module "alt-server" {
   export function getNetTime(): number;
 
   /**
-   * Gets the exports of the specified resource.
-   *
-   * @param name Name of the resource.
-   */
-  export function getResourceExports(name: string): any;
-
-  /**
    * Gets the main file of the specified resource.
    *
    * @param name Name of the resource.
