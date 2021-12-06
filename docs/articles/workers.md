@@ -141,7 +141,7 @@ It is an array of bytes, you cannot directly manipulate its content but create a
 A [SharedArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer) is very similar to an array buffer except it is built in a way that they can be used to create views on shared memory.
 
 > [!WARNING]
-> You should learn how to use SharedArrayBuffers outside of the alt:V context in order to use them properly. The following example is making use of the [Atomics](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Atomics) API to make the SharedArrayBuffer usage [thread safe](https://en.wikipedia.org/wiki/Thread_safety)
+> You should learn how to use SharedArrayBuffers outside of the alt:V context in order to use them properly. The following example is making use of the [Atomics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics) API to make the SharedArrayBuffer usage [thread safe](https://en.wikipedia.org/wiki/Thread_safety)
 
 **Example usage**
 
