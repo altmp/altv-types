@@ -11,7 +11,7 @@ declare module "alt-worker" {
    * @returns The shared array buffer instance.
    */
   export function getSharedArrayBuffer(id: number): SharedArrayBuffer;
-  
+
   /**
    * Emits specified event across particular client.
    *
@@ -27,7 +27,7 @@ declare module "alt-worker" {
    * @param listener Listener that should be added.
    */
   export function on(eventName: string, listener: (...args: any[]) => void): void;
-  
+
   /**
    * Subscribes to a custom client event with the specified listener, which only triggers once.
    *
