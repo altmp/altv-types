@@ -12,5 +12,29 @@ declare module "alt-worker" {
    */
   export function getSharedArrayBuffer(id: number): SharedArrayBuffer;
 
-  export { on, once, emit, log, logWarning, logError, setTimeout, setInterval, nextTick, clearTimeout, clearInterval, clearNextTick, hash, version, branch, sdkVersion, debug, File, RGBA, Vector3, Vector2 } from "alt-client";
+  /**
+   * Emits specified event across particular client.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   */
+  export function emit(eventName: string, ...args: any[]): void;
+
+  /**
+   * Subscribes to client event handler with specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
+   * Subscribes to a custom client event with the specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function once(eventName: string, listener: (...args: any[]) => void): void;
+
+  export { log, logWarning, logError, setTimeout, setInterval, nextTick, clearTimeout, clearInterval, clearNextTick, hash, version, branch, sdkVersion, debug, File, RGBA, Vector3, Vector2 } from "alt-client";
 }
