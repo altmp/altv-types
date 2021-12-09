@@ -21,23 +21,12 @@ declare module "alt-worker" {
   export function emit(eventName: string, ...args: any[]): void;
 
   /**
-   * Unsubscribes from client event handler with specified listener.
-   *
-   * @remarks Listener should be of the same reference as when event was subscribed.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be removed.
-   */
-  export function off(eventName: string, listener: (...args: any[]) => void): void;
-
-  /**
    * Subscribes to client event handler with specified listener.
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
   export function on(eventName: string, listener: (...args: any[]) => void): void;
-  
   
   /**
    * Subscribes to a custom client event with the specified listener, which only triggers once.
