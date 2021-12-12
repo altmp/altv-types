@@ -721,6 +721,26 @@ declare module "alt-server" {
      */
     public static getByID(id: number): Player | null;
 
+    /**
+     * Emits specified event to client.
+     *
+     * @param eventName Name of the event.
+     * @param args Rest parameters for emit to send.
+     *
+     * @alpha
+     */
+    public emit(eventName: string, ...args: any[]): void;
+
+    /**
+     * Emits specified event to client, but faster as {@link Player.emit}.
+     *
+     * @param eventName Name of the event.
+     * @param args Rest parameters for emit to send.
+     *
+     * @alpha
+     */
+    public emitRaw(eventName: string, ...args: any[]): void;
+
     public addWeaponComponent(weaponHash: number, component: number): void;
 
     /**
