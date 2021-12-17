@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-worker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This package contains types definitions for alt:V client-side Worker.",
   "types": "index.d.ts",
   "files": [
