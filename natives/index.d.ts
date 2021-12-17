@@ -9889,8 +9889,6 @@ declare module "natives" {
 
   export function _0xE2BB399D90942091(p0: any, p1: any): void;
 
-  export function networkSpentAutoshopPropertyUtilityFee(p0: any, p1: any, p2: any, p3: any): void;
-
   export function networkSpentCarclubMembership(p0: any, p1: any, p2: any, p3: any, p4: any): void;
 
   export function networkSpentCarclub(p0: any, p1: boolean, p2: boolean, p3: any): void;
