@@ -432,6 +432,17 @@ declare module "alt-client" {
     public readonly scriptID: number;
 
     /**
+     * Network owner of the entity.
+     *
+     * @remarks Network owner is responsible for syncing entity with the server.
+     * It changes when actual network owner passes the migration range,
+     * then the new one is determined based on distance from the entity
+     * (if entity is a vehicle, then the driver will take priority for becoming network owner).
+     * Disabling migration range will stop this process from happening until turned on again.
+     */
+    public readonly netOwner: Player | null;
+
+    /**
      * Returns whether the entity is spawned in the game world.
      *
      * @remarks This does the same thing as checking if the {@link scriptID} is 0.
