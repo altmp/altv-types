@@ -15,7 +15,7 @@ You can use import assertions to check if a file is safe to import. The followin
 import "console.log('check source import')" assert { type: "source" };
 import "Y29uc29sZS5sb2coJ2NoZWNrIHNvdXJjZSBpbXBvcnQnKQ==" assert { type: "base64" };
 
-import * as json from "/data.json" assert { type: "json" };
+import json from "/data.json" assert { type: "json" };
 console.log(json.name); // returns "John Doe"
 ```
 # [data.json](#tab/tab1-1)
