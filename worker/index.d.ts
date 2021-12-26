@@ -36,5 +36,17 @@ declare module "alt-worker" {
    */
   export function once(eventName: string, listener: (...args: any[]) => void): void;
 
+  /**
+   * Unsubscribes from client event handler with specified listener.
+   *
+   * @remarks Listener should be of the same reference as when event was subscribed.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be removed.
+   * 
+   * @alpha
+   */
+  export function off(eventName: string, listener: (...args: any[]) => void): void;
+
   export { log, logWarning, logError, setTimeout, setInterval, nextTick, clearTimeout, clearInterval, clearNextTick, hash, version, branch, sdkVersion, debug, File, RGBA, Vector3, Vector2 } from "alt-client";
 }
