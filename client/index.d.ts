@@ -574,7 +574,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    //public readonly isJumping: boolean;
+    public readonly isJumping: boolean;
 
     /**
      * Is the player currently in ragdoll.
@@ -594,12 +594,12 @@ declare module "alt-client" {
     /**
      * Is the player currently shooting with a weapon.
      */
-    //public readonly isShooting: boolean;
+    public readonly isShooting: boolean;
 
     /**
      * Is the player currently reloading their weapon.
      */
-    //public readonly isReloading: boolean;
+    public readonly isReloading: boolean;
 
     /**
      * Current armour.
