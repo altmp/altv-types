@@ -374,7 +374,7 @@ declare module "alt-server" {
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
-    beforePlayerConnect: (connectionInfo: ConnectionInfo) => boolean | void;
+    beforePlayerConnect: (connectionInfo: ConnectionInfo) => boolean | string | void;
     playerDamage: (victim: Player, attacker: Entity, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
