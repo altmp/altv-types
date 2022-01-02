@@ -2242,6 +2242,9 @@ declare module "alt-client" {
      * @param profileName Name of the profile specified in {@link startProfiling}. Defaults to empty string.
      */
     public static stopProfiling(profileName?: string): IProfile;
+
+    /** @alpha */
+    public static getMemoryProfile(): void;
   }
 
   /**
