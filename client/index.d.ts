@@ -1935,6 +1935,9 @@ declare module "alt-client" {
    */
   export function setCamFrozen(state: boolean): void;
 
+  /** @alpha */
+  export function isCamFrozen(): boolean;
+
   /**
    * Sets the specified ped config flag of the local player to the specified state.
    *
