@@ -1851,6 +1851,12 @@ declare module "alt-server" {
     public removePlayer(player: Player): void;
 
     public unmutePlayer(player: Player): void;
+
+    /** @alpha */
+    public readonly players: Array<Player>;
+
+    /** @alpha */
+    public readonly playerCount: number;
   }
 
   /**
