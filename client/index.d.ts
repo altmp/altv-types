@@ -198,6 +198,8 @@ declare module "alt-client" {
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
      */
     taskChange: (oldTask: number, newTask: number) => void;
+    /** @alpha */
+    spawned: () => void;
   }
 
   export interface IDiscordUser {
