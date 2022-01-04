@@ -1955,6 +1955,9 @@ declare module "alt-server" {
    */
   export function hashServerPassword(password: string): bigint;
 
+  /** @alpha */
+  export function stopServer(): void;
+
   /**
    * Gets the amount of milliseconds since the server was started.
    */
