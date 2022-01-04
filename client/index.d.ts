@@ -1366,10 +1366,10 @@ declare module "alt-client" {
      *
      * @param eventName Name of the event.
      * @param listener Listener that should be removed.
-     * 
+     *
      * @alpha
      */
-     public off(eventName: string, listener: (...args: any[]) => void): void;
+    public off(eventName: string, listener: (...args: any[]) => void): void;
   }
 
   export class Blip extends WorldObject {
