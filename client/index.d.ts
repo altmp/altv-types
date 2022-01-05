@@ -200,6 +200,8 @@ declare module "alt-client" {
     taskChange: (oldTask: number, newTask: number) => void;
     /** @alpha */
     spawned: () => void;
+    /** @alpha */
+    localMetaChange: (key: string, newValue: any, oldValue: any) => void;
   }
 
   export interface IDiscordUser {

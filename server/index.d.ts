@@ -397,6 +397,8 @@ declare module "alt-server" {
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
+    /** @alpha */
+    localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
   }
 
   export interface IFireInfo {
@@ -1002,6 +1004,19 @@ declare module "alt-server" {
     public setHairHighlightColor(hairHighlightColor: number): void;
 
     public getHairHighlightColor(): number;
+
+    /**
+     * Stores the given value with the specified key.
+     *
+     * @param key The key of the value to store.
+     * @param value The value to store.
+     *
+     * @alpha
+     */
+    public setLocalMeta(key: string, value: any): void;
+
+    /** @alpha */
+    public deleteLocalMeta(key: string): void;
   }
 
   export class Vehicle extends Entity {
