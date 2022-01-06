@@ -1700,6 +1700,15 @@ declare module "alt-server" {
      */
     public setTrainLinkedToForwardId(vehicle: Vehicle | null): void;
 
+    /** @alpha */
+    public trainUnk1: boolean;
+
+    /** @alpha */
+    public trainUnk2: boolean;
+
+    /** @alpha */
+    public trainUnk3: boolean;
+
     /**
      * Activates the searchlight and follows the target.
      *
