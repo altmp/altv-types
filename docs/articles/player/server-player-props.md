@@ -199,8 +199,8 @@ After setting this you can set the player's current armour to the maximum armour
 ```js
 const currentMaxArmour = player.maxArmour;
 if (currentMaxArmour <= 100) {
-    player.maxArmour = 65535;
-    player.armour = 65535;
+    player.maxArmour = 8191;
+    player.armour = 8191;
 }
 
 alt.log(`${player.name} is a chunker.`);
@@ -215,8 +215,8 @@ After setting this you can set the player's current health to the maximum health
 ```js
 const currentMaxHealth = player.maxHealth;
 if (currentMaxHealth <= 100) {
-    player.maxHealth = 65535;
-    player.health = 65535;
+    player.maxHealth = 8191;
+    player.health = 8191;
 }
 
 alt.log(`${player.name} is a healthy chunker.`);
