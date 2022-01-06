@@ -192,7 +192,7 @@ function handleConnect(player) {
 
 ## player.maxArmour
 
-Used to **set or get** the player's current maximum armour. The maximum value this can be set to is `65535`.
+Used to **set or get** the player's current maximum armour. The maximum value this can be set to is `8191`.
 
 After setting this you can set the player's current armour to the maximum armour value.
 
@@ -208,7 +208,7 @@ alt.log(`${player.name} is a chunker.`);
 
 ## player.maxHealth
 
-Used to **set or get** the player's current maximum health. The maximum value this can be set to is 65535.
+Used to **set or get** the player's current maximum health. The maximum value this can be set to is `8191`.
 
 After setting this you can set the player's current health to the maximum health value.
 
