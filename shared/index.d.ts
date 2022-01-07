@@ -905,6 +905,12 @@ declare module "alt-shared" {
     readonly z: number;
   }
 
+  /** @alpha */
+  export interface IResource {
+    readonly name: string;
+    readonly type: string;
+  }
+
   export class Vector3 {
     public readonly x: number;
 
@@ -1450,4 +1456,7 @@ declare module "alt-shared" {
    * A boolean indicating whether the current script is executed on the serverside.
    */
   export const isServer: boolean;
+
+  /** @alpha */
+  export function getAllResources(): Array<IResource>
 }
