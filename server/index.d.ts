@@ -457,6 +457,23 @@ declare module "alt-server" {
     readonly thirdMix: number;
   }
 
+  /** @alpha */
+  export interface IVehicleModel {
+    readonly title: string;
+    readonly type: number;
+    readonly wheelsCount: number;
+    readonly hasArmoredWindows: boolean;
+    readonly primaryColor: number;
+    readonly secondaryColor: number;
+    readonly pearlColor: number;
+    readonly wheelsColor: number;
+    readonly interiorColor: number;
+    readonly dashboardColor: number;
+    readonly availableModkits: Array<boolean>;
+    hasExtra(extraId: number): boolean;
+    hasDefaultExtra(extraId: number): boolean;
+  }
+
   /**
    * The root directory of the server.
    */
@@ -2116,6 +2133,9 @@ declare module "alt-server" {
    * @returns Array of listener functions for that event.
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
+
+  /** @alpha */
+  export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
   export * from "alt-shared";
 }
