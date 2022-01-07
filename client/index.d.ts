@@ -2279,5 +2279,8 @@ declare module "alt-client" {
 
   export function getServerPort(): number;
 
+  /** @alpha */
+  export function copyToClipboard(val: string): void;
+
   export * from "alt-shared";
 }
