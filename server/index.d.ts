@@ -1868,6 +1868,11 @@ declare module "alt-server" {
     constructor(x1: number, y1: number, x2: number, y2: number);
   }
 
+  /** @alpha */
+  export class ColshapePolygon extends Colshape {
+    constructor(minZ: number, maxZ: number, points: Array<shared.Vector2>);
+  }
+
   export class Checkpoint extends Colshape {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
     constructor(type: number, pos: shared.Vector3, radius: number, height: number, color: shared.RGBA);
