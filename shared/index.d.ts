@@ -1459,4 +1459,10 @@ declare module "alt-shared" {
 
   /** @alpha */
   export function getAllResources(): Array<IResource>
+
+  /** @alpha */
+  export function time(): void;
+
+  /** @alpha */
+  export function timeEnd(): void;
 }
