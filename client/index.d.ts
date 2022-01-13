@@ -2292,19 +2292,11 @@ declare module "alt-client" {
   /** @alpha */
   export function toggleRmlControls(state: boolean): void;
 
-  /**
-   * 
-   * V8_CHECK_ARGS_LEN_MIN_MAX(2, 4);
-
-    V8_ARG_TO_STD_STRING(1, path);
-    V8_ARG_TO_STD_STRING(2, name);
-    V8_ARG_TO_BOOLEAN_OPT(3, italic, false);
-    V8_ARG_TO_BOOLEAN_OPT(4, bold, false);
-   */
-  export function loadRmlFont(): void;
+  /** @alpha */
+  export function loadRmlFont(path: string, name: string, italic?: boolean, bold?: boolean): void;
 
   /** @alpha */
-  export function worldToScreen(x: number, y: number, z: number): void;
+  export function worldToScreen(x: number, y: number, z: number): shared.Vector2;
 
   export * from "alt-shared";
 }
