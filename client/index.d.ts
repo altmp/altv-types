@@ -578,7 +578,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    public readonly isJumping: boolean;
+    //public readonly isJumping: boolean;
 
     /**
      * Is the player currently in ragdoll.
@@ -598,7 +598,7 @@ declare module "alt-client" {
     /**
      * Is the player currently shooting with a weapon.
      */
-    public readonly isShooting: boolean;
+    //public readonly isShooting: boolean;
 
     /**
      * Is the player currently reloading their weapon.
@@ -781,6 +781,13 @@ declare module "alt-client" {
      * Vehicle speed vector.
      */
     public readonly speedVector: shared.Vector3;
+
+    /**
+     * Vehicle seat count.
+     *
+     * @alpha
+     */
+    public readonly seatCount: number;
 
     /**
      * Vehicle velocity vector.
@@ -2281,6 +2288,23 @@ declare module "alt-client" {
 
   /** @alpha */
   export function copyToClipboard(val: string): void;
+
+  /** @alpha */
+  export function toggleRmlControls(state: boolean): void;
+
+  /**
+   * 
+   * V8_CHECK_ARGS_LEN_MIN_MAX(2, 4);
+
+    V8_ARG_TO_STD_STRING(1, path);
+    V8_ARG_TO_STD_STRING(2, name);
+    V8_ARG_TO_BOOLEAN_OPT(3, italic, false);
+    V8_ARG_TO_BOOLEAN_OPT(4, bold, false);
+   */
+  export function loadRmlFont(): void;
+
+  /** @alpha */
+  export function worldToScreen(x: number, y: number, z: number): void;
 
   export * from "alt-shared";
 }

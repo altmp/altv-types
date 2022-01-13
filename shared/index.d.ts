@@ -1458,7 +1458,7 @@ declare module "alt-shared" {
   export const isServer: boolean;
 
   /** @alpha */
-  export function getAllResources(): Array<IResource>
+  export function getAllResources(): Array<IResource>;
 
   /** @alpha */
   export function time(timerName: string): void;
