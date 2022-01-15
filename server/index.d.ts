@@ -831,6 +831,9 @@ declare module "alt-server" {
      */
     public spawn(pos: shared.Vector3, delay?: number): void;
 
+    /** @alpha */
+    public despawn(): void;
+
     /**
      * Gets the specified clothing component.
      *
