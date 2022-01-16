@@ -2296,7 +2296,13 @@ declare module "alt-client" {
   export function loadRmlFont(path: string, name: string, italic?: boolean, bold?: boolean): void;
 
   /** @alpha */
-  export function worldToScreen(x: number, y: number, z: number): shared.Vector2;
+  export function worldToScreen(x: number, y: number, z: number): shared.Vector3;
+
+  /** @alpha */
+  export function screenToWorld(x: number, y: number): shared.Vector3;
+
+  /** @alpha */
+  export function getCamPos(): shared.Vector3;
 
   export * from "alt-shared";
 }
