@@ -2491,6 +2491,8 @@ declare module "alt-client" {
     public click(): void;
 
     public scrollIntoView(alignToTop?: boolean): void;
+
+    public style: Record<string, string>;
   }
 
   export * from "alt-shared";
