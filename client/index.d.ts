@@ -45,6 +45,7 @@ declare module "alt-client" {
     None,
     ScreenCapture,
     WebRTC,
+    ClipboardAccess,
     All,
   }
 
