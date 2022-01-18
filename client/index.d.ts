@@ -2325,15 +2325,15 @@ declare module "alt-client" {
 
     public title: string;
 
-    public sourceUrl: string;
+    public readonly sourceUrl: string;
 
-    public isVisible: boolean;
+    public readonly isVisible: boolean;
 
-    public isModal: boolean;
+    public readonly isModal: boolean;
 
-    public body: RmlElement;
+    public readonly body: RmlElement;
 
-    public show(): void;
+    public show(isModal?: boolean, focused?: boolean): void;
 
     public hide(): void;
 
@@ -2362,7 +2362,7 @@ declare module "alt-client" {
 
     public readonly containingBlock: shared.Vector2;
 
-    public readonly focusedElement: RmlElement;
+    public readonly focusedElement: RmlElement | null;
 
     public readonly tagName: string;
 
@@ -2400,15 +2400,15 @@ declare module "alt-client" {
 
     public readonly isVisible: boolean;
 
-    public readonly parent: RmlElement;
+    public readonly parent: RmlElement | null;
 
-    public readonly nextSibling: RmlElement;
+    public readonly nextSibling: RmlElement | null;
 
-    public readonly previousSibling: RmlElement;
+    public readonly previousSibling: RmlElement | null;
 
-    public readonly firstChild: RmlElement;
+    public readonly firstChild: RmlElement | null;
 
-    public readonly lastChild: RmlElement;
+    public readonly lastChild: RmlElement | null;
 
     public readonly childCount: number;
 
@@ -2470,17 +2470,17 @@ declare module "alt-client" {
 
     public getAttribute(name: string): string;
 
-    public getAttributes(): Array<string>;
+    public getAttributes(): Record<string, string>;
 
-    public closest(): RmlElement;
+    public closest(selectors: string): RmlElement | null;
 
-    public getElementByID(id: string): RmlElement;
+    public getElementByID(id: string): RmlElement | null;
 
     public getElementsByTagName(tag: string): Array<RmlElement>;
 
     public getElementsByClassName(className: string): Array<RmlElement>;
 
-    public querySelector(selector: string): RmlElement;
+    public querySelector(selector: string): RmlElement | null;
 
     public querySelectorAll(selector: string): Array<RmlElement>;
 
@@ -2490,7 +2490,7 @@ declare module "alt-client" {
 
     public click(): void;
 
-    public scrollIntoView(alignToTop: boolean): void;
+    public scrollIntoView(alignToTop?: boolean): void;
   }
 
   export * from "alt-shared";
