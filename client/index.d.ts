@@ -2448,7 +2448,7 @@ declare module "alt-client" {
 
     public isPointWithinElement(point: shared.Vector2): boolean;
 
-    public setProperty(name: string, value: string): void;
+    public setProperty(name: string, value: string): boolean;
 
     public removeProperty(name: string): boolean;
 
