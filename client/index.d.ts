@@ -2282,11 +2282,25 @@ declare module "alt-client" {
 
   export function getTotalPacketsLost(): bigint;
 
+  /**
+   * Gets the ip adress of the server where you are connected to.
+   *
+   * @returns The server ip.
+   */
   export function getServerIp(): string;
 
+  /**
+   * Gets the port of the server where you are connected to.
+   *
+   * @returns The server port.
+   */
   export function getServerPort(): number;
 
-  /** @alpha */
+  /**
+   * Copy content into users clipboard.
+   *
+   * @alpha
+   */
   export function copyToClipboard(val: string): void;
 
   /** @alpha */
