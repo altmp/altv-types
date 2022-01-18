@@ -2304,5 +2304,179 @@ declare module "alt-client" {
   /** @alpha */
   export function getCamPos(): shared.Vector3;
 
+  /** @alpha */
+  export class RmlDocument extends shared.BaseObject {
+    constructor(url: string);
+
+    public title: string;
+
+    public sourceUrl: string;
+
+    public isVisible: boolean;
+
+    public isModal: boolean;
+
+    public body: RmlElement;
+
+    public show(): void;
+
+    public hide(): void;
+
+    public update(): void;
+
+    public createElement(tag: string): RmlElement;
+
+    public createTextNode(text: string): RmlElement;
+  }
+
+  /** @alpha */
+  export class RmlElement extends RmlDocument {
+    public on(eventName: string, func: (...args: any[]) => void): void;
+
+    public off(eventName: string, func: (...args: any[]) => void): void;
+
+    public getEventListeners(eventName: string): Function[];
+
+    public readonly relativeOffset: shared.Vector2;
+
+    public readonly absoluteOffset: shared.Vector2;
+
+    public readonly baseline: number;
+
+    public readonly zIndex: number;
+
+    public readonly containingBlock: shared.Vector2;
+
+    public readonly focusedElement: RmlElement;
+
+    public readonly tagName: string;
+
+    public id: string;
+
+    public readonly isOwned: boolean;
+
+    public readonly absoluteLeft: number;
+
+    public readonly absoluteTop: number;
+
+    public readonly clientLeft: number;
+
+    public readonly clientTop: number;
+
+    public readonly clientWidth: number;
+
+    public readonly clientHeight: number;
+
+    public readonly offsetLeft: number;
+
+    public readonly offsetTop: number;
+
+    public readonly offsetWidth: number;
+
+    public readonly offsetHeight: number;
+
+    public scrollLeft: number;
+
+    public scrollTop: number;
+
+    public readonly scrollWidth: number;
+
+    public readonly scrollHeight: number;
+
+    public readonly isVisible: boolean;
+
+    public readonly parent: RmlElement;
+
+    public readonly nextSibling: RmlElement;
+
+    public readonly previousSibling: RmlElement;
+
+    public readonly firstChild: RmlElement;
+
+    public readonly lastChild: RmlElement;
+
+    public readonly childCount: number;
+
+    public readonly hasChildren: boolean;
+
+    public innerRML: string;
+
+    public readonly ownerDocument: RmlDocument;
+
+    public readonly childNodes: Array<RmlElement>;
+
+    public appendChild(child: RmlElement): void;
+
+    public insertBefore(child: RmlElement, adjacent: RmlElement): void;
+
+    public replaceChild(newElem: RmlElement, oldElem: RmlElement): void;
+
+    public removeChild(child: RmlElement): void;
+
+    public addClass(name: string): boolean;
+
+    public removeClass(name: string): boolean;
+
+    public hasClass(name: string): boolean;
+
+    public getClassList(): Array<string>;
+
+    public addPseudoClass(name: string): boolean;
+
+    public removePseudoClass(name: string): boolean;
+
+    public hasPseudoClass(name: string): boolean;
+
+    public getPseudoClassList(): Array<string>;
+
+    public setOffset(element: RmlElement, offset: shared.Vector2, fixed?: boolean): void;
+
+    public isPointWithinElement(point: shared.Vector2): boolean;
+
+    public setProperty(name: string, value: string): void;
+
+    public removeProperty(name: string): boolean;
+
+    public hasProperty(name: string): boolean;
+
+    public hasLocalProperty(name: string): boolean;
+
+    public getProperty(name: string): string;
+
+    public getLocalProperty(name: string): string;
+
+    public getPropertyAbsoluteValue(name: string): number;
+
+    public setAttribute(name: string, value: string): void;
+
+    public removeAttribute(name: string): boolean;
+
+    public hasAttribute(name: string): boolean;
+
+    public getAttribute(name: string): string;
+
+    public getAttributes(): Array<string>;
+
+    public closest(): RmlElement;
+
+    public getElementByID(id: string): RmlElement;
+
+    public getElementsByTagName(tag: string): Array<RmlElement>;
+
+    public getElementsByClassName(className: string): Array<RmlElement>;
+
+    public querySelector(selector: string): RmlElement;
+
+    public querySelectorAll(selector: string): Array<RmlElement>;
+
+    public focus(): boolean;
+
+    public blur(): void;
+
+    public click(): void;
+
+    public scrollIntoView(alignToTop: boolean): void;
+  }
+
   export * from "alt-shared";
 }
