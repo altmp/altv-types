@@ -361,6 +361,12 @@ declare module "alt-server" {
     readonly build: number;
     readonly cdnUrl: string;
     readonly passwordHash: string;
+    readonly ip: string;
+  }
+
+  export interface connectionQueueInfo extends ConnectionInfo {
+    accept: () => void;
+    decline: () => void;
   }
 
   export interface IServerEvent {
@@ -399,6 +405,10 @@ declare module "alt-server" {
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
     /** @alpha */
     localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
+    /** @alpha */
+    connectionQueueAdd: (connectionInfo: connectionQueueInfo) => void;
+    /** @alpha */
+    connectionQueueRemove: (connectionInfo: connectionQueueInfo) => void;
   }
 
   export interface IFireInfo {
