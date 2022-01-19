@@ -362,6 +362,7 @@ declare module "alt-server" {
     readonly cdnUrl: string;
     readonly passwordHash: string;
     readonly ip: string;
+    readonly discordUserID: string;
   }
 
   export interface connectionQueueInfo extends ConnectionInfo {
