@@ -403,11 +403,11 @@ declare module "alt-server" {
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
-    /** @alpha */
+    /** @beta */
     localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
-    /** @alpha */
+    /** @beta */
     connectionQueueAdd: (connectionInfo: connectionQueueInfo) => void;
-    /** @alpha */
+    /** @beta */
     connectionQueueRemove: (connectionInfo: connectionQueueInfo) => void;
   }
 
@@ -467,7 +467,7 @@ declare module "alt-server" {
     readonly thirdMix: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export interface IVehicleModel {
     readonly title: string;
     readonly type: number;
@@ -756,7 +756,7 @@ declare module "alt-server" {
      * @param eventName Name of the event.
      * @param args Rest parameters for emit to send.
      *
-     * @alpha
+     * @beta
      */
     public emit(eventName: string, ...args: any[]): void;
 
@@ -766,7 +766,7 @@ declare module "alt-server" {
      * @param eventName Name of the event.
      * @param args Rest parameters for emit to send.
      *
-     * @alpha
+     * @beta
      */
     public emitRaw(eventName: string, ...args: any[]): void;
 
@@ -841,7 +841,7 @@ declare module "alt-server" {
      */
     public spawn(pos: shared.Vector3, delay?: number): void;
 
-    /** @alpha */
+    /** @beta */
     public despawn(): void;
 
     /**
@@ -980,7 +980,7 @@ declare module "alt-server" {
      */
     public isEntityInStreamRange(entity: Entity): boolean;
 
-    /** @alpha */
+    /** @beta */
     public isEntityInStreamRange(entityID: number): boolean;
 
     /**
@@ -1041,11 +1041,11 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      *
-     * @alpha
+     * @beta
      */
     public setLocalMeta(key: string, value: any): void;
 
-    /** @alpha */
+    /** @beta */
     public deleteLocalMeta(key: string): void;
   }
 
@@ -1730,13 +1730,13 @@ declare module "alt-server" {
      */
     public setTrainLinkedToForwardId(vehicle: Vehicle | null): void;
 
-    /** @alpha */
+    /** @beta */
     public trainUnk1: boolean;
 
-    /** @alpha */
+    /** @beta */
     public trainUnk2: boolean;
 
-    /** @alpha */
+    /** @beta */
     public trainUnk3: boolean;
 
     /**
@@ -1881,7 +1881,7 @@ declare module "alt-server" {
     constructor(x1: number, y1: number, x2: number, y2: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class ColshapePolygon extends Colshape {
     constructor(minZ: number, maxZ: number, points: Array<shared.Vector2>);
   }
@@ -1914,10 +1914,10 @@ declare module "alt-server" {
 
     public unmutePlayer(player: Player): void;
 
-    /** @alpha */
+    /** @beta */
     public readonly players: Array<Player>;
 
-    /** @alpha */
+    /** @beta */
     public readonly playerCount: number;
   }
 
@@ -2017,7 +2017,7 @@ declare module "alt-server" {
    */
   export function hashServerPassword(password: string): bigint;
 
-  /** @alpha */
+  /** @beta */
   export function stopServer(): void;
 
   /**
@@ -2152,7 +2152,7 @@ declare module "alt-server" {
    */
   export function getRemoteEventListeners(eventName: string | null): Function[];
 
-  /** @alpha */
+  /** @beta */
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
   export * from "alt-shared";

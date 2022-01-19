@@ -905,7 +905,7 @@ declare module "alt-shared" {
     readonly z: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export interface IResource {
     readonly name: string;
     readonly type: string;
@@ -1211,11 +1211,11 @@ declare module "alt-shared" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key.
      *
-     * @alpha
+     * @beta
      */
     public getLocalMeta(key: string): any;
 
-    /** @alpha */
+    /** @beta */
     public hasLocalMeta(key: string): boolean;
   }
 
@@ -1457,16 +1457,16 @@ declare module "alt-shared" {
    */
   export const isServer: boolean;
 
-  /** @alpha */
+  /** @beta */
   export function getAllResources(): Array<IResource>;
 
-  /** @alpha */
+  /** @beta */
   export function time(timerName: string): void;
-  /** @alpha */
+  /** @beta */
   export function time(): void;
 
-  /** @alpha */
+  /** @beta */
   export function timeEnd(timerName: string): void;
-  /** @alpha */
+  /** @beta */
   export function timeEnd(): void;
 }

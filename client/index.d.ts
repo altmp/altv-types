@@ -199,9 +199,9 @@ declare module "alt-client" {
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
      */
     taskChange: (oldTask: number, newTask: number) => void;
-    /** @alpha */
+    /** @beta */
     spawned: () => void;
-    /** @alpha */
+    /** @beta */
     localMetaChange: (key: string, newValue: any, oldValue: any) => void;
   }
 
@@ -786,7 +786,7 @@ declare module "alt-client" {
     /**
      * Vehicle seat count.
      *
-     * @alpha
+     * @beta
      */
     public readonly seatCount: number;
 
@@ -1377,7 +1377,7 @@ declare module "alt-client" {
      * @param eventName Name of the event.
      * @param listener Listener that should be removed.
      *
-     * @alpha
+     * @beta
      */
     public off(eventName: string, listener: (...args: any[]) => void): void;
   }
@@ -1947,7 +1947,7 @@ declare module "alt-client" {
    */
   export function setCamFrozen(state: boolean): void;
 
-  /** @alpha */
+  /** @beta */
   export function isCamFrozen(): boolean;
 
   /**
@@ -2258,7 +2258,7 @@ declare module "alt-client" {
      */
     public static stopProfiling(profileName?: string): IProfile;
 
-    /** @alpha */
+    /** @beta */
     public static getMemoryProfile(): void;
   }
 
@@ -2300,26 +2300,26 @@ declare module "alt-client" {
   /**
    * Copy content into users clipboard.
    *
-   * @alpha
+   * @beta
    */
   export function copyToClipboard(val: string): void;
 
-  /** @alpha */
+  /** @beta */
   export function toggleRmlControls(state: boolean): void;
 
-  /** @alpha */
+  /** @beta */
   export function loadRmlFont(path: string, name: string, italic?: boolean, bold?: boolean): void;
 
-  /** @alpha */
+  /** @beta */
   export function worldToScreen(x: number, y: number, z: number): shared.Vector3;
 
-  /** @alpha */
+  /** @beta */
   export function screenToWorld(x: number, y: number): shared.Vector3;
 
-  /** @alpha */
+  /** @beta */
   export function getCamPos(): shared.Vector3;
 
-  /** @alpha */
+  /** @beta */
   export class RmlDocument extends shared.BaseObject {
     constructor(url: string);
 
@@ -2344,7 +2344,7 @@ declare module "alt-client" {
     public createTextNode(text: string): RmlElement;
   }
 
-  /** @alpha */
+  /** @beta */
   export class RmlElement extends RmlDocument {
     public on(eventName: string, func: (...args: any[]) => void): void;
 
