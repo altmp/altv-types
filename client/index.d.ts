@@ -487,7 +487,7 @@ declare module "alt-client" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key or undefined if no data is present.or undefined if no data is present.or undefined if no data is present.or undefined if no data is present.or undefined if no data is present.or undefined if no data is present.or undefined if no data is present.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
     public getSyncedMeta<T = any>(key: string): T | undefined;
 
@@ -503,7 +503,7 @@ declare module "alt-client" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key or undefined if no data is present.or undefined if no data is present.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
     public getStreamSyncedMeta<T = any>(key: string): T | undefined;
 
