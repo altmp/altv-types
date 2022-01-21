@@ -344,13 +344,13 @@ declare module "alt-server" {
     Green,
   }
 
-  export interface Weapon {
+  export interface IWeapon {
     readonly hash: number;
     readonly tintIndex: number;
     readonly components: Array<number>;
   }
 
-  export interface ConnectionInfo {
+  export interface IConnectionInfo {
     readonly name: string;
     readonly socialID: string;
     readonly hwidHash: string;
@@ -365,7 +365,7 @@ declare module "alt-server" {
     readonly discordUserID: string;
   }
 
-  export interface connectionQueueInfo extends ConnectionInfo {
+  export interface IConnectionQueueInfo extends IConnectionInfo {
     accept: () => void;
     decline: (reason: string) => void;
   }
@@ -381,7 +381,7 @@ declare module "alt-server" {
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
-    beforePlayerConnect: (connectionInfo: ConnectionInfo) => boolean | string | void;
+    beforePlayerConnect: (connectionInfo: IConnectionInfo) => boolean | string | void;
     playerDamage: (victim: Player, attacker: Entity, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
@@ -407,9 +407,9 @@ declare module "alt-server" {
     /** @beta */
     localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
     /** @beta */
-    connectionQueueAdd: (connectionInfo: connectionQueueInfo) => void;
+    connectionQueueAdd: (connectionInfo: IConnectionQueueInfo) => void;
     /** @beta */
-    connectionQueueRemove: (connectionInfo: connectionQueueInfo) => void;
+    connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
   }
 
   export interface IFireInfo {
@@ -703,7 +703,7 @@ declare module "alt-server" {
     public static all: Array<Player>;
     public armour: number;
     public currentWeapon: number;
-    public readonly weapons: Array<Weapon>;
+    public readonly weapons: Array<IWeapon>;
     public readonly currentWeaponComponents: Array<number>;
     public readonly currentWeaponTintIndex: number;
     public readonly entityAimOffset: shared.Vector3;
