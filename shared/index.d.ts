@@ -1345,7 +1345,7 @@ declare module "alt-shared" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
-   * @remarks Works only from JS (Client) to JS (Server)
+   * @remarks Works only from JS resource to JS resource
    */
   export function emitRaw(eventName: string, ...args: any[]): void;
 
