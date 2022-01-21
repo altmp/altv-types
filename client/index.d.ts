@@ -2320,7 +2320,7 @@ declare module "alt-client" {
   export function getCamPos(): shared.Vector3;
 
   /** @beta */
-  export class RmlDocument extends shared.BaseObject {
+  export class RmlDocument extends RmlElement {
     constructor(url: string);
 
     public title: string;
@@ -2345,7 +2345,7 @@ declare module "alt-client" {
   }
 
   /** @beta */
-  export class RmlElement extends RmlDocument {
+  export class RmlElement extends shared.BaseObject {
     public on(eventName: string, func: (...args: any[]) => void): void;
 
     public off(eventName: string, func: (...args: any[]) => void): void;
