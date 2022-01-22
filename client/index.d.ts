@@ -487,15 +487,15 @@ declare module "alt-client" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getSyncedMeta(key: string): any;
+    public getSyncedMeta<T = any>(key: string): T | undefined;
 
     /**
      * Determines whether contains the specified key.
      *
      * @param key The key of the value to locate.
-     * @returns Return is dependent on whether element associated with the specified key is stored.
+     * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasSyncedMeta(key: string): boolean;
 
@@ -503,15 +503,15 @@ declare module "alt-client" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getStreamSyncedMeta(key: string): any;
+    public getStreamSyncedMeta<T = any>(key: string): T | undefined;
 
     /**
      * Determines whether contains the specified key.
      *
      * @param key The key of the value to locate.
-     * @returns Return is dependent on whether element associated with the specified key is stored.
+     * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasStreamSyncedMeta(key: string): boolean;
   }

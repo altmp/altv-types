@@ -1167,7 +1167,7 @@ declare module "alt-shared" {
     public destroy(): void;
 
     /**
-     * Removes the specified key.
+     * Removes the specified key and the data connected to that specific key.
      *
      * @param key The key of the value to remove.
      */
@@ -1177,9 +1177,9 @@ declare module "alt-shared" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getMeta(key: string): any;
+    public getMeta<T = any>(key: string): T | undefined;
 
     /**
      * Determines whether contains the specified key.
@@ -1195,8 +1195,9 @@ declare module "alt-shared" {
      * @remarks The given value will be shared locally.
      *
      * @param key The key of the value to store.
+     * @param value The value to store.
      */
-    public setMeta(key: string, value: any): void;
+    public setMeta<T = any>(key: string, value: T): void;
 
     /**
      * Returns the ref count of the entity.
@@ -1209,11 +1210,11 @@ declare module "alt-shared" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      *
      * @beta
      */
-    public getLocalMeta(key: string): any;
+    public getLocalMeta<T = any>(key: string): T | undefined;
 
     /** @beta */
     public hasLocalMeta(key: string): boolean;
@@ -1251,7 +1252,7 @@ declare module "alt-shared" {
   export const debug: boolean;
 
   /**
-   * Removes the specified key.
+   * Removes the specified key and the data connected to that specific key.
    *
    * @param key The key of the value to remove.
    */
@@ -1261,9 +1262,9 @@ declare module "alt-shared" {
    * Gets a value using the specified key.
    *
    * @param key The key of the value to get.
-   * @returns Dynamic value associated with the specified key.
+   * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getMeta(key: string): any;
+  export function getMeta<T = any>(key: string): T | undefined;
 
   /**
    * Determines whether contains the specified key.
@@ -1279,22 +1280,23 @@ declare module "alt-shared" {
    * @remarks The given value will be shared locally to all resources.
    *
    * @param key The key of the value to store.
+   * @param value The value to store.
    */
-  export function setMeta(key: string, value: any): void;
+  export function setMeta<T = any>(key: string, value: T): void;
 
   /**
    * Gets a value using the specified key.
    *
    * @param key The key of the value to get.
-   * @returns Dynamic value associated with the specified key.
+   * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getSyncedMeta(key: string): any;
+  export function getSyncedMeta<T = any>(key: string): T | undefined;
 
   /**
    * Determines whether contains the specified key.
    *
    * @param key The key of the value to locate.
-   * @returns Return is dependent on whether element associated with the specified key is stored.
+   * @returns True if the meta table contains any data at the specified key or False if not
    */
   export function hasSyncedMeta(key: string): boolean;
 

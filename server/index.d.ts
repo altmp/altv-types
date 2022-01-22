@@ -574,7 +574,7 @@ declare module "alt-server" {
     public static getByID(id: number): Entity | null;
 
     /**
-     * Removes the specified key.
+     * Removes the specified key and the data connected to that specific key.
      *
      * @param key The key of the value to remove.
      */
@@ -584,15 +584,15 @@ declare module "alt-server" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getSyncedMeta(key: string): any;
+    public getSyncedMeta<T = any>(key: string): T | undefined;
 
     /**
      * Determines whether contains the specified key.
      *
      * @param key The key of the value to locate.
-     * @returns Return is dependent on whether element associated with the specified key is stored.
+     * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasSyncedMeta(key: string): boolean;
 
@@ -604,10 +604,10 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setSyncedMeta(key: string, value: any): void;
+    public setSyncedMeta<T = any>(key: string, value: T): void;
 
     /**
-     * Removes the specified key.
+     * Removes the specified key and the data connected to that specific key.
      *
      * @param key The key of the value to remove.
      */
@@ -617,15 +617,15 @@ declare module "alt-server" {
      * Gets a value using the specified key.
      *
      * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getStreamSyncedMeta(key: string): any;
+    public getStreamSyncedMeta<T = any>(key: string): T | undefined;
 
     /**
      * Determines whether contains the specified key.
      *
      * @param key The key of the value to locate.
-     * @returns Return is dependent on whether element associated with the specified key is stored.
+     * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasStreamSyncedMeta(key: string): boolean;
 
@@ -637,7 +637,7 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setStreamSyncedMeta(key: string, value: any): void;
+    public setStreamSyncedMeta<T = any>(key: string, value: T): void;
 
     /**
      * Changes network owner to the specified player.
@@ -1044,7 +1044,7 @@ declare module "alt-server" {
      *
      * @beta
      */
-    public setLocalMeta(key: string, value: any): void;
+    public setLocalMeta<T = any>(key: string, value: T): void;
 
     /** @beta */
     public deleteLocalMeta(key: string): void;
@@ -1930,7 +1930,7 @@ declare module "alt-server" {
    * @param key The key of the value to store.
    * @param value The value to store.
    */
-  export function setSyncedMeta(key: string, value: any): void;
+  export function setSyncedMeta<T = any>(key: string, value: T): void;
 
   /**
    * Emits specified event to specific client.
