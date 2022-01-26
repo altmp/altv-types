@@ -1935,6 +1935,12 @@ declare module "alt-server" {
     public readonly playerCount: number;
   }
 
+  /** @alpha */
+  export class Resource extends shared.Resource {
+    public readonly path: string;
+    public readonly config: Record<string, any>;
+  }
+
   /**
    * Stores the given value with the specified key.
    *

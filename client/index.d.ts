@@ -41,14 +41,6 @@ declare module "alt-client" {
     ChineseTraditional = "zh_tw",
   }
 
-  export const enum Permission {
-    None,
-    ScreenCapture,
-    WebRTC,
-    ClipboardAccess,
-    All,
-  }
-
   export const enum PermissionState {
     Allowed,
     Denied,
@@ -1749,7 +1741,7 @@ declare module "alt-client" {
    * @param permId Permission id.
    * @returns Permission state.
    */
-  export function getPermissionState(permId: Permission): PermissionState;
+  export function getPermissionState(permId: shared.Permission): PermissionState;
 
   /**
    * Gets a value of the specified statistic.

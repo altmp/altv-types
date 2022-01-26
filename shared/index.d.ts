@@ -894,6 +894,14 @@ declare module "alt-shared" {
     Binary = "binary",
   }
 
+  export const enum Permission {
+    None,
+    ScreenCapture,
+    WebRTC,
+    ClipboardAccess,
+    All,
+  }
+
   export interface IVector2 {
     readonly x: number;
     readonly y: number;
@@ -1458,4 +1466,21 @@ declare module "alt-shared" {
   export function timeEnd(timerName: string): void;
   /** @beta */
   export function timeEnd(): void;
+
+  /** @alpha */
+  export class Resource {
+    public readonly isStarted: boolean;
+    public readonly type: string;
+    public readonly name: string;
+    public readonly main: string;
+    public readonly exports: Record<string, any>;
+    public readonly dependencies: Array<string>;
+    public readonly dependants: Array<string>;
+    public readonly requiredPermissions: Array<Permission>;
+    public readonly optionalPermissions: Array<Permission>;
+
+    public getByName(name: string): IResource | null;
+    public readonly all: Array<IResource>;
+    public readonly current: IResource;
+  }
 }
