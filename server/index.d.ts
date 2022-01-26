@@ -2169,5 +2169,8 @@ declare module "alt-server" {
   /** @beta */
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
+  /** @alpha */
+  export function getServerConfig(): Record<string, any>;
+
   export * from "alt-shared";
 }
