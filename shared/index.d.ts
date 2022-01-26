@@ -1205,19 +1205,6 @@ declare module "alt-shared" {
      * @remarks It's only available in debug-mode.
      */
     public readonly refCount: number;
-
-    /**
-     * Gets a value using the specified key.
-     *
-     * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key or undefined if no data is present.
-     *
-     * @beta
-     */
-    public getLocalMeta<T = any>(key: string): T | undefined;
-
-    /** @beta */
-    public hasLocalMeta(key: string): boolean;
   }
 
   /**

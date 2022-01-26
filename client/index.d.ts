@@ -2495,5 +2495,18 @@ declare module "alt-client" {
     public style: Record<string, string>;
   }
 
+  /**
+   * Gets a value using the specified key.
+   *
+   * @param key The key of the value to get.
+   * @returns Dynamic value associated with the specified key or undefined if no data is present.
+   *
+   * @beta
+   */
+  export function getLocalMeta<T = any>(key: string): T | undefined;
+
+  /** @beta */
+  export function hasLocalMeta(key: string): boolean;
+
   export * from "alt-shared";
 }

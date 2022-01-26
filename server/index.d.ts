@@ -1048,6 +1048,19 @@ declare module "alt-server" {
 
     /** @beta */
     public deleteLocalMeta(key: string): void;
+
+    /**
+     * Gets a value using the specified key.
+     *
+     * @param key The key of the value to get.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
+     *
+     * @beta
+     */
+    public getLocalMeta<T = any>(key: string): T | undefined;
+
+    /** @beta */
+    public hasLocalMeta(key: string): boolean;
   }
 
   export class Vehicle extends Entity {
