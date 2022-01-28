@@ -2146,7 +2146,7 @@ declare module "alt-client" {
   export function evalModule(code: string): Record<string, any>;
 
   /**
-   * Gets all the listeners for the specified remote event.
+   * Gets all the listeners that have been subscribed using {@link onServer} for the specified remote event.
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
