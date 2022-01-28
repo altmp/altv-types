@@ -2157,20 +2157,12 @@ declare module "alt-server" {
   export function stopResource(name: string): void;
 
   /**
-   * Gets all the listeners for the specified local event.
+   * Gets all the listeners that have been subscribed using {@link onClient} for the specified remote event.
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getEventListeners(eventName: string | null): Function[];
-
-  /**
-   * Gets all the listeners for the specified remote event.
-   *
-   * @param eventName Name of the event or null for generic event.
-   * @returns Array of listener functions for that event.
-   */
-  export function getRemoteEventListeners(eventName: string | null): Function[];
+  export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
   /** @beta */
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;

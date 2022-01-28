@@ -1241,7 +1241,7 @@ declare module "alt-client" {
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
      */
-    public getEventListeners(eventName: string | null): Function[];
+    public getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
     /**
      * Sets the specified header to the specified value.
@@ -2108,7 +2108,7 @@ declare module "alt-client" {
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
      */
-    public getEventListeners(eventName: string | null): Function[];
+    public getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
   }
 
   /**
@@ -2146,20 +2146,12 @@ declare module "alt-client" {
   export function evalModule(code: string): Record<string, any>;
 
   /**
-   * Gets all the listeners for the specified local event.
+   * Gets all the listeners that have been subscribed using {@link onServer} for the specified remote event.
    *
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getEventListeners(eventName: string | null): Function[];
-
-  /**
-   * Gets all the listeners for the specified remote event.
-   *
-   * @param eventName Name of the event or null for generic event.
-   * @returns Array of listener functions for that event.
-   */
-  export function getRemoteEventListeners(eventName: string | null): Function[];
+  export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
   export class HttpClient extends shared.BaseObject {
     public constructor();
@@ -2342,7 +2334,7 @@ declare module "alt-client" {
 
     public off(eventName: string, func: (...args: any[]) => void): void;
 
-    public getEventListeners(eventName: string): Function[];
+    public getEventListeners(eventName: string): ((...args: any[]) => void)[];
 
     public readonly relativeOffset: shared.Vector2;
 
