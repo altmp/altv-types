@@ -2162,7 +2162,7 @@ declare module "alt-server" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getEventListeners(eventName: string | null): Function[];
+  export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
   /**
    * Gets all the listeners for the specified remote event.
@@ -2170,7 +2170,7 @@ declare module "alt-server" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getRemoteEventListeners(eventName: string | null): Function[];
+  export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
   /** @beta */
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
