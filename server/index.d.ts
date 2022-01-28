@@ -2157,14 +2157,6 @@ declare module "alt-server" {
   export function stopResource(name: string): void;
 
   /**
-   * Gets all the listeners for the specified local event.
-   *
-   * @param eventName Name of the event or null for generic event.
-   * @returns Array of listener functions for that event.
-   */
-  export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
-
-  /**
    * Gets all the listeners for the specified remote event.
    *
    * @param eventName Name of the event or null for generic event.
