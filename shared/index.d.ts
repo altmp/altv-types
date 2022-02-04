@@ -913,7 +913,6 @@ declare module "alt-shared" {
     readonly z: number;
   }
 
-  /** @beta */
   export interface IResource {
     readonly name: string;
     readonly type: string;
@@ -1454,17 +1453,14 @@ declare module "alt-shared" {
    */
   export const isServer: boolean;
 
-  /** @beta */
   export function getAllResources(): Array<IResource>;
 
-  /** @beta */
   export function time(timerName: string): void;
-  /** @beta */
+
   export function time(): void;
 
-  /** @beta */
   export function timeEnd(timerName: string): void;
-  /** @beta */
+
   export function timeEnd(): void;
 
   /** @alpha */

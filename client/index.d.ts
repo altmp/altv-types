@@ -191,9 +191,7 @@ declare module "alt-client" {
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
      */
     taskChange: (oldTask: number, newTask: number) => void;
-    /** @beta */
     spawned: () => void;
-    /** @beta */
     localMetaChange: (key: string, newValue: any, oldValue: any) => void;
   }
 
@@ -777,8 +775,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle seat count.
-     *
-     * @beta
      */
     public readonly seatCount: number;
 
@@ -1368,8 +1364,6 @@ declare module "alt-client" {
      *
      * @param eventName Name of the event.
      * @param listener Listener that should be removed.
-     *
-     * @beta
      */
     public off(eventName: string, listener: (...args: any[]) => void): void;
   }
@@ -1939,7 +1933,6 @@ declare module "alt-client" {
    */
   export function setCamFrozen(state: boolean): void;
 
-  /** @beta */
   export function isCamFrozen(): boolean;
 
   /**
@@ -2242,7 +2235,6 @@ declare module "alt-client" {
      */
     public static stopProfiling(profileName?: string): IProfile;
 
-    /** @beta */
     public static getMemoryProfile(): void;
   }
 
@@ -2283,27 +2275,19 @@ declare module "alt-client" {
 
   /**
    * Copy content into users clipboard.
-   *
-   * @beta
    */
   export function copyToClipboard(val: string): void;
 
-  /** @beta */
   export function toggleRmlControls(state: boolean): void;
 
-  /** @beta */
   export function loadRmlFont(path: string, name: string, italic?: boolean, bold?: boolean): void;
 
-  /** @beta */
   export function worldToScreen(x: number, y: number, z: number): shared.Vector3;
 
-  /** @beta */
   export function screenToWorld(x: number, y: number): shared.Vector3;
 
-  /** @beta */
   export function getCamPos(): shared.Vector3;
 
-  /** @beta */
   export class RmlDocument extends RmlElement {
     constructor(url: string);
 
@@ -2328,7 +2312,6 @@ declare module "alt-client" {
     public createTextNode(text: string): RmlElement;
   }
 
-  /** @beta */
   export class RmlElement extends shared.BaseObject {
     public on(eventName: string, func: (...args: any[]) => void): void;
 
@@ -2484,12 +2467,9 @@ declare module "alt-client" {
    *
    * @param key The key of the value to get.
    * @returns Dynamic value associated with the specified key or undefined if no data is present.
-   *
-   * @beta
    */
   export function getLocalMeta<T = any>(key: string): T | undefined;
 
-  /** @beta */
   export function hasLocalMeta(key: string): boolean;
 
   export * from "alt-shared";

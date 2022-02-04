@@ -43,8 +43,6 @@ declare module "alt-worker" {
    *
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
-   *
-   * @beta
    */
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
