@@ -194,7 +194,11 @@ declare module "alt-client" {
     spawned: () => void;
     localMetaChange: (key: string, newValue: any, oldValue: any) => void;
 
-    /** @alpha */
+    /**
+     * @remarks Triggers only if the old or new owner is the local player.
+     *
+     * @alpha
+     */
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
 
     /** @alpha */
