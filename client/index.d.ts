@@ -198,7 +198,7 @@ declare module "alt-client" {
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
 
     /** @alpha */
-    windowFocusChange: (isFocues: boolean) => void;
+    windowFocusChange: (isFocused: boolean) => void;
   }
 
   export interface IDiscordUser {
