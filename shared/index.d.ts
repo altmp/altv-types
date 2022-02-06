@@ -13,6 +13,8 @@ declare module "alt-shared" {
     WebSocketClient,
     HttpClient,
     Audio,
+    RmlElement,
+    RmlDocument,
     LocalPlayer,
   }
 
