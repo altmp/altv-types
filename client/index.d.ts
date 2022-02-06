@@ -193,6 +193,12 @@ declare module "alt-client" {
     taskChange: (oldTask: number, newTask: number) => void;
     spawned: () => void;
     localMetaChange: (key: string, newValue: any, oldValue: any) => void;
+
+    /** @alpha */
+    netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
+
+    /** @alpha */
+    windowFocusChange: (isFocues: boolean) => void;
   }
 
   export interface IDiscordUser {
