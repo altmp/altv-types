@@ -1759,7 +1759,7 @@ declare module "alt-server" {
      */
     public static readonly all: Array<Blip>;
 
-    public static routeColor: shared.RGBA;
+    public routeColor: shared.RGBA;
 
     public sprite: shared.BlipSprite;
 
