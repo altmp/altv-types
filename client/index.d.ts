@@ -1397,7 +1397,7 @@ declare module "alt-client" {
 
     public readonly scriptID: number;
 
-    public static routeColor: shared.RGBA;
+    public routeColor: shared.RGBA;
 
     public alpha: number;
 
