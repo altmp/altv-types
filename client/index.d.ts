@@ -2482,5 +2482,34 @@ declare module "alt-client" {
 
   export function hasLocalMeta(key: string): boolean;
 
+  /**
+   * Modify minimap component position.
+   *
+   * @param name Name of the minimap component.
+   * @param alignX Same as alignX field in fontend.xml.
+   * @param alignY Same as alignY field in fontend.xml.
+   * @param pos Same as posX and posY field in fontend.xml.
+   * @param size Same as sizeX and sizeY field in fontend.xml.
+   *
+   * @alpha
+   */
+  export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, pos: shared.Vector2, size: shared.Vector2): void;
+
+  /**
+   * Modify minimap component position.
+   *
+   * @param name Name of the minimap component.
+   * @param alignX Same as alignX field in fontend.xml.
+   * @param alignY Same as alignY field in fontend.xml.
+   * @param posX Same as posX field in fontend.xml.
+   * @param posY Same as posY field in fontend.xml.
+   * @param sizeX Same as sizeX field in fontend.xml.
+   * @param sizeY Same as sizeY field in fontend.xml.
+   *
+   * @alpha
+   */
+  export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, posX: number, posY: number, sizeX: number, sizeY: number): void;
+
+
   export * from "alt-shared";
 }
