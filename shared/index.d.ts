@@ -1477,9 +1477,9 @@ declare module "alt-shared" {
     public readonly requiredPermissions: Array<Permission>;
     public readonly optionalPermissions: Array<Permission>;
 
-    public getByName(name: string): IResource | null;
-    public readonly all: Array<IResource>;
-    public readonly current: IResource;
+    public static getByName(name: string): Resource | null;
+    public static readonly all: Array<Resource>;
+    public static readonly current: Resource;
   }
 
   /**
