@@ -2510,6 +2510,14 @@ declare module "alt-client" {
    */
   export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, posX: number, posY: number, sizeX: number, sizeY: number): void;
 
+  /**
+   * Defines if the minimap is a rectangle to change the blip clipping.
+   *
+   * @param state False will clip the blips rounded to the minimap.
+   *
+   * @alpha
+   */
+  export function setMinimapIsRectangle(state: boolean): void;
 
   export * from "alt-shared";
 }
