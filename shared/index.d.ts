@@ -1068,7 +1068,7 @@ declare module "alt-shared" {
     public negative(): Vector3;
 
     /**
-     * Normalizes vector. 
+     * Normalizes vector.
      */
     public normalize(): Vector3;
 
