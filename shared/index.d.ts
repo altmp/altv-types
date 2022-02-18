@@ -937,84 +937,204 @@ declare module "alt-shared" {
 
     public get length(): number;
 
+    /**
+     * Returns [x, y, z] array.
+     */
     public toArray(): [number, number, number];
 
+    /**
+     * Adds two vectors.
+     */
     public add(x: number, y: number, z: number): Vector3;
 
+    /**
+     * Adds a number to all vector axis.
+     */
     public add(value: number): Vector3;
 
+    /**
+     * Adds two vectors.
+     */
     public add(array: [number, number, number]): Vector3;
 
+    /**
+     * Adds two vectors.
+     */
     public add(vector: IVector3): Vector3;
 
+    /**
+     * Subtracts two vectors.
+     */
     public sub(x: number, y: number, z: number): Vector3;
 
+    /**
+     * Subtracts a number from all vector axis.
+     */
     public sub(value: number): Vector3;
 
+    /**
+     * Subtracts two vectors.
+     */
     public sub(array: [number, number, number]): Vector3;
 
+    /**
+     * Subtracts two vectors.
+     */
     public sub(vector: IVector3): Vector3;
 
+    /**
+     * Divides two vectors.
+     */
     public div(x: number, y: number, z: number): Vector3;
 
+    /**
+     * Divides all vector axis by value.
+     */
     public div(value: number): Vector3;
 
+    /**
+     * Divides two vectors.
+     */
     public div(array: [number, number, number]): Vector3;
 
+    /**
+     * Divides two vectors.
+     */
     public div(vector: IVector3): Vector3;
 
-    public dot(x: number, y: number, z: number): Vector3;
+    /**
+     * Calculates dot product between two vectors.
+     */
+    public dot(x: number, y: number, z: number): number;
 
-    public dot(value: number): Vector3;
+    /**
+     * Calculates dot product between vector and a number.
+     */
+    public dot(value: number): number;
 
-    public dot(array: [number, number, number]): Vector3;
+    /**
+     * Calculates dot product between two vectors.
+     */
+    public dot(array: [number, number, number]): number;
 
-    public dot(vector: IVector3): Vector3;
+    /**
+     * Calculates dot product between two vectors.
+     */
+    public dot(vector: IVector3): number;
 
+    /**
+     * Calculates cross product between two vectors.
+     */
+    public cross(x: number, y: number, z: number): Vector3;
+
+    /**
+     * Calculates cross product between vector and a number.
+     */
+    public cross(value: number): Vector3;
+
+    /**
+     * Calculates cross product between two vectors.
+     */
+    public cross(array: [number, number, number]): Vector3;
+
+    /**
+     * Calculates cross product between two vectors.
+     */
+    public cross(vector: IVector3): Vector3;
+
+    /**
+     * Multiplies two vectors.
+     */
     public mul(x: number, y: number, z: number): Vector3;
 
+    /**
+     * Multiplies all vector axis by a number.
+     */
     public mul(value: number): Vector3;
 
+    /**
+     * Multiplies two vectors.
+     */
     public mul(array: [number, number, number]): Vector3;
 
+    /**
+     * Multiplies two vectors.
+     */
     public mul(vector: IVector3): Vector3;
 
+    /**
+     * Negates vector.
+     */
     public negative(): Vector3;
 
+    /**
+     * Normalizes vector.
+     */
     public normalize(): Vector3;
 
+    /**
+     * Calculates distance between vectors.
+     */
     public distanceTo(vector: IVector3): number;
 
+    /**
+     * Calculates angle between to vectors (in radians).
+     */
     public angleTo(vector: IVector3): Vector3;
 
+    /**
+     * Calculates angle between to vectors (in degrees).
+     */
     public angleToDegrees(vector: IVector3): Vector3;
 
+    /**
+     * Converts degrees to radians.
+     */
     public toRadians(): Vector3;
 
+    /**
+     * Converts radians to degrees.
+     */
     public toDegrees(): Vector3;
 
+    /**
+     * Checks if distance between vectors is smaller or equal to range.
+     */
     public isInRange(vector: IVector3, range: number): boolean;
 
+    /**
+     * Interpolates vectors linearly.
+     */
     public lerp(vector: IVector3, ratio: number): Vector3;
 
+    /** (0, 0, 0) vector */
     public static readonly zero: Vector3;
 
+    /** (1, 1, 1) vector */
     public static readonly one: Vector3;
 
+    /** (0, 1, 0) vector */
     public static readonly forward: Vector3;
 
+    /** (0, -1, 0) vector */
     public static readonly back: Vector3;
 
+    /** (0, 0, 1) vector */
     public static readonly up: Vector3;
 
+    /** (0, 0, -1) vector */
     public static readonly down: Vector3;
 
+    /** (-1, 0, 0) vector */
     public static readonly left: Vector3;
 
+    /** (1, 0, 0) vector */
     public static readonly right: Vector3;
 
+    /** (-Infinity, -Infinity, -Infinity) vector */
     public static readonly negativeInfinity: Vector3;
 
+    /** (Infinity, Infinity, Infinity) vector */
     public static readonly positiveInfinity: Vector3;
   }
 
@@ -1033,80 +1153,178 @@ declare module "alt-shared" {
 
     public get length(): number;
 
+    /**
+     * Returns [x, y] array.
+     */
     public toArray(): [number, number];
 
+    /**
+     * Adds two vectors.
+     */
     public add(x: number, y: number): Vector2;
 
+    /**
+     * Adds a number to all vector axis.
+     */
     public add(value: number): Vector2;
 
+    /**
+     * Adds two vectors.
+     */
     public add(array: [number, number]): Vector2;
 
+    /**
+     * Adds two vectors.
+     */
     public add(vector: IVector2): Vector2;
 
+    /**
+     * Subtracts two vectors.
+     */
     public sub(x: number, y: number): Vector2;
 
+    /**
+     * Subtracts a number from all vector axis.
+     */
     public sub(value: number): Vector2;
 
+    /**
+     * Subtracts two vectors.
+     */
     public sub(array: [number, number]): Vector2;
 
+    /**
+     * Subtracts two vectors.
+     */
     public sub(vector: IVector2): Vector2;
 
+    /**
+     * Divides two vectors.
+     */
     public div(x: number, y: number): Vector2;
 
+    /**
+     * Divides two vectors.
+     */
     public div(value: number): Vector2;
 
+    /**
+     * Divides two vectors.
+     */
     public div(array: [number, number]): Vector2;
 
+    /**
+     * Divides two vectors.
+     */
     public div(vector: IVector2): Vector2;
 
+    /**
+     * Calculates dot product between two vectors.
+     */
     public dot(x: number, y: number): Vector2;
 
+    /**
+     * Calculates dot product between vector and a number.
+     */
     public dot(value: number): Vector2;
 
+    /**
+     * Calculates dot product between two vectors.
+     */
     public dot(array: [number, number]): Vector2;
 
+    /**
+     * Calculates dot product between two vectors.
+     */
     public dot(vector: IVector2): Vector2;
 
+    /**
+     * Multiplies two vectors.
+     */
     public mul(x: number, y: number): Vector2;
 
+    /**
+     * Multiplies all vector axis by a number.
+     */
     public mul(value: number): Vector2;
 
+    /**
+     * Multiplies two vectors.
+     */
     public mul(array: [number, number]): Vector2;
 
+    /**
+     * Multiplies two vectors.
+     */
     public mul(vector: IVector2): Vector2;
 
+    /**
+     * Negates vector.
+     */
     public negative(): Vector2;
 
+    /**
+     * Normalizes vector.
+     */
     public normalize(): Vector2;
 
+    /**
+     * Calculates distance between vectors.
+     */
     public distanceTo(vector: IVector2): number;
 
+    /**
+     * Calculates angle between to vectors (in radians).
+     */
     public angleTo(vector: IVector2): Vector2;
 
+    /**
+     * Calculates angle between to vectors (in degrees).
+     */
     public angleToDegrees(vector: IVector2): Vector2;
 
+    /**
+     * Converts degrees to radians.
+     */
     public toRadians(): Vector2;
 
+    /**
+     * Converts radians to degrees.
+     */
     public toDegrees(): Vector2;
 
+    /**
+     * Checks if distance between vectors is smaller or equal to range.
+     */
     public isInRange(vector: IVector2, range: number): boolean;
 
+    /**
+     * Interpolates vectors linearly.
+     */
     public lerp(vector: IVector2, ratio: number): Vector2;
 
+    /** (0, 0) vector */
     public static readonly zero: Vector2;
 
+    /** (1, 1) vector */
     public static readonly one: Vector2;
 
+    /** (0, 1) vector */
     public static readonly up: Vector2;
 
+    /**  (0, -1) vector */
     public static readonly down: Vector2;
 
+    /** (-1, 0) vector */
     public static readonly left: Vector2;
 
+    /** (1, 0) vector */
     public static readonly right: Vector2;
 
+    /** (-Infinity, -Infinity) vector */
     public static readonly negativeInfinity: Vector2;
 
+    /** (Infinity, Infinity) vector */
     public static readonly positiveInfinity: Vector2;
   }
 
