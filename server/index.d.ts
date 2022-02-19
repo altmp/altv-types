@@ -407,6 +407,8 @@ declare module "alt-server" {
     localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
     connectionQueueAdd: (connectionInfo: IConnectionQueueInfo) => void;
     connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
+    /** @alpha */
+    serverStarted: () => void;
   }
 
   export interface IFireInfo {
