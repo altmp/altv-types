@@ -9,7 +9,7 @@
           <span class="glyph fa-cogs"></span>
         </div>
         <div class="card-content">
-          <a href="articles/index.md" class="card-header">
+          <a href="alt-client.yml" class="card-header">
             <span>
               Client-side API
             </span>
@@ -26,7 +26,7 @@
           <span class="glyph fa-book-open"></span>
         </div>
         <div class="card-content">
-          <a href="api/index.md" class="card-header">
+          <a href="alt-server.yml" class="card-header">
             <span>
               Server-side API
             </span>
