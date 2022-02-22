@@ -377,7 +377,7 @@ declare module "alt-server" {
     consoleCommand: (name: string, ...args: string[]) => void;
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
-    explosion: (source: Player, type: ExplosionType, pos: shared.IVector3, fx: number, target: Entity) => boolean | void;
+    explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
@@ -399,9 +399,9 @@ declare module "alt-server" {
     vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
     vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
-    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.IVector3, bodyPart: BodyPart) => boolean | void;
+    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: BodyPart) => boolean | void;
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
-    startProjectile: (player: Player, pos: shared.IVector3, dir: shared.IVector3, ammoHash: number, weaponHash: number) => boolean | void;
+    startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
     localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
