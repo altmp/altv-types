@@ -205,7 +205,7 @@ declare module "alt-client" {
     windowFocusChange: (isFocused: boolean) => void;
 
     /** @alpha */
-    windowResolutionChange: (oldResolution: shared.Vector2, newResolution: shared.Vector2) => void;
+    windowResolutionChange: (oldResolution: shared.IVector2, newResolution: shared.IVector2) => void;
   }
 
   export interface IDiscordUser {
@@ -410,10 +410,10 @@ declare module "alt-client" {
     public height: number;
     public color: shared.RGBA;
 
-    constructor(type: CheckpointType, pos: shared.Vector3, nextPos: shared.Vector3, radius: number, height: number, rgbcolor: shared.RGBA);
+    constructor(type: CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA);
 
     public isEntityIn(entity: Entity): boolean;
-    public isPointIn(pos: shared.Vector3): boolean;
+    public isPointIn(pos: shared.IVector3): boolean;
   }
 
   export class Entity extends WorldObject {
@@ -2427,9 +2427,9 @@ declare module "alt-client" {
 
     public getPseudoClassList(): Array<string>;
 
-    public setOffset(element: RmlElement, offset: shared.Vector2, fixed?: boolean): void;
+    public setOffset(element: RmlElement, offset: shared.IVector2, fixed?: boolean): void;
 
-    public isPointWithinElement(point: shared.Vector2): boolean;
+    public isPointWithinElement(point: shared.IVector2): boolean;
 
     public setProperty(name: string, value: string): boolean;
 
@@ -2499,7 +2499,7 @@ declare module "alt-client" {
    *
    * @alpha
    */
-  export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, pos: shared.Vector2, size: shared.Vector2): void;
+  export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, pos: shared.IVector2, size: shared.IVector2): void;
 
   /**
    * Modify minimap component position.

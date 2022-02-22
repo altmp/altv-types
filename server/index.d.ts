@@ -377,7 +377,7 @@ declare module "alt-server" {
     consoleCommand: (name: string, ...args: string[]) => void;
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
-    explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
+    explosion: (source: Player, type: ExplosionType, pos: shared.IVector3, fx: number, target: Entity) => boolean | void;
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
@@ -399,9 +399,9 @@ declare module "alt-server" {
     vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
     vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
-    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: BodyPart) => boolean | void;
+    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.IVector3, bodyPart: BodyPart) => boolean | void;
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
-    startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
+    startProjectile: (player: Player, pos: shared.IVector3, dir: shared.IVector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
     localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
@@ -675,7 +675,7 @@ declare module "alt-server" {
      * @param enableCollisions If true the attached entity has a collision.
      * @param fixedRotation If true the entity is attached with a fixed rotation (no bouncing).
      */
-    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.Vector3, rot: shared.Vector3, enableCollisions: boolean, fixedRotation: boolean): void;
+    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.IVector3, rot: shared.IVector3, enableCollisions: boolean, fixedRotation: boolean): void;
 
     /**
      * Detaches this entity if attached to another entity.
@@ -833,7 +833,7 @@ declare module "alt-server" {
      * @param pos The position where the player gets spawned.
      * @param delay The delay at which the player gets spawned after calling this function. Defaults to 0.
      */
-    public spawn(pos: shared.Vector3, delay?: number): void;
+    public spawn(pos: shared.IVector3, delay?: number): void;
 
     public despawn(): void;
 
@@ -1268,7 +1268,7 @@ declare module "alt-server" {
     public driftModeEnabled: boolean;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
-    constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3);
+    constructor(model: string | number, pos: shared.IVector3, rot: shared.IVector3);
     /**
      * Retrieves the vehicle from the pool.
      *
@@ -1854,7 +1854,7 @@ declare module "alt-server" {
 
     public isEntityIn(entity: Entity): boolean;
 
-    public isPointIn(position: shared.Vector3): boolean;
+    public isPointIn(position: shared.IVector3): boolean;
   }
 
   export class ColshapeCylinder extends Colshape {
@@ -1878,12 +1878,12 @@ declare module "alt-server" {
   }
 
   export class ColshapePolygon extends Colshape {
-    constructor(minZ: number, maxZ: number, points: Array<shared.Vector2>);
+    constructor(minZ: number, maxZ: number, points: Array<shared.IVector2>);
   }
 
   export class Checkpoint extends Colshape {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
-    constructor(type: number, pos: shared.Vector3, radius: number, height: number, color: shared.RGBA);
+    constructor(type: number, pos: shared.IVector3, radius: number, height: number, color: shared.RGBA);
   }
 
   export class VoiceChannel extends shared.BaseObject {
