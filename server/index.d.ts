@@ -735,7 +735,6 @@ declare module "alt-server" {
     public readonly isSuperJumpEnabled: boolean;
     public readonly isCrouching: boolean;
     public readonly isStealthy: boolean;
-    public readonly socialId: string;
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
