@@ -2298,6 +2298,9 @@ declare module "alt-client" {
 
   export function getCamPos(): shared.Vector3;
 
+  /** @alpha */
+  export function getScreenResolution(): shared.Vector2;
+
   export class RmlDocument extends RmlElement {
     constructor(url: string);
 
