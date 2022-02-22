@@ -203,6 +203,9 @@ declare module "alt-client" {
 
     /** @alpha */
     windowFocusChange: (isFocused: boolean) => void;
+
+    /** @alpha */
+    windowResolutionChange: (oldResolution: shared.Vector2, newResolution: shared.Vector2) => void;
   }
 
   export interface IDiscordUser {
