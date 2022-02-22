@@ -1977,7 +1977,7 @@ declare module "alt-client" {
    *
    * @remarks The cursor has to be visible for this to take effect.
    */
-  export function setCursorPos(pos: shared.IVector2): void;
+  export function setCursorPos(pos: shared.IVector2, normalized?: boolean): void;
 
   /**
    * Sets the amount of real milliseconds that have to pass every game minute.
