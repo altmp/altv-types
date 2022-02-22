@@ -1716,7 +1716,7 @@ declare module "alt-client" {
   /**
    * Gets the current position of the cursor.
    */
-  export function getCursorPos(): shared.Vector2;
+  export function getCursorPos(normalized?: boolean): shared.Vector2;
 
   /**
    * Gets the value of the specified GXT entry.
