@@ -673,9 +673,9 @@ declare module "alt-server" {
      * @param pos Position offset.
      * @param rot Rotation.
      * @param enableCollisions If true the attached entity has a collision.
-     * @param fixedRotation If true the entity is attached with a fixed rotation (no bouncing).
+     * @param noFixedRotation If false the entity is attached with a fixed rotation (no bouncing). That means if the value in native was true, you have to use false in the serverside method
      */
-    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.IVector3, rot: shared.IVector3, enableCollisions: boolean, fixedRotation: boolean): void;
+    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.IVector3, rot: shared.IVector3, enableCollisions: boolean, noFixedRotation: boolean): void;
 
     /**
      * Detaches this entity if attached to another entity.
