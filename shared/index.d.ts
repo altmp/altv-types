@@ -1451,7 +1451,7 @@ declare module "alt-shared" {
    *
    * @remarks It's the version of the SDK the current runtime was compiled with.
    */
-  export const sdkVersion: number;
+  export const sdkVersion: string;
 
   /**
    * Represents the current branch.
