@@ -1143,6 +1143,20 @@ declare module "alt-client" {
     public focused: boolean;
 
     /**
+     * Set and get the webview size.
+     *
+     * @alpha
+     */
+    public size: shared.Vector2;
+
+    /**
+     * Set and get the webview position.
+     *
+     * @alpha
+     */
+    public pos: shared.Vector2;
+
+    /**
      * Creates a fullscreen WebView.
      *
      * @param url URL of the html file.
