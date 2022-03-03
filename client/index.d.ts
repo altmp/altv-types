@@ -647,7 +647,7 @@ declare module "alt-client" {
     /**
      * The current aim offset of the player.
      */
-    public readonly entityAimOffset: shared.Vector3 | null;
+    public readonly entityAimOffset: shared.Vector3;
 
     /**
      * Is the flashlight of the player activated.
