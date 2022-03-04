@@ -1253,11 +1253,11 @@ declare module "alt-server" {
     /**
      * Gets a vehicle that is attached to the vehicle instance.
      */
-    public readonly attached: Vehicle;
+    public readonly attached: Vehicle | null;
     /**
      * Gets a vehicle where the vehicle is attached to.
      */
-    public readonly attachedTo: Vehicle;
+    public readonly attachedTo: Vehicle | null;
     /**
      * Gets the velocity vector of a vehicle.
      */
