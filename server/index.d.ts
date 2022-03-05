@@ -1832,7 +1832,7 @@ declare module "alt-server" {
 
     public shrinked: boolean;
 
-    public attachedTo: Entity;
+    public attachedTo: Entity | null;
 
     public fade(opacity: number, duration: number): void;
   }
