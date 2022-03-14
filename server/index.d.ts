@@ -1936,6 +1936,13 @@ declare module "alt-server" {
    * @param value The value to store.
    */
   export function setSyncedMeta<T = any>(key: string, value: T): void;
+  
+  /**
+   * Removes the specified key and the data connected to that specific key.
+   *
+   * @param key The key of the value to remove.
+   */
+  export function deleteSyncedMeta(key: string): void;
 
   /**
    * Emits specified event to specific client.
