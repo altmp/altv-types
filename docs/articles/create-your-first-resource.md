@@ -55,7 +55,7 @@ deps: [
 
 You can access exported functions & more by adding the following in your code: 
 ```js
-import chat from 'chat';
+import * as chat from 'chat';
 ```
 
 **main** is the main server file.
@@ -72,7 +72,7 @@ Then we're going to import 'alt' and 'chat'.
 
 ```js
 import * as alt from 'alt-server';
-import chat from 'chat';
+import * as chat from 'chat';
 
 console.log('==> Your Resource Has Loaded! Horray!');
 
