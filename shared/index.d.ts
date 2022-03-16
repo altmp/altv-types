@@ -1707,4 +1707,7 @@ declare module "alt-shared" {
    * @returns Array of listener functions for that event.
    */
   export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+
+  /** @alpha */
+  export function stringToSHA256(string: string): string;
 }
