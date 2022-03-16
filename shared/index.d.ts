@@ -925,6 +925,13 @@ declare module "alt-shared" {
    */
   export interface ICustomGlobalMeta {}
 
+  /**
+   * Extracts string keys from interface
+   */
+  type ExtractStringKeys<T extends Record<any, any>> = {
+    [K in keyof T as Extract<K, string>]: T[K];
+  };
+
   export class Vector3 {
     public readonly x: number;
 
@@ -1475,7 +1482,9 @@ declare module "alt-shared" {
    *
    * @param key The key of the value to remove.
    */
-  export function deleteMeta<K extends keyof ICustomGlobalMeta>(key: K): void;
+  // export function deleteMeta<K extends keyof StringOnlyKeys<ICustomGlobalMeta>>(key: K extends number ? never : K): void;
+  export function deleteMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): void;
+  export function deleteMeta(key: string): void;
 
   /**
    * Gets a value using the specified key.
@@ -1483,7 +1492,8 @@ declare module "alt-shared" {
    * @param key The key of the value to get.
    * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getMeta<K extends keyof ICustomGlobalMeta>(key: K): ICustomGlobalMeta[K] | undefined;
+  export function getMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): ICustomGlobalMeta[K] | undefined;
+  export function getMeta(key: string): unknown;
 
   /**
    * Determines whether contains the specified key.
@@ -1491,7 +1501,8 @@ declare module "alt-shared" {
    * @param key The key of the value to locate.
    * @returns True when element associated with the specified key is stored.
    */
-  export function hasMeta<K extends keyof ICustomGlobalMeta>(key: K): boolean;
+  export function hasMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): boolean;
+  export function hasMeta(key: string): boolean;
 
   /**
    * Stores the given value with the specified key.
@@ -1501,7 +1512,8 @@ declare module "alt-shared" {
    * @param key The key of the value to store.
    * @param value The value to store.
    */
-  export function setMeta<K extends keyof ICustomGlobalMeta>(key: K, value: ICustomGlobalMeta[K]): void;
+  export function setMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K, value: ICustomGlobalMeta[K]): void;
+  export function setMeta(key: string, value: unknown): void;
 
   /**
    * Gets a value using the specified key.
