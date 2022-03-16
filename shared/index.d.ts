@@ -920,6 +920,11 @@ declare module "alt-shared" {
     readonly type: string;
   }
 
+  /**
+   * Extend it using interface merging for using in alt.{@link getMeta}, alt.{@link setMeta}, etc.
+   */
+  export interface ICustomGlobalMeta {}
+
   export class Vector3 {
     public readonly x: number;
 
@@ -1470,7 +1475,7 @@ declare module "alt-shared" {
    *
    * @param key The key of the value to remove.
    */
-  export function deleteMeta(key: string): void;
+  export function deleteMeta<K extends keyof ICustomGlobalMeta>(key: K): void;
 
   /**
    * Gets a value using the specified key.
@@ -1478,7 +1483,7 @@ declare module "alt-shared" {
    * @param key The key of the value to get.
    * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getMeta<T = any>(key: string): T | undefined;
+  export function getMeta<K extends keyof ICustomGlobalMeta>(key: K): ICustomGlobalMeta[K] | undefined;
 
   /**
    * Determines whether contains the specified key.
@@ -1486,7 +1491,7 @@ declare module "alt-shared" {
    * @param key The key of the value to locate.
    * @returns True when element associated with the specified key is stored.
    */
-  export function hasMeta(key: string): boolean;
+  export function hasMeta<K extends keyof ICustomGlobalMeta>(key: K): boolean;
 
   /**
    * Stores the given value with the specified key.
@@ -1496,7 +1501,7 @@ declare module "alt-shared" {
    * @param key The key of the value to store.
    * @param value The value to store.
    */
-  export function setMeta<T = any>(key: string, value: T): void;
+  export function setMeta<K extends keyof ICustomGlobalMeta>(key: K, value: ICustomGlobalMeta[K]): void;
 
   /**
    * Gets a value using the specified key.
