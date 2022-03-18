@@ -934,8 +934,12 @@ declare module "alt-shared" {
 
   /**
    * Gets a type of value for key from meta interface
+   *
+   * * T - meta interface
+   * * K - meta key
+   * * VDefault - default K (meta value) if key is missing in T (meta interface).
    */
-  type GetMetaKeyValue<T extends Record<any, any>, K> = K extends keyof T ? T[K] : unknown;
+  type GetMetaKeyValue<T extends Record<any, any>, K, VDefault = unknown> = K extends keyof T ? T[K] : VDefault;
 
   export class Vector3 {
     public readonly x: number;
@@ -1482,12 +1486,13 @@ declare module "alt-shared" {
    */
   export const debug: boolean;
 
+  // "V" generic overloads in get & set meta methods remain only for backward compatibility
+  // TODO: remove "V" generic overloads from all get & set meta methods (alt.getMeta, alt.Entity.getSyncedMeta, etc.)
   /**
    * Removes the specified key and the data connected to that specific key.
    *
    * @param key The key of the value to remove.
    */
-  // export function deleteMeta<K extends keyof StringOnlyKeys<ICustomGlobalMeta>>(key: K extends number ? never : K): void;
   export function deleteMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): void;
   export function deleteMeta(key: string): void;
 
@@ -1499,6 +1504,8 @@ declare module "alt-shared" {
    */
   export function getMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): ICustomGlobalMeta[K] | undefined;
   export function getMeta(key: string): unknown;
+  /** @deprecated */
+  export function getMeta<V extends any>(key: string): V | undefined;
 
   /**
    * Determines whether contains the specified key.
@@ -1519,6 +1526,8 @@ declare module "alt-shared" {
    */
   export function setMeta<K extends string>(key: K, value: GetMetaKeyValue<ICustomGlobalMeta, K>): void;
   export function setMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K, value: ICustomGlobalMeta[K]): void;
+  /** @deprecated */
+  export function setMeta<V extends any, K extends string = string>(key: K, value: GetMetaKeyValue<ICustomGlobalMeta, K, V>): void;
 
   /**
    * Gets a value using the specified key.
