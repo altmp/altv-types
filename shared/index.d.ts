@@ -1493,8 +1493,8 @@ declare module "alt-shared" {
    *
    * @param key The key of the value to remove.
    */
-  export function deleteMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): void;
   export function deleteMeta(key: string): void;
+  export function deleteMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): void;
 
   /**
    * Gets a value using the specified key.
@@ -1502,8 +1502,8 @@ declare module "alt-shared" {
    * @param key The key of the value to get.
    * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): ICustomGlobalMeta[K] | undefined;
   export function getMeta(key: string): unknown;
+  export function getMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): ICustomGlobalMeta[K] | undefined;
   /** @deprecated */
   export function getMeta<V extends any>(key: string): V | undefined;
 
@@ -1513,8 +1513,8 @@ declare module "alt-shared" {
    * @param key The key of the value to locate.
    * @returns True when element associated with the specified key is stored.
    */
-  export function hasMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): boolean;
   export function hasMeta(key: string): boolean;
+  export function hasMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K): boolean;
 
   /**
    * Stores the given value with the specified key.
