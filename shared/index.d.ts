@@ -932,6 +932,11 @@ declare module "alt-shared" {
     [K in keyof T as Extract<K, string>]: T[K];
   };
 
+  /**
+   * Gets a type of value for key from meta interface
+   */
+  type GetMetaKeyValue<T extends Record<any, any>, K> = K extends keyof T ? T[K] : unknown;
+
   export class Vector3 {
     public readonly x: number;
 
@@ -1512,8 +1517,8 @@ declare module "alt-shared" {
    * @param key The key of the value to store.
    * @param value The value to store.
    */
+  export function setMeta<K extends string>(key: K, value: GetMetaKeyValue<ICustomGlobalMeta, K>): void;
   export function setMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K, value: ICustomGlobalMeta[K]): void;
-  export function setMeta(key: string, value: unknown): void;
 
   /**
    * Gets a value using the specified key.
