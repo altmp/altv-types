@@ -907,8 +907,11 @@ declare module "alt-shared" {
   /**
    * This is an internal utility type and you probably don't need it
    *
-   * * `VDefault` value type to return if the key is not included in the interface
-   * * `VReplace` value type to return if key is included in the interface
+   * Returns the value by the key in the interface or `unknown` by default
+   * if the key is not included in the interface
+   *
+   * * `VDefault?` optional value type to return if the key is not included in the interface
+   * * `VReplace?` optional value type to return if key is included in the interface
    *
    * @hidden
    */
