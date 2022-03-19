@@ -904,6 +904,26 @@ declare module "alt-shared" {
     All,
   }
 
+  /**
+   * This is an internal utility type and you probably don't need it
+   *
+   * * `VDefault` value type to return if the key is not included in the interface
+   * * `VReplace` value type to return if key is included in the interface
+   *
+   * @hidden
+   */
+  // prettier-ignore
+  export type InterfaceValueByKey<
+    TInterface,
+    TKey,
+    VDefault = unknown,
+    VReplace = void,
+  > = (
+    TKey extends keyof TInterface
+      ? (VReplace extends void ? TInterface[TKey] : VReplace)
+      : VDefault
+  );
+
   export interface IVector2 {
     readonly x: number;
     readonly y: number;
