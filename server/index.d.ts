@@ -485,36 +485,49 @@ declare module "alt-server" {
 
   /**
    * Extend it by interface merging for use in entity meta {@link Entity#getMeta}, {@link Entity#setMeta}, etc.
+   *
+   * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntityMeta {}
 
   /**
    * Extend it by interface merging for use in entity meta {@link Entity#getSyncedMeta}, {@link Entity#setSyncedMeta}, etc.
+   *
+   * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in entity stream synced meta {@link Entity#getStreamSyncedMeta}, {@link Entity#setStreamSyncedMeta}, etc.
+   * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntityStreamSyncedMeta {}
 
   /**
    * Extend it by merging interfaces for use in player meta {@link Player#getMeta}, {@link Player#setMeta}, etc.
+   *
+   * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerMeta extends ICustomEntityMeta {}
 
   /**
    * Extend it by interface merging for use in player meta {@link Player#getSyncedMeta}, {@link Player#setSyncedMeta}, etc.
+   *
+   * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerSyncedMeta extends ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player stream synced meta {@link Player#getStreamSyncedMeta}, {@link Player#setStreamSyncedMeta}, etc.
+   *
+   * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player local meta {@link Player#getLocalMeta}, {@link Player#setLocalMeta}, etc.
+   *
+   * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerLocalMeta {}
 

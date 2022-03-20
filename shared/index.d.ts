@@ -955,7 +955,21 @@ declare module "alt-shared" {
   }
 
   /**
-   * Extend it by interface merging for use in alt.{@link getMeta}, alt.{@link setMeta}, etc.
+   * Extend it by interface merging for use in {@link getMeta alt.getMeta}, {@link setMeta alt.setMeta}, etc.
+   *
+   * @example
+   * ```
+   * declare module "alt-shared" {
+   *   // extending interface by interface merging
+   *   export interface ICustomGlobalMeta {
+   *     numberExample: number
+   *     stringExample: string
+   *   }
+   * }
+   *
+   * const value = alt.getMeta("numberExample") // return value: number | undefined
+   * alt.setMeta("stringExample", "value") // params key: "numberExample", value: string
+   * ```
    */
   export interface ICustomGlobalMeta {}
 
