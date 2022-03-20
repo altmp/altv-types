@@ -484,19 +484,34 @@ declare module "alt-server" {
   }
 
   /**
+   * Extend it by interface merging for use in entity meta {@link Entity#getMeta}, {@link Entity#setMeta}, etc.
+   */
+  export interface ICustomEntityMeta {}
+
+  /**
+   * Extend it by interface merging for use in entity meta {@link Entity#getSyncedMeta}, {@link Entity#setSyncedMeta}, etc.
+   */
+  export interface ICustomEntitySyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in entity stream synced meta {@link Entity#getStreamSyncedMeta}, {@link Entity#setStreamSyncedMeta}, etc.
+   */
+  export interface ICustomEntityStreamSyncedMeta {}
+
+  /**
    * Extend it by merging interfaces for use in player meta {@link Player#getMeta}, {@link Player#setMeta}, etc.
    */
-  export interface ICustomPlayerMeta {}
+  export interface ICustomPlayerMeta extends ICustomEntityMeta {}
 
   /**
    * Extend it by interface merging for use in player meta {@link Player#getSyncedMeta}, {@link Player#setSyncedMeta}, etc.
    */
-  export interface ICustomPlayerSyncedMeta {}
+  export interface ICustomPlayerSyncedMeta extends ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player stream synced meta {@link Player#getStreamSyncedMeta}, {@link Player#setStreamSyncedMeta}, etc.
    */
-  export interface ICustomPlayerStreamSyncedMeta {}
+  export interface ICustomPlayerStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player local meta {@link Player#getLocalMeta}, {@link Player#setLocalMeta}, etc.
@@ -591,12 +606,29 @@ declare module "alt-server" {
      */
     public static getByID(id: number): Entity | null;
 
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K, value: ICustomEntityMeta[K]): void;
+    /** @deprecated */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityMeta, K, V>): void;
+
+    public deleteMeta(key: string): void;
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K): void;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomEntityMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K): ICustomEntityMeta[K] | undefined;
+    /** @deprecated */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public hasMeta(key: string): boolean;
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K): boolean;
+
     /**
      * Removes the specified key and the data connected to that specific key.
      *
      * @param key The key of the value to remove.
      */
     public deleteSyncedMeta(key: string): void;
+    public deleteSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K): void;
 
     /**
      * Gets a value using the specified key.
@@ -604,7 +636,10 @@ declare module "alt-server" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getSyncedMeta<T = any>(key: string): T | undefined;
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomEntitySyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K): ICustomEntitySyncedMeta[K] | undefined;
+    /** @deprecated */
+    public getSyncedMeta<V extends any>(key: string): V | undefined;
 
     /**
      * Determines whether contains the specified key.
@@ -613,6 +648,7 @@ declare module "alt-server" {
      * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasSyncedMeta(key: string): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K): boolean;
 
     /**
      * Stores the given value with the specified key.
@@ -622,7 +658,10 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setSyncedMeta<T = any>(key: string, value: T): void;
+    public setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomEntitySyncedMeta, K>): void;
+    public setSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K, value: ICustomEntitySyncedMeta[K]): void;
+    /** @deprecated */
+    public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntitySyncedMeta, K, V>): void;
 
     /**
      * Removes the specified key and the data connected to that specific key.
@@ -630,6 +669,7 @@ declare module "alt-server" {
      * @param key The key of the value to remove.
      */
     public deleteStreamSyncedMeta(key: string): void;
+    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K): void;
 
     /**
      * Gets a value using the specified key.
@@ -637,7 +677,10 @@ declare module "alt-server" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getStreamSyncedMeta<T = any>(key: string): T | undefined;
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomEntityStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K): ICustomEntityStreamSyncedMeta[K] | undefined;
+    /** @deprecated */
+    public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
 
     /**
      * Determines whether contains the specified key.
@@ -646,6 +689,7 @@ declare module "alt-server" {
      * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasStreamSyncedMeta(key: string): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
     /**
      * Stores the given value with the specified key.
@@ -655,7 +699,10 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setStreamSyncedMeta<T = any>(key: string, value: T): void;
+    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityStreamSyncedMeta, K>): void;
+    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K, value: ICustomEntityStreamSyncedMeta[K]): void;
+    /** @deprecated */
+    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityStreamSyncedMeta, K, V>): void;
 
     /**
      * Changes network owner to the specified player.
