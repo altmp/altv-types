@@ -978,15 +978,15 @@ declare module "alt-shared" {
    *
    * See {@link ICustomGlobalMeta} for an example of use
    */
-   export interface ICustomEntitySyncedMeta {}
+  export interface ICustomEntitySyncedMeta {}
 
-   /**
-    * Extend it by interface merging for use in entity stream synced meta {@link Entity#getStreamSyncedMeta}, {@link Entity#setStreamSyncedMeta}, etc.
-    * See {@link ICustomGlobalMeta} for an example of use
-    */
-   export interface ICustomEntityStreamSyncedMeta {}
+  /**
+   * Extend it by interface merging for use in entity stream synced meta {@link Entity#getStreamSyncedMeta}, {@link Entity#setStreamSyncedMeta}, etc.
+   * See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomEntityStreamSyncedMeta {}
 
-   /**
+  /**
    * Extend it by interface merging for use in player meta {@link Player#getSyncedMeta}, {@link Player#setSyncedMeta}, etc.
    *
    * See {@link ICustomGlobalMeta} for an example of use
