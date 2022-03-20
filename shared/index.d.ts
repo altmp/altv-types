@@ -927,6 +927,17 @@ declare module "alt-shared" {
       : VDefault
   );
 
+  /**
+   * This is an internal utility type and you probably don't need it
+   *
+   * Extracts string keys from interface
+   *
+   * @hidden
+   */
+  type ExtractStringKeys<TInterface extends Record<any, any>> = {
+    [K in keyof TInterface as Extract<K, string>]: TInterface[K];
+  }
+
   export interface IVector2 {
     readonly x: number;
     readonly y: number;
@@ -946,23 +957,7 @@ declare module "alt-shared" {
   /**
    * Extend it using interface merging for using in alt.{@link getMeta}, alt.{@link setMeta}, etc.
    */
-  export interface ICustomGlobalMeta {}
-
-  /**
-   * Extracts string keys from interface
-   */
-  type ExtractStringKeys<T extends Record<any, any>> = {
-    [K in keyof T as Extract<K, string>]: T[K];
-  };
-
-  /**
-   * Gets a type of value for key from meta interface
-   *
-   * * T - meta interface
-   * * K - meta key
-   * * VDefault - default K (meta value) if key is missing in T (meta interface).
-   */
-  type GetMetaKeyValue<T extends Record<any, any>, K, VDefault = unknown> = K extends keyof T ? T[K] : VDefault;
+  export interface ICustomGlobalMeta { }
 
   export class Vector3 {
     public readonly x: number;
@@ -1547,10 +1542,10 @@ declare module "alt-shared" {
    * @param key The key of the value to store.
    * @param value The value to store.
    */
-  export function setMeta<K extends string>(key: K, value: GetMetaKeyValue<ICustomGlobalMeta, K>): void;
+  export function setMeta<K extends string>(key: K, value: InterfaceValueByKey<ICustomGlobalMeta, K>): void;
   export function setMeta<K extends keyof ExtractStringKeys<ICustomGlobalMeta>>(key: K, value: ICustomGlobalMeta[K]): void;
   /** @deprecated */
-  export function setMeta<V extends any, K extends string = string>(key: K, value: GetMetaKeyValue<ICustomGlobalMeta, K, V>): void;
+  export function setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomGlobalMeta, K, V>): void;
 
   /**
    * Gets a value using the specified key.
