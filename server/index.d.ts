@@ -491,45 +491,11 @@ declare module "alt-server" {
   export interface ICustomEntityMeta {}
 
   /**
-   * Extend it by interface merging for use in entity meta {@link Entity#getSyncedMeta}, {@link Entity#setSyncedMeta}, etc.
-   *
-   * See {@link shared.ICustomGlobalMeta} for an example of use
-   */
-  export interface ICustomEntitySyncedMeta {}
-
-  /**
-   * Extend it by interface merging for use in entity stream synced meta {@link Entity#getStreamSyncedMeta}, {@link Entity#setStreamSyncedMeta}, etc.
-   * See {@link shared.ICustomGlobalMeta} for an example of use
-   */
-  export interface ICustomEntityStreamSyncedMeta {}
-
-  /**
    * Extend it by merging interfaces for use in player meta {@link Player#getMeta}, {@link Player#setMeta}, etc.
    *
    * See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerMeta extends ICustomEntityMeta {}
-
-  /**
-   * Extend it by interface merging for use in player meta {@link Player#getSyncedMeta}, {@link Player#setSyncedMeta}, etc.
-   *
-   * See {@link shared.ICustomGlobalMeta} for an example of use
-   */
-  export interface ICustomPlayerSyncedMeta extends ICustomEntitySyncedMeta {}
-
-  /**
-   * Extend it by interface merging for use in player stream synced meta {@link Player#getStreamSyncedMeta}, {@link Player#setStreamSyncedMeta}, etc.
-   *
-   * See {@link shared.ICustomGlobalMeta} for an example of use
-   */
-  export interface ICustomPlayerStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
-
-  /**
-   * Extend it by interface merging for use in player local meta {@link Player#getLocalMeta}, {@link Player#setLocalMeta}, etc.
-   *
-   * See {@link shared.ICustomGlobalMeta} for an example of use
-   */
-  export interface ICustomPlayerLocalMeta {}
 
   /**
    * The root directory of the server.
@@ -641,7 +607,7 @@ declare module "alt-server" {
      * @param key The key of the value to remove.
      */
     public deleteSyncedMeta(key: string): void;
-    public deleteSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K): void;
+    public deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): void;
 
     /**
      * Gets a value using the specified key.
@@ -649,8 +615,8 @@ declare module "alt-server" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomEntitySyncedMeta>): unknown;
-    public getSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K): ICustomEntitySyncedMeta[K] | undefined;
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntitySyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): shared.ICustomEntitySyncedMeta[K] | undefined;
     /** @deprecated */
     public getSyncedMeta<V extends any>(key: string): V | undefined;
 
@@ -661,7 +627,7 @@ declare module "alt-server" {
      * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasSyncedMeta(key: string): boolean;
-    public hasSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
     /**
      * Stores the given value with the specified key.
@@ -671,10 +637,10 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomEntitySyncedMeta, K>): void;
-    public setSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntitySyncedMeta>>(key: K, value: ICustomEntitySyncedMeta[K]): void;
+    public setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntitySyncedMeta, K>): void;
+    public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K, value: shared.ICustomEntitySyncedMeta[K]): void;
     /** @deprecated */
-    public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntitySyncedMeta, K, V>): void;
+    public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntitySyncedMeta, K, V>): void;
 
     /**
      * Removes the specified key and the data connected to that specific key.
@@ -682,7 +648,7 @@ declare module "alt-server" {
      * @param key The key of the value to remove.
      */
     public deleteStreamSyncedMeta(key: string): void;
-    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K): void;
+    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): void;
 
     /**
      * Gets a value using the specified key.
@@ -690,8 +656,8 @@ declare module "alt-server" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomEntityStreamSyncedMeta>): unknown;
-    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K): ICustomEntityStreamSyncedMeta[K] | undefined;
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntityStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): shared.ICustomEntityStreamSyncedMeta[K] | undefined;
     /** @deprecated */
     public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
 
@@ -702,7 +668,7 @@ declare module "alt-server" {
      * @returns True if the meta table contains any data at the specified key or False if not
      */
     public hasStreamSyncedMeta(key: string): boolean;
-    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
     /**
      * Stores the given value with the specified key.
@@ -712,10 +678,10 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityStreamSyncedMeta, K>): void;
-    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomEntityStreamSyncedMeta>>(key: K, value: ICustomEntityStreamSyncedMeta[K]): void;
+    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntityStreamSyncedMeta, K>): void;
+    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K, value: shared.ICustomEntityStreamSyncedMeta[K]): void;
     /** @deprecated */
-    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityStreamSyncedMeta, K, V>): void;
+    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntityStreamSyncedMeta, K, V>): void;
 
     /**
      * Changes network owner to the specified player.
@@ -1115,13 +1081,13 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setLocalMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerLocalMeta, K>): void;
-    public setLocalMeta<K extends shared.ExtractStringKeys<ICustomPlayerLocalMeta>>(key: K, value: ICustomPlayerLocalMeta[K]): void;
+    public setLocalMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerLocalMeta, K>): void;
+    public setLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K, value: shared.ICustomPlayerLocalMeta[K]): void;
     /** @deprecated */
-    public setLocalMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerLocalMeta, K, V>): void;
+    public setLocalMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerLocalMeta, K, V>): void;
 
     public deleteLocalMeta(key: string): void;
-    public deleteLocalMeta<K extends shared.ExtractStringKeys<ICustomPlayerLocalMeta>>(key: K): void;
+    public deleteLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): void;
 
     /**
      * Gets a value using the specified key.
@@ -1129,13 +1095,13 @@ declare module "alt-server" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getLocalMeta<K extends string>(key: Exclude<K, keyof ICustomPlayerLocalMeta>): unknown;
-    public getLocalMeta<K extends shared.ExtractStringKeys<ICustomPlayerLocalMeta>>(key: K): ICustomPlayerLocalMeta[K] | undefined;
+    public getLocalMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerLocalMeta>): unknown;
+    public getLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): shared.ICustomPlayerLocalMeta[K] | undefined;
     /** @deprecated */
     public getLocalMeta<V extends any>(key: string): V | undefined;
 
     public hasLocalMeta(key: string): boolean;
-    public hasLocalMeta<K extends shared.ExtractStringKeys<ICustomPlayerLocalMeta>>(key: K): boolean;
+    public hasLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): boolean;
 
     // normal meta
 
@@ -1157,39 +1123,39 @@ declare module "alt-server" {
 
     // synced meta
 
-    public setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerSyncedMeta, K>): void;
-    public setSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerSyncedMeta>>(key: K, value: ICustomPlayerSyncedMeta[K]): void;
+    public setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerSyncedMeta, K>): void;
+    public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K, value: shared.ICustomPlayerSyncedMeta[K]): void;
     /** @deprecated */
-    public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerSyncedMeta, K, V>): void;
+    public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerSyncedMeta, K, V>): void;
 
     public deleteSyncedMeta(key: string): void;
-    public deleteSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerSyncedMeta>>(key: K): void;
+    public deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K): void;
 
-    public getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomPlayerSyncedMeta>): unknown;
-    public getSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerSyncedMeta>>(key: K): ICustomPlayerSyncedMeta[K] | undefined;
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerSyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K): shared.ICustomPlayerSyncedMeta[K] | undefined;
     /** @deprecated */
     public getSyncedMeta<V extends any>(key: string): V | undefined;
 
     public hasSyncedMeta(key: string): boolean;
-    public hasSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerSyncedMeta>>(key: K): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K): boolean;
 
     // stream synced meta
 
-    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerStreamSyncedMeta, K>): void;
-    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerStreamSyncedMeta>>(key: K, value: ICustomPlayerStreamSyncedMeta[K]): void;
+    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerStreamSyncedMeta, K>): void;
+    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K, value: shared.ICustomPlayerStreamSyncedMeta[K]): void;
     /** @deprecated */
-    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerStreamSyncedMeta, K, V>): void;
+    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerStreamSyncedMeta, K, V>): void;
 
     public deleteStreamSyncedMeta(key: string): void;
-    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerStreamSyncedMeta>>(key: K): void;
+    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): void;
 
-    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomPlayerStreamSyncedMeta>): unknown;
-    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerStreamSyncedMeta>>(key: K): ICustomPlayerStreamSyncedMeta[K] | undefined;
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): shared.ICustomPlayerStreamSyncedMeta[K] | undefined;
     /** @deprecated */
     public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
 
     public hasStreamSyncedMeta(key: string): boolean;
-    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<ICustomPlayerStreamSyncedMeta>>(key: K): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): boolean;
   }
 
   export class Vehicle extends Entity {
