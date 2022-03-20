@@ -2075,7 +2075,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on(eventName: string, listener: (...args: any[]) => void): void;
+  // Do not allow any function to subscribe to the alt:V event
+  export function on<K extends string>(eventName: K, listener: shared.InterfaceValueByKey<IServerEvent, K, (...args: any[]) => void, never>): void;
 
   /**
    * Subscribes to a server event with the specified listener, which only triggers once.

@@ -904,6 +904,29 @@ declare module "alt-shared" {
     All,
   }
 
+  /**
+   * This is an internal utility type and you probably don't need it
+   *
+   * Returns the value by the key in the interface or `unknown` by default
+   * if the key is not included in the interface
+   *
+   * * `VDefault?` optional value type to return if the key is not included in the interface
+   * * `VReplace?` optional value type to return if key is included in the interface
+   *
+   * @hidden
+   */
+  // prettier-ignore
+  export type InterfaceValueByKey<
+    TInterface,
+    TKey,
+    VDefault = unknown,
+    VReplace = void,
+  > = (
+    TKey extends keyof TInterface
+      ? (VReplace extends void ? TInterface[TKey] : VReplace)
+      : VDefault
+  );
+
   export interface IVector2 {
     readonly x: number;
     readonly y: number;
@@ -1738,4 +1761,7 @@ declare module "alt-shared" {
    * @returns Array of listener functions for that event.
    */
   export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+
+  /** @alpha */
+  export function stringToSHA256(string: string): string;
 }
