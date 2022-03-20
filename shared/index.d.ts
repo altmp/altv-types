@@ -936,7 +936,7 @@ declare module "alt-shared" {
    */
   type ExtractStringKeys<TInterface extends Record<any, any>> = {
     [K in keyof TInterface as Extract<K, string>]: TInterface[K];
-  }
+  };
 
   export interface IVector2 {
     readonly x: number;
@@ -957,7 +957,7 @@ declare module "alt-shared" {
   /**
    * Extend it using interface merging for using in alt.{@link getMeta}, alt.{@link setMeta}, etc.
    */
-  export interface ICustomGlobalMeta { }
+  export interface ICustomGlobalMeta {}
 
   export class Vector3 {
     public readonly x: number;
