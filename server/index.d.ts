@@ -681,6 +681,12 @@ declare module "alt-server" {
      * Detaches this entity if attached to another entity.
      */
     public detach(): void;
+
+    /** @alpha */
+    public frozen: boolean;
+
+    /** @alpha */
+    public collision: boolean;
   }
 
   export class Player extends Entity {
