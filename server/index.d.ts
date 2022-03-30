@@ -818,6 +818,7 @@ declare module "alt-server" {
     public setWeaponTintIndex(weaponHash: number, tintIndex: number): void;
 
     public setWeather(weatherType: WeatherType): void;
+    public setWeather<T extends number>(weatherType: T): void;
 
     /**
      * Spawns the player in the world.
@@ -1317,6 +1318,7 @@ declare module "alt-server" {
      * @returns The damage level of a bumper.
      */
     public getBumperDamageLevel(bumperId: VehicleBumper): VehicleBumperDamage;
+    public getBumperDamageLevel<T extends number, V extends number = VehicleBumperDamage>(bumperId: T): V;
     /**
      * Returns the damage status of a vehicle as a base64 string.
      *
@@ -1332,6 +1334,7 @@ declare module "alt-server" {
      * @returns The state of the door.
      */
     public getDoorState(doorId: VehicleDoor): VehicleDoorState;
+    public getDoorState<T extends number, V extends number = VehicleDoorState>(doorId: T): V;
     /**
      * Returns the state of a specific extra of a vehicle.
      *
@@ -1364,6 +1367,7 @@ declare module "alt-server" {
      * @returns The value of the mod type.
      */
     public getMod(modType: VehicleModType): number;
+    public getMod<T extends number>(modType: T): number;
     /**
      * Returns the amount of possible mod values for a specific mod type.
      *
@@ -1371,6 +1375,7 @@ declare module "alt-server" {
      * @returns The amount of possible mod values of a mod type.
      */
     public getModsCount(modType: VehicleModType): number;
+    public getModsCount<T extends number>(modType: T): number;
     /**
      * Returns the amount of bullet holes of a vehicle part.
      *
@@ -1378,6 +1383,7 @@ declare module "alt-server" {
      * @returns The amount of bullet holes of a vehicle part.
      */
     public getPartBulletHoles(partId: VehiclePart): number;
+    public getPartBulletHoles<T extends number>(partId: T): number;
     /**
      * Returns the damage level of a vehicle part.
      *
@@ -1385,6 +1391,7 @@ declare module "alt-server" {
      * @returns The damage level of a vehicle part.
      */
     public getPartDamageLevel(partId: VehiclePart): VehiclePartDamage;
+    public getPartDamageLevel<T extends number, V extends number = VehiclePartDamage>(partId: T): V;
     /**
      * Returns the script data of a vehicle as a base64 string.
      *
@@ -1483,6 +1490,7 @@ declare module "alt-server" {
      * @param level The damage level.
      */
     public setBumperDamageLevel(bumperId: VehicleBumper, level: VehicleBumperDamage): void;
+    public setBumperDamageLevel<T extends number, V extends number = VehicleBumperDamage>(bumperId: T, level: V): void;
     /**
      * Sets the damage status of a vehicle based on a base64 string.
      *
@@ -1498,6 +1506,7 @@ declare module "alt-server" {
      * @param state The state of the door.
      */
     public setDoorState(doorId: VehicleDoor, state: VehicleDoorState): void;
+    public setDoorState<T extends number, V extends number = VehicleDoorState>(doorId: T, state: V): void;
     /**
      * Sets the state of an extra of a vehicle.
      *
@@ -1537,6 +1546,7 @@ declare module "alt-server" {
      * @param modId The id of the mod.
      */
     public setMod(modType: VehicleModType, modId: number): void;
+    public setMod<T extends number>(modType: T, modId: number): void;
     /**
      * Applies bullet holes to a specific vehicle part.
      *
@@ -1544,6 +1554,7 @@ declare module "alt-server" {
      * @param count The amount of bullet holes.
      */
     public setPartBulletHoles(partId: VehiclePart, count: number): void;
+    public setPartBulletHoles<T extends number>(partId: T, count: number): void;
     /**
      * Sets the damage level of a vehicle part.
      *
@@ -1551,6 +1562,7 @@ declare module "alt-server" {
      * @param level The damage level.
      */
     public setPartDamageLevel(partId: VehiclePart, level: VehiclePartDamage): void;
+    public setPartDamageLevel<T extends number, V extends number = VehiclePartDamage>(partId: T, level: V): void;
     /**
      * Sets type of the rear wheels.
      *
