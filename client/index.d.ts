@@ -1823,7 +1823,8 @@ declare module "alt-client" {
   /**
    * Gets the current alt:V locale.
    */
-  export function getLocale(): string;
+  export function getLocale(): Locale;
+  export function getLocale(): `${Locale}`;
 
   /**
    * Gets the current milliseconds per game minute.
@@ -1839,6 +1840,7 @@ declare module "alt-client" {
    * @returns Permission state.
    */
   export function getPermissionState(permId: shared.Permission): PermissionState;
+  export function getPermissionState<T extends number, V extends number = PermissionState>(permId: T): V;
 
   /**
    * Gets a value of the specified statistic.
@@ -1846,6 +1848,7 @@ declare module "alt-client" {
    * @param statName Name of the statistic.
    */
   export function getStat(statName: StatName): number;
+  export function getStat(statName: `${StatName}`): number;
 
   /**
    * Returns state of console window.
@@ -1946,7 +1949,8 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function once(eventName: string, listener: (...args: any[]) => void): void;
+  // Do not allow any function to subscribe to the alt:V event
+  export function once<K extends string>(eventName: K, listener: shared.InterfaceValueByKey<IClientEvent, K, (...args: any[]) => void, never>): void;
 
   /**
    * Subscribes to a server event with the specified listener.
@@ -2027,6 +2031,7 @@ declare module "alt-client" {
    * @param statName Name of the statistic.
    */
   export function resetStat(statName: StatName): void;
+  export function resetStat(statName: `${StatName}`): void;
 
   /**
    * Freezes the camera in place so it doesn't change position or rotation.
@@ -2046,6 +2051,7 @@ declare module "alt-client" {
    * @param state Config flag state.
    */
   export function setConfigFlag(flag: ConfigFlag, state: boolean): void;
+  export function setConfigFlag(flag: `${ConfigFlag}`, state: boolean): void;
 
   /**
    * Returns the state of the specified ped config flag of the local player.
@@ -2054,6 +2060,7 @@ declare module "alt-client" {
    * @returns State of the specified config flag.
    */
   export function getConfigFlag(flag: ConfigFlag): boolean;
+  export function getConfigFlag(flag: `${ConfigFlag}`): boolean;
 
   /**
    * Returns whether the specified config flag exists.
@@ -2092,6 +2099,7 @@ declare module "alt-client" {
    * @param value Value of the statistic you want to set.
    */
   export function setStat(statName: StatName, value: number): void;
+  export function setStat(statName: `${StatName}`, value: number): void;
 
   /**
    * Sets the current weather cycle.
@@ -2348,6 +2356,7 @@ declare module "alt-client" {
    * @param position Watermarkposition.
    */
   export function setWatermarkPosition(position: WatermarkPosition): void;
+  export function setWatermarkPosition<T extends number>(position: T): void;
 
   /**
    * Represents the current client ping.
@@ -2567,6 +2576,36 @@ declare module "alt-client" {
     public scrollIntoView(alignToTop?: boolean): void;
 
     public style: Record<string, string>;
+  }
+
+  /**
+   * @alpha
+   */
+  export class Utils {
+    /**
+     * @alpha
+     */
+    public static requestModel(model: string | number, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestAnimDict(animDict: string, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestAnimSet(animSet: string, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestClipSet(clipSet: string, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
   }
 
   /**
