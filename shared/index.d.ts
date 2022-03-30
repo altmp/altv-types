@@ -968,50 +968,57 @@ declare module "alt-shared" {
    * }
    *
    * const value = alt.getMeta("numberExample") // return value: number | undefined
-   * alt.setMeta("stringExample", "value") // params key: "numberExample", value: string
+   * alt.setMeta("stringExample", "value") // key: "stringExample", value: string
    * ```
    */
   export interface ICustomGlobalMeta {}
 
-
   /**
    * Extend it by interface merging for use in {@link getSyncedMeta alt.getSyncedMeta}, {@link setSyncedMeta alt.setSyncedMeta}, etc.
    *
-   * See {@link ICustomGlobalMeta} for an example of use
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomGlobalSyncedMeta {}
 
   /**
+   * Extend it by interface merging for use in {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomBaseObjectMeta {}
+
+  /**
    * Extend it by interface merging for use in entity meta {@link Entity#getSyncedMeta}, {@link Entity#setSyncedMeta}, etc.
    *
-   * See {@link ICustomGlobalMeta} for an example of use
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in entity stream synced meta {@link Entity#getStreamSyncedMeta}, {@link Entity#setStreamSyncedMeta}, etc.
-   * See {@link ICustomGlobalMeta} for an example of use
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntityStreamSyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player meta {@link Player#getSyncedMeta}, {@link Player#setSyncedMeta}, etc.
    *
-   * See {@link ICustomGlobalMeta} for an example of use
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerSyncedMeta extends ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player stream synced meta {@link Player#getStreamSyncedMeta}, {@link Player#setStreamSyncedMeta}, etc.
    *
-   * See {@link ICustomGlobalMeta} for an example of use
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player local meta {@link Player#getLocalMeta}, {@link Player#setLocalMeta}, etc.
    *
-   * See {@link ICustomGlobalMeta} for an example of use
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerLocalMeta {}
 
@@ -1494,6 +1501,7 @@ declare module "alt-shared" {
      * @param key The key of the value to remove.
      */
     public deleteMeta(key: string): void;
+    public deleteMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
     /**
      * Gets a value using the specified key.
@@ -1501,7 +1509,10 @@ declare module "alt-shared" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getMeta<T = any>(key: string): T | undefined;
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
+    public getMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
+    /** @deprecated */
+    public getMeta<V extends any>(key: string): V | undefined;
 
     /**
      * Determines whether contains the specified key.
@@ -1510,6 +1521,7 @@ declare module "alt-shared" {
      * @returns True when element associated with the specified key is stored.
      */
     public hasMeta(key: string): boolean;
+    public hasMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
 
     /**
      * Stores the given value with the specified key.
@@ -1519,7 +1531,10 @@ declare module "alt-shared" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setMeta<T = any>(key: string, value: T): void;
+    public setMeta<K extends string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
+    public setMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
+    /** @deprecated */
+    public setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
 
     /**
      * Returns the ref count of the entity.

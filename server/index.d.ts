@@ -484,16 +484,30 @@ declare module "alt-server" {
   }
 
   /**
+   * Extend it by interface merging for use in {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomBaseObjectMeta {}
+
+  /**
+   * Extend it by merging interfaces for use in player meta {@link Blip#getMeta}, {@link Blip#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomBlipMeta extends ICustomBaseObjectMeta {}
+
+  /**
    * Extend it by interface merging for use in entity meta {@link Entity#getMeta}, {@link Entity#setMeta}, etc.
    *
-   * See {@link shared.ICustomGlobalMeta} for an example of use
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
-  export interface ICustomEntityMeta {}
+  export interface ICustomEntityMeta extends ICustomBaseObjectMeta {}
 
   /**
    * Extend it by merging interfaces for use in player meta {@link Player#getMeta}, {@link Player#setMeta}, etc.
    *
-   * See {@link shared.ICustomGlobalMeta} for an example of use
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerMeta extends ICustomEntityMeta {}
 
@@ -1963,6 +1977,20 @@ declare module "alt-server" {
     public attachedTo: Entity | null;
 
     public fade(opacity: number, duration: number): void;
+
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBlipMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): ICustomBlipMeta[K] | undefined;
+    /** @deprecated */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBlipMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K, value: ICustomBlipMeta[K]): void;
+    /** @deprecated */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBlipMeta, K, V>): void;
   }
 
   export class AreaBlip extends Blip {
@@ -2053,6 +2081,22 @@ declare module "alt-server" {
   export class Resource extends shared.Resource {
     public readonly path: string;
     public readonly config: Record<string, any>;
+  }
+
+  export class BaseObject extends shared.BaseObject {
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
+    /** @deprecated */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
+    /** @deprecated */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
 
   /**
