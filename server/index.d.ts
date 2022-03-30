@@ -484,18 +484,32 @@ declare module "alt-server" {
   }
 
   /**
-   * Extend it by interface merging for use in {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
+   * Extend it by interface merging for use in baseobject meta {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
    *
    * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomBaseObjectMeta {}
 
   /**
-   * Extend it by merging interfaces for use in player meta {@link Blip#getMeta}, {@link Blip#setMeta}, etc.
+   * Extend it by merging interfaces for use in blip meta {@link Blip#getMeta}, {@link Blip#setMeta}, etc.
    *
    * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomBlipMeta extends ICustomBaseObjectMeta {}
+
+  /**
+   * Extend it by merging interfaces for use in colshape meta {@link Colshape#getMeta}, {@link Colshape#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomColshapeMeta extends ICustomBaseObjectMeta {}
+
+  /**
+   * Extend it by merging interfaces for use in checkpoint meta {@link Checkpoint#getMeta}, {@link Checkpoint#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomCheckpointMeta extends ICustomColshapeMeta {}
 
   /**
    * Extend it by interface merging for use in entity meta {@link Entity#getMeta}, {@link Entity#setMeta}, etc.
@@ -2018,6 +2032,20 @@ declare module "alt-server" {
     public isEntityIn(entity: Entity): boolean;
 
     public isPointIn(position: shared.IVector3): boolean;
+
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomColshapeMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): ICustomColshapeMeta[K] | undefined;
+    /** @deprecated See {@link ICustomColshapeMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K, value: ICustomColshapeMeta[K]): void;
+    /** @deprecated See {@link ICustomColshapeMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K, V>): void;
   }
 
   export class ColshapeCylinder extends Colshape {
@@ -2047,6 +2075,20 @@ declare module "alt-server" {
   export class Checkpoint extends Colshape {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
     constructor(type: number, pos: shared.IVector3, radius: number, height: number, color: shared.RGBA);
+
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomCheckpointMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): ICustomCheckpointMeta[K] | undefined;
+    /** @deprecated See {@link ICustomCheckpointMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K, value: ICustomCheckpointMeta[K]): void;
+    /** @deprecated See {@link ICustomCheckpointMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K, V>): void;
   }
 
   export class VoiceChannel extends shared.BaseObject {

@@ -955,7 +955,7 @@ declare module "alt-shared" {
   }
 
   /**
-   * Extend it by interface merging for use in {@link getMeta alt.getMeta}, {@link setMeta alt.setMeta}, etc.
+   * Extend it by interface merging for use in global meta {@link getMeta alt.getMeta}, {@link setMeta alt.setMeta}, etc.
    *
    * @example
    * ```
@@ -974,49 +974,49 @@ declare module "alt-shared" {
   export interface ICustomGlobalMeta {}
 
   /**
-   * Extend it by interface merging for use in {@link getSyncedMeta alt.getSyncedMeta}, {@link setSyncedMeta alt.setSyncedMeta}, etc.
+   * Extend it by interface merging for use in global synced meta {@link getSyncedMeta alt.getSyncedMeta}, {@link setSyncedMeta alt.setSyncedMeta}, etc.
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomGlobalSyncedMeta {}
 
   /**
-   * Extend it by interface merging for use in {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
+   * Extend it by interface merging for use in baseobject meta {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
    *
    * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomBaseObjectMeta {}
 
   /**
-   * Extend it by interface merging for use in entity meta {@link Entity#getSyncedMeta}, {@link Entity#setSyncedMeta}, etc.
+   * Extend it by interface merging for use in entity synced meta (class `Entity` on client & server, e.g. `entity.getSyncedMeta`)
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntitySyncedMeta {}
 
   /**
-   * Extend it by interface merging for use in entity stream synced meta {@link Entity#getStreamSyncedMeta}, {@link Entity#setStreamSyncedMeta}, etc.
+   * Extend it by interface merging for use in entity stream synced meta (class `Entity` on client & server, e.g. `entity.getStreamSyncedMeta`)
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntityStreamSyncedMeta {}
 
   /**
-   * Extend it by interface merging for use in player meta {@link Player#getSyncedMeta}, {@link Player#setSyncedMeta}, etc.
+   * Extend it by interface merging for use in player synced meta (class `Player` on client & server, e.g. `player.getSyncedMeta`)
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerSyncedMeta extends ICustomEntitySyncedMeta {}
 
   /**
-   * Extend it by interface merging for use in player stream synced meta {@link Player#getStreamSyncedMeta}, {@link Player#setStreamSyncedMeta}, etc.
+   * Extend it by interface merging for use in player stream synced meta (class `Player` on client & server, e.g. `player.getStreamSyncedMeta`)
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
 
   /**
-   * Extend it by interface merging for use in player local meta {@link Player#getLocalMeta}, {@link Player#setLocalMeta}, etc.
+   * Extend it by interface merging for use in player local meta (class `Player` on client & server, e.g. `player.getLocalMeta`)
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
