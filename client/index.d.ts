@@ -349,7 +349,7 @@ declare module "alt-client" {
    * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
 
-  export interface ICustomBaseObjectMeta {}
+  export interface ICustomBaseObjectMeta extends shared.ICustomBaseObjectMeta {}
   /**
    * Extend it by merging interfaces for use in blip meta {@link Blip#getMeta}, {@link Blip#setMeta}, etc.
    *
@@ -370,6 +370,13 @@ declare module "alt-client" {
    * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomWebViewMeta extends ICustomBaseObjectMeta {}
+
+  /**
+   * Extend it by merging interfaces for use in audio meta {@link Audio#getMeta}, {@link Audio#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomAudioMeta extends ICustomBaseObjectMeta {}
 
   /**
    * Extend it by interface merging for use in entity meta {@link Entity#getMeta}, {@link Entity#setMeta}, etc.
@@ -443,6 +450,20 @@ declare module "alt-client" {
 
     public on(event: "streamEnded", callback: () => void): void;
     public on(event: "error", callback: (code: number, message: string) => void): void;
+
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomAudioMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomAudioMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomAudioMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomAudioMeta>>(key: K): ICustomAudioMeta[K] | undefined;
+    /** @deprecated See {@link ICustomAudioMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomAudioMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomAudioMeta>>(key: K, value: ICustomAudioMeta[K]): void;
+    /** @deprecated See {@link ICustomAudioMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomAudioMeta, K, V>): void;
   }
 
   export class WorldObject extends shared.BaseObject {

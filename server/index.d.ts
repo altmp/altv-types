@@ -488,7 +488,7 @@ declare module "alt-server" {
    *
    * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
-  export interface ICustomBaseObjectMeta {}
+  export interface ICustomBaseObjectMeta extends shared.ICustomBaseObjectMeta {}
 
   /**
    * Extend it by merging interfaces for use in blip meta {@link Blip#getMeta}, {@link Blip#setMeta}, etc.
@@ -510,6 +510,13 @@ declare module "alt-server" {
    * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
    */
   export interface ICustomCheckpointMeta extends ICustomColshapeMeta {}
+
+  /**
+   * Extend it by merging interfaces for use in voice channel meta {@link VoiceChannel#getMeta}, {@link VoiceChannel#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVoiceChannelMeta extends ICustomBaseObjectMeta {}
 
   /**
    * Extend it by interface merging for use in entity meta {@link Entity#getMeta}, {@link Entity#setMeta}, etc.
@@ -2113,6 +2120,20 @@ declare module "alt-server" {
     public removePlayer(player: Player): void;
 
     public unmutePlayer(player: Player): void;
+
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomVoiceChannelMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomVoiceChannelMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomVoiceChannelMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomVoiceChannelMeta>>(key: K): ICustomVoiceChannelMeta[K] | undefined;
+    /** @deprecated See {@link ICustomVoiceChannelMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomVoiceChannelMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomVoiceChannelMeta>>(key: K, value: ICustomVoiceChannelMeta[K]): void;
+    /** @deprecated See {@link ICustomVoiceChannelMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomVoiceChannelMeta, K, V>): void;
 
     public readonly players: Array<Player>;
 
