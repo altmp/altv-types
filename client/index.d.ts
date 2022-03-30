@@ -2495,6 +2495,36 @@ declare module "alt-client" {
   }
 
   /**
+   * @alpha
+   */
+  export class Utils {
+    /**
+     * @alpha
+     */
+    public static requestModel(model: string | number, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestAnimDict(animDict: string, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestAnimSet(animSet: string, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestClipSet(clipSet: string, timeout?: number): Promise<void>;
+
+    /**
+     * @alpha
+     */
+    public static requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
+  }
+
+  /**
    * Gets a value using the specified key.
    *
    * @param key The key of the value to get.

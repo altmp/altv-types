@@ -1724,6 +1724,16 @@ declare module "alt-shared" {
   }
 
   /**
+   * @alpha
+   */
+  export class Utils {
+    /**
+     * @alpha
+     */
+    public static wait(timeout: number): Promise<void>;
+  }
+
+  /**
    * Gets all the listeners for the specified local event.
    *
    * @param eventName Name of the event or null for generic event.
