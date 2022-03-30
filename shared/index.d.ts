@@ -1511,7 +1511,7 @@ declare module "alt-shared" {
      */
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
     public getMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
     public getMeta<V extends any>(key: string): V | undefined;
 
     /**
@@ -1533,7 +1533,7 @@ declare module "alt-shared" {
      */
     public setMeta<K extends string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
     public setMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
 
     /**
@@ -1593,7 +1593,7 @@ declare module "alt-shared" {
    */
   export function getMeta<K extends string>(key: Exclude<K, keyof ICustomGlobalMeta>): unknown;
   export function getMeta<K extends ExtractStringKeys<ICustomGlobalMeta>>(key: K): ICustomGlobalMeta[K] | undefined;
-  /** @deprecated */
+  /** @deprecated See {@link ICustomGlobalMeta} */
   export function getMeta<V extends any>(key: string): V | undefined;
 
   /**
@@ -1615,7 +1615,7 @@ declare module "alt-shared" {
    */
   export function setMeta<K extends string>(key: K, value: InterfaceValueByKey<ICustomGlobalMeta, K>): void;
   export function setMeta<K extends ExtractStringKeys<ICustomGlobalMeta>>(key: K, value: ICustomGlobalMeta[K]): void;
-  /** @deprecated */
+  /** @deprecated See {@link ICustomGlobalMeta} */
   export function setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomGlobalMeta, K, V>): void;
 
   /**
@@ -1626,7 +1626,7 @@ declare module "alt-shared" {
    */
   export function getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomGlobalSyncedMeta>): unknown;
   export function getSyncedMeta<K extends ExtractStringKeys<ICustomGlobalSyncedMeta>>(key: K): ICustomGlobalSyncedMeta[K] | undefined;
-  /** @deprecated */
+  /** @deprecated See {@link ICustomGlobalSyncedMeta} */
   export function getSyncedMeta<V extends any>(key: string): V | undefined;
 
   /**

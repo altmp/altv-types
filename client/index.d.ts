@@ -516,7 +516,7 @@ declare module "alt-client" {
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K, value: ICustomEntityMeta[K]): void;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomEntityMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityMeta, K, V>): void;
 
     public deleteMeta(key: string): void;
@@ -524,7 +524,7 @@ declare module "alt-client" {
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomEntityMeta>): unknown;
     public getMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K): ICustomEntityMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomEntityMeta} */
     public getMeta<V extends any>(key: string): V | undefined;
 
     public hasMeta(key: string): boolean;
@@ -538,7 +538,7 @@ declare module "alt-client" {
      */
     public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntitySyncedMeta>): unknown;
     public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): shared.ICustomEntitySyncedMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link shared.ICustomEntitySyncedMeta} */
     public getSyncedMeta<V extends any>(key: string): V | undefined;
 
     /**
@@ -558,7 +558,7 @@ declare module "alt-client" {
      */
     public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntityStreamSyncedMeta>): unknown;
     public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): shared.ICustomEntityStreamSyncedMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link shared.ICustomEntityStreamSyncedMeta} */
     public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
 
     /**
@@ -771,7 +771,7 @@ declare module "alt-client" {
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomPlayerMeta>>(key: K, value: ICustomPlayerMeta[K]): void;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomPlayerMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerMeta, K, V>): void;
 
     public deleteMeta(key: string): void;
@@ -779,7 +779,7 @@ declare module "alt-client" {
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomPlayerMeta>): unknown;
     public getMeta<K extends shared.ExtractStringKeys<ICustomPlayerMeta>>(key: K): ICustomPlayerMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomPlayerMeta} */
     public getMeta<V extends any>(key: string): V | undefined;
 
     public hasMeta(key: string): boolean;
@@ -789,7 +789,7 @@ declare module "alt-client" {
 
     public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerSyncedMeta>): unknown;
     public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K): shared.ICustomPlayerSyncedMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link shared.ICustomPlayerSyncedMeta} */
     public getSyncedMeta<V extends any>(key: string): V | undefined;
 
     public hasSyncedMeta(key: string): boolean;
@@ -799,7 +799,7 @@ declare module "alt-client" {
 
     public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerStreamSyncedMeta>): unknown;
     public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): shared.ICustomPlayerStreamSyncedMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link shared.ICustomPlayerStreamSyncedMeta} */
     public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
 
     public hasStreamSyncedMeta(key: string): boolean;
@@ -1574,12 +1574,12 @@ declare module "alt-client" {
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomBlipMeta>): unknown;
     public getMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): ICustomBlipMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomBlipMeta} */
     public getMeta<V extends any>(key: string): V | undefined;
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBlipMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K, value: ICustomBlipMeta[K]): void;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomBlipMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBlipMeta, K, V>): void;
   }
 
@@ -2643,12 +2643,12 @@ declare module "alt-client" {
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
     public getMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
     public getMeta<V extends any>(key: string): V | undefined;
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
-    /** @deprecated */
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
 
@@ -2660,7 +2660,7 @@ declare module "alt-client" {
    */
   export function getLocalMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerLocalMeta>): unknown;
   export function getLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): shared.ICustomPlayerLocalMeta[K] | undefined;
-  /** @deprecated */
+  /** @deprecated See {@link shared.ICustomPlayerLocalMeta} */
   export function getLocalMeta<V extends any>(key: string): V | undefined;
 
   export function hasLocalMeta(key: string): boolean;
