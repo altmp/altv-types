@@ -2045,7 +2045,10 @@ declare module "alt-server" {
    * @param key The key of the value to store.
    * @param value The value to store.
    */
-  export function setSyncedMeta<T = any>(key: string, value: T): void;
+  export function setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomGlobalSyncedMeta, K>): void;
+  export function setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomGlobalSyncedMeta>>(key: K, value: shared.ICustomGlobalSyncedMeta[K]): void;
+  /** @deprecated */
+  export function setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomGlobalSyncedMeta, K, V>): void;
 
   /**
    * Removes the specified key and the data connected to that specific key.
@@ -2053,6 +2056,7 @@ declare module "alt-server" {
    * @param key The key of the value to remove.
    */
   export function deleteSyncedMeta(key: string): void;
+  export function deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomGlobalSyncedMeta>>(key: K): void;
 
   /**
    * Emits specified event to specific client.

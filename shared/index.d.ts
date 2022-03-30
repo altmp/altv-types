@@ -973,6 +973,14 @@ declare module "alt-shared" {
    */
   export interface ICustomGlobalMeta {}
 
+
+  /**
+   * Extend it by interface merging for use in {@link getSyncedMeta alt.getSyncedMeta}, {@link setSyncedMeta alt.setSyncedMeta}, etc.
+   *
+   * See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomGlobalSyncedMeta {}
+
   /**
    * Extend it by interface merging for use in entity meta {@link Entity#getSyncedMeta}, {@link Entity#setSyncedMeta}, etc.
    *
@@ -1601,7 +1609,10 @@ declare module "alt-shared" {
    * @param key The key of the value to get.
    * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getSyncedMeta<T = any>(key: string): T | undefined;
+  export function getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomGlobalSyncedMeta>): unknown;
+  export function getSyncedMeta<K extends ExtractStringKeys<ICustomGlobalSyncedMeta>>(key: K): ICustomGlobalSyncedMeta[K] | undefined;
+  /** @deprecated */
+  export function getSyncedMeta<V extends any>(key: string): V | undefined;
 
   /**
    * Determines whether contains the specified key.
@@ -1610,6 +1621,7 @@ declare module "alt-shared" {
    * @returns True if the meta table contains any data at the specified key or False if not
    */
   export function hasSyncedMeta(key: string): boolean;
+  export function hasSyncedMeta<K extends ExtractStringKeys<ICustomGlobalSyncedMeta>>(key: K): boolean;
 
   /**
    * Clears a timer set with the {@link everyTick} function.
