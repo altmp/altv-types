@@ -399,8 +399,24 @@ declare module "alt-client" {
    */
   export interface ICustomLocalPlayerMeta extends ICustomPlayerMeta {}
 
+  export class BaseObject extends shared.BaseObject {
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+  }
+
   /** @beta */
-  export class Audio extends shared.BaseObject {
+  export class Audio extends BaseObject {
     /**
      * Creates a new Audio instance.
      *
@@ -466,7 +482,7 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomAudioMeta, K, V>): void;
   }
 
-  export class WorldObject extends shared.BaseObject {
+  export class WorldObject extends BaseObject {
     /**
      * Object position
      */
@@ -1281,7 +1297,7 @@ declare module "alt-client" {
     public static getByScriptID(scriptID: number): Vehicle | null;
   }
 
-  export class WebView extends shared.BaseObject {
+  export class WebView extends BaseObject {
     /** View visibility state */
     public isVisible: boolean;
     /** View URL */
@@ -2253,7 +2269,7 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
-  export class WebSocketClient extends shared.BaseObject {
+  export class WebSocketClient extends BaseObject {
     public autoReconnect: boolean;
 
     public perMessageDeflate: boolean;
@@ -2370,7 +2386,7 @@ declare module "alt-client" {
    */
   export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
-  export class HttpClient extends shared.BaseObject {
+  export class HttpClient extends BaseObject {
     public constructor();
 
     public setExtraHeader(header: string, value: string): void;
@@ -2540,7 +2556,7 @@ declare module "alt-client" {
     public createTextNode(text: string): RmlElement;
   }
 
-  export class RmlElement extends shared.BaseObject {
+  export class RmlElement extends BaseObject {
     public on(eventName: string, func: (...args: any[]) => void): void;
 
     public off(eventName: string, func: (...args: any[]) => void): void;
@@ -2718,22 +2734,6 @@ declare module "alt-client" {
      * @alpha
      */
     public static requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
-  }
-
-  export class BaseObject extends shared.BaseObject {
-    public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
-
-    public hasMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
-
-    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
-    public getMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
-    /** @deprecated See {@link ICustomBaseObjectMeta} */
-    public getMeta<V extends any>(key: string): V | undefined;
-
-    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
-    public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
-    /** @deprecated See {@link ICustomBaseObjectMeta} */
-    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
 
   /**

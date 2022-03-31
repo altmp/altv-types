@@ -541,7 +541,23 @@ declare module "alt-server" {
 
   export const globalDimension: number;
 
-  export class WorldObject extends shared.BaseObject {
+  export class BaseObject extends shared.BaseObject {
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
+
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+  }
+
+  export class WorldObject extends BaseObject {
     /**
      * Object dimension.
      *
@@ -2098,7 +2114,7 @@ declare module "alt-server" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K, V>): void;
   }
 
-  export class VoiceChannel extends shared.BaseObject {
+  export class VoiceChannel extends BaseObject {
     /**
      * Creates a new voice channel.
      *
@@ -2144,22 +2160,6 @@ declare module "alt-server" {
   export class Resource extends shared.Resource {
     public readonly path: string;
     public readonly config: Record<string, any>;
-  }
-
-  export class BaseObject extends shared.BaseObject {
-    public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
-
-    public hasMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
-
-    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
-    public getMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
-    /** @deprecated See {@link ICustomBaseObjectMeta} */
-    public getMeta<V extends any>(key: string): V | undefined;
-
-    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
-    public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
-    /** @deprecated See {@link ICustomBaseObjectMeta} */
-    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
 
   /**
