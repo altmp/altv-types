@@ -2505,7 +2505,7 @@ declare module "alt-client" {
   /**
    * @alpha
    */
-  export class Utils {
+  export class Utils extends shared.Utils {
     /**
      * @alpha
      */
