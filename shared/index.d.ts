@@ -1365,11 +1365,17 @@ declare module "alt-shared" {
      * @param r An r component.
      * @param g An g component.
      * @param b An b component.
-     * @param a An a component.
+     * @param a An a component. Defaults to 255.
      *
      * @remarks The RGBA values are allowed to range from 0 to 255.
      */
-    constructor(r: number, g: number, b: number, a: number);
+    constructor(r: number, g: number, b: number, a?: number);
+
+    constructor(array: [r: number, g: number, b: number, a?: number]);
+
+    constructor(rgba: { r: number; g: number; b: number; a?: number });
+
+    public toArray(): [r: number, g: number, b: number, a: number];
   }
 
   export class File {
