@@ -1475,6 +1475,13 @@ declare module "alt-client" {
     public sprite: shared.BlipSprite;
 
     public tickVisible: boolean;
+    
+    /**
+     * Returns whether the blip was created on serverside (false for clientside blips)
+     *
+     * @alpha 
+     */
+    public readonly isRemote: boolean;
 
     public fade(opacity: number, duration: number): void;
   }
