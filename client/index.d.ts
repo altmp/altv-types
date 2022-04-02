@@ -2326,9 +2326,19 @@ declare module "alt-client" {
 
   export function loadRmlFont(path: string, name: string, italic?: boolean, bold?: boolean): void;
 
+  /**
+   * Converts the world position into screen coordinates
+   *
+   * @returns Screen coordinates as x, y and z as depth
+   */
   export function worldToScreen(x: number, y: number, z: number): shared.Vector3;
+  export function worldToScreen(value: shared.IVector3): shared.Vector3;
 
+  /**
+   * Converts screen coordinates to world position
+   */
   export function screenToWorld(x: number, y: number): shared.Vector3;
+  export function screenToWorld(value: shared.IVector2): shared.Vector3;
 
   export function getCamPos(): shared.Vector3;
 
