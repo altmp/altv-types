@@ -1393,7 +1393,7 @@ declare module "alt-shared" {
      * @param filename The name of the file.
      * @param encoding The encoding of the file. If not specified, it defaults to "utf-8".
      */
-    public static read(filename: string, encoding?: FileEncoding.Utf8 | FileEncoding.Utf16): string;
+    public static read(filename: string, encoding?: FileEncoding.Utf8 | `${FileEncoding.Utf8}` | FileEncoding.Utf16 | `${FileEncoding.Utf16}`): string;
 
     /**
      * Reads content of the file.
@@ -1401,7 +1401,7 @@ declare module "alt-shared" {
      * @param filename The name of the file.
      * @param encoding The encoding of the file.
      */
-    public static read(filename: string, encoding: FileEncoding.Binary): ArrayBuffer;
+    public static read(filename: string, encoding: FileEncoding.Binary | `${FileEncoding.Binary}`): ArrayBuffer;
   }
 
   export class BaseObject {
