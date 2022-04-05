@@ -329,7 +329,7 @@ declare module "alt-client" {
     readonly id: number;
     readonly function: string;
     readonly source: string;
-    readonly sourceType: ProfileSourceType;
+    readonly sourceType: ProfileSourceType | `${ProfileSourceType}`;
     readonly line: number;
     readonly bailoutReason: string | null;
     readonly hitCount: number;
@@ -353,7 +353,7 @@ declare module "alt-client" {
      * @param category The category of the audio. Defaults to 'radio'.
      * @param play2D If the sound will be played in 2D, if false it will be 3D.
      */
-    public constructor(source: string, volume: number, category?: shared.AudioCategory, play2D?: boolean);
+    public constructor(source: string, volume: number, category?: shared.AudioCategory | `${shared.AudioCategory}`, play2D?: boolean);
 
     public source: string;
 
@@ -361,7 +361,7 @@ declare module "alt-client" {
 
     public volume: number;
 
-    public category: shared.AudioCategory;
+    public category: shared.AudioCategory | `${shared.AudioCategory}`;
 
     public readonly frontendPlay: boolean;
 
