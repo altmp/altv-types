@@ -1737,6 +1737,16 @@ declare module "alt-shared" {
      * @alpha
      */
     public static wait(timeout: number): Promise<void>;
+
+    /**
+     * Waits for the callback to return true, otherwise the promise will be rejected after timeout
+     * 
+     * @param callback If callback returns true it resolves promise.
+     * @param timeout The maximum milliseconds to wait, otherwise promise will be rejected. Defaults to 2000.
+     * 
+     * @alpha
+     */
+    public static waitFor(callback: () => boolean, timeout?: number): Promise<void>;
   }
 
   /**
