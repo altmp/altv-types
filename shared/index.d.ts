@@ -927,6 +927,17 @@ declare module "alt-shared" {
       : VDefault
   );
 
+  /**
+   * This is an internal utility type and you probably don't need it
+   *
+   * Extracts string keys from interface and transforms them to a string union
+   *
+   * @hidden
+   */
+  type ExtractStringKeys<TInterface extends Record<any, any>> = keyof {
+    [K in keyof TInterface as Extract<K, string>]: TInterface[K];
+  };
+
   export interface IVector2 {
     readonly x: number;
     readonly y: number;
@@ -942,6 +953,74 @@ declare module "alt-shared" {
     readonly name: string;
     readonly type: string;
   }
+
+  /**
+   * Extend it by interface merging for use in global meta {@link getMeta alt.getMeta}, {@link setMeta alt.setMeta}, etc.
+   *
+   * @example
+   * ```
+   * declare module "alt-shared" {
+   *   // extending interface by interface merging
+   *   export interface ICustomGlobalMeta {
+   *     numberExample: number
+   *     stringExample: string
+   *   }
+   * }
+   *
+   * const value = alt.getMeta("numberExample") // return value: number | undefined
+   * alt.setMeta("stringExample", "value") // key: "stringExample", value: string
+   * ```
+   */
+  export interface ICustomGlobalMeta {}
+
+  /**
+   * Extend it by interface merging for use in global synced meta {@link getSyncedMeta alt.getSyncedMeta}, {@link setSyncedMeta alt.setSyncedMeta}, etc.
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomGlobalSyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in baseobject meta {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
+   *
+   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomBaseObjectMeta {}
+
+  /**
+   * Extend it by interface merging for use in entity synced meta (class `Entity` on client & server, e.g. `entity.getSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomEntitySyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in entity stream synced meta (class `Entity` on client & server, e.g. `entity.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomEntityStreamSyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in player synced meta (class `Player` on client & server, e.g. `player.getSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomPlayerSyncedMeta extends ICustomEntitySyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in player stream synced meta (class `Player` on client & server, e.g. `player.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomPlayerStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in player local meta (class `Player` on client & server, e.g. `player.getLocalMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomPlayerLocalMeta {}
 
   export class Vector3 {
     public readonly x: number;
@@ -1428,6 +1507,7 @@ declare module "alt-shared" {
      * @param key The key of the value to remove.
      */
     public deleteMeta(key: string): void;
+    public deleteMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
     /**
      * Gets a value using the specified key.
@@ -1435,7 +1515,10 @@ declare module "alt-shared" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getMeta<T = any>(key: string): T | undefined;
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
+    public getMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): ICustomBaseObjectMeta[K] | undefined;
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
 
     /**
      * Determines whether contains the specified key.
@@ -1444,6 +1527,7 @@ declare module "alt-shared" {
      * @returns True when element associated with the specified key is stored.
      */
     public hasMeta(key: string): boolean;
+    public hasMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
 
     /**
      * Stores the given value with the specified key.
@@ -1453,7 +1537,10 @@ declare module "alt-shared" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setMeta<T = any>(key: string, value: T): void;
+    public setMeta<K extends string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K>): void;
+    public setMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
+    /** @deprecated See {@link ICustomBaseObjectMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
 
     /**
      * Returns the ref count of the entity.
@@ -1494,12 +1581,15 @@ declare module "alt-shared" {
    */
   export const debug: boolean;
 
+  // "V" generic overloads in get & set meta methods remain only for backward compatibility
+  // TODO: remove "V" generic overloads from all get & set meta methods (alt.getMeta, alt.Entity.getSyncedMeta, etc.)
   /**
    * Removes the specified key and the data connected to that specific key.
    *
    * @param key The key of the value to remove.
    */
   export function deleteMeta(key: string): void;
+  export function deleteMeta<K extends ExtractStringKeys<ICustomGlobalMeta>>(key: K): void;
 
   /**
    * Gets a value using the specified key.
@@ -1507,7 +1597,10 @@ declare module "alt-shared" {
    * @param key The key of the value to get.
    * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getMeta<T = any>(key: string): T | undefined;
+  export function getMeta<K extends string>(key: Exclude<K, keyof ICustomGlobalMeta>): unknown;
+  export function getMeta<K extends ExtractStringKeys<ICustomGlobalMeta>>(key: K): ICustomGlobalMeta[K] | undefined;
+  /** @deprecated See {@link ICustomGlobalMeta} */
+  export function getMeta<V extends any>(key: string): V | undefined;
 
   /**
    * Determines whether contains the specified key.
@@ -1516,6 +1609,7 @@ declare module "alt-shared" {
    * @returns True when element associated with the specified key is stored.
    */
   export function hasMeta(key: string): boolean;
+  export function hasMeta<K extends ExtractStringKeys<ICustomGlobalMeta>>(key: K): boolean;
 
   /**
    * Stores the given value with the specified key.
@@ -1525,7 +1619,10 @@ declare module "alt-shared" {
    * @param key The key of the value to store.
    * @param value The value to store.
    */
-  export function setMeta<T = any>(key: string, value: T): void;
+  export function setMeta<K extends string>(key: K, value: InterfaceValueByKey<ICustomGlobalMeta, K>): void;
+  export function setMeta<K extends ExtractStringKeys<ICustomGlobalMeta>>(key: K, value: ICustomGlobalMeta[K]): void;
+  /** @deprecated See {@link ICustomGlobalMeta} */
+  export function setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomGlobalMeta, K, V>): void;
 
   /**
    * Gets a value using the specified key.
@@ -1533,7 +1630,10 @@ declare module "alt-shared" {
    * @param key The key of the value to get.
    * @returns Dynamic value associated with the specified key or undefined if no data is present.
    */
-  export function getSyncedMeta<T = any>(key: string): T | undefined;
+  export function getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomGlobalSyncedMeta>): unknown;
+  export function getSyncedMeta<K extends ExtractStringKeys<ICustomGlobalSyncedMeta>>(key: K): ICustomGlobalSyncedMeta[K] | undefined;
+  /** @deprecated See {@link ICustomGlobalSyncedMeta} */
+  export function getSyncedMeta<V extends any>(key: string): V | undefined;
 
   /**
    * Determines whether contains the specified key.
@@ -1542,6 +1642,7 @@ declare module "alt-shared" {
    * @returns True if the meta table contains any data at the specified key or False if not
    */
   export function hasSyncedMeta(key: string): boolean;
+  export function hasSyncedMeta<K extends ExtractStringKeys<ICustomGlobalSyncedMeta>>(key: K): boolean;
 
   /**
    * Clears a timer set with the {@link everyTick} function.
