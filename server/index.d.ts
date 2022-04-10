@@ -409,6 +409,8 @@ declare module "alt-server" {
     connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
     /** @alpha */
     serverStarted: () => void;
+    /** @alpha */
+    requestControl: (player: Player, target: Entity) => boolean | void;
   }
 
   export interface IFireInfo {
