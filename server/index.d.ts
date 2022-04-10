@@ -410,7 +410,7 @@ declare module "alt-server" {
     /** @alpha */
     serverStarted: () => void;
     /** @alpha */
-    requestControl: (player: Player, target: Entity) => boolean | void;
+    playerRequestControl: (player: Player, target: Entity) => boolean | void;
   }
 
   export interface IFireInfo {
