@@ -544,8 +544,10 @@ declare module "alt-server" {
   export const globalDimension: number;
 
   export class BaseObject extends shared.BaseObject {
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
@@ -2017,8 +2019,10 @@ declare module "alt-server" {
 
     public fade(opacity: number, duration: number): void;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomBlipMeta>): unknown;
@@ -2058,8 +2062,10 @@ declare module "alt-server" {
 
     public isPointIn(position: shared.IVector3): boolean;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomColshapeMeta>): unknown;
@@ -2101,8 +2107,10 @@ declare module "alt-server" {
     constructor(type: number, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
     constructor(type: number, pos: shared.IVector3, radius: number, height: number, color: shared.RGBA);
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomCheckpointMeta>): unknown;
@@ -2139,8 +2147,10 @@ declare module "alt-server" {
 
     public unmutePlayer(player: Player): void;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomVoiceChannelMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomVoiceChannelMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomVoiceChannelMeta>): unknown;
