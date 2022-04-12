@@ -2277,6 +2277,9 @@ declare module "alt-client" {
    */
   export function showCursor(state: boolean): void;
 
+  /** @alpha */
+  export function isCursorVisible(): boolean;
+
   /**
    * Toggles the game controls.
    *
