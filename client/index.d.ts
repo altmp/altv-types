@@ -400,8 +400,10 @@ declare module "alt-client" {
   export interface ICustomLocalPlayerMeta extends ICustomPlayerMeta {}
 
   export class BaseObject extends shared.BaseObject {
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectMeta>): unknown;
@@ -467,8 +469,10 @@ declare module "alt-client" {
     public on(event: "streamEnded", callback: () => void): void;
     public on(event: "error", callback: (code: number, message: string) => void): void;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomAudioMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomAudioMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomAudioMeta>): unknown;
@@ -501,8 +505,10 @@ declare module "alt-client" {
     public isEntityIn(entity: Entity): boolean;
     public isPointIn(pos: shared.IVector3): boolean;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomCheckpointMeta>): unknown;
@@ -886,8 +892,10 @@ declare module "alt-client" {
      */
     public readonly currentAmmo: number;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomLocalPlayerMeta>): unknown;
@@ -1457,8 +1465,10 @@ declare module "alt-client" {
      */
     public setZoomLevel(value: number): void;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomWebViewMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomWebViewMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomWebViewMeta>): unknown;
@@ -1675,8 +1685,10 @@ declare module "alt-client" {
 
     public fade(opacity: number, duration: number): void;
 
+    public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): void;
 
+    public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): boolean;
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomBlipMeta>): unknown;
