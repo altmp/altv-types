@@ -1895,6 +1895,12 @@ declare module "alt-client" {
 
   export class Discord {
     public static readonly currentUser: IDiscordUser | null;
+    /** @alpha */
+    public static requestOAuth2Token(appid: string): boolean;
+    /** @alpha */
+    public static readonly hasOAuth2Finished: boolean;
+    /** @alpha */
+    public static readonly getOAuth2Token: string;
   }
 
   export class Voice {
