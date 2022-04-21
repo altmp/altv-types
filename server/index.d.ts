@@ -480,6 +480,8 @@ declare module "alt-server" {
     readonly wheelsColor: number;
     readonly interiorColor: number;
     readonly dashboardColor: number;
+    /** @alpha */
+    readonly hasAutoAttachTrailer: boolean;
     readonly availableModkits: Array<boolean>;
     hasExtra(extraId: number): boolean;
     hasDefaultExtra(extraId: number): boolean;
