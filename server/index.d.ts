@@ -368,6 +368,8 @@ declare module "alt-server" {
   export interface IConnectionQueueInfo extends IConnectionInfo {
     accept: () => void;
     decline: (reason: string) => void;
+    /** @alpha */
+    isAccepted: () => boolean;
   }
 
   export interface IServerEvent {
