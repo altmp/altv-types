@@ -1420,24 +1420,24 @@ declare module "alt-server" {
      * someColShape.repairVehicles = true;
      * 
      * alt.on('entityEnterColshape', (colshape, entity) => {
-     *   // Check if the entity is a vehicle or not.
-     * if (!(entity instanceof alt.Vehicle)) {
-     *    return;
-     * }
+     *       // Check if the entity is a vehicle or not.
+     *     if (!(entity instanceof alt.Vehicle)) {
+     *        return;
+     *     }
      * 
-     * // Check if it's the right colshape to do this.
-     * if (!colshape.repairVehicles) {
-     *    return;
-     * }
+     *     // Check if it's the right colshape to do this.
+     *     if (!colshape.repairVehicles) {
+     *        return;
+     *     }
      * 
-     * if (entity.destroyed) {
-     *    entity.repair();
-     *    console.log('Repaired Destroyed Vehicle');
-     *     return;
-     * }
+     *     if (entity.destroyed) {
+     *         entity.repair();
+     *         console.log('Repaired Destroyed Vehicle');
+     *         return;
+     *     }
      * 
-     * entity.engineHealth = 1000;
-     * console.log('Repaired Vehicle')
+     *     entity.engineHealth = 1000;
+     *     console.log('Repaired Vehicle')
      * });
      * ```
      * 
