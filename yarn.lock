@@ -194,9 +194,9 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-"type2docfx@git://github.com/Lhoerion/type2docfx.git#dist":
+"type2docfx@https://github.com/Lhoerion/type2docfx.git#dist":
   version "0.10.5"
-  resolved "git://github.com/Lhoerion/type2docfx.git#7cc83280793009cb40fb6608e26c94c92f73d49c"
+  resolved "https://github.com/Lhoerion/type2docfx.git#aeb77445a6c2b8f85cd79e5cc64b72cdeb610666"
   dependencies:
     commander "^5.0.0"
     fs-extra "^9.0.0"

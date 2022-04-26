@@ -1226,7 +1226,7 @@ declare module "alt-server" {
 
   /**
    * A vehicle is an extension of the Entity class.
-   * 
+   *
    * @example
    * ```js
    * // Get the vehicle a player is driving.
@@ -1262,7 +1262,7 @@ declare module "alt-server" {
 
     /**
      * Get the entity model hash.
-     * 
+     *
      * @example
      * ```js
      * const comparisonHash = alt.hash('infernus');
@@ -1278,13 +1278,13 @@ declare module "alt-server" {
 
     /**
      * Gets or sets the active radio station.
-     * 
+     *
      * @example
      * ```js
      * const someVehicle = alt.Vehicle.all[0];
      * const stationNumber = someVehicle.activeRadioStation;
      * console.log(`Current Station: ${stationNumber}`);
-     * 
+     *
      * someVehicle.activeRadioStation = 255;
      * console.log(`Vehicle radio station was turned off.`);
      * ```
@@ -1302,7 +1302,7 @@ declare module "alt-server" {
 
     /**
      * Gets or sets the custom primary color as a RGBA type.
-     * 
+     *
      * @example
      * ```js
      * const someVehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
@@ -1327,10 +1327,10 @@ declare module "alt-server" {
      * Gets or sets if the vehicle instance has custom tires.
      */
     public customTires: boolean;
-    
+
     /**
      * Applies some decoration effects to the vehicle (e.g.: It makes the hydra looking rusty or applies snow to the front bumper of `policeold1`). Does not work on every vehicle model.
-     * 
+     *
      * @example
      * ```js
      * const someVehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
@@ -1341,9 +1341,9 @@ declare module "alt-server" {
 
     /**
      * Gets or sets the dashboard color of the vehicle.
-     * 
+     *
      * Dash board colors range from 0 to 159.
-     * 
+     *
      * @example
      * ```js
      * const someVehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
@@ -1354,7 +1354,7 @@ declare module "alt-server" {
 
     /**
      * Gets the current state of the daylights.
-     * 
+     *
      * @example
      * ```js
      * const someVehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
@@ -1369,19 +1369,19 @@ declare module "alt-server" {
 
     /**
      * Gets if a vehicle is destroyed.
-     * 
+     *
      * Destroyed is set to true when specific game activities cause the engine to stop.
      * Explosions, being underwater, crashing too much, etc.
-     * 
+     *
      * @example
      * ```js
      * const someVehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
-     * 
+     *
      * if (someVehicle.destroyed) {
      *    console.log(`The elegy has been destroyed.`);
      * }
      * ```
-     * 
+     *
      */
     public readonly destroyed: boolean;
 
@@ -1392,63 +1392,63 @@ declare module "alt-server" {
 
     /**
      * Gets the current driver of the vehicle. It returns null, if there is no driver.
-     * 
+     *
      * @example
      * ```js
      * const someVehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
      * const driver = someVehicle.driver;
-     * 
+     *
      * if (driver) {
      *     console.log(`There is currently a player driving this car. ${driver.name}`);
      * }
      * ```
-     * 
+     *
      */
     public readonly driver: Player | null;
 
     /**
      * Gets or sets the current engine health.
-     * 
+     *
      * Default maximum engine health is 1000.
      * The `vehicle.repair()` function should be used to repair a vehicle if the engine health is less than or equal to zero.
-     * 
+     *
      * This example demonstrates that when you drive through a ColShape it will repair the vehicle.
-     * 
+     *
      * @example
-     * ```js 
+     * ```js
      * const someColShape = new alt.ColshapeCircle(-1295.9208984375, 86.0835189819336, 2);
      * someColShape.repairVehicles = true;
-     * 
+     *
      * alt.on('entityEnterColshape', (colshape, entity) => {
      *       // Check if the entity is a vehicle or not.
      *     if (!(entity instanceof alt.Vehicle)) {
      *        return;
      *     }
-     * 
+     *
      *     // Check if it's the right colshape to do this.
      *     if (!colshape.repairVehicles) {
      *        return;
      *     }
-     * 
+     *
      *     if (entity.destroyed) {
      *         entity.repair();
      *         console.log('Repaired Destroyed Vehicle');
      *         return;
      *     }
-     * 
+     *
      *     entity.engineHealth = 1000;
      *     console.log('Repaired Vehicle')
      * });
      * ```
-     * 
+     *
      */
     public engineHealth: number;
 
     /**
      * Gets or sets the engine state of the vehicle.
-     * 
+     *
      * The functionality of the vehicle engine can be triggered on either client-side or server-side. If you want to trigger the engine on client-side use native.setVehicleEngineOn.
-     * 
+     *
      * @example
      * ```js
      * const vehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
