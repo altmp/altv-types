@@ -369,7 +369,7 @@ declare module "alt-server" {
     accept: () => void;
     decline: (reason: string) => void;
     /** @alpha */
-    isAccepted: () => boolean;
+    readonly isAccepted: boolean;
   }
 
   export interface IServerEvent {
