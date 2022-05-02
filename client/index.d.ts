@@ -1932,6 +1932,26 @@ declare module "alt-client" {
   export function beginScaleformMovieMethodMinimap(methodName: string): boolean;
 
   /**
+   * Emits specified event across resources.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   */
+  // Do not allow to emit alt:V event name
+  export function emit<K extends string>(eventName: Exclude<K, keyof IClientEvent>, ...args: any[]): void;
+
+  /**
+   * Emits specified event across resources.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Works only from JS resource to JS resource
+   */
+  // Do not allow to emit alt:V event name
+  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IClientEvent>, ...args: any[]): void;
+
+  /**
    * Emits specified event to server.
    *
    * @param player Event is sent to specific player.

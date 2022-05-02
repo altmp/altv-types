@@ -2200,6 +2200,26 @@ declare module "alt-server" {
   export function deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomGlobalSyncedMeta>>(key: K): void;
 
   /**
+   * Emits specified event across resources.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   */
+  // Do not allow to emit alt:V event name
+  export function emit<K extends string>(eventName: Exclude<K, keyof IServerEvent>, ...args: any[]): void;
+
+  /**
+   * Emits specified event across resources.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Works only from JS resource to JS resource
+   */
+  // Do not allow to emit alt:V event name
+  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IServerEvent>, ...args: any[]): void;
+
+  /**
    * Emits specified event to specific client.
    *
    * @param player Event is sent to specific player.
