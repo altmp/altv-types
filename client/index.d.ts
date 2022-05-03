@@ -1338,7 +1338,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    public pos: shared.Vector2;
+    public readonly pos: shared.Vector2;
 
     /**
      * Creates a fullscreen WebView.
