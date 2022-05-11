@@ -848,10 +848,16 @@ declare module "alt-server" {
     public readonly isSuperJumpEnabled: boolean;
     public readonly isCrouching: boolean;
     public readonly isStealthy: boolean;
+    /** @alpha */
+    public readonly isSpawned: boolean;
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;
+    /** @alpha */
+    public readonly currentAnimationDict: number;
+    /** @alpha */
+    public readonly currentAnimationName: number;
 
     /**
      * Retrieves the player from the pool.
