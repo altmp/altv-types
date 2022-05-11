@@ -1180,6 +1180,11 @@ declare module "alt-shared" {
     public distanceTo(vector: IVector3): number;
 
     /**
+     * Calculates squared distance between vectors.
+     */
+    public distanceToSquared(vector: IVector3): number;
+
+    /**
      * Calculates angle between to vectors (in radians).
      */
     public angleTo(vector: IVector3): Vector3;
@@ -1374,6 +1379,11 @@ declare module "alt-shared" {
      * Calculates distance between vectors.
      */
     public distanceTo(vector: IVector2): number;
+
+    /**
+     * Calculates squared distance between vectors.
+     */
+    public distanceToSquared(vector: IVector2): number;
 
     /**
      * Calculates angle between to vectors (in radians).
