@@ -413,6 +413,8 @@ declare module "alt-server" {
     serverStarted: () => void;
     /** @beta */
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
+    /** @alpha */
+    animationChange: (target: Player, oldAnimDict: string, newAnimDict: string, oldAnimName: string, newAnimName: string) => void;
   }
 
   export interface IFireInfo {
