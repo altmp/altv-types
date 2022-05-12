@@ -208,7 +208,7 @@ declare module "alt-client" {
     windowResolutionChange: (oldResolution: shared.IVector2, newResolution: shared.IVector2) => void;
 
     /** @alpha */
-    animationChange: (target: Player, oldAnimDict: string, newAnimDict: string, oldAnimName: string, newAnimName: string) => void;
+    playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
   }
 
   export interface IDiscordUser {
