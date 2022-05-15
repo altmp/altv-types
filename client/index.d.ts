@@ -895,6 +895,18 @@ declare module "alt-client" {
      */
     public readonly currentAmmo: number;
 
+    /** @alpha */
+    public readonly currentWeaponRecoil: number;
+
+    /** @alpha */
+    public readonly currentWeaponSpread: number;
+
+    /** @alpha */
+    public readonly currentWeaponDamage: number;
+
+    /** @alpha */
+    public readonly currentWeaponRange: number;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): void;
 
