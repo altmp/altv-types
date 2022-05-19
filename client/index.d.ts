@@ -1719,23 +1719,23 @@ declare module "alt-client" {
     constructor(x: number, y: number, z: number);
   }
 
-  /**
-   * Create a attached blip to a ped.
-   *
-   * @param ped Index of the player in alt.Player.all.
-   */
-  export class PedBlip extends Blip {
-    constructor(ped: number);
-  }
+  // /**
+  //  * Create a attached blip to a ped.
+  //  *
+  //  * @param ped Index of the player in alt.Player.all.
+  //  */
+  // export class PedBlip extends Blip {
+  //   constructor(ped: number);
+  // }
 
-  /**
-   * Create a attached blip to a vehicle.
-   *
-   * @param vehicle Index of the vehicle in alt.Vehicle.all.
-   */
-  export class VehicleBlip extends Blip {
-    constructor(vehicle: number);
-  }
+  // /**
+  //  * Create a attached blip to a vehicle.
+  //  *
+  //  * @param vehicle Index of the vehicle in alt.Vehicle.all.
+  //  */
+  // export class VehicleBlip extends Blip {
+  //   constructor(vehicle: number);
+  // }
 
   /**
    * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
