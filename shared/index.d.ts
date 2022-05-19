@@ -1823,7 +1823,6 @@ declare module "alt-shared" {
 
   export function timeEnd(): void;
 
-  /** @beta */
   export class Resource {
     public readonly isStarted: boolean;
     public readonly type: string;
@@ -1840,13 +1839,7 @@ declare module "alt-shared" {
     public static readonly current: Resource;
   }
 
-  /**
-   * @beta
-   */
   export class Utils {
-    /**
-     * @beta
-     */
     public static wait(timeout: number): Promise<void>;
 
     /**
@@ -1854,8 +1847,6 @@ declare module "alt-shared" {
      *
      * @param callback If callback returns true it resolves promise.
      * @param timeout The maximum milliseconds to wait, otherwise promise will be rejected. Defaults to 2000.
-     *
-     * @beta
      */
     public static waitFor(callback: () => boolean, timeout?: number): Promise<void>;
   }
@@ -1868,6 +1859,5 @@ declare module "alt-shared" {
    */
   export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
-  /** @beta */
   export function stringToSHA256(string: string): string;
 }

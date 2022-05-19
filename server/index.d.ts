@@ -368,7 +368,6 @@ declare module "alt-server" {
   export interface IConnectionQueueInfo extends IConnectionInfo {
     accept: () => void;
     decline: (reason: string) => void;
-    /** @beta */
     readonly isAccepted: boolean;
   }
 
@@ -409,9 +408,7 @@ declare module "alt-server" {
     localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
     connectionQueueAdd: (connectionInfo: IConnectionQueueInfo) => void;
     connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
-    /** @beta */
     serverStarted: () => void;
-    /** @beta */
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
     /** @alpha */
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
@@ -484,7 +481,6 @@ declare module "alt-server" {
     readonly wheelsColor: number;
     readonly interiorColor: number;
     readonly dashboardColor: number;
-    /** @beta */
     readonly hasAutoAttachTrailer: boolean;
     readonly availableModkits: Array<boolean>;
     hasExtra(extraId: number): boolean;
@@ -789,10 +785,8 @@ declare module "alt-server" {
      */
     public detach(): void;
 
-    /** @beta */
     public frozen: boolean;
 
-    /** @beta */
     public collision: boolean;
   }
 
@@ -2335,7 +2329,6 @@ declare module "alt-server" {
     public readonly playerCount: number;
   }
 
-  /** @beta */
   export class Resource extends shared.Resource {
     public readonly path: string;
     public readonly config: Record<string, any>;
@@ -2598,7 +2591,6 @@ declare module "alt-server" {
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
-  /** @beta */
   export function getServerConfig(): Record<string, any>;
 
   export * from "alt-shared";

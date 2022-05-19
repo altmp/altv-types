@@ -196,15 +196,11 @@ declare module "alt-client" {
 
     /**
      * @remarks Triggers only if the old or new owner is the local player.
-     *
-     * @beta
      */
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
 
-    /** @beta */
     windowFocusChange: (isFocused: boolean) => void;
 
-    /** @beta */
     windowResolutionChange: (oldResolution: shared.IVector2, newResolution: shared.IVector2) => void;
 
     /** @alpha */
@@ -1343,15 +1339,11 @@ declare module "alt-client" {
 
     /**
      * Set and get the webview size.
-     *
-     * @beta
      */
     public size: shared.Vector2;
 
     /**
      * Set and get the webview position.
-     *
-     * @beta
      */
     public readonly pos: shared.Vector2;
 
@@ -1693,8 +1685,6 @@ declare module "alt-client" {
 
     /**
      * Returns whether the blip was created on serverside (false for clientside blips)
-     *
-     * @beta
      */
     public readonly isRemote: boolean;
 
@@ -1910,7 +1900,6 @@ declare module "alt-client" {
 
   export class Discord {
     public static readonly currentUser: IDiscordUser | null;
-    /** @beta */
     public static requestOAuth2Token(appId: string): Promise<string>;
   }
 
@@ -2314,7 +2303,6 @@ declare module "alt-client" {
    */
   export function showCursor(state: boolean): void;
 
-  /** @beta */
   export function isCursorVisible(): boolean;
 
   /**
@@ -2775,33 +2763,15 @@ declare module "alt-client" {
     public style: Record<string, string>;
   }
 
-  /**
-   * @beta
-   */
   export class Utils extends shared.Utils {
-    /**
-     * @beta
-     */
     public static requestModel(model: string | number, timeout?: number): Promise<void>;
 
-    /**
-     * @beta
-     */
     public static requestAnimDict(animDict: string, timeout?: number): Promise<void>;
 
-    /**
-     * @beta
-     */
     public static requestAnimSet(animSet: string, timeout?: number): Promise<void>;
 
-    /**
-     * @beta
-     */
     public static requestClipSet(clipSet: string, timeout?: number): Promise<void>;
 
-    /**
-     * @beta
-     */
     public static requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
   }
 
@@ -2827,8 +2797,6 @@ declare module "alt-client" {
    * @param alignY Same as alignY field in fontend.xml.
    * @param pos Same as posX and posY field in fontend.xml.
    * @param size Same as sizeX and sizeY field in fontend.xml.
-   *
-   * @beta
    */
   export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, pos: shared.IVector2, size: shared.IVector2): void;
 
@@ -2842,8 +2810,6 @@ declare module "alt-client" {
    * @param posY Same as posY field in fontend.xml.
    * @param sizeX Same as sizeX field in fontend.xml.
    * @param sizeY Same as sizeY field in fontend.xml.
-   *
-   * @beta
    */
   export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, posX: number, posY: number, sizeX: number, sizeY: number): void;
 
@@ -2851,8 +2817,6 @@ declare module "alt-client" {
    * Defines if the minimap is a rectangle to change the blip clipping.
    *
    * @param state False will clip the blips rounded to the minimap.
-   *
-   * @beta
    */
   export function setMinimapIsRectangle(state: boolean): void;
 
