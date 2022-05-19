@@ -887,8 +887,26 @@ declare module "alt-server" {
     /**
      * Gives the specified weapon to the player.
      *
+     * @remarks Amount of given ammo is shared between all weapons
+     * with the same [ammo type](https://gist.github.com/root-cause/faf41f59f7a6d818b7db0b839bd147c1).
+     * For example pistols: `weapon_pistol` and `weapon_combatpistol` have same ammo pool.
+     *
+     * See https://gist.github.com/root-cause/faf41f59f7a6d818b7db0b839bd147c1 for a list of ammo types.
+     *
+     * Some more notes about weapon ammo:
+     * - Zero ammo value doesnt remove ammo of that weapon.
+     * - Negative ammo value enables infinite ammo for this ammo type.
+     * - Amount of ammo will be added if player already have weapon with same ammo type.
+     *
+     * @example
+     * ```js
+     * player.giveWeapon(alt.hash('weapon_pistol'), 10, true); // sets amount ammo of type "AMMO_PISTOL" to 10
+     * player.giveWeapon(alt.hash('weapon_combatpistol'), 0, true); // also 10 amount of ammo, as this has the same type of ammo
+     * player.giveWeapon(alt.hash('weapon_pistol'), 10, true); // adds amount ammo of type "AMMO_PISTOL", so 20 pistol ammo in result
+     * ```
+     *
      * @param weaponHash Hash of the weapon.
-     * @param ammo Amount of ammo to spawn the weapon with.
+     * @param ammo Amount of ammo to spawn the weapon with. See remarks for more information.
      * @param equipNow Should the weapon be equipped immediately.
      */
     public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
