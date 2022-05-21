@@ -1758,6 +1758,14 @@ declare module "alt-shared" {
   export function nextTick(handler: (...args: any[]) => void): number;
 
   /**
+   * Subscribes to a custom event with the specified listener.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  export function on(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
    * Unsubscribes from a event with the specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed to.
