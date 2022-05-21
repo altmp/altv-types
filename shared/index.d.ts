@@ -1692,9 +1692,9 @@ declare module "alt-shared" {
    *
    * @remarks Keep in mind that sending invalid (destroyed) BaseObject instance
    * (for example vehicle, player, colshape, etc.)
-   * results in sending a null value
+   * results in sending a null value.
    *
-   * *Note:* this does not apply to [raw events](https://docs.altv.mp/js/articles/events/index.html#raw-events)
+   * *Note:* this does not apply to [raw events](https://docs.altv.mp/js/articles/events/index.html#raw-events).
    *
    * @example
    * ```js
