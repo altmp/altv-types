@@ -2185,6 +2185,8 @@ declare module "alt-client" {
   /**
    * The output is returned as a base64 string.
    *
+   * @remarks This function requires [Screen Capture](https://docs.altv.mp/articles/permissions.html) permission from the user.
+   *
    * @returns Return is dependent on the success of the operation.
    */
   export function takeScreenshot(): Promise<string>;
@@ -2193,6 +2195,7 @@ declare module "alt-client" {
    * The output is returned as a base64 string.
    *
    * @remarks This only takes a screenshot of the raw GTA:V window. WebViews, game overlays etc. won't be captured.
+   * This function requires [Screen Capture](https://docs.altv.mp/articles/permissions.html) permission from the user.
    *
    * @returns Return is dependent on the success of the operation.
    */
@@ -2563,6 +2566,8 @@ declare module "alt-client" {
 
   /**
    * Copy content into users clipboard.
+   *
+   * @remarks This function requires [Clipboard Access](https://docs.altv.mp/articles/permissions.html) permission from the user.
    */
   export function copyToClipboard(val: string): void;
 
