@@ -1022,6 +1022,20 @@ declare module "alt-shared" {
    */
   export interface ICustomPlayerLocalMeta {}
 
+  /**
+   * Extend it by interface merging for use in player synced meta (class `Player` on client & server, e.g. `player.getSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVehicleSyncedMeta extends ICustomEntitySyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in vehicle stream synced meta (class `Vehicle` on client & server, e.g. `vehicle.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVehicleStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
+
   export class Vector3 {
     public readonly x: number;
 
