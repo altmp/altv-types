@@ -488,58 +488,58 @@ declare module "alt-server" {
   }
 
   /**
-   * Extend it by interface merging for use in baseobject meta {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
+   * Extend it by interface merging for use in baseobject meta {@link "alt-server".BaseObject getMeta method}, {@link "alt-server".BaseObject setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomBaseObjectMeta extends shared.ICustomBaseObjectMeta {}
 
   /**
-   * Extend it by merging interfaces for use in blip meta {@link Blip#getMeta}, {@link Blip#setMeta}, etc.
+   * Extend it by interface merging for use in blip meta {@link "alt-server".Blip getMeta method}, {@link "alt-server".Blip setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomBlipMeta extends ICustomBaseObjectMeta {}
 
   /**
-   * Extend it by merging interfaces for use in colshape meta {@link Colshape#getMeta}, {@link Colshape#setMeta}, etc.
+   * Extend it by interface merging for use in colshape meta {@link "alt-server".Colshape getMeta method}, {@link "alt-server".Colshape setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomColshapeMeta extends ICustomBaseObjectMeta {}
 
   /**
-   * Extend it by merging interfaces for use in checkpoint meta {@link Checkpoint#getMeta}, {@link Checkpoint#setMeta}, etc.
+   * Extend it by interface merging for use in checkpoint meta {@link "alt-server".Checkpoint getMeta method}, {@link "alt-server".Checkpoint setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomCheckpointMeta extends ICustomColshapeMeta {}
 
   /**
-   * Extend it by merging interfaces for use in voice channel meta {@link VoiceChannel#getMeta}, {@link VoiceChannel#setMeta}, etc.
+   * Extend it by interface merging for use in voice channel meta {@link "alt-server".VoiceChannel getMeta method}, {@link "alt-server".VoiceChannel setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomVoiceChannelMeta extends ICustomBaseObjectMeta {}
 
   /**
-   * Extend it by interface merging for use in entity meta {@link Entity#getMeta}, {@link Entity#setMeta}, etc.
+   * Extend it by interface merging for use in entity meta {@link "alt-server".Entity getMeta method}, {@link "alt-server".Entity setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomEntityMeta extends ICustomBaseObjectMeta {}
 
   /**
-   * Extend it by merging interfaces for use in player meta {@link Player#getMeta}, {@link Player#setMeta}, etc.
+   * Extend it by merging interfaces for use in player meta {@link "alt-server".Player getMeta method}, {@link "alt-server".Player setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomPlayerMeta extends ICustomEntityMeta {}
 
   /**
-   * Extend it by merging interfaces for use in vehicle meta {@link Vehicle#getMeta}, {@link Vehicle#setMeta}, etc.
+   * Extend it by merging interfaces for use in vehicle meta {@link "alt-server".Vehicle getMeta method}, {@link "alt-server".Vehicle setMeta method}, etc.
    *
-   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomVehicleMeta extends ICustomEntityMeta {}
 
