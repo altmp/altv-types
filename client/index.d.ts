@@ -398,6 +398,13 @@ declare module "alt-client" {
    */
   export interface ICustomLocalPlayerMeta extends ICustomPlayerMeta {}
 
+  /**
+   * Extend it by merging interfaces for use in vehicle meta {@link "alt-client".Vehicle getMeta method}, {@link "alt-client".Vehicle setMeta method}, etc.
+   *
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
+   */
+  export interface ICustomVehicleMeta extends ICustomEntityMeta {}
+
   export class BaseObject extends shared.BaseObject {
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
@@ -1298,6 +1305,24 @@ declare module "alt-client" {
      * @alpha
      */
     //public readonly manualEngineControl: boolean;
+
+    // normal meta
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K, value: ICustomVehicleMeta[K]): void;
+    /** @deprecated See {@link ICustomVehicleMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K, V>): void;
+
+    public deleteMeta(key: string): void;
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K): void;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomVehicleMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K): ICustomVehicleMeta[K] | undefined;
+    /** @deprecated See {@link ICustomVehicleMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public hasMeta(key: string): boolean;
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K): boolean;
 
     // synced meta
 
