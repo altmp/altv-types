@@ -347,7 +347,7 @@ declare module "alt-server" {
   export interface IWeapon {
     readonly hash: number;
     readonly tintIndex: number;
-    readonly components: Array<number>;
+    readonly components: ReadonlyArray<number>;
   }
 
   export interface IConnectionInfo {
@@ -482,7 +482,7 @@ declare module "alt-server" {
     readonly interiorColor: number;
     readonly dashboardColor: number;
     readonly hasAutoAttachTrailer: boolean;
-    readonly availableModkits: Array<boolean>;
+    readonly availableModkits: ReadonlyArray<boolean>;
     hasExtra(extraId: number): boolean;
     hasDefaultExtra(extraId: number): boolean;
   }
@@ -599,7 +599,7 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: Array<Entity>;
+    public static readonly all: ReadonlyArray<Entity>;
 
     /**
      * Internal identificator of the entity which is identical on both sides.
@@ -812,11 +812,11 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static all: Array<Player>;
+    public static readonly all: ReadonlyArray<Player>;
     public armour: number;
     public currentWeapon: number;
-    public readonly weapons: Array<IWeapon>;
-    public readonly currentWeaponComponents: Array<number>;
+    public readonly weapons: ReadonlyArray<IWeapon>;
+    public readonly currentWeaponComponents: ReadonlyArray<number>;
     public readonly currentWeaponTintIndex: number;
     public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
@@ -2188,7 +2188,7 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: Array<Blip>;
+    public static readonly all: ReadonlyArray<Blip>;
 
     public routeColor: shared.RGBA;
 
@@ -2403,7 +2403,7 @@ declare module "alt-server" {
     /** @deprecated See {@link ICustomVoiceChannelMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomVoiceChannelMeta, K, V>): void;
 
-    public readonly players: Array<Player>;
+    public readonly players: ReadonlyArray<Player>;
 
     public readonly playerCount: number;
   }
