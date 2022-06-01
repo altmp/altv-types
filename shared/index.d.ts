@@ -1843,7 +1843,7 @@ declare module "alt-shared" {
    */
   export const isServer: boolean;
 
-  export function getAllResources(): Array<IResource>;
+  export function getAllResources(): ReadonlyArray<IResource>;
 
   export function time(timerName: string): void;
 
@@ -1859,13 +1859,13 @@ declare module "alt-shared" {
     public readonly name: string;
     public readonly main: string;
     public readonly exports: Record<string, any>;
-    public readonly dependencies: Array<string>;
-    public readonly dependants: Array<string>;
-    public readonly requiredPermissions: Array<Permission>;
-    public readonly optionalPermissions: Array<Permission>;
+    public readonly dependencies: ReadonlyArray<string>;
+    public readonly dependants: ReadonlyArray<string>;
+    public readonly requiredPermissions: ReadonlyArray<Permission>;
+    public readonly optionalPermissions: ReadonlyArray<Permission>;
 
     public static getByName(name: string): Resource | null;
-    public static readonly all: Array<Resource>;
+    public static readonly all: ReadonlyArray<Resource>;
     public static readonly current: Resource;
   }
 

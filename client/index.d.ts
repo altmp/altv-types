@@ -333,8 +333,8 @@ declare module "alt-client" {
     readonly bailoutReason: string | null;
     readonly hitCount: number;
     readonly timestamp: number;
-    readonly children: Array<IProfileNode> | null;
-    readonly lineTicks: Array<ILineTick> | null;
+    readonly children: ReadonlyArray<IProfileNode> | null;
+    readonly lineTicks: ReadonlyArray<ILineTick> | null;
   }
 
   export interface ILineTick {
@@ -464,7 +464,7 @@ declare module "alt-client" {
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
-    public getOutputs(): Array<Entity | number>;
+    public getOutputs(): ReadonlyArray<Entity | number>;
 
     public play(): void;
     public pause(): void;
@@ -543,7 +543,7 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: Array<Entity>;
+    public static readonly all: ReadonlyArray<Entity>;
 
     /** Entity unique id */
     public readonly id: number;
@@ -670,12 +670,12 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: Array<Player>;
+    public static readonly all: ReadonlyArray<Player>;
 
     /**
      * Array with all streamed in players.
      */
-    public static readonly streamedIn: Array<Player>;
+    public static readonly streamedIn: ReadonlyArray<Player>;
 
     /**
      * The local player instance.
@@ -699,7 +699,7 @@ declare module "alt-client" {
     /**
      * Current weapon components.
      */
-    public readonly currentWeaponComponents: Array<number>;
+    public readonly currentWeaponComponents: ReadonlyArray<number>;
 
     /**
      * Tint index for currently equipped weapon.
@@ -942,12 +942,12 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: Array<Vehicle>;
+    public static readonly all: ReadonlyArray<Vehicle>;
 
     /**
      * Array with all streamed in vehicles.
      */
-    public static readonly streamedIn: Array<Vehicle>;
+    public static readonly streamedIn: ReadonlyArray<Vehicle>;
 
     /**
      * Vehicle gear.
@@ -1662,7 +1662,7 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: Array<Blip>;
+    public static readonly all: ReadonlyArray<Blip>;
 
     public readonly scriptID: number;
 
@@ -2736,7 +2736,7 @@ declare module "alt-client" {
 
     public readonly ownerDocument: RmlDocument;
 
-    public readonly childNodes: Array<RmlElement>;
+    public readonly childNodes: ReadonlyArray<RmlElement>;
 
     public appendChild(child: RmlElement): void;
 
@@ -2752,7 +2752,7 @@ declare module "alt-client" {
 
     public hasClass(name: string): boolean;
 
-    public getClassList(): Array<string>;
+    public getClassList(): ReadonlyArray<string>;
 
     public addPseudoClass(name: string): boolean;
 
@@ -2760,7 +2760,7 @@ declare module "alt-client" {
 
     public hasPseudoClass(name: string): boolean;
 
-    public getPseudoClassList(): Array<string>;
+    public getPseudoClassList(): ReadonlyArray<string>;
 
     public setOffset(element: RmlElement, offset: shared.IVector2, fixed?: boolean): void;
 
@@ -2794,13 +2794,13 @@ declare module "alt-client" {
 
     public getElementByID(id: string): RmlElement | null;
 
-    public getElementsByTagName(tag: string): Array<RmlElement>;
+    public getElementsByTagName(tag: string): ReadonlyArray<RmlElement>;
 
-    public getElementsByClassName(className: string): Array<RmlElement>;
+    public getElementsByClassName(className: string): ReadonlyArray<RmlElement>;
 
     public querySelector(selector: string): RmlElement | null;
 
-    public querySelectorAll(selector: string): Array<RmlElement>;
+    public querySelectorAll(selector: string): ReadonlyArray<RmlElement>;
 
     public focus(): boolean;
 
