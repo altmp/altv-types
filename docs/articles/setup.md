@@ -7,7 +7,7 @@ This article will explain how to setup an alt:V server with the JS module.
 - [Latest Version of NodeJS](https://nodejs.org/en/)
 - A Code Editor (Visual Studio Code, Sublime Text etc.)
 - Basic knowledge of command prompts
-- VS Redist Latest Version installed
+- VC Redist Latest Version installed
 - Windows 10 or Linux (For running the server)
 
 ## Summary
