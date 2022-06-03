@@ -994,7 +994,7 @@ declare module "alt-shared" {
   /**
    * Extend it by interface merging for use in baseobject meta {@link BaseObject#getMeta}, {@link BaseObject#setMeta}, etc.
    *
-   * @remarks See {@link shared.ICustomGlobalMeta} for an example of use
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
    */
   export interface ICustomBaseObjectMeta {}
 
@@ -1032,6 +1032,20 @@ declare module "alt-shared" {
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerLocalMeta {}
+
+  /**
+   * Extend it by interface merging for use in player synced meta (class `Player` on client & server, e.g. `player.getSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVehicleSyncedMeta extends ICustomEntitySyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in vehicle stream synced meta (class `Vehicle` on client & server, e.g. `vehicle.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVehicleStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
 
   export class Vector3 {
     public readonly x: number;
@@ -1840,7 +1854,7 @@ declare module "alt-shared" {
    */
   export const isServer: boolean;
 
-  export function getAllResources(): Array<IResource>;
+  export function getAllResources(): ReadonlyArray<IResource>;
 
   export function time(timerName: string): void;
 
@@ -1856,13 +1870,13 @@ declare module "alt-shared" {
     public readonly name: string;
     public readonly main: string;
     public readonly exports: Record<string, any>;
-    public readonly dependencies: Array<string>;
-    public readonly dependants: Array<string>;
-    public readonly requiredPermissions: Array<Permission>;
-    public readonly optionalPermissions: Array<Permission>;
+    public readonly dependencies: ReadonlyArray<string>;
+    public readonly dependants: ReadonlyArray<string>;
+    public readonly requiredPermissions: ReadonlyArray<Permission>;
+    public readonly optionalPermissions: ReadonlyArray<Permission>;
 
     public static getByName(name: string): Resource | null;
-    public static readonly all: Array<Resource>;
+    public static readonly all: ReadonlyArray<Resource>;
     public static readonly current: Resource;
   }
 
