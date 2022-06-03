@@ -1220,7 +1220,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    //public readonly lockState: number;
+    public readonly lockState: shared.VehicleLockState;;
 
     /**
      * Vehicle daylight state.
@@ -1269,7 +1269,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    //public readonly petrolTankHealth: number;
+    public readonly petrolTankHealth: number;
 
     /**
      * Vehicle repairs count.
