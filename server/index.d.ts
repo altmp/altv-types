@@ -237,17 +237,6 @@ declare module "alt-server" {
     Unknown = 255,
   }
 
-  export const enum VehicleLockState {
-    None,
-    Unlocked,
-    Locked,
-    LockoutPlayerOnly,
-    LockPlayerInside,
-    InitiallyLocked,
-    ForceDoorsShut,
-    LockedCanBeDamaged,
-  }
-
   export const enum VehicleModType {
     Spoiler,
     FrontBumper,
@@ -1508,7 +1497,7 @@ declare module "alt-server" {
     /**
      * Gets or sets the lock state of a vehicle.
      */
-    public lockState: VehicleLockState;
+    public lockState: shared.VehicleLockState;
     /**
      * Enables or disables the manual engine control.
      */

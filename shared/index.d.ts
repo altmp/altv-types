@@ -954,6 +954,17 @@ declare module "alt-shared" {
     readonly type: string;
   }
 
+  export const enum VehicleLockState {
+    None,
+    Unlocked,
+    Locked,
+    LockoutPlayerOnly,
+    LockPlayerInside,
+    InitiallyLocked,
+    ForceDoorsShut,
+    LockedCanBeDamaged,
+  }
+
   /**
    * Extend it by interface merging for use in global meta {@link getMeta alt.getMeta}, {@link setMeta alt.setMeta}, etc.
    *
