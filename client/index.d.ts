@@ -1220,7 +1220,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    public readonly lockState: shared.VehicleLockState;;
+    public readonly lockState: shared.VehicleLockState;
 
     /**
      * Vehicle daylight state.
