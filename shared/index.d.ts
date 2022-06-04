@@ -1715,6 +1715,23 @@ declare module "alt-shared" {
   /**
    * Emits specified event across resources.
    *
+   * @remarks Keep in mind that sending invalid (destroyed) BaseObject instance
+   * (for example vehicle, player, colshape, etc.)
+   * results in sending a null value.
+   *
+   * *Note:* this does not apply to [raw events](https://docs.altv.mp/js/articles/events/index.html#raw-events).
+   *
+   * @example
+   * ```js
+   * alt.on('test', (vehicle) =>
+   *   alt.log('received vehicle:', vehicle) // vehicle object will be null here
+   * );
+   *
+   * const vehicle = new alt.Vehicle('sultan', 0, 0, 0, 0, 0, 0);
+   * vehicle.destroy(); // makes vehicle object invalid
+   * alt.emit('test', vehicle); // sends vehicle object as null and throws error
+   * ```
+   *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
