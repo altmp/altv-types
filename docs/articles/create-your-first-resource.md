@@ -117,6 +117,118 @@ alt.onServer('Server:Log', (msg1, msg2) => {
 });
 ```
 
+## Usage with typescript
+
+To utilize all the advantages of typescript 2 steps are necessary:
+1) Setup `package.json`
+2) Installing the types
+3) Create a tsconfig file
+
+### Setup package.json
+
+If your resource does not already have a `package.json`, open a terminal in your resources folder and execute the following commands, depending on your preferred package manager:
+```
+# For usage with npm
+npm init
+# For usage with yarn
+yarn init
+```
+
+After following the next wizard, open the package.json with a text editor and add the following entry:
+
+```yaml
+{
+    # Here are the values you provided in the assistent
+    "name": "altv-client",
+    ...
+    # Add this line on the bottom
+    "type: module
+}
+```
+
+### Installing the types
+
+| Type                 | Required for    |
+|----------------------|-----------------|
+| @altv/types-shared   | Client & Server |
+| @altv/types-client   | Client          |
+| @altv/types-natives  | Client          |
+| @altv/types-webview  | Client          |
+| @altv/types-worker   | Client          |
+| @altv/types-server   | Server          |
+
+Depending on the required types, these must now be installed. If the project contains scripts for server & client, all types can be installed as well:
+
+```yaml
+# Client only
+# For usage with npm
+npm i -D @altv/types-shared @altv/types-client @altv/types-natives @altv/types-webview
+# For usage with yarn
+yarn add -D @altv/types-shared @altv/types-client @altv/types-natives @altv/types-webview
+
+# Server only
+# For usage with npm
+npm i -D @altv/types-shared @altv/types-server
+# For usage with yarn
+yarn add -D @altv/types-shared @altv/types-server
+
+# Combined
+# For usage with npm
+npm i -D @altv/types-shared @altv/types-client @altv/types-natives @altv/types-webview @altv/types-shared @altv/types-server
+# For usage with yarn
+yarn add -D @altv/types-shared @altv/types-client @altv/types-natives @altv/types-webview @altv/types-shared @altv/types-server
+```
+
+### Create a tsconfig file
+
+Now create a new file in your resource folder and name it `tsconfig.json` and open it with your favorite text editor.
+
+Insert the following content and adjust it if necessary.
+Some options are not discussed here, because they are not directly related to alt:V and are already described in detail
+in the [typescript documentation](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
+
+```yaml
+{
+  "compilerOptions": {
+    "lib": [ "es5", "es6", "esnext" ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "esnext",
+
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "preserveConstEnums": true,
+
+    "noImplicitAny": true,
+    "sourceMap": false,
+
+    # If you have subfolder where all your ts files are located you can add the following line to specify the root folder 
+    "rootDir": "./Source/",
+    # Here you can set the output folder where the javascript files will be generated
+    "outDir": "./Dist/",
+
+    # Here you can add your type files
+    # Depending on your IDE you can also set "typeRoots": ["node_modules/@altv"] instead the single paths
+    "paths": {
+      "natives": [ "node_modules/@altv/types-natives" ],
+      "alt-client": [ "node_modules/@altv/types-client" ],
+      "alt-shared": [ "node_modules/@altv/types-shared" ],
+      "alt-worker": [ "node_modules/@altv/types-worker"]
+    }
+  },
+  "compileOnSave": true,
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+```
+
 ## Final Words
 
 First of all - Congrats you've written your first clientside code that logs to the 'F8' console => Open the console to see it.
