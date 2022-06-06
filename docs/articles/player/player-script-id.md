@@ -4,10 +4,11 @@ This is a way for us to identify another player or ourselves on **client-side**.
 
 A General Overview
 
--   A scriptID is unique to only the client side.
--   scriptID will provide us a way to modify the native behavior of a player.
--   They are most often used in tandem with natives.
--   They are unique per client per player.
+- A scriptID is unique to only the client side.
+- scriptID will provide us a way to modify the native behavior of a player.
+    -   The usage of the player instance is preferred to the usage of the scriptID.
+- They are most often used in tandem with natives.
+- They are unique per client per player.
     -   Do not try to share scriptID with another player. It will not work.
 
 ## How to obtain it.
@@ -50,7 +51,8 @@ alt.onServer('joined', otherPlayer => {
         // We'll unfreeze ourself in 5 seconds.
         alt.setTimeout(() => {
             alt.log(`You are unfrozen.`);
-            native.freezeEntityPosition(alt.Player.local.scriptID, false);
+            // You can preferably use the player instance itself, this will include some internal checks
+            native.freezeEntityPosition(alt.Player.local, false);
         }, 5000);
         return;
     }
