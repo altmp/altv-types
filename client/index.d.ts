@@ -2874,5 +2874,19 @@ declare module "alt-client" {
    */
   export function setMinimapIsRectangle(state: boolean): void;
 
+  /**
+   * The FocusData class is used to override the focus of the camera.
+   *
+   * @alpha
+   */
+  export class FocusData {
+    public static readonly isFocusOverriden: boolean;
+    public static readonly focusOverridePos: shared.Vector3;
+    public static readonly focusOverrideOffset: shared.Vector3;
+
+    public static overrideFocus(pos: shared.Vector3 | Entity, offset?: shared.Vector3): void;
+    public static clearFocus(): void;
+  }
+
   export * from "alt-shared";
 }
