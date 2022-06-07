@@ -2888,5 +2888,28 @@ declare module "alt-client" {
     public static clearFocus(): void;
   }
 
+  /**
+   * With the WeaponData class you can get specific weapon values and also set some of them.
+   *
+   * @alpha
+   */
+  export class WeaponData {
+    public readonly modelHash: number;
+    public readonly nameHash: number;
+    public recoilShakeAmplitude: number;
+    public recoilAccuracyMax: number;
+    public recoilAccuracyToAllowHeadshotPlayer: number;
+    public recoilRecoveryRate: number;
+    public animReloadRate: number;
+    public vehicleReloadTime: number;
+    public lockOnRange: number;
+    public accuracySpread: number;
+    public range: number;
+    public damage: number;
+    public readonly clipSize: number;
+    public readonly timeBetweenShots: number;
+    public headshotDamageModifier: number;
+  }
+
   export * from "alt-shared";
 }
