@@ -2883,8 +2883,10 @@ declare module "alt-client" {
     public static readonly isFocusOverriden: boolean;
     public static readonly focusOverridePos: shared.Vector3;
     public static readonly focusOverrideOffset: shared.Vector3;
+    public static readonly focusOverrideEntity: Entity;
 
-    public static overrideFocus(pos: shared.Vector3 | Entity, offset?: shared.Vector3): void;
+    public static overrideFocus(pos: shared.Vector3, offset?: shared.Vector3): void;
+    public static overrideFocus(pos: Entity, offset?: shared.Vector3): void;
     public static clearFocus(): void;
   }
 
