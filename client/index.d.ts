@@ -1222,6 +1222,42 @@ declare module "alt-client" {
      */
     public readonly lockState: shared.VehicleLockState;
 
+    /** @alpha */
+    public getWheelCamber(wheelIndex: number): number;
+
+    /** @alpha */
+    public setWheelCamber(wheelIndex: number, camber: number): void;
+
+    /** @alpha */
+    public getWheelTrackWidth(wheelIndex: number): number;
+
+    /** @alpha */
+    public setWheelTrackWidth(wheelIndex: number, width: number): void;
+
+    /** @alpha */
+    public getWheelHeight(wheelIndex: number): number;
+
+    /** @alpha */
+    public setwheelHeight(wheelIndex: number, height: number): void;
+
+    /** @alpha */
+    public getWheelTyreRadius(wheelIndex: number): number;
+
+    /** @alpha */
+    public setWheelTyreRadius(wheelIndex: number, radius: number): void;
+
+    /** @alpha */
+    public getWheelRimRadius(wheelIndex: number): number;
+
+    /** @alpha */
+    public setWheelRimRadius(wheelIndex: number, radius: number): void;
+
+    /** @alpha */
+    public getWheelTyreWidth(wheelIndex: number): number;
+
+    /** @alpha */
+    public setWheelTyreWidth(wheelIndex: number, width: number): void;
+
     /**
      * Vehicle daylight state.
      *
