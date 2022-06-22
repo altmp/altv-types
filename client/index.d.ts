@@ -1342,6 +1342,15 @@ declare module "alt-client" {
      */
     //public readonly manualEngineControl: boolean;
 
+    /** @alpha */
+    public engineTemperature: number;
+
+    /** @alpha */
+    public fuelLevel: number;
+
+    /** @alpha */
+    public oilLevel: number;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K>): void;
