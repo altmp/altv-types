@@ -2958,5 +2958,8 @@ declare module "alt-client" {
     public headshotDamageModifier: number;
   }
 
+  /** @alpha */
+  export function loadDefaultIpls(): void;
+
   export * from "alt-shared";
 }
