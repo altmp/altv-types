@@ -845,6 +845,8 @@ declare module "alt-server" {
     public readonly hwidExHash: string;
     public readonly authToken: string;
     /** @alpha */
+    public readonly discordID: string;
+    /** @alpha */
     public readonly currentAnimationDict: number;
     /** @alpha */
     public readonly currentAnimationName: number;
@@ -2290,6 +2292,8 @@ declare module "alt-server" {
     public playersOnly: boolean;
 
     public isEntityIn(entity: Entity): boolean;
+    /** @alpha */
+    public isEntityIn(entityID: number): boolean;
 
     public isPointIn(position: shared.IVector3): boolean;
 
