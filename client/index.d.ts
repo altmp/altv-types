@@ -851,6 +851,20 @@ declare module "alt-client" {
      */
     //public readonly isStealthy: boolean;
 
+    /**
+     * Fordwarspeed of the player
+     *
+     * @alpha
+     */
+    public readonly forwardSpeed: number;
+
+    /**
+     * Strafespeed of the player
+     *
+     * @alpha
+     */
+    public readonly strafeSpeed: number;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerMeta, K>): void;

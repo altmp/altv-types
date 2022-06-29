@@ -851,6 +851,12 @@ declare module "alt-server" {
     /** @alpha */
     public readonly currentAnimationName: number;
 
+    /** @alpha */
+    public readonly forwardSpeed: number;
+
+    /** @alpha */
+    public readonly strafeSpeed: number;
+
     /**
      * Retrieves the player from the pool.
      *
