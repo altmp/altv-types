@@ -2117,6 +2117,21 @@ declare module "alt-server" {
      */
     public boatAnchorActive: boolean;
 
+    /** @alpha */
+    public lightState: number;
+
+    /** @alpha */
+    public setTimedExplosion(state: boolean, culprit: Player, time: number): void;
+
+    /** @alpha */
+    public readonly timedExplosionTime: number;
+
+    /** @alpha */
+    public readonly timedExplosionCulprit: Player;
+
+    /** @alpha */
+    public readonly hasTimedExplosion: boolean;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K>): void;
