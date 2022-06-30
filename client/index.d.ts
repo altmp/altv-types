@@ -1252,7 +1252,7 @@ declare module "alt-client" {
     public getWheelHeight(wheelIndex: number): number;
 
     /** @alpha */
-    public setwheelHeight(wheelIndex: number, height: number): void;
+    public setWheelHeight(wheelIndex: number, height: number): void;
 
     /** @alpha */
     public getWheelTyreRadius(wheelIndex: number): number;
