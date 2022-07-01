@@ -2010,6 +2010,9 @@ declare module "alt-client" {
      * Returns the keycode of the voice activation key.
      */
     public static readonly activationKey: number;
+
+    /** @beta */
+    public static readonly voiceControlsEnabled: boolean;
   }
 
   /**
@@ -2668,6 +2671,9 @@ declare module "alt-client" {
   export function copyToClipboard(val: string): void;
 
   export function toggleRmlControls(state: boolean): void;
+
+  /** @beta */
+  export function rmlControlsEnabled(): boolean;
 
   export function loadRmlFont(path: string, name: string, italic?: boolean, bold?: boolean): void;
 
