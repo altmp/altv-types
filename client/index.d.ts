@@ -203,7 +203,7 @@ declare module "alt-client" {
 
     windowResolutionChange: (oldResolution: shared.IVector2, newResolution: shared.IVector2) => void;
 
-    /** @alpha */
+    /** @beta */
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
   }
 
@@ -854,14 +854,14 @@ declare module "alt-client" {
     /**
      * Fordwarspeed of the player
      *
-     * @alpha
+     * @beta
      */
     public readonly forwardSpeed: number;
 
     /**
      * Strafespeed of the player
      *
-     * @alpha
+     * @beta
      */
     public readonly strafeSpeed: number;
 
@@ -911,18 +911,6 @@ declare module "alt-client" {
      * @returns Total ammo of the currently held weapon. 0 if no weapon is equipped.
      */
     public readonly currentAmmo: number;
-
-    /** @alpha */
-    public readonly currentWeaponRecoil: number;
-
-    /** @alpha */
-    public readonly currentWeaponSpread: number;
-
-    /** @alpha */
-    public readonly currentWeaponDamage: number;
-
-    /** @alpha */
-    public readonly currentWeaponRange: number;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): void;
@@ -1232,44 +1220,44 @@ declare module "alt-client" {
     /**
      * Vehicle lock state.
      *
-     * @alpha
+     * @beta
      */
     public readonly lockState: shared.VehicleLockState;
 
-    /** @alpha */
+    /** @beta */
     public getWheelCamber(wheelIndex: number): number;
 
-    /** @alpha */
+    /** @beta */
     public setWheelCamber(wheelIndex: number, camber: number): void;
 
-    /** @alpha */
+    /** @beta */
     public getWheelTrackWidth(wheelIndex: number): number;
 
-    /** @alpha */
+    /** @beta */
     public setWheelTrackWidth(wheelIndex: number, width: number): void;
 
-    /** @alpha */
+    /** @beta */
     public getWheelHeight(wheelIndex: number): number;
 
-    /** @alpha */
+    /** @beta */
     public setWheelHeight(wheelIndex: number, height: number): void;
 
-    /** @alpha */
+    /** @beta */
     public getWheelTyreRadius(wheelIndex: number): number;
 
-    /** @alpha */
+    /** @beta */
     public setWheelTyreRadius(wheelIndex: number, radius: number): void;
 
-    /** @alpha */
+    /** @beta */
     public getWheelRimRadius(wheelIndex: number): number;
 
-    /** @alpha */
+    /** @beta */
     public setWheelRimRadius(wheelIndex: number, radius: number): void;
 
-    /** @alpha */
+    /** @beta */
     public getWheelTyreWidth(wheelIndex: number): number;
 
-    /** @alpha */
+    /** @beta */
     public setWheelTyreWidth(wheelIndex: number, width: number): void;
 
     /**
@@ -1317,7 +1305,7 @@ declare module "alt-client" {
     /**
      * The vehicle's petrol tank health.
      *
-     * @alpha
+     * @beta
      */
     public readonly petrolTankHealth: number;
 
@@ -1356,13 +1344,13 @@ declare module "alt-client" {
      */
     //public readonly manualEngineControl: boolean;
 
-    /** @alpha */
+    /** @beta */
     public engineTemperature: number;
 
-    /** @alpha */
+    /** @beta */
     public fuelLevel: number;
 
-    /** @alpha */
+    /** @beta */
     public oilLevel: number;
 
     // normal meta
@@ -2936,7 +2924,7 @@ declare module "alt-client" {
   /**
    * The FocusData class is used to override the focus of the camera.
    *
-   * @alpha
+   * @beta
    */
   export class FocusData {
     public static readonly isFocusOverriden: boolean;
@@ -2952,7 +2940,7 @@ declare module "alt-client" {
   /**
    * With the WeaponData class you can get specific weapon values and also set some of them.
    *
-   * @alpha
+   * @beta
    */
   export class WeaponData {
     public readonly modelHash: number;
@@ -2972,7 +2960,7 @@ declare module "alt-client" {
     public headshotDamageModifier: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export function loadDefaultIpls(): void;
 
   export * from "alt-shared";
