@@ -2978,6 +2978,11 @@ declare module "alt-client" {
     public readonly clipSize: number;
     public readonly timeBetweenShots: number;
     public headshotDamageModifier: number;
+
+    /**
+     * Initializes a new instance of the {@link WeaponData}.
+     */
+    public static getForHash(weaponHash: number): WeaponData;
   }
 
   /** @beta */
