@@ -401,6 +401,8 @@ declare module "alt-server" {
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
     /** @beta */
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
+    /** @beta */
+    playerInteriorChange: (player: Player, newInterior: number, oldInterior: number) => void;
   }
 
   export interface IFireInfo {
@@ -850,12 +852,12 @@ declare module "alt-server" {
     public readonly currentAnimationDict: number;
     /** @beta */
     public readonly currentAnimationName: number;
-
     /** @beta */
     public readonly forwardSpeed: number;
-
     /** @beta */
     public readonly strafeSpeed: number;
+    /** @beta */
+    public readonly currentInterior: number;
 
     /**
      * Retrieves the player from the pool.
