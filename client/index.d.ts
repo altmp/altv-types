@@ -2168,20 +2168,20 @@ declare module "alt-client" {
 
   /**
    * Loads a model into memory synchronously.
-   * 
+   *
    * @remarks Use this method only if you *really* need it, because this method is unsafe and can lead to game crashes.
    * For normal model loading it is recommended to use {@link "alt-client".Utils.requestModel alt.Utils.requestModel} instead.
-   * 
+   *
    * @param modelHash Hash of the model.
    */
   export function loadModel(modelHash: number): void;
 
   /**
    * Loads a model into memory asynchronously.
-   * 
+   *
    * @remarks Use this method only if you *really* need it, because this method is unsafe and can lead to game crashes.
    * For normal model loading it is recommended to use {@link "alt-client".Utils.requestModel alt.Utils.requestModel} instead.
-   * 
+   *
    * @remarks If you want to know when a model is loaded use {@link https://natives.altv.mp/#/0x98A4EB5D89A0C952 hasModelLoaded}
    * in pair with {@link "alt-client".Utils.waitFor alt.Utils.waitFor}.
    *
@@ -2882,7 +2882,7 @@ declare module "alt-client" {
   export class Utils extends shared.Utils {
     /**
      * Loads a model into memory asynchronously, like {@link loadModelAsync} but more safely.
-     * 
+     *
      * @remarks If you can't load a specific model with this method, use {@link loadModelAsync} instead.
      */
     public static requestModel(model: string | number, timeout?: number): Promise<void>;
