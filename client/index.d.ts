@@ -1236,7 +1236,7 @@ declare module "alt-client" {
     /**
      * Sets the camber angle of the specified wheel.
      *
-     * @remarks A positive camber angle means that the top of the wheel is farther out than the bottom. A negative camber angle means that the bottom of the wheel is farther out than to top.
+     * @remarks A positive camber angle means that the top of the wheel is farther out than the bottom. A negative camber angle means that the bottom of the wheel is farther out than the top.
      *
      * @param wheelIndex The index of the wheel.
      * @param camber The value the of camber angle.
