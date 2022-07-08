@@ -1303,7 +1303,7 @@ declare module "alt-client" {
     public setWheelTyreRadius(wheelIndex: number, radius: number): void;
 
     /**
-     * Gets the rim radius of the specified wheel
+     * Gets the rim radius of the specified wheel.
      *
      * @param wheelIndex The index of the wheel.
      *
