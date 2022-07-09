@@ -402,7 +402,7 @@ declare module "alt-server" {
     /** @beta */
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
     /** @beta */
-    playerInteriorChange: (player: Player, newInterior: number, oldInterior: number) => void;
+    playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
   }
 
   export interface IFireInfo {
