@@ -2810,11 +2810,11 @@ declare module "alt-client" {
   }
 
   export class RmlElement extends BaseObject {
-    public on(eventName: string, func: (...args: any[]) => void): void;
+    public on(eventName: string, func: (senderElement: RmlElement, ...args: any[]) => void): void;
 
     public off(eventName: string, func: (...args: any[]) => void): void;
 
-    public getEventListeners(senderElement: RmlElement, eventName: string): ((...args: any[]) => void)[];
+    public getEventListeners(eventName: string): ((senderElement: RmlElement, ...args: any[]) => void)[];
 
     public readonly relativeOffset: shared.Vector2;
 
