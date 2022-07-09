@@ -2814,7 +2814,7 @@ declare module "alt-client" {
 
     public off(eventName: string, func: (...args: any[]) => void): void;
 
-    public getEventListeners(eventName: string): ((...args: any[]) => void)[];
+    public getEventListeners(senderElement: RmlElement, eventName: string): ((...args: any[]) => void)[];
 
     public readonly relativeOffset: shared.Vector2;
 
