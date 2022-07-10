@@ -3059,6 +3059,9 @@ declare module "alt-client" {
     public readonly timeBetweenShots: number;
     public headshotDamageModifier: number;
 
+    /** @alpha */
+    public playerDamageModifier: number;
+
     /**
      * Initializes a new instance of the {@link WeaponData}.
      */
