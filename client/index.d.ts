@@ -3071,5 +3071,9 @@ declare module "alt-client" {
   /** @beta */
   export function loadDefaultIpls(): void;
 
+  /** @alpha */
+  export function isPointOnScreen(x: number, y: number, z: number): boolean;
+  export function isPointOnScreen(value: shared.IVector3): boolean;
+
   export * from "alt-shared";
 }
