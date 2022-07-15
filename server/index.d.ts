@@ -399,9 +399,7 @@ declare module "alt-server" {
     connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
     serverStarted: () => void;
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
-    /** @beta */
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
-    /** @beta */
     playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
   }
 
@@ -840,23 +838,16 @@ declare module "alt-server" {
     public readonly isSuperJumpEnabled: boolean;
     public readonly isCrouching: boolean;
     public readonly isStealthy: boolean;
-    /** @beta */
     public readonly isSpawned: boolean;
     public readonly socialID: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;
-    /** @beta */
     public readonly discordID: string;
-    /** @beta */
     public readonly currentAnimationDict: number;
-    /** @beta */
     public readonly currentAnimationName: number;
-    /** @beta */
     public readonly forwardSpeed: number;
-    /** @beta */
     public readonly strafeSpeed: number;
-    /** @beta */
     public readonly currentInterior: number;
 
     /**
@@ -1128,8 +1119,6 @@ declare module "alt-server" {
      * @param speechName Name of the speach.
      * @param speechParam Param of the speach.
      * @param speechDictHash Hash of the speach dict.
-     *
-     * @beta
      */
     public playAmbientSpeech(speechName: string, speechParam: string, speechDictHash: number): void;
 
@@ -2119,19 +2108,14 @@ declare module "alt-server" {
      */
     public boatAnchorActive: boolean;
 
-    /** @beta */
     public lightState: number;
 
-    /** @beta */
     public setTimedExplosion(state: boolean, culprit: Player, time: number): void;
 
-    /** @beta */
     public readonly timedExplosionTime: number;
 
-    /** @beta */
     public readonly timedExplosionCulprit: Player;
 
-    /** @beta */
     public readonly hasTimedExplosion: boolean;
 
     // normal meta
@@ -2315,7 +2299,6 @@ declare module "alt-server" {
     public playersOnly: boolean;
 
     public isEntityIn(entity: Entity): boolean;
-    /** @beta */
     public isEntityIn(entityID: number): boolean;
 
     public isPointIn(position: shared.IVector3): boolean;

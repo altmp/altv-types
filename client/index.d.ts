@@ -203,7 +203,6 @@ declare module "alt-client" {
 
     windowResolutionChange: (oldResolution: shared.IVector2, newResolution: shared.IVector2) => void;
 
-    /** @beta */
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
   }
 
@@ -853,15 +852,11 @@ declare module "alt-client" {
 
     /**
      * Fordwarspeed of the player
-     *
-     * @beta
      */
     public readonly forwardSpeed: number;
 
     /**
      * Strafespeed of the player
-     *
-     * @beta
      */
     public readonly strafeSpeed: number;
 
@@ -1219,8 +1214,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle lock state.
-     *
-     * @beta
      */
     public readonly lockState: shared.VehicleLockState;
 
@@ -1228,8 +1221,6 @@ declare module "alt-client" {
      * Gets the camber angle of the specified wheel.
      *
      * @param wheelIndex The index of the wheel.
-     *
-     * @beta
      */
     public getWheelCamber(wheelIndex: number): number;
 
@@ -1240,8 +1231,6 @@ declare module "alt-client" {
      *
      * @param wheelIndex The index of the wheel.
      * @param camber The value the of camber angle.
-     *
-     * @beta
      */
     public setWheelCamber(wheelIndex: number, camber: number): void;
 
@@ -1249,8 +1238,6 @@ declare module "alt-client" {
      * Gets the track width of the specified wheel.
      *
      * @param wheelIndex The index of the wheel.
-     *
-     * @beta
      */
     public getWheelTrackWidth(wheelIndex: number): number;
 
@@ -1259,8 +1246,6 @@ declare module "alt-client" {
      *
      * @param wheelIndex The index of the wheel.
      * @param width The value of the track width.
-     *
-     * @beta
      */
     public setWheelTrackWidth(wheelIndex: number, width: number): void;
 
@@ -1268,8 +1253,6 @@ declare module "alt-client" {
      * Gets the height of the specified wheel.
      *
      * @param wheelIndex The index of the wheel.
-     *
-     * @beta
      */
     public getWheelHeight(wheelIndex: number): number;
 
@@ -1278,8 +1261,6 @@ declare module "alt-client" {
      *
      * @param wheelIndex The index of the wheel.
      * @param height The value of the wheel height.
-     *
-     * @beta
      */
     public setWheelHeight(wheelIndex: number, height: number): void;
 
@@ -1287,8 +1268,6 @@ declare module "alt-client" {
      * Gets the tyre radius of the specified wheel.
      *
      * @param wheelIndex The index of the wheel.
-     *
-     * @beta
      */
     public getWheelTyreRadius(wheelIndex: number): number;
 
@@ -1297,8 +1276,6 @@ declare module "alt-client" {
      *
      * @param wheelIndex The index of the wheel.
      * @param radius The value of the tyre radius.
-     *
-     * @beta
      */
     public setWheelTyreRadius(wheelIndex: number, radius: number): void;
 
@@ -1306,8 +1283,6 @@ declare module "alt-client" {
      * Gets the rim radius of the specified wheel.
      *
      * @param wheelIndex The index of the wheel.
-     *
-     * @beta
      */
     public getWheelRimRadius(wheelIndex: number): number;
 
@@ -1316,8 +1291,6 @@ declare module "alt-client" {
      *
      * @param wheelIndex The index of the wheel.
      * @param radius The index of the rim radius.
-     *
-     * @beta
      */
     public setWheelRimRadius(wheelIndex: number, radius: number): void;
 
@@ -1325,8 +1298,6 @@ declare module "alt-client" {
      * Gets the tyre width the specified wheel.
      *
      * @param wheelIndex The index of the wheel.
-     *
-     * @beta
      */
     public getWheelTyreWidth(wheelIndex: number): number;
 
@@ -1335,8 +1306,6 @@ declare module "alt-client" {
      *
      * @param wheelIndex The index of the wheel.
      * @param width The value of the tyre width.
-     *
-     * @beta
      */
     public setWheelTyreWidth(wheelIndex: number, width: number): void;
 
@@ -1384,8 +1353,6 @@ declare module "alt-client" {
 
     /**
      * The vehicle's petrol tank health.
-     *
-     * @beta
      */
     public readonly petrolTankHealth: number;
 
@@ -1424,13 +1391,10 @@ declare module "alt-client" {
      */
     //public readonly manualEngineControl: boolean;
 
-    /** @beta */
     public engineTemperature: number;
 
-    /** @beta */
     public fuelLevel: number;
 
-    /** @beta */
     public oilLevel: number;
 
     // normal meta
@@ -2091,7 +2055,6 @@ declare module "alt-client" {
      */
     public static readonly activationKey: number;
 
-    /** @beta */
     public static readonly voiceControlsEnabled: boolean;
   }
 
@@ -2761,7 +2724,6 @@ declare module "alt-client" {
 
   export function toggleRmlControls(state: boolean): void;
 
-  /** @beta */
   export function rmlControlsEnabled(): boolean;
 
   export function loadRmlFont(path: string, name: string, italic?: boolean, bold?: boolean): void;
@@ -2782,7 +2744,6 @@ declare module "alt-client" {
 
   export function getCamPos(): shared.Vector3;
 
-  /** @beta */
   export function getScreenResolution(): shared.Vector2;
 
   export class RmlDocument extends RmlElement {
@@ -3023,8 +2984,6 @@ declare module "alt-client" {
 
   /**
    * The FocusData class is used to override the focus of the camera.
-   *
-   * @beta
    */
   export class FocusData {
     public static readonly isFocusOverriden: boolean;
@@ -3039,8 +2998,6 @@ declare module "alt-client" {
 
   /**
    * With the WeaponData class you can get specific weapon values and also set some of them.
-   *
-   * @beta
    */
   export class WeaponData {
     public readonly modelHash: number;
@@ -3068,7 +3025,6 @@ declare module "alt-client" {
     public static getForHash(weaponHash: number): WeaponData;
   }
 
-  /** @beta */
   export function loadDefaultIpls(): void;
 
   /** @alpha */
