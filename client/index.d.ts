@@ -1182,7 +1182,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    //public readonly engineOn: boolean;
+    public readonly engineOn: boolean;
 
     /**
      * Vehicle handbrake state.
