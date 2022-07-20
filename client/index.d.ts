@@ -907,6 +907,11 @@ declare module "alt-client" {
      */
     public readonly currentAmmo: number;
 
+    /** @alpha */
+    public getWeaponAmmo(hash: number): number;
+    /** @alpha */
+    public getWeaponAmmo(weaponName: string): number;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): void;
 
@@ -3031,11 +3036,6 @@ declare module "alt-client" {
   export function isPointOnScreen(x: number, y: number, z: number): boolean;
   /** @alpha */
   export function isPointOnScreen(value: shared.IVector3): boolean;
-
-  /** @alpha */
-  export function getWeaponAmmo(hash: number): number;
-  /** @alpha */
-  export function getWeaponAmmo(weaponName: string): number;
 
   export * from "alt-shared";
 }
