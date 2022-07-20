@@ -3029,7 +3029,13 @@ declare module "alt-client" {
 
   /** @alpha */
   export function isPointOnScreen(x: number, y: number, z: number): boolean;
+  /** @alpha */
   export function isPointOnScreen(value: shared.IVector3): boolean;
+
+  /** @alpha */
+  export function getWeaponAmmo(hash: number): number;
+  /** @alpha */
+  export function getWeaponAmmo(weaponName: string): number;
 
   export * from "alt-shared";
 }
