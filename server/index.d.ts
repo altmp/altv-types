@@ -767,14 +767,14 @@ declare module "alt-server" {
      * Attaches this entity to another entity.
      *
      * @param entity Target entity.
-     * @param entityBoneId Target bone id.
-     * @param ownBoneId Origin bone id.
+     * @param entityBoneIndex Target bone id.
+     * @param ownBoneIndex Origin bone id.
      * @param pos Position offset.
      * @param rot Rotation.
      * @param enableCollisions If true the attached entity has a collision.
      * @param noFixedRotation If false the entity is attached with a fixed rotation (no bouncing). That means if the value in native was true, you have to use false in the serverside method
      */
-    public attachTo(entity: Entity, entityBoneId: number, ownBoneId: number, pos: shared.IVector3, rot: shared.IVector3, enableCollisions: boolean, noFixedRotation: boolean): void;
+    public attachTo(entity: Entity, entityBoneIndex: number, ownBoneIndex: number, pos: shared.IVector3, rot: shared.IVector3, enableCollisions: boolean, noFixedRotation: boolean): void;
 
     /**
      * Detaches this entity if attached to another entity.
@@ -849,6 +849,8 @@ declare module "alt-server" {
     public readonly forwardSpeed: number;
     public readonly strafeSpeed: number;
     public readonly currentInterior: number;
+    /** @alpha */
+    public lastDamagedBodyPart: number;
 
     /**
      * Retrieves the player from the pool.
@@ -2117,6 +2119,36 @@ declare module "alt-server" {
     public readonly timedExplosionCulprit: Player;
 
     public readonly hasTimedExplosion: boolean;
+
+    /** @alpha */
+    public rocketRefuelSpeed: number;
+
+    /** @alpha */
+    public bombCount: number;
+
+    /** @alpha */
+    public counterMeasureCount: number;
+
+    /** @alpha */
+    public scriptMaxSpeed: number;
+
+    /** @alpha */
+    public getWeaponCapacity(weaponIndex: number): number;
+
+    /** @alpha */
+    public setWeaponCapacity(weaponIndex: number, capacity: number): void;
+
+    /** @alpha */
+    public hybridExtraActive: boolean;
+
+    /** @alpha */
+    public hybridExtraState: number;
+
+    /** @alpha */
+    public damageModifier: number;
+
+    /** @alpha */
+    public damageMultiplier: number;
 
     // normal meta
 
