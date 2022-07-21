@@ -24,6 +24,14 @@ interface Alt {
    * @param listener Listener that should be added.
    */
   on(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
+   * Gets all the listeners for the specified webview event.
+   *
+   * @param eventName Name of the event.
+   * @returns Array of listener functions for that event.
+   */
+  getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 }
 
 interface Window {
