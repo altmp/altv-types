@@ -908,9 +908,17 @@ declare module "alt-client" {
     public readonly currentAmmo: number;
 
     /** @alpha */
+    public readonly weapons: Array<number>;
+
+    /** @alpha */
     public getWeaponAmmo(hash: number): number;
     /** @alpha */
     public getWeaponAmmo(weaponName: string): number;
+
+    /** @alpha */
+    public hasWeapon(hash: number): boolean;
+    /** @alpha */
+    public hasWeapon(weaponName: string): boolean;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): void;
