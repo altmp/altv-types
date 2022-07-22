@@ -851,12 +851,12 @@ declare module "alt-client" {
     //public readonly isStealthy: boolean;
 
     /**
-     * Fordwarspeed of the player
+     * Forward speed of the player.
      */
     public readonly forwardSpeed: number;
 
     /**
-     * Strafespeed of the player
+     * Strafe speed of the player.
      */
     public readonly strafeSpeed: number;
 
@@ -1404,10 +1404,19 @@ declare module "alt-client" {
      */
     //public readonly manualEngineControl: boolean;
 
+    /**
+     * The vehicle's engine temperature.
+     */
     public engineTemperature: number;
 
+    /**
+     * The vehicle's fuel level.
+     */
     public fuelLevel: number;
 
+    /**
+     * The vehicle's oil level.
+     */
     public oilLevel: number;
 
     // normal meta

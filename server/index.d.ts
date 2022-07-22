@@ -814,10 +814,15 @@ declare module "alt-server" {
     public readonly isInRagdoll: boolean;
     public readonly isAiming: boolean;
     public readonly isDead: boolean;
+
     /** @alpha */
     //public readonly isShooting: boolean;
     /** @alpha */
     //public readonly isJumping: boolean;
+
+    /**
+     * The player's state of weapon reloading.
+     */
     public readonly isReloading: boolean;
     /**
      * Position the player is currently aiming at.
