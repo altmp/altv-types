@@ -31,7 +31,7 @@ interface Alt {
    * @param eventName Name of the event.
    * @returns Array of listener functions for that event.
    */
-  getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+  getEventListeners(eventName: string): ((...args: any[]) => void)[];
 }
 
 interface Window {
