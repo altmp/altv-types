@@ -916,6 +916,11 @@ declare module "alt-client" {
     public getWeaponAmmo(weaponName: string): number;
 
     /** @alpha */
+    public weaponComponents(hash: number): Array<number>;
+    /** @alpha */
+    public weaponComponents(weaponName: string): Array<number>;
+
+    /** @alpha */
     public hasWeapon(hash: number): boolean;
     /** @alpha */
     public hasWeapon(weaponName: string): boolean;
