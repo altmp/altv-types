@@ -974,7 +974,7 @@ declare module "alt-client" {
     /**
      * Vehicle max gear.
      */
-    public maxGear: number;
+    public readonly maxGear: number;
 
     /**
      * Vehicle handling, which affects how vehicle responds and reacts to the inputs of a driver.
