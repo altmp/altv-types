@@ -1977,6 +1977,10 @@ declare module "alt-client" {
     /**
      * Initializes a new instance of the {@link HandlingData} class that can modify handling properties for the specified handling name.
      *
+     * @remarks The `handlingHash` parameter is vehicle **handling name hash**, not a model hash.
+     * Can be retrieved from any vehicle instance: `vehicle.handling.handlingNameHash` {@link IVehicleHandling#handlingNameHash}
+     *
+     * @param handlingHash hash of the vehicle **handling name**
      */
     public static getForHandlingName(handlingHash: number): HandlingData;
   }
