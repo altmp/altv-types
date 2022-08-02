@@ -2503,29 +2503,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitClient(player: Player, eventName: string, ...args: any[]): void;
-
-  /**
-   * Emits specified event to specific client.
-   *
-   * @remarks See {@link "alt-shared".emit} for more information about sending destroyed entities.
-   *
-   * @param player Event is sent to every player.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emitClient(player: null, eventName: string, ...args: any[]): void;
-
-  /**
-   * Emits specified event to specific clients.
-   *
-   * @remarks See {@link "alt-shared".emit} for more information about sending destroyed entities.
-   *
-   * @param player Event is sent to every player in array.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
+  export function emitClient(player: Player | Player[] | null, eventName: string, ...args: any[]): void;
 
   /**
    * Emits specified event to specific clients.
@@ -2534,25 +2512,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitClientRaw(player: Player[], eventName: string, ...args: any[]): void;
-
-  /**
-   * Emits specified event to specific client.
-   *
-   * @param player Event is sent to specific player.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emitClientRaw(player: Player, eventName: string, ...args: any[]): void;
-
-  /**
-   * Emits specified event to specific client.
-   *
-   * @param player Event is sent to every player.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emitClientRaw(player: null, eventName: string, ...args: any[]): void;
+  export function emitClientRaw(player: Player | Player[] | null, eventName: string, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
