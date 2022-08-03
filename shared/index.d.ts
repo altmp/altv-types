@@ -1792,6 +1792,13 @@ declare module "alt-shared" {
   export function logWarning(...args: any[]): void;
 
   /**
+   * Logs the specified arguments to the console if debug is enabled.
+   *
+   * @alpha
+   */
+  export function logDebug(...args: any[]): void;
+
+  /**
    * Schedules execution of handler on next tick/next frame.
    *
    * @param handler Handler that should be scheduled for execution.
