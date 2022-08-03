@@ -46,5 +46,5 @@ declare module "alt-worker" {
    */
   export function off(eventName: string, listener: (...args: any[]) => void): void;
 
-  export { log, logWarning, logError, setTimeout, setInterval, nextTick, clearTimeout, clearInterval, clearNextTick, hash, version, branch, sdkVersion, debug, File, RGBA, Vector3, Vector2 } from "alt-client";
+  export { log, logWarning, logError, logDebug, setTimeout, setInterval, nextTick, clearTimeout, clearInterval, clearNextTick, hash, version, branch, sdkVersion, debug, File, RGBA, Vector3, Vector2 } from "alt-client";
 }
