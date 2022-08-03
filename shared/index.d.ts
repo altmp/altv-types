@@ -1793,6 +1793,8 @@ declare module "alt-shared" {
 
   /**
    * Logs the specified arguments to the console if debug is enabled.
+   *
+   * @alpha
    */
   export function logDebug(...args: any[]): void;
 
