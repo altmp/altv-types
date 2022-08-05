@@ -3063,5 +3063,61 @@ declare module "alt-client" {
   /** @alpha */
   export function isPointOnScreen(value: shared.IVector3): boolean;
 
+  /** @alpha */
+  export class Object extends Entity {
+    /**
+     * Creates a new object.
+     * 
+     * @remarks The model for the object is automatically loaded, but because this
+     * happens asynchronously, the scriptID property might not be immediately available
+     * after creating the object. Setters will always work regardless of whether the model
+     * is already loaded or not.
+     * 
+     * @param model 
+     * @param pos 
+     * @param rot 
+     * @param noOffset 
+     * @param dynamic 
+     */
+    constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean);
+
+    public static readonly all: ReadonlyArray<Object>;
+
+    public pos: shared.Vector3;
+
+    public rot: shared.Vector3;
+
+    /** Object transparency, values are between 0 and 255. (0 being fully transparent) */
+    public alpha: number;
+    public resetAlpha(): void;
+
+    public readonly dynamic: boolean;
+
+    /** The distance at which the LOD model of the object starts being applied. */
+    public lodDistance: number;
+
+    /** Whether the object is affected by gravity. */
+    public hasGravity: boolean;
+
+    /** Whether this object was created clientside or serverside. (Clientside = false, Serverside = true) */
+    public readonly isRemote: boolean;
+
+    /**
+     * Attaches the object to another entity.
+     * 
+     * @param entity Entity the object should be attached to.
+     * @param bone Bone index of the entity to attach to. (-1 for entity center)
+     * @param pos Position offset of the object.
+     * @param rot Rotation of the object.
+     * @param useSoftPinning Whether the object should be able to detach when not fixed.
+     * @param collision Whether the object and the entity should collide with each other.
+     * @param fixedRot Whether the rotation of the object is fixed or follows that of the entity.
+     */
+    public attachToEntity(entity: Entity, bone: number, pos: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
+
+    /** Detaches the object from the current attached entity. */
+    public detach(): void;
+  }
+
   export * from "alt-shared";
 }
