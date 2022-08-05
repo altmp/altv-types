@@ -3067,12 +3067,12 @@ declare module "alt-client" {
   export class Object extends Entity {
     /**
      * Creates a new object.
-     * 
+     *
      * @remarks The model for the object is automatically loaded, but because this
      * happens asynchronously, the scriptID property might not be immediately available
      * after creating the object. Setters will always work regardless of whether the model
      * is already loaded or not.
-     * 
+     *
      * @param model Model name or model hash for the object.
      * @param pos Position of the object.
      * @param rot Rotation of the object.
@@ -3104,7 +3104,7 @@ declare module "alt-client" {
 
     /**
      * Attaches the object to another entity.
-     * 
+     *
      * @param entity Entity the object should be attached to.
      * @param bone Bone index of the entity to attach to. (-1 for entity center)
      * @param pos Position offset of the object.
