@@ -3073,11 +3073,11 @@ declare module "alt-client" {
      * after creating the object. Setters will always work regardless of whether the model
      * is already loaded or not.
      * 
-     * @param model 
-     * @param pos 
-     * @param rot 
-     * @param noOffset 
-     * @param dynamic 
+     * @param model Model name or model hash for the object.
+     * @param pos Position of the object.
+     * @param rot Rotation of the object.
+     * @param noOffset If true, object position will not be adjusted to not collide with anything.
+     * @param dynamic If true, object reacts to actions in the world. (E.g. force by vehicle)
      */
     constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean);
 
