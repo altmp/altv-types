@@ -532,64 +532,63 @@ declare module "alt-server" {
    */
   export interface ICustomVehicleMeta extends ICustomEntityMeta {}
 
-
   /**
    * Documentation: https://docs.altv.mp/articles/configs/server.html
    */
   interface IServerConfig {
-    readonly resources: ReadonlyArray<string>
-    readonly modules: ReadonlyArray<string>
-    readonly name?: string
-    readonly host?: string
-    readonly port?: number
-    readonly players?: string
-    readonly password?: string
-    readonly announce?: boolean
-    readonly gamemode?: string
-    readonly website?: string
-    readonly language?: string
-    readonly description?: string
-    readonly debug?: boolean
-    readonly streamingDistance?: number
-    readonly migrationDistance?: number
-    readonly timeout?: number
-    readonly announceRetryErrorDelay?: number
-    readonly announceRetryErrorAttempts?: number
-    readonly duplicatePlayers?: number
-    readonly tags: ReadonlyArray<string>
-    readonly useEarlyAuth?: boolean
-    readonly earlyAuthUrl?: string
-    readonly useCdn?: boolean
-    readonly cdnUrl?: string
+    readonly resources: ReadonlyArray<string>;
+    readonly modules: ReadonlyArray<string>;
+    readonly name?: string;
+    readonly host?: string;
+    readonly port?: number;
+    readonly players?: string;
+    readonly password?: string;
+    readonly announce?: boolean;
+    readonly gamemode?: string;
+    readonly website?: string;
+    readonly language?: string;
+    readonly description?: string;
+    readonly debug?: boolean;
+    readonly streamingDistance?: number;
+    readonly migrationDistance?: number;
+    readonly timeout?: number;
+    readonly announceRetryErrorDelay?: number;
+    readonly announceRetryErrorAttempts?: number;
+    readonly duplicatePlayers?: number;
+    readonly tags: ReadonlyArray<string>;
+    readonly useEarlyAuth?: boolean;
+    readonly earlyAuthUrl?: string;
+    readonly useCdn?: boolean;
+    readonly cdnUrl?: string;
 
     readonly voice?: {
-      readonly bitrate?: number,
-      readonly externalSecret?: string,
-      readonly externalHost?: string,
-      readonly externalPort?: number,
-      readonly externalPublicHost?: string,
-      readonly externalPublicPort?: number
-    }
+      readonly bitrate?: number;
+      readonly externalSecret?: string;
+      readonly externalHost?: string;
+      readonly externalPort?: number;
+      readonly externalPublicHost?: string;
+      readonly externalPublicPort?: number;
+    };
 
     readonly "js-module"?: {
       readonly inspector?: {
-        readonly host?: string
-        readonly port?: number
-      }
-      readonly "source-maps"?: boolean
-      readonly "heap-profiler"?: boolean
-      readonly "profiler"?: boolean
-      readonly "global-fetch"?: boolean
-      readonly "global-webcrypto"?: boolean
-      readonly "network-imports"?: boolean
-      readonly "extra-cli-args"?: ReadonlyArray<string>[]
-    }
+        readonly host?: string;
+        readonly port?: number;
+      };
+      readonly "source-maps"?: boolean;
+      readonly "heap-profiler"?: boolean;
+      readonly profiler?: boolean;
+      readonly "global-fetch"?: boolean;
+      readonly "global-webcrypto"?: boolean;
+      readonly "network-imports"?: boolean;
+      readonly "extra-cli-args"?: ReadonlyArray<string>[];
+    };
 
     readonly "csharp-module"?: {
-      readonly disableDependencyDownload?: true
-    }
+      readonly disableDependencyDownload?: true;
+    };
 
-    readonly [key: string]: unknown
+    readonly [key: string]: unknown;
   }
 
   /**
