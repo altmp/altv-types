@@ -954,6 +954,22 @@ declare module "alt-shared" {
     readonly type: string;
   }
 
+  /**
+   * Documentation: https://docs.altv.mp/articles/configs/resource.html
+   */
+  export interface IResourceConfig {
+    readonly type: string;
+    readonly deps?: ReadonlyArray<string>;
+    readonly main?: string;
+    readonly "client-main"?: string;
+    readonly "client-type"?: string;
+    readonly "client-files"?: ReadonlyArray<string>;
+    readonly "required-permissions"?: ReadonlyArray<Permission>;
+    readonly "optional-permissions"?: ReadonlyArray<Permission>;
+
+    readonly [key: string]: unknown;
+  }
+
   export const enum VehicleLockState {
     None,
     Unlocked,
@@ -1893,6 +1909,8 @@ declare module "alt-shared" {
     public readonly type: string;
     public readonly name: string;
     public readonly main: string;
+    public readonly path: string;
+    public readonly config: IResourceConfig;
     public readonly exports: Record<string, any>;
     public readonly dependencies: ReadonlyArray<string>;
     public readonly dependants: ReadonlyArray<string>;
