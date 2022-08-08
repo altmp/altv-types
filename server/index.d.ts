@@ -544,6 +544,7 @@ declare module "alt-server" {
     readonly players?: string;
     readonly password?: string;
     readonly announce?: boolean;
+    readonly token?: string;
     readonly gamemode?: string;
     readonly website?: string;
     readonly language?: string;
