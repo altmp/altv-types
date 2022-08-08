@@ -595,7 +595,7 @@ declare module "alt-server" {
    * Documentation: https://docs.altv.mp/articles/configs/resource.html
    */
   export interface IResourceConfig {
-    readonly type: string;
+    readonly type?: string;
     readonly deps?: ReadonlyArray<string>;
     readonly main?: string;
     readonly "client-main"?: string;
