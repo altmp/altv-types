@@ -555,7 +555,7 @@ declare module "alt-server" {
     readonly announceRetryErrorDelay?: number;
     readonly announceRetryErrorAttempts?: number;
     readonly duplicatePlayers?: number;
-    readonly tags: ReadonlyArray<string>;
+    readonly tags?: ReadonlyArray<string>;
     readonly useEarlyAuth?: boolean;
     readonly earlyAuthUrl?: string;
     readonly useCdn?: boolean;
@@ -581,7 +581,7 @@ declare module "alt-server" {
       readonly "global-fetch"?: boolean;
       readonly "global-webcrypto"?: boolean;
       readonly "network-imports"?: boolean;
-      readonly "extra-cli-args"?: ReadonlyArray<string>[];
+      readonly "extra-cli-args"?: ReadonlyArray<string>;
     };
 
     readonly "csharp-module"?: {
