@@ -533,6 +533,22 @@ declare module "alt-server" {
   export interface ICustomVehicleMeta extends ICustomEntityMeta {}
 
   /**
+   * Documentation: https://docs.altv.mp/articles/configs/resource.html
+   */
+  export interface IResourceConfig {
+    readonly type: string;
+    readonly deps?: ReadonlyArray<string>;
+    readonly main?: string;
+    readonly "client-main"?: string;
+    readonly "client-type"?: string;
+    readonly "client-files"?: ReadonlyArray<string>;
+    readonly "required-permissions"?: ReadonlyArray<shared.Permission>;
+    readonly "optional-permissions"?: ReadonlyArray<shared.Permission>;
+
+    readonly [key: string]: unknown;
+  }
+
+  /**
    * The root directory of the server.
    */
   export const rootDir: string;
@@ -2448,7 +2464,7 @@ declare module "alt-server" {
 
   export class Resource extends shared.Resource {
     public readonly path: string;
-    public readonly config: Record<string, any>;
+    public readonly config: IResourceConfig;
   }
 
   /**
