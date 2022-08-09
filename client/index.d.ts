@@ -58,76 +58,6 @@ declare module "alt-client" {
     Stealth = "stealth_ability",
   }
 
-  export const enum CheckpointType {
-    CylinderSingleArrow,
-    CylinderDoubleArrow,
-    CylinderTripleArrow,
-    CylinderCycleArrow,
-    CylinderCheckerboard,
-    CylinderWrench,
-    CylinderSingleArrow2,
-    CylinderDoubleArrow2,
-    CylinderTripleArrow2,
-    CylinderCycleArrow2,
-    CylinderCheckerboard2,
-    CylinderWrench2,
-    RingSingleArrow,
-    RingDoubleArrow,
-    RingTripleArrow,
-    RingCycleArrow,
-    RingCheckerboard,
-    SingleArrow,
-    DoubleArrow,
-    TripleArrow,
-    CycleArrow,
-    Checkerboard,
-    CylinderSingleArrow3,
-    CylinderDoubleArrow3,
-    CylinderTripleArrow3,
-    CylinderCycleArrow3,
-    CylinderCheckerboard3,
-    CylinderSingleArrow4,
-    CylinderDoubleArrow4,
-    CylinderTripleArrow4,
-    CylinderCycleArrow4,
-    CylinderCheckerboard4,
-    CylinderSingleArrow5,
-    CylinderDoubleArrow5,
-    CylinderTripleArrow5,
-    CylinderCycleArrow5,
-    CylinderCheckerboard5,
-    RingPlaneUp,
-    RingPlaneLeft,
-    RingPlaneRight,
-    RingPlaneDown,
-    Empty,
-    Ring,
-    Empty2,
-    Cylinder,
-    Cylinder1,
-    Cylinder2,
-    Cylinder3,
-    Cylinder4,
-    Cylinder5,
-    Empty3,
-    Empty4,
-    Empty5,
-    Empty6,
-    RingDollar,
-    RingWolf,
-    RingQuestionMark,
-    RingPlane,
-    RingChopper,
-    RingBoat,
-    RingCar,
-    RingBike,
-    RingBicycle,
-    RingTruck,
-    RingParachute,
-    RingJetpack,
-    RingWhirl,
-  }
-
   export const enum VehicleIndicatorLights {
     BlinkLeft = 1,
     BlinkRight = 2,
@@ -499,13 +429,13 @@ declare module "alt-client" {
   }
 
   export class Checkpoint extends WorldObject {
-    public checkpointType: CheckpointType;
+    public checkpointType: shared.CheckpointType;
     public nextPos: shared.Vector3;
     public radius: number;
     public height: number;
     public color: shared.RGBA;
 
-    constructor(type: CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA);
+    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA);
 
     public isEntityIn(entity: Entity): boolean;
     public isPointIn(pos: shared.IVector3): boolean;
