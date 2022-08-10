@@ -2024,10 +2024,10 @@ declare module "alt-client" {
    *
    * @remarks The GXT entry FE_THDR_GTAO is locked and cannot be changed.
    *
-   * @param key GXT entry name.
+   * @param key GXT entry name or hash.
    * @param value GXT entry value.
    */
-  export function addGxtText(key: string, value: string): void;
+  export function addGxtText(key: string | number, value: string): void;
 
   /**
    * Executes the specified scaleform method on the minimap.
