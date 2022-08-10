@@ -2503,6 +2503,8 @@ declare module "alt-server" {
    * @param player Event is sent to every player.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
+   *
+   * @deprecated
    */
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
@@ -2541,6 +2543,8 @@ declare module "alt-server" {
    * @param player Event is sent to every player.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
+   *
+   * @deprecated
    */
   export function emitClientRaw(player: null, eventName: string, ...args: any[]): void;
 
