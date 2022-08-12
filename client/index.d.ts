@@ -2061,11 +2061,10 @@ declare module "alt-client" {
    *
    * @remarks See {@link "alt-shared".emit} for more information about sending destroyed entities.
    *
-   * @param player Event is sent to specific player.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitServer(name: string, ...args: any[]): void;
+  export function emitServer(eventName: string, ...args: any[]): void;
 
   /**
    * Emits specified event to server.
@@ -2075,7 +2074,7 @@ declare module "alt-client" {
    *
    * @remarks Works only from JS (Client) to JS (Server)
    */
-  export function emitServerRaw(name: string, ...args: any[]): void;
+  export function emitServerRaw(eventName: string, ...args: any[]): void;
 
   /**
    * Returns whether the game controls are currently enabled.
