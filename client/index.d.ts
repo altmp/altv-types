@@ -3053,7 +3053,7 @@ declare module "alt-client" {
 
     /** Places the object properly on the ground. */
     public placeOnGroundProperly(): void;
-    
+
     /** Waits asynchronously until the objects spawns. */
     public waitForSpawn(): Promise<void>;
   }
