@@ -101,6 +101,7 @@ declare module "alt-server" {
     Cuboid,
     Rectangle,
     CheckpointCylinder,
+    Polygon
   }
 
   export const enum RadioStation {
