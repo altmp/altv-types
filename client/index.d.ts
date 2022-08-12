@@ -3046,6 +3046,13 @@ declare module "alt-client" {
 
     /** Detaches the object from the current attached entity. */
     public detach(): void;
+
+    public readonly isCollisionEnabled: boolean;
+
+    public toggleCollision(toggle: boolean, keepPhysics: boolean): void;
+
+    /** Places the object properly on the ground */
+    public placeOnGroundProperly(): void;
   }
 
   export * from "alt-shared";
