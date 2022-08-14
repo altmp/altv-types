@@ -1837,6 +1837,8 @@ declare module "alt-client" {
    * @remarks Changes will be reflected on every vehicle using this particular handling, but might require vehicle recreating for changes to apply properly.
    */
   export class HandlingData {
+    protected constructor();
+
     public readonly handlingNameHash: number;
     public acceleration: number;
     public antiRollBarBiasFront: number;
@@ -1932,6 +1934,8 @@ declare module "alt-client" {
   }
 
   export class LocalStorage {
+    protected constructor();
+
     /**
      * Gets the value from the specified key in the local storage.
      */
@@ -1996,11 +2000,15 @@ declare module "alt-client" {
   }
 
   export class Discord {
+    protected constructor();
+
     public static readonly currentUser: IDiscordUser | null;
     public static requestOAuth2Token(appId: string): Promise<string>;
   }
 
   export class Voice {
+    protected constructor();
+
     /**
      * Determines whether the microphone input is currently disabled.
      */
@@ -2615,6 +2623,8 @@ declare module "alt-client" {
   export function clearPedProp(scriptID: number, component: number): void;
 
   export class Profiler {
+    protected constructor();
+
     public static readonly heapStats: IHeapStats;
     /** Sampling interval in microseconds. Defaults to 100. */
     public static samplingInterval: number;
@@ -2946,6 +2956,8 @@ declare module "alt-client" {
    * The FocusData class is used to override the focus of the camera.
    */
   export class FocusData {
+    protected constructor();
+
     public static readonly isFocusOverriden: boolean;
     public static readonly focusOverridePos: shared.Vector3;
     public static readonly focusOverrideOffset: shared.Vector3;
@@ -2960,6 +2972,8 @@ declare module "alt-client" {
    * With the WeaponData class you can get specific weapon values and also set some of them.
    */
   export class WeaponData {
+    protected constructor();
+
     public readonly modelHash: number;
     public readonly nameHash: number;
     public recoilShakeAmplitude: number;
@@ -3054,7 +3068,7 @@ declare module "alt-client" {
     /** Places the object properly on the ground. */
     public placeOnGroundProperly(): void;
 
-    /** Waits asynchronously until the objects spawns. */
+    /** Waits asynchronously until the object spawns. */
     public waitForSpawn(): Promise<void>;
   }
 
