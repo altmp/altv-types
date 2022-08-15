@@ -1563,6 +1563,8 @@ declare module "alt-shared" {
   }
 
   export class File {
+    protected constructor();
+
     /**
      * Determines whether file exists with the specified filename.
      *
@@ -1589,6 +1591,8 @@ declare module "alt-shared" {
   }
 
   export class BaseObject {
+    protected constructor();
+
     /**
      * Type of the object.
      */
@@ -1959,6 +1963,8 @@ declare module "alt-shared" {
   export function timeEnd(): void;
 
   export class Resource {
+    protected constructor();
+
     public readonly isStarted: boolean;
     public readonly type: string;
     public readonly name: string;
@@ -1975,6 +1981,8 @@ declare module "alt-shared" {
   }
 
   export class Utils {
+    protected constructor();
+
     public static wait(timeout: number): Promise<void>;
 
     /**
