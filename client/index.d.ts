@@ -134,6 +134,9 @@ declare module "alt-client" {
     windowResolutionChange: (oldResolution: shared.IVector2, newResolution: shared.IVector2) => void;
 
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
+
+    /** @alpha */
+    playerWeaponShoot: (weaponHash: number, totalAmmo: number, ammoInClip: number) => void;
   }
 
   export interface IDiscordUser {
