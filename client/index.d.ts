@@ -3061,8 +3061,12 @@ declare module "alt-client" {
      */
     public attachToEntity(entity: Entity, bone: number, pos: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
 
-    /** Detaches the object from the current attached entity. */
-    public detach(): void;
+    /**
+     * Detaches the object from the current attached entity.
+     *
+     * @param dynamic Set to true to keep velocity after dettaching. Default value is false.
+     */
+    public detach(dynamic?: boolean): void;
 
     public readonly isCollisionEnabled: boolean;
 
