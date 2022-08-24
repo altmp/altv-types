@@ -3080,9 +3080,7 @@ declare module "alt-client" {
 
     public activatePhysics(): void;
 
-    public setTextureVariation(variation: number): void;
-
-    public readonly getTextureVariation: number;
+    public textureVariation: number;
 
     /** Waits asynchronously until the object spawns. */
     public waitForSpawn(): Promise<void>;
