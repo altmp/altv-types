@@ -3074,6 +3074,8 @@ declare module "alt-client" {
     /** Freeze the object on the position */
     public setPositionFrozen(toggle: boolean): void;
 
+    public activatePhysics(): void;
+
     /** Waits asynchronously until the object spawns. */
     public waitForSpawn(): Promise<void>;
   }
