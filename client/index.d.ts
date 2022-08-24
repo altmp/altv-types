@@ -3071,6 +3071,9 @@ declare module "alt-client" {
     /** Places the object properly on the ground. */
     public placeOnGroundProperly(): void;
 
+    /** Freeze the object on the position */
+    public setPositionFrozen(toggle: boolean): void;
+
     /** Waits asynchronously until the object spawns. */
     public waitForSpawn(): Promise<void>;
   }

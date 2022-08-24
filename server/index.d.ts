@@ -777,7 +777,7 @@ declare module "alt-server" {
      * @param entityBoneId Target bone id.
      * @param ownBoneId Origin bone id.
      * @param pos Position offset.
-     * @param rot Rotation.
+     * @param rot Rotation - needs to be in radians.
      * @param enableCollisions If true the attached entity has a collision.
      * @param noFixedRotation If false the entity is attached with a fixed rotation (no bouncing). That means if the value in native was true, you have to use false in the serverside method
      */
