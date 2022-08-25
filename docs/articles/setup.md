@@ -187,3 +187,9 @@ resources: [
     newResource
 ]
 ```
+
+## Typescript Video Tutorial
+
+If you want to learn how to setup a alt:V resource using typescript, watch this video tutorial created by Stuyk:
+
+<iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/UTeNEiyrrIA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
