@@ -974,7 +974,7 @@ declare module "alt-shared" {
     RingWhirl,
   }
 
-  export const enum VehicleModelType {
+  export const enum ModelType {
     Invalid,
     Ped,
     Automobile,
