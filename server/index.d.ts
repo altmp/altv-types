@@ -263,8 +263,8 @@ declare module "alt-server" {
     Limo,
     Green,
   }
-  
-  export const enum VehicleModelType {  
+
+  export const enum VehicleModelType {
     Invalid,
     Ped,
     Automobile,
@@ -282,7 +282,7 @@ declare module "alt-server" {
     Boat,
     Train,
     Submarine,
-    Object
+    Object,
   }
 
   export interface IWeapon {
