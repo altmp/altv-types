@@ -263,6 +263,27 @@ declare module "alt-server" {
     Limo,
     Green,
   }
+  
+  export const enum VehicleModelType {  
+    Invalid,
+    Ped,
+    Automobile,
+    Plane,
+    Trailer,
+    QuadBike,
+    SubmarineCar,
+    AmphibiousAutomobile,
+    AmphibiousQuadBike,
+    Heli,
+    Blimp,
+    Autogyro,
+    Bike,
+    Bmx,
+    Boat,
+    Train,
+    Submarine,
+    Object
+  }
 
   export interface IWeapon {
     readonly hash: number;
@@ -392,7 +413,7 @@ declare module "alt-server" {
 
   export interface IVehicleModel {
     readonly title: string;
-    readonly type: number;
+    readonly type: VehicleModelType;
     readonly wheelsCount: number;
     readonly hasArmoredWindows: boolean;
     readonly primaryColor: number;
