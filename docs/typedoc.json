@@ -1,5 +1,6 @@
 {
   "packages": ["../client", "../server"],
   "excludeExternals": true,
-  "json": "./api/.manifest"
+  "json": "./api/.manifest",
+  "sort": ["source-order"]
 }
