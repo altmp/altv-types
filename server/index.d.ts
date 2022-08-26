@@ -392,7 +392,7 @@ declare module "alt-server" {
 
   export interface IVehicleModel {
     readonly title: string;
-    readonly type: number;
+    readonly type: shared.VehicleModelType;
     readonly wheelsCount: number;
     readonly hasArmoredWindows: boolean;
     readonly primaryColor: number;
