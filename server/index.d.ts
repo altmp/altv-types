@@ -980,6 +980,14 @@ declare module "alt-server" {
      */
     public spawn(pos: shared.IVector3, delay?: number): void;
 
+    /**
+     * Sets the model and spawns the player in the world.
+     *
+     * @param model The model to be set to the player before spawning.
+     * @param pos The position where the player gets spawned.
+     */
+    public spawn(model: string | number, pos: shared.IVector3): void;
+
     public despawn(): void;
 
     /**
