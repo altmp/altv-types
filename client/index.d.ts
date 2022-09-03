@@ -95,6 +95,14 @@ declare module "alt-client" {
     Unknown = "unknown",
   }
 
+  export const enum GameFont {
+    ChaletLondon,
+    HouseScript,
+    Monospace,
+    CharletComprimeColonge = 4,
+    Pricedown = 7,
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -2908,6 +2916,18 @@ declare module "alt-client" {
     public static requestClipSet(clipSet: string, timeout?: number): Promise<void>;
 
     public static requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
+
+    /** @alpha */
+    public static drawText2dThisFrame(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+
+    /** @alpha */
+    public static drawText2d(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.EveryTick;
+
+    /** @alpha */
+    public static drawText3dThisFrame(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+
+    /** @alpha */
+    public static drawText3d(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.EveryTick;
   }
 
   /**
