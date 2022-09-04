@@ -3102,7 +3102,7 @@ declare module "alt-client" {
 
     public textureVariation: number;
 
-    public readonly isGameObject: boolean;
+    public readonly isWorldObject: boolean;
 
     /** Waits asynchronously until the object spawns. */
     public waitForSpawn(): Promise<void>;
