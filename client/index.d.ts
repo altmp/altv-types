@@ -3049,6 +3049,8 @@ declare module "alt-client" {
 
     public static readonly all: ReadonlyArray<Object>;
 
+    public static readonly allWorld: ReadonlyArray<Object>;
+
     public pos: shared.Vector3;
 
     public rot: shared.Vector3;
