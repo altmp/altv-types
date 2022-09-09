@@ -2044,18 +2044,18 @@ declare module "alt-shared" {
      */
     public static waitFor(callback: () => boolean, timeout?: number): Promise<void>;
 
-    /** alpha */
+    /** @alpha */
     public static readonly Timer: typeof Timer;
-    /** alpha */
+    /** @alpha */
     public static readonly Timeout: typeof Timeout;
-    /** alpha */
+    /** @alpha */
     public static readonly Interval: typeof Interval;
-    /** alpha */
+    /** @alpha */
     public static readonly NextTick: typeof NextTick;
-    /** alpha */
+    /** @alpha */
     public static readonly EveryTick: typeof EveryTick;
 
-    /** alpha */
+    /** @alpha */
     public static readonly ConsoleCommand: typeof ConsoleCommand;
   }
 
