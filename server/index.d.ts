@@ -325,7 +325,7 @@ declare module "alt-server" {
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
-    localMetaChange: (player: Player, key: string, oldValue: any, newValue: any) => void;
+    localMetaChange: (player: Player, key: string, newValue: any, oldValue: any) => void;
     connectionQueueAdd: (connectionInfo: IConnectionQueueInfo) => void;
     connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
     serverStarted: () => void;
