@@ -2931,6 +2931,20 @@ declare module "alt-client" {
 
     /** @alpha */
     public static drawText3d(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.EveryTick;
+
+    /**
+     * Loads the map area at a certain position
+     * and waits asynchronously until all parts in view area have been loaded.
+     *
+     * @remarks Uses {@link FocusData} and {@link https://natives.altv.mp/#/0xACCFB4ACF53551B0 newLoadSceneStartSphere}.
+     *
+     * @param pos Coords of the map area.
+     * @param radius Radius of sphere to load. Defaults to 50.0.
+     * @param timeout The maximum milliseconds to wait, otherwise promise will be rejected. Defaults to 5000.
+     *
+     * @alpha
+     */
+    public static loadMapArea(pos: shared.IVector3, radius?: number, timeout?: number): Promise<void>;
   }
 
   /**
