@@ -145,6 +145,9 @@ declare module "alt-client" {
 
     /** @alpha */
     playerWeaponShoot: (weaponHash: number, totalAmmo: number, ammoInClip: number) => void;
+
+    /** @alpha */
+    playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
   }
 
   export interface IDiscordUser {
