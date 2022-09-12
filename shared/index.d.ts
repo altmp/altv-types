@@ -2014,27 +2014,27 @@ declare module "alt-shared" {
      */
     public static waitFor(callback: () => boolean, timeout?: number): Promise<void>;
   }
-  
+
   export namespace Utils {
     /** @alpha */
     export class Timer {
       public readonly id: number;
-  
+
       constructor(callback: () => void, ms: number, once: boolean);
-  
+
       public destroy(): void;
     }
-    
+
     /** @alpha */
     export class Timeout extends Timer {
       constructor(callback: () => void, ms: number);
     }
-    
+
     /** @alpha */
     export class Interval extends Timer {
       constructor(callback: () => void, ms: number);
     }
-    
+
     /** @alpha */
     export class NextTick extends Timer {
       constructor(callback: () => void);
@@ -2048,7 +2048,7 @@ declare module "alt-shared" {
     /** @alpha */
     export class ConsoleCommand {
       constructor(name: string, callback: (...args: string[]) => void);
-  
+
       public destroy(): void;
     }
   }
