@@ -2001,36 +2001,6 @@ declare module "alt-shared" {
     public static readonly current: Resource;
   }
 
-  class Timer {
-    public readonly id: number;
-
-    constructor(callback: () => void, ms: number, once: boolean);
-
-    public destroy(): void;
-  }
-
-  class Timeout extends Timer {
-    constructor(callback: () => void, ms: number);
-  }
-
-  class Interval extends Timer {
-    constructor(callback: () => void, ms: number);
-  }
-
-  class NextTick extends Timer {
-    constructor(callback: () => void);
-  }
-
-  class EveryTick extends Timer {
-    constructor(callback: () => void);
-  }
-
-  class ConsoleCommand {
-    constructor(name: string, callback: (...args: string[]) => void);
-
-    public destroy(): void;
-  }
-
   export class Utils {
     protected constructor();
 
@@ -2043,20 +2013,44 @@ declare module "alt-shared" {
      * @param timeout The maximum milliseconds to wait, otherwise promise will be rejected. Defaults to 2000.
      */
     public static waitFor(callback: () => boolean, timeout?: number): Promise<void>;
+  }
+
+  export namespace Utils {
+    /** @alpha */
+    export class Timer {
+      public readonly id: number;
+
+      constructor(callback: () => void, ms: number, once: boolean);
+
+      public destroy(): void;
+    }
 
     /** @alpha */
-    public static readonly Timer: typeof Timer;
-    /** @alpha */
-    public static readonly Timeout: typeof Timeout;
-    /** @alpha */
-    public static readonly Interval: typeof Interval;
-    /** @alpha */
-    public static readonly NextTick: typeof NextTick;
-    /** @alpha */
-    public static readonly EveryTick: typeof EveryTick;
+    export class Timeout extends Timer {
+      constructor(callback: () => void, ms: number);
+    }
 
     /** @alpha */
-    public static readonly ConsoleCommand: typeof ConsoleCommand;
+    export class Interval extends Timer {
+      constructor(callback: () => void, ms: number);
+    }
+
+    /** @alpha */
+    export class NextTick extends Timer {
+      constructor(callback: () => void);
+    }
+
+    /** @alpha */
+    export class EveryTick extends Timer {
+      constructor(callback: () => void);
+    }
+
+    /** @alpha */
+    export class ConsoleCommand {
+      constructor(name: string, callback: (...args: string[]) => void);
+
+      public destroy(): void;
+    }
   }
 
   /**
