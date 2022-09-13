@@ -390,6 +390,12 @@ declare module "alt-server" {
     readonly thirdMix: number;
   }
 
+  export interface IBoneInfo {
+    readonly id: number;
+    readonly index: number;
+    readonly name: string;
+  }
+
   export interface IVehicleModel {
     readonly title: string;
     readonly type: shared.ModelType;
@@ -405,6 +411,14 @@ declare module "alt-server" {
     readonly availableModkits: ReadonlyArray<boolean>;
     hasExtra(extraId: number): boolean;
     hasDefaultExtra(extraId: number): boolean;
+    /** @alpha */
+    readonly bones: ReadonlyArray<IBoneInfo>;
+  }
+
+  export interface IPedModel {
+    readonly hash: number;
+    readonly name: string;
+    readonly bones: ReadonlyArray<IBoneInfo>;
   }
 
   /**
@@ -2744,6 +2758,9 @@ declare module "alt-server" {
   export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
+
+  /** @alpha */
+  export function getPedModelInfoByHash(pedModelHash: number): IPedModel;
 
   export function getServerConfig(): IServerConfig;
 
