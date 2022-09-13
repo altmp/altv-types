@@ -3099,6 +3099,7 @@ declare module "alt-client" {
      * @param fixedRot Whether the rotation of the object is fixed or follows that of the entity.
      */
     public attachToEntity(entity: Entity, bone: number, pos: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
+    public attachToEntity(scriptID: number, bone: number, pos: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
 
     /**
      * Detaches the object from the current attached entity.
