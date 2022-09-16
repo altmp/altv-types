@@ -114,8 +114,8 @@ declare module "alt-client" {
     enteredVehicle: (vehicle: Vehicle, seat: number) => void;
     gameEntityCreate: (entity: Entity) => void;
     gameEntityDestroy: (entity: Entity) => void;
-    keydown: (key: number) => void;
-    keyup: (key: number) => void;
+    keydown: (key: shared.KeyCode) => void;
+    keyup: (key: shared.KeyCode) => void;
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
@@ -2036,7 +2036,7 @@ declare module "alt-client" {
     /**
      * Returns the keycode of the voice activation key.
      */
-    public static readonly activationKey: number;
+    public static readonly activationKey: shared.KeyCode;
 
     public static readonly voiceControlsEnabled: boolean;
   }
@@ -2173,14 +2173,14 @@ declare module "alt-client" {
    *
    * @param key Keycode.
    */
-  export function isKeyToggled(key: number): boolean;
+  export function isKeyToggled(key: shared.KeyCode): boolean;
 
   /**
    * Determines whether the specified key is pressed.
    *
    * @param Keycode of the key.
    */
-  export function isKeyDown(key: number): boolean;
+  export function isKeyDown(key: shared.KeyCode): boolean;
 
   /**
    * Returns state of user interface and console window.
@@ -2945,6 +2945,30 @@ declare module "alt-client" {
      * @alpha
      */
     public static loadMapArea(pos: shared.IVector3, radius?: number, timeout?: number): Promise<void>;
+  }
+
+  export namespace Utils {
+    export class Keybind {
+      /**
+       * Binds a callback to a specific key or multiple keys.
+       *
+       * @param keyCode Single or multiple keys to bind.
+       * @param callback Function to call.
+       * @param eventType On which event callback should be called. Defaults to "keyup".
+       *
+       * @example
+       * ```js
+       * // two keycodes (similar to two separate keybinds with the same handler)
+       * const bind = new alt.Utils.Keybind([KeyCode.G, KeyCode.H], () => {
+       *   alt.log('pressed G or H')
+       * })
+       * ```
+       *
+       * @alpha
+       */
+      constructor(keyCode: shared.KeyCode | Array<shared.KeyCode>, callback: () => void, eventType?: "keyup" | "keydown");
+      public destroy(): void;
+    }
   }
 
   /**
