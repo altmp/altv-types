@@ -291,6 +291,14 @@ declare module "alt-server" {
     readonly isAccepted: boolean;
   }
 
+  export const enum ConnectDeniedReason {
+    WRONG_VERSION,
+    WRONG_BRANCH,
+    DEBUG_NOT_ALLOWED,
+    WRONG_PASSWORD,
+    WRONG_CDN_URL,
+  }
+
   export interface IServerEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -303,6 +311,7 @@ declare module "alt-server" {
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
     beforePlayerConnect: (connectionInfo: IConnectionInfo) => boolean | string | void;
+    playerConnectDenied: (reason: ConnectDeniedReason, name: string, ip: string, passwordHash: number, isDebug: boolean, branch: string, version: number, cdnURL: string, discordId: number) => void;
     playerDamage: (victim: Player, attacker: Entity, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
