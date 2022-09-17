@@ -2764,5 +2764,7 @@ declare module "alt-server" {
 
   export function getServerConfig(): IServerConfig;
 
+  export function toggleWorldProfiler(state: boolean): void;
+
   export * from "alt-shared";
 }
