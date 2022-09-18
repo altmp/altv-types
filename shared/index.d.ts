@@ -18,7 +18,7 @@ declare module "alt-shared" {
     LocalPlayer,
   }
 
-  export enum BlipSprite {
+  export const enum BlipSprite {
     Higher,
     Lower,
     PolicePed,
@@ -606,7 +606,7 @@ declare module "alt-shared" {
     ArenaZr,
   }
 
-  export enum BlipColor {
+  export const enum BlipColor {
     White,
     Red,
     Green,
