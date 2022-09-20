@@ -1667,6 +1667,13 @@ declare module "alt-shared" {
   }
 
   export class RGBA {
+    public static readonly red: RGBA;
+    public static readonly green: RGBA;
+    public static readonly blue: RGBA;
+    public static readonly black: RGBA;
+    public static readonly white: RGBA;
+    public static readonly clear: RGBA;
+
     /** r component of RGBA */
     public r: number;
     /** g component of RGBA */
@@ -1691,6 +1698,12 @@ declare module "alt-shared" {
     constructor(rgba: { r: number; g: number; b: number; a?: number });
 
     public toArray(): [r: number, g: number, b: number, a: number];
+
+    public toBGRA(): RGBA;
+
+    public toARGB(): RGBA;
+
+    public toInt(): number;
   }
 
   export class File {
