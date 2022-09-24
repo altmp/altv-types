@@ -26,6 +26,14 @@ interface Alt {
   on(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
+   * Subscribes to client event with specified listener, which only triggers once.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be added.
+   */
+  once(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
    * Gets all the listeners for the specified webview event.
    *
    * @param eventName Name of the event.
