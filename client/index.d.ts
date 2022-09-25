@@ -1146,6 +1146,9 @@ declare module "alt-client" {
      */
     public readonly engineOn: boolean;
 
+    /** @alpha */
+    public getWheelSurfaceMaterial(wheel: number): number;
+
     /**
      * Vehicle handbrake state.
      *
