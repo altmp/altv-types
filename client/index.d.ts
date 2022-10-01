@@ -348,6 +348,21 @@ declare module "alt-client" {
    */
   export interface ICustomVehicleMeta extends ICustomEntityMeta {}
 
+  export interface IMarkerOptions {
+    type?: number;
+    dir?: shared.IVector3;
+    rot?: shared.IVector3;
+    scale?: shared.IVector3;
+    color?: shared.RGBA;
+    bobUpAndDown?: boolean;
+    faceCamera?: boolean;
+    p19?: number;
+    rotate?: boolean;
+    textureDict?: string | undefined;
+    textureName?: string | undefined;
+    drawOnEnts?: boolean;
+  }
+
   export class BaseObject extends shared.BaseObject {
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
@@ -2971,6 +2986,24 @@ declare module "alt-client" {
        */
       constructor(keyCode: shared.KeyCode | Array<shared.KeyCode>, callback: () => void, eventType?: "keyup" | "keydown");
       public destroy(): void;
+    }
+
+    export class Marker {
+      constructor(pos: shared.IVector3, options?: IMarkerOptions);
+
+      public type: number;
+      public pos: shared.IVector3;
+      public dir: shared.IVector3;
+      public rot: shared.IVector3;
+      public scale: shared.IVector3;
+      public color: shared.RGBA;
+      public bobUpAndDown: boolean;
+      public faceCamera: boolean;
+      public p19: number;
+      public rotate: boolean;
+      public textureDict: string | undefined;
+      public textureName: string | undefined;
+      public drawOnEnts: boolean;
     }
   }
 
