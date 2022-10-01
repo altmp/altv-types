@@ -3004,6 +3004,8 @@ declare module "alt-client" {
       public textureDict: string | undefined;
       public textureName: string | undefined;
       public drawOnEnts: boolean;
+
+      public destroy(): void;
     }
   }
 
