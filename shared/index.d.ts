@@ -1395,6 +1395,9 @@ declare module "alt-shared" {
      */
     public negative(): Vector3;
 
+    /** @alpha */
+    public inverse(): Vector3;
+
     /**
      * Normalizes vector.
      */
@@ -1595,6 +1598,9 @@ declare module "alt-shared" {
      * Negates vector.
      */
     public negative(): Vector2;
+
+    /** @alpha */
+    public inverse(): Vector2;
 
     /**
      * Normalizes vector.
