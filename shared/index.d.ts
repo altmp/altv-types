@@ -2130,10 +2130,14 @@ declare module "alt-shared" {
     public static readonly current: Resource;
   }
 
+  // Do not add anything here, add to the Utils namespace instead!
+  // (this class is only here to be extended by client and server)
   export class Utils {
     protected constructor();
+  }
 
-    public static wait(timeout: number): Promise<void>;
+  export namespace Utils {
+    export function wait(timeout: number): Promise<void>;
 
     /**
      * Waits for the callback to return true, otherwise the promise will be rejected after timeout
@@ -2141,10 +2145,8 @@ declare module "alt-shared" {
      * @param callback If callback returns true it resolves promise.
      * @param timeout The maximum milliseconds to wait, otherwise promise will be rejected. Defaults to 2000.
      */
-    public static waitFor(callback: () => boolean, timeout?: number): Promise<void>;
-  }
+    export function waitFor(callback: () => boolean, timeout?: number): Promise<void>;
 
-  export namespace Utils {
     /** @alpha */
     export class Timer {
       public readonly id: number;

@@ -2922,33 +2922,39 @@ declare module "alt-client" {
     public style: Record<string, string>;
   }
 
+  // Do not add anything here, add to the Utils namespace instead!
+  // (this class is here only for extending shared Utils class & namespace)
   export class Utils extends shared.Utils {
+    protected constructor();
+  }
+
+  export namespace Utils {
     /**
      * Loads a model into memory asynchronously, like {@link loadModelAsync} but more safely.
      *
      * @remarks If you can't load a specific model with this method, use {@link loadModelAsync} instead.
      */
-    public static requestModel(model: string | number, timeout?: number): Promise<void>;
+    export function requestModel(model: string | number, timeout?: number): Promise<void>;
 
-    public static requestAnimDict(animDict: string, timeout?: number): Promise<void>;
+    export function requestAnimDict(animDict: string, timeout?: number): Promise<void>;
 
-    public static requestAnimSet(animSet: string, timeout?: number): Promise<void>;
+    export function requestAnimSet(animSet: string, timeout?: number): Promise<void>;
 
-    public static requestClipSet(clipSet: string, timeout?: number): Promise<void>;
+    export function requestClipSet(clipSet: string, timeout?: number): Promise<void>;
 
-    public static requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
-
-    /** @alpha */
-    public static drawText2dThisFrame(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+    export function requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
 
     /** @alpha */
-    public static drawText2d(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
+    export function drawText2dThisFrame(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
 
     /** @alpha */
-    public static drawText3dThisFrame(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+    export function drawText2d(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
 
     /** @alpha */
-    public static drawText3d(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
+    export function drawText3dThisFrame(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+
+    /** @alpha */
+    export function drawText3d(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
 
     /**
      * Loads the map area at a certain position
@@ -2962,10 +2968,9 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    public static loadMapArea(pos: shared.IVector3, radius?: number, timeout?: number): Promise<void>;
-  }
+    export function loadMapArea(pos: shared.IVector3, radius?: number, timeout?: number): Promise<void>;
 
-  export namespace Utils {
+    /** @alpha */
     export class Keybind {
       /**
        * Binds a callback to a specific key or multiple keys.
@@ -2982,12 +2987,12 @@ declare module "alt-client" {
        * })
        * ```
        *
-       * @alpha
        */
       constructor(keyCode: shared.KeyCode | Array<shared.KeyCode>, callback: () => void, eventType?: "keyup" | "keydown");
       public destroy(): void;
     }
 
+    /** @alpha */
     export class Marker {
       constructor(pos: shared.IVector3, options?: IMarkerOptions);
 
