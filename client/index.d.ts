@@ -139,7 +139,7 @@ declare module "alt-client" {
 
     windowFocusChange: (isFocused: boolean) => void;
 
-    windowResolutionChange: (oldResolution: shared.IVector2, newResolution: shared.IVector2) => void;
+    windowResolutionChange: (oldResolution: shared.Vector2, newResolution: shared.Vector2) => void;
 
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
 
