@@ -2182,6 +2182,9 @@ declare module "alt-shared" {
 
       public destroy(): void;
     }
+
+    /** @alpha */
+    function assert(assertion: unknown, message?: string): asserts assertion;
   }
 
   /**
