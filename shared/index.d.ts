@@ -1265,7 +1265,6 @@ declare module "alt-shared" {
     depth?: number | null | undefined;
     colors?: boolean | undefined;
     customInspect?: boolean | undefined;
-    showProxy?: boolean | undefined;
     maxArrayLength?: number | null | undefined;
     /**
      * Specifies the maximum number of characters to
@@ -2190,6 +2189,8 @@ declare module "alt-shared" {
 
     /**
      * Returns a string representation of `value` that is intended for debugging.
+     * 
+     * @remarks Proxy or promise details (returned value, status) are not supported.
      *
      * @alpha
      */
