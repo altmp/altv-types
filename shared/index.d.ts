@@ -2189,7 +2189,7 @@ declare module "alt-shared" {
 
     /**
      * Returns a string representation of `value` that is intended for debugging.
-     * 
+     *
      * @remarks Proxy or promise details (returned value, status) are not supported.
      *
      * @alpha
