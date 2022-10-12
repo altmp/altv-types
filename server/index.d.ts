@@ -2641,20 +2641,6 @@ declare module "alt-server" {
   export function getNetTime(): number;
 
   /**
-   * Gets the main file of the specified resource.
-   *
-   * @param name Name of the resource.
-   */
-  export function getResourceMain(name: string): string;
-
-  /**
-   * Gets the path to the specified resource.
-   *
-   * @param name Name of the resource.
-   */
-  export function getResourcePath(name: string): string;
-
-  /**
    * Unsubscribes from a client event with the specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed to.
