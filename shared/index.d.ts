@@ -1,7 +1,7 @@
 /**
  * @module alt-shared
  */
- declare module "alt-shared" {
+declare module "alt-shared" {
   export const enum BaseObjectType {
     Player,
     Vehicle,
