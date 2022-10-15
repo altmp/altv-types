@@ -1,7 +1,7 @@
 /**
  * @module alt-shared
  */
-declare module "alt-shared" {
+ declare module "alt-shared" {
   export const enum BaseObjectType {
     Player,
     Vehicle,
@@ -2035,21 +2035,29 @@ declare module "alt-shared" {
 
   /**
    * Logs the specified arguments to the console.
+   *
+   * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    */
   export function log(...args: any[]): void;
 
   /**
    * Logs the specified arguments as an error to the console.
+   *
+   * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    */
   export function logError(...args: any[]): void;
 
   /**
    * Logs the specified arguments as a warning to the console.
+   *
+   * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    */
   export function logWarning(...args: any[]): void;
 
   /**
    * Logs the specified arguments to the console if debug is enabled.
+   *
+   * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    *
    * @alpha
    */
@@ -2190,6 +2198,9 @@ declare module "alt-shared" {
     export function inspect(value: unknown, options?: IInspectOptions): string;
 
     /** @alpha */
+    export function assert(assertion: unknown, message?: string): asserts assertion;
+
+    /** @alpha */
     export class Timer {
       public readonly id: number;
 
@@ -2224,9 +2235,6 @@ declare module "alt-shared" {
 
       public destroy(): void;
     }
-
-    /** @alpha */
-    function assert(assertion: unknown, message?: string): asserts assertion;
   }
 
   /**
