@@ -1477,6 +1477,26 @@ declare module "alt-client" {
      *
      * @param url URL of the html file.
      * @param isOverlay true to render as overlay, false to render on game's GUI stage.
+     *
+     * @example
+     * ```
+     * // Let's imagine such file structure:
+     * // resource/
+     * // ├─ client/
+     * // │  ├─ script.js
+     * // │  ├─ index.html
+     * ```
+     *
+     * `index.html`
+     * ```html
+     * <div>Example</div>
+     * ```
+     *
+     * `script.js`
+     * ```js
+     * // <http://resource> is the resource directory (resource root)
+     * const webview = new alt.WebView("http://resource/client/index.html")
+     * ```
      */
     constructor(url: string, isOverlay?: boolean);
 
