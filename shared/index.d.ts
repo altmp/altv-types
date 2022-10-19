@@ -2165,6 +2165,7 @@ declare module "alt-shared" {
     public readonly dependants: ReadonlyArray<string>;
     public readonly requiredPermissions: ReadonlyArray<Permission>;
     public readonly optionalPermissions: ReadonlyArray<Permission>;
+    public readonly valid: boolean;
 
     public static getByName(name: string): Resource | null;
     public static readonly all: ReadonlyArray<Resource>;
