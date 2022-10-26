@@ -3032,6 +3032,27 @@ declare module "alt-client" {
      */
     export function loadMapArea(pos: shared.IVector3, radius?: number, timeout?: number): Promise<void>;
 
+    /**
+     * Combination of `native.registerPedheadshot` and {@link getHeadshotBase64 alt.getHeadshotBase64}
+     *
+     * @alpha
+     */
+    export function registerPedheadshotBase64(ped: Player | number): Promise<string>;
+
+    /**
+     * Combination of `native.registerPedheadshot3` and {@link getHeadshotBase64 alt.getHeadshotBase64}
+     *
+     * @alpha
+     */
+    export function registerPedheadshot3Base64(ped: Player | number): Promise<string>;
+
+    /**
+     * Combination of `native.registerPedheadshotTransparentBase64` and {@link getHeadshotBase64 alt.getHeadshotBase64}
+     *
+     * @alpha
+     */
+    export function registerPedheadshotTransparentBase64(ped: Player | number): Promise<string>;
+
     /** @alpha */
     export class Keybind {
       /**
