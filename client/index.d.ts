@@ -1386,6 +1386,48 @@ declare module "alt-client" {
      */
     public oilLevel: number;
 
+    /**
+     * Changes the engine lamp of the vehicle dashboard.
+     *
+     * @alpha
+     */
+    public engineLight: boolean;
+
+    /**
+     * Changes the abs lamp of the vehicle dashboard.
+     *
+     * @alpha
+     */
+    public absLight: boolean;
+
+    /**
+     * Changes the petrol lamp of the vehicle dashboard.
+     *
+     * @alpha
+     */
+    public petrolLight: boolean;
+
+    /**
+     * Changes the oil lamp of the vehicle dashboard.
+     *
+     * @alpha
+     */
+    public oilLight: boolean;
+
+    /**
+     * Changes the battery lamp of the vehicle dashboard.
+     *
+     * @alpha
+     */
+    public batteryLight: boolean;
+
+    /**
+     * Resets the dashboard lights to default values.
+     *
+     * @alpha
+     */
+    public resetDashboardLights(): void;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K>): void;
