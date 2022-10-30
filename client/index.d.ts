@@ -3052,7 +3052,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    export function getClosestVehicle(options?: { pos?: shared.IVector3; range?: number }): Player | null;
+    export function getClosestVehicle(options?: { pos?: shared.IVector3; range?: number }): Vehicle | null;
 
     /**
      * Finds the closest object (if any) from {@link Object.all alt.Object.all}.
@@ -3063,7 +3063,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    export function getClosestObject(options?: { pos?: shared.IVector3; range?: number }): Vehicle | null;
+    export function getClosestObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
 
     /**
      * Finds the closest world object (if any) from {@link Object.allWorld alt.Object.allWorld}.
@@ -3074,7 +3074,7 @@ declare module "alt-client" {
      *
      * @alpha
      */
-    export function getClosestWorldObject(options?: { pos?: shared.IVector3; range?: number }): Vehicle | null;
+    export function getClosestWorldObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
 
     /** @alpha */
     export class Keybind {
