@@ -2116,6 +2116,15 @@ declare module "alt-shared" {
   export function once(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
+   * Unsubscribes from all user-created events with the specified listener.
+   *
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
+   * @param listener Listener that should be removed.
+   */
+  export function off(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
    * Schedules execution of handler in specified intervals.
    *
    * @param handler Handler that should be scheduled for execution.
