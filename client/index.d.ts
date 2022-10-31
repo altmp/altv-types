@@ -2339,6 +2339,24 @@ declare module "alt-client" {
   export function once<K extends string>(eventName: K, listener: shared.InterfaceValueByKey<IClientEvent, K, (...args: any[]) => void, never>): void;
 
   /**
+   * Subscribes to all events with the specified listener.
+   *
+   * @remarks Listener will be only called for user-created events.
+   *
+   * @param listener Listener that should be added.
+   */
+  export function on(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
+   * Unsubscribes from all user-created events with the specified listener.
+   *
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
+   * @param listener Listener that should be removed.
+   */
+  export function off(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
    * Subscribes to a server event with the specified listener.
    *
    * @param eventName Name of the event.
