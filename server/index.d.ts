@@ -1320,7 +1320,7 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: Array<Vehicle>;
+    public static readonly all: ReadonlyArray<Vehicle>;
 
     /**
      * Get the entity model hash.
@@ -2490,6 +2490,36 @@ declare module "alt-server" {
   export class Resource extends shared.Resource {
     public readonly path: string;
     public readonly config: IResourceConfig;
+  }
+
+  // Do not add anything here, add to the Utils namespace instead!
+  // (this class is here only for extending shared Utils class & namespace)
+  export class Utils extends shared.Utils {
+    protected constructor();
+  }
+
+  export namespace Utils {
+    /**
+     * Finds the closest player (if any) from {@link Player.all alt.Player.all}.
+     *
+     * `pos` - From which position to look for the nearest player.
+     *
+     * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestPlayer(options?: { pos: shared.IVector3; range?: number }): Player | null;
+
+    /**
+     * Finds the closest vehicle (if any) from {@link Vehicle.all alt.Vehicle.all}.
+     *
+     * `pos` - From which position to look for the nearest vehicle.
+     *
+     * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestVehicle(options: { pos: shared.IVector3; range?: number }): Vehicle | null;
   }
 
   /**

@@ -867,7 +867,7 @@ declare module "alt-client" {
     public readonly currentAmmo: number;
 
     /** @alpha */
-    public readonly weapons: Array<number>;
+    public readonly weapons: ReadonlyArray<number>;
 
     /** @alpha */
     public getWeaponAmmo(hash: number): number;
@@ -875,9 +875,9 @@ declare module "alt-client" {
     public getWeaponAmmo(weaponName: string): number;
 
     /** @alpha */
-    public getWeaponComponents(hash: number): Array<number>;
+    public getWeaponComponents(hash: number): ReadonlyArray<number>;
     /** @alpha */
-    public getWeaponComponents(weaponName: string): Array<number>;
+    public getWeaponComponents(weaponName: string): ReadonlyArray<number>;
 
     /** @alpha */
     public hasWeapon(hash: number): boolean;
@@ -3013,10 +3013,10 @@ declare module "alt-client" {
     export function drawText2d(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
 
     /** @alpha */
-    export function drawText3dThisFrame(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+    export function drawText3dThisFrame(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
 
     /** @alpha */
-    export function drawText3d(text: string, pos3d?: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
+    export function drawText3d(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
 
     /**
      * Loads the map area at a certain position
@@ -3052,6 +3052,50 @@ declare module "alt-client" {
      * @alpha
      */
     export function registerPedheadshotTransparentBase64(ped: Player | number): Promise<string>;
+
+    /**
+     * Finds the closest player (if any) from {@link Player.streamedIn alt.Player.streamedIn}.
+     *
+     * `pos` - From which position to look for the nearest player. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest player. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestPlayer(options?: { pos?: shared.IVector3; range?: number }): Player | null;
+
+    /**
+     * Finds the closest vehicle (if any) from {@link Vehicle.streamedIn alt.Vehicle.streamedIn}.
+     *
+     * `pos` - From which position to look for the nearest vehicle. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestVehicle(options?: { pos?: shared.IVector3; range?: number }): Vehicle | null;
+
+    /**
+     * Finds the closest object (if any) from {@link Object.all alt.Object.all}.
+     *
+     * `pos` - From which position to look for the nearest object. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest object. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
+
+    /**
+     * Finds the closest world object (if any) from {@link Object.allWorld alt.Object.allWorld}.
+     *
+     * `pos` - From which position to look for the nearest world object. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest world object. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestWorldObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
 
     /** @alpha */
     export class Keybind {
