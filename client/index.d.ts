@@ -867,7 +867,7 @@ declare module "alt-client" {
     public readonly currentAmmo: number;
 
     /** @alpha */
-    public readonly weapons: Array<number>;
+    public readonly weapons: ReadonlyArray<number>;
 
     /** @alpha */
     public getWeaponAmmo(hash: number): number;
@@ -875,9 +875,9 @@ declare module "alt-client" {
     public getWeaponAmmo(weaponName: string): number;
 
     /** @alpha */
-    public getWeaponComponents(hash: number): Array<number>;
+    public getWeaponComponents(hash: number): ReadonlyArray<number>;
     /** @alpha */
-    public getWeaponComponents(weaponName: string): Array<number>;
+    public getWeaponComponents(weaponName: string): ReadonlyArray<number>;
 
     /** @alpha */
     public hasWeapon(hash: number): boolean;
