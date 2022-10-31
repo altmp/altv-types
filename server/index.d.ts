@@ -1320,7 +1320,7 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: Array<Vehicle>;
+    public static readonly all: ReadonlyArray<Vehicle>;
 
     /**
      * Get the entity model hash.
