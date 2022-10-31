@@ -3032,6 +3032,50 @@ declare module "alt-client" {
      */
     export function loadMapArea(pos: shared.IVector3, radius?: number, timeout?: number): Promise<void>;
 
+    /**
+     * Finds the closest player (if any) from {@link Player.streamedIn alt.Player.streamedIn}.
+     *
+     * `pos` - From which position to look for the nearest player. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest player. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestPlayer(options?: { pos?: shared.IVector3; range?: number }): Player | null;
+
+    /**
+     * Finds the closest vehicle (if any) from {@link Vehicle.streamedIn alt.Vehicle.streamedIn}.
+     *
+     * `pos` - From which position to look for the nearest vehicle. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestVehicle(options?: { pos?: shared.IVector3; range?: number }): Vehicle | null;
+
+    /**
+     * Finds the closest object (if any) from {@link Object.all alt.Object.all}.
+     *
+     * `pos` - From which position to look for the nearest object. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest object. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
+
+    /**
+     * Finds the closest world object (if any) from {@link Object.allWorld alt.Object.allWorld}.
+     *
+     * `pos` - From which position to look for the nearest world object. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest world object. Defaults to `Infinity`.
+     *
+     * @alpha
+     */
+    export function getClosestWorldObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
+
     /** @alpha */
     export class Keybind {
       /**
