@@ -2681,6 +2681,15 @@ declare module "alt-server" {
   export function offClient(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
+   * Unsubscribes from all user-created client events with the specified listener.
+   *
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
+   * @param listener Listener that should be removed.
+   */
+  export function offClient(listener: (eventName: string, ...args: any[]) => void): void;
+
+  /**
    * Subscribes to a server event with the specified listener.
    *
    * @param eventName Name of the event.
