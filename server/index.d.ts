@@ -2585,7 +2585,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
-   * @deprecated
+   * @deprecated For sending events to all clients use {@link emitAllClients} instead.
    */
   export function emitClient(player: null, eventName: string, ...args: any[]): void;
 
@@ -2625,7 +2625,7 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
-   * @deprecated
+   * @deprecated For sending events to all clients use {@link emitAllClientsRaw} instead.
    */
   export function emitClientRaw(player: null, eventName: string, ...args: any[]): void;
 
