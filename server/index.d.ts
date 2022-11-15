@@ -346,6 +346,8 @@ declare module "alt-server" {
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
     playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
+    /** @alpha */
+    playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
   }
 
   export interface IFireInfo {
