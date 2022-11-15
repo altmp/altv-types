@@ -286,7 +286,12 @@ declare module "alt-server" {
   }
 
   export interface IConnectionQueueInfo extends IConnectionInfo {
-    accept: () => void;
+    /**
+     * Accepts client connection.
+     *
+     * @param sendNames Send names of all players on server to this client. Defaults to `true`. (@alpha)
+     */
+    accept: (sendNames?: boolean) => void;
     decline: (reason: string) => void;
     readonly isAccepted: boolean;
   }
@@ -515,6 +520,16 @@ declare module "alt-server" {
     readonly earlyAuthUrl?: string;
     readonly useCdn?: boolean;
     readonly cdnUrl?: string;
+    readonly sendNames?: boolean;
+    readonly mapBoundsMinX?: number;
+    readonly mapBoundsMinY?: number;
+    readonly mapBoundsMaxX?: number;
+    readonly mapBoundsMaxY?: number;
+    readonly mapCellAreaSize?: number;
+    readonly colShapeTickRate?: number;
+    readonly logStream?: ReadonlyArray<string>;
+    readonly entityWorkerCount?: number;
+    readonly connectionQueue?: boolean;
 
     readonly voice?: {
       readonly bitrate?: number;
@@ -523,6 +538,11 @@ declare module "alt-server" {
       readonly externalPort?: number;
       readonly externalPublicHost?: string;
       readonly externalPublicPort?: number;
+    };
+
+    readonly worldProfiler?: {
+      readonly port?: number;
+      readonly host?: string;
     };
 
     readonly "js-module"?: {
@@ -886,6 +906,13 @@ declare module "alt-server" {
     public readonly currentInterior: number;
     /** @alpha */
     public lastDamagedBodyPart: number;
+
+    /**
+     * Send names of all players on server to this player if they are not already sent (value is not set to `true`).
+     *
+     * @alpha
+     */
+    public sendNames: boolean;
 
     /**
      * Retrieves the player from the pool.
