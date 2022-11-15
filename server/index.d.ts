@@ -539,7 +539,7 @@ declare module "alt-server" {
       readonly externalPublicHost?: string;
       readonly externalPublicPort?: number;
     };
-    
+
     readonly worldProfiler?: {
       readonly port?: number;
       readonly host?: string;
