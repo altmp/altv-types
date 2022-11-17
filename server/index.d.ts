@@ -2196,9 +2196,6 @@ declare module "alt-server" {
     public rocketRefuelSpeed: number;
 
     /** @alpha */
-    public bombCount: number;
-
-    /** @alpha */
     public counterMeasureCount: number;
 
     /** @alpha */
@@ -2215,12 +2212,6 @@ declare module "alt-server" {
 
     /** @alpha */
     public hybridExtraState: number;
-
-    /** @alpha */
-    public damageModifier: number;
-
-    /** @alpha */
-    public damageMultiplier: number;
 
     // normal meta
 
