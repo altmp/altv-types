@@ -1828,6 +1828,9 @@ declare module "alt-shared" {
     public hasMeta(key: string): boolean;
     public hasMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
 
+    /**@beta */
+    public getMetaDataKeys(): ReadonlyArray<string>;
+
     /**
      * Stores the given value with the specified key.
      *

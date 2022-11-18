@@ -592,6 +592,9 @@ declare module "alt-client" {
     public hasSyncedMeta(key: string): boolean;
     public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
+    /** @beta */
+    public getSyncedMetaDataKeys(): ReadonlyArray<string>;
+
     /**
      * Gets a value using the specified key.
      *
@@ -611,6 +614,9 @@ declare module "alt-client" {
      */
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
+
+    /** @beta */
+    public getStreamSyncedMetaDataKeys(): ReadonlyArray<string>;
   }
 
   export class Player extends Entity {

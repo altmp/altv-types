@@ -734,6 +734,9 @@ declare module "alt-server" {
     public hasSyncedMeta(key: string): boolean;
     public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
+    /** @beta */
+    public getSyncedMetaDataKeys(): ReadonlyArray<string>;
+
     /**
      * Stores the given value with the specified key.
      *
@@ -774,6 +777,9 @@ declare module "alt-server" {
      */
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
+
+    /** @beta */
+    public getStreamSyncedMetaDataKeys(): ReadonlyArray<string>;
 
     /**
      * Stores the given value with the specified key.
@@ -1259,6 +1265,9 @@ declare module "alt-server" {
 
     public hasLocalMeta(key: string): boolean;
     public hasLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): boolean;
+
+    /** @beta */
+    public getLocalMetaDataKeys(): ReadonlyArray<string>;
 
     // normal meta
 
