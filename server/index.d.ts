@@ -1267,7 +1267,7 @@ declare module "alt-server" {
     public hasLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): boolean;
 
     /** @beta */
-    public getLocalMetaDataKeys(): ReadonlyArray<string>;
+    public getLocalMetaKeys(): ReadonlyArray<string>;
 
     // normal meta
 
