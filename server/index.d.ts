@@ -2766,6 +2766,16 @@ declare module "alt-server" {
   export function on(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
+   * Unsubscribes from a event with the specified listener.
+   *
+   * @remarks Listener should be of the same reference as when event was subscribed to.
+   *
+   * @param eventName Name of the event.
+   * @param listener Listener that should be removed.
+   */
+  export function off(eventName: string, listener: (...args: any[]) => void): void;
+
+  /**
    * Unsubscribes from all user-created events with the specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed to.
