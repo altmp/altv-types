@@ -1310,6 +1310,9 @@ declare module "alt-shared" {
      */
     public toArray(): [number, number, number];
 
+    /** @beta */
+    public toFixed(precision: number): Vector3;
+
     /**
      * Adds two vectors.
      */
@@ -1533,6 +1536,9 @@ declare module "alt-shared" {
      * Returns [x, y] array.
      */
     public toArray(): [number, number];
+
+    /** @beta */
+    public toFixed(precision: number): Vector2;
 
     /**
      * Adds two vectors.
