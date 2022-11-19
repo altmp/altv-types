@@ -735,7 +735,7 @@ declare module "alt-server" {
     public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
     /** @beta */
-    public getSyncedMetaDataKeys(): ReadonlyArray<string>;
+    public getSyncedMetaKeys(): ReadonlyArray<string>;
 
     /**
      * Stores the given value with the specified key.
@@ -779,7 +779,7 @@ declare module "alt-server" {
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
     /** @beta */
-    public getStreamSyncedMetaDataKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
 
     /**
      * Stores the given value with the specified key.
