@@ -323,7 +323,6 @@ declare module "alt-server" {
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
-    removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
     resourceError: (error: Error, file: string, line: number, stackTrace: string) => void;

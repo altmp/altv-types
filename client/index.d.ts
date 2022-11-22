@@ -117,7 +117,6 @@ declare module "alt-client" {
     keydown: (key: shared.KeyCode) => void;
     keyup: (key: shared.KeyCode) => void;
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
-    removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
     resourceError: (error: Error, file: string, line: number, stackTrace: string) => void;
