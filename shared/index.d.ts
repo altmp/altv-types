@@ -1438,7 +1438,7 @@ declare module "alt-shared" {
      */
     public negative(): Vector3;
 
-    /** @alpha */
+    /** @beta */
     public inverse(): Vector3;
 
     /**
@@ -1645,7 +1645,7 @@ declare module "alt-shared" {
      */
     public negative(): Vector2;
 
-    /** @alpha */
+    /** @beta */
     public inverse(): Vector2;
 
     /**
@@ -2068,7 +2068,7 @@ declare module "alt-shared" {
    *
    * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    *
-   * @alpha
+   * @beta
    */
   export function logDebug(...args: any[]): void;
 
@@ -2212,14 +2212,14 @@ declare module "alt-shared" {
      *
      * @remarks Proxy or promise details (returned value, status) are not supported.
      *
-     * @alpha
+     * @beta
      */
     export function inspect(value: unknown, options?: IInspectOptions): string;
 
-    /** @alpha */
+    /** @beta */
     export function assert(assertion: unknown, message?: string): asserts assertion;
 
-    /** @alpha */
+    /** @beta */
     export class Timer {
       public readonly id: number;
 
@@ -2228,27 +2228,27 @@ declare module "alt-shared" {
       public destroy(): void;
     }
 
-    /** @alpha */
+    /** @beta */
     export class Timeout extends Timer {
       constructor(callback: () => void, ms: number);
     }
 
-    /** @alpha */
+    /** @beta */
     export class Interval extends Timer {
       constructor(callback: () => void, ms: number);
     }
 
-    /** @alpha */
+    /** @beta */
     export class NextTick extends Timer {
       constructor(callback: () => void);
     }
 
-    /** @alpha */
+    /** @beta */
     export class EveryTick extends Timer {
       constructor(callback: () => void);
     }
 
-    /** @alpha */
+    /** @beta */
     export class ConsoleCommand {
       constructor(name: string, callback: (...args: string[]) => void);
 

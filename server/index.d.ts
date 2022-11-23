@@ -289,7 +289,7 @@ declare module "alt-server" {
     /**
      * Accepts client connection.
      *
-     * @param sendNames Send names of all players on server to this client. Defaults to `true`. (@alpha)
+     * @param sendNames Send names of all players on server to this client. Defaults to `true`. (@beta)
      */
     accept: (sendNames?: boolean) => void;
     decline: (reason: string) => void;
@@ -345,7 +345,7 @@ declare module "alt-server" {
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
     playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
-    /** @alpha */
+    /** @beta */
     playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
   }
 
@@ -426,7 +426,7 @@ declare module "alt-server" {
     readonly availableModkits: ReadonlyArray<boolean>;
     hasExtra(extraId: number): boolean;
     hasDefaultExtra(extraId: number): boolean;
-    /** @alpha */
+    /** @beta */
     readonly bones: ReadonlyArray<IBoneInfo>;
   }
 
@@ -911,13 +911,13 @@ declare module "alt-server" {
     public readonly forwardSpeed: number;
     public readonly strafeSpeed: number;
     public readonly currentInterior: number;
-    /** @alpha */
+    /** @beta */
     public lastDamagedBodyPart: number;
 
     /**
      * Send names of all players on server to this player if they are not already sent (value is not set to `true`).
      *
-     * @alpha
+     * @beta
      */
     public sendNames: boolean;
 
@@ -2200,25 +2200,25 @@ declare module "alt-server" {
 
     public readonly hasTimedExplosion: boolean;
 
-    /** @alpha */
+    /** @beta */
     public rocketRefuelSpeed: number;
 
-    /** @alpha */
+    /** @beta */
     public counterMeasureCount: number;
 
-    /** @alpha */
+    /** @beta */
     public scriptMaxSpeed: number;
 
-    /** @alpha */
+    /** @beta */
     public getWeaponCapacity(weaponIndex: number): number;
 
-    /** @alpha */
+    /** @beta */
     public setWeaponCapacity(weaponIndex: number, capacity: number): void;
 
-    /** @alpha */
+    /** @beta */
     public hybridExtraActive: boolean;
 
-    /** @alpha */
+    /** @beta */
     public hybridExtraState: number;
 
     // normal meta
@@ -2390,7 +2390,7 @@ declare module "alt-server" {
   export class PointBlip extends Blip {
     constructor(x: number, y: number, z: number);
 
-    /** @alpha */
+    /** @beta */
     constructor(pos: shared.IVector3);
 
     constructor(entity: Entity);
@@ -2534,7 +2534,7 @@ declare module "alt-server" {
      *
      * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
      *
-     * @alpha
+     * @beta
      */
     export function getClosestPlayer(options?: { pos: shared.IVector3; range?: number }): Player | null;
 
@@ -2545,7 +2545,7 @@ declare module "alt-server" {
      *
      * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
      *
-     * @alpha
+     * @beta
      */
     export function getClosestVehicle(options: { pos: shared.IVector3; range?: number }): Vehicle | null;
   }
@@ -2852,7 +2852,7 @@ declare module "alt-server" {
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
-  /** @alpha */
+  /** @beta */
   export function getPedModelInfoByHash(pedModelHash: number): IPedModel;
 
   export function getServerConfig(): IServerConfig;
