@@ -349,8 +349,6 @@ declare module "alt-server" {
     /** @beta */
     playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
     /** @beta */
-    entityRemove(entity: Entity): void;
-    /** @beta */
     baseObjectCreate(baseObject: BaseObject): void;
     /** @beta */
     baseObjectRemove(baseObject: BaseObject): void;
