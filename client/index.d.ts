@@ -147,6 +147,12 @@ declare module "alt-client" {
 
     /** @beta */
     playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
+
+    /** @beta */
+    entityCreate(entity: Entity): void;
+
+    /** @beta */
+    entityRemove(entity: Entity): void;
   }
 
   export interface IDiscordUser {
