@@ -1686,6 +1686,7 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomWebViewMeta, K, V>): void;
   }
 
+  /** @deprecated */
   export class Worker {
     /**
      * Maximum available workers per resource.
