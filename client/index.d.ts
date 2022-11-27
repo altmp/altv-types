@@ -150,10 +150,10 @@ declare module "alt-client" {
     playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
 
     /** @beta */
-    baseObjectCreate(baseObject: BaseObject): void;
+    baseObjectCreate: (baseObject: BaseObject) => void;
 
     /** @beta */
-    baseObjectRemove(baseObject: BaseObject): void;
+    baseObjectRemove: (baseObject: BaseObject) => void;
   }
 
   export interface IDiscordUser {
