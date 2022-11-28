@@ -995,7 +995,7 @@ declare module "alt-shared" {
     Object,
   }
 
-  export enum KeyCode {
+  export const enum KeyCode {
     Key0 = 48,
     Key1 = 49,
     Key2 = 50,
