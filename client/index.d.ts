@@ -2789,6 +2789,9 @@ declare module "alt-client" {
     public static stopProfiling(profileName?: string): IProfile;
 
     public static getMemoryProfile(): void;
+
+    /** @beta */
+    public static takeHeapSnapshot(): void;
   }
 
   /**
