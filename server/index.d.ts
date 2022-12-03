@@ -292,8 +292,8 @@ declare module "alt-server" {
     playerConnect: (player: Player) => void;
     beforePlayerConnect: (connectionInfo: IConnectionInfo) => boolean | string | void;
     playerConnectDenied: (reason: ConnectDeniedReason, name: string, ip: string, passwordHash: number, isDebug: boolean, branch: string, version: number, cdnURL: string, discordId: number) => void;
-    playerDamage: (victim: Player, attacker: Entity, healthDamage: number, armourDamage: number, weaponHash: number) => void;
-    playerDeath: (victim: Player, killer: Entity, weaponHash: number) => void;
+    playerDamage: (victim: Player, attacker: Entity | null, healthDamage: number, armourDamage: number, weaponHash: number) => void;
+    playerDeath: (victim: Player, killer: Entity | null, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
@@ -313,7 +313,7 @@ declare module "alt-server" {
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
-    vehicleDamage: (vehicle: Vehicle, attacker: Entity, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
+    vehicleDamage: (vehicle: Vehicle, attacker: Entity | null, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
     localMetaChange: (player: Player, key: string, newValue: any, oldValue: any) => void;
     connectionQueueAdd: (connectionInfo: IConnectionQueueInfo) => void;
     connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
