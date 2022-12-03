@@ -154,6 +154,9 @@ declare module "alt-client" {
 
     /** @beta */
     baseObjectRemove: (baseObject: BaseObject) => void;
+
+    /** @beta */
+    weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
   }
 
   export interface IDiscordUser {
