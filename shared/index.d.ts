@@ -1105,6 +1105,31 @@ declare module "alt-shared" {
     MouseMiddle = 4,
   }
 
+  export const enum BodyPart {
+    Pelvis,
+    LeftHip,
+    LeftLeg,
+    LeftFoot,
+    RightHip,
+    RightLeg,
+    RightFoot,
+    LowerTorso,
+    UpperTorso,
+    Chest,
+    UnderNeck,
+    LeftShoulder,
+    LeftUpperArm,
+    LeftElbrow,
+    LeftWrist,
+    RightShoulder,
+    RightUpperArm,
+    RightElbrow,
+    RightWrist,
+    Neck,
+    Head,
+    Unknown = -1,
+  }
+
   /**
    * This is an internal utility type and you probably don't need it
    *

@@ -54,31 +54,6 @@ declare module "alt-server" {
     Unknown = -1,
   }
 
-  export const enum BodyPart {
-    Pelvis,
-    LeftHip,
-    LeftLeg,
-    LeftFoot,
-    RightHip,
-    RightLeg,
-    RightFoot,
-    LowerTorso,
-    UpperTorso,
-    Chest,
-    UnderNeck,
-    LeftShoulder,
-    LeftUpperArm,
-    LeftElbrow,
-    LeftWrist,
-    RightShoulder,
-    RightUpperArm,
-    RightElbrow,
-    RightWrist,
-    Neck,
-    Head,
-    Unknown = -1,
-  }
-
   export const enum BlipType {
     Vehicle = 1,
     Ped,
@@ -334,7 +309,7 @@ declare module "alt-server" {
     vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
     vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
-    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: BodyPart) => boolean | void;
+    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
