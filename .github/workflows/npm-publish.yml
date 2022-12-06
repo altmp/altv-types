@@ -137,11 +137,11 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-      # - name: Check package version
-      #   id: pkgver
-      #   run: |
-      #     echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
-      #     echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
+      - name: Check package version
+        id: pkgver
+        run: |
+          echo "::set-output name=local::$(node -p -e "require('./package.json').version")"
+          echo "::set-output name=remote::$(yarn info -s $(node -p -e "require('./package.json').name") version)"
       # - name: Checkout generator
       #   if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
       #   uses: actions/checkout@v2
