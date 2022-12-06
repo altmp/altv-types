@@ -143,13 +143,10 @@ declare module "alt-client" {
 
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
 
-    /** @beta */
     playerWeaponShoot: (weaponHash: number, totalAmmo: number, ammoInClip: number) => void;
 
-    /** @beta */
     playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
 
-    /** @beta */
     weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
   }
 
@@ -595,7 +592,6 @@ declare module "alt-client" {
     public hasSyncedMeta(key: string): boolean;
     public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
-    /** @beta */
     public getSyncedMetaKeys(): ReadonlyArray<string>;
 
     /**
@@ -618,7 +614,6 @@ declare module "alt-client" {
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
-    /** @beta */
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
@@ -875,20 +870,18 @@ declare module "alt-client" {
      */
     public readonly currentAmmo: number;
 
-    /** @beta */
     public readonly weapons: ReadonlyArray<number>;
 
-    /** @beta */
     public getWeaponAmmo(hash: number): number;
-    /** @beta */
+
     public getWeaponAmmo(weaponName: string): number;
-    /** @beta */
+
     public getWeaponComponents(hash: number): ReadonlyArray<number>;
-    /** @beta */
+
     public getWeaponComponents(weaponName: string): ReadonlyArray<number>;
-    /** @beta */
+
     public hasWeapon(hash: number): boolean;
-    /** @beta */
+
     public hasWeapon(weaponName: string): boolean;
 
     public deleteMeta(key: string): void;
@@ -1168,7 +1161,6 @@ declare module "alt-client" {
      */
     public readonly engineOn: boolean;
 
-    /** @beta */
     public getWheelSurfaceMaterial(wheel: number): number;
 
     /**
@@ -1395,43 +1387,31 @@ declare module "alt-client" {
 
     /**
      * Changes the engine lamp of the vehicle dashboard.
-     *
-     * @beta
      */
     public engineLight: boolean;
 
     /**
      * Changes the abs lamp of the vehicle dashboard.
-     *
-     * @beta
      */
     public absLight: boolean;
 
     /**
      * Changes the petrol lamp of the vehicle dashboard.
-     *
-     * @beta
      */
     public petrolLight: boolean;
 
     /**
      * Changes the oil lamp of the vehicle dashboard.
-     *
-     * @beta
      */
     public oilLight: boolean;
 
     /**
      * Changes the battery lamp of the vehicle dashboard.
-     *
-     * @beta
      */
     public batteryLight: boolean;
 
     /**
      * Resets the dashboard lights to default values.
-     *
-     * @beta
      */
     public resetDashboardLights(): void;
 
@@ -2787,7 +2767,6 @@ declare module "alt-client" {
 
     public static getMemoryProfile(): void;
 
-    /** @beta */
     public static takeHeapSnapshot(): void;
   }
 
@@ -3054,16 +3033,12 @@ declare module "alt-client" {
 
     export function requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
 
-    /** @beta */
     export function drawText2dThisFrame(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
 
-    /** @beta */
     export function drawText2d(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
 
-    /** @beta */
     export function drawText3dThisFrame(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
 
-    /** @beta */
     export function drawText3d(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
 
     /**
@@ -3075,29 +3050,21 @@ declare module "alt-client" {
      * @param pos Coords of the map area.
      * @param radius Radius of sphere to load. Defaults to 50.0.
      * @param timeout The maximum milliseconds to wait, otherwise promise will be rejected. Defaults to 5000.
-     *
-     * @beta
      */
     export function loadMapArea(pos: shared.IVector3, radius?: number, timeout?: number): Promise<void>;
 
     /**
      * Combination of `native.registerPedheadshot` and {@link getHeadshotBase64 alt.getHeadshotBase64}
-     *
-     * @beta
      */
     export function registerPedheadshotBase64(ped: Player | number): Promise<string>;
 
     /**
      * Combination of `native.registerPedheadshot3` and {@link getHeadshotBase64 alt.getHeadshotBase64}
-     *
-     * @beta
      */
     export function registerPedheadshot3Base64(ped: Player | number): Promise<string>;
 
     /**
      * Combination of `native.registerPedheadshotTransparentBase64` and {@link getHeadshotBase64 alt.getHeadshotBase64}
-     *
-     * @beta
      */
     export function registerPedheadshotTransparentBase64(ped: Player | number): Promise<string>;
 
@@ -3107,8 +3074,6 @@ declare module "alt-client" {
      * `pos` - From which position to look for the nearest player. Defaults to local player position.
      *
      * `range` - In which range to search for the nearest player. Defaults to `Infinity`.
-     *
-     * @beta
      */
     export function getClosestPlayer(options?: { pos?: shared.IVector3; range?: number }): Player | null;
 
@@ -3118,8 +3083,6 @@ declare module "alt-client" {
      * `pos` - From which position to look for the nearest vehicle. Defaults to local player position.
      *
      * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
-     *
-     * @beta
      */
     export function getClosestVehicle(options?: { pos?: shared.IVector3; range?: number }): Vehicle | null;
 
@@ -3129,8 +3092,6 @@ declare module "alt-client" {
      * `pos` - From which position to look for the nearest object. Defaults to local player position.
      *
      * `range` - In which range to search for the nearest object. Defaults to `Infinity`.
-     *
-     * @beta
      */
     export function getClosestObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
 
@@ -3140,12 +3101,9 @@ declare module "alt-client" {
      * `pos` - From which position to look for the nearest world object. Defaults to local player position.
      *
      * `range` - In which range to search for the nearest world object. Defaults to `Infinity`.
-     *
-     * @beta
      */
     export function getClosestWorldObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
 
-    /** @beta */
     export class Keybind {
       /**
        * Binds a callback to a specific key or multiple keys.
@@ -3167,7 +3125,6 @@ declare module "alt-client" {
       public destroy(): void;
     }
 
-    /** @beta */
     export class Marker {
       constructor(pos: shared.IVector3, options?: IMarkerOptions);
 
@@ -3271,8 +3228,6 @@ declare module "alt-client" {
     public readonly clipSize: number;
     public readonly timeBetweenShots: number;
     public headshotDamageModifier: number;
-
-    /** @beta */
     public playerDamageModifier: number;
 
     /**
@@ -3283,12 +3238,10 @@ declare module "alt-client" {
 
   export function loadDefaultIpls(): void;
 
-  /** @beta */
   export function isPointOnScreen(x: number, y: number, z: number): boolean;
-  /** @beta */
+
   export function isPointOnScreen(value: shared.IVector3): boolean;
 
-  /** @beta */
   export class Object extends Entity {
     /**
      * Creates a new object.

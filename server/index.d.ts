@@ -264,7 +264,7 @@ declare module "alt-server" {
     /**
      * Accepts client connection.
      *
-     * @param sendNames Send names of all players on server to this client. Defaults to `true`. (@beta)
+     * @param sendNames Send names of all players on server to this client. Defaults to `true`.
      */
     accept: (sendNames?: boolean) => void;
     decline: (reason: string) => void;
@@ -321,7 +321,6 @@ declare module "alt-server" {
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
     playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
-    /** @beta */
     playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
   }
 
@@ -402,7 +401,6 @@ declare module "alt-server" {
     readonly availableModkits: ReadonlyArray<boolean>;
     hasExtra(extraId: number): boolean;
     hasDefaultExtra(extraId: number): boolean;
-    /** @beta */
     readonly bones: ReadonlyArray<IBoneInfo>;
   }
 
@@ -709,7 +707,6 @@ declare module "alt-server" {
     public hasSyncedMeta(key: string): boolean;
     public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
-    /** @beta */
     public getSyncedMetaKeys(): ReadonlyArray<string>;
 
     /**
@@ -753,7 +750,6 @@ declare module "alt-server" {
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
-    /** @beta */
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
 
     /**
@@ -887,13 +883,10 @@ declare module "alt-server" {
     public readonly forwardSpeed: number;
     public readonly strafeSpeed: number;
     public readonly currentInterior: number;
-    /** @beta */
     public lastDamagedBodyPart: number;
 
     /**
      * Send names of all players on server to this player if they are not already sent (value is not set to `true`).
-     *
-     * @beta
      */
     public sendNames: boolean;
 
@@ -1241,7 +1234,6 @@ declare module "alt-server" {
     public hasLocalMeta(key: string): boolean;
     public hasLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): boolean;
 
-    /** @beta */
     public getLocalMetaKeys(): ReadonlyArray<string>;
 
     // normal meta
@@ -2176,25 +2168,18 @@ declare module "alt-server" {
 
     public readonly hasTimedExplosion: boolean;
 
-    /** @beta */
     public rocketRefuelSpeed: number;
 
-    /** @beta */
     public counterMeasureCount: number;
 
-    /** @beta */
     public scriptMaxSpeed: number;
 
-    /** @beta */
     public getWeaponCapacity(weaponIndex: number): number;
 
-    /** @beta */
     public setWeaponCapacity(weaponIndex: number, capacity: number): void;
 
-    /** @beta */
     public hybridExtraActive: boolean;
 
-    /** @beta */
     public hybridExtraState: number;
 
     // normal meta
@@ -2366,7 +2351,6 @@ declare module "alt-server" {
   export class PointBlip extends Blip {
     constructor(x: number, y: number, z: number);
 
-    /** @beta */
     constructor(pos: shared.IVector3);
 
     constructor(entity: Entity);
@@ -2509,8 +2493,6 @@ declare module "alt-server" {
      * `pos` - From which position to look for the nearest player.
      *
      * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
-     *
-     * @beta
      */
     export function getClosestPlayer(options?: { pos: shared.IVector3; range?: number }): Player | null;
 
@@ -2520,8 +2502,6 @@ declare module "alt-server" {
      * `pos` - From which position to look for the nearest vehicle.
      *
      * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
-     *
-     * @beta
      */
     export function getClosestVehicle(options: { pos: shared.IVector3; range?: number }): Vehicle | null;
   }
@@ -2828,7 +2808,6 @@ declare module "alt-server" {
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
-  /** @beta */
   export function getPedModelInfoByHash(pedModelHash: number): IPedModel;
 
   export function getServerConfig(): IServerConfig;

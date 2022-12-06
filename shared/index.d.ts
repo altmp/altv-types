@@ -1335,7 +1335,6 @@ declare module "alt-shared" {
      */
     public toArray(): [number, number, number];
 
-    /** @beta */
     public toFixed(precision: number): Vector3;
 
     /**
@@ -1463,7 +1462,6 @@ declare module "alt-shared" {
      */
     public negative(): Vector3;
 
-    /** @beta */
     public inverse(): Vector3;
 
     /**
@@ -1562,7 +1560,6 @@ declare module "alt-shared" {
      */
     public toArray(): [number, number];
 
-    /** @beta */
     public toFixed(precision: number): Vector2;
 
     /**
@@ -1670,7 +1667,6 @@ declare module "alt-shared" {
      */
     public negative(): Vector2;
 
-    /** @beta */
     public inverse(): Vector2;
 
     /**
@@ -1859,7 +1855,6 @@ declare module "alt-shared" {
     public hasMeta(key: string): boolean;
     public hasMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
 
-    /**@beta */
     public getMetaDataKeys(): ReadonlyArray<string>;
 
     /**
@@ -2092,8 +2087,6 @@ declare module "alt-shared" {
    * Logs the specified arguments to the console if debug is enabled.
    *
    * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
-   *
-   * @beta
    */
   export function logDebug(...args: any[]): void;
 
@@ -2236,15 +2229,11 @@ declare module "alt-shared" {
      * Returns a string representation of `value` that is intended for debugging.
      *
      * @remarks Proxy or promise details (returned value, status) are not supported.
-     *
-     * @beta
      */
     export function inspect(value: unknown, options?: IInspectOptions): string;
 
-    /** @beta */
     export function assert(assertion: unknown, message?: string): asserts assertion;
 
-    /** @beta */
     export class Timer {
       public readonly id: number;
 
@@ -2253,27 +2242,22 @@ declare module "alt-shared" {
       public destroy(): void;
     }
 
-    /** @beta */
     export class Timeout extends Timer {
       constructor(callback: () => void, ms: number);
     }
 
-    /** @beta */
     export class Interval extends Timer {
       constructor(callback: () => void, ms: number);
     }
 
-    /** @beta */
     export class NextTick extends Timer {
       constructor(callback: () => void);
     }
 
-    /** @beta */
     export class EveryTick extends Timer {
       constructor(callback: () => void);
     }
 
-    /** @beta */
     export class ConsoleCommand {
       constructor(name: string, callback: (...args: string[]) => void);
 
