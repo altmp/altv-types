@@ -323,10 +323,6 @@ declare module "alt-server" {
     playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
     /** @beta */
     playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
-    /** @beta */
-    baseObjectCreate: (baseObject: BaseObject) => void;
-    /** @beta */
-    baseObjectRemove: (baseObject: BaseObject) => void;
   }
 
   export interface IFireInfo {
