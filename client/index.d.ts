@@ -3332,16 +3332,16 @@ declare module "alt-client" {
     /**
      * Attaches the object to another entity.
      *
-     * @param entity Entity the object should be attached to.
-     * @param bone Bone index of the entity to attach to. (-1 for entity center)
-     * @param pos Position offset of the object.
-     * @param rot Rotation of the object.
+     * @param entity Entity or scriptID of the entity the object should be attached to.
+     * @param bone Bone index of the entity to attach to. (-1 for entity center).
+     * @param offset Offset of the object.
+     * @param rot Rotation of the object in radians.
      * @param useSoftPinning Whether the object should be able to detach when not fixed.
      * @param collision Whether the object and the entity should collide with each other.
      * @param fixedRot Whether the rotation of the object is fixed or follows that of the entity.
      */
-    public attachToEntity(entity: Entity, bone: number, pos: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
-    public attachToEntity(scriptID: number, bone: number, pos: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
+    public attachToEntity(entity: Entity, bone: number, offset: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
+    public attachToEntity(scriptID: number, bone: number, offset: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
 
     /**
      * Detaches the object from the current attached entity.

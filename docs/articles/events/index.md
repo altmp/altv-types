@@ -163,7 +163,9 @@ function customEventFunction() {
 
 ## Raw Events
 
-Raw events serialize the values to their raw byte buffer representation instead of converting them to an intermediate value, because of this the raw events can serialize and send big objects / arrays a lot faster than the normal events, BUT the downside is that this only works when both sides are using JavaScript
+Raw events serialize the values to their raw byte buffer representation instead of converting them to an intermediate value, because of this the raw events can serialize and send big objects / arrays a lot faster than the normal events, BUT the downside is that this only works when both sides are using JavaScript.
+
+Think of them as "native" JavaScript events, they can send almost any JS built-in data structure, such as `Set`, `Map`, `Date`, etc. and without limits (for example, BigInt of any size).
 
 > [!CAUTION]
 > `alt.emitServerRaw` only works if the server is using javascript.
