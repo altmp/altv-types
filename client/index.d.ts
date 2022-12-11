@@ -135,7 +135,7 @@ declare module "alt-client" {
     /**
      * @remarks Triggers only if the old or new owner is the local player.
      */
-    netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
+    netOwnerChange: (entity: Entity, owner: Player | null, oldOwner: Player | null) => void;
 
     windowFocusChange: (isFocused: boolean) => void;
 
