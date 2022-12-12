@@ -1684,7 +1684,6 @@ declare module "alt-server" {
     /**
      * Returns the appearance of a vehicle as a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
      * @returns A base64 string.
      */
     public getAppearanceDataBase64(): string;
@@ -1713,8 +1712,6 @@ declare module "alt-server" {
     /**
      * Returns the damage status of a vehicle as a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @returns A base64 string of the damage status.
      */
     public getDamageStatusBase64(): string;
@@ -1738,15 +1735,11 @@ declare module "alt-server" {
     /**
      * Returns the game state data of a vehicle as a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @returns A base64 string of the game state data.
      */
     public getGamestateDataBase64(): string;
     /**
      * Returns the health data of a vehicle as a base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @returns A base64 string of the health data.
      */
@@ -1785,8 +1778,6 @@ declare module "alt-server" {
     public getPartDamageLevel<T extends number, V extends number = VehiclePartDamage>(partId: T): V;
     /**
      * Returns the script data of a vehicle as a base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @returns A base64 string of the script data.
      */
@@ -1855,8 +1846,6 @@ declare module "alt-server" {
     /**
      * Sets the appearance of a vehicle with a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @param data The base64 string of the appearance data.
      */
     public setAppearanceDataBase64(data: string): void;
@@ -1885,8 +1874,6 @@ declare module "alt-server" {
     /**
      * Sets the damage status of a vehicle based on a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @param data A base64 string that represents the damage status.
      */
     public setDamageStatusBase64(data: string): void;
@@ -1910,15 +1897,11 @@ declare module "alt-server" {
     /**
      * Sets the game state data of a vehicle with a given base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @param data A base64 string that represents the game state data.
      */
     public setGamestateDataBase64(data: string): void;
     /**
      * Sets the health data of a vehicle with a given base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @param data A base64 string that represents the health data.
      */
@@ -1962,8 +1945,6 @@ declare module "alt-server" {
     public setRearWheels(wheelId: number): void;
     /**
      * Sets the script data of a vehicle based on a base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @param data A base64 string that represents the script data.
      */
