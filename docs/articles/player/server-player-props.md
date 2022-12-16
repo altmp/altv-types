@@ -323,19 +323,19 @@ const currentRot = { ...player.rot };
 Used to **get** the current seat that the player is in.
 
 ```js
-if (player.vehicle && player.seat === -1) {
+if (player.vehicle && player.seat === 1) {
     alt.log(`Player is in the driver's seat.`); // Front Left
 }
 
-if (player.vehicle && player.seat === 0) {
+if (player.vehicle && player.seat === 2) {
     alt.log(`Player is riding shotgun.`); // Passenger. Right side.
 }
 
-if (player.vehicle && player.seat === 1) {
+if (player.vehicle && player.seat === 3) {
     alt.log(`Player is behind the driver's seat.`); // Back Left
 }
 
-if (player.vehicle && player.seat === 2) {
+if (player.vehicle && player.seat === 4) {
     alt.log(`Player is behind the player riding shotgun.`); // Back Right
 }
 ```
