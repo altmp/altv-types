@@ -289,7 +289,7 @@ declare module "alt-server" {
     explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
     /**
-     * @remarks The seat indexes start with 1 (driver seat), not -1.
+     * @remarks The seat indexes start with 1 (driver seat).
      */
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
@@ -299,15 +299,15 @@ declare module "alt-server" {
     playerDeath: (victim: Player, killer: Entity | null, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
     /**
-     * @remarks The seat indexes start with 1 (driver seat), not -1.
+     * @remarks The seat indexes start with 1 (driver seat).
      */
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     /**
-     * @remarks The seat indexes start with 1 (driver seat), not -1.
+     * @remarks The seat indexes start with 1 (driver seat).
      */
     playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     /**
-     * @remarks The seat indexes start with 1 (driver seat), not -1.
+     * @remarks The seat indexes start with 1 (driver seat).
      */
     playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: Entity) => void;
@@ -882,7 +882,7 @@ declare module "alt-server" {
      * Curent seat the player is sitting in.
      * If player is not in any vehicle it is equal to `0`.
      *
-     * @remarks The seat indexes start with 1 (driver seat), not -1.
+     * @remarks The seat indexes start with 1 (driver seat).
      */
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
@@ -1175,7 +1175,7 @@ declare module "alt-server" {
     /**
      * Set the player into a vehicle on specific seat.
      *
-     * @remarks The seat indexes start with 1 (driver seat), not -1.
+     * @remarks The seat indexes start with 1 (driver seat).
      */
     public setIntoVehicle(vehicle: Vehicle, seat: number): void;
 
