@@ -288,6 +288,9 @@ declare module "alt-server" {
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
+    /**
+     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     */
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
     beforePlayerConnect: (connectionInfo: IConnectionInfo) => boolean | string | void;
@@ -295,8 +298,17 @@ declare module "alt-server" {
     playerDamage: (victim: Player, attacker: Entity | null, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity | null, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
+    /**
+     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     */
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    /**
+     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     */
     playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    /**
+     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     */
     playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
@@ -866,6 +878,12 @@ declare module "alt-server" {
     public maxHealth: number;
     public readonly name: string;
     public readonly ping: number;
+    /**
+     * Curent seat the player is sitting in.
+     * If player is not in any vehicle it is equal to `0`.
+     *
+     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     */
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
     public invincible: boolean;
@@ -1156,6 +1174,8 @@ declare module "alt-server" {
 
     /**
      * Set the player into a vehicle on specific seat.
+     *
+     * @remarks The seat indexes start with 1, not -1 (driver seat).
      */
     public setIntoVehicle(vehicle: Vehicle, seat: number): void;
 
