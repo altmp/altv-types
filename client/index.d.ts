@@ -108,14 +108,14 @@ declare module "alt-client" {
     anyResourceStart: (resourceName: string) => void;
     anyResourceStop: (resourceName: string) => void;
     /**
-     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     * @remarks The seat indexes start with 1 (driver seat), not -1.
      */
     changedVehicleSeat: (vehicle: Vehicle, oldSeat: number, seat: number) => void;
     connectionComplete: () => void;
     consoleCommand: (name: string, ...args: string[]) => void;
     disconnect: () => void;
     /**
-     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     * @remarks The seat indexes start with 1 (driver seat), not -1.
      */
     enteredVehicle: (vehicle: Vehicle, seat: number) => void;
     gameEntityCreate: (entity: Entity) => void;
@@ -123,7 +123,7 @@ declare module "alt-client" {
     keydown: (key: shared.KeyCode) => void;
     keyup: (key: shared.KeyCode) => void;
     /**
-     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     * @remarks The seat indexes start with 1 (driver seat), not -1.
      */
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: Entity) => void;
@@ -745,7 +745,7 @@ declare module "alt-client" {
      * Curent seat the player is sitting in.
      * If player is not in any vehicle it is equal to `0`.
      *
-     * @remarks The seat indexes start with 1, not -1 (driver seat).
+     * @remarks The seat indexes start with 1 (driver seat), not -1.
      *
      */
     public readonly seat: number;
