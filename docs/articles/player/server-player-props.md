@@ -340,14 +340,14 @@ if (player.vehicle && player.seat === 2) {
 }
 ```
 
-## player.socialId
+## player.socialID
 
 Used to **get** a non-safe version of a player's current social club identification that is linked to their Rockstar account.
 
 Keep in mind that this value **IS NOT SAFE** do not use it for authentication. **IT CAN BE SPOOFED**.
 
 ```js
-const social = player.socialId;
+const social = player.socialID;
 ```
 
 ## player.valid
