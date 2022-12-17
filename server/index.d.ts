@@ -2479,6 +2479,10 @@ declare module "alt-server" {
   export class Resource extends shared.Resource {
     public readonly path: string;
     public readonly config: IResourceConfig;
+
+    public static getByName(name: string): Resource | null;
+    public static readonly all: ReadonlyArray<Resource>;
+    public static readonly current: Resource;
   }
 
   // Do not add anything here, add to the Utils namespace instead!
