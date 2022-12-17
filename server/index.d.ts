@@ -481,7 +481,7 @@ declare module "alt-server" {
   /**
    * Documentation: https://docs.altv.mp/articles/configs/server.html
    */
-  interface IServerConfig {
+  export interface IServerConfig {
     readonly resources: ReadonlyArray<string>;
     readonly modules: ReadonlyArray<string>;
     readonly name?: string;
