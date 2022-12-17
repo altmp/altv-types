@@ -29,7 +29,7 @@ This documentation may not reflect all properties available on the player.
 | ping          | Current Ping                                                              |
 | pos           | Current Player Position                                                   |
 | vehicle       | If a vehicle is present this lets you get that vehicle. Null otherwise.   |
-| socialId      | A non-unique spoofable social club id. Don't use this for identification. |
+| socialID      | A non-unique spoofable social club id. Don't use this for identification. |
 | valid         | A way to determine if the entity still exists.                            |
 
 ### Client Side
