@@ -872,6 +872,8 @@ declare module "alt-client" {
 
     public readonly weapons: ReadonlyArray<number>;
 
+    public readonly currentWeaponData: WeaponData;
+
     public getWeaponAmmo(hash: number): number;
 
     public getWeaponAmmo(weaponName: string): number;
@@ -883,6 +885,9 @@ declare module "alt-client" {
     public hasWeapon(hash: number): boolean;
 
     public hasWeapon(weaponName: string): boolean;
+
+    /** @alpha */
+    public stamina: number;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): void;
@@ -3320,7 +3325,7 @@ declare module "alt-client" {
     public readonly isWorldObject: boolean;
 
     /** Waits asynchronously until the object spawns. */
-    public waitForSpawn(): Promise<void>;
+    public waitForSpawn(timeout?: number): Promise<void>;
   }
 
   export * from "alt-shared";
