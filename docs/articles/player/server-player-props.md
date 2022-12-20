@@ -323,31 +323,31 @@ const currentRot = { ...player.rot };
 Used to **get** the current seat that the player is in.
 
 ```js
-if (player.vehicle && player.seat === -1) {
+if (player.vehicle && player.seat === 1) {
     alt.log(`Player is in the driver's seat.`); // Front Left
 }
 
-if (player.vehicle && player.seat === 0) {
+if (player.vehicle && player.seat === 2) {
     alt.log(`Player is riding shotgun.`); // Passenger. Right side.
 }
 
-if (player.vehicle && player.seat === 1) {
+if (player.vehicle && player.seat === 3) {
     alt.log(`Player is behind the driver's seat.`); // Back Left
 }
 
-if (player.vehicle && player.seat === 2) {
+if (player.vehicle && player.seat === 4) {
     alt.log(`Player is behind the player riding shotgun.`); // Back Right
 }
 ```
 
-## player.socialId
+## player.socialID
 
 Used to **get** a non-safe version of a player's current social club identification that is linked to their Rockstar account.
 
 Keep in mind that this value **IS NOT SAFE** do not use it for authentication. **IT CAN BE SPOOFED**.
 
 ```js
-const social = player.socialId;
+const social = player.socialID;
 ```
 
 ## player.valid

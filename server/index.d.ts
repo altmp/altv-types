@@ -288,6 +288,9 @@ declare module "alt-server" {
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
     netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
+    /**
+     * @remarks The seat indexes start with 1 (driver seat).
+     */
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
     beforePlayerConnect: (connectionInfo: IConnectionInfo) => boolean | string | void;
@@ -295,8 +298,17 @@ declare module "alt-server" {
     playerDamage: (victim: Player, attacker: Entity | null, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity | null, weaponHash: number) => void;
     playerDisconnect: (player: Player, reason: string) => void;
+    /**
+     * @remarks The seat indexes start with 1 (driver seat).
+     */
     playerEnteredVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    /**
+     * @remarks The seat indexes start with 1 (driver seat).
+     */
     playerEnteringVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
+    /**
+     * @remarks The seat indexes start with 1 (driver seat).
+     */
     playerLeftVehicle: (player: Player, vehicle: Vehicle, seat: number) => void;
     removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
@@ -469,7 +481,7 @@ declare module "alt-server" {
   /**
    * Documentation: https://docs.altv.mp/articles/configs/server.html
    */
-  interface IServerConfig {
+  export interface IServerConfig {
     readonly resources: ReadonlyArray<string>;
     readonly modules: ReadonlyArray<string>;
     readonly name?: string;
@@ -866,6 +878,12 @@ declare module "alt-server" {
     public maxHealth: number;
     public readonly name: string;
     public readonly ping: number;
+    /**
+     * Curent seat the player is sitting in.
+     * If player is not in any vehicle it is equal to `0`.
+     *
+     * @remarks The seat indexes start with 1 (driver seat).
+     */
     public readonly seat: number;
     public readonly vehicle: Vehicle | null;
     public invincible: boolean;
@@ -1156,6 +1174,8 @@ declare module "alt-server" {
 
     /**
      * Set the player into a vehicle on specific seat.
+     *
+     * @remarks The seat indexes start with 1 (driver seat).
      */
     public setIntoVehicle(vehicle: Vehicle, seat: number): void;
 
@@ -1684,7 +1704,6 @@ declare module "alt-server" {
     /**
      * Returns the appearance of a vehicle as a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
      * @returns A base64 string.
      */
     public getAppearanceDataBase64(): string;
@@ -1713,8 +1732,6 @@ declare module "alt-server" {
     /**
      * Returns the damage status of a vehicle as a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @returns A base64 string of the damage status.
      */
     public getDamageStatusBase64(): string;
@@ -1738,15 +1755,11 @@ declare module "alt-server" {
     /**
      * Returns the game state data of a vehicle as a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @returns A base64 string of the game state data.
      */
     public getGamestateDataBase64(): string;
     /**
      * Returns the health data of a vehicle as a base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @returns A base64 string of the health data.
      */
@@ -1785,8 +1798,6 @@ declare module "alt-server" {
     public getPartDamageLevel<T extends number, V extends number = VehiclePartDamage>(partId: T): V;
     /**
      * Returns the script data of a vehicle as a base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @returns A base64 string of the script data.
      */
@@ -1855,8 +1866,6 @@ declare module "alt-server" {
     /**
      * Sets the appearance of a vehicle with a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @param data The base64 string of the appearance data.
      */
     public setAppearanceDataBase64(data: string): void;
@@ -1885,8 +1894,6 @@ declare module "alt-server" {
     /**
      * Sets the damage status of a vehicle based on a base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @param data A base64 string that represents the damage status.
      */
     public setDamageStatusBase64(data: string): void;
@@ -1910,15 +1917,11 @@ declare module "alt-server" {
     /**
      * Sets the game state data of a vehicle with a given base64 string.
      *
-     * @remarks Base64 methods are deprecated.
-     *
      * @param data A base64 string that represents the game state data.
      */
     public setGamestateDataBase64(data: string): void;
     /**
      * Sets the health data of a vehicle with a given base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @param data A base64 string that represents the health data.
      */
@@ -1962,8 +1965,6 @@ declare module "alt-server" {
     public setRearWheels(wheelId: number): void;
     /**
      * Sets the script data of a vehicle based on a base64 string.
-     *
-     * @remarks Base64 methods are deprecated.
      *
      * @param data A base64 string that represents the script data.
      */
@@ -2478,6 +2479,10 @@ declare module "alt-server" {
   export class Resource extends shared.Resource {
     public readonly path: string;
     public readonly config: IResourceConfig;
+
+    public static getByName(name: string): Resource | null;
+    public static readonly all: ReadonlyArray<Resource>;
+    public static readonly current: Resource;
   }
 
   // Do not add anything here, add to the Utils namespace instead!
