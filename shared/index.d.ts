@@ -1130,6 +1130,22 @@ declare module "alt-shared" {
     Unknown = -1,
   }
 
+  export const enum VehicleLockState {
+    None,
+    Unlocked,
+    Locked,
+    LockoutPlayerOnly,
+    LockPlayerInside,
+    InitiallyLocked,
+    ForceDoorsShut,
+    LockedCanBeDamaged,
+  }
+
+  export const enum VehicleRoofState {
+    Opened,
+    Closed,
+  }
+
   /**
    * This is an internal utility type and you probably don't need it
    *
@@ -1178,17 +1194,6 @@ declare module "alt-shared" {
   export interface IResource {
     readonly name: string;
     readonly type: string;
-  }
-
-  export const enum VehicleLockState {
-    None,
-    Unlocked,
-    Locked,
-    LockoutPlayerOnly,
-    LockPlayerInside,
-    InitiallyLocked,
-    ForceDoorsShut,
-    LockedCanBeDamaged,
   }
 
   /**
