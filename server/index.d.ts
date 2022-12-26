@@ -1630,7 +1630,7 @@ declare module "alt-server" {
     public roofLivery: number;
     /**
      * Gets or sets the roof state of a vehicle.
-     * 
+     *
      * @example
      * ```js
      * const surano = new alt.Vehicle('surano', 0, 0, 72, 0, 0, 0);
