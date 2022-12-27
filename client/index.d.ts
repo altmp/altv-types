@@ -3143,21 +3143,6 @@ declare module "alt-client" {
       public destroy(): void;
     }
 
-    /**
-     * A marker class whose instances do not need to be created in every tick.
-     * 
-     * @example
-     * ```js
-     * // Creates marker at local player pos with default options
-     * const defaultMarker = new alt.Utils.Marker(alt.Player.local.pos);
-     * 
-     * // Creates default marker at 0, 0, 72 with red color
-     * const redMarker = new alt.Utils.Marker(new alt.Vector3(0, 0, 72), { color: alt.RGBA.red });
-     * 
-     * // Later you can change the color, scale, etc.
-     * redMarker.scale = new alt.Vector3(3.0); // Makes marker bigger
-     * ```
-     */
     export class Marker {
       constructor(pos: shared.IVector3, options?: IMarkerOptions);
 
