@@ -2785,7 +2785,13 @@ declare module "alt-client" {
 
     public static getMemoryProfile(): void;
 
-    public static takeHeapSnapshot(): void;
+    /**
+     * Takes a heap snapshot.
+     * For more information see https://nodejs.org/en/docs/guides/diagnostics/memory/using-heap-snapshot/
+     * 
+     * @remarks The return value is a promise that once resolved contains the JSON string of the serialized heap.
+     */
+    public static takeHeapSnapshot(): Promise<string>;
   }
 
   /**
