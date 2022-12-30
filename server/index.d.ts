@@ -1630,8 +1630,20 @@ declare module "alt-server" {
     public roofLivery: number;
     /**
      * Gets or sets the roof state of a vehicle (closed or open).
+     *
+     * @deprecated Use {@link roofClosed} instead.
      */
     public roofState: boolean;
+    /**
+     * Opens or closes the vehicle roof (if vehicle has this feature, otherwise it is always `true`).
+     *
+     * @example
+     * ```js
+     * const surano = new alt.Vehicle('surano', 0, 0, 72, 0, 0, 0);
+     * surano.roofClosed = false; // Hides the roof of the car
+     * ```
+     */
+    public roofClosed: boolean;
     /**
      * Gets or sets the current secondary color.
      */
