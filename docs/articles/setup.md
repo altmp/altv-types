@@ -99,7 +99,7 @@ voiceActivationEnabled = false
 voiceActivationKey = 78
 voiceEnabled = true
 voiceInputSensitivity = 20
-voiceVolume= 100
+voiceVolume = 100
 ```
 
 ### Using branches
