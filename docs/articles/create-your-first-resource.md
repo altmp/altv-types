@@ -17,7 +17,7 @@ server/
     ├── example/
 ├── altv-server.exe
 ├── libnode.dll
-├── server.cfg
+├── server.toml
 ```
 
 Let's create an example resource.
@@ -33,21 +33,21 @@ Here go the Server-side Files:
 example/server/
 
 Here go the configuration & information:
-example/resource.cfg
+example/resource.toml
 ```
 
-## Configuring the `resource.cfg`
+## Configuring the `resource.toml`
 
-When you create a resource.cfg, it should look like something similar to this:
-```yaml
-type: js,
-main: server/server.js,
-client-main: client/client.js,
-client-files: [
-    client/*
-],
-deps: [ 
-    chat
+When you create a resource.toml, it should look like something similar to this:
+```toml
+type = "js"
+main = "server/server.js"
+client-main = "client/client.js"
+client-files = [
+    "client/*"
+]
+deps = [ 
+    "chat"
 ]
 ```
 
@@ -71,7 +71,9 @@ We're going to add **chat** as a dependency to our resource.
 Then we're going to import 'alt' and 'chat'. 
 
 ```js
+// alt:V built-in module that provides server-side API.
 import * as alt from 'alt-server';
+// Your chat resource module.
 import * as chat from 'chat';
 
 console.log('==> Your Resource Has Loaded! Horray!');
@@ -87,8 +89,8 @@ alt.on('playerConnect', (player) => {
     // Sets the player's model.
     player.model = 'mp_m_freemode_01';
 
-    // Spawns the player at coordinates x, y, z, with a delay of 1000 Milliseconds.
-    player.spawn(813, -279, 66, 1000);
+    // Spawns the player at coordinates x, y, z.
+    player.spawn(813, -279, 66);
 
     // Emit to the player passed, the event name, the argument to send.
     alt.emitClient(player, 'Server:Log', 'hello', 'world');
@@ -106,7 +108,9 @@ See the clientside section down below to see how to intercept the event on clien
 
 We're going to import two essential alt:V dependencies: **natives** and **alt**
 ```js
+// alt:V built-in module that provides client-side API.
 import * as alt from 'alt-client';
+// alt:V built-in module that provides natives API (functions from GTA V).
 import * as native from 'natives';
 
 alt.log('Client-side has loaded!');
@@ -136,13 +140,13 @@ yarn init
 
 After following the next wizard, open the package.json with a text editor and add the following entry:
 
-```yaml
+```not_json
 {
     # Here are the values you provided in the assistent
     "name": "altv-client",
     ...
     # Add this line on the bottom
-    "type: module
+    "type": module
 }
 ```
 
@@ -154,7 +158,6 @@ After following the next wizard, open the package.json with a text editor and ad
 | @altv/types-client   | Client          |
 | @altv/types-natives  | Client          |
 | @altv/types-webview  | Client          |
-| @altv/types-worker   | Client          |
 | @altv/types-server   | Server          |
 
 Depending on the required types, these must now be installed. If the project contains scripts for server & client, all types can be installed as well:
@@ -210,14 +213,8 @@ in the [typescript documentation](https://www.typescriptlang.org/docs/handbook/t
     # Here you can set the output folder where the javascript files will be generated
     "outDir": "./Dist/",
 
-    # Here you can add your type files
-    # Depending on your IDE you can also set "typeRoots": ["node_modules/@altv"] instead the single paths
-    "paths": {
-      "natives": [ "node_modules/@altv/types-natives" ],
-      "alt-client": [ "node_modules/@altv/types-client" ],
-      "alt-shared": [ "node_modules/@altv/types-shared" ],
-      "alt-worker": [ "node_modules/@altv/types-worker"]
-    }
+    # Here you specify the TypeScript (IDE) where the alt:V types are located
+    "typeRoots": ["./node_modules/@altv"]
   },
   "compileOnSave": true,
   "include": [
@@ -238,4 +235,4 @@ Followed by setting up a whole server with basic fundamentals!
 
 Keep in mind that...
 - alt:V uses ES6 modules
-- the server does not automatically update
+- the server does not automatically update, you can use something like [altv-pkg](https://github.com/Stuyk/altv-pkg) (unofficial) to easily update server files
