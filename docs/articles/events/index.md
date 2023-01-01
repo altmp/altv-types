@@ -26,7 +26,6 @@ A client **CANNOT** communicate with another client.
 ## Server to client
 
 The server may only emit data to the client-side with `emitClient` or `emitClientRaw`, which requires a Player.
-However, a player can also be substituted for `null` which works the same way as `alt.emitAllClients` by emitting it to all clients.
 
 `emitClientRaw` and `emitAllClientsRaw` are used for big data and are faster than `emitClient` or `emitAllClients`.
 
@@ -43,7 +42,6 @@ alt.on('playerConnect', player => {
     alt.emitClient(player, 'sayHello'); // Send an event to a specific player
 
     // Send an event to all players
-    alt.emitClient(null, 'sayHello');
     alt.emitAllClients('sayHello');
 });
 ```
