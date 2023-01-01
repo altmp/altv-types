@@ -8,7 +8,7 @@ This article will explain how to setup an alt:V server with the JS module.
 - A Code Editor (Visual Studio Code, Sublime Text etc.)
 - Basic knowledge of command prompts
 - VC Redist Latest Version installed
-- Windows 10 or Linux (For running the server)
+- Windows 10+ or Linux (For running the server)
 
 ## Summary
 
@@ -81,25 +81,25 @@ Just run altv-server.exe
 ## Configuring your client for development
 
 - Navigate to your root of alt:V Client
-- View altv.cfg in your preferred editor
+- View `altv.toml` in your preferred editor
 
 Now something similar to this should appear:
-```yaml
-branch: 'rc'
-build: '1182'
-debug: 'true'
-gtapath: 'D:\\Program Files (x86)\\Steam\\steamapps\\common\\Grand Theft Auto V'
-ignoreLowPriorityProps: 'false'
-lang: 'en'
-lastip: ''
-name: 'YourWonderfulName'
-netgraph: 'false'
-streamerMode: 'false'
-voiceActivationEnabled: 'false'
-voiceActivationKey: '78'
-voiceEnabled: 'true'
-voiceInputSensitivity: '20'
-voiceVolume: '100'
+```toml
+branch = 'rc'
+build = 1182
+debug = true
+gtapath = 'D\\Program Files (x86)\\Steam\\steamapps\\common\\Grand Theft Auto V'
+ignoreLowPriorityProps = false
+lang = 'en'
+lastip = ''
+name = 'YourWonderfulName'
+netgraph = false
+streamerMode = false
+voiceActivationEnabled = false
+voiceActivationKey = 78
+voiceEnabled = true
+voiceInputSensitivity = 20
+voiceVolume = 100
 ```
 
 ### Using branches
@@ -110,69 +110,70 @@ Branch names:
 - release candidate
 - dev
 
-```yaml
-Release:
-branch: 'release'
+```toml
+# Release (Mostly used):
+branch = 'release'
 
-Release candidate (Mostly used):
-branch: 'rc'
+# Release candidate:
+branch = 'rc'
 
-Development:
-branch: 'dev'
+# Development:
+branch = 'dev'
 ```
 
 ### Using debug mode (client)
 
-Edit the `altv.cfg` in the directory of your alt:V installation and add the following:
-```yaml
-debug: true
+Edit the `altv.toml` in the directory of your alt:V installation and add the following:
+```toml
+debug = true
 ```
 This allows the usage of several debug features like reconnect etc. with your F8 console.
 
-## Configuring the `server.cfg`
+## Configuring the `server.toml`
 
 Once you're done changing the stated things above, it's time to head to the server again.
-The server.cfg is where the magic happens, here you can change what is most important.
+The `server.toml` is where the magic happens, here you can change what is most important.
 
 Once opened, something similar to this should appear: 
-```yaml
-name: 'alt:V Server'
-host: 0.0.0.0
-port: 7788
-players: 128
-#password: ultra-password
-announce: false
-#token: YOUR_TOKEN
-gamemode: Freeroam
-website: example.com
-language: en
-description: 'alt:V Sample Server'
-modules: [ js-module ]
-resources: [
+```toml
+name = 'alt:V Server'
+host = '0.0.0.0'
+port = 7788
+players = 128
+#password = ultra-password
+announce = false
+#token = YOUR_TOKEN
+gamemode = 'Freeroam'
+website = 'example.com'
+language = 'en'
+description = 'alt:V Sample Server'
+modules = [ 'js-module' ]
+resources = [
   
 ]
 ```
 
 ## Using debug mode (server)
 
-While you are developing make sure you **ENABLE** the following inside the server.cfg.
+While you are developing make sure you **ENABLE** the following inside the `server.toml`.
 Add this to your config:
-```yaml
-debug: true
+```toml
+debug = true
 ```
 
 Once enabled, you can now use several debug commands like:
 
-`restart [RESOURCE]`<br>
-`stop [RESOURCE]`<br>
-`start [RESOURCE]`<br>
-`reconnect`*<br>
+`restart [RESOURCE]` (server) <br> 
+`stop [RESOURCE]` (server) <br> 
+`start [RESOURCE]` (server) <br> 
+`reconnect`* (client)<br> 
 *Reconnect can cause bugs and issues, this is an experimental feature and only meant to be used in development.
+
+See [server commands](https://docs.altv.mp/articles/commandlineargs.html#server-commands) for all server console commands, and [client console](https://docs.altv.mp/articles/console.html) for all client console (F8) commands.
 
 ## Adding resources
 
 Adding a resource is as simple as putting the folders name inside of the resources array.
-No commas necessary - But you can add them if you want.
 
 Right now, your resource array is empty.
 Keep in mind, as you've chosen the Example Resource Pack you've got three example resources.
@@ -180,11 +181,11 @@ Keep in mind, as you've chosen the Example Resource Pack you've got three exampl
 Load them, by simple adding the folder names*<br>
 *The name is case sensitive! - Also templating with [resourceName] isn't gonna work as seen in other multiplayer modifications.
 
-```yaml
-resources: [
-    freeroam
-    chat
-    newResource
+```toml
+resources = [
+    'freeroam',
+    'chat',
+    'newResource'
 ]
 ```
 
