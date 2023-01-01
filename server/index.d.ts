@@ -287,7 +287,7 @@ declare module "alt-server" {
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
     explosion: (source: Player, type: ExplosionType, pos: shared.Vector3, fx: number, target: Entity) => boolean | void;
-    netOwnerChange: (entity: Entity, owner: Player, oldOwner: Player) => void;
+    netOwnerChange: (entity: Entity, owner: Player | null, oldOwner: Player | null) => void;
     /**
      * @remarks The seat indexes start with 1 (driver seat).
      */
