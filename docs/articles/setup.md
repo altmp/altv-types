@@ -86,20 +86,20 @@ Just run altv-server.exe
 Now something similar to this should appear:
 ```toml
 branch = 'rc'
-build = '1182'
-debug = 'true'
+build = 1182
+debug = true
 gtapath = 'D\\Program Files (x86)\\Steam\\steamapps\\common\\Grand Theft Auto V'
-ignoreLowPriorityProps = 'false'
+ignoreLowPriorityProps = false
 lang = 'en'
 lastip = ''
 name = 'YourWonderfulName'
-netgraph = 'false'
-streamerMode = 'false'
-voiceActivationEnabled = 'false'
-voiceActivationKey = '78'
-voiceEnabled = 'true'
-voiceInputSensitivity = '20'
-voiceVolume = '100'
+netgraph = false
+streamerMode = false
+voiceActivationEnabled = false
+voiceActivationKey = 78
+voiceEnabled = true
+voiceInputSensitivity = 20
+voiceVolume= 100
 ```
 
 ### Using branches
