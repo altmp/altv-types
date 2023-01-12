@@ -2192,6 +2192,9 @@ declare module "alt-server" {
 
     public counterMeasureCount: number;
 
+    /**
+     * @remarks Value is in meters per second.
+     */
     public scriptMaxSpeed: number;
 
     public getWeaponCapacity(weaponIndex: number): number;
