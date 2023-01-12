@@ -2511,7 +2511,7 @@ declare module "alt-server" {
      *
      * `range` - In which range to search for the nearest vehicle. Defaults to `Infinity`.
      */
-    export function getClosestPlayer(options?: { pos: shared.IVector3; range?: number }): Player | null;
+    export function getClosestPlayer(options: { pos: shared.IVector3; range?: number }): Player | null;
 
     /**
      * Finds the closest vehicle (if any) from {@link Vehicle.all alt.Vehicle.all}.
