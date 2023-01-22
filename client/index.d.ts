@@ -885,7 +885,7 @@ declare module "alt-client" {
 
     public readonly weapons: ReadonlyArray<number>;
 
-    public readonly currentWeaponData: WeaponData;
+    public readonly currentWeaponData: WeaponData | null;
 
     public getWeaponAmmo(hash: number): number;
 
