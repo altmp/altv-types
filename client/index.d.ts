@@ -899,10 +899,8 @@ declare module "alt-client" {
 
     public hasWeapon(weaponName: string): boolean;
 
-    /** @alpha */
     public stamina: number;
 
-    /** @alpha */
     public maxStamina: number;
 
     public deleteMeta(key: string): void;
@@ -1177,8 +1175,6 @@ declare module "alt-client" {
 
     /**
      * Vehicle engine state.
-     *
-     * @alpha
      */
     public readonly engineOn: boolean;
 
