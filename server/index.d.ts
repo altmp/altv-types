@@ -419,6 +419,10 @@ declare module "alt-server" {
   export interface IPedModel {
     readonly hash: number;
     readonly name: string;
+    readonly type: string;
+    readonly dlcName: boolean;
+    readonly defaultUnarmedWeapon: boolean;
+    readonly movementClipSet: boolean;
     readonly bones: ReadonlyArray<IBoneInfo>;
   }
 
