@@ -902,6 +902,9 @@ declare module "alt-client" {
     /** @alpha */
     public stamina: number;
 
+    /** @alpha */
+    public maxStamina: number;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K): void;
 
