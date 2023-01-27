@@ -420,9 +420,9 @@ declare module "alt-server" {
     readonly hash: number;
     readonly name: string;
     readonly type: string;
-    readonly dlcName: boolean;
-    readonly defaultUnarmedWeapon: boolean;
-    readonly movementClipSet: boolean;
+    readonly dlcName: string;
+    readonly defaultUnarmedWeapon: string;
+    readonly movementClipSet: string;
     readonly bones: ReadonlyArray<IBoneInfo>;
   }
 
