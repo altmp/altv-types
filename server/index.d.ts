@@ -491,7 +491,7 @@ declare module "alt-server" {
     readonly name?: string;
     readonly host?: string;
     readonly port?: number;
-    readonly players?: string;
+    readonly players?: number;
     readonly password?: string;
     readonly announce?: boolean;
     readonly token?: string;
