@@ -2190,6 +2190,8 @@ declare module "alt-client" {
 
   /**
    * Gets the current position of the cursor.
+   *
+   * @param normalized If true returns coordinates that are in the range 0 to 1. Defaults to false.
    */
   export function getCursorPos(normalized?: boolean): shared.Vector2;
 
