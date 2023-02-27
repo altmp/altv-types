@@ -970,7 +970,7 @@ declare module "alt-server" {
      * @param ammo Amount of ammo to spawn the weapon with. See remarks for more information.
      * @param equipNow Should the weapon be equipped immediately.
      */
-    public giveWeapon(weaponHash: number, ammo: number, equipNow: boolean): void;
+    public giveWeapon(weaponHash: string | number, ammo: number, equipNow: boolean): void;
 
     /**
      * Forcefully disconnects the player with a reason message.
