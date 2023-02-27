@@ -966,11 +966,11 @@ declare module "alt-server" {
      * player.giveWeapon(alt.hash('weapon_pistol'), 10, true); // adds amount ammo of type "AMMO_PISTOL", so 20 pistol ammo in result
      * ```
      *
-     * @param weaponHash Hash of the weapon.
+     * @param weaponModel The model of the weapon.
      * @param ammo Amount of ammo to spawn the weapon with. See remarks for more information.
      * @param equipNow Should the weapon be equipped immediately.
      */
-    public giveWeapon(weaponHash: string | number, ammo: number, equipNow: boolean): void;
+    public giveWeapon(weaponModel: string | number, ammo: number, equipNow: boolean): void;
 
     /**
      * Forcefully disconnects the player with a reason message.
