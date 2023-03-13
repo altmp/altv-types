@@ -2144,8 +2144,6 @@ declare module "alt-client" {
   /**
    * Emits specified event across resources.
    *
-   * @remarks See {@link "alt-shared".emit} for more information about sending destroyed entities.
-   *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
@@ -2165,8 +2163,6 @@ declare module "alt-client" {
 
   /**
    * Emits specified event to server.
-   *
-   * @remarks See {@link "alt-shared".emit} for more information about sending destroyed entities.
    *
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
