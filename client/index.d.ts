@@ -3278,7 +3278,7 @@ declare module "alt-client" {
 
   export function isPointOnScreen(value: shared.IVector3): boolean;
 
-  /** @alpha */
+  /** @beta */
   export function getPedBonePos(ped: number, boneId: number): shared.Vector3;
 
   export class Object extends Entity {
