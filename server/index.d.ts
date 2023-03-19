@@ -2613,6 +2613,32 @@ declare module "alt-server" {
   export function emitClientRaw(player: Player, eventName: string, ...args: any[]): void;
 
   /**
+   * Emits specified event to specific client.
+   *
+   * @param player Event is sent to specific player.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Unreliable event should be used when you don't need to be sure that event will be received by client.
+   *
+   * @alpha
+   */
+  export function emitClientUnreliable(player: Player, eventName: string, ...args: any[]): void;
+
+  /**
+   * Emits specified event to specific clients.
+   *
+   * @param player Event is sent to every player in array.
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Unreliable event should be used when you don't need to be sure that event will be received by client.
+   *
+   * @alpha
+   */
+  export function emitClientUnreliable(player: Player[], eventName: string, ...args: any[]): void;
+
+  /**
    * Emits specified event to all clients.
    *
    * @param eventName Name of the event.
@@ -2627,6 +2653,18 @@ declare module "alt-server" {
    * @param args Rest parameters for emit to send.
    */
   export function emitAllClientsRaw(eventName: string, ...args: any[]): void;
+
+  /**
+   * Emits specified event to all clients.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Unreliable event should be used when you don't need to be sure that event will be received by client.
+   *
+   * @alpha
+   */
+  export function emitAllClientsUnreliable(eventName: string, ...args: any[]): void;
 
   /**
    * Change the server password at runtime.

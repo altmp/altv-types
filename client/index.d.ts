@@ -2180,6 +2180,18 @@ declare module "alt-client" {
   export function emitServerRaw(eventName: string, ...args: any[]): void;
 
   /**
+   * Emits specified event to server.
+   *
+   * @param eventName Name of the event.
+   * @param args Rest parameters for emit to send.
+   *
+   * @remarks Unreliable event should be used when you don't need to be sure that event will be received by server.
+   *
+   * @alpha
+   */
+  export function emitServerUnreliable(eventName: string, ...args: any[]): void;
+
+  /**
    * Returns whether the game controls are currently enabled.
    */
   export function gameControlsEnabled(): boolean;
