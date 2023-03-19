@@ -334,6 +334,8 @@ declare module "alt-server" {
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
     playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
     playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
+    /** @alpha */
+    vehicleHorn: (vehicle: Vehicle, player: Player, state: boolean) => boolean | void;
   }
 
   export interface IFireInfo {
