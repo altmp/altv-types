@@ -77,6 +77,7 @@ declare module "alt-client" {
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
     DisableIdleCamera = "DISABLE_IDLE_CAMERA",
+    DisableVehicleEngineShutdownOnLeave = "DISABLE_VEHICLE_ENGINE_SHUTDOWN_ON_LEAVE"
   }
 
   export const enum WatermarkPosition {
