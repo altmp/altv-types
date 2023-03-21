@@ -5,6 +5,7 @@ declare module "alt-shared" {
   export const enum BaseObjectType {
     Player,
     Vehicle,
+    Ped,
     Blip,
     WebView,
     VoiceChannel,
@@ -17,7 +18,6 @@ declare module "alt-shared" {
     RmlDocument,
     LocalPlayer,
     Object,
-    Ped,
     VirtualEntity,
     Marker,
     TextLabel,

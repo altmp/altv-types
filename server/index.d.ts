@@ -2847,5 +2847,14 @@ declare module "alt-server" {
 
   export function toggleWorldProfiler(state: boolean): void;
 
+  /** @alpha */
+  export function getEntitiesInDimension(dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
+
+  /** @alpha */
+  export function getEntitiesInRange(position: shared.Vector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
+
+  /** @alpha */
+  export function getClosestEntities(position: shared.Vector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
+
   export * from "alt-shared";
 }
