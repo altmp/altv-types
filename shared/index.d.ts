@@ -16,6 +16,12 @@ declare module "alt-shared" {
     RmlElement,
     RmlDocument,
     LocalPlayer,
+    Object,
+    Ped,
+    VirtualEntity,
+    Marker,
+    TextLabel,
+    Pickup
   }
 
   export const enum BlipSprite {
