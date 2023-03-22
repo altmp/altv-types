@@ -21,7 +21,7 @@ declare module "alt-shared" {
     VirtualEntity,
     Marker,
     TextLabel,
-    Pickup
+    Pickup,
   }
 
   export const enum BlipSprite {
