@@ -2521,6 +2521,11 @@ declare module "alt-server" {
     protected constructor();
   }
 
+  /** @alpha */
+  export class Ped extends Entity {
+    constructor(model: string | number, pos: shared.IVector3, rot: shared.IVector3);
+  }
+
   export namespace Utils {
     /**
      * Finds the closest player (if any) from {@link Player.all alt.Player.all}.
