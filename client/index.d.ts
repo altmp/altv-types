@@ -77,7 +77,7 @@ declare module "alt-client" {
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
     DisableIdleCamera = "DISABLE_IDLE_CAMERA",
-    DisableVehicleEngineShutdownOnLeave = "DISABLE_VEHICLE_ENGINE_SHUTDOWN_ON_LEAVE"
+    DisableVehicleEngineShutdownOnLeave = "DISABLE_VEHICLE_ENGINE_SHUTDOWN_ON_LEAVE",
   }
 
   export const enum WatermarkPosition {
@@ -158,10 +158,10 @@ declare module "alt-client" {
     playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
 
     weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
-    
-    /** 
+
+    /**
      * Triggers when an Virtual Entity position is changed
-     * @alpha 
+     * @alpha
      */
     worldObjectPositionChange: (object: WorldObject, oldPosition: shared.Vector3) => void;
   }
@@ -396,10 +396,9 @@ declare module "alt-client" {
     /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
-  
+
   /** @alpha */
-  export class VirtualEntityGroup extends BaseObject 
-  {
+  export class VirtualEntityGroup extends BaseObject {
     /** Returns all VirtualEntity instances */
     public static readonly all: ReadonlyArray<VirtualEntityGroup>;
 
@@ -409,10 +408,9 @@ declare module "alt-client" {
     /** Maximum streaming range inside the Virtual Entity Group */
     public readonly streamingRangeLimit: number;
   }
-  
+
   /** @alpha */
-  export class VirtualEntity extends WorldObject 
-  {
+  export class VirtualEntity extends WorldObject {
     /** Returns all VirtualEntity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
 

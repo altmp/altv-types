@@ -606,8 +606,7 @@ declare module "alt-server" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
 
-  export class WorldObject extends BaseObject 
-  {
+  export class WorldObject extends BaseObject {
     /**
      * Object dimension.
      *
@@ -622,8 +621,7 @@ declare module "alt-server" {
   }
 
   /** @alpha */
-  export class VirtualEntityGroup extends BaseObject
-  {
+  export class VirtualEntityGroup extends BaseObject {
     /** Creates a new Virtual Entity Group */
     public constructor(streamingRangeLimit: number);
 
@@ -638,11 +636,10 @@ declare module "alt-server" {
   }
 
   /** @alpha */
-  export class VirtualEntity extends WorldObject 
-  {
+  export class VirtualEntity extends WorldObject {
     /** Creates a new Virtual Entity Group */
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number);
-    
+
     /** Returns all VirtualEntity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
 
