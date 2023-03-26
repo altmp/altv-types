@@ -606,7 +606,8 @@ declare module "alt-server" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
 
-  export class WorldObject extends BaseObject {
+  export class WorldObject extends BaseObject 
+  {
     /**
      * Object dimension.
      *
