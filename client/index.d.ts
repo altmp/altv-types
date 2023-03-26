@@ -414,13 +414,13 @@ declare module "alt-client" {
     /** Returns all VirtualEntity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
 
-    /** Unique id */
+    /** Unique clientside id */
     public readonly id: number;
 
     /** Virtual Entity Group */
     public readonly group: VirtualEntityGroup;
 
-    /** Unique clientside id */
+    /** Unique serverside id */
     public readonly remoteId: number;
 
     /**
