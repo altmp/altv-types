@@ -158,6 +158,9 @@ declare module "alt-client" {
     playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
 
     weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
+    
+    /** @alpha Triggers when an Virtual Entity position is changed */
+    worldObjectPositionChange: (object: WorldObject, oldPosition: shared.Vector3) => void;
   }
 
   export interface IDiscordUser {
@@ -389,6 +392,57 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
     /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+  }
+  
+  /** @alpha */
+  export class VirtualEntityGroup extends BaseObject 
+  {
+    /** Returns all VirtualEntity instances */
+    public static readonly all: ReadonlyArray<VirtualEntityGroup>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    /** Maximum streaming range inside the Virtual Entity Group */
+    public readonly streamingRangeLimit: number;
+  }
+  
+  /** @alpha */
+  export class VirtualEntity extends WorldObject 
+  {
+    /** Returns all VirtualEntity instances */
+    public static readonly all: ReadonlyArray<VirtualEntity>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    /** Virtual Entity Group */
+    public readonly group: VirtualEntityGroup;
+
+    /** Unique clientside id */
+    public readonly remoteId: number;
+
+    /**
+     * Gets a value using the specified key.
+     *
+     * @param key The key of the value to get.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
+     */
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntitySyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): shared.ICustomEntitySyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomEntitySyncedMeta} */
+    public getSyncedMeta<V extends any>(key: string): V | undefined;
+
+    /**
+     * Determines whether contains the specified key.
+     *
+     * @param key The key of the value to locate.
+     * @returns True if the meta table contains any data at the specified key or False if not
+     */
+    public hasSyncedMeta(key: string): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
+
+    public getSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
   /** @beta */

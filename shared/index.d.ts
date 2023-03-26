@@ -19,6 +19,7 @@ declare module "alt-shared" {
     LocalPlayer,
     Object,
     VirtualEntity,
+    VirtualEntityGroup,
     Marker,
     TextLabel,
     Pickup
