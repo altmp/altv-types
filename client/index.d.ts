@@ -159,7 +159,9 @@ declare module "alt-client" {
 
     weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
     
-    /** @alpha Triggers when an Virtual Entity position is changed */
+    /** Triggers when an Virtual Entity position is changed
+     * @alpha 
+     */
     worldObjectPositionChange: (object: WorldObject, oldPosition: shared.Vector3) => void;
   }
 
