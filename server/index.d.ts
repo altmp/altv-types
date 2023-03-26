@@ -658,10 +658,10 @@ declare module "alt-server" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntitySyncedMeta>): unknown;
-    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): shared.ICustomEntitySyncedMeta[K] | undefined;
-    /** @deprecated See {@link "alt-shared".ICustomEntitySyncedMeta} */
-    public getSyncedMeta<V extends any>(key: string): V | undefined;
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomVirtualEntityStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): shared.ICustomVirtualEntityStreamSyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomVirtualEntityStreamSyncedMeta} */
+    public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
 
     /**
      * Determines whether contains the specified key.
@@ -669,10 +669,10 @@ declare module "alt-server" {
      * @param key The key of the value to locate.
      * @returns True if the meta table contains any data at the specified key or False if not
      */
-    public hasSyncedMeta(key: string): boolean;
-    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
+    public hasStreamSyncedMeta(key: string): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): boolean;
 
-    public getSyncedMetaKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
 
     /**
      * Stores the given value with the specified key.
@@ -682,10 +682,10 @@ declare module "alt-server" {
      * @param key The key of the value to store.
      * @param value The value to store.
      */
-    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntityStreamSyncedMeta, K>): void;
-    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K, value: shared.ICustomEntityStreamSyncedMeta[K]): void;
-    /** @deprecated See {@link "alt-shared".ICustomEntityStreamSyncedMeta} */
-    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntityStreamSyncedMeta, K, V>): void;
+    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomVirtualEntityStreamSyncedMeta, K>): void;
+    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K, value: shared.ICustomVirtualEntityStreamSyncedMeta[K]): void;
+    /** @deprecated See {@link "alt-shared".ICustomVirtualEntityStreamSyncedMeta} */
+    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomVirtualEntityStreamSyncedMeta, K, V>): void;
 
     /**
      * Removes the specified key and the data connected to that specific key.
@@ -693,7 +693,7 @@ declare module "alt-server" {
      * @param key The key of the value to remove.
      */
     public deleteStreamSyncedMeta(key: string): void;
-    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): void;
+    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): void;
   }
 
   export class Entity extends WorldObject {

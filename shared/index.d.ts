@@ -1280,6 +1280,13 @@ declare module "alt-shared" {
    */
   export interface ICustomVehicleStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
 
+  /**
+   * Extend it by interface merging for use in virtual entity stream synced meta (class `VirtualEntity` on client & server, e.g. `entity.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVirtualEntityStreamSyncedMeta {}
+
   export interface IInspectOptions {
     /**
      * If set to `true`, getters are going to be

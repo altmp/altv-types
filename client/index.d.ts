@@ -429,10 +429,10 @@ declare module "alt-client" {
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
      */
-    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntitySyncedMeta>): unknown;
-    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): shared.ICustomEntitySyncedMeta[K] | undefined;
-    /** @deprecated See {@link "alt-shared".ICustomEntitySyncedMeta} */
-    public getSyncedMeta<V extends any>(key: string): V | undefined;
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomVirtualEntityStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): shared.ICustomVirtualEntityStreamSyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomVirtualEntityStreamSyncedMeta} */
+    public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
 
     /**
      * Determines whether contains the specified key.
@@ -440,10 +440,10 @@ declare module "alt-client" {
      * @param key The key of the value to locate.
      * @returns True if the meta table contains any data at the specified key or False if not
      */
-    public hasSyncedMeta(key: string): boolean;
-    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
+    public hasStreamSyncedMeta(key: string): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): boolean;
 
-    public getSyncedMetaKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
   /** @beta */
