@@ -2931,10 +2931,10 @@ declare module "alt-server" {
   export function getEntitiesInDimension(dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
 
   /** @alpha */
-  export function getEntitiesInRange(position: shared.Vector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getEntitiesInRange(position: shared.IVector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
 
   /** @alpha */
-  export function getClosestEntities(position: shared.Vector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
 
   /** @alpha */
   export class NetworkObject extends Entity {
