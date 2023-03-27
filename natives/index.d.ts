@@ -19758,7 +19758,7 @@ declare module "natives" {
 
   export function waypointPlaybackStartAimingAtCoord(ped: Player | number, x: number, y: number, z: number, p4: boolean): void;
 
-  export function waypointPlaybackStartShootingAtPed(ped: Player | number, targetPed: Player | number, p2: boolean, p3: boolean): void;
+  export function waypointPlaybackStartShootingAtPed(ped: Player | number, ped: Player | number, p2: boolean, p3: boolean): void;
 
   export function waypointPlaybackStartShootingAtCoord(ped: Player | number, x: number, y: number, z: number, p4: boolean, firingPattern: number): void;
 
