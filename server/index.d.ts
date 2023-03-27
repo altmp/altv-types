@@ -620,6 +620,82 @@ declare module "alt-server" {
     public pos: shared.Vector3;
   }
 
+  /** @alpha */
+  export class VirtualEntityGroup extends BaseObject {
+    /** Creates a new Virtual Entity Group */
+    public constructor(streamingRangeLimit: number);
+
+    /** Returns all Virtual Entity Group instances */
+    public static readonly all: ReadonlyArray<VirtualEntityGroup>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    /** Maximum streaming range inside the Virtual Entity Group */
+    public readonly streamingRangeLimit: number;
+  }
+
+  /** @alpha */
+  export class VirtualEntity extends WorldObject {
+    /** Creates a new Virtual Entity */
+    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number);
+
+    /** Returns all Virtual Entity instances */
+    public static readonly all: ReadonlyArray<VirtualEntity>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    /** Virtual Entity Group this entity belongs to */
+    public readonly group: VirtualEntityGroup;
+
+    /** Streaming range for the virtual entity */
+    public readonly streamingDistance: number;
+
+    /**
+     * Gets a value using the specified key.
+     *
+     * @param key The key of the value to get.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
+     */
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomVirtualEntityStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): shared.ICustomVirtualEntityStreamSyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomVirtualEntityStreamSyncedMeta} */
+    public getStreamSyncedMeta<V extends any>(key: string): V | undefined;
+
+    /**
+     * Determines whether contains the specified key.
+     *
+     * @param key The key of the value to locate.
+     * @returns True if the meta table contains any data at the specified key or False if not
+     */
+    public hasStreamSyncedMeta(key: string): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): boolean;
+
+    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+
+    /**
+     * Stores the given value with the specified key.
+     *
+     * @remarks The given value will be shared with all clients in streaming range.
+     *
+     * @param key The key of the value to store.
+     * @param value The value to store.
+     */
+    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomVirtualEntityStreamSyncedMeta, K>): void;
+    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K, value: shared.ICustomVirtualEntityStreamSyncedMeta[K]): void;
+    /** @deprecated See {@link "alt-shared".ICustomVirtualEntityStreamSyncedMeta} */
+    public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomVirtualEntityStreamSyncedMeta, K, V>): void;
+
+    /**
+     * Removes the specified key and the data connected to that specific key.
+     *
+     * @param key The key of the value to remove.
+     */
+    public deleteStreamSyncedMeta(key: string): void;
+    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): void;
+  }
+
   export class Entity extends WorldObject {
     /**
      * Array with all entities.
