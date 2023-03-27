@@ -19,9 +19,10 @@ declare module "alt-shared" {
     LocalPlayer,
     Object,
     VirtualEntity,
+    VirtualEntityGroup,
     Marker,
     TextLabel,
-    Pickup
+    Pickup,
   }
 
   export const enum BlipSprite {
@@ -1278,6 +1279,13 @@ declare module "alt-shared" {
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomVehicleStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in virtual entity stream synced meta (class `VirtualEntity` on client & server, e.g. `entity.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVirtualEntityStreamSyncedMeta {}
 
   export interface IInspectOptions {
     /**
