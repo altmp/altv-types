@@ -6,6 +6,7 @@ declare module "alt-shared" {
     Player,
     Vehicle,
     Ped,
+    NetworkObject,
     Blip,
     WebView,
     VoiceChannel,
@@ -23,6 +24,7 @@ declare module "alt-shared" {
     Marker,
     TextLabel,
     Pickup,
+    Size
   }
 
   export const enum BlipSprite {
