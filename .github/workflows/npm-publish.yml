@@ -148,7 +148,7 @@ jobs:
         with:
           persist-credentials: false
           repository: altmp/altv-native-gen
-          ref: 567f3e8704106b800d17b7a4217133980410bac5
+          ref: c40614e276bcbdd002cb4d78d6109c59d7884307
           path: ./gen
       - name: Checkout nativedb
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
