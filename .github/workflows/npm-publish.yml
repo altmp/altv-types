@@ -13,9 +13,9 @@ jobs:
         working-directory: ./shared
     steps:
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -41,9 +41,9 @@ jobs:
         working-directory: ./client
     steps:
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -69,9 +69,9 @@ jobs:
         working-directory: ./webview
     steps:
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -97,9 +97,9 @@ jobs:
         working-directory: ./worker
     steps:
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -125,13 +125,13 @@ jobs:
         working-directory: ./natives
     steps:
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: Set up .Net SDK
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 3.1.x
+          dotnet-version: 5.0.x
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -186,9 +186,9 @@ jobs:
         working-directory: ./server
     steps:
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
