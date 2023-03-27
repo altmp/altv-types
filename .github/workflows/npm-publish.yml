@@ -148,16 +148,10 @@ jobs:
         with:
           persist-credentials: false
           repository: altmp/altv-native-gen
-          ref: afe8f82ad2b2205f3a88bb570b29f2427f689139
+          ref: 567f3e8704106b800d17b7a4217133980410bac5
           path: ./gen
       - name: Checkout nativedb
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
-        # uses: actions/checkout@v2
-        # with:
-        #   persist-credentials: false
-        #   repository: altmp/natives
-        #   ref: a6990af2f7a0c364b2fbeb272726875c58a14393
-        #   path: ./nativedb
         run: |
           mkdir "../nativedb"
           curl "https://natives.altv.mp/natives" -A "AltPublicAgent" > "../nativedb/natives.json"
