@@ -1567,6 +1567,12 @@ declare module "alt-client" {
     /** View URL */
     public url: string;
 
+    /** @alpha */
+    public static readonly all: ReadonlyArray<WebView>;
+
+    /** @alpha */
+    public readonly id: number;
+
     /**
      * Is the webview a overlay.
      */
