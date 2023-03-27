@@ -2525,6 +2525,9 @@ declare module "alt-server" {
     constructor(type: shared.CheckpointType, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
     constructor(type: shared.CheckpointType, pos: shared.IVector3, radius: number, height: number, color: shared.RGBA);
 
+    /** @alpha */
+    public static readonly all: ReadonlyArray<Checkpoint>;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): void;
 

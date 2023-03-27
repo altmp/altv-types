@@ -546,6 +546,9 @@ declare module "alt-client" {
 
     constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA);
 
+    /** @alpha */
+    public static readonly all: ReadonlyArray<Checkpoint>;
+
     public isEntityIn(entity: Entity): boolean;
     public isPointIn(pos: shared.IVector3): boolean;
 
