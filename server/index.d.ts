@@ -2478,6 +2478,9 @@ declare module "alt-server" {
      */
     public playersOnly: boolean;
 
+    /** @alpha */
+    public readonly id: number;
+
     public isEntityIn(entity: Entity): boolean;
     public isEntityIn(entityID: number): boolean;
 
