@@ -340,6 +340,10 @@ declare module "alt-server" {
     vehicleSiren: (vehicle: Vehicle, state: boolean) => void;
     /** @alpha */
     playerSpawn: (player: Player) => void;
+    /** @alpha */
+    baseObjectCreate: (baseObject: BaseObject) => void;
+    /** @alpha */
+    baseObjectRemove: (baseObject: BaseObject) => void;
   }
 
   export interface IFireInfo {

@@ -157,6 +157,12 @@ declare module "alt-client" {
 
     playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
 
+    /** @alpha */
+    baseObjectCreate: (baseObject: BaseObject) => void;
+
+    /** @alpha */
+    baseObjectRemove: (baseObject: BaseObject) => void;
+
     weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
 
     /**
