@@ -627,7 +627,7 @@ declare module "alt-server" {
   /** @alpha */
   export class VirtualEntityGroup extends BaseObject {
     /** Creates a new Virtual Entity Group */
-    public constructor(streamingRangeLimit: number);
+    public constructor(maxStreamedEntityCount: number);
 
     /** Returns all Virtual Entity Group instances */
     public static readonly all: ReadonlyArray<VirtualEntityGroup>;
