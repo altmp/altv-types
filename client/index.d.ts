@@ -3436,5 +3436,16 @@ declare module "alt-client" {
     public waitForSpawn(timeout?: number): Promise<void>;
   }
 
+  /** @alpha */
+  export class NetworkObject extends Entity {
+    public static readonly all: ReadonlyArray<NetworkObject>;
+
+    public alpha: number;
+
+    public textureVariation: number;
+
+    /** The distance at which the LOD model of the object starts being applied. */
+    public lodDistance: number;
+  }
   export * from "alt-shared";
 }

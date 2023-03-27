@@ -2936,5 +2936,25 @@ declare module "alt-server" {
   /** @alpha */
   export function getClosestEntities(position: shared.Vector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
 
+  /** @alpha */
+  export class NetworkObject extends Entity {
+    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
+
+    public static readonly all: ReadonlyArray<NetworkObject>;
+
+    public activatePhysics(): void;
+
+    /** Places the object properly on the ground. */
+    public placeOnGroundProperly(): void;
+
+    /** Object transparency, values are between 0 and 255. (0 being fully transparent) */
+    public alpha: number;
+
+    public textureVariation: number;
+
+    /** The distance at which the LOD model of the object starts being applied. */
+    public lodDistance: number;
+  }
+
   export * from "alt-shared";
 }
