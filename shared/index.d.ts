@@ -24,7 +24,7 @@ declare module "alt-shared" {
     Marker,
     TextLabel,
     Pickup,
-    Size
+    Size,
   }
 
   export const enum BlipSprite {

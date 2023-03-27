@@ -2369,6 +2369,9 @@ declare module "alt-server" {
 
     public sprite: shared.BlipSprite;
 
+    /** @alpha */
+    public readonly id: number;
+
     /**
      * @remarks Does't properly work for areablips currently.
      */

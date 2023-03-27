@@ -1885,6 +1885,9 @@ declare module "alt-client" {
      */
     public static readonly all: ReadonlyArray<Blip>;
 
+    /** @alpha */
+    public readonly remoteId: number;
+
     public readonly scriptID: number;
 
     public routeColor: shared.RGBA;
