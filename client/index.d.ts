@@ -464,6 +464,15 @@ declare module "alt-client" {
      */
     public constructor(source: string, volume: number, category?: shared.AudioCategory | `${shared.AudioCategory}`, play2D?: boolean);
 
+    /** @alpha */
+    public static readonly all: ReadonlyArray<Audio>;
+
+    /** @alpha */
+    public readonly id: number;
+
+    /** @alpha */
+    public readonly remoteId: number;
+
     public source: string;
 
     public looped: boolean;
