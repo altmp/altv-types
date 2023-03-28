@@ -2562,6 +2562,15 @@ declare module "alt-server" {
      */
     constructor(isSpatial: boolean, maxDistance: number);
 
+    /** @alpha */
+    public readonly id: number;
+
+    /** @alpha */
+    public readonly maxDistance: number;
+
+    /** @alpha */
+    public readonly isSpatial: boolean;
+
     public addPlayer(player: Player): void;
 
     public isPlayerInChannel(player: Player): boolean;
