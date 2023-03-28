@@ -29,8 +29,8 @@ However, for individual players it depends on how you receive their player insta
 import * as alt from 'alt-server';
 
 alt.on('playerConnect', player => {
-    // This emits to all player
-    alt.emitClient(null, 'joined', player);
+    // Send 'joined' event with a player instance to all players 
+    alt.emitAllClients('joined', player);
 });
 ```
 
@@ -41,7 +41,7 @@ import * as alt from 'alt-client';
 import * as native from 'natives';
 
 alt.onServer('joined', otherPlayer => {
-    // Check if self. Ignore self.
+    // Check if otherPlayer is our local player
     if (otherPlayer === alt.Player.local) {
         // Let's freeze ourself.
         // Don't actually do this. This is just how most natives work with scriptID.
