@@ -1669,7 +1669,7 @@ declare module "natives" {
   * All presets can be found in common\data\ui\uiscenes.meta
   * @param presetName was always "CELEBRATION_WINNER"
   */
-  export function ui3dsceneAssignPedToSlot(presetName: string | null, ped: Player | number, p2: number, posX: number, posY: number, posZ: number): boolean;
+  export function ui3dsceneAssignPedToSlot(presetName: string | null, ped: Player | number, slot: number, posX: number, posY: number, posZ: number): boolean;
 
   export function ui3dsceneClearPatchedData(): void;
 
@@ -2202,7 +2202,7 @@ declare module "natives" {
   /**
   * Full list of static emitters by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/staticEmitters.json
   */
-  export function setEmitterRadioStation(emitterName: string | null, radioStation: string | null): void;
+  export function setEmitterRadioStation(emitterName: string | null, radioStation: string | null, p2: any): void;
 
   /**
   * Example:
@@ -9243,7 +9243,7 @@ declare module "natives" {
 
   export function networkBuyItem(amount: number, item: number, p2: any, p3: any, p4: boolean, item_name: string | null, p6: any, p7: any, p8: any, p9: boolean): void;
 
-  export function networkSpentTaxi(amount: number, p1: boolean, p2: boolean, p3: any): void;
+  export function networkSpentTaxi(amount: number, p1: boolean, p2: boolean, p3: any, p4: any): void;
 
   export function networkPayEmployeeWage(p0: any, p1: boolean, p2: boolean): void;
 
@@ -9530,7 +9530,7 @@ declare module "natives" {
 
   export function networkEarnNightclubAndWarehouse(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): void;
 
-  export function networkSpendNightclubAndWarehouse(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void;
+  export function networkSpendNightclubAndWarehouse(p0: any, p1: any, p2: any, p3: any): void;
 
   export function networkSpentRdrHatchetBonus(amount: number, p1: boolean, p2: boolean): void;
 
@@ -9661,7 +9661,7 @@ declare module "natives" {
 
   export function networkSpendUpgradeAutoshop(p0: any, p1: any, p2: any, p3: any): void;
 
-  export function networkEarnAutoshopBusiness(p0: any, p1: any): void;
+  export function networkEarnAutoshopBusiness(p0: any, p1: any, p2: any): void;
 
   export function networkEarnAutoshopIncome(p0: any, p1: number): void;
 
@@ -10031,25 +10031,14 @@ declare module "natives" {
 
   export function networkCanEnterMultiplayer(): boolean;
 
-  /**
-  * unknown params
-  * p5 is reset to 0 if,
-  * Global_1315318 = 0 or Global_1315323 = 9 or 12 or (Global_1312629 = 0 && Global_1312631 = true/1) those are passed.
-  * @param p0 = 0, 2, or 999 (The global is 999 by default.)
-  * @param p1 = 0 (Always in every script it's found in atleast.)
-  * @param p2 = 0, 3, or 4 (Based on a var that is determined by a function.)
-  * @param maxPlayers = maxPlayers (It's obvious in x360 scripts it's always 18)
-  * @param p4 = 0 (Always in every script it's found in atleast.)
-  * @param p5 = 0 or 1. (1 if network_can_enter_multiplayer, but set to 0 if other checks after that are passed.)
-  */
-  export function networkSessionDoFreeroamQuickmatch(p0: any, p1: any, p2: any, maxPlayers: number, p4: any, p5: any): boolean;
+  export function networkSessionDoFreeroamQuickmatch(p0: any, p1: any, p2: any, maxPlayers: number): boolean;
 
-  export function networkSessionDoFriendMatchmaking(p0: number, p1: number, maxPlayers: number, p3: boolean): boolean;
+  export function networkSessionDoFriendMatchmaking(p0: number, p1: number, maxPlayers: number): boolean;
 
   /**
-  * @param p4 seems to be unused in 1.60/build 2628
+  * p4 seems to be unused in 1.60/build 2628
   */
-  export function networkSessionDoCrewMatchmaking(crewId: number, p1: number, p2: number, maxPlayers: number, p4: boolean): boolean;
+  export function networkSessionDoCrewMatchmaking(crewId: number, p1: number, p2: number, maxPlayers: number): boolean;
 
   export function networkSessionDoActivityQuickmatch(p0: any, p1: any, p2: any, p3: any, p4: any): boolean;
 
@@ -11223,13 +11212,13 @@ declare module "natives" {
 
   export function setLocalPlayerVisibleInCutscene(p0: boolean, p1: boolean): void;
 
-  export function setLocalPlayerInvisibleLocally(p0: boolean): void;
+  export function setLocalPlayerInvisibleLocally(bIncludePlayersVehicle: boolean): void;
 
-  export function setLocalPlayerVisibleLocally(p0: boolean): void;
+  export function setLocalPlayerVisibleLocally(bIncludePlayersVehicle: boolean): void;
 
-  export function setPlayerInvisibleLocally(player: Player | number, toggle: boolean): void;
+  export function setPlayerInvisibleLocally(player: Player | number, bIncludePlayersVehicle: boolean): void;
 
-  export function setPlayerVisibleLocally(player: Player | number, toggle: boolean): void;
+  export function setPlayerVisibleLocally(player: Player | number, bIncludePlayersVehicle: boolean): void;
 
   /**
   * Hardcoded to not work in SP.
@@ -13461,10 +13450,9 @@ declare module "natives" {
   export function isPedHuman(ped: Player | number): boolean;
 
   /**
-  * If the Ped is not in a vehicle and includeLastVehicle is true, the vehicle they were last in is returned.
   * @returns Gets the vehicle the specified Ped is in. Returns 0 if the ped is/was not in a vehicle.
   */
-  export function getVehiclePedIsIn(ped: Player | number, includeLastVehicle: boolean): number;
+  export function getVehiclePedIsIn(ped: Player | number, includeEntering: boolean): number;
 
   /**
   * Resets the value for the last vehicle driven by the Ped.
@@ -14528,7 +14516,7 @@ declare module "natives" {
   * List of component/props ID
   * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
   */
-  export function getPedPropIndex(ped: Player | number, componentId: number): number;
+  export function getPedPropIndex(ped: Player | number, componentId: number, p2: any): number;
 
   /**
   * enum PedPropsData
@@ -14543,7 +14531,7 @@ declare module "natives" {
   * @param ped SET_PED_PROP_INDEX(playerPed, PED_PROP_HATS, GET_NUMBER_OF_PED_PROP_DRAWABLE_VARIATIONS(playerPed, PED_PROP_HATS), GET_NUMBER_OF_PED_PROP_TEXTURE_VARIATIONS(playerPed, PED_PROP_HATS, 0), TRUE);
   * @param componentId can be set to various things based on what category you're wanting to set
   */
-  export function setPedPropIndex(ped: Player | number, componentId: number, drawableId: number, TextureId: number, attach: boolean): void;
+  export function setPedPropIndex(ped: Player | number, componentId: number, drawableId: number, TextureId: number, attach: boolean, p5: any): void;
 
   /**
   * List of component/props ID
@@ -14555,13 +14543,13 @@ declare module "natives" {
   * List of component/props ID
   * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
   */
-  export function clearPedProp(ped: Player | number, propId: number): void;
+  export function clearPedProp(ped: Player | number, propId: number, p2: any): void;
 
   /**
   * List of component/props ID
   * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
   */
-  export function clearAllPedProps(ped: Player | number): void;
+  export function clearAllPedProps(ped: Player | number, p1: any): void;
 
   export function dropAmbientProp(ped: Player | number): void;
 
@@ -17925,7 +17913,7 @@ declare module "natives" {
 
   export function playstatsMcFormationEnds(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): void;
 
-  export function playstatsMcClubhouseActivity(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): void;
+  export function playstatsMcClubhouseActivity(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any): void;
 
   export function playstatsRivalBehavior(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any): void;
 
@@ -18009,7 +17997,7 @@ declare module "natives" {
 
   export function playstatsHeist3Hack(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void;
 
-  export function playstatsNpcPhone(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void;
+  export function playstatsNpcPhone(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any, p11: any, p12: any): void;
 
   export function playstatsArcadeCabinet(p0: any): void;
 
@@ -18037,7 +18025,7 @@ declare module "natives" {
 
   export function playstatsSubWeap(p0: any, p1: any, p2: any, p3: any): void;
 
-  export function playstatsFastTrvl(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any): void;
+  export function playstatsFastTrvl(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any): void;
 
   export function playstatsHubEntry(p0: any): void;
 
@@ -18055,7 +18043,7 @@ declare module "natives" {
 
   export function playstatsCarclubPrize(p0: number, vehicleModel: number): void;
 
-  export function playstatsAwardNav(p0: any, p1: any): void;
+  export function playstatsAwardNav(p0: any, p1: any, p2: any, p3: any): void;
 
   export function playstatsInstMissionEnd(p0: any): void;
 
@@ -19759,7 +19747,7 @@ declare module "natives" {
 
   export function waypointPlaybackStartAimingAtCoord(ped: Player | number, x: number, y: number, z: number, p4: boolean): void;
 
-  export function waypointPlaybackStartShootingAtPed(ped: Player | number, ped: Player | number, p2: boolean, p3: boolean): void;
+  export function waypointPlaybackStartShootingAtPed(ped: Player | number, ped2: Player | number, p2: boolean, p3: boolean): void;
 
   export function waypointPlaybackStartShootingAtCoord(ped: Player | number, x: number, y: number, z: number, p4: boolean, firingPattern: number): void;
 
