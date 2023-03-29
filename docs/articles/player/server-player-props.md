@@ -118,9 +118,9 @@ At the time of writing this document we're not even sure if it's functioning.
 
 Used to **get or set** the player's current health.
 
-Health in GTA:V is based on the values `100 - 200`.
+Each model in GTA:V has its own health range.
 
-200 is the default health of the freemode model (`mp_m_freemode_01`).
+For example, the default health range of freemode player model (`mp_m_freemode_01`) is `100-200`.
 
 < 100 means the player is dead.
 
