@@ -120,7 +120,7 @@ Used to **get or set** the player's current health.
 
 Health in GTA:V is based on the values `100 - 200`.
 
-200 is the player's maximum health.
+200 is the default player's maximum health (`mp_m_freemode_01` model).
 
 < 100 means the player is dead.
 
@@ -162,9 +162,9 @@ const currentHwid = player.hwidHash;
 
 ## player.id
 
-Used to **get** the player's current id. These are strictly unique to the join order of a player.
+Used to **get** the player's current id. These are strictly unique to the join order of a player. If a player disconnects its id will be reused by the new player who connects or vehicle which will be created later.
 
-ID's may be used up to the value `65535`. After reaching 65,535 the id is recycled to a new joiner.
+ID's may be used up to the value `65535`.
 
 ```js
 alt.on('playerConnect', handleConnect);
@@ -312,10 +312,14 @@ player.pos = new alt.Vector3(0, 0, 0);
 
 ## player.rot
 
-Used to **get or set** the player's current rotation. However, **setting rotation is broken on server-side**.
+Used to **get or set** the player's current rotation.
 
 ```js
-const currentRot = { ...player.rot };
+// Get and log current player rotation.
+alt.log(player.rot);
+
+// Set player rotation to zero.
+player.rot = new alt.Vector3(0, 0, 0);
 ```
 
 ## player.seat
@@ -354,7 +358,7 @@ const social = player.socialID;
 
 Used to **get** if a player entity is still valid. This is useful when using timeouts, intervals, and handling disconnect events.
 
-A player that invalid means that it can longer receive data from the server.
+A player that invalid means that it disconnected from the server.
 
 ```js
 alt.on('playerDisconnect', handleDisconnect);
@@ -371,17 +375,13 @@ function handleDisconnect(player, reason) {
 
 ## player.vehicle
 
-Used to **get** the current vehicle that the player is inside. Returns **null** or **undefined** if the player is **NOT** in a vehicle.
+Used to **get** the current vehicle that the player is inside. Returns **null** if the player is **NOT** in a vehicle.
 
 ```js
-if (player.vehicle) {
-    console.log(`Player is in a vehicle. Let's change its color!`);
-    player.vehicle.setPrimaryColor = {
-        r: 255,
-        g: 0,
-        b: 0,
-        a: 255
-    };
+const { vehicle } = player
+if (vehicle) {
+    console.log(`Player is in a vehicle. Let's change its color to red!`);
+    vehicle.customPrimaryColor = new alt.RGBA(255, 0, 0);
 }
 
 if (!player.vehicle) {
