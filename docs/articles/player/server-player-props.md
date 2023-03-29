@@ -120,17 +120,9 @@ Used to **get or set** the player's current health.
 
 Each model in GTA:V has its own health range.
 
-For example, the default health range of freemode player model (`mp_m_freemode_01`) is `100-200`.
-
-< 100 means the player is dead.
-
 ```js
 const currentHealth = player.health;
 player.health += 10;
-
-if (player.health > 200) {
-    player.health = 200;
-}
 
 // Kill the player.
 player.health = 0;
