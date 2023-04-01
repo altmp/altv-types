@@ -170,6 +170,16 @@ declare module "alt-client" {
      * @alpha
      */
     worldObjectPositionChange: (object: WorldObject, oldPosition: shared.Vector3) => void;
+
+    /**
+     * @alpha
+     */
+    worldObjectStreamIn: (object: WorldObject) => void;
+
+    /**
+     * @alpha
+     */
+    worldObjectStreamOut: (object: WorldObject) => void;
   }
 
   export interface IDiscordUser {
