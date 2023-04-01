@@ -24,6 +24,7 @@ declare module "alt-shared" {
     Marker,
     TextLabel,
     Pickup,
+    AudioFilter,
     Size,
   }
 
