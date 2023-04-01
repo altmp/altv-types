@@ -2571,6 +2571,12 @@ declare module "alt-server" {
     /** @alpha */
     public readonly isSpatial: boolean;
 
+    /** @alpha */
+    public priority: number;
+
+    /** @alpha */
+    public filter: number;
+
     public addPlayer(player: Player): void;
 
     public isPlayerInChannel(player: Player): boolean;
