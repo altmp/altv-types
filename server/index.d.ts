@@ -1312,6 +1312,12 @@ declare module "alt-server" {
 
     public getHairHighlightColor(): number;
 
+    /** @alpha */
+    public playAnimation(animDict: string, animName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flags: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void;
+
+    /** @alpha */
+    public clearTasks(): void;
+
     // local meta
 
     /**
