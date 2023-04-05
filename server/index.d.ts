@@ -2537,6 +2537,13 @@ declare module "alt-server" {
     constructor(type: shared.CheckpointType, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
     constructor(type: shared.CheckpointType, pos: shared.IVector3, radius: number, height: number, color: shared.RGBA);
 
+    /**
+     * Streaming range for the virtual entity
+     *
+     * @alpha
+     */
+    public readonly streamingDistance: number;
+
     /** @alpha */
     public static readonly all: ReadonlyArray<Checkpoint>;
 
@@ -2548,13 +2555,32 @@ declare module "alt-server" {
 
     public getMeta<K extends string>(key: Exclude<K, keyof ICustomCheckpointMeta>): unknown;
     public getMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): ICustomCheckpointMeta[K] | undefined;
-    /** @deprecated See {@link ICustomCheckpointMeta} */
-    public getMeta<V extends any>(key: string): V | undefined;
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K, value: ICustomCheckpointMeta[K]): void;
-    /** @deprecated See {@link ICustomCheckpointMeta} */
-    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K, V>): void;
+
+    /** @alpha */
+    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerStreamSyncedMeta, K>): void;
+    /** @alpha */
+    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K, value: shared.ICustomPlayerStreamSyncedMeta[K]): void;
+
+    /** @alpha */
+    public deleteStreamSyncedMeta(key: string): void;
+    /** @alpha */
+    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): void;
+
+    /** @alpha */
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerStreamSyncedMeta>): unknown;
+    /** @alpha */
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): shared.ICustomPlayerStreamSyncedMeta[K] | undefined;
+
+    /** @alpha */
+    public hasStreamSyncedMeta(key: string): boolean;
+    /** @alpha */
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): boolean;
+
+    /** @alpha */
+    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
   export class VoiceChannel extends BaseObject {
