@@ -2678,6 +2678,9 @@ declare module "alt-client" {
   export function toggleVoiceControls(state: boolean): void;
 
   export class WebSocketClient extends BaseObject {
+    /** @alpha */
+    public readonly id: number;
+
     public autoReconnect: boolean;
 
     public perMessageDeflate: boolean;
@@ -2796,6 +2799,9 @@ declare module "alt-client" {
 
   export class HttpClient extends BaseObject {
     public constructor();
+
+    /** @alpha */
+    public readonly id: number;
 
     public setExtraHeader(header: string, value: string): void;
 
