@@ -1186,7 +1186,7 @@ declare module "alt-shared" {
     VaultFromCover = 97,
     IsDrunk = 100,
     ForcedAim = 101,
-    IsNotRagdollAndNotPlayingAnim = 104, // OpenDoorArmIK
+    IsNotRagdollAndNotPlayingAnim = 104,
     ForceReload = 105,
     DontActivateRagdollFromVehicleImpact = 106,
     DontActivateRagdollFromBulletImpact = 107,
@@ -1237,7 +1237,7 @@ declare module "alt-shared" {
     IsInjured = 166,
     DontEnterVehiclesInPlayersGroup = 167,
     PreventAllMeleeTaunts = 169,
-    IsInjured2 = 170, // ForceDirectEntry
+    IsInjured2 = 170,
     AlwaysSeeApproachingVehicles = 171,
     CanDiveAwayFromApproachingVehicles = 172,
     AllowPlayerToInterruptVehicleEntryExit = 173,
@@ -1310,7 +1310,7 @@ declare module "alt-shared" {
     KillWhenTrapped = 275,
     EdgeDetected = 276,
     AvoidTearGas = 279,
-    NoWrithe = 281, // DisableGoToWritheWhenInjured
+    NoWrithe = 281,
     OnlyUseForcedSeatWhenEnteringHeliInGroup = 282,
     DisableWeirdPedEvents = 285,
     ShouldChargeNow = 286,
@@ -1326,7 +1326,7 @@ declare module "alt-shared" {
     IsInCluster = 310,
     ShoutToGroupOnPlayerMelee = 311,
     IgnoredByAutoOpenDoors = 312,
-    NoPedMelee = 314, // ForceIgnoreMeleeActiveCombatant
+    NoPedMelee = 314,
     CheckLoSForSoundEvents = 315,
     CanSayFollowedByPlayerAudio = 317,
     ActivateRagdollFromMinorPlayerContact = 318,
@@ -1381,7 +1381,7 @@ declare module "alt-shared" {
     UseNormalExplosionDamageWhenBlownUpInVehicle = 407,
     DisableHomingMissileLockForVehiclePedInside = 408,
     DisableTakeOffScubaGear = 409,
-    Alpha = 410, // IgnoreMeleeFistWeaponDamageMult
+    Alpha = 410,
     LawPedsCanFleeFromNonWantedPlayer = 411,
     ForceBlipSecurityPedsIfPlayerIsWanted = 412,
     IsHolsteringWeapon = 413,
@@ -1391,7 +1391,7 @@ declare module "alt-shared" {
     ThisPedIsATargetPriorityForAI = 417,
     IsSwitchingHelmetVisor = 418,
     ForceHelmetVisorSwitch = 419,
-    FlamingFootprints = 421, // UseOverrideFootstepPtFx
+    FlamingFootprints = 421,
     DisableVehicleCombat = 422,
     DisablePropKnockOff = 423,
     FallsLikeAircraft = 424,
