@@ -439,6 +439,10 @@ declare module "alt-client" {
     /** Unique serverside id */
     public readonly remoteId: number;
 
+    public readonly isRemote: boolean;
+
+    public readonly isStreamedIn: boolean;
+
     /**
      * Gets a value using the specified key.
      *
