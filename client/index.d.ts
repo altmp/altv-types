@@ -3487,8 +3487,8 @@ declare module "alt-client" {
     /** The distance at which the LOD model of the object starts being applied. */
     public lodDistance: number;
   }
-   /** @alpha */
-   export class AudioFilter extends BaseObject {
+  /** @alpha */
+  export class AudioFilter extends BaseObject {
     constructor(filtername: string);
 
     public addRotateEffect(fRate: number, priority: number): number;
