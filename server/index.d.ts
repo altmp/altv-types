@@ -1791,6 +1791,11 @@ declare module "alt-server" {
      */
     public driftModeEnabled: boolean;
 
+    /**
+     * Gets or sets the vehicles rotation with a quaternion.
+     */
+    public quaternion: shared.Quaternion;
+
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
     constructor(model: string | number, pos: shared.IVector3, rot: shared.IVector3);
     /**

@@ -1185,6 +1185,13 @@ declare module "alt-shared" {
     readonly z: number;
   }
 
+  export interface IQuaternion {
+    readonly x: number;
+    readonly y: number;
+    readonly z: number;
+    readonly w: number;
+  }
+
   export interface IResource {
     readonly name: string;
     readonly type: string;
@@ -1754,6 +1761,29 @@ declare module "alt-shared" {
 
     /** (Infinity, Infinity) vector */
     public static readonly positiveInfinity: Vector2;
+  }
+
+  export class Quaternion {
+    public readonly x: number;
+
+    public readonly y: number;
+
+    public readonly z: number;
+
+    public readonly w: number;
+
+    constructor(x: number, y: number, z: number, w: number);
+
+    constructor(arr: [number, number, number, number]);
+
+    constructor(obj: IQuaternion);
+
+    constructor(value: number);
+
+    /**
+     * Returns [x, y, z, w] array.
+     */
+    public toArray(): [number, number, number, number];
   }
 
   export class RGBA {
