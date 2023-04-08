@@ -3534,9 +3534,9 @@ declare module "alt-client" {
 
     public scale: shared.Vector3;
 
-    public rotation: shared.Vector3;
+    public rot: shared.Vector3;
 
-    public direction: shared.Vector3; 
+    public direction: shared.Vector3;
   }
 
   export * from "alt-shared";
