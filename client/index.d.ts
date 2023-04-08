@@ -2978,6 +2978,8 @@ declare module "alt-client" {
 
     public title: string;
 
+    public readonly id: number;
+
     public readonly sourceUrl: string;
 
     public readonly isVisible: boolean;
@@ -3018,7 +3020,7 @@ declare module "alt-client" {
 
     public readonly tagName: string;
 
-    public id: string;
+    public rmlId: string;
 
     public readonly isOwned: boolean;
 
@@ -3487,8 +3489,8 @@ declare module "alt-client" {
     /** The distance at which the LOD model of the object starts being applied. */
     public lodDistance: number;
   }
-   /** @alpha */
-   export class AudioFilter extends BaseObject {
+  /** @alpha */
+  export class AudioFilter extends BaseObject {
     constructor(filtername: string);
 
     public addRotateEffect(fRate: number, priority: number): number;
@@ -3505,6 +3507,22 @@ declare module "alt-client" {
     public addPitchshiftEffect(fPitchShift: number, fSemitones: number, lFFTsize: number, lOsamp: number, priority: number): number;
     public addFreeverbEffect(fDryMix: number, fWetMix: number, fRoomSize: number, fDamp: number, fWidth: number, lMode: number, priority: number): number;
     public removeEffect(hfxHandler: number): boolean;
+  }
+
+  /** @alpha */
+  export class Marker extends WorldObject {
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
+
+    public static readonly all: ReadonlyArray<Marker>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    public visible: boolean;
+
+    public type: shared.MarkerType;
+
+    public color: shared.RGBA;
   }
 
   export * from "alt-shared";
