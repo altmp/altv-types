@@ -1233,6 +1233,16 @@ declare module "alt-shared" {
     readonly z: number;
   }
 
+  /**
+   * @alpha
+   */
+  export interface IQuaternion {
+    readonly x: number;
+    readonly y: number;
+    readonly z: number;
+    readonly w: number;
+  }
+
   export interface IResource {
     readonly name: string;
     readonly type: string;
@@ -1401,6 +1411,8 @@ declare module "alt-shared" {
     public toArray(): [number, number, number];
 
     public toFixed(precision: number): Vector3;
+
+    public toString(): string;
 
     /**
      * Adds two vectors.
@@ -1627,6 +1639,8 @@ declare module "alt-shared" {
 
     public toFixed(precision: number): Vector2;
 
+    public toString(): string;
+
     /**
      * Adds two vectors.
      */
@@ -1804,6 +1818,46 @@ declare module "alt-shared" {
     public static readonly positiveInfinity: Vector2;
   }
 
+  /**
+   * @alpha
+   */
+  export class Quaternion {
+    public readonly x: number;
+
+    public readonly y: number;
+
+    public readonly z: number;
+
+    public readonly w: number;
+
+    constructor(x: number, y: number, z: number, w: number);
+
+    constructor(arr: [number, number, number, number]);
+
+    constructor(obj: IQuaternion);
+
+    constructor(value: number);
+
+    /**
+     * Returns [x, y, z, w] array.
+     */
+    public toArray(): [number, number, number, number];
+
+    /**
+     * Returns the Quaternion with trimed decimals
+     * @param precision Precision to trim the values. Defaults to 4
+     */
+    public toFixed(precision: number): Quaternion;
+
+    public toString(): string;
+
+    /** (0, 0, 0, 0) quaternion */
+    public static readonly zero: Quaternion;
+
+    /** (1, 1, 1, 1) quaternion */
+    public static readonly one: Quaternion;
+  }
+
   export class RGBA {
     public static readonly red: RGBA;
     public static readonly green: RGBA;
@@ -1842,6 +1896,8 @@ declare module "alt-shared" {
     public toARGB(): RGBA;
 
     public toInt(): number;
+
+    public toString(): string;
   }
 
   export class File {
