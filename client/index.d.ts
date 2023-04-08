@@ -3523,6 +3523,12 @@ declare module "alt-client" {
     public type: shared.MarkerType;
 
     public color: shared.RGBA;
+
+    public scale: shared.Vector3;
+
+    public rotation: shared.Vector3;
+
+    public direction: shared.Vector3; 
   }
 
   export * from "alt-shared";
