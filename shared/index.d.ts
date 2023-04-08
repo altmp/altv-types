@@ -1784,6 +1784,12 @@ declare module "alt-shared" {
      * Returns [x, y, z, w] array.
      */
     public toArray(): [number, number, number, number];
+
+    /** (0, 0, 0, 0) quaternion */
+    public static readonly zero: Quaternion;
+
+    /** (1, 1, 1, 1) quaternion */
+    public static readonly one: Quaternion;
   }
 
   export class RGBA {
