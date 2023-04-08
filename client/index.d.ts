@@ -3513,6 +3513,14 @@ declare module "alt-client" {
   export class Marker extends WorldObject {
     public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
 
+    /**
+     * Retrieves the marker from the pool.
+     *
+     * @param id The id of the marker.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Marker | null;
+
     public static readonly all: ReadonlyArray<Marker>;
 
     /** Unique id */
@@ -3520,7 +3528,7 @@ declare module "alt-client" {
 
     public visible: boolean;
 
-    public type: shared.MarkerType;
+    public markerType: shared.MarkerType;
 
     public color: shared.RGBA;
 
