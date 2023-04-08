@@ -1793,6 +1793,7 @@ declare module "alt-server" {
 
     /**
      * Gets or sets the vehicles rotation with a quaternion.
+     * @alpha
      */
     public quaternion: shared.Quaternion;
 

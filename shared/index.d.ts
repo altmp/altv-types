@@ -1185,6 +1185,9 @@ declare module "alt-shared" {
     readonly z: number;
   }
 
+  /**
+   * @alpha
+   */
   export interface IQuaternion {
     readonly x: number;
     readonly y: number;
@@ -1763,6 +1766,9 @@ declare module "alt-shared" {
     public static readonly positiveInfinity: Vector2;
   }
 
+  /**
+   * @alpha
+   */
   export class Quaternion {
     public readonly x: number;
 
