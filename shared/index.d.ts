@@ -1412,6 +1412,8 @@ declare module "alt-shared" {
 
     public toFixed(precision: number): Vector3;
 
+    public toString(): string;
+
     /**
      * Adds two vectors.
      */
@@ -1637,6 +1639,8 @@ declare module "alt-shared" {
 
     public toFixed(precision: number): Vector2;
 
+    public toString(): string;
+
     /**
      * Adds two vectors.
      */
@@ -1839,6 +1843,14 @@ declare module "alt-shared" {
      */
     public toArray(): [number, number, number, number];
 
+    /**
+     * Returns the Quaternion with trimed decimals
+     * @param precision Precision to trim the values. Defaults to 4
+     */
+    public toFixed(precision: number): Quaternion;
+
+    public toString(): string;
+
     /** (0, 0, 0, 0) quaternion */
     public static readonly zero: Quaternion;
 
@@ -1884,6 +1896,8 @@ declare module "alt-shared" {
     public toARGB(): RGBA;
 
     public toInt(): number;
+
+    public toString(): string;
   }
 
   export class File {
