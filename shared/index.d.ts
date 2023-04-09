@@ -2053,6 +2053,7 @@ declare module "alt-shared" {
 
   /**
    * Returns all meta keys which have been set
+   * @alpha
    */
   export function getMetaKeys(): ReadonlyArray<string>;
 
@@ -2091,6 +2092,7 @@ declare module "alt-shared" {
 
   /**
    * Returns all synced meta keys which have been set
+   * @alpha
    */
   export function getSyncedMetaKeys(): ReadonlyArray<string>;
 
