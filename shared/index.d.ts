@@ -2052,6 +2052,11 @@ declare module "alt-shared" {
   export function getMeta<V extends any>(key: string): V | undefined;
 
   /**
+   * Returns all meta keys which have been set
+   */
+  export function getMetaKeys(): ReadonlyArray<string>;
+
+  /**
    * Determines whether contains the specified key.
    *
    * @param key The key of the value to locate.
@@ -2083,6 +2088,11 @@ declare module "alt-shared" {
   export function getSyncedMeta<K extends ExtractStringKeys<ICustomGlobalSyncedMeta>>(key: K): ICustomGlobalSyncedMeta[K] | undefined;
   /** @deprecated See {@link ICustomGlobalSyncedMeta} */
   export function getSyncedMeta<V extends any>(key: string): V | undefined;
+
+  /**
+   * Returns all synced meta keys which have been set
+   */
+  export function getSyncedMetaKeys(): ReadonlyArray<string>;
 
   /**
    * Determines whether contains the specified key.
