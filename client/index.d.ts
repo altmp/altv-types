@@ -415,6 +415,9 @@ declare module "alt-client" {
 
   /** @alpha */
   export class VirtualEntityGroup extends BaseObject {
+    /** Creates a new Virtual Entity Group */
+    public constructor(maxStreamedEntityCount: number);
+
     /** Returns all Virtual Entity Group instances */
     public static readonly all: ReadonlyArray<VirtualEntityGroup>;
 
@@ -427,6 +430,9 @@ declare module "alt-client" {
 
   /** @alpha */
   export class VirtualEntity extends WorldObject {
+    /** Creates a new Virtual Entity */
+    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number);
+
     /** Returns all Virtual Entity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
 
@@ -445,6 +451,7 @@ declare module "alt-client" {
 
     /**
      * Gets a value using the specified key.
+     * Only available for server-side created Virtual Entities.
      *
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
@@ -456,6 +463,7 @@ declare module "alt-client" {
 
     /**
      * Determines whether contains the specified key.
+     * Only available for server-side created Virtual Entities.
      *
      * @param key The key of the value to locate.
      * @returns True if the meta table contains any data at the specified key or False if not
@@ -463,6 +471,10 @@ declare module "alt-client" {
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): boolean;
 
+    /**
+     * Returns all set meta keys of the Virtual Entity.
+     * Only available for server-side created Virtual Entities.
+     */
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
