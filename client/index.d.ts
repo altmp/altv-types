@@ -396,6 +396,18 @@ declare module "alt-client" {
   }
 
   export class BaseObject extends shared.BaseObject {
+    /**
+     * Gets the base object with the given type and local id
+     * @alpha
+     */
+    public getByID(type: shared.BaseObjectType, id: number): BaseObject;
+
+    /**
+     * Gets the base object with the given type and remote id
+     * @alpha
+     */
+    public getByRemoteID(type: shared.BaseObjectType, id: number): BaseObject;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
