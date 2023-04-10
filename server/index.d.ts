@@ -2593,6 +2593,21 @@ declare module "alt-server" {
 
     /** @alpha */
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+
+    /** @alpha */
+    public checkpointType: shared.CheckpointType;
+
+    /** @alpha */
+    public color: shared.RGBA;
+
+    /** @alpha */
+    public radius: number;
+
+    /** @alpha */
+    public height: number;
+
+    /** @alpha */
+    public nextPos: shared.Vector3;
   }
 
   export class VoiceChannel extends BaseObject {
