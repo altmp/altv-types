@@ -3560,7 +3560,7 @@ declare module "alt-client" {
 
     public rot: shared.Vector3;
 
-    public direction: shared.Vector3;
+    public dir: shared.Vector3;
   }
 
   export * from "alt-shared";
