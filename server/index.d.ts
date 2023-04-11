@@ -3021,6 +3021,25 @@ declare module "alt-server" {
   export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
 
   /** @alpha */
+  export class Ped extends Entity {
+    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3);
+
+    /**
+     * Retrieves the ped from the pool.
+     *
+     * @param id The id of the ped.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Ped | null;
+
+    public static readonly all: ReadonlyArray<Ped>;
+    public currentWeapon: number;
+    public health: number;
+    public maxArmour: number;
+    public amour: number;
+  }
+
+  /** @alpha */
   export class NetworkObject extends Entity {
     constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
 
