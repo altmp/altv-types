@@ -3576,6 +3576,14 @@ declare module "alt-client" {
     public rot: shared.Vector3;
 
     public dir: shared.Vector3;
+
+    public readonly isGlobal: boolean;
+
+    public readonly target: Player;
+
+    public readonly isRemote: boolean;
+
+    public readonly remoteId: number;
   }
 
   export * from "alt-shared";

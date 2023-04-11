@@ -3040,5 +3040,39 @@ declare module "alt-server" {
     public lodDistance: number;
   }
 
+    /** @alpha */
+    export class Marker extends WorldObject {
+      public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
+  
+      /**
+       * Retrieves the marker from the pool.
+       *
+       * @param id The id of the marker.
+       * @returns Entity if it was found, otherwise null.
+       */
+      public static getByID(id: number): Marker | null;
+  
+      public static readonly all: ReadonlyArray<Marker>;
+  
+      /** Unique id */
+      public readonly id: number;
+  
+      public visible: boolean;
+  
+      public markerType: shared.MarkerType;
+  
+      public color: shared.RGBA;
+  
+      public scale: shared.Vector3;
+  
+      public rot: shared.Vector3;
+  
+      public dir: shared.Vector3;
+
+      public readonly isGlobal: boolean;
+
+      public readonly target: Player;
+    }
+    
   export * from "alt-shared";
 }
