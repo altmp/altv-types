@@ -180,6 +180,9 @@ declare module "alt-client" {
      * @alpha
      */
     worldObjectStreamOut: (object: WorldObject) => void;
+
+    /** @alpha */
+    metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
   }
 
   export interface IDiscordUser {

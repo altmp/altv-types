@@ -344,6 +344,8 @@ declare module "alt-server" {
     baseObjectCreate: (baseObject: BaseObject) => void;
     /** @alpha */
     baseObjectRemove: (baseObject: BaseObject) => void;
+    /** @alpha */
+    metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
   }
 
   export interface IFireInfo {
