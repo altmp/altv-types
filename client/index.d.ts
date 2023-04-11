@@ -828,6 +828,21 @@ declare module "alt-client" {
      */
     public readonly isReloading: boolean;
 
+    /** @alpha */
+    public readonly isEnteringVehicle: boolean;
+
+    /** @alpha */
+    public readonly isLeavingVehicle: boolean;
+
+    /** @alpha */
+    public readonly isOnLadder: boolean;
+
+    /** @alpha */
+    public readonly isInMelee: boolean;
+
+    /** @alpha */
+    public readonly isInCover: boolean;
+
     /**
      * Current armour.
      */
