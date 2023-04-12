@@ -344,6 +344,8 @@ declare module "alt-server" {
     baseObjectCreate: (baseObject: BaseObject) => void;
     /** @alpha */
     baseObjectRemove: (baseObject: BaseObject) => void;
+    /** @alpha */
+    metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
   }
 
   export interface IFireInfo {
@@ -961,6 +963,22 @@ declare module "alt-server" {
      * The player's state of weapon reloading.
      */
     public readonly isReloading: boolean;
+
+    /** @alpha */
+    public readonly isEnteringVehicle: boolean;
+
+    /** @alpha */
+    public readonly isLeavingVehicle: boolean;
+
+    /** @alpha */
+    public readonly isOnLadder: boolean;
+
+    /** @alpha */
+    public readonly isInMelee: boolean;
+
+    /** @alpha */
+    public readonly isInCover: boolean;
+
     /**
      * Position the player is currently aiming at.
      *
@@ -3020,6 +3038,25 @@ declare module "alt-server" {
   export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
 
   /** @alpha */
+  export class Ped extends Entity {
+    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3);
+
+    /**
+     * Retrieves the ped from the pool.
+     *
+     * @param id The id of the ped.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Ped | null;
+
+    public static readonly all: ReadonlyArray<Ped>;
+    public currentWeapon: number;
+    public health: number;
+    public maxArmour: number;
+    public amour: number;
+  }
+
+  /** @alpha */
   export class NetworkObject extends Entity {
     constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
 
@@ -3039,5 +3076,39 @@ declare module "alt-server" {
     public lodDistance: number;
   }
 
+    /** @alpha */
+    export class Marker extends WorldObject {
+      public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
+  
+      /**
+       * Retrieves the marker from the pool.
+       *
+       * @param id The id of the marker.
+       * @returns Entity if it was found, otherwise null.
+       */
+      public static getByID(id: number): Marker | null;
+  
+      public static readonly all: ReadonlyArray<Marker>;
+  
+      /** Unique id */
+      public readonly id: number;
+  
+      public visible: boolean;
+  
+      public markerType: shared.MarkerType;
+  
+      public color: shared.RGBA;
+  
+      public scale: shared.Vector3;
+  
+      public rot: shared.Vector3;
+  
+      public dir: shared.Vector3;
+
+      public readonly isGlobal: boolean;
+
+      public readonly target: Player;
+    }
+    
   export * from "alt-shared";
 }

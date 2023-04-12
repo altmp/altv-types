@@ -180,6 +180,9 @@ declare module "alt-client" {
      * @alpha
      */
     worldObjectStreamOut: (object: WorldObject) => void;
+
+    /** @alpha */
+    metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
   }
 
   export interface IDiscordUser {
@@ -827,6 +830,21 @@ declare module "alt-client" {
      * Is the player currently reloading their weapon.
      */
     public readonly isReloading: boolean;
+
+    /** @alpha */
+    public readonly isEnteringVehicle: boolean;
+
+    /** @alpha */
+    public readonly isLeavingVehicle: boolean;
+
+    /** @alpha */
+    public readonly isOnLadder: boolean;
+
+    /** @alpha */
+    public readonly isInMelee: boolean;
+
+    /** @alpha */
+    public readonly isInCover: boolean;
 
     /**
      * Current armour.
@@ -3513,6 +3531,40 @@ declare module "alt-client" {
     /** The distance at which the LOD model of the object starts being applied. */
     public lodDistance: number;
   }
+
+  /** @alpha */
+  export class Ped extends Entity {
+    /**
+     * Retrieves the ped from the pool.
+     *
+     * @param id The id of the ped.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Ped | null;
+
+    public static readonly all: ReadonlyArray<Ped>;
+
+    /**
+     * Currently equipped weapon.
+     */
+    public readonly currentWeapon: number;
+
+    /**
+     * Current health of the ped.
+     */
+    public readonly health: number;
+
+    /**
+     * Current max health of the ped.
+     */
+    public readonly maxHealth: number;
+
+    /**
+     * Current armour.
+     */
+    public readonly armour: number;
+  }
+
   /** @alpha */
   export class AudioFilter extends BaseObject {
     constructor(filtername: string);
@@ -3560,7 +3612,15 @@ declare module "alt-client" {
 
     public rot: shared.Vector3;
 
-    public direction: shared.Vector3;
+    public dir: shared.Vector3;
+
+    public readonly isGlobal: boolean;
+
+    public readonly target: Player;
+
+    public readonly isRemote: boolean;
+
+    public readonly remoteId: number;
   }
 
   export * from "alt-shared";
