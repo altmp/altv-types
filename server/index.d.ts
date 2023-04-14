@@ -2507,6 +2507,9 @@ declare module "alt-server" {
   }
 
   export class Colshape extends WorldObject {
+    /** @alpha */
+    public static readonly all: ReadonlyArray<Colshape>;
+
     public readonly colshapeType: ColShapeType;
 
     /**
