@@ -2354,7 +2354,7 @@ declare module "alt-client" {
    *
    * @param key GXT entry name.
    */
-  export function getGxtText(key: string): string;
+  export function getGxtText(key: string | number): string | null;
 
   export function getLicenseHash(): string;
 
