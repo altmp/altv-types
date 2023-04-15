@@ -3721,7 +3721,7 @@ declare module "alt-client" {
 
     public color: shared.RGBA;
 
-    public scale: shared.Vector3;
+    public scale: number;
 
     public rot: shared.Vector3;
 
