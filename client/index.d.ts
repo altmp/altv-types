@@ -3670,28 +3670,68 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K, V>): void;
   }
 
+  /** @alpha */
   export class ColshapeCylinder extends Colshape {
     constructor(x: number, y: number, z: number, radius: number, height: number);
   }
 
+  /** @alpha */
   export class ColshapeSphere extends Colshape {
     constructor(x: number, y: number, z: number, radius: number);
   }
 
+  /** @alpha */
   export class ColshapeCircle extends Colshape {
     constructor(x: number, y: number, radius: number);
   }
 
+  /** @alpha */
   export class ColshapeCuboid extends Colshape {
     constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
   }
 
+  /** @alpha */
   export class ColshapeRectangle extends Colshape {
     constructor(x1: number, y1: number, x2: number, y2: number);
   }
 
+  /** @alpha */
   export class ColshapePolygon extends Colshape {
     constructor(minZ: number, maxZ: number, points: Array<shared.IVector2>);
+  }
+
+  /** @alpha */
+  export class TextLabel extends WorldObject {
+    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA);
+
+    /**
+     * Retrieves the marker from the pool.
+     *
+     * @param id The id of the marker.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): TextLabel | null;
+
+    //public static readonly all: ReadonlyArray<TextLabel>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    public visible: boolean;
+
+    public color: shared.RGBA;
+
+    public scale: shared.Vector3;
+
+    public rot: shared.Vector3;
+
+    public readonly isGlobal: boolean;
+
+    public readonly target: Player;
+
+    public readonly isRemote: boolean;
+
+    public readonly remoteId: number;
   }
 
   export * from "alt-shared";
