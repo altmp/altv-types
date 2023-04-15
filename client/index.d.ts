@@ -342,6 +342,13 @@ declare module "alt-client" {
   export interface ICustomCheckpointMeta extends ICustomBaseObjectMeta {}
 
   /**
+   * Extend it by interface merging for use in colshape meta {@link "alt-server".Colshape getMeta method}, {@link "alt-server".Colshape setMeta method}, etc.
+   *
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
+   */
+  export interface ICustomColshapeMeta extends ICustomBaseObjectMeta {}
+
+  /**
    * Extend it by merging interfaces for use in webview meta {@link "alt-client".WebView getMeta method}, {@link "alt-client".WebView setMeta method}, etc.
    *
    * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
@@ -3621,6 +3628,70 @@ declare module "alt-client" {
     public readonly isRemote: boolean;
 
     public readonly remoteId: number;
+  }
+
+  /** @alpha */
+  export class Colshape extends WorldObject {
+    /** @alpha */
+    public static readonly all: ReadonlyArray<Colshape>;
+
+    public readonly colshapeType: shared.ColShapeType;
+
+    /**
+     * Whether this colshape should only trigger its enter/leave events for players or all entities.
+     */
+    public playersOnly: boolean;
+
+    public readonly id: number;
+
+    public readonly remoteId: number;
+
+    public readonly isRemote: boolean;
+
+    public isEntityIn(entity: Entity): boolean;
+    public isEntityIn(entityID: number): boolean;
+
+    public isPointIn(position: shared.IVector3): boolean;
+
+    public deleteMeta(key: string): void;
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): void;
+
+    public hasMeta(key: string): boolean;
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomColshapeMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): ICustomColshapeMeta[K] | undefined;
+    /** @deprecated See {@link ICustomColshapeMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K, value: ICustomColshapeMeta[K]): void;
+    /** @deprecated See {@link ICustomColshapeMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K, V>): void;
+  }
+
+  export class ColshapeCylinder extends Colshape {
+    constructor(x: number, y: number, z: number, radius: number, height: number);
+  }
+
+  export class ColshapeSphere extends Colshape {
+    constructor(x: number, y: number, z: number, radius: number);
+  }
+
+  export class ColshapeCircle extends Colshape {
+    constructor(x: number, y: number, radius: number);
+  }
+
+  export class ColshapeCuboid extends Colshape {
+    constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
+  }
+
+  export class ColshapeRectangle extends Colshape {
+    constructor(x1: number, y1: number, x2: number, y2: number);
+  }
+
+  export class ColshapePolygon extends Colshape {
+    constructor(minZ: number, maxZ: number, points: Array<shared.IVector2>);
   }
 
   export * from "alt-shared";

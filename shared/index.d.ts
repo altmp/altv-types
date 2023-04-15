@@ -719,6 +719,16 @@ declare module "alt-shared" {
     MarkerPitLane = 44,
   }
 
+  export const enum ColShapeType {
+    Sphere,
+    Cylinder,
+    Circle,
+    Cuboid,
+    Rectangle,
+    CheckpointCylinder,
+    Polygon,
+  }
+
   export const enum AudioCategory {
     x44E21C90 = "0x44E21C90",
     xBAD598C7 = "0xBAD598C7",

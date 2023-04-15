@@ -69,16 +69,6 @@ declare module "alt-server" {
     PickupObject,
   }
 
-  export const enum ColShapeType {
-    Sphere,
-    Cylinder,
-    Circle,
-    Cuboid,
-    Rectangle,
-    CheckpointCylinder,
-    Polygon,
-  }
-
   export const enum RadioStation {
     LosSantosRockRadio,
     NonStopPopFm,
@@ -2510,7 +2500,7 @@ declare module "alt-server" {
     /** @alpha */
     public static readonly all: ReadonlyArray<Colshape>;
 
-    public readonly colshapeType: ColShapeType;
+    public readonly colshapeType: shared.ColShapeType;
 
     /**
      * Whether this colshape should only trigger its enter/leave events for players or all entities.
@@ -3064,39 +3054,39 @@ declare module "alt-server" {
     public lodDistance: number;
   }
 
-    /** @alpha */
-    export class Marker extends WorldObject {
-      public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
-  
-      /**
-       * Retrieves the marker from the pool.
-       *
-       * @param id The id of the marker.
-       * @returns Entity if it was found, otherwise null.
-       */
-      public static getByID(id: number): Marker | null;
-  
-      public static readonly all: ReadonlyArray<Marker>;
-  
-      /** Unique id */
-      public readonly id: number;
-  
-      public visible: boolean;
-  
-      public markerType: shared.MarkerType;
-  
-      public color: shared.RGBA;
-  
-      public scale: shared.Vector3;
-  
-      public rot: shared.Vector3;
-  
-      public dir: shared.Vector3;
+  /** @alpha */
+  export class Marker extends WorldObject {
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
 
-      public readonly isGlobal: boolean;
+    /**
+     * Retrieves the marker from the pool.
+     *
+     * @param id The id of the marker.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Marker | null;
 
-      public readonly target: Player;
-    }
-    
+    public static readonly all: ReadonlyArray<Marker>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    public visible: boolean;
+
+    public markerType: shared.MarkerType;
+
+    public color: shared.RGBA;
+
+    public scale: shared.Vector3;
+
+    public rot: shared.Vector3;
+
+    public dir: shared.Vector3;
+
+    public readonly isGlobal: boolean;
+
+    public readonly target: Player;
+  }
+
   export * from "alt-shared";
 }
