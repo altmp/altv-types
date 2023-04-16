@@ -183,6 +183,12 @@ declare module "alt-client" {
 
     /** @alpha */
     metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
+
+    /** @alpha */
+    entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
+
+    /** @alpha */
+    entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
   }
 
   export interface IDiscordUser {
