@@ -524,6 +524,9 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<Audio>;
 
     /** @alpha */
+    public readonly count: number;
+
+    /** @alpha */
     public readonly id: number;
 
     /** @alpha */
@@ -604,6 +607,9 @@ declare module "alt-client" {
 
     /** @alpha */
     public static readonly all: ReadonlyArray<Checkpoint>;
+
+    /** @alpha */
+    public readonly count: number;
 
     public isEntityIn(entity: Entity): boolean;
     public isPointIn(pos: shared.IVector3): boolean;
@@ -772,6 +778,9 @@ declare module "alt-client" {
      * ```
      */
     public static readonly all: ReadonlyArray<Player>;
+
+    /** @alpha */
+    public readonly count: number;
 
     /**
      * Array with all streamed in players.
@@ -1086,6 +1095,9 @@ declare module "alt-client" {
      * ```
      */
     public static readonly all: ReadonlyArray<Vehicle>;
+
+    /** @alpha */
+    public readonly count: number;
 
     /**
      * Array with all streamed in vehicles.
@@ -1657,6 +1669,9 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<WebView>;
 
     /** @alpha */
+    public readonly count: number;
+
+    /** @alpha */
     public readonly id: number;
 
     /**
@@ -1976,6 +1991,9 @@ declare module "alt-client" {
      * ```
      */
     public static readonly all: ReadonlyArray<Blip>;
+
+    /** @alpha */
+    public readonly count: number;
 
     /**
      * Retrieves the blip from the pool.
@@ -3540,6 +3558,9 @@ declare module "alt-client" {
 
     public static readonly allWorld: ReadonlyArray<Object>;
 
+    /** @alpha */
+    public readonly count: number;
+
     public pos: shared.Vector3;
 
     public rot: shared.Vector3;
@@ -3604,6 +3625,8 @@ declare module "alt-client" {
   export class NetworkObject extends Entity {
     public static readonly all: ReadonlyArray<NetworkObject>;
 
+    public readonly count: number;
+
     public alpha: number;
 
     public textureVariation: number;
@@ -3623,6 +3646,8 @@ declare module "alt-client" {
     public static getByID(id: number): Ped | null;
 
     public static readonly all: ReadonlyArray<Ped>;
+
+    public readonly count: number;
 
     /**
      * Currently equipped weapon.

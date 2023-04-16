@@ -931,6 +931,8 @@ declare module "alt-server" {
      * ```
      */
     public static readonly all: ReadonlyArray<Player>;
+    /** @alpha */
+    public readonly count: number;
     public armour: number;
     public currentWeapon: number;
     public readonly weapons: ReadonlyArray<IWeapon>;
@@ -1454,6 +1456,9 @@ declare module "alt-server" {
      * ```
      */
     public static readonly all: ReadonlyArray<Vehicle>;
+
+    /** @alpha */
+    public readonly count: number;
 
     /**
      * Get the entity model hash.
@@ -2391,6 +2396,9 @@ declare module "alt-server" {
      */
     public static readonly all: ReadonlyArray<Blip>;
 
+    /** @alpha */
+    public readonly count: number;
+
     /**
      * Retrieves the blip from the pool.
      *
@@ -2579,6 +2587,9 @@ declare module "alt-server" {
 
     /** @alpha */
     public static readonly all: ReadonlyArray<Checkpoint>;
+
+    /** @alpha */
+    public readonly count: number;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): void;
@@ -3038,6 +3049,7 @@ declare module "alt-server" {
     public static getByID(id: number): Ped | null;
 
     public static readonly all: ReadonlyArray<Ped>;
+    public readonly count: number;
     public currentWeapon: number;
     public health: number;
     public maxArmour: number;
@@ -3049,6 +3061,8 @@ declare module "alt-server" {
     constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
 
     public static readonly all: ReadonlyArray<NetworkObject>;
+
+    public readonly count: number;
 
     public activatePhysics(): void;
 
