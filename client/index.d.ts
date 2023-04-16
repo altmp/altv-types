@@ -1981,6 +1981,16 @@ declare module "alt-client" {
      */
     public static getByID(id: number): Blip | null;
 
+    /**
+     * Retrieves the blip from the pool.
+     *
+     * @param scriptID The script id of the blip.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByScriptID(scriptID: number): Blip | null;
+
     /** @alpha */
     public readonly remoteId: number;
 
