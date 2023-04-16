@@ -42,10 +42,10 @@ declare module "alt-client" {
   }
 
   export const enum PermissionState {
-    Allowed,
-    Denied,
-    Unspecified,
-    Failed,
+    ALLOWED,
+    DENIED,
+    UNSPECIFIED,
+    FAILED,
   }
 
   export const enum StatName {

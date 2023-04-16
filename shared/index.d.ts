@@ -965,10 +965,10 @@ declare module "alt-shared" {
   }
 
   export const enum Permission {
-    None,
-    ScreenCapture,
-    WebRTC,
-    ClipboardAccess,
+    NONE,
+    SCREEN_CAPTURE,
+    WEBRTC,
+    CLIPBOARD_ACCESS,
     All,
   }
 
