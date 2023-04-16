@@ -1961,6 +1961,16 @@ declare module "alt-client" {
      */
     public static readonly all: ReadonlyArray<Blip>;
 
+    /**
+     * Retrieves the blip from the pool.
+     *
+     * @param id The id of the blip.
+     * @returns Entity if it was found, otherwise null.
+     * 
+     * @alpha
+     */
+    public static getByID(id: number): Blip | null;
+
     /** @alpha */
     public readonly remoteId: number;
 
