@@ -458,6 +458,8 @@ declare module "alt-client" {
     /** Returns all Virtual Entity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
 
+    public static readonly streamedIn: ReadonlyArray<VirtualEntity>;
+
     /** Unique clientside id */
     public readonly id: number;
 
