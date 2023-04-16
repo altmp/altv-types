@@ -2396,7 +2396,7 @@ declare module "alt-server" {
      *
      * @param id The id of the blip.
      * @returns Entity if it was found, otherwise null.
-     * 
+     *
      * @alpha
      */
     public static getByID(id: number): Blip | null;

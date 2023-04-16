@@ -1632,6 +1632,16 @@ declare module "alt-client" {
   }
 
   export class WebView extends BaseObject {
+    /**
+     * Retrieves the webview from the pool.
+     *
+     * @param id The id of the webview.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): WebView | null;
+
     /** View visibility state */
     public isVisible: boolean;
     /** View URL */
@@ -1966,7 +1976,7 @@ declare module "alt-client" {
      *
      * @param id The id of the blip.
      * @returns Entity if it was found, otherwise null.
-     * 
+     *
      * @alpha
      */
     public static getByID(id: number): Blip | null;
@@ -2748,6 +2758,16 @@ declare module "alt-client" {
   export function toggleVoiceControls(state: boolean): void;
 
   export class WebSocketClient extends BaseObject {
+    /**
+     * Retrieves the websocketclient from the pool.
+     *
+     * @param id The id of the websocketclient.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): WebSocketClient | null;
+
     /** @alpha */
     public readonly id: number;
 
@@ -2869,6 +2889,16 @@ declare module "alt-client" {
 
   export class HttpClient extends BaseObject {
     public constructor();
+
+    /**
+     * Retrieves the httpclient from the pool.
+     *
+     * @param id The id of the httpclient.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): HttpClient | null;
 
     /** @alpha */
     public readonly id: number;
@@ -3043,6 +3073,16 @@ declare module "alt-client" {
     constructor(url: string);
 
     public title: string;
+
+    /**
+     * Retrieves the rmldocument from the pool.
+     *
+     * @param id The id of the rmldocument.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): RmlDocument | null;
 
     public readonly id: number;
 
