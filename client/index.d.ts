@@ -1016,6 +1016,11 @@ declare module "alt-client" {
 
   export class LocalPlayer extends Player {
     /**
+     * @alpha
+     */
+    public readonly dimension: number;
+
+    /**
      * Ammo of the currently held weapon.
      *
      * @returns Total ammo of the currently held weapon. 0 if no weapon is equipped.
