@@ -998,6 +998,8 @@ declare module "alt-server" {
     public readonly isStealthy: boolean;
     public readonly isSpawned: boolean;
     public readonly socialID: string;
+    /** @alpha */
+    public readonly socialClubName: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;
