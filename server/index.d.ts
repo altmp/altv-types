@@ -248,6 +248,10 @@ declare module "alt-server" {
     readonly passwordHash: string;
     readonly ip: string;
     readonly discordUserID: string;
+    /** @alpha */
+    readonly socialClubName: string;
+    /** @alpha */
+    readonly id: number;
   }
 
   export interface IConnectionQueueInfo extends IConnectionInfo {
