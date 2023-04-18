@@ -2534,6 +2534,16 @@ declare module "alt-server" {
     /** @alpha */
     public readonly id: number;
 
+    /**
+     * Retrieves the colshape from the pool.
+     *
+     * @param id The id of the colshape.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Colshape | null;
+
     public isEntityIn(entity: Entity): boolean;
     public isEntityIn(entityID: number): boolean;
 
@@ -2596,6 +2606,16 @@ declare module "alt-server" {
 
     /** @alpha */
     public readonly count: number;
+
+    /**
+     * Retrieves the checkpoint from the pool.
+     *
+     * @param id The id of the checkpoint.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Checkpoint | null;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): void;

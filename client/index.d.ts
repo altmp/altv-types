@@ -611,6 +611,16 @@ declare module "alt-client" {
     /** @alpha */
     public readonly count: number;
 
+    /**
+     * Retrieves the checkpoint from the pool.
+     *
+     * @param id The id of the checkpoint.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Checkpoint | null;
+
     public isEntityIn(entity: Entity): boolean;
     public isPointIn(pos: shared.IVector3): boolean;
 
@@ -3745,6 +3755,14 @@ declare module "alt-client" {
     public readonly remoteId: number;
 
     public readonly isRemote: boolean;
+
+    /**
+     * Retrieves the colshape from the pool.
+     *
+     * @param id The id of the colshape.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Colshape | null;
 
     public isEntityIn(entity: Entity): boolean;
     public isEntityIn(entityID: number): boolean;
