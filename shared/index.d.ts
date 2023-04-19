@@ -1307,7 +1307,7 @@ declare module "alt-shared" {
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
-  export interface ICustomBaseObjectSyncedMeta {}
+  export interface ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in entity stream synced meta (class `Entity` on client & server, e.g. `entity.getStreamSyncedMeta`)
@@ -1315,6 +1315,13 @@ declare module "alt-shared" {
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomEntityStreamSyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in player synced meta (class `Player` on client & server, e.g. `player.getSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomPlayerSyncedMeta extends ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in player stream synced meta (class `Player` on client & server, e.g. `player.getStreamSyncedMeta`)
@@ -1329,6 +1336,13 @@ declare module "alt-shared" {
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPlayerLocalMeta {}
+
+  /**
+   * Extend it by interface merging for use in player synced meta (class `Player` on client & server, e.g. `player.getSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomVehicleSyncedMeta extends ICustomEntitySyncedMeta {}
 
   /**
    * Extend it by interface merging for use in vehicle stream synced meta (class `Vehicle` on client & server, e.g. `vehicle.getStreamSyncedMeta`)
@@ -1993,28 +2007,6 @@ declare module "alt-shared" {
      * @remarks It's only available in debug-mode.
      */
     public readonly refCount: number;
-
-    /**
-     * Gets a value using the specified key.
-     *
-     * @param key The key of the value to get.
-     * @returns Dynamic value associated with the specified key or undefined if no data is present.
-     */
-    public getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectSyncedMeta>): unknown;
-    public getSyncedMeta<K extends ExtractStringKeys<ICustomBaseObjectSyncedMeta>>(key: K): ICustomBaseObjectSyncedMeta[K] | undefined;
-    /** @deprecated See {@link "alt-shared".ICustomBaseObjectSyncedMeta} */
-    public getSyncedMeta<V extends any>(key: string): V | undefined;
-
-    /**
-     * Determines whether contains the specified key.
-     *
-     * @param key The key of the value to locate.
-     * @returns True if the meta table contains any data at the specified key or False if not
-     */
-    public hasSyncedMeta(key: string): boolean;
-    public hasSyncedMeta<K extends ExtractStringKeys<ICustomBaseObjectSyncedMeta>>(key: K): boolean;
-
-    public getSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
   /**
