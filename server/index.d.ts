@@ -1186,7 +1186,7 @@ declare module "alt-server" {
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
      */
-    public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
+    public setClothes(component: number, drawable: number, texture: number, palette?: number): boolean;
 
     /**
      * Sets the specified dlc clothing component.
@@ -1203,7 +1203,7 @@ declare module "alt-server" {
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
      */
-    public setDlcClothes(dlc: number, component: number, drawable: number, texture: number, palette?: number): void;
+    public setDlcClothes(dlc: number, component: number, drawable: number, texture: number, palette?: number): boolean;
 
     /**
      * Gets the specified prop component.
@@ -1243,7 +1243,7 @@ declare module "alt-server" {
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
      */
-    public setProp(component: number, drawable: number, texture: number): void;
+    public setProp(component: number, drawable: number, texture: number): boolean;
 
     /**
      * Sets the specified dlc prop component.
@@ -1258,7 +1258,7 @@ declare module "alt-server" {
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
      */
-    public setDlcProp(dlc: number, component: number, drawable: number, texture: number): void;
+    public setDlcProp(dlc: number, component: number, drawable: number, texture: number): boolean;
 
     /**
      * Removes a specified prop component.
