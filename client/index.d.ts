@@ -594,6 +594,15 @@ declare module "alt-client" {
      * Object position
      */
     public pos: shared.Vector3;
+
+    /**
+     * Object dimension.
+     *
+     * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
+     * 
+     * @alpha
+     */
+    public dimension: number;
   }
 
   export class Checkpoint extends WorldObject {
