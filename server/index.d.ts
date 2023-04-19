@@ -609,6 +609,27 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
     /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+
+    /**
+     * Removes the specified key and the data connected to that specific key.
+     *
+     * @param key The key of the value to remove.
+     */
+    public deleteSyncedMeta(key: string): void;
+    public deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomBaseObjectSyncedMeta>>(key: K): void;
+
+    /**
+     * Stores the given value with the specified key.
+     *
+     * @remarks The given value will be shared with all clients.
+     *
+     * @param key The key of the value to store.
+     * @param value The value to store.
+     */
+    public setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomBaseObjectSyncedMeta, K>): void;
+    public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomBaseObjectSyncedMeta>>(key: K, value: shared.ICustomBaseObjectSyncedMeta[K]): void;
+    /** @deprecated See {@link "alt-shared".ICustomBaseObjectSyncedMeta} */
+    public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomBaseObjectSyncedMeta, K, V>): void;
   }
 
   export class WorldObject extends BaseObject {

@@ -599,7 +599,7 @@ declare module "alt-client" {
      * Object dimension.
      *
      * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
-     * 
+     *
      * @alpha
      */
     public dimension: number;
