@@ -1199,6 +1199,22 @@ declare module "alt-shared" {
   }
 
   /**
+   * Documentation: https://docs.altv.mp/articles/configs/resource.html
+   */
+  export interface IResourceConfig {
+    readonly type?: string;
+    readonly deps?: ReadonlyArray<string>;
+    readonly main?: string;
+    readonly "client-main"?: string;
+    readonly "client-type"?: string;
+    readonly "client-files"?: ReadonlyArray<string>;
+    readonly "required-permissions"?: ReadonlyArray<shared.Permission>;
+    readonly "optional-permissions"?: ReadonlyArray<shared.Permission>;
+
+    readonly [key: string]: unknown;
+  }
+
+  /**
    * This is an internal utility type and you probably don't need it
    *
    * Returns the value by the key in the interface or `unknown` by default
@@ -2358,6 +2374,7 @@ declare module "alt-shared" {
     public readonly optionalPermissions: ReadonlyArray<Permission>;
     public readonly valid: boolean;
 
+    public readonly config: IResourceConfig;
     public static getByName(name: string): Resource | null;
     public static readonly all: ReadonlyArray<Resource>;
     public static readonly current: Resource;
