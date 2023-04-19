@@ -599,7 +599,7 @@ declare module "alt-client" {
      * Object dimension.
      *
      * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
-     * 
+     *
      * @alpha
      */
     public dimension: number;
@@ -735,6 +735,28 @@ declare module "alt-client" {
 
     public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K): boolean;
+
+    /**
+     * Gets a value using the specified key.
+     *
+     * @param key The key of the value to get.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
+     */
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomEntitySyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): shared.ICustomEntitySyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomEntitySyncedMeta} */
+    public getSyncedMeta<V extends any>(key: string): V | undefined;
+
+    /**
+     * Determines whether contains the specified key.
+     *
+     * @param key The key of the value to locate.
+     * @returns True if the meta table contains any data at the specified key or False if not
+     */
+    public hasSyncedMeta(key: string): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
+
+    public getSyncedMetaKeys(): ReadonlyArray<string>;
 
     /**
      * Gets a value using the specified key.
@@ -1004,6 +1026,16 @@ declare module "alt-client" {
 
     public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomPlayerMeta>>(key: K): boolean;
+
+    // synced meta
+
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerSyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K): shared.ICustomPlayerSyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomPlayerSyncedMeta} */
+    public getSyncedMeta<V extends any>(key: string): V | undefined;
+
+    public hasSyncedMeta(key: string): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K): boolean;
 
     // stream synced meta
 
@@ -1598,6 +1630,16 @@ declare module "alt-client" {
 
     public hasMeta(key: string): boolean;
     public hasMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K): boolean;
+
+    // synced meta
+
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomVehicleSyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVehicleSyncedMeta>>(key: K): shared.ICustomVehicleSyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomVehicleSyncedMeta} */
+    public getSyncedMeta<V extends any>(key: string): V | undefined;
+
+    public hasSyncedMeta(key: string): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVehicleSyncedMeta>>(key: K): boolean;
 
     // stream synced meta
 
