@@ -745,9 +745,10 @@ declare module "alt-server" {
 
     /**
      * Entity model hash.
+     *
+     * @remarks Only setter accepts string or number as input, getter returns value as number.
      */
-    public get model(): number;
-    public set model(model: number | string);
+    public model: number | string;
 
     /**
      * Entity rotation.
@@ -1487,9 +1488,9 @@ declare module "alt-server" {
      *     console.log('This vehicle is not an infernus.');
      * }
      * ```
-     * @remarks Vehicle doesn't provide a setter.
+     * @remarks Only setter accepts string or number as input, getter returns value as number.
      */
-    public get model(): number;
+    public readonly model: number | string;
 
     /**
      * Gets or sets the active radio station.
