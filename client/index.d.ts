@@ -3599,6 +3599,9 @@ declare module "alt-client" {
     /** Whether this object was created clientside or serverside. (Clientside = false, Serverside = true) */
     public readonly isRemote: boolean;
 
+    /** @alpha */
+    public readonly isStreamedIn: boolean;
+
     /**
      * Attaches the object to another entity.
      *
