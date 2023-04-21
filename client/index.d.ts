@@ -3602,6 +3602,9 @@ declare module "alt-client" {
     /** @alpha */
     public readonly isStreamedIn: boolean;
 
+    /** @alpha */
+    public readonly streamingDistance: number;
+
     /**
      * Attaches the object to another entity.
      *
