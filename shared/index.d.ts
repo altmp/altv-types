@@ -1208,8 +1208,8 @@ declare module "alt-shared" {
     readonly "client-main"?: string;
     readonly "client-type"?: string;
     readonly "client-files"?: ReadonlyArray<string>;
-    readonly "required-permissions"?: ReadonlyArray<shared.Permission>;
-    readonly "optional-permissions"?: ReadonlyArray<shared.Permission>;
+    readonly "required-permissions"?: ReadonlyArray<Permission>;
+    readonly "optional-permissions"?: ReadonlyArray<Permission>;
 
     readonly [key: string]: unknown;
   }
