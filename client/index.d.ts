@@ -3571,7 +3571,7 @@ declare module "alt-client" {
      * @param noOffset If true, object position will not be adjusted to not collide with anything.
      * @param dynamic If true, object reacts to actions in the world. (E.g. force by vehicle)
      */
-    constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean);
+    constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean, useStreaming?: boolean, streamingDistance?: number);
 
     public static readonly all: ReadonlyArray<Object>;
 
@@ -3634,7 +3634,7 @@ declare module "alt-client" {
     public placeOnGroundProperly(): void;
 
     /** Freeze the object on the position */
-    public setPositionFrozen(toggle: boolean): void;
+    public positionFrozen: boolean;
 
     public activatePhysics(): void;
 
