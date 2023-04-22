@@ -252,6 +252,8 @@ declare module "alt-server" {
     readonly socialClubName: string;
     /** @alpha */
     readonly id: number;
+    /** @alpha */
+    readonly cloudAuthHash: string;
   }
 
   export interface IConnectionQueueInfo extends IConnectionInfo {
@@ -1011,6 +1013,8 @@ declare module "alt-server" {
     public readonly hwidExHash: string;
     public readonly authToken: string;
     public readonly discordID: string;
+    /** @alpha */
+    public readonly cloudAuthHash: string;
     public readonly currentAnimationDict: number;
     public readonly currentAnimationName: number;
     public readonly forwardSpeed: number;
