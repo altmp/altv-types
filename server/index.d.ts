@@ -664,6 +664,8 @@ declare module "alt-server" {
     /** Streaming range for the virtual entity */
     public readonly streamingDistance: number;
 
+    public visible: boolean;
+
     /**
      * Gets a value using the specified key.
      *
@@ -2613,6 +2615,9 @@ declare module "alt-server" {
 
     /** @alpha */
     public readonly count: number;
+
+    /** @alpha */
+    public visible: boolean;
 
     /**
      * Retrieves the checkpoint from the pool.

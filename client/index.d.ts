@@ -481,6 +481,8 @@ declare module "alt-client" {
 
     public readonly isStreamedIn: boolean;
 
+    public visible: boolean;
+
     /**
      * Gets a value using the specified key.
      * Only available for server-side created Virtual Entities.
@@ -631,6 +633,9 @@ declare module "alt-client" {
 
     /** @alpha */
     public readonly isStreamedIn: boolean;
+
+    /** @alpha */
+    public visible: boolean;
 
     /**
      * Retrieves the checkpoint from the pool.
@@ -1065,6 +1070,9 @@ declare module "alt-client" {
      * @alpha
      */
     public readonly dimension: number;
+
+    /** @alpha */
+    public pos: shared.Vector3;
 
     /**
      * Ammo of the currently held weapon.
@@ -3616,6 +3624,9 @@ declare module "alt-client" {
 
     /** @alpha */
     public readonly streamingDistance: number;
+
+    /** @alpha */
+    public visible: boolean;
 
     /**
      * Attaches the object to another entity.
