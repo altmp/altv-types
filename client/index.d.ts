@@ -1162,7 +1162,7 @@ declare module "alt-client" {
      *
      * @returns Normalised value on a scale of [0, 1].
      */
-    public readonly rpm: number;
+    public rpm: number;
 
     /**
      * Vehicle wheels speed.
