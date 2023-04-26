@@ -612,13 +612,23 @@ declare module "alt-client" {
     public height: number;
     public color: shared.RGBA;
 
-    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA);
+    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA, streamingDistance: number);
+
+    /**
+     * Streaming range for the checkpoint
+     *
+     * @alpha
+     */
+    public readonly streamingDistance: number;
 
     /** @alpha */
     public static readonly all: ReadonlyArray<Checkpoint>;
 
     /** @alpha */
     public readonly count: number;
+
+    /** @alpha */
+    public readonly isStreamedIn: boolean;
 
     /**
      * Retrieves the checkpoint from the pool.
