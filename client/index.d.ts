@@ -79,7 +79,7 @@ declare module "alt-client" {
     DisableIdleCamera = "DISABLE_IDLE_CAMERA",
     DisableVehicleEngineShutdownOnLeave = "DISABLE_VEHICLE_ENGINE_SHUTDOWN_ON_LEAVE",
     /** @alpha */
-    DisableSPEnterVehicleClipset = "DISABLE_SP_ENTER_VEHICLE_CLIPSET" 
+    DisableSPEnterVehicleClipset = "DISABLE_SP_ENTER_VEHICLE_CLIPSET",
   }
 
   export const enum WatermarkPosition {
@@ -461,7 +461,7 @@ declare module "alt-client" {
   /** @alpha */
   export class VirtualEntity extends WorldObject {
     /** Creates a new Virtual Entity */
-    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number);
+    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
     /** Returns all Virtual Entity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;

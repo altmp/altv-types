@@ -650,7 +650,7 @@ declare module "alt-server" {
   /** @alpha */
   export class VirtualEntity extends WorldObject {
     /** Creates a new Virtual Entity */
-    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number);
+    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
     /** Returns all Virtual Entity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
