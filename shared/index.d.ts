@@ -23,7 +23,8 @@ declare module "alt-shared" {
     VirtualEntityGroup,
     Marker,
     TextLabel,
-    Pickup,
+    LocalPed,
+    LocalVehicle,
     AudioFilter,
     Size,
   }
