@@ -3888,5 +3888,83 @@ declare module "alt-client" {
     public readonly remoteId: number;
   }
 
+  /** @alpha */
+  export class LocalVehicle extends WorldObject {
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: boolean, streamingDistance: number);
+
+    /**
+     * Retrieves the localvehicle from the pool.
+     *
+     * @param id The id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): LocalVehicle | null;
+
+    /**
+     * Retrieves the localvehicle from the pool.
+     *
+     * @param scriptID The script id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByScriptID(scriptID: number): LocalVehicle | null;
+
+    public readonly id: number;
+
+    public readonly model: number;
+
+    public rot: shared.Vector3;
+
+    public readonly streamingDistance: number;
+
+    public visible: boolean;
+
+    public readonly scriptID: number;
+
+    public readonly remoteId: number;
+
+    public readonly isRemote: boolean;
+
+    public readonly isStreamedIn: boolean;
+  }
+
+  /** @alpha */
+  export class LocalPed extends WorldObject {
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: boolean, streamingDistance: number);
+
+    /**
+     * Retrieves the localPed from the pool.
+     *
+     * @param id The id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): LocalPed | null;
+
+    /**
+     * Retrieves the localPed from the pool.
+     *
+     * @param scriptID The script id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByScriptID(scriptID: number): LocalPed | null;
+
+    public readonly id: number;
+
+    public readonly model: number;
+
+    public rot: shared.Vector3;
+
+    public readonly streamingDistance: number;
+
+    public visible: boolean;
+
+    public readonly scriptID: number;
+
+    public readonly remoteId: number;
+
+    public readonly isRemote: boolean;
+
+    public readonly isStreamedIn: boolean;
+  }
+
   export * from "alt-shared";
 }
