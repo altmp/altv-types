@@ -1074,6 +1074,9 @@ declare module "alt-client" {
     /** @alpha */
     public pos: shared.Vector3;
 
+    /** @alpha */
+    public rot: shared.Vector3;
+
     /**
      * Ammo of the currently held weapon.
      *
