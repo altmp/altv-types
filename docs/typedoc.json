@@ -1,6 +1,6 @@
 {
   "entryPoints": ["../client", "../server"],
-  "entryPointStrategy": "legacy-packages",
+  "entryPointStrategy": "packages",
   "excludeExternals": true,
   "json": "./api/.manifest",
   "sort": ["source-order"]
