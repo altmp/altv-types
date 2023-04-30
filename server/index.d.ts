@@ -3146,6 +3146,8 @@ declare module "alt-server" {
     public readonly isGlobal: boolean;
 
     public readonly target: Player;
+
+    public faceCamera: boolean;
   }
 
   export * from "alt-shared";
