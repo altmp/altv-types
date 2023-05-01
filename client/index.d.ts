@@ -3626,6 +3626,9 @@ declare module "alt-client" {
     public readonly isStreamedIn: boolean;
 
     /** @alpha */
+    public readonly useStreaming: boolean;
+
+    /** @alpha */
     public readonly streamingDistance: number;
 
     /** @alpha */
