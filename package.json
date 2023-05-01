@@ -31,8 +31,8 @@
   "devDependencies": {
     "prettier": "^2.3.1",
     "type2docfx": "https://github.com/Lhoerion/type2docfx.git#dist",
-    "typedoc": "0.21.0-beta.3",
-    "typescript": "4.2.4"
+    "typedoc": "0.23.28",
+    "typescript": "5.0.4"
   },
   "dependencies": {}
 }
