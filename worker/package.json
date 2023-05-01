@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/altmp/altv-types#readme",
   "peerDependencies": {
-    "@altv/types-client": "latest"
+    "@altv/types-client": ">=2.5"
   }
 }
