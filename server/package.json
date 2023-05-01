@@ -35,6 +35,6 @@
     "@altv/types-shared": ">=1.4"
   },
   "typedoc": {
-    "displayName": "alt-client"
+    "displayName": "alt-server"
   }
 }
