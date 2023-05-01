@@ -33,5 +33,8 @@
   "homepage": "https://github.com/altmp/altv-types#readme",
   "peerDependencies": {
     "@altv/types-shared": "latest"
+  },
+  "typedoc": {
+    "displayName": "alt-client"
   }
 }
