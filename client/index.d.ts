@@ -2362,6 +2362,18 @@ declare module "alt-client" {
      */
     public static muteInput: boolean;
 
+    /** @alpha */
+    public activityInputEnabled: boolean;
+
+    /** @alpha */
+    public activationLevel: number;
+
+    /** @alpha */
+    public noiseSuppressionEnabled: boolean;
+
+    /** @alpha */
+    public toggleInput: boolean;
+
     /**
      * Determines if the voice activation is enabled.
      */
