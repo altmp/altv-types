@@ -3880,7 +3880,7 @@ declare module "alt-client" {
 
   /** @alpha */
   export class TextLabel extends WorldObject {
-    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA);
+    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming: boolean, streamingDistance: number);
 
     /**
      * Retrieves the marker from the pool.
@@ -3910,11 +3910,15 @@ declare module "alt-client" {
     public readonly isRemote: boolean;
 
     public readonly remoteId: number;
+
+    public readonly isStreamedIn: boolean;
+
+    public readonly streamingDistance: number;
   }
 
   /** @alpha */
   export class LocalVehicle extends WorldObject {
-    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: boolean, streamingDistance: number);
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
 
     /**
      * Retrieves the localvehicle from the pool.
