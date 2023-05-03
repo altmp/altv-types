@@ -3880,7 +3880,7 @@ declare module "alt-client" {
 
   /** @alpha */
   export class TextLabel extends WorldObject {
-    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming: boolean, streamingDistance: number);
+    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 
     /**
      * Retrieves the marker from the pool.
@@ -4125,7 +4125,7 @@ declare module "alt-client" {
 
   /** @alpha */
   export class LocalPed extends WorldObject {
-    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: boolean, streamingDistance: number);
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
 
     /**
      * Retrieves the localPed from the pool.
