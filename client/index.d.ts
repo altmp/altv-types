@@ -2845,6 +2845,9 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
+  /* @alpha */
+  export function isFullScreen(): boolean;
+
   export class WebSocketClient extends BaseObject {
     /**
      * Retrieves the websocketclient from the pool.
