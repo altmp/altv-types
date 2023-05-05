@@ -42,10 +42,10 @@ declare module "alt-client" {
   }
 
   export const enum PermissionState {
-    Allowed,
-    Denied,
-    Unspecified,
-    Failed,
+    ALLOWED,
+    DENIED,
+    UNSPECIFIED,
+    FAILED,
   }
 
   export const enum StatName {
@@ -78,6 +78,8 @@ declare module "alt-client" {
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
     DisableIdleCamera = "DISABLE_IDLE_CAMERA",
     DisableVehicleEngineShutdownOnLeave = "DISABLE_VEHICLE_ENGINE_SHUTDOWN_ON_LEAVE",
+    /** @alpha */
+    DisableSPEnterVehicleClipset = "DISABLE_SP_ENTER_VEHICLE_CLIPSET",
   }
 
   export const enum WatermarkPosition {
@@ -180,6 +182,15 @@ declare module "alt-client" {
      * @alpha
      */
     worldObjectStreamOut: (object: WorldObject) => void;
+
+    /** @alpha */
+    metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
+
+    /** @alpha */
+    entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
+
+    /** @alpha */
+    entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
   }
 
   export interface IDiscordUser {
@@ -339,6 +350,13 @@ declare module "alt-client" {
   export interface ICustomCheckpointMeta extends ICustomBaseObjectMeta {}
 
   /**
+   * Extend it by interface merging for use in colshape meta {@link "alt-server".Colshape getMeta method}, {@link "alt-server".Colshape setMeta method}, etc.
+   *
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
+   */
+  export interface ICustomColshapeMeta extends ICustomBaseObjectMeta {}
+
+  /**
    * Extend it by merging interfaces for use in webview meta {@link "alt-client".WebView getMeta method}, {@link "alt-client".WebView setMeta method}, etc.
    *
    * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
@@ -395,7 +413,24 @@ declare module "alt-client" {
     drawOnEnts?: boolean;
   }
 
+  export interface IInputDevice {
+    readonly name: string;
+    readonly uuid: string | null;
+  }
+
   export class BaseObject extends shared.BaseObject {
+    /**
+     * Gets the base object with the given type and local id
+     * @alpha
+     */
+    public getByID(type: shared.BaseObjectType, id: number): BaseObject;
+
+    /**
+     * Gets the base object with the given type and remote id
+     * @alpha
+     */
+    public getByRemoteID(type: shared.BaseObjectType, id: number): BaseObject;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
@@ -415,6 +450,9 @@ declare module "alt-client" {
 
   /** @alpha */
   export class VirtualEntityGroup extends BaseObject {
+    /** Creates a new Virtual Entity Group */
+    public constructor(maxStreamedEntityCount: number);
+
     /** Returns all Virtual Entity Group instances */
     public static readonly all: ReadonlyArray<VirtualEntityGroup>;
 
@@ -427,8 +465,13 @@ declare module "alt-client" {
 
   /** @alpha */
   export class VirtualEntity extends WorldObject {
+    /** Creates a new Virtual Entity */
+    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
+
     /** Returns all Virtual Entity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
+
+    public static readonly streamedIn: ReadonlyArray<VirtualEntity>;
 
     /** Unique clientside id */
     public readonly id: number;
@@ -439,8 +482,15 @@ declare module "alt-client" {
     /** Unique serverside id */
     public readonly remoteId: number;
 
+    public readonly isRemote: boolean;
+
+    public readonly isStreamedIn: boolean;
+
+    public visible: boolean;
+
     /**
      * Gets a value using the specified key.
+     * Only available for server-side created Virtual Entities.
      *
      * @param key The key of the value to get.
      * @returns Dynamic value associated with the specified key or undefined if no data is present.
@@ -452,6 +502,7 @@ declare module "alt-client" {
 
     /**
      * Determines whether contains the specified key.
+     * Only available for server-side created Virtual Entities.
      *
      * @param key The key of the value to locate.
      * @returns True if the meta table contains any data at the specified key or False if not
@@ -459,6 +510,10 @@ declare module "alt-client" {
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): boolean;
 
+    /**
+     * Returns all set meta keys of the Virtual Entity.
+     * Only available for server-side created Virtual Entities.
+     */
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
@@ -476,6 +531,9 @@ declare module "alt-client" {
 
     /** @alpha */
     public static readonly all: ReadonlyArray<Audio>;
+
+    /** @alpha */
+    public readonly count: number;
 
     /** @alpha */
     public readonly id: number;
@@ -545,6 +603,15 @@ declare module "alt-client" {
      * Object position
      */
     public pos: shared.Vector3;
+
+    /**
+     * Object dimension.
+     *
+     * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
+     *
+     * @alpha
+     */
+    public dimension: number;
   }
 
   export class Checkpoint extends WorldObject {
@@ -554,10 +621,36 @@ declare module "alt-client" {
     public height: number;
     public color: shared.RGBA;
 
-    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA);
+    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA, streamingDistance: number);
+
+    /**
+     * Streaming range for the checkpoint
+     *
+     * @alpha
+     */
+    public readonly streamingDistance: number;
 
     /** @alpha */
     public static readonly all: ReadonlyArray<Checkpoint>;
+
+    /** @alpha */
+    public readonly count: number;
+
+    /** @alpha */
+    public readonly isStreamedIn: boolean;
+
+    /** @alpha */
+    public visible: boolean;
+
+    /**
+     * Retrieves the checkpoint from the pool.
+     *
+     * @param id The id of the checkpoint.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Checkpoint | null;
 
     public isEntityIn(entity: Entity): boolean;
     public isPointIn(pos: shared.IVector3): boolean;
@@ -727,6 +820,9 @@ declare module "alt-client" {
      */
     public static readonly all: ReadonlyArray<Player>;
 
+    /** @alpha */
+    public readonly count: number;
+
     /**
      * Array with all streamed in players.
      */
@@ -799,6 +895,21 @@ declare module "alt-client" {
      * Is the player currently reloading their weapon.
      */
     public readonly isReloading: boolean;
+
+    /** @alpha */
+    public readonly isEnteringVehicle: boolean;
+
+    /** @alpha */
+    public readonly isLeavingVehicle: boolean;
+
+    /** @alpha */
+    public readonly isOnLadder: boolean;
+
+    /** @alpha */
+    public readonly isInMelee: boolean;
+
+    /** @alpha */
+    public readonly isInCover: boolean;
 
     /**
      * Current armour.
@@ -961,6 +1072,17 @@ declare module "alt-client" {
 
   export class LocalPlayer extends Player {
     /**
+     * @alpha
+     */
+    public readonly dimension: number;
+
+    /** @alpha */
+    public pos: shared.Vector3;
+
+    /** @alpha */
+    public rot: shared.Vector3;
+
+    /**
      * Ammo of the currently held weapon.
      *
      * @returns Total ammo of the currently held weapon. 0 if no weapon is equipped.
@@ -1021,6 +1143,9 @@ declare module "alt-client" {
      */
     public static readonly all: ReadonlyArray<Vehicle>;
 
+    /** @alpha */
+    public readonly count: number;
+
     /**
      * Array with all streamed in vehicles.
      */
@@ -1053,7 +1178,7 @@ declare module "alt-client" {
      *
      * @returns Normalised value on a scale of [0, 1].
      */
-    public readonly rpm: number;
+    public rpm: number;
 
     /**
      * Vehicle wheels speed.
@@ -1572,6 +1697,16 @@ declare module "alt-client" {
   }
 
   export class WebView extends BaseObject {
+    /**
+     * Retrieves the webview from the pool.
+     *
+     * @param id The id of the webview.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): WebView | null;
+
     /** View visibility state */
     public isVisible: boolean;
     /** View URL */
@@ -1579,6 +1714,9 @@ declare module "alt-client" {
 
     /** @alpha */
     public static readonly all: ReadonlyArray<WebView>;
+
+    /** @alpha */
+    public readonly count: number;
 
     /** @alpha */
     public readonly id: number;
@@ -1902,6 +2040,29 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<Blip>;
 
     /** @alpha */
+    public readonly count: number;
+
+    /**
+     * Retrieves the blip from the pool.
+     *
+     * @param id The id of the blip.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Blip | null;
+
+    /**
+     * Retrieves the blip from the pool.
+     *
+     * @param scriptID The script id of the blip.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByScriptID(scriptID: number): Blip | null;
+
+    /** @alpha */
     public readonly remoteId: number;
 
     public readonly scriptID: number;
@@ -2206,6 +2367,24 @@ declare module "alt-client" {
      */
     public static muteInput: boolean;
 
+    /** @alpha */
+    public activityInputEnabled: boolean;
+
+    /** @alpha */
+    public activationLevel: number;
+
+    /** @alpha */
+    public noiseSuppressionEnabled: boolean;
+
+    /** @alpha */
+    public inputDevice: string | null;
+
+    /** @alpha */
+    public toggleInput: boolean;
+
+    /** @alpha */
+    public getAvailableInputDevices: ReadonlyArray<IInputDevice>;
+
     /**
      * Determines if the voice activation is enabled.
      */
@@ -2301,7 +2480,7 @@ declare module "alt-client" {
    *
    * @param key GXT entry name.
    */
-  export function getGxtText(key: string): string;
+  export function getGxtText(key: string | number): string | null;
 
   export function getLicenseHash(): string;
 
@@ -2677,7 +2856,23 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
+  /* @alpha */
+  export function isFullScreen(): boolean;
+
   export class WebSocketClient extends BaseObject {
+    /**
+     * Retrieves the websocketclient from the pool.
+     *
+     * @param id The id of the websocketclient.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): WebSocketClient | null;
+
+    /** @alpha */
+    public readonly id: number;
+
     public autoReconnect: boolean;
 
     public perMessageDeflate: boolean;
@@ -2796,6 +2991,19 @@ declare module "alt-client" {
 
   export class HttpClient extends BaseObject {
     public constructor();
+
+    /**
+     * Retrieves the httpclient from the pool.
+     *
+     * @param id The id of the httpclient.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): HttpClient | null;
+
+    /** @alpha */
+    public readonly id: number;
 
     public setExtraHeader(header: string, value: string): void;
 
@@ -2968,6 +3176,18 @@ declare module "alt-client" {
 
     public title: string;
 
+    /**
+     * Retrieves the rmldocument from the pool.
+     *
+     * @param id The id of the rmldocument.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): RmlDocument | null;
+
+    public readonly id: number;
+
     public readonly sourceUrl: string;
 
     public readonly isVisible: boolean;
@@ -3008,7 +3228,7 @@ declare module "alt-client" {
 
     public readonly tagName: string;
 
-    public id: string;
+    public rmlId: string;
 
     public readonly isOwned: boolean;
 
@@ -3400,11 +3620,14 @@ declare module "alt-client" {
      * @param noOffset If true, object position will not be adjusted to not collide with anything.
      * @param dynamic If true, object reacts to actions in the world. (E.g. force by vehicle)
      */
-    constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean);
+    constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean, useStreaming?: boolean, streamingDistance?: number);
 
     public static readonly all: ReadonlyArray<Object>;
 
     public static readonly allWorld: ReadonlyArray<Object>;
+
+    /** @alpha */
+    public readonly count: number;
 
     public pos: shared.Vector3;
 
@@ -3424,6 +3647,18 @@ declare module "alt-client" {
 
     /** Whether this object was created clientside or serverside. (Clientside = false, Serverside = true) */
     public readonly isRemote: boolean;
+
+    /** @alpha */
+    public readonly isStreamedIn: boolean;
+
+    /** @alpha */
+    public readonly useStreaming: boolean;
+
+    /** @alpha */
+    public readonly streamingDistance: number;
+
+    /** @alpha */
+    public visible: boolean;
 
     /**
      * Attaches the object to another entity.
@@ -3454,7 +3689,7 @@ declare module "alt-client" {
     public placeOnGroundProperly(): void;
 
     /** Freeze the object on the position */
-    public setPositionFrozen(toggle: boolean): void;
+    public positionFrozen: boolean;
 
     public activatePhysics(): void;
 
@@ -3470,6 +3705,8 @@ declare module "alt-client" {
   export class NetworkObject extends Entity {
     public static readonly all: ReadonlyArray<NetworkObject>;
 
+    public readonly count: number;
+
     public alpha: number;
 
     public textureVariation: number;
@@ -3477,6 +3714,7 @@ declare module "alt-client" {
     /** The distance at which the LOD model of the object starts being applied. */
     public lodDistance: number;
   }
+  
   /** @alpha */
   export class AudioFilter extends BaseObject {
     constructor(filtername: string);
@@ -3495,6 +3733,412 @@ declare module "alt-client" {
     public addPitchshiftEffect(fPitchShift: number, fSemitones: number, lFFTsize: number, lOsamp: number, priority: number): number;
     public addFreeverbEffect(fDryMix: number, fWetMix: number, fRoomSize: number, fDamp: number, fWidth: number, lMode: number, priority: number): number;
     public removeEffect(hfxHandler: number): boolean;
+  }
+
+  /** @alpha */
+  export class Marker extends WorldObject {
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
+
+    /**
+     * Retrieves the marker from the pool.
+     *
+     * @param id The id of the marker.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Marker | null;
+
+    public static readonly all: ReadonlyArray<Marker>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    public visible: boolean;
+
+    public markerType: shared.MarkerType;
+
+    public color: shared.RGBA;
+
+    public scale: shared.Vector3;
+
+    public rot: shared.Vector3;
+
+    public dir: shared.Vector3;
+
+    public readonly isGlobal: boolean;
+
+    public readonly target: Player;
+
+    public readonly isRemote: boolean;
+
+    public readonly remoteId: number;
+
+    public readonly streamingDistance: number;
+
+    public readonly isStreamedIn: boolean;
+
+    public faceCamera: boolean;
+  }
+
+  /** @alpha */
+  export class Colshape extends WorldObject {
+    /** @alpha */
+    public static readonly all: ReadonlyArray<Colshape>;
+
+    public readonly colshapeType: shared.ColShapeType;
+
+    /**
+     * Whether this colshape should only trigger its enter/leave events for players or all entities.
+     */
+    public playersOnly: boolean;
+
+    public readonly id: number;
+
+    public readonly remoteId: number;
+
+    public readonly isRemote: boolean;
+
+    /**
+     * Retrieves the colshape from the pool.
+     *
+     * @param id The id of the colshape.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Colshape | null;
+
+    public isEntityIn(entity: Entity): boolean;
+    public isEntityIn(entityID: number): boolean;
+
+    public isPointIn(position: shared.IVector3): boolean;
+
+    public deleteMeta(key: string): void;
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): void;
+
+    public hasMeta(key: string): boolean;
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): boolean;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomColshapeMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K): ICustomColshapeMeta[K] | undefined;
+    /** @deprecated See {@link ICustomColshapeMeta} */
+    public getMeta<V extends any>(key: string): V | undefined;
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K, value: ICustomColshapeMeta[K]): void;
+    /** @deprecated See {@link ICustomColshapeMeta} */
+    public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K, V>): void;
+  }
+
+  /** @alpha */
+  export class ColshapeCylinder extends Colshape {
+    constructor(x: number, y: number, z: number, radius: number, height: number);
+  }
+
+  /** @alpha */
+  export class ColshapeSphere extends Colshape {
+    constructor(x: number, y: number, z: number, radius: number);
+  }
+
+  /** @alpha */
+  export class ColshapeCircle extends Colshape {
+    constructor(x: number, y: number, radius: number);
+  }
+
+  /** @alpha */
+  export class ColshapeCuboid extends Colshape {
+    constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
+  }
+
+  /** @alpha */
+  export class ColshapeRectangle extends Colshape {
+    constructor(x1: number, y1: number, x2: number, y2: number);
+  }
+
+  /** @alpha */
+  export class ColshapePolygon extends Colshape {
+    constructor(minZ: number, maxZ: number, points: Array<shared.IVector2>);
+  }
+
+  /** @alpha */
+  export class TextLabel extends WorldObject {
+    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
+
+    /**
+     * Retrieves the marker from the pool.
+     *
+     * @param id The id of the marker.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): TextLabel | null;
+
+    //public static readonly all: ReadonlyArray<TextLabel>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    public visible: boolean;
+
+    public color: shared.RGBA;
+
+    public scale: number;
+
+    public rot: shared.Vector3;
+
+    public readonly isGlobal: boolean;
+
+    public readonly target: Player;
+
+    public readonly isRemote: boolean;
+
+    public readonly remoteId: number;
+
+    public readonly isStreamedIn: boolean;
+
+    public readonly streamingDistance: number;
+  }
+
+  /** @alpha */
+  export class LocalVehicle extends WorldObject {
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
+
+    /**
+     * Retrieves the localvehicle from the pool.
+     *
+     * @param id The id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): LocalVehicle | null;
+
+    /**
+     * Retrieves the localvehicle from the pool.
+     *
+     * @param scriptID The script id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByScriptID(scriptID: number): LocalVehicle | null;
+
+    public readonly id: number;
+
+    public readonly model: number;
+
+    public rot: shared.Vector3;
+
+    public readonly streamingDistance: number;
+
+    public visible: boolean;
+
+    public readonly scriptID: number;
+
+    public readonly remoteId: number;
+
+    public readonly isRemote: boolean;
+
+    public readonly isStreamedIn: boolean;
+
+    /**
+     * Vehicle wheels speed.
+     */
+    public readonly speed: number;
+
+    /**
+     * Vehicle gear.
+     *
+     * @returns A number indicating actual gear.
+     */
+    public gear: number;
+
+    /**
+     * Vehicle max gear.
+     */
+    public readonly maxGear: number;
+
+    /**
+     * Vehicle RPM.
+     *
+     * @returns Normalised value on a scale of [0, 1].
+     */
+    public rpm: number;
+
+    /**
+     * Vehicle wheels count.
+     */
+    public readonly wheelsCount: number;
+
+    /**
+     * Vehicle speed vector.
+     */
+    public readonly speedVector: shared.Vector3;
+
+    /**
+     * Vehicle engine state.
+     */
+    public readonly engineOn: boolean;
+
+    /**
+     * Vehicle lock state.
+     */
+    public readonly lockState: shared.VehicleLockState;
+
+    /**
+     * The vehicle's petrol tank health.
+     */
+    public readonly petrolTankHealth: number;
+
+    /**
+     * Vehicle indicator lights.
+     */
+    public indicatorLights: VehicleIndicatorLights;
+
+    /**
+     * Vehicle seat count.
+     */
+    public readonly seatCount: number;
+
+    /**
+     * Gets the camber angle of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelCamber(wheelIndex: number): number;
+
+    /**
+     * Sets the camber angle of the specified wheel.
+     *
+     * @remarks A positive camber angle means that the top of the wheel is farther out than the bottom. A negative camber angle means that the bottom of the wheel is farther out than the top.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param camber The value the of camber angle.
+     */
+    public setWheelCamber(wheelIndex: number, camber: number): void;
+
+    /**
+     * Gets the track width of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTrackWidth(wheelIndex: number): number;
+
+    /**
+     * Sets the track width of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param width The value of the track width.
+     */
+    public setWheelTrackWidth(wheelIndex: number, width: number): void;
+
+    /**
+     * Gets the height of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelHeight(wheelIndex: number): number;
+
+    /**
+     * Sets the height of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param height The value of the wheel height.
+     */
+    public setWheelHeight(wheelIndex: number, height: number): void;
+
+    /**
+     * Gets the tyre radius of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTyreRadius(wheelIndex: number): number;
+
+    /**
+     * @remarks Applies only physical effects to the wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param radius The value of the tyre radius.
+     */
+    public setWheelTyreRadius(wheelIndex: number, radius: number): void;
+
+    /**
+     * Gets the rim radius of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelRimRadius(wheelIndex: number): number;
+
+    /**
+     * @remarks Does not show any visible effect.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param radius The index of the rim radius.
+     */
+    public setWheelRimRadius(wheelIndex: number, radius: number): void;
+
+    /**
+     * Gets the tyre width the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTyreWidth(wheelIndex: number): number;
+
+    /**
+     * @remarks Does not show any visible effect.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param width The value of the tyre width.
+     */
+    public setWheelTyreWidth(wheelIndex: number, width: number): void;
+
+    public getWheelSurfaceMaterial(wheel: number): number;
+
+    /**
+     * The vehicle's engine temperature.
+     */
+    public engineTemperature: number;
+
+    /**
+     * The vehicle's fuel level.
+     */
+    public fuelLevel: number;
+
+    /**
+     * The vehicle's oil level.
+     */
+    public oilLevel: number;
+  }
+
+  /** @alpha */
+  export class LocalPed extends WorldObject {
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
+
+    /**
+     * Retrieves the localPed from the pool.
+     *
+     * @param id The id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): LocalPed | null;
+
+    /**
+     * Retrieves the localPed from the pool.
+     *
+     * @param scriptID The script id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByScriptID(scriptID: number): LocalPed | null;
+
+    public readonly id: number;
+
+    public readonly model: number;
+
+    public rot: shared.Vector3;
+
+    public readonly streamingDistance: number;
+
+    public visible: boolean;
+
+    public readonly scriptID: number;
+
+    public readonly remoteId: number;
+
+    public readonly isRemote: boolean;
+
+    public readonly isStreamedIn: boolean;
   }
 
   export * from "alt-shared";

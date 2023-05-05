@@ -69,16 +69,6 @@ declare module "alt-server" {
     PickupObject,
   }
 
-  export const enum ColShapeType {
-    Sphere,
-    Cylinder,
-    Circle,
-    Cuboid,
-    Rectangle,
-    CheckpointCylinder,
-    Polygon,
-  }
-
   export const enum RadioStation {
     LosSantosRockRadio,
     NonStopPopFm,
@@ -258,6 +248,12 @@ declare module "alt-server" {
     readonly passwordHash: string;
     readonly ip: string;
     readonly discordUserID: string;
+    /** @alpha */
+    readonly socialClubName: string;
+    /** @alpha */
+    readonly id: number;
+    /** @alpha */
+    readonly cloudAuthHash: string;
   }
 
   export interface IConnectionQueueInfo extends IConnectionInfo {
@@ -293,7 +289,6 @@ declare module "alt-server" {
      */
     playerChangedVehicleSeat: (player: Player, vehicle: Vehicle, oldSeat: number, seat: number) => void;
     playerConnect: (player: Player) => void;
-    beforePlayerConnect: (connectionInfo: IConnectionInfo) => boolean | string | void;
     playerConnectDenied: (reason: ConnectDeniedReason, name: string, ip: string, passwordHash: number, isDebug: boolean, branch: string, version: number, cdnURL: string, discordId: number) => void;
     playerDamage: (victim: Player, attacker: Entity | null, healthDamage: number, armourDamage: number, weaponHash: number) => void;
     playerDeath: (victim: Player, killer: Entity | null, weaponHash: number) => void;
@@ -344,6 +339,8 @@ declare module "alt-server" {
     baseObjectCreate: (baseObject: BaseObject) => void;
     /** @alpha */
     baseObjectRemove: (baseObject: BaseObject) => void;
+    /** @alpha */
+    metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
   }
 
   export interface IFireInfo {
@@ -568,22 +565,6 @@ declare module "alt-server" {
   }
 
   /**
-   * Documentation: https://docs.altv.mp/articles/configs/resource.html
-   */
-  export interface IResourceConfig {
-    readonly type?: string;
-    readonly deps?: ReadonlyArray<string>;
-    readonly main?: string;
-    readonly "client-main"?: string;
-    readonly "client-type"?: string;
-    readonly "client-files"?: ReadonlyArray<string>;
-    readonly "required-permissions"?: ReadonlyArray<shared.Permission>;
-    readonly "optional-permissions"?: ReadonlyArray<shared.Permission>;
-
-    readonly [key: string]: unknown;
-  }
-
-  /**
    * The root directory of the server.
    */
   export const rootDir: string;
@@ -593,6 +574,12 @@ declare module "alt-server" {
   export const globalDimension: number;
 
   export class BaseObject extends shared.BaseObject {
+    /**
+     * Gets the base object with the given type and id
+     * @alpha
+     */
+    public getByID(type: shared.BaseObjectType, id: number): BaseObject;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
@@ -608,6 +595,27 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
     /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+
+    /**
+     * Removes the specified key and the data connected to that specific key.
+     *
+     * @param key The key of the value to remove.
+     */
+    public deleteSyncedMeta(key: string): void;
+    public deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomBaseObjectSyncedMeta>>(key: K): void;
+
+    /**
+     * Stores the given value with the specified key.
+     *
+     * @remarks The given value will be shared with all clients.
+     *
+     * @param key The key of the value to store.
+     * @param value The value to store.
+     */
+    public setSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomBaseObjectSyncedMeta, K>): void;
+    public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomBaseObjectSyncedMeta>>(key: K, value: shared.ICustomBaseObjectSyncedMeta[K]): void;
+    /** @deprecated See {@link "alt-shared".ICustomBaseObjectSyncedMeta} */
+    public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomBaseObjectSyncedMeta, K, V>): void;
   }
 
   export class WorldObject extends BaseObject {
@@ -642,7 +650,7 @@ declare module "alt-server" {
   /** @alpha */
   export class VirtualEntity extends WorldObject {
     /** Creates a new Virtual Entity */
-    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number);
+    public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
     /** Returns all Virtual Entity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
@@ -655,6 +663,8 @@ declare module "alt-server" {
 
     /** Streaming range for the virtual entity */
     public readonly streamingDistance: number;
+
+    public visible: boolean;
 
     /**
      * Gets a value using the specified key.
@@ -735,10 +745,9 @@ declare module "alt-server" {
 
     /**
      * Entity model hash.
-     *
-     * @remarks Only setter accepts string or number as input, getter returns value as number.
      */
-    public model: number | string;
+    public get model(): number;
+    public set model(model: number | string);
 
     /**
      * Entity rotation.
@@ -933,6 +942,8 @@ declare module "alt-server" {
      * ```
      */
     public static readonly all: ReadonlyArray<Player>;
+    /** @alpha */
+    public readonly count: number;
     public armour: number;
     public currentWeapon: number;
     public readonly weapons: ReadonlyArray<IWeapon>;
@@ -955,6 +966,22 @@ declare module "alt-server" {
      * The player's state of weapon reloading.
      */
     public readonly isReloading: boolean;
+
+    /** @alpha */
+    public readonly isEnteringVehicle: boolean;
+
+    /** @alpha */
+    public readonly isLeavingVehicle: boolean;
+
+    /** @alpha */
+    public readonly isOnLadder: boolean;
+
+    /** @alpha */
+    public readonly isInMelee: boolean;
+
+    /** @alpha */
+    public readonly isInCover: boolean;
+
     /**
      * Position the player is currently aiming at.
      *
@@ -982,10 +1009,14 @@ declare module "alt-server" {
     public readonly isStealthy: boolean;
     public readonly isSpawned: boolean;
     public readonly socialID: string;
+    /** @alpha */
+    public readonly socialClubName: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;
     public readonly discordID: string;
+    /** @alpha */
+    public readonly cloudAuthHash: string;
     public readonly currentAnimationDict: number;
     public readonly currentAnimationName: number;
     public readonly forwardSpeed: number;
@@ -1162,7 +1193,7 @@ declare module "alt-server" {
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
      */
-    public setClothes(component: number, drawable: number, texture: number, palette?: number): void;
+    public setClothes(component: number, drawable: number, texture: number, palette?: number): boolean;
 
     /**
      * Sets the specified dlc clothing component.
@@ -1179,7 +1210,7 @@ declare module "alt-server" {
      * @param texture Texture id of the clothing.
      * @param palette Palette of the clothing.
      */
-    public setDlcClothes(dlc: number, component: number, drawable: number, texture: number, palette?: number): void;
+    public setDlcClothes(dlc: number, component: number, drawable: number, texture: number, palette?: number): boolean;
 
     /**
      * Gets the specified prop component.
@@ -1219,7 +1250,7 @@ declare module "alt-server" {
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
      */
-    public setProp(component: number, drawable: number, texture: number): void;
+    public setProp(component: number, drawable: number, texture: number): boolean;
 
     /**
      * Sets the specified dlc prop component.
@@ -1234,7 +1265,7 @@ declare module "alt-server" {
      * @param drawable Drawable id of the prop.
      * @param texture Texture id of the prop.
      */
-    public setDlcProp(dlc: number, component: number, drawable: number, texture: number): void;
+    public setDlcProp(dlc: number, component: number, drawable: number, texture: number): boolean;
 
     /**
      * Removes a specified prop component.
@@ -1441,6 +1472,9 @@ declare module "alt-server" {
      */
     public static readonly all: ReadonlyArray<Vehicle>;
 
+    /** @alpha */
+    public readonly count: number;
+
     /**
      * Get the entity model hash.
      *
@@ -1453,9 +1487,9 @@ declare module "alt-server" {
      *     console.log('This vehicle is not an infernus.');
      * }
      * ```
-     * @remarks Only setter accepts string or number as input, getter returns value as number.
+     * @remarks Vehicle doesn't provide a setter.
      */
-    public readonly model: number | string;
+    public get model(): number;
 
     /**
      * Gets or sets the active radio station.
@@ -1790,6 +1824,12 @@ declare module "alt-server" {
      * Gets or sets the drift mode state of the vehicle.
      */
     public driftModeEnabled: boolean;
+
+    /**
+     * Gets or sets the vehicles rotation with a quaternion.
+     * @alpha
+     */
+    public quaternion: shared.Quaternion;
 
     constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
     constructor(model: string | number, pos: shared.IVector3, rot: shared.IVector3);
@@ -2371,6 +2411,19 @@ declare module "alt-server" {
      */
     public static readonly all: ReadonlyArray<Blip>;
 
+    /** @alpha */
+    public readonly count: number;
+
+    /**
+     * Retrieves the blip from the pool.
+     *
+     * @param id The id of the blip.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Blip | null;
+
     public routeColor: shared.RGBA;
 
     public sprite: shared.BlipSprite;
@@ -2477,7 +2530,10 @@ declare module "alt-server" {
   }
 
   export class Colshape extends WorldObject {
-    public readonly colshapeType: ColShapeType;
+    /** @alpha */
+    public static readonly all: ReadonlyArray<Colshape>;
+
+    public readonly colshapeType: shared.ColShapeType;
 
     /**
      * Whether this colshape should only trigger its enter/leave events for players or all entities.
@@ -2486,6 +2542,16 @@ declare module "alt-server" {
 
     /** @alpha */
     public readonly id: number;
+
+    /**
+     * Retrieves the colshape from the pool.
+     *
+     * @param id The id of the colshape.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Colshape | null;
 
     public isEntityIn(entity: Entity): boolean;
     public isEntityIn(entityID: number): boolean;
@@ -2534,11 +2600,11 @@ declare module "alt-server" {
   }
 
   export class Checkpoint extends Colshape {
-    constructor(type: shared.CheckpointType, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number);
-    constructor(type: shared.CheckpointType, pos: shared.IVector3, radius: number, height: number, color: shared.RGBA);
+    constructor(type: shared.CheckpointType, x: number, y: number, z: number, radius: number, height: number, r: number, g: number, b: number, a: number, streamingDistance: number);
+    constructor(type: shared.CheckpointType, pos: shared.IVector3, radius: number, height: number, color: shared.RGBA, streamingDistance: number);
 
     /**
-     * Streaming range for the virtual entity
+     * Streaming range for the checkpoint
      *
      * @alpha
      */
@@ -2546,6 +2612,22 @@ declare module "alt-server" {
 
     /** @alpha */
     public static readonly all: ReadonlyArray<Checkpoint>;
+
+    /** @alpha */
+    public readonly count: number;
+
+    /** @alpha */
+    public visible: boolean;
+
+    /**
+     * Retrieves the checkpoint from the pool.
+     *
+     * @param id The id of the checkpoint.
+     * @returns Entity if it was found, otherwise null.
+     *
+     * @alpha
+     */
+    public static getByID(id: number): Checkpoint | null;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K): void;
@@ -2644,7 +2726,6 @@ declare module "alt-server" {
 
   export class Resource extends shared.Resource {
     public readonly path: string;
-    public readonly config: IResourceConfig;
 
     public static getByName(name: string): Resource | null;
     public static readonly all: ReadonlyArray<Resource>;
@@ -2819,8 +2900,6 @@ declare module "alt-server" {
    * Hash a string with alt:V algorithm.
    *
    * @param password The string you want to hash.
-   *
-   * @remarks Can be useful for {@link IServerEvent.beforePlayerConnect} to check the received password.
    */
   export function hashServerPassword(password: string): bigint;
 
@@ -2993,10 +3072,32 @@ declare module "alt-server" {
   export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
 
   /** @alpha */
+  export class Ped extends Entity {
+    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3);
+
+    /**
+     * Retrieves the ped from the pool.
+     *
+     * @param id The id of the ped.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Ped | null;
+
+    public static readonly all: ReadonlyArray<Ped>;
+    public readonly count: number;
+    public currentWeapon: number;
+    public health: number;
+    public maxArmour: number;
+    public amour: number;
+  }
+
+  /** @alpha */
   export class NetworkObject extends Entity {
     constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
 
     public static readonly all: ReadonlyArray<NetworkObject>;
+
+    public readonly count: number;
 
     public activatePhysics(): void;
 
@@ -3010,6 +3111,42 @@ declare module "alt-server" {
 
     /** The distance at which the LOD model of the object starts being applied. */
     public lodDistance: number;
+  }
+
+  /** @alpha */
+  export class Marker extends WorldObject {
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
+
+    /**
+     * Retrieves the marker from the pool.
+     *
+     * @param id The id of the marker.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Marker | null;
+
+    public static readonly all: ReadonlyArray<Marker>;
+
+    /** Unique id */
+    public readonly id: number;
+
+    public visible: boolean;
+
+    public markerType: shared.MarkerType;
+
+    public color: shared.RGBA;
+
+    public scale: shared.Vector3;
+
+    public rot: shared.Vector3;
+
+    public dir: shared.Vector3;
+
+    public readonly isGlobal: boolean;
+
+    public readonly target: Player;
+
+    public faceCamera: boolean;
   }
 
   export * from "alt-shared";

@@ -23,7 +23,8 @@ declare module "alt-shared" {
     VirtualEntityGroup,
     Marker,
     TextLabel,
-    Pickup,
+    LocalPed,
+    LocalVehicle,
     AudioFilter,
     Size,
   }
@@ -671,6 +672,64 @@ declare module "alt-shared" {
     Purple = 83,
   }
 
+  export const enum MarkerType {
+    MarkerCone = 0,
+    MarkerCylinder = 1,
+    MarkerArrow = 2,
+    MarkerArrowFlat = 3,
+    MarkerFlag = 4,
+    MarkerRingFlag = 5,
+    MarkerRing = 6,
+    MarkerPlane = 7,
+    MarkerBikeLogo1 = 8,
+    MarkerBikeLogo2 = 9,
+    MarkerNum0 = 10,
+    MarkerNum1 = 11,
+    MarkerNum2 = 12,
+    MarkerNum3 = 13,
+    MarkerNum4 = 14,
+    MarkerNum5 = 15,
+    MarkerNum6 = 16,
+    MarkerNum7 = 17,
+    MarkerNum8 = 18,
+    MarkerNum9 = 19,
+    MarkerChevron1 = 20,
+    MarkerChevron2 = 21,
+    MarkerChevron3 = 22,
+    MarkerRingFlat = 23,
+    MarkerLap = 24,
+    MarkerHalo = 25,
+    MarkerHaloPoint = 26,
+    MarkerHaloRotate = 27,
+    MarkerSphere = 28,
+    MarkerMoney = 29,
+    MarkerLines = 30,
+    MarkerBeast = 31,
+    MarkerQuestionMark = 32,
+    MarkerTransformPlane = 33,
+    MarkerTransformHelicopter = 34,
+    MarkerTransformBoat = 35,
+    MarkerTransformCar = 36,
+    MarkerTransformBike = 37,
+    MarkerTransformPushBike = 38,
+    MarkerTransformTruck = 39,
+    MarkerTransformParachute = 40,
+    MarkerTransformThruster = 41,
+    MarkerWarp = 42,
+    MarkerBoxes = 43,
+    MarkerPitLane = 44,
+  }
+
+  export const enum ColShapeType {
+    Sphere,
+    Cylinder,
+    Circle,
+    Cuboid,
+    Rectangle,
+    CheckpointCylinder,
+    Polygon,
+  }
+
   export const enum AudioCategory {
     x44E21C90 = "0x44E21C90",
     xBAD598C7 = "0xBAD598C7",
@@ -907,10 +966,11 @@ declare module "alt-shared" {
   }
 
   export const enum Permission {
-    None,
-    ScreenCapture,
-    WebRTC,
-    ClipboardAccess,
+    NONE,
+    SCREEN_CAPTURE,
+    WEBRTC,
+    CLIPBOARD_ACCESS,
+    EXTENDED_VOICE_API,
     All,
   }
 
@@ -1428,6 +1488,22 @@ declare module "alt-shared" {
   }
 
   /**
+   * Documentation: https://docs.altv.mp/articles/configs/resource.html
+   */
+  export interface IResourceConfig {
+    readonly type?: string;
+    readonly deps?: ReadonlyArray<string>;
+    readonly main?: string;
+    readonly "client-main"?: string;
+    readonly "client-type"?: string;
+    readonly "client-files"?: ReadonlyArray<string>;
+    readonly "required-permissions"?: ReadonlyArray<Permission>;
+    readonly "optional-permissions"?: ReadonlyArray<Permission>;
+
+    readonly [key: string]: unknown;
+  }
+
+  /**
    * This is an internal utility type and you probably don't need it
    *
    * Returns the value by the key in the interface or `unknown` by default
@@ -1470,6 +1546,16 @@ declare module "alt-shared" {
     readonly x: number;
     readonly y: number;
     readonly z: number;
+  }
+
+  /**
+   * @alpha
+   */
+  export interface IQuaternion {
+    readonly x: number;
+    readonly y: number;
+    readonly z: number;
+    readonly w: number;
   }
 
   export interface IResource {
@@ -1522,11 +1608,18 @@ declare module "alt-shared" {
   export interface ICustomBaseObjectMeta {}
 
   /**
+   * Extend it by interface merging for use in baseobject synced meta {@link BaseObject#getSyncedMeta}, {@link BaseObject#hasSyncedMeta}, etc.
+   *
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
+   */
+  export interface ICustomBaseObjectSyncedMeta {}
+
+  /**
    * Extend it by interface merging for use in entity synced meta (class `Entity` on client & server, e.g. `entity.getSyncedMeta`)
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
-  export interface ICustomEntitySyncedMeta {}
+  export interface ICustomEntitySyncedMeta extends ICustomBaseObjectSyncedMeta {}
 
   /**
    * Extend it by interface merging for use in entity stream synced meta (class `Entity` on client & server, e.g. `entity.getStreamSyncedMeta`)
@@ -1640,6 +1733,8 @@ declare module "alt-shared" {
     public toArray(): [number, number, number];
 
     public toFixed(precision: number): Vector3;
+
+    public toString(): string;
 
     /**
      * Adds two vectors.
@@ -1866,6 +1961,8 @@ declare module "alt-shared" {
 
     public toFixed(precision: number): Vector2;
 
+    public toString(): string;
+
     /**
      * Adds two vectors.
      */
@@ -2043,6 +2140,46 @@ declare module "alt-shared" {
     public static readonly positiveInfinity: Vector2;
   }
 
+  /**
+   * @alpha
+   */
+  export class Quaternion {
+    public readonly x: number;
+
+    public readonly y: number;
+
+    public readonly z: number;
+
+    public readonly w: number;
+
+    constructor(x: number, y: number, z: number, w: number);
+
+    constructor(arr: [number, number, number, number]);
+
+    constructor(obj: IQuaternion);
+
+    constructor(value: number);
+
+    /**
+     * Returns [x, y, z, w] array.
+     */
+    public toArray(): [number, number, number, number];
+
+    /**
+     * Returns the Quaternion with trimed decimals
+     * @param precision Precision to trim the values. Defaults to 4
+     */
+    public toFixed(precision: number): Quaternion;
+
+    public toString(): string;
+
+    /** (0, 0, 0, 0) quaternion */
+    public static readonly zero: Quaternion;
+
+    /** (1, 1, 1, 1) quaternion */
+    public static readonly one: Quaternion;
+  }
+
   export class RGBA {
     public static readonly red: RGBA;
     public static readonly green: RGBA;
@@ -2081,6 +2218,8 @@ declare module "alt-shared" {
     public toARGB(): RGBA;
 
     public toInt(): number;
+
+    public toString(): string;
   }
 
   export class File {
@@ -2175,6 +2314,28 @@ declare module "alt-shared" {
     public setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
 
     /**
+     * Gets a value using the specified key.
+     *
+     * @param key The key of the value to get.
+     * @returns Dynamic value associated with the specified key or undefined if no data is present.
+     */
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof ICustomBaseObjectSyncedMeta>): unknown;
+    public getSyncedMeta<K extends ExtractStringKeys<ICustomBaseObjectSyncedMeta>>(key: K): ICustomBaseObjectSyncedMeta[K] | undefined;
+    /** @deprecated See {@link "alt-shared".ICustomBaseObjectSyncedMeta} */
+    public getSyncedMeta<V extends any>(key: string): V | undefined;
+
+    /**
+     * Determines whether contains the specified key.
+     *
+     * @param key The key of the value to locate.
+     * @returns True if the meta table contains any data at the specified key or False if not
+     */
+    public hasSyncedMeta(key: string): boolean;
+    public hasSyncedMeta<K extends ExtractStringKeys<ICustomBaseObjectSyncedMeta>>(key: K): boolean;
+
+    public getSyncedMetaKeys(): ReadonlyArray<string>;
+
+    /**
      * Returns the ref count of the entity.
      *
      * @remarks It's only available in debug-mode.
@@ -2235,6 +2396,12 @@ declare module "alt-shared" {
   export function getMeta<V extends any>(key: string): V | undefined;
 
   /**
+   * Returns all meta keys which have been set
+   * @alpha
+   */
+  export function getMetaKeys(): ReadonlyArray<string>;
+
+  /**
    * Determines whether contains the specified key.
    *
    * @param key The key of the value to locate.
@@ -2266,6 +2433,12 @@ declare module "alt-shared" {
   export function getSyncedMeta<K extends ExtractStringKeys<ICustomGlobalSyncedMeta>>(key: K): ICustomGlobalSyncedMeta[K] | undefined;
   /** @deprecated See {@link ICustomGlobalSyncedMeta} */
   export function getSyncedMeta<V extends any>(key: string): V | undefined;
+
+  /**
+   * Returns all synced meta keys which have been set
+   * @alpha
+   */
+  export function getSyncedMetaKeys(): ReadonlyArray<string>;
 
   /**
    * Determines whether contains the specified key.
@@ -2490,6 +2663,7 @@ declare module "alt-shared" {
     public readonly optionalPermissions: ReadonlyArray<Permission>;
     public readonly valid: boolean;
 
+    public readonly config: IResourceConfig;
     public static getByName(name: string): Resource | null;
     public static readonly all: ReadonlyArray<Resource>;
     public static readonly current: Resource;
