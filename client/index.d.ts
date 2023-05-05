@@ -413,6 +413,11 @@ declare module "alt-client" {
     drawOnEnts?: boolean;
   }
 
+  export interface IInputDevice {
+    readonly name: string;
+    readonly uuid: string | null;
+  }
+
   export class BaseObject extends shared.BaseObject {
     /**
      * Gets the base object with the given type and local id
@@ -2372,7 +2377,13 @@ declare module "alt-client" {
     public noiseSuppressionEnabled: boolean;
 
     /** @alpha */
+    public inputDevice: string | null;
+
+    /** @alpha */
     public toggleInput: boolean;
+
+    /** @alpha */
+    public getAvailableInputDevices: ReadonlyArray<IInputDevice>;
 
     /**
      * Determines if the voice activation is enabled.
