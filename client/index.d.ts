@@ -3714,7 +3714,42 @@ declare module "alt-client" {
     /** The distance at which the LOD model of the object starts being applied. */
     public lodDistance: number;
   }
-  
+
+  /** @alpha */
+  export class Ped extends Entity {
+    /**
+     * Retrieves the ped from the pool.
+     *
+     * @param id The id of the ped.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Ped | null;
+
+    public static readonly all: ReadonlyArray<Ped>;
+
+    public readonly count: number;
+
+    /**
+     * Currently equipped weapon.
+     */
+    public readonly currentWeapon: number;
+
+    /**
+     * Current health of the ped.
+     */
+    public readonly health: number;
+
+    /**
+     * Current max health of the ped.
+     */
+    public readonly maxHealth: number;
+
+    /**
+     * Current armour.
+     */
+    public readonly armour: number;
+  }
+
   /** @alpha */
   export class AudioFilter extends BaseObject {
     constructor(filtername: string);
