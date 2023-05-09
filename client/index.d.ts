@@ -3928,6 +3928,8 @@ declare module "alt-client" {
     public readonly isStreamedIn: boolean;
 
     public readonly streamingDistance: number;
+
+    public faceCamera: boolean;
   }
 
   /** @alpha */
