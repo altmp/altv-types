@@ -134,7 +134,7 @@ declare module "alt-client" {
     resourceStop: () => void;
     resourceError: (error: Error, file: string, line: number, stackTrace: string) => void;
     syncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
-    streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
+    streamSyncedMetaChange: (object: BaseObject, key: string, value: any, oldValue: any) => void;
     globalMetaChange: (key: string, value: any, oldValue: any) => void;
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
     /**
