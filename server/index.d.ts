@@ -766,14 +766,6 @@ declare module "alt-server" {
      */
     public streamed: boolean;
 
-    /**
-     * Retrieves the entity from the pool.
-     *
-     * @param id The id of the entity.
-     * @returns Entity if it was found, otherwise null.
-     */
-    public static getByID(id: number): Entity | null;
-
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K, value: ICustomEntityMeta[K]): void;
     /** @deprecated See {@link ICustomEntityMeta} */
