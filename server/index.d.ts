@@ -935,6 +935,8 @@ declare module "alt-server" {
      */
     public static readonly all: ReadonlyArray<Player>;
     /** @alpha */
+    public readonly streamedEntities: ReadonlyArray<{entity: Entity, distance: number }>;
+    /** @alpha */
     public readonly count: number;
     public armour: number;
     public currentWeapon: number;
