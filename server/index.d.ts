@@ -1280,9 +1280,7 @@ declare module "alt-server" {
      * ```
      */
     public isEntityInStreamRange(entity: Entity): boolean;
-
-    public isEntityInStreamRange(entityID: number): boolean;
-
+    
     /**
      * Set the player into a vehicle on specific seat.
      *
