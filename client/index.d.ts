@@ -106,6 +106,12 @@ declare module "alt-client" {
     Pricedown = 7,
   }
 
+  export const enum TextAlign {
+    Center,
+    Left,
+    Rigth
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -3356,13 +3362,13 @@ declare module "alt-client" {
 
     export function requestCutscene(cutsceneName: string, flags: string | number, timeout?: number): Promise<void>;
 
-    export function drawText2dThisFrame(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+    export function drawText2dThisFrame(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean, textAlign?: TextAlign): void;
 
-    export function drawText2d(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
+    export function drawText2d(text: string, pos2d?: shared.IVector2, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean, textAlign?: TextAlign): shared.Utils.EveryTick;
 
-    export function drawText3dThisFrame(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): void;
+    export function drawText3dThisFrame(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean, textAlign?: TextAlign): void;
 
-    export function drawText3d(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean): shared.Utils.EveryTick;
+    export function drawText3d(text: string, pos3d: shared.IVector3, font?: GameFont, scale?: number, color?: shared.RGBA, outline?: boolean, dropShadow?: boolean, textAlign?: TextAlign): shared.Utils.EveryTick;
 
     /**
      * Loads the map area at a certain position
