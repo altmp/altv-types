@@ -106,7 +106,7 @@ declare module "alt-client" {
     Pricedown = 7,
   }
 
-  export const enum RextAlign {
+  export const enum TextAlign {
     Center,
     Left,
     Rigth
