@@ -313,9 +313,9 @@ declare module "alt-server" {
     streamSyncedMetaChange: (entity: Entity, key: string, value: any, oldValue: any) => void;
     globalMetaChange: (key: string, value: any, oldValue: any) => void;
     globalSyncedMetaChange: (key: string, value: any, oldValue: any) => void;
-    vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
+    vehicleAttach: (attachedVehicle: Vehicle, vehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
-    vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
+    vehicleDetach: (detachedVehicle: Vehicle, vehicle: Vehicle) => void;
     weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => number | boolean | void;
     startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
