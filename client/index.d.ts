@@ -109,7 +109,7 @@ declare module "alt-client" {
   export const enum TextAlign {
     Center,
     Left,
-    Rigth
+    Rigth,
   }
 
   export interface IClientEvent {
