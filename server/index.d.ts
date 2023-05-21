@@ -635,16 +635,13 @@ declare module "alt-server" {
   /** @alpha */
   export class VirtualEntityGroup extends BaseObject {
     /** Creates a new Virtual Entity Group */
-    public constructor(maxStreamedEntityCount: number);
+    public constructor(maxEntitiesInStream: number);
 
     /** Returns all Virtual Entity Group instances */
     public static readonly all: ReadonlyArray<VirtualEntityGroup>;
 
-    /** Unique id */
-    public readonly id: number;
-
     /** Maximum streaming range inside the Virtual Entity Group */
-    public readonly streamingRangeLimit: number;
+    public readonly maxEntitiesInStream: number;
   }
 
   /** @alpha */
@@ -654,9 +651,6 @@ declare module "alt-server" {
 
     /** Returns all Virtual Entity instances */
     public static readonly all: ReadonlyArray<VirtualEntity>;
-
-    /** Unique id */
-    public readonly id: number;
 
     /** Virtual Entity Group this entity belongs to */
     public readonly group: VirtualEntityGroup;
@@ -726,11 +720,6 @@ declare module "alt-server" {
      * ```
      */
     public static readonly all: ReadonlyArray<Entity>;
-
-    /**
-     * Internal identificator of the entity which is identical on both sides.
-     */
-    public readonly id: number;
 
     /**
      * Network owner of the entity.
@@ -2420,9 +2409,6 @@ declare module "alt-server" {
 
     public sprite: shared.BlipSprite;
 
-    /** @alpha */
-    public readonly id: number;
-
     /**
      * @remarks Does't properly work for areablips currently.
      */
@@ -2531,9 +2517,6 @@ declare module "alt-server" {
      * Whether this colshape should only trigger its enter/leave events for players or all entities.
      */
     public playersOnly: boolean;
-
-    /** @alpha */
-    public readonly id: number;
 
     /**
      * Retrieves the colshape from the pool.
@@ -2667,9 +2650,6 @@ declare module "alt-server" {
      * @param maxDistance The max distance at which you can hear each other.
      */
     constructor(isSpatial: boolean, maxDistance: number);
-
-    /** @alpha */
-    public readonly id: number;
 
     /** @alpha */
     public readonly maxDistance: number;
@@ -3118,9 +3098,6 @@ declare module "alt-server" {
     public static getByID(id: number): Marker | null;
 
     public static readonly all: ReadonlyArray<Marker>;
-
-    /** Unique id */
-    public readonly id: number;
 
     public visible: boolean;
 

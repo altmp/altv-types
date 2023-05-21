@@ -451,16 +451,13 @@ declare module "alt-client" {
   /** @alpha */
   export class VirtualEntityGroup extends BaseObject {
     /** Creates a new Virtual Entity Group */
-    public constructor(maxStreamedEntityCount: number);
+    public constructor(maxEntitiesInStream: number);
 
     /** Returns all Virtual Entity Group instances */
     public static readonly all: ReadonlyArray<VirtualEntityGroup>;
 
-    /** Unique id */
-    public readonly id: number;
-
     /** Maximum streaming range of the Virtual Entity Group */
-    public readonly streamingRangeLimit: number;
+    public readonly maxEntitiesInStream: number;
   }
 
   /** @alpha */
@@ -472,9 +469,6 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<VirtualEntity>;
 
     public static readonly streamedIn: ReadonlyArray<VirtualEntity>;
-
-    /** Unique clientside id */
-    public readonly id: number;
 
     /** Virtual Entity Group this entity belongs to */
     public readonly group: VirtualEntityGroup;
@@ -534,9 +528,6 @@ declare module "alt-client" {
 
     /** @alpha */
     public readonly count: number;
-
-    /** @alpha */
-    public readonly id: number;
 
     /** @alpha */
     public readonly remoteId: number;
@@ -688,9 +679,6 @@ declare module "alt-client" {
      * ```
      */
     public static readonly all: ReadonlyArray<Entity>;
-
-    /** Entity unique id */
-    public readonly id: number;
 
     /** Internal game id that can be used in native calls */
     public readonly scriptID: number;
@@ -1717,9 +1705,6 @@ declare module "alt-client" {
 
     /** @alpha */
     public readonly count: number;
-
-    /** @alpha */
-    public readonly id: number;
 
     /**
      * Is the webview a overlay.
@@ -2870,9 +2855,6 @@ declare module "alt-client" {
      */
     public static getByID(id: number): WebSocketClient | null;
 
-    /** @alpha */
-    public readonly id: number;
-
     public autoReconnect: boolean;
 
     public perMessageDeflate: boolean;
@@ -3001,9 +2983,6 @@ declare module "alt-client" {
      * @alpha
      */
     public static getByID(id: number): HttpClient | null;
-
-    /** @alpha */
-    public readonly id: number;
 
     public setExtraHeader(header: string, value: string): void;
 
@@ -3185,8 +3164,6 @@ declare module "alt-client" {
      * @alpha
      */
     public static getByID(id: number): RmlDocument | null;
-
-    public readonly id: number;
 
     public readonly sourceUrl: string;
 
@@ -3784,9 +3761,6 @@ declare module "alt-client" {
 
     public static readonly all: ReadonlyArray<Marker>;
 
-    /** Unique id */
-    public readonly id: number;
-
     public visible: boolean;
 
     public markerType: shared.MarkerType;
@@ -3825,8 +3799,6 @@ declare module "alt-client" {
      * Whether this colshape should only trigger its enter/leave events for players or all entities.
      */
     public playersOnly: boolean;
-
-    public readonly id: number;
 
     public readonly remoteId: number;
 
@@ -3906,9 +3878,6 @@ declare module "alt-client" {
 
     //public static readonly all: ReadonlyArray<TextLabel>;
 
-    /** Unique id */
-    public readonly id: number;
-
     public visible: boolean;
 
     public color: shared.RGBA;
@@ -3951,8 +3920,6 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): LocalVehicle | null;
-
-    public readonly id: number;
 
     public readonly model: number;
 
@@ -4158,8 +4125,6 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): LocalPed | null;
-
-    public readonly id: number;
 
     public readonly model: number;
 
