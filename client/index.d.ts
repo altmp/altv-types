@@ -708,7 +708,7 @@ declare module "alt-client" {
     public readonly isSpawned: boolean;
 
     /** Hash of entity model */
-    public readonly model: number;
+    public get model(): number;
 
     /**
      * Object position
@@ -3615,6 +3615,9 @@ declare module "alt-client" {
     public pos: shared.Vector3;
 
     public rot: shared.Vector3;
+
+    public get model(): number;
+    public set model(model: number | string);
 
     /** Object transparency, values are between 0 and 255. (0 being fully transparent) */
     public alpha: number;
