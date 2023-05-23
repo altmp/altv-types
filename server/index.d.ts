@@ -265,7 +265,7 @@ declare module "alt-server" {
     decline: (reason: string) => void;
   }
 
-  export class IConnectionInfo {
+  export class ConnectionInfo {
     /** @alpha */
     static readonly all: ReadonlyArray<IConnectionInfo>;
     /** @alpha */

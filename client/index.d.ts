@@ -3927,7 +3927,8 @@ declare module "alt-client" {
      */
     public static getByScriptID(scriptID: number): LocalVehicle | null;
 
-    public readonly model: number;
+    public get model(): number;
+    public set model(model: number | string);
 
     public rot: shared.Vector3;
 
