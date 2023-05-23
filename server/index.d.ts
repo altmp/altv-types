@@ -254,9 +254,8 @@ declare module "alt-server" {
     readonly id: number;
     /** @alpha */
     readonly cloudAuthHash: string;
-  }
+    readonly isAccepted: boolean;
 
-  export interface IConnectionQueueInfo extends IConnectionInfo {
     /**
      * Accepts client connection.
      *
@@ -264,7 +263,13 @@ declare module "alt-server" {
      */
     accept: (sendNames?: boolean) => void;
     decline: (reason: string) => void;
-    readonly isAccepted: boolean;
+  }
+
+  export class IConnectionInfo {
+    /** @alpha */
+    static readonly all: ReadonlyArray<IConnectionInfo>;
+    /** @alpha */
+    static getByID(id: number): IConnectionInfo | null;
   }
 
   export const enum ConnectDeniedReason {
@@ -322,8 +327,8 @@ declare module "alt-server" {
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => boolean | void;
     vehicleDamage: (vehicle: Vehicle, attacker: Entity | null, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
     localMetaChange: (player: Player, key: string, newValue: any, oldValue: any) => void;
-    connectionQueueAdd: (connectionInfo: IConnectionQueueInfo) => void;
-    connectionQueueRemove: (connectionInfo: IConnectionQueueInfo) => void;
+    connectionQueueAdd: (connectionInfo: IConnectionInfo) => void;
+    connectionQueueRemove: (connectionInfo: IConnectionInfo) => void;
     serverStarted: () => void;
     playerRequestControl: (player: Player, target: Entity) => boolean | void;
     playerAnimationChange: (target: Player, oldAnimDict: number, newAnimDict: number, oldAnimName: number, newAnimName: number) => void;
@@ -924,7 +929,7 @@ declare module "alt-server" {
      */
     public static readonly all: ReadonlyArray<Player>;
     /** @alpha */
-    public readonly streamedEntities: ReadonlyArray<{entity: Entity, distance: number }>;
+    public readonly streamedEntities: ReadonlyArray<{ entity: Entity; distance: number }>;
     /** @alpha */
     public readonly count: number;
     public armour: number;
