@@ -399,7 +399,8 @@ declare module "natives" {
 
   /**
   * Draws a 3D sphere, typically seen in the GTA:O freemode event "Penned In".
-  * Example https://imgur.com/nCbtS4H
+  * @param alpha - Alpha value of the sphere. Goes from 0 to 1.0
+  * @example https://imgur.com/nCbtS4H
   */
   export function drawMarkerSphere(x: number, y: number, z: number, radius: number, red: number, green: number, blue: number, alpha: number): void;
 
