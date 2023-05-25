@@ -3795,6 +3795,10 @@ declare module "alt-client" {
     public readonly isStreamedIn: boolean;
 
     public faceCamera: boolean;
+
+    public rotate: boolean;
+
+    public bobUpAndDown: boolean;
   }
 
   /** @alpha */
