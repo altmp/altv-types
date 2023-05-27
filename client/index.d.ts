@@ -649,6 +649,14 @@ declare module "alt-client" {
      */
     public static getByID(id: number): Checkpoint | null;
 
+    /**
+     * @alpha
+     */
+    public static getByScriptID(scriptID: number): Checkpoint | null;
+
+    /** @alpha */
+    public readonly scriptID: number;
+
     public isEntityIn(entity: Entity): boolean;
     public isPointIn(pos: shared.IVector3): boolean;
 
