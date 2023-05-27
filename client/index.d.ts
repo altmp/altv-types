@@ -2120,6 +2120,9 @@ declare module "alt-client" {
 
     public tickVisible: boolean;
 
+    /** @alpha */
+    public visible: boolean;
+
     /**
      * Returns whether the blip was created on serverside (false for clientside blips)
      */
