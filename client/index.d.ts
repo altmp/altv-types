@@ -307,31 +307,124 @@ declare module "alt-client" {
     readonly peakMallocedMemory: number;
   }
 
+  /**
+   * Follows Chrome DevTools cpuprofile format.
+   * See [Chrome DevTools protocol docs](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-Profile) for more details.
+   *
+   * In order to analyze resulting Profile - serialize this class as JSON and put to a .cpuprofile file.
+   * It will be available to use in DevTools on "Performance" tab, or in Visual Studio Code.
+   *
+   * @example
+   * ```js
+   * // server
+   * alt.onClient("saveProfile", (player, name, content) => {
+   *     fs.writeFileSync("./" + name + ".cpuprofile", content);
+   * });
+   *
+   * // client
+   * alt.Profile.startProfiling("test");
+   * // do some stuff
+   * const profile = alt.Profile.stopProfiling("test");
+   * const content = JSON.stringify(profile);
+   * alt.emitServer("saveProfile", "test", content);
+   * ```
+   */
   export interface IProfile {
-    readonly id: number;
-    readonly type: string;
-    readonly start: number;
-    readonly end: number;
-    readonly samples: number;
-    readonly root: IProfileNode;
+    /**
+     * The list of profile nodes. First item is the root node.
+     */
+    readonly nodes: IProfileNode[];
+
+    /**
+     * Profiling start timestamp in microseconds.
+     */
+    readonly startTime: number;
+
+    /**
+     * Profiling end timestamp in microseconds.
+     */
+    readonly endTime: number;
+
+    /**
+     * Ids of samples top nodes.
+     */
+    readonly samples: number[];
+
+    /**
+     * Time intervals between adjacent samples in microseconds. The first delta is relative to the profile startTime.
+     */
+    readonly timeDeltas: number[];
+  }
+
+  export interface IProfileCallFrame {
+    /**
+     * JavaScript function name.
+     */
+    readonly functionName: string;
+
+    /**
+     * Unique id of the script.
+     */
+    readonly scriptId: number;
+
+    /**
+     * File path.
+     */
+    readonly url: string;
+
+    /**
+     * JavaScript script line number (0-based).
+     */
+    readonly lineNumber: number;
+
+    /**
+     * JavaScript script column number (0-based).
+     */
+    readonly columnNumber: number;
   }
 
   export interface IProfileNode {
+    /**
+     * Unique id of the node.
+     */
     readonly id: number;
-    readonly function: string;
-    readonly source: string;
-    readonly sourceType: ProfileSourceType | `${ProfileSourceType}`;
-    readonly line: number;
-    readonly bailoutReason: string | null;
+
+    /**
+     * Function location.
+     */
+    readonly callFrame: IProfileCallFrame;
+
+    /**
+     * Number of samples where this node was on top of the call stack.
+     */
     readonly hitCount: number;
-    readonly timestamp: number;
-    readonly children: ReadonlyArray<IProfileNode> | null;
-    readonly lineTicks: ReadonlyArray<ILineTick> | null;
+
+    /**
+     * Child node ids.
+     */
+    readonly children?: ReadonlyArray<number>;
+
+    /**
+     * The reason of being not optimized. The function may be deoptimized or marked as don't optimize.
+     */
+    readonly deoptReason?: string;
+
+    /**
+     * An array of source position ticks.
+     */
+    readonly positionTicks: ReadonlyArray<IProfileTickInfo>;
   }
 
-  export interface ILineTick {
+  export interface IProfileTickInfo {
+    /**
+     * Source line number (1-based).
+     */
     readonly line: number;
-    readonly hitCount: number;
+
+    /**
+     * Number of samples attributed to the source line.
+     */
+    readonly ticks: number;
   }
 
   /**
