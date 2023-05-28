@@ -90,14 +90,6 @@ declare module "alt-client" {
     BottomCenter = 4,
   }
 
-  export const enum ProfileSourceType {
-    Script = "script",
-    Builtin = "builtins",
-    Native = "native-callback",
-    Internal = "internal",
-    Unknown = "unknown",
-  }
-
   export const enum GameFont {
     ChaletLondon,
     HouseScript,
