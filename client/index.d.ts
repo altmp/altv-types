@@ -516,12 +516,6 @@ declare module "alt-client" {
      */
     public getByID(type: shared.BaseObjectType, id: number): BaseObject;
 
-    /**
-     * Gets the base object with the given type and remote id
-     * @alpha
-     */
-    public getByRemoteID(type: shared.BaseObjectType, id: number): BaseObject;
-
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
@@ -1078,6 +1072,12 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): Player | null;
+
+    /**
+     * Gets the player with the given remote id
+     * @alpha
+     */
+    public getByRemoteID(id: number): Player | null;
 
     /**
      * Set & get the volume for 3D Voice.
@@ -1787,6 +1787,12 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): Vehicle | null;
+
+    /**
+     * Gets the vehicle with the given remote id
+     * @alpha
+     */
+    public getByRemoteID(id: number): Vehicle | null;
   }
 
   export class WebView extends BaseObject {
@@ -2151,6 +2157,12 @@ declare module "alt-client" {
      * @alpha
      */
     public static getByScriptID(scriptID: number): Blip | null;
+
+    /**
+     * Gets the blip with the given remote id
+     * @alpha
+     */
+    public getByRemoteID(id: number): Blip | null;
 
     /** @alpha */
     public readonly remoteId: number;
