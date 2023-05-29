@@ -782,6 +782,9 @@ declare module "alt-client" {
     /** Internal game id that can be used in native calls */
     public readonly scriptID: number;
 
+    /** @alpha */
+    public readonly remoteId: number;
+
     /**
      * Network owner of the entity.
      *
@@ -4040,8 +4043,6 @@ declare module "alt-client" {
     public visible: boolean;
 
     public readonly scriptID: number;
-
-    public readonly remoteId: number;
 
     public readonly isRemote: boolean;
 
