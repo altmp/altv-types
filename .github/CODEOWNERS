@@ -1,5 +1,5 @@
 * @lhoerion
 !*.md @lhoerion
 !*.d.ts @lhoerion
-*.md @c0kkie @leonmrbonnie
-*.d.ts @c0kkie @leonmrbonnie
+*.md @c0kkie
+*.d.ts @c0kkie
