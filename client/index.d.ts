@@ -804,12 +804,16 @@ declare module "alt-client" {
     public get model(): number;
 
     /**
-     * Object position
+     * Object position.
+     * @remarks Setting this throws an error if the client is not the network owner of an entity
      */
-    public readonly pos: shared.Vector3;
+    public pos: shared.Vector3;
 
-    /** Entity rotation in radians */
-    public readonly rot: shared.Vector3;
+    /**
+     * Entity rotation in radians
+     * @remarks Setting this throws an error if the client is not the network owner of an entity
+     */
+    public rot: shared.Vector3;
 
     public readonly visible: boolean;
 
