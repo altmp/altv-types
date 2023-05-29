@@ -785,6 +785,9 @@ declare module "alt-client" {
     /** @alpha */
     public readonly remoteId: number;
 
+    /** @alpha */
+    public readonly isRemote: boolean;
+
     /**
      * Network owner of the entity.
      *
@@ -4044,8 +4047,6 @@ declare module "alt-client" {
 
     public readonly scriptID: number;
 
-    public readonly isRemote: boolean;
-
     public readonly isStreamedIn: boolean;
 
     /**
@@ -4247,10 +4248,6 @@ declare module "alt-client" {
     public visible: boolean;
 
     public readonly scriptID: number;
-
-    public readonly remoteId: number;
-
-    public readonly isRemote: boolean;
 
     public readonly isStreamedIn: boolean;
   }
