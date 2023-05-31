@@ -27,6 +27,8 @@ declare module "alt-shared" {
     LocalVehicle,
     AudioFilter,
     ConnectionInfo,
+    CustomTexture,
+    Font,
     Size,
   }
 

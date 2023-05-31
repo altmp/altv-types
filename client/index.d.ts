@@ -4268,5 +4268,12 @@ declare module "alt-client" {
     public readonly isStreamedIn: boolean;
   }
 
+  /** @alpha */
+  export class Font extends BaseObject {
+    protected constructor();
+
+    public static register(path: string): Font;
+  }
+
   export * from "alt-shared";
 }
