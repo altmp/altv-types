@@ -511,6 +511,18 @@ declare module "alt-client" {
 
   export class BaseObject extends shared.BaseObject {
     /**
+     * Whether this entity was created clientside or serverside. (Clientside = false, Serverside = true).
+     *
+     * @alpha
+     */
+    public readonly isRemote: boolean;
+    /**
+     * The serverside id of this entity.
+     * @alpha
+     * */
+    public readonly remoteId: number;
+
+    /**
      * Gets the base object with the given type and local id
      * @alpha
      */
@@ -557,11 +569,6 @@ declare module "alt-client" {
 
     /** Virtual Entity Group this entity belongs to */
     public readonly group: VirtualEntityGroup;
-
-    /** Unique serverside id */
-    public readonly remoteId: number;
-
-    public readonly isRemote: boolean;
 
     public readonly isStreamedIn: boolean;
 
@@ -613,9 +620,6 @@ declare module "alt-client" {
 
     /** @alpha */
     public readonly count: number;
-
-    /** @alpha */
-    public readonly remoteId: number;
 
     public source: string;
 
@@ -775,12 +779,6 @@ declare module "alt-client" {
 
     /** Internal game id that can be used in native calls */
     public readonly scriptID: number;
-
-    /** @alpha */
-    public readonly remoteId: number;
-
-    /** @alpha */
-    public readonly isRemote: boolean;
 
     /**
      * Network owner of the entity.
@@ -2168,9 +2166,6 @@ declare module "alt-client" {
      */
     public static getByRemoteID(id: number): Blip | null;
 
-    /** @alpha */
-    public readonly remoteId: number;
-
     public readonly scriptID: number;
 
     public routeColor: shared.RGBA;
@@ -2237,11 +2232,6 @@ declare module "alt-client" {
 
     /** @alpha */
     public visible: boolean;
-
-    /**
-     * Returns whether the blip was created on serverside (false for clientside blips)
-     */
-    public readonly isRemote: boolean;
 
     public fade(opacity: number, duration: number): void;
 
@@ -3749,9 +3739,6 @@ declare module "alt-client" {
     /** Whether the object is affected by gravity. */
     public hasGravity: boolean;
 
-    /** Whether this object was created clientside or serverside. (Clientside = false, Serverside = true) */
-    public readonly isRemote: boolean;
-
     /** @alpha */
     public readonly isStreamedIn: boolean;
 
@@ -3904,10 +3891,6 @@ declare module "alt-client" {
 
     public readonly target: Player;
 
-    public readonly isRemote: boolean;
-
-    public readonly remoteId: number;
-
     public readonly streamingDistance: number;
 
     public readonly isStreamedIn: boolean;
@@ -3930,10 +3913,6 @@ declare module "alt-client" {
      * Whether this colshape should only trigger its enter/leave events for players or all entities.
      */
     public playersOnly: boolean;
-
-    public readonly remoteId: number;
-
-    public readonly isRemote: boolean;
 
     /**
      * Retrieves the colshape from the pool.
@@ -4020,10 +3999,6 @@ declare module "alt-client" {
     public readonly isGlobal: boolean;
 
     public readonly target: Player;
-
-    public readonly isRemote: boolean;
-
-    public readonly remoteId: number;
 
     public readonly isStreamedIn: boolean;
 
