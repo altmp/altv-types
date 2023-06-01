@@ -1081,7 +1081,7 @@ declare module "alt-client" {
      * Gets the player with the given remote id
      * @alpha
      */
-    public getByRemoteID(id: number): Player | null;
+    public static getByRemoteID(id: number): Player | null;
 
     /**
      * Set & get the volume for 3D Voice.
@@ -1796,7 +1796,7 @@ declare module "alt-client" {
      * Gets the vehicle with the given remote id
      * @alpha
      */
-    public getByRemoteID(id: number): Vehicle | null;
+    public static getByRemoteID(id: number): Vehicle | null;
   }
 
   export class WebView extends BaseObject {
@@ -2166,7 +2166,7 @@ declare module "alt-client" {
      * Gets the blip with the given remote id
      * @alpha
      */
-    public getByRemoteID(id: number): Blip | null;
+    public static getByRemoteID(id: number): Blip | null;
 
     /** @alpha */
     public readonly remoteId: number;
