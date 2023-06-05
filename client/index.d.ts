@@ -3794,7 +3794,11 @@ declare module "alt-client" {
 
   /** @alpha */
   export class WeaponObject extends Object {
-    constructor(pos: shared.Vector3, rot: shared.Vector3, weaponHash: string | number, modelHash?: string | number, numAmmo?: number, createDefaultComponents?: boolean, scale?: number, useStreaming?: boolean, streamingDistance?: number);
+    constructor(weaponHash: string | number, pos: shared.Vector3, rot: shared.Vector3, modelHash?: string | number, numAmmo?: number, createDefaultComponents?: boolean, scale?: number, useStreaming?: boolean, streamingDistance?: number);
+
+    public static readonly all: ReadonlyArray<WeaponObject>;
+
+    public readonly count: number;
 
     public readonly isWeaponObject: boolean;
 
