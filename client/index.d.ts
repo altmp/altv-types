@@ -3793,6 +3793,23 @@ declare module "alt-client" {
   }
 
   /** @alpha */
+  export class WeaponObject extends Object {
+    constructor(pos: shared.Vector3, rot: shared.Vector3, weaponHash: string | number, modelHash?: string | number, numAmmo?: number, createDefaultComponents?: boolean, scale?: number, useStreaming?: boolean, streamingDistance?: number);
+
+    public readonly isWeaponObject: boolean;
+
+    public tintIndex: number;
+
+    public setComponentTintIndex(componentId: number, tintIndex: number): void;
+
+    public getComponentTintIndex(componentId: number): number;
+
+    public giveComponent(componentType: number): void;
+
+    public removeComponent(componentType: number): void;
+  }
+
+  /** @alpha */
   export class NetworkObject extends Entity {
     public static readonly all: ReadonlyArray<NetworkObject>;
 
