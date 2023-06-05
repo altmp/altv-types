@@ -3837,6 +3837,14 @@ declare module "alt-client" {
      */
     public static getByID(id: number): Ped | null;
 
+    /**
+     * Retrieves the ped from the pool.
+     *
+     * @param scriptID The script id of the entity.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByScriptID(scriptID: number): Ped | null;
+
     public static readonly all: ReadonlyArray<Ped>;
 
     public readonly count: number;
@@ -4231,7 +4239,7 @@ declare module "alt-client" {
   }
 
   /** @alpha */
-  export class LocalPed extends WorldObject {
+  export class LocalPed extends Ped {
     public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
 
     /**
