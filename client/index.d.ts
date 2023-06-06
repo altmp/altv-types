@@ -189,6 +189,9 @@ declare module "alt-client" {
 
     /** @alpha */
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
+
+    /** @alpha */
+    entityHitEntity: (damager: Entity, target: Entity, weaponHash: number) => void;
   }
 
   export interface IDiscordUser {
