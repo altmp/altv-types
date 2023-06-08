@@ -893,6 +893,8 @@ declare module "alt-client" {
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+
+    public frozen: boolean;
   }
 
   export class Player extends Entity {
