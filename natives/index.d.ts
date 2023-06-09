@@ -286,6 +286,8 @@ declare module "natives" {
 
   export function setArenaThemeAndVariationForTakenPhoto(p0: any, p1: number): void;
 
+  export function setOnIslandXForTakenPhoto(p0: any): void;
+
   /**
   * 1 match in 1 script. cellphone_controller.
   * @param unused is -1 in scripts.
@@ -1058,6 +1060,8 @@ declare module "natives" {
   */
   export function setParticleFxNonLoopedAlpha(alpha: number): void;
 
+  export function setParticleFxNonLoopedScale(scale: number): void;
+
   export function setParticleFxNonLoopedEmitterSize(p0: number, p1: number, scale: number): void;
 
   /**
@@ -1174,6 +1178,8 @@ declare module "natives" {
   export function setSkidmarkRangeScale(scale: number): void;
 
   export function setPtfxForceVehicleInteriorFlag(p0: any): void;
+
+  export function registerPostfxBulletImpact(weaponWorldPosX: number, weaponWorldPosY: number, weaponWorldPosZ: number, intensity: number): void;
 
   export function forcePostfxBulletImpactsAfterHud(p0: boolean): void;
 
@@ -1393,6 +1399,11 @@ declare module "natives" {
   export function disableMoonCycleOverride(): void;
 
   export function requestScaleformMovie(scaleformName: string | null): number;
+
+  /**
+  * Another REQUEST_SCALEFORM_MOVIE equivalent.
+  */
+  export function requestScaleformMovieWithIgnoreSuperWidescreen(scaleformName: string | null): number;
 
   export function requestScaleformMovieInstance(scaleformName: string | null): number;
 
@@ -3949,6 +3960,8 @@ declare module "natives" {
 
   export function getCutsceneEndTime(): number;
 
+  export function getCutscenePlayDuration(): number;
+
   export function wasCutsceneSkipped(): boolean;
 
   export function hasCutsceneFinished(): boolean;
@@ -4326,6 +4339,8 @@ declare module "natives" {
   * @returns Tested with vehicles, returns true whenever the vehicle is touching any entity.
   */
   export function hasEntityCollidedWithAnything(entity: Entity | number): boolean;
+
+  export function getLastEntityHitByEntity(entity: Entity | number): number;
 
   export function getLastMaterialHitByEntity(entity: Entity | number): number;
 
@@ -5094,6 +5109,8 @@ declare module "natives" {
   */
   export function getEntityBoneObjectRotation(entity: Entity | number, boneIndex: number): Vector3;
 
+  export function getEntityBoneObjectPostion(entity: Entity | number, boneIndex: number): Vector3;
+
   export function getEntityBoneCount(entity: Entity | number): number;
 
   export function enableEntityBulletCollision(entity: Entity | number): void;
@@ -5253,7 +5270,7 @@ declare module "natives" {
 
   export function getHashNameForProp(entity: Entity | number, componentId: number, propIndex: number, propTextureIndex: number): number;
 
-  export function getItemVariantsCount(componentHash: number): number;
+  export function getShopPedApparelVariantComponentCount(componentHash: number): number;
 
   /**
   * `propHash`: Ped helmet prop hash?
@@ -5283,7 +5300,7 @@ declare module "natives" {
   * Full list of restriction tags by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pedApparelRestrictionTags.json
   * componentId/last parameter seems to be unused.
   */
-  export function isTagRestricted(componentHash: number, restrictionTagHash: number, componentId: number): boolean;
+  export function doesShopPedApparelHaveRestrictionTag(componentHash: number, restrictionTagHash: number, componentId: number): boolean;
 
   export function doesCurrentPedComponentHaveRestrictionTag(ped: Player | number, componentId: number, restrictionTagHash: number): boolean;
 
@@ -6539,6 +6556,8 @@ declare module "natives" {
   */
   export function showGoldTickOnBlip(blip: number, toggle: boolean): void;
 
+  export function showForSaleIconOnBlip(blip: number, toggle: boolean): void;
+
   /**
   * Adds the GTA: Online player heading indicator to a blip.
   */
@@ -6674,6 +6693,8 @@ declare module "natives" {
   */
   export function dontTiltMinimapThisFrame(): void;
 
+  export function dontZoomMinimapWhenRunningThisFrame(): void;
+
   export function dontZoomMinimapWhenSnipingThisFrame(): void;
 
   export function setWidescreenFormat(p0: any): void;
@@ -6764,7 +6785,7 @@ declare module "natives" {
   /**
   * Calling this each frame, stops the player from receiving a weapon via the weapon wheel.
   */
-  export function blockWeaponWheelThisFrame(): void;
+  export function hudSuppressWeaponWheelResultsThisFrame(): void;
 
   /**
   * Returns the weapon hash to the selected/highlighted weapon in the wheel
@@ -7008,7 +7029,7 @@ declare module "natives" {
   /**
   * World to relative screen coords, this world to screen will keep the text on screen. Was named _GET_SCREEN_COORD_FROM_WORLD_COORD, but this conflicts with 0x34E82F05DF2974F5. As that hash actually matches GET_SCREEN_COORD_FROM_WORLD_COORD that one supercedes and this one was renamed to _GET_2D_COORD_FROM_3D_COORD
   */
-  export function getScreenCoordFromWorldCoord2(worldX: number, worldY: number, worldZ: number, screenX?: number, screenY?: number): [number, number, number];
+  export function getHudScreenPositionFromWorldPosition(worldX: number, worldY: number, worldZ: number, screenX?: number, screenY?: number): [number, number, number];
 
   /**
   * Shows a menu for reporting UGC content.
@@ -8206,6 +8227,8 @@ declare module "natives" {
 
   export function haveCreditsReachedEnd(): boolean;
 
+  export function areCreditsRunning(): boolean;
+
   export function terminateAllScriptsWithThisName(scriptName: string | null): void;
 
   export function networkSetScriptIsSafeForNetworkGame(): void;
@@ -8408,6 +8431,8 @@ declare module "natives" {
   export function isProjectileTypeWithinDistance(x: number, y: number, z: number, projectileHash: number, radius: number, ownedByPlayer: boolean): boolean;
 
   export function getCoordsOfProjectileTypeInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, projectileHash: number, projectilePos: Vector3 | null, ownedByPlayer: boolean): [boolean, Vector3];
+
+  export function getCoordsOfProjectileTypeInAngledArea(vecAngledAreaPoint1X: number, vecAngledAreaPoint1Y: number, vecAngledAreaPoint1Z: number, vecAngledAreaPoint2X: number, vecAngledAreaPoint2Y: number, vecAngledAreaPoint2Z: number, distanceOfOppositeFace: number, weaponType: number, positionOut: Vector3 | null, bIsPlayer: boolean): [boolean, Vector3];
 
   export function getCoordsOfProjectileTypeWithinDistance(ped: Player | number, weaponHash: number, distance: number, outCoords: Vector3 | null, p4: boolean): [boolean, Vector3];
 
@@ -9138,6 +9163,8 @@ declare module "natives" {
 
   export function networkEarnFromPickup(amount: number): void;
 
+  export function networkEarnFromCashingOut(amount: number): void;
+
   export function networkEarnFromGangattackPickup(amount: number): void;
 
   export function networkEarnAssassinateTargetKilled(amount: number): void;
@@ -9194,6 +9221,8 @@ declare module "natives" {
   export function networkEarnFromAmbientJob(p0: number, p1: string | null, p2?: any): [void, any];
 
   export function networkEarnFromJobBonus(p0: any, p1?: any, p2?: any): [void, any, any];
+
+  export function networkEarnFromCriminalMastermind(p0: any, p1: any, p2: any): void;
 
   export function networkEarnHeistAward(p0: any, p1: any, p2: any): void;
 
@@ -9349,6 +9378,8 @@ declare module "natives" {
   * This isn't a hash collision.
   */
   export function processCashGift(p0: number | null, p1: number | null, p2: string | null): [string, number, number];
+
+  export function networkSpentMoveSubmarine(p0: any, p1: any, p2: any): void;
 
   export function networkSpentPlayerHealthcare(p0: number, p1: number, p2: boolean, p3: boolean): void;
 
@@ -9740,6 +9771,68 @@ declare module "natives" {
   export function networkEarnBiker(p0: any): void;
 
   export function networkYohanSourceGoods(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpendBuyMfgarage(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpendUpgradeMfgarage(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpendBuySupplies(p0: number, p1: boolean, p2: boolean, p3: number): void;
+
+  export function networkSpendBuyAcidLab(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpendUpgradeAcidLabEquipment(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpendUpgradeAcidLabArmor(p0: number, p1: boolean, p2: boolean, p3: number): void;
+
+  export function networkSpendUpgradeAcidLabScoop(p0: number, p1: boolean, p2: boolean, p3: number): void;
+
+  export function networkSpendUpgradeAcidLabMines(p0: number, p1: boolean, p2: boolean, p3: number): void;
+
+  export function networkSpendRenameAcidLab(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkSpendRenameAcidProduct(p0: any, p1: any, p2: any, p3: any): void;
+
+  export function networkEarnAwardJuggaloMission(p0: any, p1: any): void;
+
+  export function networkEarnAwardAcidLab(p0: any, p1: any): void;
+
+  export function networkEarnAwardDailyStash(p0: any, p1: any): void;
+
+  export function networkEarnAwardDeadDrop(p0: any, p1: any): void;
+
+  export function networkEarnAwardRandomEvent(p0: any, p1: any): void;
+
+  export function networkEarnAwardTaxi(p0: any, p1: any): void;
+
+  export function networkEarnStreetDealer(p0: any, p1: any): void;
+
+  export function networkEarnSellAcid(p0: any, p1: any): void;
+
+  export function networkEarnSetupParticipationAcidLab(p0: any, p1: any): void;
+
+  export function networkEarnSourceParticipationAcidLab(p0: any, p1: any): void;
+
+  export function networkEarnSellParticipationAcidLab(p0: any, p1: any): void;
+
+  export function networkEarnJuggaloStoryMission(p0: any, p1: any): void;
+
+  export function networkEarnJuggaloStoryMissionParticipation(p0: any, p1: any): void;
+
+  /**
+  * JUGGALO_PHONE_MISSION...
+  */
+  export function networkEarnFooliganJob(p0: any, p1: any): void;
+
+  /**
+  * JUGGALO_PHONE_MISSION_PARTICIPATION...
+  */
+  export function networkEarnFooliganJobParticipation(p0: any, p1: any): void;
+
+  export function networkEarnTaxiJob(p0: any, p1: any): void;
+
+  export function networkEarnDailyStashHouseCompleted(p0: any, p1: any): void;
+
+  export function networkEarnDailyStashHouseParticipation(p0: any, p1: any): void;
 
   export function networkGetVcBankBalance(): number;
 
@@ -10559,6 +10652,8 @@ declare module "natives" {
   */
   export function networkGetRandomIntRanged(rangeStart: number, rangeEnd: number): number;
 
+  export function networkGetRandomFloatRanged(rangeStart: number, rangeEnd: number): number;
+
   export function networkPlayerIsCheater(): boolean;
 
   export function networkPlayerGetCheaterReason(): number;
@@ -10694,6 +10789,8 @@ declare module "natives" {
   export function networkGetEntityKillerOfPlayer(player: Player | number, weaponHash?: number): [number, number];
 
   export function networkSetCurrentPublicContentId(missionId: string | null): void;
+
+  export function networkSetCurrentChatOption(newChatOption: number): void;
 
   /**
   * enum eMpSettingSpawn
@@ -10916,6 +11013,8 @@ declare module "natives" {
   export function networkCanSetWaypoint(): boolean;
 
   export function networkIgnoreRemoteWaypoints(): void;
+
+  export function networkIsPlayerOnBlocklist(gamerHandle: any): [boolean, any];
 
   export function networkSetScriptAutomuted(p0: any): boolean;
 
@@ -11210,6 +11309,8 @@ declare module "natives" {
 
   export function isNetworkIdOwnedByParticipant(netId: number): boolean;
 
+  export function setRemotePlayerVisibleInCutscene(player: Player | number, locallyVisible: boolean): void;
+
   export function setLocalPlayerVisibleInCutscene(p0: boolean, p1: boolean): void;
 
   export function setLocalPlayerInvisibleLocally(bIncludePlayersVehicle: boolean): void;
@@ -11407,6 +11508,8 @@ declare module "natives" {
   export function networkHideProjectileInCutscene(): void;
 
   export function setNetworkVehicleRespotTimer(netId: number, time: number, p2: any, p3: any): void;
+
+  export function isNetworkVehicleRunningRespotTimer(networkID: number): boolean;
 
   export function setNetworkVehicleAsGhost(vehicle: Vehicle | number, toggle: boolean): void;
 
@@ -12668,6 +12771,8 @@ declare module "natives" {
 
   export function setTintIndexClosestBuildingOfType(x: number, y: number, z: number, radius: number, modelHash: number, textureVariation: number): boolean;
 
+  export function setPropTintIndex(p0: any, p1: any): void;
+
   export function setPropLightColor(object: number, p1: boolean, r: number, g: number, b: number): boolean;
 
   export function isPropLightOverriden(object: number): boolean;
@@ -12962,7 +13067,7 @@ declare module "natives" {
   /**
   * @param control see IS_CONTROL_ENABLED
   */
-  export function disableInputGroup(control: number): void;
+  export function allowAlternativeScriptControlsLayout(control: number): void;
 
   /**
   * When nodeEnabled is set to false, all nodes in the area get disabled.
@@ -13077,6 +13182,8 @@ declare module "natives" {
   * @param y seems to be always 1.0f in the scripts
   */
   export function getClosestRoad(x: number, y: number, z: number, p3: number, p4: number, p5: Vector3 | null, p6: Vector3 | null, p7: any | null, p8: any | null, p9: number | null, p10: boolean): [boolean, Vector3, Vector3, any, any, number];
+
+  export function loadAllPathNodes(set: boolean): boolean;
 
   export function setAllowStreamPrologueNodes(toggle: boolean): void;
 
@@ -14873,6 +14980,8 @@ declare module "natives" {
   */
   export function setPedWetnessEnabledThisFrame(ped: Player | number): void;
 
+  export function setPedWetness(ped: Player | number, wetLevel: number): void;
+
   export function clearPedEnvDirt(ped: Player | number): void;
 
   /**
@@ -14996,6 +15105,8 @@ declare module "natives" {
   export function setPedShouldProbeForScenarioExitsInOneFrame(p0: any, p1: boolean): void;
 
   export function isPedGesturing(p0: any): boolean;
+
+  export function resetFacialIdleAnim(ped: Player | number): void;
 
   /**
   * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
@@ -16529,6 +16640,11 @@ declare module "natives" {
 
   export function setPlayerHealthRechargeMaxPercent(player: Player | number, limit: number): void;
 
+  /**
+  * Needs to be called every frame.
+  */
+  export function disablePlayerHealthRecharge(player: Player | number): void;
+
   export function setPlayerFallDistanceToTriggerRagdollOverride(player: Player | number, p1: number): void;
 
   /**
@@ -17022,6 +17138,11 @@ declare module "natives" {
   export function bgGetScriptIdFromNameHash(p0: number): number;
 
   /**
+  * See TRIGGER_SCRIPT_EVENT
+  */
+  export function sendTuScriptEvent(eventGroup: number, eventData: any | null, eventDataSize: number, playerBits: number): [void, any];
+
+  /**
   * Asynchronously starts a line-of-sight (raycast) world probe shape test.
   * @param p8 is a bit mask with bits 1, 2 and/or 4, relating to collider types; 4 should usually be used.
   * @returns Use the handle with 0x3D87450E15D98694 or 0x65287525D951F6BE until it returns 0 or 2.
@@ -17457,7 +17578,11 @@ declare module "natives" {
   */
   export function getPackedNgIntStatKey(index: number, spStat: boolean, charStat: boolean, character: number, section: string | null): number;
 
+  export function getPackedStatBoolCode(index: number, characterSlot: number): boolean;
+
   export function getPackedStatIntCode(index: number, characterSlot: number): number;
+
+  export function setPackedStatBoolCode(index: number, value: boolean, characterSlot: number): void;
 
   export function setPackedStatIntCode(index: number, value: number, characterSlot: number): void;
 
@@ -17546,6 +17671,8 @@ declare module "natives" {
   export function playstatsAwardBadSport(id: number): void;
 
   export function playstatsPegasusAsPersonalAircraft(modelHash: number): void;
+
+  export function playstatsShopmenuNav(p0: any, p1: any, p2: any): void;
 
   export function playstatsFmEventChallenges(p0: any): void;
 
@@ -18050,6 +18177,14 @@ declare module "natives" {
   export function playstatsHubExit(p0: any): void;
 
   export function playstatsInventory(p0: any): void;
+
+  export function playstatsAcidMissionEnd(p0: any): void;
+
+  export function playstatsAcidRnd(p0: any): void;
+
+  export function playstatsIdle(p0: any, p1: any, p2: any): void;
+
+  export function playstatsPlayerStyle(p0: any): void;
 
   export function loadAllObjectsNow(): void;
 
@@ -20245,6 +20380,11 @@ declare module "natives" {
 
   export function setBoatIgnoreLandProbes(p0: any, p1: any): void;
 
+  /**
+  * Use the vehicle bounds (instead of viewport) when deciding if a vehicle is sufficiently above the water (waterheight.dat), bypassing wave simulation checks
+  */
+  export function setBoundsAffectWaterProbes(vehicle: Vehicle | number, toggle: boolean): void;
+
   export function setBoatAnchor(vehicle: Vehicle | number, toggle: boolean): void;
 
   export function canAnchorBoatHere(vehicle: Vehicle | number): boolean;
@@ -20361,6 +20501,8 @@ declare module "natives" {
   * Returns true if vehicle is halted by BRING_VEHICLE_TO_HALT
   */
   export function isVehicleBeingBroughtToHalt(vehicle: Vehicle | number): boolean;
+
+  export function lowerForkliftForks(forklift: Vehicle | number): void;
 
   /**
   * 0.0 = Lowest 1.0 = Highest. This is best to be used if you wanna pick-up a car since un-realistically on GTA V forklifts can't pick up much of anything due to vehicle mass. If you put this under a car then set it above 0.0 to a 'lifted-value' it will raise the car with no issue lol
@@ -21621,6 +21763,8 @@ declare module "natives" {
 
   export function setVehicleBrakeLights(vehicle: Vehicle | number, toggle: boolean): void;
 
+  export function setVehicleTailLights(vehicle: Vehicle | number, toggle: boolean): void;
+
   export function setVehicleHandbrake(vehicle: Vehicle | number, toggle: boolean): void;
 
   export function setVehicleBrake(vehicle: Vehicle | number, toggle: boolean): void;
@@ -21640,6 +21784,8 @@ declare module "natives" {
   * Gets the trailer of a vehicle and puts it into the trailer parameter.
   */
   export function getVehicleTrailerVehicle(vehicle: Vehicle | number, trailer?: Vehicle | number): [boolean, number];
+
+  export function getVehicleTrailerParentVehicle(trailer: Vehicle | number): number;
 
   /**
   * @param vehicle must be a plane
@@ -23016,6 +23162,20 @@ declare module "natives" {
   * 5: wheel_rr
   */
   export function setTyreWearRate(vehicle: Vehicle | number, wheelIndex: number, multiplier: number): void;
+
+  /**
+  * Controls how fast the tires wear out.
+  * Default values from Rockstar's Open Wheel Race JSON's:
+  * "owrtss" (Soft): 2.2
+  * "owrtsm" (Medium): 1.7
+  * "owrtsh" (Hard): 1.2
+  * Usable wheels:
+  * 0: wheel_lf
+  * 1: wheel_rf
+  * 2: wheel_lm1
+  * See NativeDB for reference: http://natives.altv.mp/#/0x392183BB9EA57697
+  */
+  export function setTyreWearRateScale(vehicle: Vehicle | number, wheelIndex: number, multiplier: number): void;
 
   /**
   * Controls how much traction the wheel loses.
