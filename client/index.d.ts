@@ -175,7 +175,7 @@ declare module "alt-client" {
     /** @alpha */
     baseObjectRemove: (baseObject: BaseObject) => void;
 
-    weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => boolean | void;
+    weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart, sourceEntity: Entity) => boolean | void;
 
     /**
      * Triggers when an Virtual Entity position is changed
