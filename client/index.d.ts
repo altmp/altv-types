@@ -80,6 +80,8 @@ declare module "alt-client" {
     DisableVehicleEngineShutdownOnLeave = "DISABLE_VEHICLE_ENGINE_SHUTDOWN_ON_LEAVE",
     /** @alpha */
     DisableSPEnterVehicleClipset = "DISABLE_SP_ENTER_VEHICLE_CLIPSET",
+    /** @alpha */
+    ForceRenderSnow = "FORCE_RENDER_SNOW"
   }
 
   export const enum WatermarkPosition {
@@ -2005,6 +2007,9 @@ declare module "alt-client" {
      * @param value Zoom level value.
      */
     public setZoomLevel(value: number): void;
+
+    /** @alpha */
+    public reload(ignoreCache?: boolean): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomWebViewMeta>>(key: K): void;
