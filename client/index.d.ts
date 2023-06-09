@@ -134,13 +134,13 @@ declare module "alt-client" {
      *
      * @remarks The seat indexes start with 1 (driver seat).
      */
-    startEnteringVehicle: (vehicle: Vehicle, seat: number) => void;
+    startEnteringVehicle: (vehicle: Vehicle, seat: number) => boolean | void;
     /**
      * @alpha
      *
      * @remarks The seat indexes start with 1 (driver seat).
      */
-    startLeavingVehicle: (vehicle: Vehicle, seat: number) => void;
+    startLeavingVehicle: (vehicle: Vehicle, seat: number) => boolean | void;
     removeEntity: (object: Entity) => void;
     resourceStart: (errored: boolean) => void;
     resourceStop: () => void;
