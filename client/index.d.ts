@@ -138,7 +138,7 @@ declare module "alt-client" {
     /**
      * @remarks See https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt for task ids.
      */
-    taskChange: (oldTask: number, newTask: number) => void;
+    taskChange: (oldTask: number, newTask: number) => boolean | void;
     spawned: () => void;
     localMetaChange: (key: string, newValue: any, oldValue: any) => void;
 
