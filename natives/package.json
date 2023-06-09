@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-natives",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "This package contains types definitions for alt:V client-side natives.",
   "types": "index.d.ts",
   "files": [
