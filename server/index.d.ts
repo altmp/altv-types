@@ -1349,6 +1349,12 @@ declare module "alt-server" {
     /** @alpha */
     public clearTasks(): void;
 
+    /** @alpha */
+    public ammo(ammoHash: number | string): number;
+
+    /** @alpha */
+    public weaponAmmo(weaponHash: number | string): number;
+
     // local meta
 
     /**
