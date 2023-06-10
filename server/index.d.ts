@@ -1350,10 +1350,10 @@ declare module "alt-server" {
     public clearTasks(): void;
 
     /** @alpha */
-    public ammo(ammoHash: number | string): number;
+    public getAmmo(ammoHash: number | string): number;
 
     /** @alpha */
-    public weaponAmmo(weaponHash: number | string): number;
+    public getWeaponAmmo(weaponHash: number | string): number;
 
     // local meta
 
