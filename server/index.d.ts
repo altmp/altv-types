@@ -438,6 +438,20 @@ declare module "alt-server" {
     readonly bones: ReadonlyArray<IBoneInfo>;
   }
 
+  /** @alpha */
+  export interface IWeaponModel {
+    readonly hash: number;
+    readonly name: string;
+    readonly modelHash: number;
+    readonly ammoTypeHash: number;
+    readonly ammoType: string;
+    readonly ammoModelHash: number;
+    readonly defaultMaxAmmoMp: number;
+    readonly skillAbove50MaxAmmoMp: number;
+    readonly maxSkillMaxAmmoMp: number;
+    readonly bonusMaxAmmoMp: number;
+  }
+
   /**
    * Extend it by interface merging for use in baseobject meta {@link "alt-server".BaseObject getMeta method}, {@link "alt-server".BaseObject setMeta method}, etc.
    *
@@ -3034,6 +3048,9 @@ declare module "alt-server" {
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
   export function getPedModelInfoByHash(pedModelHash: number): IPedModel;
+
+  /** @alpha */
+  export function getWeaponModelInfoByHash(weaponModelHash: number): IWeaponModel;
 
   export function getServerConfig(): IServerConfig;
 
