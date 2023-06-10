@@ -81,7 +81,13 @@ declare module "alt-client" {
     /** @alpha */
     DisableSPEnterVehicleClipset = "DISABLE_SP_ENTER_VEHICLE_CLIPSET",
     /** @alpha */
-    ForceRenderSnow = "FORCE_RENDER_SNOW"
+    ForceRenderSnow = "FORCE_RENDER_SNOW",
+    /** @alpha */
+    ForceHideNightProps  = "FORCE_HIDE_NIGHT_PROPS",
+    /** @alpha */
+    ForceShowNightProps  = "FORCE_SHOW_NIGHT_PROPS",
+    /** @alpha */
+    DisableEmissiveLightsRendering = "DISABLE_EMISSIVE_LIGHTS_RENDERING",
   }
 
   export const enum WatermarkPosition {
