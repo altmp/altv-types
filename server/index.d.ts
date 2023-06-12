@@ -1353,7 +1353,13 @@ declare module "alt-server" {
     public getAmmo(ammoHash: number | string): number;
 
     /** @alpha */
+    public setAmmo(ammoHash: number | string, ammo: number): void;
+
+    /** @alpha */
     public getWeaponAmmo(weaponHash: number | string): number;
+
+    /** @alpha */
+    public setWeaponAmmo(weaponHash: number | string, ammo: number): void;
 
     // local meta
 
