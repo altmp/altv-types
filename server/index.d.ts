@@ -442,9 +442,11 @@ declare module "alt-server" {
   export interface IWeaponModel {
     readonly hash: number;
     readonly name: string;
+    readonly modelName: string;
     readonly modelHash: number;
     readonly ammoTypeHash: number;
     readonly ammoType: string;
+    readonly ammoModelName: string;
     readonly ammoModelHash: number;
     readonly defaultMaxAmmoMp: number;
     readonly skillAbove50MaxAmmoMp: number;
