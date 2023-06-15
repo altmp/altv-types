@@ -928,6 +928,9 @@ declare module "alt-server" {
     public frozen: boolean;
 
     public collision: boolean;
+
+    /** @alpha */
+    public readonly getTimestamp: number;
   }
 
   export class Player extends Entity {
