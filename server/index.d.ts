@@ -426,6 +426,8 @@ declare module "alt-server" {
     hasExtra(extraId: number): boolean;
     hasDefaultExtra(extraId: number): boolean;
     readonly bones: ReadonlyArray<IBoneInfo>;
+    /** @alpha */
+    readonly canAttachCars: boolean;
   }
 
   export interface IPedModel {
