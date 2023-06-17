@@ -930,7 +930,7 @@ declare module "alt-server" {
     public collision: boolean;
 
     /** @alpha */
-    public readonly getTimestamp: number;
+    public readonly timestamp: number;
   }
 
   export class Player extends Entity {
