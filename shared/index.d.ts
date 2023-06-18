@@ -1566,6 +1566,12 @@ declare module "alt-shared" {
     readonly type: string;
   }
 
+  export interface IWeapon {
+    readonly hash: number;
+    readonly tintIndex: number;
+    readonly components: ReadonlyArray<number>;
+  }
+
   export const enum VehicleLockState {
     None,
     Unlocked,

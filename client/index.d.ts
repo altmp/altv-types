@@ -1209,7 +1209,7 @@ declare module "alt-client" {
      */
     public readonly currentAmmo: number;
 
-    public readonly weapons: ReadonlyArray<number>;
+    public readonly weapons: ReadonlyArray<shared.IWeapon>;
 
     public readonly currentWeaponData: WeaponData | null;
 

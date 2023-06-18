@@ -229,12 +229,6 @@ declare module "alt-server" {
     Green,
   }
 
-  export interface IWeapon {
-    readonly hash: number;
-    readonly tintIndex: number;
-    readonly components: ReadonlyArray<number>;
-  }
-
   export interface IConnectionInfo {
     readonly name: string;
     readonly socialID: string;
@@ -955,7 +949,7 @@ declare module "alt-server" {
     public readonly count: number;
     public armour: number;
     public currentWeapon: number;
-    public readonly weapons: ReadonlyArray<IWeapon>;
+    public readonly weapons: ReadonlyArray<shared.IWeapon>;
     public readonly currentWeaponComponents: ReadonlyArray<number>;
     public readonly currentWeaponTintIndex: number;
     public readonly entityAimOffset: shared.Vector3;
