@@ -1064,6 +1064,9 @@ declare module "alt-server" {
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
+    /** @alpha */
+    public hasWeaponComponent(weaponModel: string | number, component: string | number): boolean;
+
     /**
      * Removes the visible blood on the player body.
      */
@@ -1096,6 +1099,9 @@ declare module "alt-server" {
      */
     public giveWeapon(weaponModel: string | number, ammo: number, equipNow: boolean): void;
 
+    /** @alpha */
+    public hasWeapon(weaponModel: string | number): boolean;
+
     /**
      * Forcefully disconnects the player with a reason message.
      *
@@ -1106,7 +1112,7 @@ declare module "alt-server" {
     /**
      * Removes every weapon from the player.
      */
-    public removeAllWeapons(): void;
+    public removeAllWeapons(removeAllAmmo?: boolean): void;
 
     /**
      * Removes the specified weapon from the player.
