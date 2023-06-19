@@ -3569,6 +3569,17 @@ declare module "alt-client" {
      */
     export function getClosestWorldObject(options?: { pos?: shared.IVector3; range?: number }): Object | null;
 
+    /**
+     * Finds the closest virtualEntity (if any) from {@link VirtualEntity.streamedIn alt.VirtualEntity.streamedIn}.
+     *
+     * `pos` - From which position to look for the nearest virtualEntity. Defaults to local player position.
+     *
+     * `range` - In which range to search for the nearest virtualEntity. Defaults to `Infinity`.
+     * 
+     * @alpha
+     */
+    export function getClosestVirtualEntity(options?: { pos?: shared.IVector3; range?: number }): VirtualEntity | null;
+
     export class Keybind {
       /**
        * Binds a callback to a specific key or multiple keys.
