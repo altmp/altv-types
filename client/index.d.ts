@@ -1842,7 +1842,10 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<WebView>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
+
+    /** @alpha */
+    public static readonly gpuAccelerationActive: boolean;
 
     /**
      * Is the webview a overlay.
