@@ -83,9 +83,9 @@ declare module "alt-client" {
     /** @alpha */
     ForceRenderSnow = "FORCE_RENDER_SNOW",
     /** @alpha */
-    ForceHideNightProps  = "FORCE_HIDE_NIGHT_PROPS",
+    ForceHideNightProps = "FORCE_HIDE_NIGHT_PROPS",
     /** @alpha */
-    ForceShowNightProps  = "FORCE_SHOW_NIGHT_PROPS",
+    ForceShowNightProps = "FORCE_SHOW_NIGHT_PROPS",
     /** @alpha */
     DisableEmissiveLightsRendering = "DISABLE_EMISSIVE_LIGHTS_RENDERING",
   }
@@ -3578,7 +3578,7 @@ declare module "alt-client" {
      * `pos` - From which position to look for the nearest virtualEntity. Defaults to local player position.
      *
      * `range` - In which range to search for the nearest virtualEntity. Defaults to `Infinity`.
-     * 
+     *
      * @alpha
      */
     export function getClosestVirtualEntity(options?: { pos?: shared.IVector3; range?: number }): VirtualEntity | null;
