@@ -946,7 +946,7 @@ declare module "alt-server" {
     /** @alpha */
     public readonly streamedEntities: ReadonlyArray<{ entity: Entity; distance: number }>;
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
     public armour: number;
     public currentWeapon: number;
     public readonly weapons: ReadonlyArray<shared.IWeapon>;
@@ -1492,7 +1492,7 @@ declare module "alt-server" {
     public static readonly all: ReadonlyArray<Vehicle>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     /**
      * Get the entity model hash.
@@ -2431,7 +2431,7 @@ declare module "alt-server" {
     public static readonly all: ReadonlyArray<Blip>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     /**
      * Retrieves the blip from the pool.
@@ -2627,7 +2627,7 @@ declare module "alt-server" {
     public static readonly all: ReadonlyArray<Checkpoint>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     /** @alpha */
     public visible: boolean;
@@ -3097,7 +3097,7 @@ declare module "alt-server" {
     public static getByID(id: number): Ped | null;
 
     public static readonly all: ReadonlyArray<Ped>;
-    public readonly count: number;
+    public static readonly count: number;
     public currentWeapon: number;
     public health: number;
     public maxArmour: number;
@@ -3110,7 +3110,7 @@ declare module "alt-server" {
 
     public static readonly all: ReadonlyArray<NetworkObject>;
 
-    public readonly count: number;
+    public static readonly count: number;
 
     public activatePhysics(): void;
 
