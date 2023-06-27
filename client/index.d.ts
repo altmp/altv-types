@@ -642,7 +642,7 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<Audio>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     public source: string;
 
@@ -737,7 +737,7 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<Checkpoint>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     /** @alpha */
     public readonly isStreamedIn: boolean;
@@ -935,7 +935,7 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<Player>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     /**
      * Array with all streamed in players.
@@ -1264,7 +1264,7 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<Vehicle>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     /**
      * Array with all streamed in vehicles.
@@ -2169,7 +2169,7 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<Blip>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     /**
      * Retrieves the blip from the pool.
@@ -3760,7 +3760,7 @@ declare module "alt-client" {
     public static readonly allWorld: ReadonlyArray<Object>;
 
     /** @alpha */
-    public readonly count: number;
+    public static readonly count: number;
 
     public pos: shared.Vector3;
 
@@ -3840,7 +3840,7 @@ declare module "alt-client" {
 
     public static readonly all: ReadonlyArray<WeaponObject>;
 
-    public readonly count: number;
+    public static readonly count: number;
 
     public readonly isWeaponObject: boolean;
 
@@ -3859,7 +3859,7 @@ declare module "alt-client" {
   export class NetworkObject extends Entity {
     public static readonly all: ReadonlyArray<NetworkObject>;
 
-    public readonly count: number;
+    public static readonly count: number;
 
     public alpha: number;
 
@@ -3889,7 +3889,7 @@ declare module "alt-client" {
 
     public static readonly all: ReadonlyArray<Ped>;
 
-    public readonly count: number;
+    public static readonly count: number;
 
     /**
      * Currently equipped weapon.
