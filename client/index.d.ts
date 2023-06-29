@@ -212,6 +212,9 @@ declare module "alt-client" {
 
     /** @alpha */
     entityHitEntity: (damager: Entity, target: Entity, weaponHash: number) => void;
+
+    /** @alpha */
+    playerBulletHit: (weaponHash: number, victim: Entity, position: shared.Vector3) => void;
   }
 
   export interface IDiscordUser {
