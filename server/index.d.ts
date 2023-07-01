@@ -2513,7 +2513,7 @@ declare module "alt-server" {
     public isGlobal: boolean;
 
     /** @alpha */
-    public static readonly targets: ReadonlyArray<Player>;
+    public readonly targets: ReadonlyArray<Player>;
 
     /** @alpha */
     public addTarget(player: Player): void;
