@@ -3892,6 +3892,8 @@ declare module "alt-client" {
 
     public static readonly all: ReadonlyArray<Ped>;
 
+    public static readonly streamedIn: ReadonlyArray<Ped>;
+
     public static readonly count: number;
 
     /**
