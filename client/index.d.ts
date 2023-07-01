@@ -3935,6 +3935,11 @@ declare module "alt-client" {
     public addPitchshiftEffect(fPitchShift: number, fSemitones: number, lFFTsize: number, lOsamp: number, priority: number): number;
     public addFreeverbEffect(fDryMix: number, fWetMix: number, fRoomSize: number, fDamp: number, fWidth: number, lMode: number, priority: number): number;
     public removeEffect(hfxHandler: number): boolean;
+
+    public get audioCategory(): number;
+    public set audioCategory(audioCategory: number | string);
+
+    public readonly hash: number;
   }
 
   /** @alpha */
