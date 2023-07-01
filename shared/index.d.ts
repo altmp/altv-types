@@ -675,6 +675,21 @@ declare module "alt-shared" {
     Purple = 83,
   }
 
+  export const enum BlipType {
+    Vehicle,
+    Ped,
+    Object,
+    Destination,
+    Cont,
+    PickupUnk,
+    Radius,
+    Pickup,
+    Cop,
+    Area,
+    Gallery,
+    PickupObject,
+  }
+
   export const enum MarkerType {
     MarkerCone = 0,
     MarkerCylinder = 1,

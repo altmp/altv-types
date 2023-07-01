@@ -2512,6 +2512,30 @@ declare module "alt-server" {
 
     public fade(opacity: number, duration: number): void;
 
+    /** @alpha */
+    public visible: boolean;
+
+    /** @alpha */
+    public blipType: shared.BlipType;
+
+    /** @alpha */
+    public isFriendly: boolean;
+
+    /** @alpha */
+    public readonly isAttached: boolean;
+
+    /** @alpha */
+    public isGlobal: boolean;
+
+    /** @alpha */
+    public static readonly targets: Array<Player>;
+
+    /** @alpha */
+    public addTarget(player: Player): void;
+
+    /** @alpha */
+    public removeTarget(player: Player): void;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K): void;
 
@@ -2530,19 +2554,19 @@ declare module "alt-server" {
   }
 
   export class AreaBlip extends Blip {
-    constructor(x: number, y: number, z: number, width: number, height: number);
+    constructor(x: number, y: number, z: number, width: number, height: number, global: boolean);
   }
 
   export class RadiusBlip extends Blip {
-    constructor(x: number, y: number, z: number, radius: number);
+    constructor(x: number, y: number, z: number, radius: number, global: boolean);
   }
 
   export class PointBlip extends Blip {
-    constructor(x: number, y: number, z: number);
+    constructor(x: number, y: number, z: number, global: boolean);
 
-    constructor(pos: shared.IVector3);
+    constructor(pos: shared.IVector3, global: boolean);
 
-    constructor(entity: Entity);
+    constructor(entity: Entity, global: boolean);
   }
 
   export class Colshape extends WorldObject {

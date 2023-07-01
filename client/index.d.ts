@@ -2267,6 +2267,21 @@ declare module "alt-client" {
     /** @alpha */
     public visible: boolean;
 
+    /** @alpha */
+    public blipType: shared.BlipType;
+
+    /** @alpha */
+    public isFriendly: boolean;
+
+    /** @alpha */
+    public readonly isStreamedIn: boolean;
+
+    /** @alpha */
+    public readonly isAttached: boolean;
+
+    /** @alpha */
+    public readonly isGlobal: boolean;
+
     public fade(opacity: number, duration: number): void;
 
     public deleteMeta(key: string): void;
