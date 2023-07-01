@@ -676,7 +676,7 @@ declare module "alt-shared" {
   }
 
   export const enum BlipType {
-    Vehicle,
+    Vehicle = 1,
     Ped,
     Object,
     Destination,

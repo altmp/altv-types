@@ -54,21 +54,6 @@ declare module "alt-server" {
     Unknown = -1,
   }
 
-  export const enum BlipType {
-    Vehicle = 1,
-    Ped,
-    Object,
-    Destination,
-    Cont,
-    PickupUnk,
-    Radius,
-    Pickup,
-    Cop,
-    Area,
-    Gallery,
-    PickupObject,
-  }
-
   export const enum RadioStation {
     LosSantosRockRadio,
     NonStopPopFm,
