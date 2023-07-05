@@ -435,6 +435,25 @@ declare module "alt-server" {
     readonly bonusMaxAmmoMp: number;
   }
 
+  /** @alpha */
+  export interface IAmmoFlags {
+    readonly infiniteAmmo: boolean;
+    readonly addSmokeOnExplosion: boolean;
+    readonly fuse: boolean;
+    readonly fixedAfterExplosion: boolean;
+  }
+
+  /** @alpha */
+  export const enum AmmoSpecialType {
+    None,
+    ArmorPiercing,
+    Explosive,
+    FullMetalJacket,
+    HollowPoint,
+    Incendiary,
+    Tracer,
+  }
+
   /**
    * Extend it by interface merging for use in baseobject meta {@link "alt-server".BaseObject getMeta method}, {@link "alt-server".BaseObject setMeta method}, etc.
    *
@@ -1352,6 +1371,36 @@ declare module "alt-server" {
 
     /** @alpha */
     public setWeaponAmmo(weaponHash: number | string, ammo: number): void;
+
+    /** @alpha */
+    public getAmmoSpecialType(ammoHash: number | string): AmmoSpecialType;
+
+    /** @alpha */
+    public setAmmoSpecialType(ammoHash: number | string, ammoSpecialType: AmmoSpecialType): void;
+
+    /** @alpha */
+    public getAmmoFlags(ammoHash: number | string): IAmmoFlags;
+
+    /** @alpha */
+    public setAmmoFlags(ammoHash: number | string, infiniteAmmo: boolean, addSmokeOnExplosion: boolean, fuse: boolean, fixedAfterExplosion: boolean): void;
+
+    /** @alpha */
+    public getAmmoMax(ammoHash: number | string): number;
+
+    /** @alpha */
+    public setAmmoMax(ammoHash: number | string, ammoMax: number): void;
+
+    /** @alpha */
+    public getAmmoMax50(ammoHash: number | string): number;
+
+    /** @alpha */
+    public setAmmoMax50(ammoHash: number | string, ammoMax: number): void;
+
+    /** @alpha */
+    public getAmmoMax100(ammoHash: number | string): number;
+
+    /** @alpha */
+    public setAmmoMax100(ammoHash: number | string, ammoMax: number): void;
 
     // local meta
 
@@ -3079,6 +3128,9 @@ declare module "alt-server" {
 
   /** @alpha */
   export function getWeaponModelInfoByHash(weaponModelHash: number): IWeaponModel;
+
+  /** @alpha */
+  export function getAmmoHashForWeaponHash(weaponModelHash: number): number;
 
   export function getServerConfig(): IServerConfig;
 
