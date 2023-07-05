@@ -629,22 +629,18 @@ declare module "alt-client" {
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
-  /** @beta */
+  /** @alpha */
   export class Audio extends BaseObject {
     /**
      * Creates a new Audio instance.
      *
      * @param source The source url of the audio.
      * @param volume The volume of the audio. Ranges from 0 to 1.
-     * @param category The category of the audio. Defaults to 'radio'.
-     * @param play2D If the sound will be played in 2D, if false it will be 3D.
      */
-    public constructor(source: string, volume: number, category?: shared.AudioCategory | `${shared.AudioCategory}`, play2D?: boolean);
+    public constructor(source: string, volume: number);
 
-    /** @alpha */
     public static readonly all: ReadonlyArray<Audio>;
 
-    /** @alpha */
     public static readonly count: number;
 
     public source: string;
@@ -652,10 +648,6 @@ declare module "alt-client" {
     public looped: boolean;
 
     public volume: number;
-
-    public category: shared.AudioCategory | `${shared.AudioCategory}`;
-
-    public readonly frontendPlay: boolean;
 
     public readonly currentTime: number;
 
@@ -666,12 +658,12 @@ declare module "alt-client" {
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
-    public addOutput(entity: Entity | number): void;
+    public addOutput(entity: Entity): void;
 
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
-    public removeOutput(entity: Entity | number): void;
+    public removeOutput(entity: Entity): void;
 
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
@@ -704,6 +696,40 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomAudioMeta, K, V>): void;
   }
 
+  /** @alpha */
+  export class AudioOutput extends BaseObject {
+    protected constructor();
+
+    public static readonly all: ReadonlyArray<AudioOutput>;
+
+    public static readonly count: number;
+
+    public muted: boolean;
+
+    public volume: number;
+
+    public category: number;
+  }
+
+  /** @alpha */
+  export class AudioOutputFrontend extends BaseObject {
+    public constructor(categoryHash?: number);
+  }
+
+  /** @alpha */
+  export class AudioOutputWorld extends BaseObject {
+    public constructor(pos: shared.IVector3, categoryHash?: number);
+
+    public pos: shared.Vector3;
+  }
+
+  /** @alpha */
+  export class AudioOutputAttached extends BaseObject {
+    public constructor(entity: WorldObject, categoryHash?: number);
+
+    public entity: WorldObject;
+  }
+
   export class WorldObject extends BaseObject {
     /**
      * Object position
@@ -726,8 +752,10 @@ declare module "alt-client" {
     public radius: number;
     public height: number;
     public color: shared.RGBA;
+    /** @alpha */
+    public iconColor: shared.RGBA;
 
-    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA, streamingDistance: number);
+    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA, iconColor: shared.RGBA, streamingDistance: number);
 
     /**
      * Streaming range for the checkpoint
