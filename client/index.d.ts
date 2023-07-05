@@ -712,19 +712,19 @@ declare module "alt-client" {
   }
 
   /** @alpha */
-  export class AudioOutputFrontend extends BaseObject {
+  export class AudioOutputFrontend extends AudioOutput {
     public constructor(categoryHash?: number);
   }
 
   /** @alpha */
-  export class AudioOutputWorld extends BaseObject {
+  export class AudioOutputWorld extends AudioOutput {
     public constructor(pos: shared.IVector3, categoryHash?: number);
 
     public pos: shared.Vector3;
   }
 
   /** @alpha */
-  export class AudioOutputAttached extends BaseObject {
+  export class AudioOutputAttached extends AudioOutput {
     public constructor(entity: WorldObject, categoryHash?: number);
 
     public entity: WorldObject;
