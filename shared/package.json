@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-shared",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "This package contains types definitions for alt:V JS module shared types.",
   "types": "index.d.ts",
   "files": [
