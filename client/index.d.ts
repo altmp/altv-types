@@ -709,6 +709,8 @@ declare module "alt-client" {
     public volume: number;
 
     public category: number;
+
+    public filter: AudioFilter | null;
   }
 
   /** @alpha */
