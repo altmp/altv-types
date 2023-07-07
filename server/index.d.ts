@@ -511,6 +511,41 @@ declare module "alt-server" {
   export interface ICustomVehicleMeta extends ICustomEntityMeta {}
 
   /**
+   * Extend `alt.emit` auto-completion by merging interfaces for use with `alt.emit`.
+   * 
+   * @example
+    * ```ts
+    * declare module 'alt-server' {
+    *    interface ICustomEmitEvent {
+    *        myEvent: (arg1: string, arg2: { key: string, value: number })
+    *    }
+    * }
+    * ```
+    *
+    * @export
+    * @interface ICustomEmitEvent
+    */
+  export interface ICustomEmitEvent {}
+ 
+  /**
+    * Extend `alt.emitClient` & `player.emit` auto-completion by merging interfaces
+    * 
+    * @example
+    * ```ts
+    * declare module 'alt-server' {
+    *    interface ICustomEmitClientEvent {
+    *        myEvent: (arg1: string, arg2: { key: string, value: number })
+    *    }
+    * }
+    * ```
+    *
+    * @export
+    * @interface ICustomEmitClientEvent
+    */
+  export interface ICustomEmitClientEvent {}
+
+
+  /**
    * Documentation: https://docs.altv.mp/articles/configs/server.html
    */
   export interface IServerConfig {
@@ -1050,15 +1085,18 @@ declare module "alt-server" {
      * @param eventName Name of the event.
      * @param args Rest parameters for emit to send.
      */
-    public emit(eventName: string, ...args: any[]): void;
 
+    public emit<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+    public emit<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+      
     /**
      * Emits specified event to client, but faster as {@link Player.emit}.
      *
      * @param eventName Name of the event.
      * @param args Rest parameters for emit to send.
      */
-    public emitRaw(eventName: string, ...args: any[]): void;
+    public emitRaw<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+    public emitRaw<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
@@ -2854,7 +2892,8 @@ declare module "alt-server" {
    * @param args Rest parameters for emit to send.
    */
   // Do not allow to emit alt:V event name
-  export function emit<K extends string>(eventName: Exclude<K, keyof IServerEvent>, ...args: any[]): void;
+  export function emit<K extends keyof ICustomEmitEvent>(eventName: K, ...args: Parameters<ICustomEmitEvent[K]>): void;
+  export function emit<K extends string>(eventName: Exclude<K, keyof IServerEvent> & Exclude<K, keyof ICustomEmitEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event across resources.
@@ -2865,48 +2904,33 @@ declare module "alt-server" {
    * @remarks Works only from JS resource to JS resource
    */
   // Do not allow to emit alt:V event name
-  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IServerEvent>, ...args: any[]): void;
+  export function emitRaw<K extends keyof ICustomEmitEvent>(eventName: K, ...args: Parameters<ICustomEmitEvent[K]>): void;
+  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IServerEvent> & Exclude<K, keyof ICustomEmitEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to specific client.
    *
-   * @param player Event is sent to specific player.
+   * @param player Event is sent to specific player or players.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitClient(player: Player, eventName: string, ...args: any[]): void;
-
-  /**
-   * Emits specified event to specific clients.
-   *
-   * @param player Event is sent to every player in array.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emitClient(player: Player[], eventName: string, ...args: any[]): void;
-
-  /**
-   * Emits specified event to specific clients.
-   *
-   * @param player Event is sent to every player in array.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   */
-  export function emitClientRaw(player: Player[], eventName: string, ...args: any[]): void;
+  export function emitClient<K extends keyof ICustomEmitClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+  export function emitClient<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to specific client.
    *
-   * @param player Event is sent to specific player.
+   * @param player Event is sent to specific player or players.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitClientRaw(player: Player, eventName: string, ...args: any[]): void;
+  export function emitClientRaw<K extends keyof ICustomEmitClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+  export function emitClientRaw<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to specific client.
    *
-   * @param player Event is sent to specific player.
+   * @param player Event is sent to specific player or players.
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    *
@@ -2914,20 +2938,8 @@ declare module "alt-server" {
    *
    * @alpha
    */
-  export function emitClientUnreliable(player: Player, eventName: string, ...args: any[]): void;
-
-  /**
-   * Emits specified event to specific clients.
-   *
-   * @param player Event is sent to every player in array.
-   * @param eventName Name of the event.
-   * @param args Rest parameters for emit to send.
-   *
-   * @remarks Unreliable event should be used when you don't need to be sure that event will be received by client.
-   *
-   * @alpha
-   */
-  export function emitClientUnreliable(player: Player[], eventName: string, ...args: any[]): void;
+  export function emitClientUnreliable<K extends keyof ICustomEmitClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+  export function emitClientUnreliable<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
@@ -2935,7 +2947,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitAllClients(eventName: string, ...args: any[]): void;
+  export function emitAllClients<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+  export function emitAllClients<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
@@ -2943,7 +2956,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitAllClientsRaw(eventName: string, ...args: any[]): void;
+  export function emitAllClientsRaw<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+  export function emitAllClientsRaw<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
@@ -2955,7 +2969,8 @@ declare module "alt-server" {
    *
    * @alpha
    */
-  export function emitAllClientsUnreliable(eventName: string, ...args: any[]): void;
+  export function emitAllClientsUnreliable<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
+  export function emitAllClientsUnreliable<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
 
   /**
    * Change the server password at runtime.

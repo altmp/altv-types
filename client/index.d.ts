@@ -515,6 +515,40 @@ declare module "alt-client" {
    */
   export interface ICustomVehicleMeta extends ICustomEntityMeta {}
 
+  /**
+   * Extend `alt.emit` auto-completion by merging interfaces for use with `alt.emit`.
+   * 
+   * @example
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomEmitEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomEmitEvent
+   */
+  export interface ICustomEmitEvent {}
+
+  /**
+   * Extend `alt.emitServer` auto-completion by merging interfaces for use with `alt.emitServer`.
+   * 
+   * @example
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomEmitServerEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomEmitServerEvent
+   */
+  export interface ICustomEmitServerEvent {}
+
   export interface IMarkerOptions {
     type?: number;
     dir?: shared.IVector3;
@@ -2598,7 +2632,8 @@ declare module "alt-client" {
    * @param args Rest parameters for emit to send.
    */
   // Do not allow to emit alt:V event name
-  export function emit<K extends string>(eventName: Exclude<K, keyof IClientEvent>, ...args: any[]): void;
+  export function emit<K extends keyof ICustomEmitEvent>(eventName: K, ...args: Parameters<ICustomEmitEvent[K]>): void;
+  export function emit<K extends string>(eventName: Exclude<K, keyof IClientEvent> & Exclude<K, keyof ICustomEmitEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event across resources.
@@ -2609,7 +2644,8 @@ declare module "alt-client" {
    * @remarks Works only from JS resource to JS resource
    */
   // Do not allow to emit alt:V event name
-  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IClientEvent>, ...args: any[]): void;
+  export function emitRaw<K extends keyof ICustomEmitEvent>(eventName: K, ...args: Parameters<ICustomEmitEvent[K]>): void;
+  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IClientEvent> & Exclude<K, keyof ICustomEmitEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to server.
@@ -2617,7 +2653,8 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitServer(eventName: string, ...args: any[]): void;
+  export function emitServer<K extends keyof ICustomEmitServerEvent>(eventName: K, ...args: Parameters<ICustomEmitServerEvent[K]>): void;
+  export function emitServer<K extends string>(eventName: Exclude<K, keyof ICustomEmitServerEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to server.
@@ -2627,7 +2664,8 @@ declare module "alt-client" {
    *
    * @remarks Works only from JS (Client) to JS (Server)
    */
-  export function emitServerRaw(eventName: string, ...args: any[]): void;
+  export function emitServerRaw<K extends keyof ICustomEmitServerEvent>(eventName: K, ...args: Parameters<ICustomEmitServerEvent[K]>): void;
+  export function emitServerRaw<K extends string>(eventName: Exclude<K, keyof ICustomEmitServerEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to server.
@@ -2639,7 +2677,8 @@ declare module "alt-client" {
    *
    * @alpha
    */
-  export function emitServerUnreliable(eventName: string, ...args: any[]): void;
+  export function emitServerUnreliable<K extends keyof ICustomEmitServerEvent>(eventName: K, ...args: Parameters<ICustomEmitServerEvent[K]>): void;
+  export function emitServerUnreliable<K extends string>(eventName: Exclude<K, keyof ICustomEmitServerEvent>, ...args: any[]): void;
 
   /**
    * Returns whether the game controls are currently enabled.
