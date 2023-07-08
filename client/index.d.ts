@@ -517,7 +517,7 @@ declare module "alt-client" {
 
   /**
    * Extend `alt.emit` auto-completion by merging interfaces for use with `alt.emit`.
-   * 
+   *
    * @example
    * ```ts
    * declare module 'alt-client' {
@@ -2868,8 +2868,8 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function onServer<K extends keyof shared.ICustomServerClientEvent>(eventName: K, listener: (player: Player, ...args: Parameters<shared.ICustomServerClientEvent[K]>) => void): void;
-  export function onServer<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, listener: (player: Player, ...args: any[]) => void): void;
+  export function onServer<K extends keyof shared.ICustomServerClientEvent>(eventName: K, listener: (...args: Parameters<shared.ICustomServerClientEvent[K]>) => void): void;
+  export function onServer<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, listener: (...args: any[]) => void): void;
   export function onServer(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
@@ -2878,8 +2878,8 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function onceServer<K extends keyof shared.ICustomServerClientEvent>(eventName: K, listener: (player: Player, ...args: Parameters<shared.ICustomServerClientEvent[K]>) => void): void;
-  export function onceServer<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, listener: (player: Player, ...args: any[]) => void): void;
+  export function onceServer<K extends keyof shared.ICustomServerClientEvent>(eventName: K, listener: (...args: Parameters<shared.ICustomServerClientEvent[K]>) => void): void;
+  export function onceServer<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to all server events with the specified listener, which only triggers once.
