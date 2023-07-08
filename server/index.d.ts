@@ -512,38 +512,20 @@ declare module "alt-server" {
 
   /**
    * Extend `alt.emit` auto-completion by merging interfaces for use with `alt.emit`.
-   * 
+   *
    * @example
-    * ```ts
-    * declare module 'alt-server' {
-    *    interface ICustomEmitEvent {
-    *        myEvent: (arg1: string, arg2: { key: string, value: number })
-    *    }
-    * }
-    * ```
-    *
-    * @export
-    * @interface ICustomEmitEvent
-    */
+   * ```ts
+   * declare module 'alt-server' {
+   *    interface ICustomEmitEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomEmitEvent
+   */
   export interface ICustomEmitEvent {}
- 
-  /**
-    * Extend `alt.emitClient` & `player.emit` auto-completion by merging interfaces
-    * 
-    * @example
-    * ```ts
-    * declare module 'alt-server' {
-    *    interface ICustomEmitClientEvent {
-    *        myEvent: (arg1: string, arg2: { key: string, value: number })
-    *    }
-    * }
-    * ```
-    *
-    * @export
-    * @interface ICustomEmitClientEvent
-    */
-  export interface ICustomEmitClientEvent {}
-
 
   /**
    * Documentation: https://docs.altv.mp/articles/configs/server.html
@@ -1086,17 +1068,17 @@ declare module "alt-server" {
      * @param args Rest parameters for emit to send.
      */
 
-    public emit<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-    public emit<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
-      
+    public emit<K extends keyof shared.ICustomServerClientEvent>(eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+    public emit<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
+
     /**
      * Emits specified event to client, but faster as {@link Player.emit}.
      *
      * @param eventName Name of the event.
      * @param args Rest parameters for emit to send.
      */
-    public emitRaw<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-    public emitRaw<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+    public emitRaw<K extends keyof shared.ICustomServerClientEvent>(eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+    public emitRaw<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
@@ -2893,7 +2875,7 @@ declare module "alt-server" {
    */
   // Do not allow to emit alt:V event name
   export function emit<K extends keyof ICustomEmitEvent>(eventName: K, ...args: Parameters<ICustomEmitEvent[K]>): void;
-  export function emit<K extends string>(eventName: Exclude<K, keyof IServerEvent> & Exclude<K, keyof ICustomEmitEvent>, ...args: any[]): void;
+  export function emit<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event across resources.
@@ -2905,7 +2887,7 @@ declare module "alt-server" {
    */
   // Do not allow to emit alt:V event name
   export function emitRaw<K extends keyof ICustomEmitEvent>(eventName: K, ...args: Parameters<ICustomEmitEvent[K]>): void;
-  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IServerEvent> & Exclude<K, keyof ICustomEmitEvent>, ...args: any[]): void;
+  export function emitRaw<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to specific client.
@@ -2914,8 +2896,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitClient<K extends keyof ICustomEmitClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-  export function emitClient<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+  export function emitClient<K extends keyof shared.ICustomServerClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+  export function emitClient<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to specific client.
@@ -2924,8 +2906,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitClientRaw<K extends keyof ICustomEmitClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-  export function emitClientRaw<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+  export function emitClientRaw<K extends keyof shared.ICustomServerClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+  export function emitClientRaw<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to specific client.
@@ -2938,8 +2920,8 @@ declare module "alt-server" {
    *
    * @alpha
    */
-  export function emitClientUnreliable<K extends keyof ICustomEmitClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-  export function emitClientUnreliable<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+  export function emitClientUnreliable<K extends keyof shared.ICustomServerClientEvent>(player: Player | Player[], eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+  export function emitClientUnreliable<K extends string>(player: Player | Player[], eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
@@ -2947,8 +2929,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitAllClients<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-  export function emitAllClients<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+  export function emitAllClients<K extends keyof shared.ICustomServerClientEvent>(eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+  export function emitAllClients<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
@@ -2956,8 +2938,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
-  export function emitAllClientsRaw<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-  export function emitAllClientsRaw<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+  export function emitAllClientsRaw<K extends keyof shared.ICustomServerClientEvent>(eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+  export function emitAllClientsRaw<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
    * Emits specified event to all clients.
@@ -2969,8 +2951,8 @@ declare module "alt-server" {
    *
    * @alpha
    */
-  export function emitAllClientsUnreliable<K extends keyof ICustomEmitClientEvent>(eventName: K, ...args: Parameters<ICustomEmitClientEvent[K]>): void;
-  export function emitAllClientsUnreliable<K extends string>(eventName: Exclude<K, keyof ICustomEmitClientEvent>, ...args: any[]): void;
+  export function emitAllClientsUnreliable<K extends keyof shared.ICustomServerClientEvent>(eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
+  export function emitAllClientsUnreliable<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
    * Change the server password at runtime.
@@ -3001,7 +2983,9 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
-  export function offClient(eventName: string, listener: (...args: any[]) => void): void;
+  export function offClient<K extends keyof shared.ICustomClientServerEvent>(eventName: K, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerEvent[K]>) => void): void;
+  export function offClient<K extends string>(eventName: Exclude<K, keyof shared.ICustomClientServerEvent>, listener: (player: Player, ...args: any[]) => void): void;
+  export function offClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
    * Unsubscribes from all user-created client events with the specified listener.
@@ -3018,7 +3002,9 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
+  export function on<K extends keyof ICustomEmitEvent>(eventName: K, listener: (...args: Parameters<ICustomEmitEvent[K]>) => void): void;
   export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+  export function on<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to a custom server event with the specified listener.
@@ -3035,7 +3021,9 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
+  export function once<K extends keyof ICustomEmitEvent>(eventName: K, listener: (...args: Parameters<ICustomEmitEvent[K]>) => void): void;
   export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+  export function once<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, listener: (...args: any[]) => void): void;
 
   /**
    * Subscribes to a custom server event with the specified listener, which only triggers once.
@@ -3063,15 +3051,9 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
-  export function off(eventName: string, listener: (...args: any[]) => void): void;
-
-  /**
-   * Unsubscribes from all user-created events with the specified listener.
-   *
-   * @remarks Listener should be of the same reference as when event was subscribed to.
-   *
-   * @param listener Listener that should be removed.
-   */
+  export function off<K extends keyof ICustomEmitEvent>(eventName: K, listener: (...args: Parameters<ICustomEmitEvent[K]>) => void): void;
+  export function off<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+  export function off<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, listener: (...args: any[]) => void): void;
   export function off(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
@@ -3080,7 +3062,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function onClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
+  export function onClient<K extends keyof shared.ICustomClientServerEvent>(eventName: K, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerEvent[K]>) => void): void;
+  export function onClient<K extends string>(eventName: Exclude<K, keyof shared.ICustomClientServerEvent>, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
    * Subscribes to all client events with the specified listener.
@@ -3097,7 +3080,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function onceClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
+  export function onceClient<K extends keyof shared.ICustomClientServerEvent>(eventName: K, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerEvent[K]>) => void): void;
+  export function onceClient<K extends string>(eventName: Exclude<K, keyof shared.ICustomClientServerEvent>, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
    * Subscribes to all client events with the specified listener, which only triggers once.

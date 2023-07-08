@@ -1851,6 +1851,40 @@ declare module "alt-shared" {
    */
   export interface ICustomVirtualEntityStreamSyncedMeta {}
 
+  /**
+   * Extend `alt.emitServer` and `alt.onServer` auto-completion by merging interfaces.
+   *
+   * @example
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomServerClientEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomServerClientEvent
+   */
+  export interface ICustomServerClientEvent {}
+
+  /**
+   * Extend `alt.onClient` and `alt.emitServer` auto-completion by merging interfaces.
+   *
+   * @example
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomClientServerEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomClientServerEvent
+   */
+  export interface ICustomClientServerEvent {}
+
   export interface IInspectOptions {
     /**
      * If set to `true`, getters are going to be
