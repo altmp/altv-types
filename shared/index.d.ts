@@ -618,163 +618,6 @@ declare module "alt-shared" {
     ArenaScarab,
     ArenaSlamvan,
     ArenaZr,
-    AP,
-    ComicStore,
-    CopCar,
-    RCTimeTrials,
-    KingOfTheHill,
-    KingOfTheHillTeams,
-    Rucksack,
-    ShippingContainer,
-    Agatha,
-    Casino,
-    CasinoTableGames,
-    CasinoWheel,
-    CasinoConcierge,
-    CasinoChips,
-    CasinoHorseRacing,
-    AdversaryFeatured,
-    Roulette1,
-    Roulette2,
-    Roulette3,
-    Roulette4,
-    Roulette5,
-    Roulette6,
-    Roulette7,
-    Roulette8,
-    Roulette9,
-    Roulette10,
-    Roulette11,
-    Roulette12,
-    Roulette13,
-    Roulette14,
-    Roulette15,
-    Roulette16,
-    Roulette17,
-    Roulette18,
-    Roulette19,
-    Roulette20,
-    Roulette21,
-    Roulette22,
-    Roulette23,
-    Roulette24,
-    Roulette25,
-    Roulette26,
-    Roulette27,
-    Roulette28,
-    Roulette29,
-    Roulette30,
-    Roulette31,
-    Roulette32,
-    Roulette33,
-    Roulette34,
-    Roulette35,
-    Roulette36,
-    Roulette0,
-    Roulette00,
-    Limo,
-    WeaponAlien,
-    RaceOpenWheel,
-    Rappel,
-    SwapCar,
-    ScubaGear,
-    Cpanel1,
-    Cpanel2,
-    Cpanel3,
-    Cpanel4,
-    SnowTruck,
-    Buggy1,
-    Buggy2,
-    Zhaba,
-    Gerald,
-    Ron,
-    Arcade,
-    DroneControls,
-    RCTank,
-    Stairs,
-    Camera2,
-    Winky,
-    MiniSub,
-    KartRetro,
-    KartModern,
-    MilitaryQuad,
-    MilitaryTruck,
-    ShipWheel,
-    UFO,
-    Seasparrow2,
-    Dinghy2,
-    PatrolBoat,
-    RetroSportsCar,
-    Squadee,
-    FoldingWingJet,
-    Valkyrie2,
-    Sub2,
-    BoltCutters,
-    RappelGear,
-    KeyCard,
-    Password,
-    IslandHeistPrep,
-    IslandParty,
-    ControlTower,
-    UnderwaterGate,
-    PowerSwitch,
-    CompoundGate,
-    RappelPoint,
-    KeyPad,
-    SubControls,
-    SubPeriscope,
-    SubMissile,
-    Painting,
-    CarMeet,
-    CarTestArea,
-    AutoShopProperty,
-    DocksExport,
-    PrizeCar,
-    TestCar,
-    CarRobberyBoard,
-    CarRobberyPrep,
-    StreetRaceSeries,
-    PursuitSeries,
-    CarMeetOrganiser,
-    SecuroServ,
-    BountyCollectibles,
-    MovieCollectibles,
-    TrailerRamp,
-    RaceOrganiser,
-    ChalkboardList,
-    ExportVehicle,
-    Train,
-    HeistDiamond,
-    HeistDoomsday,
-    HeistIsland,
-    Slamvan2,
-    Crusader,
-    ConstructionOutfit,
-    OverlayJammed,
-    HeistIslandUnavailable,
-    HeistDiamondUnavailable,
-    HeistDoomsdayUnavailable,
-    Placeholder7,
-    Placeholder8,
-    Placeholder9,
-    FeaturedSeries,
-    VehicleForSale,
-    VanKeys,
-    SuvService,
-    SecurityContract,
-    Safe,
-    PedR,
-    PedE,
-    Payphone,
-    Patriot3,
-    MusicStudio,
-    Jubilee,
-    Granger2,
-    ExplosiveCharge,
-    Deity,
-    DChampion,
-    Buffalo4,
-    Agency,
   }
 
   export const enum BlipColor {
@@ -1850,6 +1693,40 @@ declare module "alt-shared" {
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomVirtualEntityStreamSyncedMeta {}
+
+  /**
+   * Extend `alt.emitServer` and `alt.onServer` auto-completion by merging interfaces.
+   * 
+   * @example
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomServerClientEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomServerClientEvent
+   */
+  export interface ICustomServerClientEvent {}
+
+  /**
+   * Extend `alt.onClient` and `alt.emitServer` auto-completion by merging interfaces.
+   * 
+   * @example
+  * ```ts
+  * declare module 'alt-client' {
+  *    interface ICustomClientServerEvent {
+  *        myEvent: (arg1: string, arg2: { key: string, value: number })
+  *    }
+  * }
+  * ```
+  *
+  * @export
+  * @interface ICustomClientServerEvent
+  */
+ export interface ICustomClientServerEvent {}
 
   export interface IInspectOptions {
     /**
