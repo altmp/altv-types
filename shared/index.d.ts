@@ -1696,7 +1696,7 @@ declare module "alt-shared" {
 
   /**
    * Extend `alt.emitServer` and `alt.onServer` auto-completion by merging interfaces.
-   * 
+   *
    * @example
    * ```ts
    * declare module 'alt-client' {
@@ -1713,20 +1713,20 @@ declare module "alt-shared" {
 
   /**
    * Extend `alt.onClient` and `alt.emitServer` auto-completion by merging interfaces.
-   * 
+   *
    * @example
-  * ```ts
-  * declare module 'alt-client' {
-  *    interface ICustomClientServerEvent {
-  *        myEvent: (arg1: string, arg2: { key: string, value: number })
-  *    }
-  * }
-  * ```
-  *
-  * @export
-  * @interface ICustomClientServerEvent
-  */
- export interface ICustomClientServerEvent {}
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomClientServerEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomClientServerEvent
+   */
+  export interface ICustomClientServerEvent {}
 
   export interface IInspectOptions {
     /**
