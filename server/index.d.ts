@@ -512,21 +512,21 @@ declare module "alt-server" {
 
   /**
    * Extend `alt.emit` auto-completion by merging interfaces for use with `alt.emit`.
-   * 
+   *
    * @example
-    * ```ts
-    * declare module 'alt-server' {
-    *    interface ICustomEmitEvent {
-    *        myEvent: (arg1: string, arg2: { key: string, value: number })
-    *    }
-    * }
-    * ```
-    *
-    * @export
-    * @interface ICustomEmitEvent
-    */
+   * ```ts
+   * declare module 'alt-server' {
+   *    interface ICustomEmitEvent {
+   *        myEvent: (arg1: string, arg2: { key: string, value: number })
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomEmitEvent
+   */
   export interface ICustomEmitEvent {}
- 
+
   /**
    * Documentation: https://docs.altv.mp/articles/configs/server.html
    */
@@ -1070,7 +1070,7 @@ declare module "alt-server" {
 
     public emit<K extends keyof shared.ICustomServerClientEvent>(eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
     public emit<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
-      
+
     /**
      * Emits specified event to client, but faster as {@link Player.emit}.
      *
@@ -2985,6 +2985,7 @@ declare module "alt-server" {
    */
   export function offClient<K extends keyof shared.ICustomClientServerEvent>(eventName: K, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerEvent[K]>) => void): void;
   export function offClient<K extends string>(eventName: Exclude<K, keyof shared.ICustomClientServerEvent>, listener: (player: Player, ...args: any[]) => void): void;
+  export function offClient(eventName: string, listener: (player: Player, ...args: any[]) => void): void;
 
   /**
    * Unsubscribes from all user-created client events with the specified listener.
