@@ -2789,8 +2789,8 @@ declare module "alt-client" {
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
-  export function offServer<K extends keyof shared.ICustomServerClientEvent>(eventName: K, listener: (player: Player, ...args: Parameters<shared.ICustomServerClientEvent[K]>) => void): void;
-  export function offServer<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, listener: (player: Player, ...args: any[]) => void): void;
+  export function offServer<K extends keyof shared.ICustomServerClientEvent>(eventName: K, listener: (...args: Parameters<shared.ICustomServerClientEvent[K]>) => void): void;
+  export function offServer<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, listener: (...args: any[]) => void): void;
   export function offServer(eventName: string, listener: (...args: any[]) => void): void;
 
   /**
