@@ -1712,6 +1712,29 @@ declare module "alt-shared" {
     [K in keyof TInterface as Extract<K, string>]: TInterface[K];
   };
 
+  /**
+   * This is an internal utility type and you probably don't need it
+   *
+   * Returns parameters of either built-in alt:V event (`TAltInterface`) or custom event (`TCustomInterface`) by the given `TEventName`
+   *
+   * @hidden
+   */
+  // prettier-ignore
+  export type EventParameters<
+    TAltInterface extends Record<any, any>,
+    TCustomInterface extends Record<any, any>,
+    TEventName extends keyof TAltInterface | keyof TCustomInterface,
+  > = (
+    Parameters<TEventName extends keyof TAltInterface
+      ? TAltInterface[TEventName]
+      : (
+        TEventName extends keyof TCustomInterface
+        ? TCustomInterface[TEventName]
+        : never
+      )
+    >
+  );
+
   export interface IVector2 {
     readonly x: number;
     readonly y: number;
