@@ -3002,18 +3002,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function on<K extends keyof ICustomEmitEvent>(eventName: K, listener: (...args: Parameters<ICustomEmitEvent[K]>) => void): void;
-  export function on<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+  export function on<K extends keyof IServerEvent | keyof ICustomEmitEvent>(eventName: K, listener: (...args: shared.EventParameters<IServerEvent, ICustomEmitEvent, K>) => void): void;
   export function on<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, listener: (...args: any[]) => void): void;
-
-  /**
-   * Subscribes to a custom server event with the specified listener.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  // Do not allow any function to subscribe to the alt:V event
-  export function on<K extends string>(eventName: K, listener: shared.InterfaceValueByKey<IServerEvent, K, (...args: any[]) => void, never>): void;
 
   /**
    * Subscribes to a server event with the specified listener, which only triggers once.
@@ -3021,27 +3011,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be added.
    */
-  export function once<K extends keyof ICustomEmitEvent>(eventName: K, listener: (...args: Parameters<ICustomEmitEvent[K]>) => void): void;
-  export function once<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+  export function once<K extends keyof IServerEvent | keyof ICustomEmitEvent>(eventName: K, listener: (...args: shared.EventParameters<IServerEvent, ICustomEmitEvent, K>) => void): void;
   export function once<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, listener: (...args: any[]) => void): void;
-
-  /**
-   * Subscribes to a custom server event with the specified listener, which only triggers once.
-   *
-   * @param eventName Name of the event.
-   * @param listener Listener that should be added.
-   */
-  // Do not allow any function to subscribe to the alt:V event
-  export function once<K extends string>(eventName: K, listener: shared.InterfaceValueByKey<IServerEvent, K, (...args: any[]) => void, never>): void;
-
-  /**
-   * Subscribes to all events with the specified listener.
-   *
-   * @remarks Listener will be only called for user-created events.
-   *
-   * @param listener Listener that should be added.
-   */
-  export function on(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
    * Unsubscribes from a event with the specified listener.
@@ -3051,10 +3022,8 @@ declare module "alt-server" {
    * @param eventName Name of the event.
    * @param listener Listener that should be removed.
    */
-  export function off<K extends keyof ICustomEmitEvent>(eventName: K, listener: (...args: Parameters<ICustomEmitEvent[K]>) => void): void;
-  export function off<K extends keyof IServerEvent>(eventName: K, listener: IServerEvent[K]): void;
+  export function off<K extends keyof IServerEvent | keyof ICustomEmitEvent>(eventName: K, listener: (...args: shared.EventParameters<IServerEvent, ICustomEmitEvent, K>) => void): void;
   export function off<K extends string>(eventName: Exclude<K, keyof IServerEvent | keyof ICustomEmitEvent>, listener: (...args: any[]) => void): void;
-  export function off(listener: (eventName: string, ...args: any[]) => void): void;
 
   /**
    * Subscribes to a client event with the specified listener.
