@@ -1378,6 +1378,9 @@ declare module "alt-server" {
     public addDecoration(collection: string | number, overlay: string | number): void;
 
     /** @alpha */
+    public removeDecoration(collection: string | number, overlay: string | number): void;
+
+    /** @alpha */
     public clearDecorations(): void;
 
     /** @alpha */
