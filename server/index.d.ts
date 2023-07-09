@@ -454,6 +454,12 @@ declare module "alt-server" {
     Tracer,
   }
 
+  /** @alpha */
+  export interface IDecoration {
+    readonly collection: number;
+    readonly overlay: number;
+  }
+
   /**
    * Extend it by interface merging for use in baseobject meta {@link "alt-server".BaseObject getMeta method}, {@link "alt-server".BaseObject setMeta method}, etc.
    *
@@ -1382,6 +1388,9 @@ declare module "alt-server" {
 
     /** @alpha */
     public clearDecorations(): void;
+
+    /** @alpha */
+    public getDecorations(): IDecoration[];
 
     /** @alpha */
     public playAnimation(animDict: string, animName: string, blendInSpeed?: number, blendOutSpeed?: number, duration?: number, flags?: number, playbackRate?: number, lockX?: boolean, lockY?: boolean, lockZ?: boolean): void;
