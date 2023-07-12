@@ -3996,7 +3996,7 @@ declare module "alt-client" {
     /**
      * Initializes a new instance of the {@link AudioCategory}.
      */
-    public static getForName(weaponHash: number): WeaponData;
+    public static getForName(categoryName: string): AudioCategory;
   }
 
   /** @alpha */
