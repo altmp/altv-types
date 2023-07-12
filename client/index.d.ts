@@ -3972,6 +3972,34 @@ declare module "alt-client" {
   }
 
   /** @alpha */
+  /**
+   * With the AudioCategory class you can get specific audio category values and also set some of them.
+   */
+  export class AudioCategory {
+    protected constructor();
+
+    public readonly name: string;
+    public volume: number;
+    public distanceRolloffScale: number;
+    public plateauRolloffScale: number;
+    public occlusionDamping: number;
+    public environmentalFilterDamping: number;
+    public sourceReverbDamping: number;
+    public distanceReverbDamping: number;
+    public interiorReverbDamping: number;
+    public environmentalLoudness: number;
+    public underwaterWetLevel: number;
+    public stonedWetLevel: number;
+    public pitch: number;
+    public lowPassFilterCutoff: number;
+    public highPassFilterCutoff: number;
+    /**
+     * Initializes a new instance of the {@link AudioCategory}.
+     */
+    public static getForName(categoryName: string): AudioCategory;
+  }
+
+  /** @alpha */
   export class Marker extends WorldObject {
     public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 

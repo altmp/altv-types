@@ -905,7 +905,7 @@ declare module "alt-shared" {
     Polygon,
   }
 
-  export const enum AudioCategory {
+  export const enum AudioCategories {
     x44E21C90 = "0x44E21C90",
     xBAD598C7 = "0xBAD598C7",
     xA4D158B0 = "0xA4D158B0",
