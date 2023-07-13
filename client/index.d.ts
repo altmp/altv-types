@@ -3760,6 +3760,9 @@ declare module "alt-client" {
      * Initializes a new instance of the {@link WeaponData}.
      */
     public static getForHash(weaponHash: number): WeaponData;
+
+    /** @alpha */
+    public static allHashes: WeaponData[];
   }
 
   export function loadDefaultIpls(): void;
