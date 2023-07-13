@@ -1399,6 +1399,9 @@ declare module "alt-server" {
     public clearTasks(): void;
 
     /** @alpha */
+    public playScenario(name: string): void;
+
+    /** @alpha */
     public getAmmo(ammoHash: number | string): number;
 
     /** @alpha */
