@@ -675,17 +675,17 @@ declare module "alt-client" {
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
-    public addOutput(entity: Entity): void;
+    public addOutput(output: AudioOutput): void;
 
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
-    public removeOutput(entity: Entity): void;
+    public removeOutput(output: AudioOutput): void;
 
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
-    public getOutputs(): ReadonlyArray<Entity | number>;
+    public getOutputs(): ReadonlyArray<AudioOutput | number>;
 
     public play(): void;
     public pause(): void;
