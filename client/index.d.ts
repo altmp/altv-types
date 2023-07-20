@@ -3894,8 +3894,8 @@ declare module "alt-client" {
   }
 
   /** @alpha */
-  export class NetworkObject extends Entity {
-    public static readonly all: ReadonlyArray<NetworkObject>;
+  export class Object extends Entity {
+    public static readonly all: ReadonlyArray<Object>;
 
     public static readonly count: number;
 

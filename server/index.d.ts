@@ -3166,10 +3166,10 @@ declare module "alt-server" {
   }
 
   /** @alpha */
-  export class NetworkObject extends Entity {
+  export class Object extends Entity {
     constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
 
-    public static readonly all: ReadonlyArray<NetworkObject>;
+    public static readonly all: ReadonlyArray<Object>;
 
     public static readonly count: number;
 

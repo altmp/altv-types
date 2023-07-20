@@ -6,7 +6,7 @@ declare module "alt-shared" {
     Player,
     Vehicle,
     Ped,
-    NetworkObject,
+    Object,
     Blip,
     WebView,
     VoiceChannel,
