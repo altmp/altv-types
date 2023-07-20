@@ -325,6 +325,8 @@ declare module "alt-server" {
     baseObjectRemove: (baseObject: BaseObject) => void;
     /** @alpha */
     metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
+    /** @alpha */
+    voiceConnection: (state: shared.VoiceConnectionState) => void;
   }
 
   export interface IFireInfo {
@@ -3133,6 +3135,12 @@ declare module "alt-server" {
 
   /** @alpha */
   export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
+
+  /** @alpha */
+  export function setVoiceExternalPublic(host: string, port: number): void;
+
+  /** @alpha */
+  export function setVoiceExternal(phost: string, port: number): void;
 
   /** @alpha */
   export class Ped extends Entity {

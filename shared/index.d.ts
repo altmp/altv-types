@@ -1662,6 +1662,13 @@ declare module "alt-shared" {
     DontChangeTargetFromMelee = 458,
   }
 
+  /** @alpha */
+  export const enum VoiceConnectionState {
+    Disconnected,
+    Connecting,
+    Connected,
+  }
+
   /**
    * Documentation: https://docs.altv.mp/articles/configs/resource.html
    */

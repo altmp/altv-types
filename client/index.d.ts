@@ -215,6 +215,9 @@ declare module "alt-client" {
 
     /** @alpha */
     playerBulletHit: (weaponHash: number, victim: Entity, position: shared.Vector3) => void;
+
+    /** @alpha */
+    voiceConnection: (state: shared.VoiceConnectionState) => void;
   }
 
   export interface IDiscordUser {
