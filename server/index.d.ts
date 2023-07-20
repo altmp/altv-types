@@ -1446,7 +1446,7 @@ declare module "alt-server" {
     public setAmmoMax100(ammoHash: number | string, ammoMax: number): void;
 
     /** @alpha */
-    public networkOwnershipDisabled: boolean;
+    public netOwnershipDisabled: boolean;
 
     // local meta
 
