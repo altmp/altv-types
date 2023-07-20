@@ -3776,7 +3776,7 @@ declare module "alt-client" {
 
   export function getPedBonePos(ped: number, boneId: number): shared.Vector3;
 
-  export class Object extends Entity {
+  export class LocalObject extends Entity {
     /**
      * Creates a new object.
      *
@@ -3793,9 +3793,9 @@ declare module "alt-client" {
      */
     constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean, useStreaming?: boolean, streamingDistance?: number);
 
-    public static readonly all: ReadonlyArray<Object>;
+    public static readonly all: ReadonlyArray<LocalObject>;
 
-    public static readonly allWorld: ReadonlyArray<Object>;
+    public static readonly allWorld: ReadonlyArray<LocalObject>;
 
     /** @alpha */
     public static readonly count: number;
@@ -3873,7 +3873,7 @@ declare module "alt-client" {
   }
 
   /** @alpha */
-  export class WeaponObject extends Object {
+  export class WeaponObject extends LocalObject {
     constructor(weaponHash: string | number, pos: shared.Vector3, rot: shared.Vector3, modelHash?: string | number, numAmmo?: number, createDefaultComponents?: boolean, scale?: number, useStreaming?: boolean, streamingDistance?: number);
 
     public static readonly all: ReadonlyArray<WeaponObject>;

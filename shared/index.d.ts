@@ -18,7 +18,7 @@ declare module "alt-shared" {
     RmlElement,
     RmlDocument,
     LocalPlayer,
-    Object,
+    LocalObject,
     VirtualEntity,
     VirtualEntityGroup,
     Marker,
