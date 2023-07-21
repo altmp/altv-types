@@ -3776,7 +3776,7 @@ declare module "alt-client" {
 
   export function getPedBonePos(ped: number, boneId: number): shared.Vector3;
 
-  export class LocalObject extends Entity {
+  export class LocalObject extends Object {
     /**
      * Creates a new object.
      *
@@ -3808,13 +3808,9 @@ declare module "alt-client" {
     public set model(model: number | string);
 
     /** Object transparency, values are between 0 and 255. (0 being fully transparent) */
-    public alpha: number;
     public resetAlpha(): void;
 
     public readonly dynamic: boolean;
-
-    /** The distance at which the LOD model of the object starts being applied. */
-    public lodDistance: number;
 
     /** Whether the object is affected by gravity. */
     public hasGravity: boolean;
@@ -3863,8 +3859,6 @@ declare module "alt-client" {
     public positionFrozen: boolean;
 
     public activatePhysics(): void;
-
-    public textureVariation: number;
 
     public readonly isWorldObject: boolean;
 
