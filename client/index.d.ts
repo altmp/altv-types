@@ -3819,9 +3819,13 @@ declare module "alt-client" {
     public set model(model: number | string);
 
     /** Object transparency, values are between 0 and 255. (0 being fully transparent) */
+    public alpha: number;
     public resetAlpha(): void;
 
     public readonly dynamic: boolean;
+
+    /** The distance at which the LOD model of the object starts being applied. */
+    public lodDistance: number;
 
     /** Whether the object is affected by gravity. */
     public hasGravity: boolean;
@@ -3871,6 +3875,8 @@ declare module "alt-client" {
 
     public activatePhysics(): void;
 
+    public textureVariation: number;
+
     public readonly isWorldObject: boolean;
 
     /** Waits asynchronously until the object spawns. */
@@ -3904,12 +3910,12 @@ declare module "alt-client" {
 
     public static readonly count: number;
 
-    public alpha: number;
+    public readonly alpha: number;
 
-    public textureVariation: number;
+    public readonly textureVariation: number;
 
     /** The distance at which the LOD model of the object starts being applied. */
-    public lodDistance: number;
+    public readonly lodDistance: number;
   }
 
   /** @alpha */
