@@ -3714,6 +3714,14 @@ declare module "alt-client" {
   export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, posX: number, posY: number, sizeX: number, sizeY: number): void;
 
   /**
+   * @alpha
+   * Reset minimap default component position.
+   *
+   * @param name Name of the minimap component.
+   */
+  export function resetMinimapComponentPosition(name: string): void;
+
+  /**
    * Defines if the minimap is a rectangle to change the blip clipping.
    *
    * @param state False will clip the blips rounded to the minimap.
