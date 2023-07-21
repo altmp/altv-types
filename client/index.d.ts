@@ -2491,6 +2491,9 @@ declare module "alt-client" {
      * Gets the value from the specified key in the local storage.
      */
     public static get(key: string): any;
+ 
+    /** @alpha */
+    public static has(key: string): boolean;
 
     /**
      * Deletes the specified key from the local storage.
@@ -3839,15 +3842,15 @@ declare module "alt-client" {
      * Attaches the object to another entity.
      *
      * @param entity Entity or scriptID of the entity the object should be attached to.
-     * @param bone Bone index of the entity to attach to. (-1 for entity center).
+     * @param boneIndex Bone index of the entity to attach to. (-1 for entity center).
      * @param offset Offset of the object.
      * @param rot Rotation of the object in radians.
      * @param useSoftPinning Whether the object should be able to detach when not fixed.
      * @param collision Whether the object and the entity should collide with each other.
      * @param fixedRot Whether the rotation of the object is fixed or follows that of the entity.
      */
-    public attachToEntity(entity: Entity, bone: number, offset: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
-    public attachToEntity(scriptID: number, bone: number, offset: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
+    public attachToEntity(entity: Entity, boneIndex: number, offset: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
+    public attachToEntity(scriptID: number, boneIndex: number, offset: shared.Vector3, rot: shared.Vector3, useSoftPinning?: boolean, collision?: boolean, fixedRot?: boolean): void;
 
     /**
      * Detaches the object from the current attached entity.
