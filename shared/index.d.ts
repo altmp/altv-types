@@ -2982,4 +2982,7 @@ declare module "alt-shared" {
   export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
 
   export function stringToSHA256(string: string): string;
+
+  /** @alpha */
+  export function getVoiceConnectionState(): VoiceConnectionState;
 }
