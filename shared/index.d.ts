@@ -1662,7 +1662,7 @@ declare module "alt-shared" {
     DontChangeTargetFromMelee = 458,
   }
 
-  /** @alpha */
+  /** @beta */
   export const enum VoiceConnectionState {
     Disconnected,
     Connecting,
@@ -1754,7 +1754,7 @@ declare module "alt-shared" {
   }
 
   /**
-   * @alpha
+   * @beta
    */
   export interface IQuaternion {
     readonly x: number;
@@ -2386,7 +2386,7 @@ declare module "alt-shared" {
   }
 
   /**
-   * @alpha
+   * @beta
    */
   export class Quaternion {
     public readonly x: number;
@@ -2644,7 +2644,7 @@ declare module "alt-shared" {
 
   /**
    * Returns all meta keys which have been set
-   * @alpha
+   * @beta
    */
   export function getMetaKeys(): ReadonlyArray<string>;
 
@@ -2683,7 +2683,7 @@ declare module "alt-shared" {
 
   /**
    * Returns all synced meta keys which have been set
-   * @alpha
+   * @beta
    */
   export function getSyncedMetaKeys(): ReadonlyArray<string>;
 
@@ -2983,6 +2983,6 @@ declare module "alt-shared" {
 
   export function stringToSHA256(string: string): string;
 
-  /** @alpha */
+  /** @beta */
   export function getVoiceConnectionState(): VoiceConnectionState;
 }

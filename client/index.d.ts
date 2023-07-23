@@ -78,15 +78,15 @@ declare module "alt-client" {
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
     DisableIdleCamera = "DISABLE_IDLE_CAMERA",
     DisableVehicleEngineShutdownOnLeave = "DISABLE_VEHICLE_ENGINE_SHUTDOWN_ON_LEAVE",
-    /** @alpha */
+    /** @beta */
     DisableSPEnterVehicleClipset = "DISABLE_SP_ENTER_VEHICLE_CLIPSET",
-    /** @alpha */
+    /** @beta */
     ForceRenderSnow = "FORCE_RENDER_SNOW",
-    /** @alpha */
+    /** @beta */
     ForceHideNightProps = "FORCE_HIDE_NIGHT_PROPS",
-    /** @alpha */
+    /** @beta */
     ForceShowNightProps = "FORCE_SHOW_NIGHT_PROPS",
-    /** @alpha */
+    /** @beta */
     DisableEmissiveLightsRendering = "DISABLE_EMISSIVE_LIGHTS_RENDERING",
   }
 
@@ -136,13 +136,13 @@ declare module "alt-client" {
      */
     leftVehicle: (vehicle: Vehicle, seat: number) => void;
     /**
-     * @alpha
+     * @beta
      *
      * @remarks The seat indexes start with 1 (driver seat).
      */
     startEnteringVehicle: (vehicle: Vehicle, seat: number) => boolean | void;
     /**
-     * @alpha
+     * @beta
      *
      * @remarks The seat indexes start with 1 (driver seat).
      */
@@ -177,46 +177,46 @@ declare module "alt-client" {
 
     playerWeaponChange: (oldWeapon: number, newWeapon: number) => void;
 
-    /** @alpha */
+    /** @beta */
     baseObjectCreate: (baseObject: BaseObject) => void;
 
-    /** @alpha */
+    /** @beta */
     baseObjectRemove: (baseObject: BaseObject) => void;
 
     weaponDamage: (target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart, sourceEntity: Entity) => number | boolean | void;
 
     /**
      * Triggers when an Virtual Entity position is changed
-     * @alpha
+     * @beta
      */
     worldObjectPositionChange: (object: WorldObject, oldPosition: shared.Vector3) => void;
 
     /**
-     * @alpha
+     * @beta
      */
     worldObjectStreamIn: (object: WorldObject) => void;
 
     /**
-     * @alpha
+     * @beta
      */
     worldObjectStreamOut: (object: WorldObject) => void;
 
-    /** @alpha */
+    /** @beta */
     metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
 
-    /** @alpha */
+    /** @beta */
     entityEnterColshape: (colshape: Colshape, entity: Entity) => void;
 
-    /** @alpha */
+    /** @beta */
     entityLeaveColshape: (colshape: Colshape, entity: Entity) => void;
 
-    /** @alpha */
+    /** @beta */
     entityHitEntity: (damager: Entity, target: Entity, weaponHash: number) => void;
 
-    /** @alpha */
+    /** @beta */
     playerBulletHit: (weaponHash: number, victim: Entity, position: shared.Vector3) => void;
 
-    /** @alpha */
+    /** @beta */
     voiceConnection: (state: shared.VoiceConnectionState) => void;
   }
 
@@ -559,18 +559,18 @@ declare module "alt-client" {
     /**
      * Whether this entity was created clientside or serverside. (Clientside = false, Serverside = true).
      *
-     * @alpha
+     * @beta
      */
     public readonly isRemote: boolean;
     /**
      * The serverside id of this entity.
-     * @alpha
+     * @beta
      * */
     public readonly remoteId: number;
 
     /**
      * Gets the base object with the given type and local id
-     * @alpha
+     * @beta
      */
     public getByID(type: shared.BaseObjectType, id: number): BaseObject;
 
@@ -591,7 +591,7 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
   }
 
-  /** @alpha */
+  /** @beta */
   export class VirtualEntityGroup extends BaseObject {
     /** Creates a new Virtual Entity Group */
     public constructor(maxEntitiesInStream: number);
@@ -603,7 +603,7 @@ declare module "alt-client" {
     public readonly maxEntitiesInStream: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export class VirtualEntity extends WorldObject {
     /** Creates a new Virtual Entity */
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
@@ -649,7 +649,7 @@ declare module "alt-client" {
     public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
   }
 
-  /** @alpha */
+  /** @beta */
   export class Audio extends BaseObject {
     /**
      * Creates a new Audio instance.
@@ -722,7 +722,7 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomAudioMeta, K, V>): void;
   }
 
-  /** @alpha */
+  /** @beta */
   export class AudioOutput extends BaseObject {
     protected constructor();
 
@@ -739,19 +739,19 @@ declare module "alt-client" {
     public filter: AudioFilter | null;
   }
 
-  /** @alpha */
+  /** @beta */
   export class AudioOutputFrontend extends AudioOutput {
     public constructor(categoryHash?: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class AudioOutputWorld extends AudioOutput {
     public constructor(pos: shared.IVector3, categoryHash?: number);
 
     public pos: shared.Vector3;
   }
 
-  /** @alpha */
+  /** @beta */
   export class AudioOutputAttached extends AudioOutput {
     public constructor(entity: WorldObject, categoryHash?: number);
 
@@ -769,7 +769,7 @@ declare module "alt-client" {
      *
      * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
      *
-     * @alpha
+     * @beta
      */
     public dimension: number;
   }
@@ -780,7 +780,7 @@ declare module "alt-client" {
     public radius: number;
     public height: number;
     public color: shared.RGBA;
-    /** @alpha */
+    /** @beta */
     public iconColor: shared.RGBA;
 
     constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA, iconColor: shared.RGBA, streamingDistance: number);
@@ -788,20 +788,20 @@ declare module "alt-client" {
     /**
      * Streaming range for the checkpoint
      *
-     * @alpha
+     * @beta
      */
     public readonly streamingDistance: number;
 
-    /** @alpha */
+    /** @beta */
     public static readonly all: ReadonlyArray<Checkpoint>;
 
-    /** @alpha */
+    /** @beta */
     public static readonly count: number;
 
-    /** @alpha */
+    /** @beta */
     public readonly isStreamedIn: boolean;
 
-    /** @alpha */
+    /** @beta */
     public visible: boolean;
 
     /**
@@ -810,16 +810,16 @@ declare module "alt-client" {
      * @param id The id of the checkpoint.
      * @returns Entity if it was found, otherwise null.
      *
-     * @alpha
+     * @beta
      */
     public static getByID(id: number): Checkpoint | null;
 
     /**
-     * @alpha
+     * @beta
      */
     public static getByScriptID(scriptID: number): Checkpoint | null;
 
-    /** @alpha */
+    /** @beta */
     public readonly scriptID: number;
 
     public isEntityIn(entity: Entity): boolean;
@@ -993,7 +993,7 @@ declare module "alt-client" {
      */
     public static readonly all: ReadonlyArray<Player>;
 
-    /** @alpha */
+    /** @beta */
     public static readonly count: number;
 
     /**
@@ -1069,19 +1069,19 @@ declare module "alt-client" {
      */
     public readonly isReloading: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isEnteringVehicle: boolean;
 
-    /** @alpha */
+    //** @beta */
     public readonly isLeavingVehicle: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isOnLadder: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isInMelee: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isInCover: boolean;
 
     /**
@@ -1161,7 +1161,7 @@ declare module "alt-client" {
 
     /**
      * Gets the player with the given remote id
-     * @alpha
+     * @beta
      */
     public static getByRemoteID(id: number): Player | null;
 
@@ -1251,14 +1251,14 @@ declare module "alt-client" {
 
   export class LocalPlayer extends Player {
     /**
-     * @alpha
+     * @beta
      */
     public readonly dimension: number;
 
-    /** @alpha */
+    /** @beta */
     public pos: shared.Vector3;
 
-    /** @alpha */
+    /** @beta */
     public rot: shared.Vector3;
 
     /**
@@ -1322,7 +1322,7 @@ declare module "alt-client" {
      */
     public static readonly all: ReadonlyArray<Vehicle>;
 
-    /** @alpha */
+    /** @beta */
     public static readonly count: number;
 
     /**
@@ -1876,7 +1876,7 @@ declare module "alt-client" {
 
     /**
      * Gets the vehicle with the given remote id
-     * @alpha
+     * @beta
      */
     public static getByRemoteID(id: number): Vehicle | null;
   }
@@ -1888,7 +1888,7 @@ declare module "alt-client" {
      * @param id The id of the webview.
      * @returns Entity if it was found, otherwise null.
      *
-     * @alpha
+     * @beta
      */
     public static getByID(id: number): WebView | null;
 
@@ -1897,13 +1897,13 @@ declare module "alt-client" {
     /** View URL */
     public url: string;
 
-    /** @alpha */
+    /** @beta */
     public static readonly all: ReadonlyArray<WebView>;
 
-    /** @alpha */
+    /** @beta */
     public static readonly count: number;
 
-    /** @alpha */
+    /** @beta */
     public static readonly gpuAccelerationActive: boolean;
 
     /**
@@ -2076,7 +2076,7 @@ declare module "alt-client" {
      */
     public setZoomLevel(value: number): void;
 
-    /** @alpha */
+    /** @beta */
     public reload(ignoreCache?: boolean): void;
 
     public deleteMeta(key: string): void;
@@ -2227,7 +2227,7 @@ declare module "alt-client" {
      */
     public static readonly all: ReadonlyArray<Blip>;
 
-    /** @alpha */
+    /** @beta */
     public static readonly count: number;
 
     /**
@@ -2236,7 +2236,7 @@ declare module "alt-client" {
      * @param id The id of the blip.
      * @returns Entity if it was found, otherwise null.
      *
-     * @alpha
+     * @beta
      */
     public static getByID(id: number): Blip | null;
 
@@ -2246,13 +2246,13 @@ declare module "alt-client" {
      * @param scriptID The script id of the blip.
      * @returns Entity if it was found, otherwise null.
      *
-     * @alpha
+     * @beta
      */
     public static getByScriptID(scriptID: number): Blip | null;
 
     /**
      * Gets the blip with the given remote id
-     * @alpha
+     * @beta
      */
     public static getByRemoteID(id: number): Blip | null;
 
@@ -2320,34 +2320,34 @@ declare module "alt-client" {
 
     public tickVisible: boolean;
 
-    /** @alpha */
+    /** @beta */
     public visible: boolean;
 
-    /** @alpha */
+    /** @beta */
     public blipType: shared.BlipType;
 
-    /** @alpha */
+    /** @beta */
     public isFriendly: boolean;
 
-    /** @alpha */
+    /** @beta */
     public isHiddenOnLegend: boolean;
 
-    /** @alpha */
+    /** @beta */
     public isMinimalOnEdge: boolean;
 
-    /** @alpha */
+    /** @beta */
     public useHeightIndicatorOnEdge: boolean;
 
-    /** @alpha */
+    /** @beta */
     public isShortHeightThreshold: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isStreamedIn: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isAttached: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isGlobal: boolean;
 
     public fade(opacity: number, duration: number): void;
@@ -2510,7 +2510,7 @@ declare module "alt-client" {
      */
     public static get(key: string): any;
  
-    /** @alpha */
+    /** @beta */
     public static has(key: string): boolean;
 
     /**
@@ -2586,22 +2586,22 @@ declare module "alt-client" {
      */
     public static muteInput: boolean;
 
-    /** @alpha */
+    /** @beta */
     public activityInputEnabled: boolean;
 
-    /** @alpha */
+    /** @beta */
     public activationLevel: number;
 
-    /** @alpha */
+    /** @beta */
     public noiseSuppressionEnabled: boolean;
 
-    /** @alpha */
+    /** @beta */
     public inputDevice: string | null;
 
-    /** @alpha */
+    /** @beta */
     public toggleInput: boolean;
 
-    /** @alpha */
+    /** @beta */
     public getAvailableInputDevices: ReadonlyArray<IInputDevice>;
 
     /**
@@ -2682,7 +2682,7 @@ declare module "alt-client" {
    *
    * @remarks Unreliable event should be used when you don't need to be sure that event will be received by server.
    *
-   * @alpha
+   * @beta
    */
   export function emitServerUnreliable<K extends keyof shared.ICustomClientServerEvent>(eventName: K, ...args: Parameters<shared.ICustomClientServerEvent[K]>): void;
   export function emitServerUnreliable<K extends string>(eventName: Exclude<K, keyof shared.ICustomClientServerEvent>, ...args: any[]): void;
@@ -3042,7 +3042,7 @@ declare module "alt-client" {
 
   export function toggleVoiceControls(state: boolean): void;
 
-  /* @alpha */
+  /* @beta */
   export function isFullScreen(): boolean;
 
   export class WebSocketClient extends BaseObject {
@@ -3052,7 +3052,7 @@ declare module "alt-client" {
      * @param id The id of the websocketclient.
      * @returns Entity if it was found, otherwise null.
      *
-     * @alpha
+     * @beta
      */
     public static getByID(id: number): WebSocketClient | null;
 
@@ -3181,7 +3181,7 @@ declare module "alt-client" {
      * @param id The id of the httpclient.
      * @returns Entity if it was found, otherwise null.
      *
-     * @alpha
+     * @beta
      */
     public static getByID(id: number): HttpClient | null;
 
@@ -3362,7 +3362,7 @@ declare module "alt-client" {
      * @param id The id of the rmldocument.
      * @returns Entity if it was found, otherwise null.
      *
-     * @alpha
+     * @beta
      */
     public static getByID(id: number): RmlDocument | null;
 
@@ -3635,7 +3635,7 @@ declare module "alt-client" {
      *
      * `range` - In which range to search for the nearest virtualEntity. Defaults to `Infinity`.
      *
-     * @alpha
+     * @beta
      */
     export function getClosestVirtualEntity(options?: { pos?: shared.IVector3; range?: number }): VirtualEntity | null;
 
@@ -3735,7 +3735,7 @@ declare module "alt-client" {
   export function setMinimapComponentPosition(name: string, alignX: string, alignY: string, posX: number, posY: number, sizeX: number, sizeY: number): void;
 
   /**
-   * @alpha
+   * @beta
    * Reset minimap default component position.
    *
    * @param name Name of the minimap component.
@@ -3793,7 +3793,7 @@ declare module "alt-client" {
      */
     public static getForHash(weaponHash: number): WeaponData;
 
-    /** @alpha */
+    /** @beta */
     public static allHashes: WeaponData[];
   }
 
@@ -3826,7 +3826,7 @@ declare module "alt-client" {
 
     public static readonly allWorld: ReadonlyArray<LocalObject>;
 
-    /** @alpha */
+    /** @beta */
     public static readonly count: number;
 
     public pos: shared.Vector3;
@@ -3848,16 +3848,16 @@ declare module "alt-client" {
     /** Whether the object is affected by gravity. */
     public hasGravity: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isStreamedIn: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly useStreaming: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly streamingDistance: number;
 
-    /** @alpha */
+    /** @beta */
     public visible: boolean;
 
     /**
@@ -3901,7 +3901,7 @@ declare module "alt-client" {
     public waitForSpawn(timeout?: number): Promise<void>;
   }
 
-  /** @alpha */
+  /** @beta */
   export class WeaponObject extends LocalObject {
     constructor(weaponHash: string | number, pos: shared.Vector3, rot: shared.Vector3, modelHash?: string | number, numAmmo?: number, createDefaultComponents?: boolean, scale?: number, useStreaming?: boolean, streamingDistance?: number);
 
@@ -3922,7 +3922,7 @@ declare module "alt-client" {
     public removeComponent(componentType: number): void;
   }
 
-  /** @alpha */
+  /** @beta */
   export class Object extends Entity {
     public static readonly all: ReadonlyArray<Object>;
 
@@ -3936,7 +3936,7 @@ declare module "alt-client" {
     public readonly lodDistance: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export class Ped extends Entity {
     /**
      * Retrieves the ped from the pool.
@@ -3981,7 +3981,7 @@ declare module "alt-client" {
     public readonly armour: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export class AudioFilter extends BaseObject {
     constructor(filtername: string);
 
@@ -4006,7 +4006,7 @@ declare module "alt-client" {
     public readonly hash: number;
   }
 
-  /** @alpha */
+  /** @beta */
   /**
    * With the AudioCategory class you can get specific audio category values and also set some of them.
    */
@@ -4034,7 +4034,7 @@ declare module "alt-client" {
     public static getForName(categoryName: string): AudioCategory;
   }
 
-  /** @alpha */
+  /** @beta */
   export class Marker extends WorldObject {
     public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 
@@ -4075,9 +4075,8 @@ declare module "alt-client" {
     public bobUpAndDown: boolean;
   }
 
-  /** @alpha */
+  /** @beta */
   export class Colshape extends WorldObject {
-    /** @alpha */
     public static readonly all: ReadonlyArray<Colshape>;
 
     public readonly colshapeType: shared.ColShapeType;
@@ -4117,37 +4116,37 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K, V>): void;
   }
 
-  /** @alpha */
+  /** @beta */
   export class ColshapeCylinder extends Colshape {
     constructor(x: number, y: number, z: number, radius: number, height: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class ColshapeSphere extends Colshape {
     constructor(x: number, y: number, z: number, radius: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class ColshapeCircle extends Colshape {
     constructor(x: number, y: number, radius: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class ColshapeCuboid extends Colshape {
     constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class ColshapeRectangle extends Colshape {
     constructor(x1: number, y1: number, x2: number, y2: number);
   }
 
-  /** @alpha */
+  /** @beta */
   export class ColshapePolygon extends Colshape {
     constructor(minZ: number, maxZ: number, points: Array<shared.IVector2>);
   }
 
-  /** @alpha */
+  /** @beta */
   export class TextLabel extends WorldObject {
     public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 
@@ -4180,7 +4179,7 @@ declare module "alt-client" {
     public faceCamera: boolean;
   }
 
-  /** @alpha */
+  /** @beta */
   export class LocalVehicle extends WorldObject {
     public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
 
@@ -4382,7 +4381,7 @@ declare module "alt-client" {
     public oilLevel: number;
   }
 
-  /** @alpha */
+  /** @beta */
   export class LocalPed extends Ped {
     public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
 
@@ -4416,7 +4415,7 @@ declare module "alt-client" {
     public readonly isStreamedIn: boolean;
   }
 
-  /** @alpha */
+  /** @beta */
   export class Font extends BaseObject {
     protected constructor();
 
