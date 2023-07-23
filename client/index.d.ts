@@ -2324,6 +2324,18 @@ declare module "alt-client" {
     public isFriendly: boolean;
 
     /** @alpha */
+    public isHiddenOnLegend: boolean;
+
+    /** @alpha */
+    public isMinimalOnEdge: boolean;
+
+    /** @alpha */
+    public useHeightIndicatorOnEdge: boolean;
+
+    /** @alpha */
+    public isShortHeightThreshold: boolean;
+
+    /** @alpha */
     public readonly isStreamedIn: boolean;
 
     /** @alpha */
