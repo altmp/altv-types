@@ -4379,6 +4379,12 @@ declare module "alt-client" {
      * The vehicle's oil level.
      */
     public oilLevel: number;
+
+    /** @alpha */
+    public steeringAngle: number;
+
+    /** @alpha */
+    public suspensionHeight: number;
   }
 
   /** @beta */

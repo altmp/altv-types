@@ -2438,6 +2438,15 @@ declare module "alt-server" {
 
     public hybridExtraState: number;
 
+    /** @alpha */
+    public readonly steeringAngle: number;
+
+    /** @alpha */
+    public readonly accelerationLevel: number;
+
+    /** @alpha */
+    public readonly brakeLevel: number;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K>): void;
