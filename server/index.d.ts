@@ -327,14 +327,30 @@ declare module "alt-server" {
     metaChange: (target: BaseObject, key: string, value: any, oldValue: any) => void;
     /** @beta */
     voiceConnection: (state: shared.VoiceConnectionState) => void;
-    /** @alpha */
-    requestSyncedScene: (source: Player, sceneID: number) => void;
-    /** @alpha */
-    startSyncedScene: (source: Player, sceneID: number, startPos: shared.Vector3, startRot: shared.Vector3, animDictHash: number) => void;
-    /** @alpha */
-    stopSyncedScene: (source: Player, sceneID: number) => void;
-    /** @alpha */
-    updateSyncedScene: (source: Player, startRate: number, sceneID: number) => void;
+    /**
+     * @remarks You need to return true, otherwise the scene will not be synced.
+     *
+     * @alpha
+     */
+    requestSyncedScene: (source: Player, sceneID: number) => void | boolean;
+    /**
+     * @remarks You need to return true, otherwise the scene will not be synced.
+     *
+     * @alpha
+     */
+    startSyncedScene: (source: Player, sceneID: number, startPos: shared.Vector3, startRot: shared.Vector3, animDictHash: number) => void | boolean;
+    /**
+     * @remarks You need to return true, otherwise the scene will not be synced.
+     *
+     * @alpha
+     */
+    stopSyncedScene: (source: Player, sceneID: number) => void | boolean;
+    /**
+     * @remarks You need to return true, otherwise the scene will not be synced.
+     *
+     * @alpha
+     */
+    updateSyncedScene: (source: Player, startRate: number, sceneID: number) => void | boolean;
   }
 
   export interface IFireInfo {
