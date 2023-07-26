@@ -4381,7 +4381,7 @@ declare module "alt-client" {
     public oilLevel: number;
 
     /** @alpha */
-    public steeringAngle: number;
+    public readonly steeringAngle: number;
 
     /** @alpha */
     public suspensionHeight: number;
