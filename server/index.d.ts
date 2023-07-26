@@ -2437,6 +2437,9 @@ declare module "alt-server" {
 
     public lightState: number;
 
+    /** @alpha */
+    public hornActive: boolean;
+
     public setTimedExplosion(state: boolean, culprit: Player, time: number): void;
 
     public readonly timedExplosionTime: number;
