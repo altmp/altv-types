@@ -338,7 +338,7 @@ declare module "alt-server" {
      *
      * @alpha
      */
-    startSyncedScene: (source: Player, sceneID: number, startPos: shared.Vector3, startRot: shared.Vector3, animDictHash: number, entityAnimPairs: {entity: BaseObject, animHash: number}[]) => void | boolean;
+    startSyncedScene: (source: Player, sceneID: number, startPos: shared.Vector3, startRot: shared.Vector3, animDictHash: number, entityAnimPairs: { entity: BaseObject; animHash: number }[]) => void | boolean;
     /**
      * @remarks You need to return true, otherwise the scene will not be synced.
      *

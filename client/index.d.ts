@@ -2512,7 +2512,7 @@ declare module "alt-client" {
      * Gets the value from the specified key in the local storage.
      */
     public static get(key: string): any;
- 
+
     /** @beta */
     public static has(key: string): boolean;
 
