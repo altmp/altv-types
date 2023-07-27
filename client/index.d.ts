@@ -1210,6 +1210,9 @@ declare module "alt-client" {
      */
     public readonly strafeSpeed: number;
 
+    /** @alpha */
+    public filter: AudioFilter | null;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerMeta, K>): void;
