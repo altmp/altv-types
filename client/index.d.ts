@@ -2079,6 +2079,15 @@ declare module "alt-client" {
      */
     public setZoomLevel(value: number): void;
 
+    /** @alpha */
+    public addOutput(output: AudioOutput): void;
+
+    /** @alpha */
+    public removeOutput(output: AudioOutput): void;
+
+    /** @alpha */
+    public getOutputs(): ReadonlyArray<AudioOutput | number>;
+
     /** @beta */
     public reload(ignoreCache?: boolean): void;
 
