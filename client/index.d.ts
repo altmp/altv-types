@@ -900,14 +900,6 @@ declare module "alt-client" {
     /**
      * Retrieves the entity from the pool.
      *
-     * @param id The id of the entity.
-     * @returns Entity if it was found, otherwise null.
-     */
-    public static getByID(id: number): Entity | null;
-
-    /**
-     * Retrieves the entity from the pool.
-     *
      * @param scriptID The script id of the entity.
      * @returns Entity if it was found, otherwise null.
      */
