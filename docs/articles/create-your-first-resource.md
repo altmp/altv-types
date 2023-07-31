@@ -208,12 +208,12 @@ in the [typescript documentation](https://www.typescriptlang.org/docs/handbook/t
     "noImplicitAny": true,
     "sourceMap": false,
 
-    # If you have subfolder where all your ts files are located you can add the following line to specify the root folder 
+    // If you have subfolder where all your ts files are located you can add the following line to specify the root folder 
     "rootDir": "./Source/",
-    # Here you can set the output folder where the javascript files will be generated
+    // Here you can set the output folder where the javascript files will be generated
     "outDir": "./Dist/",
 
-    # Here you specify the TypeScript (IDE) where the alt:V types are located
+    // Here you specify the TypeScript (IDE) where the alt:V types are located
     "typeRoots": ["./node_modules/@altv"]
   },
   "compileOnSave": true,
