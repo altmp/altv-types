@@ -1861,7 +1861,7 @@ declare module "alt-shared" {
   export interface ICustomPlayerLocalMeta {}
 
   /**
-   * Extend it by interface merging for use in player synced meta (class `Player` on client & server, e.g. `player.getSyncedMeta`)
+   * Extend it by interface merging for use in vehicle synced meta (class `Vehicle` on client & server, e.g. `vehicle.getSyncedMeta`)
    *
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
@@ -1880,6 +1880,20 @@ declare module "alt-shared" {
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomVirtualEntityStreamSyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in ped synced meta (class `Ped` on client & server, e.g. `ped.getSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomPedSyncedMeta extends ICustomEntitySyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in ped stream synced meta (class `Ped` on client & server, e.g. `ped.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomPedStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
 
   /**
    * Extend `alt.emitServer` and `alt.onServer` auto-completion by merging interfaces.
