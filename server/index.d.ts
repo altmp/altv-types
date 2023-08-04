@@ -2570,7 +2570,7 @@ declare module "alt-server" {
 
     public scale: number;
 
-    public color: shared.BlipColor;
+    public color: shared.BlipColor | number;
 
     public secondaryColor: number | shared.RGBA;
 

@@ -2272,7 +2272,7 @@ declare module "alt-client" {
 
     public category: number;
 
-    public color: shared.BlipColor;
+    public color: shared.BlipColor | number;
 
     public crewIndicatorVisible: boolean;
 
