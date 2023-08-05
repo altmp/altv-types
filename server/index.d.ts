@@ -330,25 +330,25 @@ declare module "alt-server" {
     /**
      * @remarks You need to return true, otherwise the scene will not be synced.
      *
-     * @alpha
+     * @beta
      */
     requestSyncedScene: (source: Player, sceneID: number) => void | boolean;
     /**
      * @remarks You need to return true, otherwise the scene will not be synced.
      *
-     * @alpha
+     * @beta
      */
     startSyncedScene: (source: Player, sceneID: number, startPos: shared.Vector3, startRot: shared.Vector3, animDictHash: number, entityAnimPairs: { entity: BaseObject; animHash: number }[]) => void | boolean;
     /**
      * @remarks You need to return true, otherwise the scene will not be synced.
      *
-     * @alpha
+     * @beta
      */
     stopSyncedScene: (source: Player, sceneID: number) => void | boolean;
     /**
      * @remarks You need to return true, otherwise the scene will not be synced.
      *
-     * @alpha
+     * @beta
      */
     updateSyncedScene: (source: Player, startRate: number, sceneID: number) => void | boolean;
   }
@@ -2437,7 +2437,7 @@ declare module "alt-server" {
 
     public lightState: number;
 
-    /** @alpha */
+    /** @beta */
     public hornActive: boolean;
 
     public setTimedExplosion(state: boolean, culprit: Player, time: number): void;
@@ -2465,13 +2465,13 @@ declare module "alt-server" {
 
     public hybridExtraState: number;
 
-    /** @alpha */
+    /** @beta */
     public readonly steeringAngle: number;
 
-    /** @alpha */
+    /** @beta */
     public readonly accelerationLevel: number;
 
-    /** @alpha */
+    /** @beta */
     public readonly brakeLevel: number;
 
     // normal meta

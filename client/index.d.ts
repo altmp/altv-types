@@ -1202,7 +1202,7 @@ declare module "alt-client" {
      */
     public readonly strafeSpeed: number;
 
-    /** @alpha */
+    /** @beta */
     public filter: AudioFilter | null;
 
     // normal meta
@@ -2071,13 +2071,13 @@ declare module "alt-client" {
      */
     public setZoomLevel(value: number): void;
 
-    /** @alpha */
+    /** @beta */
     public addOutput(output: AudioOutput): void;
 
-    /** @alpha */
+    /** @beta */
     public removeOutput(output: AudioOutput): void;
 
-    /** @alpha */
+    /** @beta */
     public getOutputs(): ReadonlyArray<AudioOutput | number>;
 
     /** @beta */
@@ -4384,10 +4384,10 @@ declare module "alt-client" {
      */
     public oilLevel: number;
 
-    /** @alpha */
+    /** @beta */
     public readonly steeringAngle: number;
 
-    /** @alpha */
+    /** @beta */
     public suspensionHeight: number;
   }
 
