@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-server",
-  "version": "2.8.9",
+  "version": "2.9.0",
   "description": "This package contains types definitions for alt:V server-side module.",
   "types": "index.d.ts",
   "files": [
