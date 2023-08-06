@@ -519,6 +519,13 @@ declare module "alt-client" {
   export interface ICustomVehicleMeta extends ICustomEntityMeta {}
 
   /**
+   * Extend it by merging interfaces for use in vehicle meta {@link "alt-client".Ped getMeta method}, {@link "alt-client".Ped setMeta method}, etc.
+   *
+   * @remarks See {@link "alt-shared".ICustomGlobalMeta} for an example of use.
+   */
+  export interface ICustomPedMeta extends ICustomEntityMeta {}
+
+  /**
    * Extend `alt.emit` auto-completion by merging interfaces for use with `alt.emit`.
    *
    * @example
@@ -3983,6 +3990,37 @@ declare module "alt-client" {
      * Current armour.
      */
     public readonly armour: number;
+    
+
+    // normal meta
+
+    public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPedMeta, K>): void;
+    public setMeta<K extends shared.ExtractStringKeys<ICustomPedMeta>>(key: K, value: ICustomPedMeta[K]): void;
+
+    public deleteMeta(key: string): void;
+    public deleteMeta<K extends shared.ExtractStringKeys<ICustomPedMeta>>(key: K): void;
+
+    public getMeta<K extends string>(key: Exclude<K, keyof ICustomPedMeta>): unknown;
+    public getMeta<K extends shared.ExtractStringKeys<ICustomPedMeta>>(key: K): ICustomPedMeta[K] | undefined;
+
+    public hasMeta(key: string): boolean;
+    public hasMeta<K extends shared.ExtractStringKeys<ICustomPedMeta>>(key: K): boolean;
+
+    // synced meta
+
+    public getSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPedSyncedMeta>): unknown;
+    public getSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPedSyncedMeta>>(key: K): shared.ICustomPedSyncedMeta[K] | undefined;
+
+    public hasSyncedMeta(key: string): boolean;
+    public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPedSyncedMeta>>(key: K): boolean;
+
+    // stream synced meta
+
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPedStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPedStreamSyncedMeta>>(key: K): shared.ICustomPedStreamSyncedMeta[K] | undefined;
+
+    public hasStreamSyncedMeta(key: string): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPedStreamSyncedMeta>>(key: K): boolean;
   }
 
   /** @beta */
