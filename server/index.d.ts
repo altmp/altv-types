@@ -639,10 +639,6 @@ declare module "alt-server" {
    */
   export const rootDir: string;
 
-  export const defaultDimension: number;
-
-  export const globalDimension: number;
-
   export class BaseObject extends shared.BaseObject {
     /**
      * Gets the base object with the given type and id

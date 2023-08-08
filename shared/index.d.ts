@@ -2635,6 +2635,16 @@ declare module "alt-shared" {
    */
   export const debug: boolean;
 
+  /**
+   * Default dimension (0). Read more: https://docs.altv.mp/articles/dimensions.html
+   */
+  export const defaultDimension: number;
+
+  /**
+   * Global dimension (-2147483648). Read more: https://docs.altv.mp/articles/dimensions.html
+   */
+  export const globalDimension: number;
+
   // "V" generic overloads in get & set meta methods remain only for backward compatibility
   // TODO: remove "V" generic overloads from all get & set meta methods (alt.getMeta, alt.Entity.getSyncedMeta, etc.)
   /**

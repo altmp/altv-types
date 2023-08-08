@@ -3990,7 +3990,6 @@ declare module "alt-client" {
      * Current armour.
      */
     public readonly armour: number;
-    
 
     // normal meta
 
