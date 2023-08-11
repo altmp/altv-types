@@ -351,6 +351,20 @@ declare module "alt-server" {
      * @beta
      */
     updateSyncedScene: (source: Player, startRate: number, sceneID: number) => void | boolean;
+
+    /**
+     * @remarks Triggers if player deletes a object of task.
+     *
+     * @alpha
+     */
+    clientDeleteObject: (player: Player) => void | boolean;
+
+    /**
+     * @remarks Triggers if player request creation of a object, e.g for a task which is synced.
+     *
+     * @alpha
+     */
+    clientRequestObject: (player: Player, model: number, position: shared.Vector3) => void | boolean;
   }
 
   export interface IFireInfo {
