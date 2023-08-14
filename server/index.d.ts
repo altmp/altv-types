@@ -234,6 +234,8 @@ declare module "alt-server" {
     /** @beta */
     readonly cloudAuthHash: string;
     readonly isAccepted: boolean;
+    /** @alpha */
+    text: string;
 
     /**
      * Accepts client connection.
