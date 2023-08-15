@@ -2624,7 +2624,7 @@ declare module "alt-client" {
     /**
      * @beta
      *
-     * @remarks This property requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
+     * @remarks This function requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
      */
     public static toggleInput(enabled: boolean): void;
 
