@@ -2600,28 +2600,52 @@ declare module "alt-client" {
      */
     public static muteInput: boolean;
 
-    /** @beta */
-    public activityInputEnabled: boolean;
+    /**
+     * @beta
+     *
+     * @remarks This property requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
+     * */
+    public static activationLevel: number;
 
-    /** @beta */
-    public activationLevel: number;
+    /**
+     * @beta
+     *
+     * @remarks This property requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
+     */
+    public static noiseSuppressionEnabled: boolean;
 
-    /** @beta */
-    public noiseSuppressionEnabled: boolean;
+    /**
+     * @beta
+     *
+     *  @remarks This property requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
+     * */
+    public static inputDevice: string | null;
 
-    /** @beta */
-    public inputDevice: string | null;
+    /**
+     * @beta
+     *
+     * @remarks This property requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
+     */
+    public static toggleInput(enabled: boolean): void;
 
-    /** @beta */
-    public toggleInput: boolean;
-
-    /** @beta */
-    public getAvailableInputDevices: ReadonlyArray<IInputDevice>;
+    /**
+     * @beta
+     *
+     * @remarks This function requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
+     * */
+    public static getAvailableInputDevices(): ReadonlyArray<IInputDevice>;
 
     /**
      * Determines if the voice activation is enabled.
      */
-    public static readonly activityInputEnabled: boolean;
+    public static get activityInputEnabled(): boolean;
+
+    /**
+     * Determines if the voice activation is enabled.
+     *
+     *  @remarks This setter requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
+     */
+    public static set activityInputEnabled(enabled: boolean);
 
     /**
      * Returns the keycode of the voice activation key.
@@ -2649,7 +2673,8 @@ declare module "alt-client" {
   /**
    * Emits specified event across resources.
    *
-   * @param eventName Name of the event.
+   * @param
+   * eventName Name of the event.
    * @param args Rest parameters for emit to send.
    */
   // Do not allow to emit alt:V event name
