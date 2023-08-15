@@ -1050,6 +1050,9 @@ declare module "alt-server" {
     /** @beta */
     public readonly isInCover: boolean;
 
+    /** @alpha */
+    public readonly isParachuting: boolean;
+
     /**
      * Position the player is currently aiming at.
      *

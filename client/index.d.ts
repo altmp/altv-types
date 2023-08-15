@@ -1083,6 +1083,9 @@ declare module "alt-client" {
     /** @beta */
     public readonly isInCover: boolean;
 
+    /** @alpha */
+    public readonly isParachuting: boolean;
+
     /**
      * Current armour.
      */
