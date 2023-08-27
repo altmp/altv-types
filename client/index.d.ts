@@ -581,6 +581,9 @@ declare module "alt-client" {
      */
     public getByID(type: shared.BaseObjectType, id: number): BaseObject;
 
+    /** @beta */
+    public getByRemoteID(type: shared.BaseObjectType, id: number): BaseObject;
+
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
 
