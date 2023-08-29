@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-client",
-  "version": "2.8.9",
+  "version": "2.9.0",
   "description": "This package contains types definitions for alt:V client-side module.",
   "types": "index.d.ts",
   "files": [
@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/altmp/altv-types#readme",
   "peerDependencies": {
-    "@altv/types-shared": ">=1.4",
+    "@altv/types-shared": ">=1.6",
     "@altv/types-worker": ">=1.0"
   },
   "typedoc": {
