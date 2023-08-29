@@ -367,6 +367,9 @@ declare module "alt-server" {
      * @alpha
      */
     clientRequestObject: (player: Player, model: number, position: shared.Vector3) => void | boolean;
+
+    /** @alpha */
+    playerHeal: (player: Player, oldHealth: number, newHealth: number, oldArmour: number, newArmour: number) => void;
   }
 
   export interface IFireInfo {
@@ -3195,6 +3198,42 @@ declare module "alt-server" {
 
   /** @beta */
   export function setVoiceExternal(phost: string, port: number): void;
+
+  /** @alpha */
+  export function getMaxStreamingPeds(): number;
+
+  /** @alpha */
+  export function setMaxStreamingPeds(limit: number): void;
+
+  /** @alpha */
+  export function getMaxStreamingObjects(): number;
+
+  /** @alpha */
+  export function setMaxStreamingObjects(limit: number): void;
+
+  /** @alpha */
+  export function getMaxStreamingVehicles(): number;
+
+  /** @alpha */
+  export function setMaxStreamingVehicles(limit: number): void;
+
+  /** @alpha */
+  export function getStreamerThreadCount(): void;
+
+  /** @alpha */
+  export function setStreamerThreadCount(count: number): void;
+
+  /** @alpha */
+  export function getStreamingTickRate(): void;
+
+  /** @alpha */
+  export function setStreamingTickRate(count: number): void;
+
+  /** @alpha */
+  export function getStreamingDistance(): void;
+
+  /** @alpha */
+  export function setStreamingDistance(distance: number): void;
 
   /** @beta */
   export class Ped extends Entity {
