@@ -579,10 +579,10 @@ declare module "alt-client" {
      * Gets the base object with the given type and local id
      * @beta
      */
-    public getByID(type: shared.BaseObjectType, id: number): BaseObject;
+    public static getByID(type: shared.BaseObjectType, id: number): BaseObject | null;
 
     /** @beta */
-    public getByRemoteID(type: shared.BaseObjectType, id: number): BaseObject;
+    public static getByRemoteID(type: shared.BaseObjectType, id: number): BaseObject | null;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
