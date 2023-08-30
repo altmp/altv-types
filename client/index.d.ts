@@ -673,6 +673,15 @@ declare module "alt-client" {
 
     public static readonly count: number;
 
+    /**
+     * Retrieves the audio from the pool.
+     *
+     * @param id The id of the audio.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): Audio | null;
+
+
     public source: string;
 
     public looped: boolean;
@@ -739,6 +748,14 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<AudioOutput>;
 
     public static readonly count: number;
+
+    /**
+     * Retrieves the audiooutput from the pool.
+     *
+     * @param id The id of the audiooutput.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): AudioOutput | null;
 
     public muted: boolean;
 
@@ -3867,6 +3884,14 @@ declare module "alt-client" {
     public static readonly all: ReadonlyArray<LocalObject>;
 
     public static readonly allWorld: ReadonlyArray<LocalObject>;
+
+    /**
+     * Retrieves the ped from the pool.
+     *
+     * @param id The id of the ped.
+     * @returns Entity if it was found, otherwise null.
+     */
+    public static getByID(id: number): LocalObject | null;
 
     /** @beta */
     public static readonly count: number;
