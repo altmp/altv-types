@@ -3235,6 +3235,42 @@ declare module "alt-server" {
   /** @alpha */
   export function setStreamingDistance(distance: number): void;
 
+  /** @alpha */
+  export function getMigrationThreadCount(): void;
+
+  /** @alpha */
+  export function setMigrationThreadCount(count: number): void;
+
+  /** @alpha */
+  export function getSyncSendThreadCount(): void;
+
+  /** @alpha */
+  export function setSyncSendThreadCount(count: number): void;
+
+  /** @alpha */
+  export function getSyncReceiveThreadCount(): void;
+
+  /** @alpha */
+  export function setSyncReceiveThreadCount(count: number): void;
+
+  /** @alpha */
+  export function getMigrationTickRate(): void;
+
+  /** @alpha */
+  export function setMigrationTickRate(count: number): void;
+
+  /** @alpha */
+  export function getColShapeTickRate(): void;
+
+  /** @alpha */
+  export function setColShapeTickRate(count: number): void;
+
+  /** @alpha */
+  export function getMigrationDistance(): void;
+
+  /** @alpha */
+  export function setMigrationDistance(count: number): void;
+
   /** @beta */
   export class Ped extends Entity {
     constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3);
