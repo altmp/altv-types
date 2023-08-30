@@ -4271,6 +4271,9 @@ declare module "alt-client" {
      */
     public static getByScriptID(scriptID: number): LocalVehicle | null;
 
+    /** Waits asynchronously until the vehicle spawns. */
+    public waitForSpawn(timeout?: number): Promise<void>;
+
     public get model(): number;
     public set model(model: number | string);
 
@@ -4478,6 +4481,9 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): LocalPed | null;
+
+    /** Waits asynchronously until the vehicle spawns. */
+    public waitForSpawn(timeout?: number): Promise<void>;
 
     public get model(): number;
     public set model(model: number | string);
