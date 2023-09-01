@@ -1763,6 +1763,23 @@ declare module "alt-server" {
     public readonly driver: Player | null;
 
     /**
+     * Gets all passengers of the vehicle including the driver itself.
+     *
+     * @example
+     * ```js
+     * const someVehicle = new alt.Vehicle('elegy', 0, 0, 0, 0, 0, 0);
+     * const passengers = someVehicle.passengers;
+     *
+     * for (const [seat, player] of Object.entries(passengers)) {
+     *    alt.log(`Seat: ${seat} - Player: ${player.name}`);
+     * }
+     * ```
+     * 
+     * @alpha
+     */
+    public readonly passengers: { [seat: string]: Player };
+
+    /**
      * Gets or sets the current engine health.
      *
      * Default maximum engine health is 1000.
