@@ -4486,8 +4486,11 @@ declare module "alt-client" {
      */
     public oilLevel: number;
 
-    /** @beta */
-    public readonly steeringAngle: number;
+    /**
+     * @remarks Setter needs to be called in everytick and engine must be off.
+     * @beta
+     */
+    public steeringAngle: number;
 
     /** @beta */
     public suspensionHeight: number;
