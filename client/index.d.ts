@@ -681,7 +681,6 @@ declare module "alt-client" {
      */
     public static getByID(id: number): Audio | null;
 
-
     public source: string;
 
     public looped: boolean;
