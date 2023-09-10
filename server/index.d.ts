@@ -1779,7 +1779,7 @@ declare module "alt-server" {
      * }
      * ```
      *
-     * @alpha
+     * @beta
      */
     public readonly passengers: IVehiclePassenger;
 
