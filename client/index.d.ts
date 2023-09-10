@@ -1044,17 +1044,17 @@ declare module "alt-client" {
      */
     public readonly currentWeaponComponents: ReadonlyArray<number>;
 
-    /** @alpha */
+    /** @beta */
     public hasWeaponComponent(weaponModel: string | number, component: string | number): boolean;
 
     /**
      * Tint index for currently equipped weapon.
      *
-     * @alpha
+     * @beta
      */
     public readonly currentWeaponTintIndex: number;
 
-    /** @alpha */
+    /** @beta */
     public getWeaponTintIndex(weaponModel: string | number): number;
 
     /**
@@ -1109,7 +1109,7 @@ declare module "alt-client" {
     /** @beta */
     public readonly isInCover: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isParachuting: boolean;
 
     /**
@@ -1217,14 +1217,14 @@ declare module "alt-client" {
     /**
      * Is the player currently crouching.
      *
-     * @alpha
+     * @beta
      */
     public readonly isCrouching: boolean;
 
     /**
      * Is the player currently stealthy.
      *
-     * @alpha
+     * @beta
      */
     public readonly isStealthy: boolean;
 

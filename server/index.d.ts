@@ -234,7 +234,7 @@ declare module "alt-server" {
     /** @beta */
     readonly cloudAuthHash: string;
     readonly isAccepted: boolean;
-    /** @alpha */
+    /** @beta */
     text: string;
 
     /**
@@ -357,18 +357,18 @@ declare module "alt-server" {
     /**
      * @remarks Triggers if player deletes a object of task.
      *
-     * @alpha
+     * @beta
      */
     clientDeleteObject: (player: Player) => void | boolean;
 
     /**
      * @remarks Triggers if player request creation of a object, e.g for a task which is synced.
      *
-     * @alpha
+     * @beta
      */
     clientRequestObject: (player: Player, model: number, position: shared.Vector3) => void | boolean;
 
-    /** @alpha */
+    /** @beta */
     playerHeal: (player: Player, oldHealth: number, newHealth: number, oldArmour: number, newArmour: number) => void;
   }
 
@@ -1053,7 +1053,7 @@ declare module "alt-server" {
     /** @beta */
     public readonly isInCover: boolean;
 
-    /** @alpha */
+    /** @beta */
     public readonly isParachuting: boolean;
 
     /**
@@ -1774,8 +1774,8 @@ declare module "alt-server" {
      *    alt.log(`Seat: ${seat} - Player: ${player.name}`);
      * }
      * ```
-     * 
-     * @alpha
+     *
+     * @beta
      */
     public readonly passengers: { [seat: string]: Player };
 
@@ -3216,76 +3216,76 @@ declare module "alt-server" {
   /** @beta */
   export function setVoiceExternal(phost: string, port: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getMaxStreamingPeds(): number;
 
-  /** @alpha */
+  /** @beta */
   export function setMaxStreamingPeds(limit: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getMaxStreamingObjects(): number;
 
-  /** @alpha */
+  /** @beta */
   export function setMaxStreamingObjects(limit: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getMaxStreamingVehicles(): number;
 
-  /** @alpha */
+  /** @beta */
   export function setMaxStreamingVehicles(limit: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getStreamerThreadCount(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setStreamerThreadCount(count: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getStreamingTickRate(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setStreamingTickRate(count: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getStreamingDistance(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setStreamingDistance(distance: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getMigrationThreadCount(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setMigrationThreadCount(count: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getSyncSendThreadCount(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setSyncSendThreadCount(count: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getSyncReceiveThreadCount(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setSyncReceiveThreadCount(count: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getMigrationTickRate(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setMigrationTickRate(count: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getColShapeTickRate(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setColShapeTickRate(count: number): void;
 
-  /** @alpha */
+  /** @beta */
   export function getMigrationDistance(): void;
 
-  /** @alpha */
+  /** @beta */
   export function setMigrationDistance(count: number): void;
 
   /** @beta */

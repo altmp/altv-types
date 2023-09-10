@@ -41,13 +41,13 @@ interface Alt {
    */
   getEventListeners(eventName: string): ((...args: any[]) => void)[];
 
-  /** @alpha */
+  /** @beta */
   getVersion(): string;
 
-  /** @alpha */
+  /** @beta */
   getBranch(): string;
 
-  /** @alpha */
+  /** @beta */
   getLocale(): string;
 }
 
