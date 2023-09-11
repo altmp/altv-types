@@ -372,6 +372,10 @@ declare module "alt-server" {
     playerHeal: (player: Player, oldHealth: number, newHealth: number, oldArmour: number, newArmour: number) => void;
   }
 
+  interface IVehiclePassenger {
+    [seat: string]: Player;
+  }
+
   export interface IFireInfo {
     readonly pos: shared.Vector3;
     readonly weapon: number;
@@ -1780,7 +1784,7 @@ declare module "alt-server" {
      *
      * @beta
      */
-    public readonly passengers: { [seat: string]: Player };
+    public readonly passengers: IVehiclePassenger;
 
     /**
      * Gets or sets the current engine health.
