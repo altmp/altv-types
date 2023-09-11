@@ -1490,6 +1490,9 @@ declare module "alt-server" {
     /** @beta */
     public netOwnershipDisabled: boolean;
 
+    /** @alpha */
+    public requestCloudID(): Promise<string>;
+
     // local meta
 
     /**
