@@ -573,7 +573,7 @@ declare module "alt-client" {
      * The serverside id of this entity.
      * @beta
      * */
-    public readonly remoteId: number;
+    public readonly remoteID: number;
 
     /**
      * Gets the base object with the given type and local id
