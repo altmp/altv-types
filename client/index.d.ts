@@ -423,7 +423,7 @@ declare module "alt-client" {
     /**
      * Child node ids.
      */
-    readonly children?: ReadonlyArray<number>;
+    readonly children?: readonly number[];
 
     /**
      * The reason of being not optimized. The function may be deoptimized or marked as don't optimize.
@@ -433,7 +433,7 @@ declare module "alt-client" {
     /**
      * An array of source position ticks.
      */
-    readonly positionTicks: ReadonlyArray<IProfileTickInfo>;
+    readonly positionTicks: readonly IProfileTickInfo[];
   }
 
   export interface IProfileTickInfo {
@@ -607,7 +607,7 @@ declare module "alt-client" {
     public constructor(maxEntitiesInStream: number);
 
     /** Returns all Virtual Entity Group instances */
-    public static readonly all: ReadonlyArray<VirtualEntityGroup>;
+    public static readonly all: readonly VirtualEntityGroup[];
 
     /** Maximum streaming range of the Virtual Entity Group */
     public readonly maxEntitiesInStream: number;
@@ -619,9 +619,9 @@ declare module "alt-client" {
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
     /** Returns all Virtual Entity instances */
-    public static readonly all: ReadonlyArray<VirtualEntity>;
+    public static readonly all: readonly VirtualEntity[];
 
-    public static readonly streamedIn: ReadonlyArray<VirtualEntity>;
+    public static readonly streamedIn: readonly VirtualEntity[];
 
     /** Virtual Entity Group this entity belongs to */
     public readonly group: VirtualEntityGroup;
@@ -656,7 +656,7 @@ declare module "alt-client" {
      * Returns all set meta keys of the Virtual Entity.
      * Only available for server-side created Virtual Entities.
      */
-    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): readonly string[];
   }
 
   /** @beta */
@@ -669,7 +669,7 @@ declare module "alt-client" {
      */
     public constructor(source: string, volume?: number, radio?: boolean);
 
-    public static readonly all: ReadonlyArray<Audio>;
+    public static readonly all: readonly Audio[];
 
     public static readonly count: number;
 
@@ -706,7 +706,7 @@ declare module "alt-client" {
     /**
      * @remarks This method has no effect if the {@link frontendPlay} property returns true.
      */
-    public getOutputs(): ReadonlyArray<AudioOutput | number>;
+    public getOutputs(): readonly (AudioOutput | number)[];
 
     public play(): void;
     public pause(): void;
@@ -744,7 +744,7 @@ declare module "alt-client" {
   export class AudioOutput extends BaseObject {
     protected constructor();
 
-    public static readonly all: ReadonlyArray<AudioOutput>;
+    public static readonly all: readonly AudioOutput[];
 
     public static readonly count: number;
 
@@ -819,7 +819,7 @@ declare module "alt-client" {
     public readonly streamingDistance: number;
 
     /** @beta */
-    public static readonly all: ReadonlyArray<Checkpoint>;
+    public static readonly all: readonly Checkpoint[];
 
     /** @beta */
     public static readonly count: number;
@@ -883,7 +883,7 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Entity>;
+    public static readonly all: readonly Entity[];
 
     /** Internal game id that can be used in native calls */
     public readonly scriptID: number;
@@ -967,7 +967,7 @@ declare module "alt-client" {
     public hasSyncedMeta(key: string): boolean;
     public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
-    public getSyncedMetaKeys(): ReadonlyArray<string>;
+    public getSyncedMetaKeys(): readonly string[];
 
     /**
      * Gets a value using the specified key.
@@ -989,7 +989,7 @@ declare module "alt-client" {
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
-    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): readonly string[];
 
     public frozen: boolean;
   }
@@ -1009,7 +1009,7 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Player>;
+    public static readonly all: readonly Player[];
 
     /** @beta */
     public static readonly count: number;
@@ -1017,7 +1017,7 @@ declare module "alt-client" {
     /**
      * Array with all streamed in players.
      */
-    public static readonly streamedIn: ReadonlyArray<Player>;
+    public static readonly streamedIn: readonly Player[];
 
     /**
      * The local player instance.
@@ -1041,7 +1041,7 @@ declare module "alt-client" {
     /**
      * Current weapon components.
      */
-    public readonly currentWeaponComponents: ReadonlyArray<number>;
+    public readonly currentWeaponComponents: readonly number[];
 
     /** @beta */
     public hasWeaponComponent(weaponModel: string | number, component: string | number): boolean;
@@ -1298,7 +1298,7 @@ declare module "alt-client" {
      */
     public readonly currentAmmo: number;
 
-    public readonly weapons: ReadonlyArray<shared.IWeapon>;
+    public readonly weapons: readonly shared.IWeapon[];
 
     public readonly currentWeaponData: WeaponData | null;
 
@@ -1306,9 +1306,9 @@ declare module "alt-client" {
 
     public getWeaponAmmo(weaponName: string): number;
 
-    public getWeaponComponents(hash: number): ReadonlyArray<number>;
+    public getWeaponComponents(hash: number): readonly number[];
 
-    public getWeaponComponents(weaponName: string): ReadonlyArray<number>;
+    public getWeaponComponents(weaponName: string): readonly number[];
 
     public hasWeapon(hash: number): boolean;
 
@@ -1350,7 +1350,7 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Vehicle>;
+    public static readonly all: readonly Vehicle[];
 
     /** @beta */
     public static readonly count: number;
@@ -1358,7 +1358,7 @@ declare module "alt-client" {
     /**
      * Array with all streamed in vehicles.
      */
-    public static readonly streamedIn: ReadonlyArray<Vehicle>;
+    public static readonly streamedIn: readonly Vehicle[];
 
     /**
      * Vehicle gear.
@@ -1928,7 +1928,7 @@ declare module "alt-client" {
     public url: string;
 
     /** @beta */
-    public static readonly all: ReadonlyArray<WebView>;
+    public static readonly all: readonly WebView[];
 
     /** @beta */
     public static readonly count: number;
@@ -2113,7 +2113,7 @@ declare module "alt-client" {
     public removeOutput(output: AudioOutput): void;
 
     /** @beta */
-    public getOutputs(): ReadonlyArray<AudioOutput | number>;
+    public getOutputs(): readonly (AudioOutput | number)[];
 
     /** @beta */
     public reload(ignoreCache?: boolean): void;
@@ -2264,7 +2264,7 @@ declare module "alt-client" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Blip>;
+    public static readonly all: readonly Blip[];
 
     /** @beta */
     public static readonly count: number;
@@ -2658,7 +2658,7 @@ declare module "alt-client" {
      *
      * @remarks This function requires [Extended Voice API](https://docs.altv.mp/articles/permissions.html) permission from the user.
      * */
-    public static getAvailableInputDevices(): ReadonlyArray<IInputDevice>;
+    public static getAvailableInputDevices(): readonly IInputDevice[];
 
     /**
      * Determines if the voice activation is enabled.
@@ -3073,7 +3073,7 @@ declare module "alt-client" {
    * @param weathers An array containing the weather ids for the weather cycle.
    * @param multipliers An array containing the multipliers for the weather cycle.
    */
-  export function setWeatherCycle(weathers: Array<number>, multipliers: Array<number>): void;
+  export function setWeatherCycle(weathers: number[], multipliers: number[]): void;
 
   /**
    * Sets whether the weather sync is active.
@@ -3522,7 +3522,7 @@ declare module "alt-client" {
 
     public readonly ownerDocument: RmlDocument;
 
-    public readonly childNodes: ReadonlyArray<RmlElement>;
+    public readonly childNodes: readonly RmlElement[];
 
     public appendChild(child: RmlElement): void;
 
@@ -3538,7 +3538,7 @@ declare module "alt-client" {
 
     public hasClass(name: string): boolean;
 
-    public getClassList(): ReadonlyArray<string>;
+    public getClassList(): readonly string[];
 
     public addPseudoClass(name: string): boolean;
 
@@ -3546,7 +3546,7 @@ declare module "alt-client" {
 
     public hasPseudoClass(name: string): boolean;
 
-    public getPseudoClassList(): ReadonlyArray<string>;
+    public getPseudoClassList(): readonly string[];
 
     public setOffset(element: RmlElement, offset: shared.IVector2, fixed?: boolean): void;
 
@@ -3580,13 +3580,13 @@ declare module "alt-client" {
 
     public getElementByID(id: string): RmlElement | null;
 
-    public getElementsByTagName(tag: string): ReadonlyArray<RmlElement>;
+    public getElementsByTagName(tag: string): readonly RmlElement[];
 
-    public getElementsByClassName(className: string): ReadonlyArray<RmlElement>;
+    public getElementsByClassName(className: string): readonly RmlElement[];
 
     public querySelector(selector: string): RmlElement | null;
 
-    public querySelectorAll(selector: string): ReadonlyArray<RmlElement>;
+    public querySelectorAll(selector: string): readonly RmlElement[];
 
     public focus(): boolean;
 
@@ -3720,7 +3720,7 @@ declare module "alt-client" {
        * ```
        *
        */
-      constructor(keyCode: shared.KeyCode | Array<shared.KeyCode>, callback: () => void, eventType?: "keyup" | "keydown");
+      constructor(keyCode: shared.KeyCode | shared.KeyCode[], callback: () => void, eventType?: "keyup" | "keydown");
       public destroy(): void;
     }
 
@@ -3886,9 +3886,9 @@ declare module "alt-client" {
      */
     constructor(model: string | number, pos: shared.Vector3, rot: shared.Vector3, noOffset?: boolean, dynamic?: boolean, useStreaming?: boolean, streamingDistance?: number);
 
-    public static readonly all: ReadonlyArray<LocalObject>;
+    public static readonly all: readonly LocalObject[];
 
-    public static readonly allWorld: ReadonlyArray<LocalObject>;
+    public static readonly allWorld: readonly LocalObject[];
 
     /**
      * Retrieves the ped from the pool.
@@ -3977,7 +3977,7 @@ declare module "alt-client" {
   export class WeaponObject extends LocalObject {
     constructor(weaponHash: string | number, pos: shared.Vector3, rot: shared.Vector3, modelHash?: string | number, numAmmo?: number, createDefaultComponents?: boolean, scale?: number, useStreaming?: boolean, streamingDistance?: number);
 
-    public static readonly all: ReadonlyArray<WeaponObject>;
+    public static readonly all: readonly WeaponObject[];
 
     public static readonly count: number;
 
@@ -3996,7 +3996,7 @@ declare module "alt-client" {
 
   /** @beta */
   export class Object extends Entity {
-    public static readonly all: ReadonlyArray<Object>;
+    public static readonly all: readonly Object[];
 
     public static readonly count: number;
 
@@ -4026,9 +4026,9 @@ declare module "alt-client" {
      */
     public static getByScriptID(scriptID: number): Ped | null;
 
-    public static readonly all: ReadonlyArray<Ped>;
+    public static readonly all: readonly Ped[];
 
-    public static readonly streamedIn: ReadonlyArray<Ped>;
+    public static readonly streamedIn: readonly Ped[];
 
     public static readonly count: number;
 
@@ -4148,7 +4148,7 @@ declare module "alt-client" {
      */
     public static getByID(id: number): Marker | null;
 
-    public static readonly all: ReadonlyArray<Marker>;
+    public static readonly all: readonly Marker[];
 
     public visible: boolean;
 
@@ -4179,7 +4179,7 @@ declare module "alt-client" {
 
   /** @beta */
   export class Colshape extends WorldObject {
-    public static readonly all: ReadonlyArray<Colshape>;
+    public static readonly all: readonly Colshape[];
 
     public readonly colshapeType: shared.ColShapeType;
 
@@ -4194,7 +4194,7 @@ declare module "alt-client" {
     public readonly max: shared.Vector2 | shared.Vector3;
     public readonly minZ: number;
     public readonly maxZ: number;
-    public readonly points: Vector2[];
+    public readonly points: shared.Vector2[];
 
     /**
      * Retrieves the colshape from the pool.
@@ -4253,7 +4253,7 @@ declare module "alt-client" {
 
   /** @beta */
   export class ColshapePolygon extends Colshape {
-    constructor(minZ: number, maxZ: number, points: Array<shared.IVector2>);
+    constructor(minZ: number, maxZ: number, points: shared.IVector2[]);
   }
 
   /** @beta */
@@ -4268,7 +4268,7 @@ declare module "alt-client" {
      */
     public static getByID(id: number): TextLabel | null;
 
-    //public static readonly all: ReadonlyArray<TextLabel>;
+    //public static readonly all: readonly TextLabel[];
 
     public visible: boolean;
 
