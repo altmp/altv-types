@@ -1438,7 +1438,7 @@ declare module "alt-server" {
     public clearDecorations(): void;
 
     /** @beta */
-    public getDecorations(): IDecoration[];
+    public getDecorations(): readonly IDecoration[];
 
     /** @beta */
     public playAnimation(animDict: string, animName: string, blendInSpeed?: number, blendOutSpeed?: number, duration?: number, flags?: number, playbackRate?: number, lockX?: boolean, lockY?: boolean, lockZ?: boolean): void;
@@ -2751,7 +2751,7 @@ declare module "alt-server" {
     /** @beta */
     public readonly maxZ: number;
     /** @beta */
-    public readonly points: shared.Vector2[];
+    public readonly points: readonly shared.Vector2[];
 
     /**
      * Retrieves the colshape from the pool.
@@ -3207,7 +3207,7 @@ declare module "alt-server" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+  export function getRemoteEventListeners(eventName: string | null): readonly ((...args: any[]) => void)[];
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
@@ -3224,13 +3224,13 @@ declare module "alt-server" {
   export function toggleWorldProfiler(state: boolean): void;
 
   /** @beta */
-  export function getEntitiesInDimension(dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getEntitiesInDimension(dimension: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
 
   /** @beta */
-  export function getEntitiesInRange(position: shared.IVector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getEntitiesInRange(position: shared.IVector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
 
   /** @beta */
-  export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
 
   /** @beta */
   export function setVoiceExternalPublic(host: string, port: number): void;

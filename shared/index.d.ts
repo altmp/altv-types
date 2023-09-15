@@ -3007,7 +3007,7 @@ declare module "alt-shared" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+  export function getEventListeners(eventName: string | null): readonly ((...args: any[]) => void)[];
 
   export function stringToSHA256(string: string): string;
 

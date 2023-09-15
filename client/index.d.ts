@@ -354,7 +354,7 @@ declare module "alt-client" {
     /**
      * The list of profile nodes. First item is the root node.
      */
-    readonly nodes: IProfileNode[];
+    readonly nodes: readonly IProfileNode[];
 
     /**
      * Profiling start timestamp in microseconds.
@@ -369,12 +369,12 @@ declare module "alt-client" {
     /**
      * Ids of samples top nodes.
      */
-    readonly samples: number[];
+    readonly samples: readonly number[];
 
     /**
      * Time intervals between adjacent samples in microseconds. The first delta is relative to the profile startTime.
      */
-    readonly timeDeltas: number[];
+    readonly timeDeltas: readonly number[];
   }
 
   export interface IProfileCallFrame {
@@ -2089,7 +2089,7 @@ declare module "alt-client" {
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
      */
-    public getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+    public getEventListeners(eventName: string | null): readonly ((...args: any[]) => void)[];
 
     /**
      * Sets the specified header to the specified value.
@@ -3175,7 +3175,7 @@ declare module "alt-client" {
     /**
      * Gets all added sub protocols.
      */
-    public getSubProtocols(): string[];
+    public getSubProtocols(): readonly string[];
 
     /**
      * Sets the specified header to the specified value.
@@ -3191,7 +3191,7 @@ declare module "alt-client" {
      * @param eventName Name of the event.
      * @returns Array of listener functions for that event.
      */
-    public getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+    public getEventListeners(eventName: string | null): readonly ((...args: any[]) => void)[];
   }
 
   /**
@@ -3234,7 +3234,7 @@ declare module "alt-client" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+  export function getRemoteEventListeners(eventName: string | null): readonly ((...args: any[]) => void)[];
 
   export class HttpClient extends BaseObject {
     public constructor();
@@ -3454,7 +3454,7 @@ declare module "alt-client" {
 
     public off(eventName: string, func: (...args: any[]) => void): void;
 
-    public getEventListeners(eventName: string): ((senderElement: RmlElement, ...args: any[]) => void)[];
+    public getEventListeners(eventName: string): readonly ((senderElement: RmlElement, ...args: any[]) => void)[];
 
     public readonly relativeOffset: shared.Vector2;
 
@@ -3858,7 +3858,7 @@ declare module "alt-client" {
     public static getForHash(weaponHash: number): WeaponData;
 
     /** @beta */
-    public static allHashes: WeaponData[];
+    public static allHashes: readonly WeaponData[];
   }
 
   export function loadDefaultIpls(): void;
@@ -4194,7 +4194,7 @@ declare module "alt-client" {
     public readonly max: shared.Vector2 | shared.Vector3;
     public readonly minZ: number;
     public readonly maxZ: number;
-    public readonly points: shared.Vector2[];
+    public readonly points: readonly shared.Vector2[];
 
     /**
      * Retrieves the colshape from the pool.
