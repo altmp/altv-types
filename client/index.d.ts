@@ -4188,6 +4188,14 @@ declare module "alt-client" {
      */
     public playersOnly: boolean;
 
+    public readonly radius: number;
+    public readonly height: number;
+    public readonly min: shared.Vector2 | shared.Vector3;
+    public readonly max: shared.Vector2 | shared.Vector3;
+    public readonly minZ: number;
+    public readonly maxZ: number;
+    public readonly points: Vector2[];
+
     /**
      * Retrieves the colshape from the pool.
      *

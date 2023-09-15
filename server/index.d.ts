@@ -2738,6 +2738,21 @@ declare module "alt-server" {
      */
     public playersOnly: boolean;
 
+    /** @beta */
+    public readonly radius: number;
+    /** @beta */
+    public readonly height: number;
+    /** @beta */
+    public readonly min: shared.Vector2 | shared.Vector3;
+    /** @beta */
+    public readonly max: shared.Vector2 | shared.Vector3;
+    /** @beta */
+    public readonly minZ: number;
+    /** @beta */
+    public readonly maxZ: number;
+    /** @beta */
+    public readonly points: shared.Vector2[];
+
     /**
      * Retrieves the colshape from the pool.
      *
