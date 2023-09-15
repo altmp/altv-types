@@ -1678,13 +1678,13 @@ declare module "alt-shared" {
    */
   export interface IResourceConfig {
     readonly type?: string;
-    readonly deps?: ReadonlyArray<string>;
+    readonly deps?: readonly string[];
     readonly main?: string;
     readonly "client-main"?: string;
     readonly "client-type"?: string;
-    readonly "client-files"?: ReadonlyArray<string>;
-    readonly "required-permissions"?: ReadonlyArray<Permission>;
-    readonly "optional-permissions"?: ReadonlyArray<Permission>;
+    readonly "client-files"?: readonly string[];
+    readonly "required-permissions"?: readonly Permission[];
+    readonly "optional-permissions"?: readonly Permission[];
 
     readonly [key: string]: unknown;
   }
@@ -1775,7 +1775,7 @@ declare module "alt-shared" {
   export interface IWeapon {
     readonly hash: number;
     readonly tintIndex: number;
-    readonly components: ReadonlyArray<number>;
+    readonly components: readonly number[];
   }
 
   export const enum VehicleLockState {
@@ -2563,7 +2563,7 @@ declare module "alt-shared" {
     public hasMeta(key: string): boolean;
     public hasMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): boolean;
 
-    public getMetaDataKeys(): ReadonlyArray<string>;
+    public getMetaDataKeys(): readonly string[];
 
     /**
      * Stores the given value with the specified key.
@@ -2598,7 +2598,7 @@ declare module "alt-shared" {
     public hasSyncedMeta(key: string): boolean;
     public hasSyncedMeta<K extends ExtractStringKeys<ICustomBaseObjectSyncedMeta>>(key: K): boolean;
 
-    public getSyncedMetaKeys(): ReadonlyArray<string>;
+    public getSyncedMetaKeys(): readonly string[];
 
     /**
      * Returns the ref count of the entity.
@@ -2674,7 +2674,7 @@ declare module "alt-shared" {
    * Returns all meta keys which have been set
    * @beta
    */
-  export function getMetaKeys(): ReadonlyArray<string>;
+  export function getMetaKeys(): readonly string[];
 
   /**
    * Determines whether contains the specified key.
@@ -2713,7 +2713,7 @@ declare module "alt-shared" {
    * Returns all synced meta keys which have been set
    * @beta
    */
-  export function getSyncedMetaKeys(): ReadonlyArray<string>;
+  export function getSyncedMetaKeys(): readonly string[];
 
   /**
    * Determines whether contains the specified key.
@@ -2914,7 +2914,7 @@ declare module "alt-shared" {
    */
   export const isServer: boolean;
 
-  export function getAllResources(): ReadonlyArray<IResource>;
+  export function getAllResources(): readonly IResource[];
 
   export function time(timerName: string): void;
 
@@ -2932,15 +2932,15 @@ declare module "alt-shared" {
     public readonly name: string;
     public readonly main: string;
     public readonly exports: Record<string, any>;
-    public readonly dependencies: ReadonlyArray<string>;
-    public readonly dependants: ReadonlyArray<string>;
-    public readonly requiredPermissions: ReadonlyArray<Permission>;
-    public readonly optionalPermissions: ReadonlyArray<Permission>;
+    public readonly dependencies: readonly string[];
+    public readonly dependants: readonly string[];
+    public readonly requiredPermissions: readonly Permission[];
+    public readonly optionalPermissions: readonly Permission[];
     public readonly valid: boolean;
 
     public readonly config: IResourceConfig;
     public static getByName(name: string): Resource | null;
-    public static readonly all: ReadonlyArray<Resource>;
+    public static readonly all: readonly Resource[];
     public static readonly current: Resource;
   }
 
@@ -3007,7 +3007,7 @@ declare module "alt-shared" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+  export function getEventListeners(eventName: string | null): readonly ((...args: any[]) => void)[];
 
   export function stringToSHA256(string: string): string;
 
