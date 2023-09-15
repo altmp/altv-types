@@ -1093,8 +1093,6 @@ declare module "alt-server" {
     public readonly hwidExHash: string;
     public readonly authToken: string;
     public readonly discordID: string;
-    /** @beta */
-    public readonly cloudAuthHash: string;
     public readonly currentAnimationDict: number;
     public readonly currentAnimationName: number;
     public readonly forwardSpeed: number;
