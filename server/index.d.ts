@@ -248,7 +248,7 @@ declare module "alt-server" {
 
   export class ConnectionInfo {
     /** @beta */
-    static readonly all: ReadonlyArray<IConnectionInfo>;
+    static readonly all: readonly IConnectionInfo[];
     /** @beta */
     static getByID(id: number): IConnectionInfo | null;
   }
@@ -303,7 +303,7 @@ declare module "alt-server" {
     vehicleDestroy: (vehicle: Vehicle) => void;
     vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
     weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => number | boolean | void;
-    startFire: (player: Player, fires: Array<IFireInfo>) => boolean | void;
+    startFire: (player: Player, fires: IFireInfo[]) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
     vehicleDamage: (vehicle: Vehicle, attacker: Entity | null, bodyHealthDamage: number, additionalBodyHealthDamage: number, engineHealthDamage: number, petrolTankDamage: number, weapon: number) => void;
@@ -450,10 +450,10 @@ declare module "alt-server" {
     readonly interiorColor: number;
     readonly dashboardColor: number;
     readonly hasAutoAttachTrailer: boolean;
-    readonly availableModkits: ReadonlyArray<boolean>;
+    readonly availableModkits: readonly boolean[];
     hasExtra(extraId: number): boolean;
     hasDefaultExtra(extraId: number): boolean;
-    readonly bones: ReadonlyArray<IBoneInfo>;
+    readonly bones: readonly IBoneInfo[];
     /** @beta */
     readonly canAttachCars: boolean;
   }
@@ -465,7 +465,7 @@ declare module "alt-server" {
     readonly dlcName: string;
     readonly defaultUnarmedWeapon: string;
     readonly movementClipSet: string;
-    readonly bones: ReadonlyArray<IBoneInfo>;
+    readonly bones: readonly IBoneInfo[];
   }
 
   /** @beta */
@@ -586,8 +586,8 @@ declare module "alt-server" {
    * Documentation: https://docs.altv.mp/articles/configs/server.html
    */
   export interface IServerConfig {
-    readonly resources: ReadonlyArray<string>;
-    readonly modules: ReadonlyArray<string>;
+    readonly resources: readonly string[];
+    readonly modules: readonly string[];
     readonly name?: string;
     readonly host?: string;
     readonly port?: number;
@@ -606,7 +606,7 @@ declare module "alt-server" {
     readonly announceRetryErrorDelay?: number;
     readonly announceRetryErrorAttempts?: number;
     readonly duplicatePlayers?: number;
-    readonly tags?: ReadonlyArray<string>;
+    readonly tags?: readonly string[];
     readonly useEarlyAuth?: boolean;
     readonly earlyAuthUrl?: string;
     readonly useCdn?: boolean;
@@ -618,7 +618,7 @@ declare module "alt-server" {
     readonly mapBoundsMaxY?: number;
     readonly mapCellAreaSize?: number;
     readonly colShapeTickRate?: number;
-    readonly logStream?: ReadonlyArray<string>;
+    readonly logStream?: readonly string[];
     readonly entityWorkerCount?: number;
     readonly connectionQueue?: boolean;
 
@@ -647,7 +647,7 @@ declare module "alt-server" {
       readonly "global-fetch"?: boolean;
       readonly "global-webcrypto"?: boolean;
       readonly "network-imports"?: boolean;
-      readonly "extra-cli-args"?: ReadonlyArray<string>;
+      readonly "extra-cli-args"?: readonly string[];
     };
 
     readonly "csharp-module"?: {
@@ -727,7 +727,7 @@ declare module "alt-server" {
     public constructor(maxEntitiesInStream: number);
 
     /** Returns all Virtual Entity Group instances */
-    public static readonly all: ReadonlyArray<VirtualEntityGroup>;
+    public static readonly all: readonly VirtualEntityGroup[];
 
     /** Maximum streaming range inside the Virtual Entity Group */
     public readonly maxEntitiesInStream: number;
@@ -739,7 +739,7 @@ declare module "alt-server" {
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
     /** Returns all Virtual Entity instances */
-    public static readonly all: ReadonlyArray<VirtualEntity>;
+    public static readonly all: readonly VirtualEntity[];
 
     /** Virtual Entity Group this entity belongs to */
     public readonly group: VirtualEntityGroup;
@@ -769,7 +769,7 @@ declare module "alt-server" {
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): boolean;
 
-    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): readonly string[];
 
     /**
      * Stores the given value with the specified key.
@@ -808,7 +808,7 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Entity>;
+    public static readonly all: readonly Entity[];
 
     /**
      * Network owner of the entity.
@@ -888,7 +888,7 @@ declare module "alt-server" {
     public hasSyncedMeta(key: string): boolean;
     public hasSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K): boolean;
 
-    public getSyncedMetaKeys(): ReadonlyArray<string>;
+    public getSyncedMetaKeys(): readonly string[];
 
     /**
      * Stores the given value with the specified key.
@@ -931,7 +931,7 @@ declare module "alt-server" {
     public hasStreamSyncedMeta(key: string): boolean;
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
-    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): readonly string[];
 
     /**
      * Stores the given value with the specified key.
@@ -1014,15 +1014,15 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Player>;
+    public static readonly all: readonly Player[];
     /** @beta */
-    public readonly streamedEntities: ReadonlyArray<{ entity: Entity; distance: number }>;
+    public readonly streamedEntities: readonly { entity: Entity; distance: number }[];
     /** @beta */
     public static readonly count: number;
     public armour: number;
     public currentWeapon: number;
-    public readonly weapons: ReadonlyArray<shared.IWeapon>;
-    public readonly currentWeaponComponents: ReadonlyArray<number>;
+    public readonly weapons: readonly shared.IWeapon[];
+    public readonly currentWeaponComponents: readonly number[];
     public readonly currentWeaponTintIndex: number;
     public readonly entityAimOffset: shared.Vector3;
     public readonly entityAimingAt: Entity | null;
@@ -1438,7 +1438,7 @@ declare module "alt-server" {
     public clearDecorations(): void;
 
     /** @beta */
-    public getDecorations(): IDecoration[];
+    public getDecorations(): readonly IDecoration[];
 
     /** @beta */
     public playAnimation(animDict: string, animName: string, blendInSpeed?: number, blendOutSpeed?: number, duration?: number, flags?: number, playbackRate?: number, lockX?: boolean, lockY?: boolean, lockZ?: boolean): void;
@@ -1527,7 +1527,7 @@ declare module "alt-server" {
     public hasLocalMeta(key: string): boolean;
     public hasLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): boolean;
 
-    public getLocalMetaKeys(): ReadonlyArray<string>;
+    public getLocalMetaKeys(): readonly string[];
 
     // normal meta
 
@@ -1618,7 +1618,7 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Vehicle>;
+    public static readonly all: readonly Vehicle[];
 
     /** @beta */
     public static readonly count: number;
@@ -2586,7 +2586,7 @@ declare module "alt-server" {
      * }
      * ```
      */
-    public static readonly all: ReadonlyArray<Blip>;
+    public static readonly all: readonly Blip[];
 
     /** @beta */
     public static readonly count: number;
@@ -2686,7 +2686,7 @@ declare module "alt-server" {
     public isGlobal: boolean;
 
     /** @beta */
-    public readonly targets: ReadonlyArray<Player>;
+    public readonly targets: readonly Player[];
 
     /** @beta */
     public addTarget(player: Player): void;
@@ -2729,7 +2729,7 @@ declare module "alt-server" {
 
   export class Colshape extends WorldObject {
     /** @beta */
-    public static readonly all: ReadonlyArray<Colshape>;
+    public static readonly all: readonly Colshape[];
 
     public readonly colshapeType: shared.ColShapeType;
 
@@ -2751,7 +2751,7 @@ declare module "alt-server" {
     /** @beta */
     public readonly maxZ: number;
     /** @beta */
-    public readonly points: shared.Vector2[];
+    public readonly points: readonly shared.Vector2[];
 
     /**
      * Retrieves the colshape from the pool.
@@ -2806,7 +2806,7 @@ declare module "alt-server" {
   }
 
   export class ColshapePolygon extends Colshape {
-    constructor(minZ: number, maxZ: number, points: Array<shared.IVector2>);
+    constructor(minZ: number, maxZ: number, points: shared.IVector2[]);
   }
 
   export class Checkpoint extends Colshape {
@@ -2821,7 +2821,7 @@ declare module "alt-server" {
     public readonly streamingDistance: number;
 
     /** @beta */
-    public static readonly all: ReadonlyArray<Checkpoint>;
+    public static readonly all: readonly Checkpoint[];
 
     /** @beta */
     public static readonly count: number;
@@ -2872,7 +2872,7 @@ declare module "alt-server" {
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): boolean;
 
     /** @beta */
-    public getStreamSyncedMetaKeys(): ReadonlyArray<string>;
+    public getStreamSyncedMetaKeys(): readonly string[];
   }
 
   export class VoiceChannel extends BaseObject {
@@ -2926,7 +2926,7 @@ declare module "alt-server" {
     /** @deprecated See {@link ICustomVoiceChannelMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomVoiceChannelMeta, K, V>): void;
 
-    public readonly players: ReadonlyArray<Player>;
+    public readonly players: readonly Player[];
 
     public readonly playerCount: number;
   }
@@ -2935,7 +2935,7 @@ declare module "alt-server" {
     public readonly path: string;
 
     public static getByName(name: string): Resource | null;
-    public static readonly all: ReadonlyArray<Resource>;
+    public static readonly all: readonly Resource[];
     public static readonly current: Resource;
   }
 
@@ -3207,7 +3207,7 @@ declare module "alt-server" {
    * @param eventName Name of the event or null for generic event.
    * @returns Array of listener functions for that event.
    */
-  export function getRemoteEventListeners(eventName: string | null): ((...args: any[]) => void)[];
+  export function getRemoteEventListeners(eventName: string | null): readonly ((...args: any[]) => void)[];
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
@@ -3224,13 +3224,13 @@ declare module "alt-server" {
   export function toggleWorldProfiler(state: boolean): void;
 
   /** @beta */
-  export function getEntitiesInDimension(dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getEntitiesInDimension(dimension: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
 
   /** @beta */
-  export function getEntitiesInRange(position: shared.IVector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getEntitiesInRange(position: shared.IVector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
 
   /** @beta */
-  export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): Entity[];
+  export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
 
   /** @beta */
   export function setVoiceExternalPublic(host: string, port: number): void;
@@ -3322,7 +3322,7 @@ declare module "alt-server" {
      */
     public static getByID(id: number): Ped | null;
 
-    public static readonly all: ReadonlyArray<Ped>;
+    public static readonly all: readonly Ped[];
     public static readonly count: number;
     public currentWeapon: number;
     public health: number;
@@ -3334,7 +3334,7 @@ declare module "alt-server" {
   export class Object extends Entity {
     constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
 
-    public static readonly all: ReadonlyArray<Object>;
+    public static readonly all: readonly Object[];
 
     public static readonly count: number;
 
@@ -3364,7 +3364,7 @@ declare module "alt-server" {
      */
     public static getByID(id: number): Marker | null;
 
-    public static readonly all: ReadonlyArray<Marker>;
+    public static readonly all: readonly Marker[];
 
     public visible: boolean;
 
