@@ -231,8 +231,6 @@ declare module "alt-server" {
     readonly socialClubName: string;
     /** @beta */
     readonly id: number;
-    /** @beta */
-    readonly cloudAuthHash: string;
     readonly isAccepted: boolean;
     /** @beta */
     text: string;
@@ -244,6 +242,9 @@ declare module "alt-server" {
      */
     accept: (sendNames?: boolean) => void;
     decline: (reason: string) => void;
+
+    /** @alpha */
+    requestCloudID: () => Promise<string>;
   }
 
   export class ConnectionInfo {
