@@ -243,7 +243,7 @@ declare module "alt-server" {
     accept: (sendNames?: boolean) => void;
     decline: (reason: string) => void;
 
-    /** @alpha */
+    /** @beta */
     requestCloudID: () => Promise<string>;
   }
 
@@ -1493,7 +1493,7 @@ declare module "alt-server" {
     /** @beta */
     public netOwnershipDisabled: boolean;
 
-    /** @alpha */
+    /** @beta */
     public requestCloudID(): Promise<string>;
 
     // local meta
