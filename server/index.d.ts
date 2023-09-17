@@ -371,6 +371,9 @@ declare module "alt-server" {
 
     /** @beta */
     playerHeal: (player: Player, oldHealth: number, newHealth: number, oldArmour: number, newArmour: number) => void;
+
+    /** @alpha */
+    givePedScriptedTask: (source: Player, target: Ped, task: number) => void | boolean;
   }
 
   interface IVehiclePassenger {
