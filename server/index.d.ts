@@ -460,6 +460,8 @@ declare module "alt-server" {
     readonly bones: readonly IBoneInfo[];
     /** @beta */
     readonly canAttachCars: boolean;
+    /** @alpha */
+    readonly handlingNameHash: number;
   }
 
   export interface IPedModel {
