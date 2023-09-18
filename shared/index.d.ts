@@ -2608,6 +2608,20 @@ declare module "alt-shared" {
     public readonly refCount: number;
   }
 
+  export class WorldObject extends BaseObject {
+    /**
+     * Object dimension.
+     *
+     * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
+     */
+    public dimension: number;
+
+    /**
+     * Object position.
+     */
+    public pos: Vector3;
+  }
+
   /**
    * Resource name of the executing resource.
    */
