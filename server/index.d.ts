@@ -713,6 +713,20 @@ declare module "alt-server" {
     public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomBaseObjectSyncedMeta, K, V>): void;
   }
 
+  export class WorldObject extends BaseObject {
+    /**
+     * Object dimension.
+     *
+     * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
+     */
+    public dimension: number;
+
+    /**
+     * Object position.
+     */
+    public pos: shared.Vector3;
+  }
+
   /** @beta */
   export class VirtualEntityGroup extends BaseObject {
     /** Creates a new Virtual Entity Group */
@@ -726,7 +740,7 @@ declare module "alt-server" {
   }
 
   /** @beta */
-  export class VirtualEntity extends shared.shared.WorldObject {
+  export class VirtualEntity extends WorldObject {
     /** Creates a new Virtual Entity */
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
@@ -785,7 +799,7 @@ declare module "alt-server" {
     public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K): void;
   }
 
-  export class Entity extends shared.WorldObject {
+  export class Entity extends WorldObject {
     /**
      * Array with all entities.
      *
@@ -2561,7 +2575,7 @@ declare module "alt-server" {
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVehicleStreamSyncedMeta>>(key: K): boolean;
   }
 
-  export class Blip extends shared.WorldObject {
+  export class Blip extends WorldObject {
     /**
      * Array with all blips.
      *
@@ -2717,7 +2731,7 @@ declare module "alt-server" {
     constructor(entity: Entity, global: boolean);
   }
 
-  export class Colshape extends shared.WorldObject {
+  export class Colshape extends WorldObject {
     /** @beta */
     public static readonly all: readonly Colshape[];
 
@@ -3343,7 +3357,7 @@ declare module "alt-server" {
   }
 
   /** @beta */
-  export class Marker extends shared.WorldObject {
+  export class Marker extends WorldObject {
     public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
 
     /**
