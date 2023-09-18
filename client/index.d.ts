@@ -614,7 +614,7 @@ declare module "alt-client" {
   }
 
   /** @beta */
-  export class VirtualEntity extends WorldObject {
+  export class VirtualEntity extends shared.WorldObject {
     /** Creates a new Virtual Entity */
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
@@ -784,23 +784,7 @@ declare module "alt-client" {
     public entity: WorldObject;
   }
 
-  export class WorldObject extends BaseObject {
-    /**
-     * Object position
-     */
-    public pos: shared.Vector3;
-
-    /**
-     * Object dimension.
-     *
-     * @remarks Check https://docs.altv.mp/articles/dimensions.html to understand how it works.
-     *
-     * @beta
-     */
-    public dimension: number;
-  }
-
-  export class Checkpoint extends WorldObject {
+  export class Checkpoint extends shared.WorldObject {
     public checkpointType: shared.CheckpointType;
     public nextPos: shared.Vector3;
     public radius: number;
@@ -868,7 +852,7 @@ declare module "alt-client" {
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K, V>): void;
   }
 
-  export class Entity extends WorldObject {
+  export class Entity extends shared.WorldObject {
     /**
      * Array with all entities.
      *
@@ -2249,7 +2233,7 @@ declare module "alt-client" {
     public off(eventName: string, listener: (...args: any[]) => void): void;
   }
 
-  export class Blip extends WorldObject {
+  export class Blip extends shared.WorldObject {
     /**
      * Array with all blips.
      *
@@ -4137,7 +4121,7 @@ declare module "alt-client" {
   }
 
   /** @beta */
-  export class Marker extends WorldObject {
+  export class Marker extends shared.WorldObject {
     public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 
     /**
@@ -4178,7 +4162,7 @@ declare module "alt-client" {
   }
 
   /** @beta */
-  export class Colshape extends WorldObject {
+  export class Colshape extends shared.WorldObject {
     public static readonly all: readonly Colshape[];
 
     public readonly colshapeType: shared.ColShapeType;
@@ -4257,7 +4241,7 @@ declare module "alt-client" {
   }
 
   /** @beta */
-  export class TextLabel extends WorldObject {
+  export class TextLabel extends shared.WorldObject {
     public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 
     /**
@@ -4290,7 +4274,7 @@ declare module "alt-client" {
   }
 
   /** @beta */
-  export class LocalVehicle extends WorldObject {
+  export class LocalVehicle extends shared.WorldObject {
     public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
 
     /**
