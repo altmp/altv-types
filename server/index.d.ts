@@ -726,7 +726,7 @@ declare module "alt-server" {
   }
 
   /** @beta */
-  export class VirtualEntity extends shared.shared.WorldObject {
+  export class VirtualEntity extends shared.WorldObject {
     /** Creates a new Virtual Entity */
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);
 
