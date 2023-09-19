@@ -3027,4 +3027,9 @@ declare module "alt-shared" {
 
   /** @beta */
   export function getVoiceConnectionState(): VoiceConnectionState;
+
+  /**
+   * Gets the amount of milliseconds since the server was started.
+   */
+  export function getNetTime(): number;
 }

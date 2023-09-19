@@ -3080,11 +3080,6 @@ declare module "alt-server" {
   export function stopServer(): void;
 
   /**
-   * Gets the amount of milliseconds since the server was started.
-   */
-  export function getNetTime(): number;
-
-  /**
    * Unsubscribes from a client event with the specified listener.
    *
    * @remarks Listener should be of the same reference as when event was subscribed to.
