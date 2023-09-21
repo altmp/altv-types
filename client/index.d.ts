@@ -1240,6 +1240,9 @@ declare module "alt-client" {
     /** @beta */
     public filter: AudioFilter | null;
 
+    /** @alpha */
+    public readonly taskData: string;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerMeta, K>): void;
