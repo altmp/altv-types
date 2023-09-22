@@ -218,6 +218,12 @@ declare module "alt-client" {
 
     /** @beta */
     voiceConnection: (state: shared.VoiceConnectionState) => void;
+
+    /** @alpha */
+    playerStartTalking: (target: Player) => void;
+
+    /** @alpha */
+    playerStopTalking: (target: Player) => void;
   }
 
   export interface IDiscordUser {
