@@ -374,6 +374,15 @@ declare module "alt-server" {
 
     /** @alpha */
     givePedScriptedTask: (source: Player, target: Ped, task: number) => void | boolean;
+
+    /** @alpha */
+    pedDamage: (ped: Ped, attacker: Entity | null, healthDamage: number, armourDamage: number, weapon: number) => void | boolean;
+
+    /** @alpha */
+    pedDeath: (ped: Ped, killer: Entity | null, weaponHash: number) => void | boolean;
+
+    /** @alpha */
+    pedHeal: (ped: Ped, oldHealth: number, newHealth: number, oldArmour: number, newArmour: number) => void | boolean;
   }
 
   interface IVehiclePassenger {
