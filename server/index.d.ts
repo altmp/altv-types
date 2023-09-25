@@ -3323,7 +3323,7 @@ declare module "alt-server" {
    * @param dimension
    * @param limit How many entities to return if there are more entities in the specified range, dimension. (`-1` to disable).
    * @param allowedTypes
-   * 
+   *
    * @remarks If two entities are closer than 1 unit to a position, it is not determined which one will be included.
    * For example, if there is a vehicle at 0, 1.5, 0 and player at 0, 1.0, 0,
    * then if we pass `position` as `new alt.Vector3(0, 0, 0)`  and `limit` as `1` vehicle may be returned but the player will not.
