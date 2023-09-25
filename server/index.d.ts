@@ -214,6 +214,13 @@ declare module "alt-server" {
     Green,
   }
 
+  export const enum BaseObjectFilterType {
+    Player = 1,
+    Vehicle = 2,
+    Ped = 4,
+    Object = 8,
+  }
+
   export interface IConnectionInfo {
     readonly name: string;
     readonly socialID: string;
@@ -3231,14 +3238,95 @@ declare module "alt-server" {
 
   export function toggleWorldProfiler(state: boolean): void;
 
-  /** @beta */
-  export function getEntitiesInDimension(dimension: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
+  /**
+   * Returns all entities of the specified type (or types) in the specified dimension.
+   *
+   * @example
+   * ```ts
+   * // Returns all players and vehicles in zero dimension
+   * const playersAndVehicles = alt.getEntitiesInDimension(
+   *   0, // dimension
+   *   alt.BaseObjectFilterType.Player | alt.BaseObjectFilterType.Vehicle,
+   * );
+   *
+   * // Returns only players in zero dimension
+   * const players = alt.getEntitiesInDimension(
+   *   0, // dimension
+   *   alt.BaseObjectFilterType.Player,
+   * );
+   * ```
+   *
+   * @param dimension
+   * @param allowedTypes
+   *
+   * @beta
+   * */
+  export function getEntitiesInDimension(dimension: number, allowedTypes: BaseObjectFilterType): readonly Entity[];
 
-  /** @beta */
-  export function getEntitiesInRange(position: shared.IVector3, range: number, dimension: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
+  /**
+   * Returns all entities of the specified type (or types) at the specified position, in the given range and dimension.
+   *
+   * @example
+   * ```ts
+   * // Returns all players and vehicles in a range equal to 3 and dimension equal to 0
+   * const playersAndVehicles = alt.getEntitiesInRange(
+   *   alt.Vector3.zero, // position
+   *   3.0, // range
+   *   0, // dimension
+   *   alt.BaseObjectFilterType.Player | alt.BaseObjectFilterType.Vehicle,
+   * );
+   *
+   * // Returns players in a range equal to 3 and dimension equal to 0
+   * const players = alt.getEntitiesInRange(
+   *   alt.Vector3.zero, // position
+   *   3.0, // range
+   *   0, // dimension
+   *   alt.BaseObjectFilterType.Player,
+   * );
+   * ```
+   * @param position
+   * @param range
+   * @param dimension
+   * @param allowedTypes
+   *
+   * @beta
+   * */
+  export function getEntitiesInRange(position: shared.IVector3, range: number, dimension: number, allowedTypes: BaseObjectFilterType): readonly Entity[];
 
-  /** @beta */
-  export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: shared.BaseObjectType): readonly Entity[];
+  /**
+   * Returns only the closest entities of the specified type (or types) at the specified position, in the given range, dimension and limit.
+   *
+   * @example
+   * ```ts
+   * // Returns closest players and vehicles (from 0 to 2 entities inclusive, because limit is 2)
+   * // in a range equal to 3 and dimension equal to 0
+   * const playersAndVehicles = alt.getClosestEntities(
+   *   alt.Vector3.zero, // position
+   *   3.0, // range
+   *   0, // dimension
+   *   2, // limit
+   *   alt.BaseObjectFilterType.Player | alt.BaseObjectFilterType.Vehicle,
+   * );
+   *
+   * // Same but only players
+   * const players = alt.getClosestEntities(
+   *   alt.Vector3.zero, // position
+   *   3.0, // range
+   *   0, // dimension
+   *   2, // limit
+   *   alt.BaseObjectFilterType.Player,
+   * );
+   * ```
+   *
+   * @param position
+   * @param range
+   * @param dimension
+   * @param limit How many entities to return if there are more entities in the specified range, dimension. (`-1` to disable).
+   * @param allowedTypes
+   *
+   * @beta
+   * */
+  export function getClosestEntities(position: shared.IVector3, range: number, dimension: number, limit: number, allowedTypes: BaseObjectFilterType): readonly Entity[];
 
   /** @beta */
   export function setVoiceExternalPublic(host: string, port: number): void;
