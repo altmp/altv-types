@@ -3298,7 +3298,7 @@ declare module "alt-server" {
    *
    * @example
    * ```ts
-   * // Returns closest players and vehicles (1 or 2 entities, because limit is 2)
+   * // Returns closest players and vehicles (from 0 to 2 entities, because limit is 2)
    * // in a range equal to 3 and dimension equal to 0
    * const playersAndVehicles = alt.getClosestEntities(
    *   alt.Vector3.zero, // position
