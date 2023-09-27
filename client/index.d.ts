@@ -219,10 +219,10 @@ declare module "alt-client" {
     /** @beta */
     voiceConnection: (state: shared.VoiceConnectionState) => void;
 
-    /** @alpha */
+    /** @beta */
     playerStartTalking: (target: Player) => void;
 
-    /** @alpha */
+    /** @beta */
     playerStopTalking: (target: Player) => void;
   }
 
@@ -1246,7 +1246,7 @@ declare module "alt-client" {
     /** @beta */
     public filter: AudioFilter | null;
 
-    /** @alpha */
+    /** @beta */
     public readonly taskData: string;
 
     // normal meta

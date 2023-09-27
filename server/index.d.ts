@@ -379,16 +379,16 @@ declare module "alt-server" {
     /** @beta */
     playerHeal: (player: Player, oldHealth: number, newHealth: number, oldArmour: number, newArmour: number) => void;
 
-    /** @alpha */
+    /** @beta */
     givePedScriptedTask: (source: Player, target: Ped, task: number) => void | boolean;
 
-    /** @alpha */
+    /** @beta */
     pedDamage: (ped: Ped, attacker: Entity | null, healthDamage: number, armourDamage: number, weapon: number) => void | boolean;
 
-    /** @alpha */
+    /** @beta */
     pedDeath: (ped: Ped, killer: Entity | null, weaponHash: number) => void | boolean;
 
-    /** @alpha */
+    /** @beta */
     pedHeal: (ped: Ped, oldHealth: number, newHealth: number, oldArmour: number, newArmour: number) => void | boolean;
   }
 
@@ -476,7 +476,7 @@ declare module "alt-server" {
     readonly bones: readonly IBoneInfo[];
     /** @beta */
     readonly canAttachCars: boolean;
-    /** @alpha */
+    /** @beta */
     readonly handlingNameHash: number;
   }
 
