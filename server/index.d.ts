@@ -3094,6 +3094,26 @@ declare module "alt-server" {
   export function emitAllClientsUnreliable<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
+   * Subscribes to a client event with the specified listener.
+   * @param rpcName Name of the RPC
+   * @param listener Listener that should be added.
+   *
+   * @example
+   * ```js
+   * alt.onRpc("testRpc", (player, ...args) => {
+   *     alt.log(`${player.name} called testRpc`, args);
+   *
+   *    // throw new Error("I am an error! Notice me!");
+   *    return [1, 2, [10, 13, 19], false, "hey there"];
+   * });
+   * ```
+   * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Throwing an exception will cause the promise on the client to throw an exception which has to be caught.
+   *
+   * @alpha
+   */
+  export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<void> | void): void;
+
+  /**
    * Change the server password at runtime.
    *
    * @param password The new server password.
@@ -3450,6 +3470,8 @@ declare module "alt-server" {
 
     /** The distance at which the LOD model of the object starts being applied. */
     public lodDistance: number;
+
+    public static getByID(id: number): Object | null;
   }
 
   /** @beta */

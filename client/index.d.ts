@@ -2761,6 +2761,33 @@ declare module "alt-client" {
   export function emitServerUnreliable<K extends string>(eventName: Exclude<K, keyof shared.ICustomClientServerEvent>, ...args: any[]): void;
 
   /**
+   * Calls a server sided RPC with the specified arguments.
+   * @param rpcName Name of the RPC
+   * @param ...args Arguments to pass to the RPC
+   *
+   * @example
+   * ```js
+   * alt.on("consoleCommand", async (cmd) => {
+   *     if (cmd !== "rpc") return;
+   *
+   *     try {
+   *         const result = await alt.emitRpc("testRpc");
+   *
+   *         alt.log("Rpc result:", ...result);
+   *    }
+   *    catch (err) {
+   *        alt.logError(`Failed to call rpc: ${err}`);
+   *    }
+   * });
+   * ```
+   *
+   * @remarks Exceptions will be thrown when there was an error on server-side.
+   *
+   * @alpha
+   */
+  export function emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
+
+  /**
    * Returns whether the game controls are currently enabled.
    */
   export function gameControlsEnabled(): boolean;
@@ -4015,6 +4042,8 @@ declare module "alt-client" {
 
     /** The distance at which the LOD model of the object starts being applied. */
     public readonly lodDistance: number;
+
+    public static getByID(id: number): Object | null;
   }
 
   /** @beta */
