@@ -2762,6 +2762,7 @@ declare module "alt-client" {
 
   /**
    * Calls a server sided RPC with the specified arguments.
+   * 
    * @param rpcName Name of the RPC
    * @param ...args Arguments to pass to the RPC
    *
@@ -2786,6 +2787,27 @@ declare module "alt-client" {
    * @alpha
    */
   export function emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
+
+  /**
+   * Subscribes to a client event with the specified listener.
+   * @param rpcName Name of the RPC
+   * @param listener Listener that should be added.
+   *
+   * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Throwing an exception will cause the promise on the client to throw an exception which has to be caught.
+   *
+   * @alpha
+   */
+  export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<void> | void): void;
+
+  /**
+   * 
+   * @param rpcName Name of the RPC
+   * @param listener Listener that should be added.
+   * 
+   * @alpha
+   */
+  export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<void> | void): void;
+
 
   /**
    * Returns whether the game controls are currently enabled.

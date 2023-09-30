@@ -1017,6 +1017,9 @@ declare module "alt-server" {
 
     public collision: boolean;
 
+    /** @alpha */
+    public readonly streamingDistance: number;
+
     /** @beta */
     public readonly timestamp: number;
   }
@@ -1153,6 +1156,16 @@ declare module "alt-server" {
      */
     public emitRaw<K extends keyof shared.ICustomServerClientEvent>(eventName: K, ...args: Parameters<shared.ICustomServerClientEvent[K]>): void;
     public emitRaw<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
+
+    /**
+     * Calls a client sided RPC with the specified arguments.
+     * 
+     * @param rpcName Name of the RPC
+     * @param ...args Arguments to pass to the RPC
+     * 
+     * @alpha
+     */
+    public emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
@@ -2016,8 +2029,8 @@ declare module "alt-server" {
      */
     public quaternion: shared.Quaternion;
 
-    constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number);
-    constructor(model: string | number, pos: shared.IVector3, rot: shared.IVector3);
+    constructor(model: string | number, x: number, y: number, z: number, rx: number, ry: number, rz: number, streamingDistance?: number);
+    constructor(model: string | number, pos: shared.IVector3, rot: shared.IVector3, streamingDistance?: number);
     /**
      * Retrieves the vehicle from the pool.
      *
@@ -3114,6 +3127,15 @@ declare module "alt-server" {
   export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<void> | void): void;
 
   /**
+   * 
+   * @param rpcName Name of the RPC
+   * @param listener Listener that should be added.
+   * 
+   * @alpha
+   */
+  export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<void> | void): void;
+
+  /**
    * Change the server password at runtime.
    *
    * @param password The new server password.
@@ -3432,7 +3454,7 @@ declare module "alt-server" {
 
   /** @beta */
   export class Ped extends Entity {
-    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3);
+    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, streamingDistance?: number);
 
     /**
      * Retrieves the ped from the pool.
@@ -3452,7 +3474,7 @@ declare module "alt-server" {
 
   /** @beta */
   export class Object extends Entity {
-    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number);
+    constructor(model: string | number, position: shared.IVector3, rotation: shared.IVector3, alpha?: number, textureVariation?: number, lodDistance?: number, streamingDistance?: number);
 
     public static readonly all: readonly Object[];
 
