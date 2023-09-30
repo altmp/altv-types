@@ -1018,7 +1018,7 @@ declare module "alt-server" {
     public collision: boolean;
 
     /** @alpha */
-    public readonly streamingDistance: number;
+    public streamingDistance: number;
 
     /** @beta */
     public readonly timestamp: number;
