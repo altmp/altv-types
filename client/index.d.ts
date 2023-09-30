@@ -3924,6 +3924,18 @@ declare module "alt-client" {
 
     public static readonly all: readonly LocalObject[];
 
+    /**
+     * All objects created by the game. For example, a weapon item in the player's hand or a bag of rubbish in the street.
+     *
+     * @example
+     * ```ts
+     * const object = alt.LocalObject.allWorld[0];
+     * alt.Utils.assert(object != null);
+     *
+     * // Wait for the object to be deleted by the game.
+     * await alt.Utils.waitFor(() => !object.valid);
+     * ```
+     */
     public static readonly allWorld: readonly LocalObject[];
 
     /**
