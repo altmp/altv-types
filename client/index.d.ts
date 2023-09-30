@@ -2797,7 +2797,7 @@ declare module "alt-client" {
    *
    * @alpha
    */
-  export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<void> | void): void;
+  export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
   /**
    * 
@@ -2806,7 +2806,7 @@ declare module "alt-client" {
    * 
    * @alpha
    */
-  export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<void> | void): void;
+  export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
 
   /**
