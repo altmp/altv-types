@@ -2793,7 +2793,7 @@ declare module "alt-client" {
    * @param rpcName Name of the RPC
    * @param listener Listener that should be added.
    *
-   * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Throwing an exception will cause the promise on the client to throw an exception which has to be caught.
+   * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the server to throw an exception which has to be caught.
    *
    * @alpha
    */
