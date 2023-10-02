@@ -673,7 +673,7 @@ declare module "alt-client" {
      * @param source The source url of the audio.
      * @param volume The volume of the audio. Ranges from 0 to 1.
      */
-    public constructor(source: string, volume?: number, radio?: boolean);
+    public constructor(source: string, volume?: number, radio?: boolean, clearCache?: boolean);
 
     public static readonly all: readonly Audio[];
 
