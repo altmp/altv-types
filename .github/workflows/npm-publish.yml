@@ -8,6 +8,7 @@ jobs:
     name: Publish shared
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, 'Bump version')"
+    needs: test
     defaults:
       run:
         working-directory: ./shared
@@ -36,6 +37,7 @@ jobs:
     name: Publish client
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, 'Bump version')"
+    needs: test
     defaults:
       run:
         working-directory: ./client
@@ -64,6 +66,7 @@ jobs:
     name: Publish webview
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, 'Bump version')"
+    needs: test
     defaults:
       run:
         working-directory: ./webview
@@ -92,6 +95,7 @@ jobs:
     name: Publish worker
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, 'Bump version')"
+    needs: test
     defaults:
       run:
         working-directory: ./worker
@@ -120,6 +124,7 @@ jobs:
     name: Publish natives
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, 'Bump version')"
+    needs: test
     defaults:
       run:
         working-directory: ./natives
@@ -181,6 +186,7 @@ jobs:
     name: Publish server
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, 'Bump version')"
+    needs: test
     defaults:
       run:
         working-directory: ./server
@@ -205,3 +211,21 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./server/package.json
           access: public
+  test:
+    name: Test changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Install dependencies
+        run: yarn install
+      - name: Test
+        run: yarn run test
+      - name: Lint
+        run: yarn run lint

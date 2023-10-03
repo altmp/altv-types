@@ -1,11 +1,5 @@
 name: Pull Request
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - *
+on: [pull_request]
 jobs:
   test:
     name: Test changes
