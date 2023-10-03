@@ -2762,7 +2762,7 @@ declare module "alt-client" {
 
   /**
    * Calls a server sided RPC with the specified arguments.
-   * 
+   *
    * @param rpcName Name of the RPC
    * @param ...args Arguments to pass to the RPC
    *
@@ -2800,14 +2800,13 @@ declare module "alt-client" {
   export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
   /**
-   * 
+   *
    * @param rpcName Name of the RPC
    * @param listener Listener that should be added.
-   * 
+   *
    * @alpha
    */
   export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
-
 
   /**
    * Returns whether the game controls are currently enabled.

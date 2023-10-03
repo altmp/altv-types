@@ -1159,10 +1159,10 @@ declare module "alt-server" {
 
     /**
      * Calls a client sided RPC with the specified arguments.
-     * 
+     *
      * @param rpcName Name of the RPC
      * @param ...args Arguments to pass to the RPC
-     * 
+     *
      * @alpha
      */
     public emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
@@ -3127,10 +3127,10 @@ declare module "alt-server" {
   export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
   /**
-   * 
+   *
    * @param rpcName Name of the RPC
    * @param listener Listener that should be added.
-   * 
+   *
    * @alpha
    */
   export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
