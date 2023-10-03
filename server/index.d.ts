@@ -689,7 +689,7 @@ declare module "alt-server" {
      * Gets the base object with the given type and id
      * @beta
      */
-    public static getByID(type: shared.BaseObjectType, id: number): BaseObject;
+    public static getByID(type: shared.BaseObjectType, id: number): BaseObject | null;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K): void;
