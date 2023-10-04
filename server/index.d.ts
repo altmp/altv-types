@@ -1017,7 +1017,7 @@ declare module "alt-server" {
 
     public collision: boolean;
 
-    /** @alpha */
+    /** @beta */
     public streamingDistance: number;
 
     /** @beta */
@@ -1163,7 +1163,7 @@ declare module "alt-server" {
      * @param rpcName Name of the RPC
      * @param ...args Arguments to pass to the RPC
      *
-     * @alpha
+     * @beta
      */
     public emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
 
@@ -3122,7 +3122,7 @@ declare module "alt-server" {
    * ```
    * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the client to throw an exception which has to be caught.
    *
-   * @alpha
+   * @beta
    */
   export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
@@ -3131,7 +3131,7 @@ declare module "alt-server" {
    * @param rpcName Name of the RPC
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
