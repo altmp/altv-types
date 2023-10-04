@@ -4077,6 +4077,12 @@ declare module "alt-client" {
     public readonly lodDistance: number;
 
     public static getByID(id: number): Object | null;
+
+    /**
+     * Gets the object with the given remote id
+     * @beta
+     */
+    public static getByRemoteID(id: number): Object | null;
   }
 
   /** @beta */
