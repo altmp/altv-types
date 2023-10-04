@@ -2784,7 +2784,7 @@ declare module "alt-client" {
    *
    * @remarks Exceptions will be thrown when there was an error on server-side.
    *
-   * @alpha
+   * @beta
    */
   export function emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
 
@@ -2795,7 +2795,7 @@ declare module "alt-client" {
    *
    * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the server to throw an exception which has to be caught.
    *
-   * @alpha
+   * @beta
    */
   export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
@@ -2804,7 +2804,7 @@ declare module "alt-client" {
    * @param rpcName Name of the RPC
    * @param listener Listener that should be added.
    *
-   * @alpha
+   * @beta
    */
   export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
 
