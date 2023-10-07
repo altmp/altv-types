@@ -236,6 +236,8 @@ declare module "alt-server" {
     readonly discordUserID: string;
     /** @beta */
     readonly socialClubName: string;
+    /** @alpha */
+    readonly cloudID: string;
     /** @beta */
     readonly id: number;
     readonly isAccepted: boolean;
@@ -249,9 +251,6 @@ declare module "alt-server" {
      */
     accept: (sendNames?: boolean) => void;
     decline: (reason: string) => void;
-
-    /** @beta */
-    requestCloudID: () => Promise<string>;
   }
 
   export class ConnectionInfo {
@@ -1098,6 +1097,8 @@ declare module "alt-server" {
     public maxHealth: number;
     public readonly name: string;
     public readonly ping: number;
+    /** @alpha */
+    public readonly cloudID: string;
     /**
      * Curent seat the player is sitting in.
      * If player is not in any vehicle it is equal to `0`.
@@ -1526,9 +1527,6 @@ declare module "alt-server" {
 
     /** @beta */
     public netOwnershipDisabled: boolean;
-
-    /** @beta */
-    public requestCloudID(): Promise<string>;
 
     // local meta
 
