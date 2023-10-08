@@ -3266,6 +3266,9 @@ declare module "alt-server" {
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
+  /** @alpha */
+  export function getLoadedVehicleModels(): number[];
+
   export function getPedModelInfoByHash(pedModelHash: number): IPedModel;
 
   /** @beta */
