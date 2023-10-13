@@ -236,7 +236,7 @@ declare module "alt-server" {
     readonly discordUserID: string;
     /** @beta */
     readonly socialClubName: string;
-    /** @alpha */
+    /** @beta */
     readonly cloudID: string;
     /** @beta */
     readonly id: number;
@@ -1097,7 +1097,7 @@ declare module "alt-server" {
     public maxHealth: number;
     public readonly name: string;
     public readonly ping: number;
-    /** @alpha */
+    /** @beta */
     public readonly cloudID: string;
     /**
      * Curent seat the player is sitting in.
@@ -3266,7 +3266,7 @@ declare module "alt-server" {
 
   export function getVehicleModelInfoByHash(vehicleHash: number): IVehicleModel;
 
-  /** @alpha */
+  /** @beta */
   export function getLoadedVehicleModels(): number[];
 
   export function getPedModelInfoByHash(pedModelHash: number): IPedModel;
