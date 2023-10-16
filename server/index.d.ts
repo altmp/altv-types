@@ -221,6 +221,11 @@ declare module "alt-server" {
     Object = 8,
   }
 
+  export const enum Benefit {
+    None,
+    CloudAuth,
+  }
+
   export interface IConnectionInfo {
     readonly name: string;
     readonly socialID: string;
@@ -3256,8 +3261,16 @@ declare module "alt-server" {
    *
    * @alpha
    */
-
   export function addClientConfigKey(key: string): void;
+
+  /**
+   * Checks wheter or not the server has a specific benefit.
+   *
+   * @param benefit benefit to check
+   *
+   * @alpha
+   */
+  export function hasBenefit(benefit: Benefit): boolean;
 
   /**
    * Stops the specified resource.
