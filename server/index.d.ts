@@ -3249,16 +3249,15 @@ declare module "alt-server" {
    */
   export function restartResource(name: string): void;
 
-
   /**
    * Adds an extra config key that will be passed from resource.toml to client
-   * 
+   *
    * @param key the key to be added
-   * 
+   *
    * @alpha
    */
 
-  export function addClientConfigKey(key: string): void
+  export function addClientConfigKey(key: string): void;
 
   /**
    * Stops the specified resource.
