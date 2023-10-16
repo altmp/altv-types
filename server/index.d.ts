@@ -226,6 +226,12 @@ declare module "alt-server" {
     CloudAuth,
   }
 
+  export const enum CloudAuthResult {
+    Success,
+    NoBenefit,
+    VerifyFailed,
+  }
+
   export interface IConnectionInfo {
     readonly name: string;
     readonly socialID: string;
@@ -1104,6 +1110,8 @@ declare module "alt-server" {
     public readonly ping: number;
     /** @beta */
     public readonly cloudID: string;
+    /** @beta */
+    public readonly cloudAuthResult: CloudAuthResult;
     /**
      * Curent seat the player is sitting in.
      * If player is not in any vehicle it is equal to `0`.
