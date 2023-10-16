@@ -3256,7 +3256,6 @@ declare module "alt-server" {
    *
    * @alpha
    */
-
   export function addClientConfigKey(key: string): void;
 
   /**
