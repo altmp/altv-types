@@ -250,6 +250,8 @@ declare module "alt-server" {
     /** @beta */
     readonly cloudID: string;
     /** @beta */
+    readonly cloudAuthResult: CloudAuthResult;
+    /** @beta */
     readonly id: number;
     readonly isAccepted: boolean;
     /** @beta */
