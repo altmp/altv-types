@@ -3502,6 +3502,7 @@ declare module "alt-server" {
     public static readonly count: number;
     public currentWeapon: number;
     public health: number;
+    public maxHealth: number;
     public armour: number;
   }
 
