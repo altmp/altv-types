@@ -1193,6 +1193,12 @@ declare module "alt-server" {
      */
     public clearBloodDamage(): void;
 
+    /** @alpha */
+    public getBloodDamageBase64(): string;
+
+    /** @alpha */
+    public setBloodDamageBase64(base64: string): void;
+
     /**
      * Gives the specified weapon to the player.
      *
