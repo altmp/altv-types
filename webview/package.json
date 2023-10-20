@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-webview",
-  "version": "15.0.8",
+  "version": "16.0.0",
   "description": "This package contains types definitions for alt:V client-side WebView.",
   "types": "index.d.ts",
   "files": [
