@@ -1193,10 +1193,10 @@ declare module "alt-server" {
      */
     public clearBloodDamage(): void;
 
-    /** @alpha */
+    /** @beta */
     public getBloodDamageBase64(): string;
 
-    /** @alpha */
+    /** @beta */
     public setBloodDamageBase64(base64: string): void;
 
     /**
@@ -3275,7 +3275,7 @@ declare module "alt-server" {
    *
    * @param key the key to be added
    *
-   * @alpha
+   * @beta
    */
   export function addClientConfigKey(key: string): void;
 
@@ -3284,7 +3284,7 @@ declare module "alt-server" {
    *
    * @param benefit benefit to check
    *
-   * @alpha
+   * @beta
    */
   export function hasBenefit(benefit: Benefit): boolean;
 
