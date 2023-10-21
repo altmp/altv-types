@@ -1401,6 +1401,8 @@ declare module "alt-server" {
 
     public setHeadBlendData(shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number): void;
 
+    public removeHeadBlendData(): void;
+
     public getHeadBlendData(): IHeadBlendData;
 
     public setEyeColor(eyeColor: number): boolean;
