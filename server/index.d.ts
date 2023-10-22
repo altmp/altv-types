@@ -1321,6 +1321,8 @@ declare module "alt-server" {
      */
     public getDlcClothes(component: number): IDlcCloth;
 
+    public clearClothes(component: number): void;
+
     /**
      * Sets the specified clothing component.
      *
