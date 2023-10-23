@@ -2571,7 +2571,7 @@ declare module "alt-client" {
    * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the server to throw an exception which has to be caught.
    *
    */
-  export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
+  export function onRpc(rpcName: string, listener: (...args: unknown[]) => Promise<unknown> | unknown): void;
 
   /**
    *
