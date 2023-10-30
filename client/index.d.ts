@@ -4340,7 +4340,7 @@ declare module "alt-client" {
      */
     public static getByScriptID(scriptID: number): LocalPed | null;
 
-    /** Waits asynchronously until the vehicle spawns. */
+    /** Waits asynchronously until the ped spawns. */
     public waitForSpawn(timeout?: number): Promise<void>;
 
     public get model(): number;
