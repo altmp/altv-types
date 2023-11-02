@@ -41,13 +41,6 @@ declare module "alt-client" {
     ChineseTraditional = "zh_tw",
   }
 
-  export const enum PermissionState {
-    ALLOWED,
-    DENIED,
-    UNSPECIFIED,
-    FAILED,
-  }
-
   export const enum StatName {
     Stamina = "stamina",
     Strength = "strength",
@@ -2848,8 +2841,8 @@ declare module "alt-client" {
    * @param permId Permission id.
    * @returns Permission state.
    */
-  export function getPermissionState(permId: shared.Permission): PermissionState;
-  export function getPermissionState<T extends number, V extends number = PermissionState>(permId: T): V;
+  export function getPermissionState(permId: shared.Permission): boolean;
+  export function getPermissionState<T extends number>(permId: T): boolean;
 
   /**
    * Gets a value of the specified statistic.
