@@ -1933,6 +1933,40 @@ declare module "alt-shared" {
    */
   export interface ICustomClientServerEvent {}
 
+  /**
+   * Extend `player.emitRpc` and `alt.onRpc` auto-completion by merging interfaces.
+   *
+   * @example
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomServerClientRpc {
+   *        myRpc: (arg1: string, arg2: { key: string, value: number }): Promise<boolean>
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomServerClientRpc
+   */
+  export interface ICustomServerClientRpc {}
+
+  /**
+   * Extend `alt.onRpc` and `alt.emitRpc` auto-completion by merging interfaces.
+   *
+   * @example
+   * ```ts
+   * declare module 'alt-client' {
+   *    interface ICustomClientServerRpc {
+   *        myRpc: (arg1: string, arg2: { key: string, value: number }): Promise<boolean>
+   *    }
+   * }
+   * ```
+   *
+   * @export
+   * @interface ICustomClientServerRpc
+   */
+  export interface ICustomClientServerRpc {}
+
   export interface IInspectOptions {
     /**
      * If set to `true`, getters are going to be

@@ -1181,7 +1181,8 @@ declare module "alt-server" {
      *
      * @beta
      */
-    public emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
+    public emitRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, ...args: Parameters<shared.ICustomServerClientRpc[K]>): Promise<ReturnType<shared.ICustomServerClientRpc[K]>>;
+    public emitRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomServerClientRpc>, ...args: any[]): Promise<any>;
 
     public addWeaponComponent(weaponHash: number, component: number): void;
 
@@ -3145,7 +3146,8 @@ declare module "alt-server" {
    *
    * @beta
    */
-  export function onRpc(rpcName: string, listener: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
+  export function onRpc<K extends keyof shared.ICustomClientServerRpc>(rpcName: K, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerRpc[K]>) => Promise<ReturnType<shared.ICustomClientServerRpc[K]>> | ReturnType<shared.ICustomClientServerRpc[K]>): void;
+  export function onRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomClientServerRpc>, listener: (player: Player, ...args: any[]) => Promise<any> | any): void;
 
   /**
    *
@@ -3153,8 +3155,9 @@ declare module "alt-server" {
    * @param listener Listener that should be added.
    *
    * @beta
-   */
-  export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
+  */
+  export function offRpc<K extends keyof shared.ICustomClientServerRpc>(rpcName: string, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerRpc[K]>) => Promise<ReturnType<shared.ICustomClientServerRpc[K]>> | ReturnType<shared.ICustomClientServerRpc[K]>): void;
+  export function offRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomClientServerRpc>, listener?: (player: Player, ...args: any[]) => Promise<any> | any): void;
 
   /**
    * Change the server password at runtime.
