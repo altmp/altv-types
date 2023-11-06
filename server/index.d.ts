@@ -3155,7 +3155,7 @@ declare module "alt-server" {
    * @param listener Listener that should be added.
    *
    * @beta
-  */
+   */
   export function offRpc<K extends keyof shared.ICustomClientServerRpc>(rpcName: string, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerRpc[K]>) => Promise<ReturnType<shared.ICustomClientServerRpc[K]>> | ReturnType<shared.ICustomClientServerRpc[K]>): void;
   export function offRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomClientServerRpc>, listener?: (player: Player, ...args: any[]) => Promise<any> | any): void;
 
