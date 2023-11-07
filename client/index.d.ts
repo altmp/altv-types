@@ -2554,7 +2554,8 @@ declare module "alt-client" {
    * @remarks Exceptions will be thrown when there was an error on server-side.
    *
    */
-  export function emitRpc(rpcName: string, ...args: unknown[]): Promise<unknown>;
+  export function emitRpc<K extends keyof shared.ICustomClientServerRpc>(rpcName: K, ...args: Parameters<shared.ICustomClientServerRpc[K]>): Promise<ReturnType<shared.ICustomClientServerRpc[K]>>;
+  export function emitRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomClientServerRpc>, ...args: any[]): Promise<any>;
 
   /**
    * Subscribes to a client event with the specified listener.
@@ -2564,7 +2565,8 @@ declare module "alt-client" {
    * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the server to throw an exception which has to be caught.
    *
    */
-  export function onRpc(rpcName: string, listener: (...args: unknown[]) => Promise<unknown> | unknown): void;
+  export function onRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<any> | ReturnType<any>): void;
+  export function onRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomServerClientRpc>, listener: (...args: any[]) => Promise<any> | any): void;
 
   /**
    *
@@ -2572,7 +2574,8 @@ declare module "alt-client" {
    * @param listener Listener that should be added.
    *
    */
-  export function offRpc(rpcName: string, listener?: (player: Player, ...args: unknown[]) => Promise<unknown> | unknown): void;
+  export function offRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener?: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<ReturnType<shared.ICustomServerClientRpc[K]>> | ReturnType<shared.ICustomServerClientRpc[K]>): void;
+  export function offRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomServerClientRpc>, listener?: (...args: any[]) => Promise<any> | any): void;
 
   /**
    * Returns whether the game controls are currently enabled.
