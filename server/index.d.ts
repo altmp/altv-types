@@ -1401,6 +1401,8 @@ declare module "alt-server" {
 
     public getHeadBlendPaletteColor(id: number): shared.RGBA;
 
+    public removeHeadBlendPaletteColor(): void;
+
     public setHeadBlendData(shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number): void;
 
     public removeHeadBlendData(): void;
