@@ -52,6 +52,7 @@ declare module "alt-client" {
   }
 
   export const enum VehicleIndicatorLights {
+    None = 0,
     BlinkLeft = 1,
     BlinkRight = 2,
     BlinkPermBoth = 4,
