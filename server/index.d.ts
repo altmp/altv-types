@@ -3274,31 +3274,31 @@ declare module "alt-server" {
   export function getMaxStreamingVehicles(): number;
   export function setMaxStreamingVehicles(limit: number): void;
 
-  export function getStreamerThreadCount(): void;
+  export function getStreamerThreadCount(): number;
   export function setStreamerThreadCount(count: number): void;
 
-  export function getStreamingTickRate(): void;
+  export function getStreamingTickRate(): number;
   export function setStreamingTickRate(count: number): void;
 
-  export function getStreamingDistance(): void;
+  export function getStreamingDistance(): number;
   export function setStreamingDistance(distance: number): void;
 
-  export function getMigrationThreadCount(): void;
+  export function getMigrationThreadCount(): number;
   export function setMigrationThreadCount(count: number): void;
 
-  export function getSyncSendThreadCount(): void;
+  export function getSyncSendThreadCount(): number;
   export function setSyncSendThreadCount(count: number): void;
 
-  export function getSyncReceiveThreadCount(): void;
+  export function getSyncReceiveThreadCount(): number;
   export function setSyncReceiveThreadCount(count: number): void;
 
-  export function getMigrationTickRate(): void;
+  export function getMigrationTickRate(): number;
   export function setMigrationTickRate(count: number): void;
 
-  export function getColShapeTickRate(): void;
+  export function getColShapeTickRate(): number;
   export function setColShapeTickRate(count: number): void;
 
-  export function getMigrationDistance(): void;
+  export function getMigrationDistance(): number;
   export function setMigrationDistance(count: number): void;
 
   export class Ped extends Entity {
