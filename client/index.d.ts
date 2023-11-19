@@ -76,6 +76,11 @@ declare module "alt-client" {
     ForceHideNightProps = "FORCE_HIDE_NIGHT_PROPS",
     ForceShowNightProps = "FORCE_SHOW_NIGHT_PROPS",
     DisableEmissiveLightsRendering = "DISABLE_EMISSIVE_LIGHTS_RENDERING",
+    /**
+     * Forces vehicle tyre burst even if 0 damage is applied.
+     * Useful when damage in weapon meta is set to 0, and is calculated manually by script in event.
+     */
+    ForceVehicleTyreBurst = "FORCE_VEHICLE_TYRE_BURST",
   }
 
   export const enum WatermarkPosition {
