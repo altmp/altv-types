@@ -687,8 +687,8 @@ declare module "alt-client" {
     public on(event: "streamEnded", callback: () => void): void;
     public on(event: "streamPaused", callback: () => void): void;
     public on(event: "streamReset", callback: () => void): void;
-    public on(event: "streamSeek ", callback: (time: number) => void): void;
-    public on(event: "volumeChange ", callback: (vol: number) => void): void;
+    public on(event: "streamSeek", callback: (time: number) => void): void;
+    public on(event: "volumeChange", callback: (vol: number) => void): void;
     public on(event: "error", callback: (code: number, message: string) => void): void;
 
     public deleteMeta(key: string): void;
