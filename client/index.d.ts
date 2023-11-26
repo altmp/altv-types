@@ -2940,6 +2940,12 @@ declare module "alt-client" {
 
   export function isFullScreen(): boolean;
 
+  export function getPoolSize(poolName: string): number;
+
+  export function getPoolCount(poolName: string): number;
+
+  export function getPoolEntities(poolName: string): number[];
+
   export class WebSocketClient extends BaseObject {
     /**
      * Retrieves the websocketclient from the pool.
@@ -3921,7 +3927,7 @@ declare module "alt-client" {
     constructor(filtername: string);
 
     public addRotateEffect(fRate: number, priority: number): number;
-    public addVolumeEffect(fVolume: number, priority: number): number;
+    public addVolumeEffect(fVolume: number, priority: number, channel?: number): number;
     public addPeakeqEffect(lBand: number, fBandwidth: number, fQ: number, fCenter: number, fGain: number, priority: number): number;
     public addDampEffect(fTarget: number, fQuiet: number, fRate: number, fGain: number, fDelay: number, priority: number): number;
     public addAutowahEffect(fDryMix: number, fWetMix: number, fFeedback: number, fRate: number, fRange: number, fFreq: number, priority: number): number;
