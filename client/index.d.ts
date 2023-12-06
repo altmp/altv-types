@@ -987,7 +987,7 @@ declare module "alt-client" {
     public readonly name: string;
 
     /** Player's vehicle, null if player is not in any vehicle */
-    public readonly vehicle: Vehicle | LocalVehicle | null;
+    public readonly vehicle: Vehicle | null;
 
     public readonly isDead: boolean;
 
@@ -4137,7 +4137,7 @@ declare module "alt-client" {
     public faceCamera: boolean;
   }
 
-  export class LocalVehicle extends WorldObject {
+  export class LocalVehicle extends Vehicle {
     public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
 
     /**
