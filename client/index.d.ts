@@ -110,7 +110,7 @@ declare module "alt-client" {
     Left,
     Right,
     Center,
-    Justify
+    Justify,
   }
 
   export interface IClientEvent {
@@ -4115,7 +4115,7 @@ declare module "alt-client" {
     public outlineWidth: number;
 
     public font: string;
-    
+
     public fontSize: number;
 
     public scale: number;
