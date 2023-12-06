@@ -106,12 +106,12 @@ declare module "alt-client" {
     Rigth,
   }
 
- export const enum TextLabelAlignment {
+  export const enum TextLabelAlignment {
     Left,
     Right,
     Center,
     Justify
- }
+  }
 
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
