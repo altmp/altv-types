@@ -106,6 +106,13 @@ declare module "alt-client" {
     Rigth,
   }
 
+  export const enum TextLabelAlignment {
+    Left,
+    Right,
+    Center,
+    Justify,
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -4103,7 +4110,19 @@ declare module "alt-client" {
 
     public color: shared.RGBA;
 
+    public outlineColor: shared.RGBA;
+
+    public outlineWidth: number;
+
+    public font: string;
+
+    public fontSize: number;
+
     public scale: number;
+
+    public align: TextLabelAlignment;
+
+    public text: string;
 
     public rot: shared.Vector3;
 
