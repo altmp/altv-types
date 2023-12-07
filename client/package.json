@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-client",
-  "version": "15.0.13",
+  "version": "15.0.14",
   "description": "This package contains types definitions for alt:V client-side module.",
   "types": "index.d.ts",
   "files": [
