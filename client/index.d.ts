@@ -2791,7 +2791,7 @@ declare module "alt-client" {
    *
    * @beta
    */
-  export function onRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<any> | ReturnType<any>): void;
+  export function onRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<ReturnType<shared.ICustomClientServerRpc[K]>> | ReturnType<shared.ICustomClientServerRpc[K]>): void;
   export function onRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomServerClientRpc>, listener: (...args: any[]) => Promise<any> | any): void;
 
   /**
