@@ -2,7 +2,13 @@ name: Publish packages
 on:
   push:
     branches:
-      - master
+      - dev
+      - rc
+      - release
+
+env:
+  REF: ${{ github.event.pull_request && github.head_ref || github.ref_name }}
+
 jobs:
   shared:
     name: Publish shared
@@ -33,6 +39,7 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./shared/package.json
           access: public
+          tag: ${{ env.REF == 'release' && 'latest' || env.REF }}
   client:
     name: Publish client
     runs-on: ubuntu-latest
@@ -62,6 +69,7 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./client/package.json
           access: public
+          tag: ${{ env.REF == 'release' && 'latest' || env.REF }}
   webview:
     name: Publish webview
     runs-on: ubuntu-latest
@@ -91,6 +99,7 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./webview/package.json
           access: public
+          tag: ${{ env.REF == 'release' && 'latest' || env.REF }}
   worker:
     name: Publish worker
     runs-on: ubuntu-latest
@@ -120,6 +129,7 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./worker/package.json
           access: public
+          tag: ${{ env.REF == 'release' && 'latest' || env.REF }}
   natives:
     name: Publish natives
     runs-on: ubuntu-latest
@@ -169,12 +179,13 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add "./index.d.ts"
-          git commit -m "chore: Update natives/index.d.ts" -m "Co-authored-by: $(git diff-tree ${{ github.sha }} --pretty='format:%an <%ae>' -s)"
+          git diff-index --quiet HEAD || git commit -m "chore: Update natives/index.d.ts" -m "Co-authored-by: $(git diff-tree ${{ github.sha }} --pretty='format:%an <%ae>' -s)"
       - name: Push changes
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.REF }}
       - name: Publish package
         if: ${{ steps.pkgver.outputs.local != steps.pkgver.outputs.remote }}
         uses: JS-DevTools/npm-publish@v1
@@ -182,6 +193,7 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./natives/package.json
           access: public
+          tag: ${{ env.REF == 'release' && 'latest' || env.REF }}
   server:
     name: Publish server
     runs-on: ubuntu-latest
@@ -211,6 +223,7 @@ jobs:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./server/package.json
           access: public
+          tag: ${{ env.REF == 'release' && 'latest' || env.REF }}
   test:
     name: Test changes
     runs-on: ubuntu-latest
