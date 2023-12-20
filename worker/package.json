@@ -1,6 +1,6 @@
 {
   "name": "@altv/types-worker",
-  "version": "16.0.0",
+  "version": "16.1.0",
   "description": "This package contains types definitions for alt:V client-side Worker.",
   "types": "index.d.ts",
   "files": [
@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/altmp/altv-types#readme",
   "peerDependencies": {
-    "@altv/types-client": "^16.0.0"
+    "@altv/types-client": "^16.1.0"
   }
 }
