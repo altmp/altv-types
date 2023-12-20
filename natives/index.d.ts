@@ -1,4 +1,4 @@
-// This file was generated on 20.12.2023, 12:59:51 - DO NOT MODIFY MANUALLY
+// This file was generated on 20.12.2023, 13:30:10 - DO NOT MODIFY MANUALLY
 
 /// <reference types="@altv/types-client"/>
 
@@ -6,7 +6,7 @@
  * @module natives
  */
 declare module "natives" {
-  import { Vector3, Entity, Vehicle, Player, Ped } from "alt-client";
+  import { Vector3, Entity, Vehicle, Player, LocalPlayer, Ped } from "alt-client";
   export function toggleStrictChecks(enable: boolean): void;
 
   /**
@@ -168,11 +168,11 @@ declare module "natives" {
    * AUDIO::PLAY_PED_RINGTONE("Remote_Ring", PLAYER::PLAYER_PED_ID(), 1);
    * AUDIO::PLAY_PED_RINGTONE("Dial_and_Remote_Ring", PLAYER::PLAYER_PED_ID(), 1);
    */
-  export function playPedRingtone(ringtoneName: string, ped: Ped | Player | number, p2: boolean): void;
+  export function playPedRingtone(ringtoneName: string, ped: Ped | Player | LocalPlayer | number, p2: boolean): void;
 
-  export function isPedRingtonePlaying(ped: Ped | Player | number): boolean;
+  export function isPedRingtonePlaying(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function stopPedRingtone(ped: Ped | Player | number): void;
+  export function stopPedRingtone(ped: Ped | Player | LocalPlayer | number): void;
 
   export function isMobilePhoneCallOngoing(): boolean;
 
@@ -207,7 +207,7 @@ declare module "natives" {
    * =================================================
    * One of the 2 calls in dialogue_handler.c p0 is in a while-loop, and so is determined to also possibly be 0 - 15.
    */
-  export function addPedToConversation(index: number, ped: Ped | Player | number, p2: string): void;
+  export function addPedToConversation(index: number, ped: Ped | Player | LocalPlayer | number, p2: string): void;
 
   export function setPositionForNullConvPed(p0: any, p1: number, p2: number, p3: number): void;
 
@@ -256,13 +256,13 @@ declare module "natives" {
    * Example from carsteal3.c: AUDIO::INTERRUPT_CONVERSATION(PLAYER::PLAYER_PED_ID(), "CST4_CFAA", "FRANKLIN");
    * Voicelines can be found in GTAV\x64\audio\sfx in files starting with "SS_" which seems to mean scripted speech.
    */
-  export function interruptConversation(ped: Ped | Player | number, voiceline: string, speaker: string): void;
+  export function interruptConversation(ped: Ped | Player | LocalPlayer | number, voiceline: string, speaker: string): void;
 
   /**
    * One call found in the b617d scripts:
    * AUDIO::INTERRUPT_CONVERSATION_AND_PAUSE(NETWORK::NET_TO_PED(l_3989._f26F[0/*1*\/]), "CONV_INTERRUPT_QUIT_IT", "LESTER");
    */
-  export function interruptConversationAndPause(ped: Ped | Player | number, p1: string, speaker: string): void;
+  export function interruptConversationAndPause(ped: Ped | Player | LocalPlayer | number, p1: string, speaker: string): void;
 
   export function getVariationChosenForScriptedLine(p0?: any): [number, any];
 
@@ -454,14 +454,14 @@ declare module "natives" {
    * Note: A list of Name and Parameters can be found here https://pastebin.com/1GZS5dCL
    * Full list of speeches and voices names by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/speeches.json
    */
-  export function playPedAmbientSpeechNative(ped: Ped | Player | number, speechName: string, speechParam: string, p3: any): void;
+  export function playPedAmbientSpeechNative(ped: Ped | Player | LocalPlayer | number, speechName: string, speechParam: string, p3: any): void;
 
   /**
    * Plays ambient speech. See also _0x5C57B85D.
    * See PLAY_PED_AMBIENT_SPEECH_NATIVE for parameter specifications.
    * Full list of speeches and voices names by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/speeches.json
    */
-  export function playPedAmbientSpeechAndCloneNative(ped: Ped | Player | number, speechName: string, speechParam: string, p3: any): void;
+  export function playPedAmbientSpeechAndCloneNative(ped: Ped | Player | LocalPlayer | number, speechName: string, speechParam: string, p3: any): void;
 
   /**
    * This is the same as PLAY_PED_AMBIENT_SPEECH_NATIVE and PLAY_PED_AMBIENT_SPEECH_AND_CLONE_NATIVE but it will allow you to play a speech file from a specific voice file. It works on players and all peds, even animals.
@@ -470,7 +470,7 @@ declare module "natives" {
    * The first param is the ped you want to play it on, the second is the speech name, the third is the voice name, the fourth is the speech param, and the last param is usually always 0.
    * Full list of speeches and voices names by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/speeches.json
    */
-  export function playPedAmbientSpeechWithVoiceNative(ped: Ped | Player | number, speechName: string, voiceName: string, speechParam: string, p4: boolean): void;
+  export function playPedAmbientSpeechWithVoiceNative(ped: Ped | Player | LocalPlayer | number, speechName: string, voiceName: string, speechParam: string, p4: boolean): void;
 
   /**
    * Full list of speeches and voices names by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/speeches.json
@@ -484,7 +484,7 @@ declare module "natives" {
 
   export function resetTrevorRage(): void;
 
-  export function setPlayerAngry(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPlayerAngry(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Needs another parameter [int p2]. The signature is PED::PLAY_PAIN(Ped ped, int painID, int p1, int p2);
@@ -497,7 +497,7 @@ declare module "natives" {
    * 7 - Scared Scream (Kinda Long)
    * 8 - On Fire
    */
-  export function playPain(ped: Ped | Player | number, painID: number, p1: number, p3: any): void;
+  export function playPain(ped: Ped | Player | LocalPlayer | number, painID: number, p1: number, p3: any): void;
 
   export function releaseWeaponAudio(): void;
 
@@ -527,18 +527,18 @@ declare module "natives" {
    * gtaforums.com/topic/795622-audio-for-mods/
    * All found occurrences in b617d, sorted alphabetically and identical lines removed: https://pastebin.com/FTeAj4yZ
    */
-  export function setAmbientVoiceName(ped: Ped | Player | number, name: string): void;
+  export function setAmbientVoiceName(ped: Ped | Player | LocalPlayer | number, name: string): void;
 
-  export function setAmbientVoiceNameHash(ped: Ped | Player | number, hash: number): void;
+  export function setAmbientVoiceNameHash(ped: Ped | Player | LocalPlayer | number, hash: number): void;
 
-  export function getAmbientVoiceNameHash(ped: Ped | Player | number): number;
+  export function getAmbientVoiceNameHash(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Assigns some ambient voice to the ped.
    */
-  export function setPedVoiceFull(ped: Ped | Player | number): void;
+  export function setPedVoiceFull(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedRaceAndVoiceGroup(ped: Ped | Player | number, p1: number, voiceGroup: number): void;
+  export function setPedRaceAndVoiceGroup(ped: Ped | Player | LocalPlayer | number, p1: number, voiceGroup: number): void;
 
   /**
    * From the scripts:
@@ -547,36 +547,36 @@ declare module "natives" {
    * AUDIO::SET_PED_VOICE_GROUP(PLAYER::PLAYER_PED_ID(), MISC::GET_HASH_KEY("FEMALE_LOST_BLACK_PVG"));
    * AUDIO::SET_PED_VOICE_GROUP(PLAYER::PLAYER_PED_ID(), MISC::GET_HASH_KEY("FEMALE_LOST_WHITE_PVG"));
    */
-  export function setPedVoiceGroup(ped: Ped | Player | number, voiceGroupHash: number): void;
+  export function setPedVoiceGroup(ped: Ped | Player | LocalPlayer | number, voiceGroupHash: number): void;
 
   /**
    * Dat151RelType == 29
    */
-  export function setPedVoiceGroupFromRaceToPvg(ped: Ped | Player | number, voiceGroupHash: number): void;
+  export function setPedVoiceGroupFromRaceToPvg(ped: Ped | Player | LocalPlayer | number, voiceGroupHash: number): void;
 
   /**
    * BOOL p1: 0 = Female; 1 = Male
    */
-  export function setPedGender(ped: Ped | Player | number, p1: boolean): void;
+  export function setPedGender(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function stopCurrentPlayingSpeech(ped: Ped | Player | number): void;
+  export function stopCurrentPlayingSpeech(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function stopCurrentPlayingAmbientSpeech(ped: Ped | Player | number): void;
+  export function stopCurrentPlayingAmbientSpeech(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function isAmbientSpeechPlaying(ped: Ped | Player | number): boolean;
+  export function isAmbientSpeechPlaying(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isScriptedSpeechPlaying(p0: Ped | Player | number): boolean;
+  export function isScriptedSpeechPlaying(p0: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isAnySpeechPlaying(ped: Ped | Player | number): boolean;
+  export function isAnySpeechPlaying(ped: Ped | Player | LocalPlayer | number): boolean;
 
   export function isAnyPositionalSpeechPlaying(): boolean;
 
   /**
    * Checks if the ped can play the speech or has the speech file, p2 is usually false.
    */
-  export function doesContextExistForThisPed(ped: Ped | Player | number, speechName: string, p2: boolean): boolean;
+  export function doesContextExistForThisPed(ped: Ped | Player | LocalPlayer | number, speechName: string, p2: boolean): boolean;
 
-  export function isPedInCurrentConversation(ped: Ped | Player | number): boolean;
+  export function isPedInCurrentConversation(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Sets the ped drunk sounds.  Only works with PLAYER_PED_ID
@@ -592,21 +592,21 @@ declare module "natives" {
    * And to stop the effect use
    * RESET_PED_MOVEMENT_CLIPSET
    */
-  export function setPedIsDrunk(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedIsDrunk(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Plays sounds from a ped with chop model. For example it used to play bark or sniff sounds. p1 is always 3 or 4294967295 in decompiled scripts. By a quick disassembling I can assume that this arg is unused.
    * This native is works only when you call it on the ped with right model (ac_chop only ?)
    * Speech Name can be: CHOP_SNIFF_SEQ CHOP_WHINE CHOP_LICKS_MOUTH CHOP_PANT bark GROWL SNARL BARK_SEQ
    */
-  export function playAnimalVocalization(pedHandle: Ped | Player | number, p1: number, speechName: string): void;
+  export function playAnimalVocalization(pedHandle: Ped | Player | LocalPlayer | number, p1: number, speechName: string): void;
 
-  export function isAnimalVocalizationPlaying(pedHandle: Ped | Player | number): boolean;
+  export function isAnimalVocalizationPlaying(pedHandle: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * mood can be 0 or 1 (it's not a boolean value!). Effects audio of the animal.
    */
-  export function setAnimalMood(animal: Ped | Player | number, mood: number): void;
+  export function setAnimalMood(animal: Ped | Player | LocalPlayer | number, mood: number): void;
 
   export function isMobilePhoneRadioActive(): boolean;
 
@@ -920,7 +920,7 @@ declare module "natives" {
    */
   export function loadStreamWithStartOffset(streamName: string, startOffset: number, soundSet: string): boolean;
 
-  export function playStreamFromPed(ped: Ped | Player | number): void;
+  export function playStreamFromPed(ped: Ped | Player | LocalPlayer | number): void;
 
   export function playStreamFromVehicle(vehicle: Vehicle | number): void;
 
@@ -936,7 +936,7 @@ declare module "natives" {
    *                         AUDIO::PLAY_STREAM_FROM_OBJECT(l_36F[0/*1*\/]);
    *                     }
    */
-  export function playStreamFromObject(object: Object): void;
+  export function playStreamFromObject(object: number): void;
 
   export function playStreamFrontend(): void;
 
@@ -944,19 +944,19 @@ declare module "natives" {
 
   export function stopStream(): void;
 
-  export function stopPedSpeaking(ped: Ped | Player | number, shaking: boolean): void;
+  export function stopPedSpeaking(ped: Ped | Player | LocalPlayer | number, shaking: boolean): void;
 
-  export function blockAllSpeechFromPed(ped: Ped | Player | number, p1: boolean, p2: boolean): void;
+  export function blockAllSpeechFromPed(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: boolean): void;
 
-  export function stopPedSpeakingSynced(ped: Ped | Player | number, p1: boolean): void;
+  export function stopPedSpeakingSynced(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function disablePedPainAudio(ped: Ped | Player | number, toggle: boolean): void;
+  export function disablePedPainAudio(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Common in the scripts:
    * AUDIO::IS_AMBIENT_SPEECH_DISABLED(PLAYER::PLAYER_PED_ID());
    */
-  export function isAmbientSpeechDisabled(ped: Ped | Player | number): boolean;
+  export function isAmbientSpeechDisabled(ped: Ped | Player | LocalPlayer | number): boolean;
 
   export function blockSpeechContextGroup(p0: string, p1: number): void;
 
@@ -1202,24 +1202,24 @@ declare module "natives" {
 
   export function getVehicleDefaultHornIgnoreMods(vehicle: Vehicle | number): number;
 
-  export function resetPedAudioFlags(ped: Ped | Player | number): void;
+  export function resetPedAudioFlags(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Enables/disables ped's "loud" footstep sound.
    */
-  export function setPedFootstepsEventsEnabled(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedFootstepsEventsEnabled(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Enables/disables ped's "quiet" footstep sound.
    */
-  export function setPedClothEventsEnabled(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedClothEventsEnabled(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Sets audio flag "OverridePlayerGroundMaterial"
    */
   export function overridePlayerGroundMaterial(hash: number, toggle: boolean): void;
 
-  export function useFootstepScriptSweeteners(ped: Ped | Player | number, p1: boolean, hash: number): void;
+  export function useFootstepScriptSweeteners(ped: Ped | Player | LocalPlayer | number, p1: boolean, hash: number): void;
 
   /**
    * Sets audio flag "OverrideMicrophoneSettings"
@@ -1397,7 +1397,7 @@ declare module "natives" {
 
   export function getMusicVolSlider(): number;
 
-  export function requestTennisBanks(ped: Ped | Player | number): void;
+  export function requestTennisBanks(ped: Ped | Player | LocalPlayer | number): void;
 
   export function unrequestTennisBanks(): void;
 
@@ -1428,7 +1428,7 @@ declare module "natives" {
    */
   export function registerObjectScriptBrain(scriptName: string, modelHash: number, p2: number, activationRange: number, p4: number, p5: number): void;
 
-  export function isObjectWithinBrainActivationRange(object: Object): boolean;
+  export function isObjectWithinBrainActivationRange(object: number): boolean;
 
   export function registerWorldPointScriptBrain(scriptName: string, activationRange: number, p2: number): void;
 
@@ -1661,9 +1661,9 @@ declare module "natives" {
    */
   export function attachCamToEntity(cam: number, entity: Entity | number, xOffset: number, yOffset: number, zOffset: number, isRelative: boolean): void;
 
-  export function attachCamToPedBone(cam: number, ped: Ped | Player | number, boneIndex: number, x: number, y: number, z: number, heading: boolean): void;
+  export function attachCamToPedBone(cam: number, ped: Ped | Player | LocalPlayer | number, boneIndex: number, x: number, y: number, z: number, heading: boolean): void;
 
-  export function hardAttachCamToPedBone(cam: number, ped: Ped | Player | number, boneIndex: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: boolean): void;
+  export function hardAttachCamToPedBone(cam: number, ped: Ped | Player | LocalPlayer | number, boneIndex: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: boolean): void;
 
   /**
    * Example from am_mp_drone script: 
@@ -1696,7 +1696,7 @@ declare module "natives" {
   /**
    * Parameters p0-p5 seems correct. The bool p6 is unknown, but through every X360 script it's always 1. Please correct p0-p5 if any prove to be wrong. 
    */
-  export function pointCamAtPedBone(cam: number, ped: Ped | Player | number, boneIndex: number, x: number, y: number, z: number, p6: boolean): void;
+  export function pointCamAtPedBone(cam: number, ped: Ped | Player | LocalPlayer | number, boneIndex: number, x: number, y: number, z: number, p6: boolean): void;
 
   export function stopCamPointing(cam: number): void;
 
@@ -2002,7 +2002,7 @@ declare module "natives" {
   /**
    * Forces gameplay cam to specified ped as if you were the ped or spectating it
    */
-  export function setGameplayCamFollowPedThisUpdate(ped: Ped | Player | number): void;
+  export function setGameplayCamFollowPedThisUpdate(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Examples when this function will return 0 are:
@@ -2249,14 +2249,14 @@ declare module "natives" {
 
   export function setGameplayCoordHint(x: number, y: number, z: number, duration: number, blendOutDuration: number, blendInDuration: number, p6: number): void;
 
-  export function setGameplayPedHint(ped: Ped | Player | number, x1: number, y1: number, z1: number, p4: boolean, duration: number, blendOutDuration: number, blendInDuration: number): void;
+  export function setGameplayPedHint(ped: Ped | Player | LocalPlayer | number, x1: number, y1: number, z1: number, p4: boolean, duration: number, blendOutDuration: number, blendInDuration: number): void;
 
   /**
    * Focuses the camera on the specified vehicle.
    */
   export function setGameplayVehicleHint(vehicle: Vehicle | number, offsetX: number, offsetY: number, offsetZ: number, p4: boolean, time: number, easeInTime: number, easeOutTime: number): void;
 
-  export function setGameplayObjectHint(object: Object, xOffset: number, yOffset: number, zOffset: number, p4: boolean, time: number, easeInTime: number, easeOutTime: number): void;
+  export function setGameplayObjectHint(object: number, xOffset: number, yOffset: number, zOffset: number, p4: boolean, time: number, easeInTime: number, easeOutTime: number): void;
 
   /**
    * p8 could be some sort of flag. Scripts use:
@@ -2372,7 +2372,7 @@ declare module "natives" {
    */
   export function setCutsceneCamFarClipThisUpdate(p0: number): void;
 
-  export function getFocusPedOnScreen(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number): Ped | Player | number;
+  export function getFocusPedOnScreen(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number): number;
 
   export function disableNearClipScanThisUpdate(): void;
 
@@ -2577,7 +2577,7 @@ declare module "natives" {
 
   export function getCutsceneSectionPlaying(): number;
 
-  export function getEntityIndexOfCutsceneEntity(cutsceneEntName: string, modelHash: number): Entity | number;
+  export function getEntityIndexOfCutsceneEntity(cutsceneEntName: string, modelHash: number): number;
 
   export function getCutsceneConcatSectionPlaying(): number;
 
@@ -2588,9 +2588,9 @@ declare module "natives" {
 
   export function doesCutsceneHandleExist(cutsceneHandle: number): number;
 
-  export function registerEntityForCutscene(cutscenePed: Ped | Player | number, cutsceneEntName: string, p2: number, modelHash: number, p4: number): void;
+  export function registerEntityForCutscene(cutscenePed: Ped | Player | LocalPlayer | number, cutsceneEntName: string, p2: number, modelHash: number, p4: number): void;
 
-  export function getEntityIndexOfRegisteredEntity(cutsceneEntName: string, modelHash: number): Entity | number;
+  export function getEntityIndexOfRegisteredEntity(cutsceneEntName: string, modelHash: number): number;
 
   /**
    * Full list of vehicles by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/vehicles.json
@@ -2645,7 +2645,7 @@ declare module "natives" {
    */
   export function setCutscenePedComponentVariation(cutsceneEntName: string, componentId: number, drawableId: number, textureId: number, modelHash: number): void;
 
-  export function setCutscenePedComponentVariationFromPed(cutsceneEntName: string, ped: Ped | Player | number, modelHash: number): void;
+  export function setCutscenePedComponentVariationFromPed(cutsceneEntName: string, ped: Ped | Player | LocalPlayer | number, modelHash: number): void;
 
   export function doesCutsceneEntityExist(cutsceneEntName: string, modelHash: number): boolean;
 
@@ -2954,7 +2954,7 @@ declare module "natives" {
    */
   export function hasEntityCollidedWithAnything(entity: Entity | number): boolean;
 
-  export function getLastEntityHitByEntity(entity: Entity | number): Entity | number;
+  export function getLastEntityHitByEntity(entity: Entity | number): number;
 
   export function getLastMaterialHitByEntity(entity: Entity | number): number;
 
@@ -2989,7 +2989,7 @@ declare module "natives" {
    */
   export function getAnimDuration(animDict: string, animName: string): number;
 
-  export function getEntityAttachedTo(entity: Entity | number): Entity | number;
+  export function getEntityAttachedTo(entity: Entity | number): number;
 
   /**
    * Gets the current coordinates for a specified entity.
@@ -3142,12 +3142,12 @@ declare module "natives" {
   /**
    * Simply returns whatever is passed to it (Regardless of whether the handle is valid or not).
    */
-  export function getObjectIndexFromEntityIndex(entity: Entity | number): Object;
+  export function getObjectIndexFromEntityIndex(entity: Entity | number): number;
 
   /**
    * Simply returns whatever is passed to it (Regardless of whether the handle is valid or not).
    */
-  export function getPedIndexFromEntityIndex(entity: Entity | number): Ped | Player | number;
+  export function getPedIndexFromEntityIndex(entity: Entity | number): number;
 
   /**
    * Simply returns whatever is passed to it (Regardless of whether the handle is valid or not).
@@ -3408,7 +3408,7 @@ declare module "natives" {
   /**
    * Deletes the specified entity, then sets the handle pointed to by the pointer to NULL.
    */
-  export function deleteEntity(entity?: Entity | number): [void, Entity | number];
+  export function deleteEntity(entity?: Entity | number): [void, number];
 
   /**
    * If `collision` is set to true, both entities won't collide with the other until the distance between them is above 4 meters.
@@ -3511,12 +3511,12 @@ declare module "natives" {
    *   *(BYTE *)(addr + 0xDA) = ((origValue & 0xF0) | ePopulationType::POPTYPE_RANDOM_AMBIENT);
    * }
    */
-  export function setEntityAsNoLongerNeeded(entity?: Entity | number): [void, Entity | number];
+  export function setEntityAsNoLongerNeeded(entity?: Entity | number): [void, number];
 
   /**
    * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
    */
-  export function setPedAsNoLongerNeeded(ped?: Ped | Player | number): [void, Ped | Player | number];
+  export function setPedAsNoLongerNeeded(ped?: Ped | Player | LocalPlayer | number): [void, number];
 
   /**
    * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
@@ -3526,7 +3526,7 @@ declare module "natives" {
   /**
    * This is an alias of SET_ENTITY_AS_NO_LONGER_NEEDED.
    */
-  export function setObjectAsNoLongerNeeded(object?: Object): [void, Object];
+  export function setObjectAsNoLongerNeeded(object?: number): [void, number];
 
   export function setEntityCanBeDamaged(entity: Entity | number, toggle: boolean): void;
 
@@ -3797,11 +3797,11 @@ declare module "natives" {
    * Example from fm_mission_controller_2020.c:
    * iVar8 = ENTITY::GET_ENTITY_OF_TYPE_ATTACHED_TO_ENTITY(bParam0->f_9, joaat("p_cs_clipboard"));
    */
-  export function getEntityOfTypeAttachedToEntity(entity: Entity | number, modelHash: number): Entity | number;
+  export function getEntityOfTypeAttachedToEntity(entity: Entity | number, modelHash: number): number;
 
   export function setPickUpByCargobobDisabled(entity: Entity | number, toggle: boolean): void;
 
-  export function setDecisionMaker(ped: Ped | Player | number, name: number): void;
+  export function setDecisionMaker(ped: Ped | Player | LocalPlayer | number, name: number): void;
 
   /**
    * eventType: https://alloc8or.re/gta5/doc/enums/eEventType.txt
@@ -3989,9 +3989,9 @@ declare module "natives" {
    */
   export function doesShopPedApparelHaveRestrictionTag(componentHash: number, restrictionTagHash: number, componentId: number): boolean;
 
-  export function doesCurrentPedComponentHaveRestrictionTag(ped: Ped | Player | number, componentId: number, restrictionTagHash: number): boolean;
+  export function doesCurrentPedComponentHaveRestrictionTag(ped: Ped | Player | LocalPlayer | number, componentId: number, restrictionTagHash: number): boolean;
 
-  export function doesCurrentPedPropHaveRestrictionTag(ped: Ped | Player | number, componentId: number, restrictionTagHash: number): boolean;
+  export function doesCurrentPedPropHaveRestrictionTag(ped: Ped | Player | LocalPlayer | number, componentId: number, restrictionTagHash: number): boolean;
 
   /**
    * characters
@@ -4176,7 +4176,7 @@ declare module "natives" {
    * isInvisible: If the explosion is invisible or not.
    * explosionType: See ADD_EXPLOSION.
    */
-  export function addOwnedExplosion(ped: Ped | Player | number, x: number, y: number, z: number, explosionType: number, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
+  export function addOwnedExplosion(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, explosionType: number, damageScale: number, isAudible: boolean, isInvisible: boolean, cameraShake: number): void;
 
   /**
    * isAudible: If explosion makes a sound.
@@ -4203,7 +4203,7 @@ declare module "natives" {
   /**
    * explosionType: See ADD_EXPLOSION.
    */
-  export function getOwnerOfExplosionInSphere(explosionType: number, x: number, y: number, z: number, radius: number): Entity | number;
+  export function getOwnerOfExplosionInSphere(explosionType: number, x: number, y: number, z: number, radius: number): number;
 
   /**
    * explosionType: See ADD_EXPLOSION, -1 for any explosion type
@@ -4214,7 +4214,7 @@ declare module "natives" {
    * Returns a handle to the first entity within the a circle spawned inside the 2 points from a radius.
    * explosionType: See ADD_EXPLOSION.
    */
-  export function getOwnerOfExplosionInAngledArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number): Entity | number;
+  export function getOwnerOfExplosionInAngledArea(explosionType: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, radius: number): number;
 
   /**
    * NOTE: Debugging functions are not present in the retail version of the game.
@@ -4880,7 +4880,7 @@ declare module "natives" {
   /**
    * Overriding ped badge texture to a passed texture. It's synced between players (even custom textures!), don't forget to request used dict on *all* clients to make it sync properly. Can be removed by passing empty strings.
    */
-  export function overridePedCrewLogoTexture(ped: Ped | Player | number, txd: string, txn: string): boolean;
+  export function overridePedCrewLogoTexture(ped: Ped | Player | LocalPlayer | number, txd: string, txn: string): boolean;
 
   export function setDistanceBlurStrengthOverride(p0: number): void;
 
@@ -5165,12 +5165,12 @@ declare module "natives" {
    * Axis - Invert Axis Flags
    * Full list of particle effect dictionaries and effects by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/particleEffectsCompact.json
    */
-  export function startParticleFxNonLoopedOnPedBone(effectName: string, ped: Ped | Player | number, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
+  export function startParticleFxNonLoopedOnPedBone(effectName: string, ped: Ped | Player | LocalPlayer | number, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
 
   /**
    * Full list of particle effect dictionaries and effects by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/particleEffectsCompact.json
    */
-  export function startNetworkedParticleFxNonLoopedOnPedBone(effectName: string, ped: Ped | Player | number, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
+  export function startNetworkedParticleFxNonLoopedOnPedBone(effectName: string, ped: Ped | Player | LocalPlayer | number, offsetX: number, offsetY: number, offsetZ: number, rotX: number, rotY: number, rotZ: number, boneIndex: number, scale: number, axisX: boolean, axisY: boolean, axisZ: boolean): boolean;
 
   /**
    * Starts a particle effect on an entity for example your player.
@@ -5225,7 +5225,7 @@ declare module "natives" {
   /**
    * Full list of particle effect dictionaries and effects by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/particleEffectsCompact.json
    */
-  export function startParticleFxLoopedOnPedBone(effectName: string, ped: Ped | Player | number, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
+  export function startParticleFxLoopedOnPedBone(effectName: string, ped: Ped | Player | LocalPlayer | number, xOffset: number, yOffset: number, zOffset: number, xRot: number, yRot: number, zRot: number, boneIndex: number, scale: number, xAxis: boolean, yAxis: boolean, zAxis: boolean): number;
 
   /**
    * Full list of particle effect dictionaries and effects by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/particleEffectsCompact.json
@@ -5377,9 +5377,9 @@ declare module "natives" {
    */
   export function removeDecalsInRange(x: number, y: number, z: number, range: number): void;
 
-  export function removeDecalsFromObject(obj: Object): void;
+  export function removeDecalsFromObject(obj: number): void;
 
-  export function removeDecalsFromObjectFacing(obj: Object, x: number, y: number, z: number): void;
+  export function removeDecalsFromObjectFacing(obj: number, x: number, y: number, z: number): void;
 
   export function removeDecalsFromVehicle(vehicle: Vehicle | number): void;
 
@@ -5476,7 +5476,7 @@ declare module "natives" {
   /**
    * boneIndex is always chassis_dummy in the scripts. The x/y/z params are location relative to the chassis bone.
    */
-  export function addVehicleCrewEmblem(vehicle: Vehicle | number, ped: Ped | Player | number, boneIndex: number, x1: number, x2: number, x3: number, y1: number, y2: number, y3: number, z1: number, z2: number, z3: number, scale: number, p13: any, alpha: number): boolean;
+  export function addVehicleCrewEmblem(vehicle: Vehicle | number, ped: Ped | Player | LocalPlayer | number, boneIndex: number, x1: number, x2: number, x3: number, y1: number, y2: number, y3: number, z1: number, z2: number, z3: number, scale: number, p13: any, alpha: number): boolean;
 
   export function abortVehicleCrewEmblemRequest(p0?: number): [boolean, number];
 
@@ -5913,7 +5913,7 @@ declare module "natives" {
    * presetName was always "CELEBRATION_WINNER"
    * All presets can be found in common\data\ui\uiscenes.meta
    */
-  export function ui3dsceneAssignPedToSlot(presetName: string, ped: Ped | Player | number, slot: number, posX: number, posY: number, posZ: number): boolean;
+  export function ui3dsceneAssignPedToSlot(presetName: string, ped: Ped | Player | LocalPlayer | number, slot: number, posX: number, posY: number, posZ: number): boolean;
 
   export function ui3dsceneClearPatchedData(): void;
 
@@ -6840,7 +6840,7 @@ declare module "natives" {
    */
   export function getBlipInfoIdType(blip: number): number;
 
-  export function getBlipInfoIdEntityIndex(blip: number): Entity | number;
+  export function getBlipInfoIdEntityIndex(blip: number): number;
 
   /**
    * This function is hard-coded to always return 0.
@@ -7170,7 +7170,7 @@ declare module "natives" {
   /**
    * Interesting fact: A hash collision for this is RESET_JETPACK_MODEL_SETTINGS
    */
-  export function removeCopBlipFromPed(ped: Ped | Player | number): void;
+  export function removeCopBlipFromPed(ped: Ped | Player | LocalPlayer | number): void;
 
   export function setupFakeConeData(blip: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: any, p8: number): void;
 
@@ -7431,7 +7431,7 @@ declare module "natives" {
 
   export function toggleStealthRadar(toggle: boolean): void;
 
-  export function setMinimapInSpectatorMode(toggle: boolean, ped: Ped | Player | number): void;
+  export function setMinimapInSpectatorMode(toggle: boolean, ped: Ped | Player | LocalPlayer | number): void;
 
   export function setMissionName(p0: boolean, name: string): void;
 
@@ -7654,7 +7654,7 @@ declare module "natives" {
   /**
    * clanFlag: takes a number 0-5
    */
-  export function createFakeMpGamerTag(ped: Ped | Player | number, username: string, pointedClanTag: boolean, isRockstarClan: boolean, clanTag: string, clanFlag: number): number;
+  export function createFakeMpGamerTag(ped: Ped | Player | LocalPlayer | number, username: string, pointedClanTag: boolean, isRockstarClan: boolean, clanTag: string, clanFlag: number): number;
 
   export function removeMpGamerTag(gamerTagId: number): void;
 
@@ -8119,7 +8119,7 @@ declare module "natives" {
   /**
    * p1 is either 1 or 2 in the PC scripts.
    */
-  export function givePedToPauseMenu(ped: Ped | Player | number, p1: number): void;
+  export function givePedToPauseMenu(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * Toggles the light state for the pause menu ped in frontend menus.
@@ -8194,31 +8194,31 @@ declare module "natives" {
    * This native turns on the AI blip on the specified ped. It also disappears automatically when the ped is too far or if the ped is dead. You don't need to control it with other natives.
    * See gtaforums.com/topic/884370-native-research-ai-blips for further information.
    */
-  export function setPedHasAiBlip(ped: Ped | Player | number, hasCone: boolean): void;
+  export function setPedHasAiBlip(ped: Ped | Player | LocalPlayer | number, hasCone: boolean): void;
 
   /**
    * color: see SET_BLIP_COLOUR
    */
-  export function setPedHasAiBlipWithColour(ped: Ped | Player | number, hasCone: boolean, color: number): void;
+  export function setPedHasAiBlipWithColour(ped: Ped | Player | LocalPlayer | number, hasCone: boolean, color: number): void;
 
-  export function doesPedHaveAiBlip(ped: Ped | Player | number): boolean;
+  export function doesPedHaveAiBlip(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedAiBlipGangId(ped: Ped | Player | number, gangId: number): void;
+  export function setPedAiBlipGangId(ped: Ped | Player | LocalPlayer | number, gangId: number): void;
 
-  export function setPedAiBlipHasCone(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAiBlipHasCone(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedAiBlipForcedOn(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAiBlipForcedOn(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedAiBlipNoticeRange(ped: Ped | Player | number, range: number): void;
+  export function setPedAiBlipNoticeRange(ped: Ped | Player | LocalPlayer | number, range: number): void;
 
-  export function setPedAiBlipSprite(ped: Ped | Player | number, spriteId: number): void;
+  export function setPedAiBlipSprite(ped: Ped | Player | LocalPlayer | number, spriteId: number): void;
 
-  export function getAiPedPedBlipIndex(ped: Ped | Player | number): number;
+  export function getAiPedPedBlipIndex(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Returns the current AI BLIP for the specified ped
    */
-  export function getAiPedVehicleBlipIndex(ped: Ped | Player | number): number;
+  export function getAiPedVehicleBlipIndex(ped: Ped | Player | LocalPlayer | number): number;
 
   export function hasDirectorModeBeenLaunchedByCode(): boolean;
 
@@ -9091,18 +9091,18 @@ declare module "natives" {
 
   export function isMemoryCardInUse(): boolean;
 
-  export function shootSingleBulletBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: boolean, weaponHash: number, ownerPed: Ped | Player | number, isAudible: boolean, isInvisible: boolean, speed: number): void;
+  export function shootSingleBulletBetweenCoords(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: boolean, weaponHash: number, ownerPed: Ped | Player | LocalPlayer | number, isAudible: boolean, isInvisible: boolean, speed: number): void;
 
   /**
    * entity - entity to ignore
    */
-  export function shootSingleBulletBetweenCoordsIgnoreEntity(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: boolean, weaponHash: number, ownerPed: Ped | Player | number, isAudible: boolean, isInvisible: boolean, speed: number, entity: Entity | number, p14: any): void;
+  export function shootSingleBulletBetweenCoordsIgnoreEntity(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: boolean, weaponHash: number, ownerPed: Ped | Player | LocalPlayer | number, isAudible: boolean, isInvisible: boolean, speed: number, entity: Entity | number, p14: any): void;
 
   /**
    * entity - entity to ignore
    * targetEntity - entity to home in on, if the weapon hash provided supports homing
    */
-  export function shootSingleBulletBetweenCoordsIgnoreEntityNew(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: boolean, weaponHash: number, ownerPed: Ped | Player | number, isAudible: boolean, isInvisible: boolean, speed: number, entity: Entity | number, p14: boolean, p15: boolean, targetEntity: Entity | number, p17: boolean, p18: any, p19: any, p20: any): void;
+  export function shootSingleBulletBetweenCoordsIgnoreEntityNew(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, damage: number, p7: boolean, weaponHash: number, ownerPed: Ped | Player | LocalPlayer | number, isAudible: boolean, isInvisible: boolean, speed: number, entity: Entity | number, p14: boolean, p15: boolean, targetEntity: Entity | number, p17: boolean, p18: any, p19: any, p20: any): void;
 
   /**
    * Gets the dimensions of a model.
@@ -9199,9 +9199,9 @@ declare module "natives" {
 
   export function getCoordsOfProjectileTypeInAngledArea(vecAngledAreaPoint1X: number, vecAngledAreaPoint1Y: number, vecAngledAreaPoint1Z: number, vecAngledAreaPoint2X: number, vecAngledAreaPoint2Y: number, vecAngledAreaPoint2Z: number, distanceOfOppositeFace: number, weaponType: number, positionOut: Vector3, bIsPlayer: boolean): [boolean, Vector3];
 
-  export function getCoordsOfProjectileTypeWithinDistance(ped: Ped | Player | number, weaponHash: number, distance: number, outCoords: Vector3, p4: boolean): [boolean, Vector3];
+  export function getCoordsOfProjectileTypeWithinDistance(ped: Ped | Player | LocalPlayer | number, weaponHash: number, distance: number, outCoords: Vector3, p4: boolean): [boolean, Vector3];
 
-  export function getProjectileOfProjectileTypeWithinDistance(ped: Ped | Player | number, weaponHash: number, distance: number, outCoords: Vector3, outProjectile: Object, p5: boolean): [boolean, Vector3, Object];
+  export function getProjectileOfProjectileTypeWithinDistance(ped: Ped | Player | LocalPlayer | number, weaponHash: number, distance: number, outCoords: Vector3, outProjectile: number, p5: boolean): [boolean, Vector3, number];
 
   /**
    * For projectiles, see: IS_PROJECTILE_TYPE_IN_ANGLED_AREA
@@ -9471,7 +9471,7 @@ declare module "natives" {
    * if(CREATE_INCIDENT) etc it will return false if you do as I said above.
    * =====================================================
    */
-  export function createIncidentWithEntity(dispatchService: number, ped: Ped | Player | number, numUnits: number, radius: number, outIncidentID: number, p5: any, p6: any): [boolean, number];
+  export function createIncidentWithEntity(dispatchService: number, ped: Ped | Player | LocalPlayer | number, numUnits: number, radius: number, outIncidentID: number, p5: any, p6: any): [boolean, number];
 
   /**
    * Delete an incident with a given id.
@@ -9526,29 +9526,29 @@ declare module "natives" {
   /**
    * Makes the ped jump around like they're in a tennis match
    */
-  export function enableTennisMode(ped: Ped | Player | number, toggle: boolean, p2: boolean): void;
+  export function enableTennisMode(ped: Ped | Player | LocalPlayer | number, toggle: boolean, p2: boolean): void;
 
-  export function isTennisMode(ped: Ped | Player | number): boolean;
+  export function isTennisMode(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function playTennisSwingAnim(ped: Ped | Player | number, animDict: string, animName: string, p3: number, p4: number, p5: boolean): void;
+  export function playTennisSwingAnim(ped: Ped | Player | LocalPlayer | number, animDict: string, animName: string, p3: number, p4: number, p5: boolean): void;
 
-  export function getTennisSwingAnimComplete(ped: Ped | Player | number): boolean;
+  export function getTennisSwingAnimComplete(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getTennisSwingAnimCanBeInterrupted(ped: Ped | Player | number): boolean;
+  export function getTennisSwingAnimCanBeInterrupted(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getTennisSwingAnimSwung(ped: Ped | Player | number): boolean;
+  export function getTennisSwingAnimSwung(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function playTennisDiveAnim(ped: Ped | Player | number, p1: number, p2: number, p3: number, p4: number, p5: boolean): void;
+  export function playTennisDiveAnim(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number, p3: number, p4: number, p5: boolean): void;
 
   /**
    * From the scripts:
    * MISC::SET_TENNIS_MOVE_NETWORK_SIGNAL_FLOAT(sub_aa49(a_0), "ForcedStopDirection", v_E);
    * Related to tennis mode.
    */
-  export function setTennisMoveNetworkSignalFloat(ped: Ped | Player | number, p1: string, p2: number): void;
+  export function setTennisMoveNetworkSignalFloat(ped: Ped | Player | LocalPlayer | number, p1: string, p2: number): void;
 
   export function resetDispatchSpawnLocation(): void;
 
@@ -11559,7 +11559,7 @@ declare module "natives" {
 
   export function networkClearInvalidObjectModels(): void;
 
-  export function networkApplyPedScarData(ped: Ped | Player | number, p1: number): void;
+  export function networkApplyPedScarData(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   export function networkSetThisScriptIsNetworkScript(maxNumMissionParticipants: number, p1: boolean, instanceId: number): void;
 
@@ -11592,7 +11592,7 @@ declare module "natives" {
   /**
    * Returns the Player associated to a given Ped when in an online session.
    */
-  export function networkGetPlayerIndexFromPed(ped: Ped | Player | number): Player | number;
+  export function networkGetPlayerIndexFromPed(ped: Ped | Player | LocalPlayer | number): Player | number;
 
   /**
    * Returns the amount of players connected in the current session. Only works when connected to a session/server.
@@ -11666,7 +11666,7 @@ declare module "natives" {
 
   export function networkGetAssistedDamageOfEntity(player: Player | number, entity: Entity | number, p2?: number): [boolean, number];
 
-  export function networkGetEntityKillerOfPlayer(player: Player | number, weaponHash?: number): [Entity | number, number];
+  export function networkGetEntityKillerOfPlayer(player: Player | number, weaponHash?: number): [number, number];
 
   export function networkSetCurrentPublicContentId(missionId: string): void;
 
@@ -11719,7 +11719,7 @@ declare module "natives" {
 
   export function networkDisableInvincibleFlashing(player: Player | number, toggle: boolean): void;
 
-  export function networkPatchPostCutsceneHs4fTunEnt(ped: Ped | Player | number): void;
+  export function networkPatchPostCutsceneHs4fTunEnt(ped: Ped | Player | LocalPlayer | number): void;
 
   export function networkSetLocalPlayerSyncLookAt(toggle: boolean): void;
 
@@ -11727,7 +11727,7 @@ declare module "natives" {
 
   export function networkGetNetworkIdFromEntity(entity: Entity | number): number;
 
-  export function networkGetEntityFromNetworkId(netId: number): Entity | number;
+  export function networkGetEntityFromNetworkId(netId: number): number;
 
   export function networkGetEntityIsNetworked(entity: Entity | number): boolean;
 
@@ -11770,30 +11770,30 @@ declare module "natives" {
   /**
    * gets the network id of a ped
    */
-  export function pedToNet(ped: Ped | Player | number): number;
+  export function pedToNet(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Lets objects spawn online simply do it like this:
    * int createdObject = OBJ_TO_NET(CREATE_OBJECT_NO_OFFSET(oball, pCoords.x, pCoords.y, pCoords.z, 1, 0, 0));
    */
-  export function objToNet(object: Object): number;
+  export function objToNet(object: number): number;
 
   export function netToVeh(netHandle: number): Vehicle | number;
 
   /**
    * gets the ped id of a network id
    */
-  export function netToPed(netHandle: number): Ped | Player | number;
+  export function netToPed(netHandle: number): number;
 
   /**
    * gets the object id of a network id
    */
-  export function netToObj(netHandle: number): Object;
+  export function netToObj(netHandle: number): number;
 
   /**
    * gets the entity id of a network id
    */
-  export function netToEnt(netHandle: number): Entity | number;
+  export function netToEnt(netHandle: number): number;
 
   export function networkGetLocalHandle(gamerHandle: any, gamerHandleSize: number): [void, any];
 
@@ -11870,7 +11870,7 @@ declare module "natives" {
    * But another p0 value may return an entity for player x, but not for player y (it'll just return -1 even if the entity exists on both clients).
    * Returns an entity handle or -1, value changes based on p0's value.
    */
-  export function networkGetEntityFromObjectId(p0: any): Entity | number;
+  export function networkGetEntityFromObjectId(p0: any): number;
 
   export function networkIsInactiveProfile(p0?: any): [boolean, any];
 
@@ -12114,7 +12114,7 @@ declare module "natives" {
   /**
    * entity must be a valid entity; ped can be NULL
    */
-  export function removeAllStickyBombsFromEntity(entity: Entity | number, ped: Ped | Player | number): void;
+  export function removeAllStickyBombsFromEntity(entity: Entity | number, ped: Ped | Player | LocalPlayer | number): void;
 
   export function networkKeepEntityCollisionDisabledAfterAnimScene(p0: any, p1: any): void;
 
@@ -12208,7 +12208,7 @@ declare module "natives" {
 
   export function networkSetEntityCanBlend(entity: Entity | number, toggle: boolean): void;
 
-  export function networkSetObjectCanBlendWhenFixed(object: Object, toggle: boolean): void;
+  export function networkSetObjectCanBlendWhenFixed(object: number, toggle: boolean): void;
 
   /**
    * if set to true other network players can't see it
@@ -12349,7 +12349,7 @@ declare module "natives" {
 
   export function getMaxNumNetworkPickups(): number;
 
-  export function networkSetObjectScopeDistance(object: Object, range: number): void;
+  export function networkSetObjectScopeDistance(object: number, range: number): void;
 
   export function networkAllowCloningWhileInTutorial(p0: any, p1: any): void;
 
@@ -12426,9 +12426,9 @@ declare module "natives" {
    */
   export function convertPosixTime(posixTime: number, timeStructure?: any): [void, any];
 
-  export function networkSetInSpectatorMode(toggle: boolean, playerPed: Ped | Player | number): void;
+  export function networkSetInSpectatorMode(toggle: boolean, playerPed: Ped | Player | LocalPlayer | number): void;
 
-  export function networkSetInSpectatorModeExtended(toggle: boolean, playerPed: Ped | Player | number, p2: boolean): void;
+  export function networkSetInSpectatorModeExtended(toggle: boolean, playerPed: Ped | Player | LocalPlayer | number, p2: boolean): void;
 
   export function networkSetInFreeCamMode(toggle: boolean): void;
 
@@ -12491,7 +12491,7 @@ declare module "natives" {
 
   export function networkCreateSynchronisedScene(x: number, y: number, z: number, xRot: number, yRot: number, zRot: number, rotationOrder: number, useOcclusionPortal: boolean, looped: boolean, p9: number, animTime: number, p11: number): number;
 
-  export function networkAddPedToSynchronisedScene(ped: Ped | Player | number, netScene: number, animDict: string, animnName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, p9: any): void;
+  export function networkAddPedToSynchronisedScene(ped: Ped | Player | LocalPlayer | number, netScene: number, animDict: string, animnName: string, speed: number, speedMultiplier: number, duration: number, flag: number, playbackRate: number, p9: any): void;
 
   export function networkAddPedToSynchronisedSceneWithIk(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any): void;
 
@@ -12673,7 +12673,7 @@ declare module "natives" {
 
   export function networkHasBoneBeenHitByKiller(boneIndex: number): boolean;
 
-  export function networkSetAttributeDamageToPlayer(ped: Ped | Player | number, player: Player | number): boolean;
+  export function networkSetAttributeDamageToPlayer(ped: Ped | Player | LocalPlayer | number, player: Player | number): boolean;
 
   /**
    * Allows vehicle wheels to be destructible even when the vehicle entity is invincible.
@@ -12729,7 +12729,7 @@ declare module "natives" {
 
   export function networkHasCachedPlayerHeadBlendData(player: Player | number): boolean;
 
-  export function networkApplyCachedPlayerHeadBlendData(ped: Ped | Player | number, player: Player | number): boolean;
+  export function networkApplyCachedPlayerHeadBlendData(ped: Ped | Player | LocalPlayer | number, player: Player | number): boolean;
 
   export function getNumCommerceItems(): number;
 
@@ -13172,23 +13172,23 @@ declare module "natives" {
   /**
    * List of object models that can be created without any additional effort like making sure ytyp is loaded etc: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/ObjectList.ini
    */
-  export function createObject(modelHash: number, x: number, y: number, z: number, isNetwork: boolean, bScriptHostObj: boolean, dynamic: boolean): Object;
+  export function createObject(modelHash: number, x: number, y: number, z: number, isNetwork: boolean, bScriptHostObj: boolean, dynamic: boolean): number;
 
   /**
    * List of object models that can be created without any additional effort like making sure ytyp is loaded etc: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/ObjectList.ini
    */
-  export function createObjectNoOffset(modelHash: number, x: number, y: number, z: number, isNetwork: boolean, bScriptHostObj: boolean, dynamic: boolean): Object;
+  export function createObjectNoOffset(modelHash: number, x: number, y: number, z: number, isNetwork: boolean, bScriptHostObj: boolean, dynamic: boolean): number;
 
   /**
    * Deletes the specified object, then sets the handle pointed to by the pointer to NULL.
    */
-  export function deleteObject(object?: Object): [void, Object];
+  export function deleteObject(object?: number): [void, number];
 
-  export function placeObjectOnGroundProperly(object: Object): boolean;
+  export function placeObjectOnGroundProperly(object: number): boolean;
 
-  export function placeObjectOnGroundOrObjectProperly(object: Object): boolean;
+  export function placeObjectOnGroundOrObjectProperly(object: number): boolean;
 
-  export function rotateObject(object: Object, p1: number, p2: number, p3: boolean): boolean;
+  export function rotateObject(object: number, p1: number, p2: number, p3: boolean): boolean;
 
   /**
    * Returns true if the object has finished moving.
@@ -13196,22 +13196,22 @@ declare module "natives" {
    * See also: https://gtagmodding.com/opcode-database/opcode/034E/
    * Has to be looped until it returns true.
    */
-  export function slideObject(object: Object, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
+  export function slideObject(object: number, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
 
-  export function setObjectTargettable(object: Object, targettable: boolean, p2: any): void;
+  export function setObjectTargettable(object: number, targettable: boolean, p2: any): void;
 
   /**
    * Overrides a flag on the object which determines if the object should be avoided by a vehicle in task CTaskVehicleGoToPointWithAvoidanceAutomobile.
    */
-  export function setObjectForceVehiclesToAvoid(object: Object, toggle: boolean): void;
+  export function setObjectForceVehiclesToAvoid(object: number, toggle: boolean): void;
 
   /**
    * Has 8 params in the latest patches.
    * isMission - if true doesn't return mission objects
    */
-  export function getClosestObjectOfType(x: number, y: number, z: number, radius: number, modelHash: number, isMission: boolean, p6: boolean, p7: boolean): Object;
+  export function getClosestObjectOfType(x: number, y: number, z: number, radius: number, modelHash: number, isMission: boolean, p6: boolean, p7: boolean): number;
 
-  export function hasObjectBeenBroken(object: Object, p1: any): boolean;
+  export function hasObjectBeenBroken(object: number, p1: any): boolean;
 
   export function hasClosestObjectOfTypeBeenBroken(p0: number, p1: number, p2: number, p3: number, modelHash: number, p5: any): boolean;
 
@@ -13406,7 +13406,7 @@ declare module "natives" {
   /**
    * Overrides the climbing/blocking flags of the object, used in the native scripts mostly for "prop_dock_bouy_*"
    */
-  export function setObjectAllowLowLodBuoyancy(object: Object, toggle: boolean): void;
+  export function setObjectAllowLowLodBuoyancy(object: number, toggle: boolean): void;
 
   /**
    * Adjust the physics parameters of a prop, or otherwise known as "object". This is useful for simulated gravity.
@@ -13416,29 +13416,29 @@ declare module "natives" {
    * p4: makes obj fall slower the higher the value
    * p5: similar to p4
    */
-  export function setObjectPhysicsParams(object: Object, weight: number, p2: number, p3: number, p4: number, p5: number, gravity: number, p7: number, p8: number, p9: number, p10: number, buoyancy: number): void;
+  export function setObjectPhysicsParams(object: number, weight: number, p2: number, p3: number, p4: number, p5: number, gravity: number, p7: number, p8: number, p9: number, p10: number, buoyancy: number): void;
 
   export function getObjectFragmentDamageHealth(p0: any, p1: boolean): number;
 
-  export function setActivateObjectPhysicsAsSoonAsItIsUnfrozen(object: Object, toggle: boolean): void;
+  export function setActivateObjectPhysicsAsSoonAsItIsUnfrozen(object: number, toggle: boolean): void;
 
   export function isAnyObjectNearPoint(x: number, y: number, z: number, range: number, p4: boolean): boolean;
 
   export function isObjectNearPoint(objectHash: number, x: number, y: number, z: number, range: number): boolean;
 
-  export function removeObjectHighDetailModel(object: Object): void;
+  export function removeObjectHighDetailModel(object: number): void;
 
-  export function breakObjectFragmentChild(p0: Object, p1: any, p2: boolean): void;
+  export function breakObjectFragmentChild(p0: number, p1: any, p2: boolean): void;
 
   export function damageObjectFragmentChild(p0: any, p1: any, p2: any): void;
 
-  export function fixObjectFragment(object: Object): void;
+  export function fixObjectFragment(object: number): void;
 
-  export function trackObjectVisibility(object: Object): void;
+  export function trackObjectVisibility(object: number): void;
 
-  export function isObjectVisible(object: Object): boolean;
+  export function isObjectVisible(object: number): boolean;
 
-  export function setObjectIsSpecialGolfball(object: Object, toggle: boolean): void;
+  export function setObjectIsSpecialGolfball(object: number, toggle: boolean): void;
 
   export function setObjectTakesDamageFromCollidingWithBuildings(p0: any, p1: boolean): void;
 
@@ -13447,13 +13447,13 @@ declare module "natives" {
   /**
    * Requires a component_at_*_flsh to be attached to the weapon object
    */
-  export function setCutscenesWeaponFlashlightOnThisFrame(object: Object, toggle: boolean): void;
+  export function setCutscenesWeaponFlashlightOnThisFrame(object: number, toggle: boolean): void;
 
   /**
    * Example:
    * OBJECT::GET_RAYFIRE_MAP_OBJECT(-809.9619750976562, 170.919, 75.7406997680664, 3.0, "des_tvsmash");
    */
-  export function getRayfireMapObject(x: number, y: number, z: number, radius: number, name: string): Object;
+  export function getRayfireMapObject(x: number, y: number, z: number, radius: number, name: string): number;
 
   /**
    * Defines the state of a destructible object.
@@ -13463,7 +13463,7 @@ declare module "natives" {
    * State 6 == Start animation
    * State 9 == End of the animation
    */
-  export function setStateOfRayfireMapObject(object: Object, state: number): void;
+  export function setStateOfRayfireMapObject(object: number, state: number): void;
 
   /**
    * Get a destructible object's state.
@@ -13471,18 +13471,18 @@ declare module "natives" {
    * See SET_STATE_OF_RAYFIRE_MAP_OBJECT to see the different states
    * For example, if the object just spawned (state 2), the native will return 3.
    */
-  export function getStateOfRayfireMapObject(object: Object): number;
+  export function getStateOfRayfireMapObject(object: number): number;
 
   /**
    * Returns true if a destructible object with this handle exists, false otherwise.  
    */
-  export function doesRayfireMapObjectExist(object: Object): boolean;
+  export function doesRayfireMapObjectExist(object: number): boolean;
 
   /**
    * `object`: The des-object handle to get the animation progress from.
    * Return value is a float between 0.0 and 1.0, 0.0 is the beginning of the animation, 1.0 is the end. Value resets to 0.0 instantly after reaching 1.0.
    */
-  export function getRayfireMapObjectAnimPhase(object: Object): number;
+  export function getRayfireMapObjectAnimPhase(object: number): number;
 
   /**
    * Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json
@@ -13504,29 +13504,29 @@ declare module "natives" {
   /**
    * Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json
    */
-  export function createAmbientPickup(pickupHash: number, posX: number, posY: number, posZ: number, flags: number, value: number, modelHash: number, p7: boolean, p8: boolean): Object;
+  export function createAmbientPickup(pickupHash: number, posX: number, posY: number, posZ: number, flags: number, value: number, modelHash: number, p7: boolean, p8: boolean): number;
 
-  export function createNonNetworkedAmbientPickup(pickupHash: number, posX: number, posY: number, posZ: number, flags: number, value: number, modelHash: number, p7: boolean, p8: boolean): Object;
+  export function createNonNetworkedAmbientPickup(pickupHash: number, posX: number, posY: number, posZ: number, flags: number, value: number, modelHash: number, p7: boolean, p8: boolean): number;
 
   export function blockPlayersForAmbientPickup(p0: any, p1: any): void;
 
   /**
    * Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json
    */
-  export function createPortablePickup(pickupHash: number, x: number, y: number, z: number, placeOnGround: boolean, modelHash: number): Object;
+  export function createPortablePickup(pickupHash: number, x: number, y: number, z: number, placeOnGround: boolean, modelHash: number): number;
 
   /**
    * Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json
    */
-  export function createNonNetworkedPortablePickup(pickupHash: number, x: number, y: number, z: number, placeOnGround: boolean, modelHash: number): Object;
+  export function createNonNetworkedPortablePickup(pickupHash: number, x: number, y: number, z: number, placeOnGround: boolean, modelHash: number): number;
 
-  export function attachPortablePickupToPed(pickupObject: Object, ped: Ped | Player | number): void;
+  export function attachPortablePickupToPed(pickupObject: number, ped: Ped | Player | LocalPlayer | number): void;
 
-  export function detachPortablePickupFromPed(pickupObject: Object): void;
+  export function detachPortablePickupFromPed(pickupObject: number): void;
 
-  export function forcePortablePickupLastAccessiblePositionSetting(object: Object): void;
+  export function forcePortablePickupLastAccessiblePositionSetting(object: number): void;
 
-  export function hidePortablePickupWhenDetached(pickupObject: Object, toggle: boolean): void;
+  export function hidePortablePickupWhenDetached(pickupObject: number, toggle: boolean): void;
 
   export function setMaxNumPortablePickupsCarriedByPlayer(modelHash: number, number: number): void;
 
@@ -13576,13 +13576,13 @@ declare module "natives" {
 
   export function doesPickupExist(pickup: number): boolean;
 
-  export function doesPickupObjectExist(pickupObject: Object): boolean;
+  export function doesPickupObjectExist(pickupObject: number): boolean;
 
-  export function getPickupObject(pickup: number): Object;
+  export function getPickupObject(pickup: number): number;
 
-  export function isObjectAPickup(object: Object): boolean;
+  export function isObjectAPickup(object: number): boolean;
 
-  export function isObjectAPortablePickup(object: Object): boolean;
+  export function isObjectAPortablePickup(object: number): boolean;
 
   /**
    * Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json
@@ -13615,9 +13615,9 @@ declare module "natives" {
    */
   export function allowAllPlayersToCollectPickupsOfType(pickupHash: number): void;
 
-  export function setTeamPickupObject(object: Object, p1: any, p2: boolean): void;
+  export function setTeamPickupObject(object: number, p1: any, p2: boolean): void;
 
-  export function preventCollectionOfPortablePickup(object: Object, p1: boolean, p2: boolean): void;
+  export function preventCollectionOfPortablePickup(object: number, p1: boolean, p2: boolean): void;
 
   export function setPickupObjectGlowWhenUncollectable(pickup: number, toggle: boolean): void;
 
@@ -13712,7 +13712,7 @@ declare module "natives" {
    */
   export function setEntityFlagSuppressShadow(entity: Entity | number, toggle: boolean): void;
 
-  export function setEntityFlagRenderSmallShadow(object: Object, toggle: boolean): void;
+  export function setEntityFlagRenderSmallShadow(object: number, toggle: boolean): void;
 
   /**
    * Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json
@@ -13724,9 +13724,9 @@ declare module "natives" {
    */
   export function getPickupTypeFromWeaponHash(weaponHash: number): number;
 
-  export function isPickupWeaponObjectValid(object: Object): boolean;
+  export function isPickupWeaponObjectValid(object: number): boolean;
 
-  export function getObjectTintIndex(object: Object): number;
+  export function getObjectTintIndex(object: number): number;
 
   /**
    * enum ObjectPaintVariants
@@ -13749,21 +13749,21 @@ declare module "natives" {
    *     Voyager = 15
    * };
    */
-  export function setObjectTintIndex(object: Object, textureVariation: number): void;
+  export function setObjectTintIndex(object: number, textureVariation: number): void;
 
   export function setTintIndexClosestBuildingOfType(x: number, y: number, z: number, radius: number, modelHash: number, textureVariation: number): boolean;
 
   export function setPropTintIndex(p0: any, p1: any): void;
 
-  export function setPropLightColor(object: Object, p1: boolean, r: number, g: number, b: number): boolean;
+  export function setPropLightColor(object: number, p1: boolean, r: number, g: number, b: number): boolean;
 
-  export function isPropLightOverriden(object: Object): boolean;
+  export function isPropLightOverriden(object: number): boolean;
 
-  export function setObjectIsVisibleInMirrors(object: Object, toggle: boolean): void;
+  export function setObjectIsVisibleInMirrors(object: number, toggle: boolean): void;
 
-  export function setObjectSpeedBoostAmount(object: Object, p1: any): void;
+  export function setObjectSpeedBoostAmount(object: number, p1: any): void;
 
-  export function setObjectSpeedBoostDuration(object: Object, duration: number): void;
+  export function setObjectSpeedBoostDuration(object: number, duration: number): void;
 
   /**
    * returns pickup hash.
@@ -13776,7 +13776,7 @@ declare module "natives" {
   /**
    * is this like setting is as no longer needed?
    */
-  export function onlyCleanUpObjectWhenOutOfRange(object: Object): void;
+  export function onlyCleanUpObjectWhenOutOfRange(object: number): void;
 
   export function setDisableCollisionsBetweenCarsAndCarParachute(p0: any): void;
 
@@ -13785,21 +13785,21 @@ declare module "natives" {
   /**
    * Activate the physics to: "xs_prop_arena_{flipper,wall,bollard,turntable,pit}"
    */
-  export function setDriveArticulatedJoint(object: Object, toggle: boolean, p2: number): void;
+  export function setDriveArticulatedJoint(object: number, toggle: boolean, p2: number): void;
 
-  export function setDriveArticulatedJointWithInflictor(object: Object, toggle: boolean, p2: number, ped: Ped | Player | number): void;
+  export function setDriveArticulatedJointWithInflictor(object: number, toggle: boolean, p2: number, ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setObjectIsAPressurePlate(object: Object, toggle: boolean): void;
+  export function setObjectIsAPressurePlate(object: number, toggle: boolean): void;
 
-  export function setWeaponImpactsApplyGreaterForce(object: Object, p1: boolean): void;
+  export function setWeaponImpactsApplyGreaterForce(object: number, p1: boolean): void;
 
-  export function getIsArticulatedJointAtMinAngle(object: Object, p1: any): boolean;
+  export function getIsArticulatedJointAtMinAngle(object: number, p1: any): boolean;
 
   export function getIsArticulatedJointAtMaxAngle(p0: any, p1: any): boolean;
 
-  export function setIsObjectArticulated(object: Object, toggle: boolean): void;
+  export function setIsObjectArticulated(object: number, toggle: boolean): void;
 
-  export function setIsObjectBall(object: Object, toggle: boolean): void;
+  export function setIsObjectBall(object: number, toggle: boolean): void;
 
   /**
    * control: 0: PLAYER_CONTROL, 1: CAMERA_CONTROL, 2: FRONTEND_CONTROL
@@ -14344,37 +14344,37 @@ declare module "natives" {
    * https://alloc8or.re/gta5/doc/enums/ePedType.txt
    * Full list of peds by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/peds.json
    */
-  export function createPed(pedType: number, modelHash: number, x: number, y: number, z: number, heading: number, isNetwork: boolean, bScriptHostPed: boolean): Ped | Player | number;
+  export function createPed(pedType: number, modelHash: number, x: number, y: number, z: number, heading: number, isNetwork: boolean, bScriptHostPed: boolean): number;
 
   /**
    * Deletes the specified ped, then sets the handle pointed to by the pointer to NULL.
    */
-  export function deletePed(ped?: Ped | Player | number): [void, Ped | Player | number];
+  export function deletePed(ped?: Ped | Player | LocalPlayer | number): [void, number];
 
-  export function clonePed(ped: Ped | Player | number, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean): Ped | Player | number;
+  export function clonePed(ped: Ped | Player | LocalPlayer | number, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean): number;
 
-  export function clonePedAlt(ped: Ped | Player | number, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean, p4: boolean): Ped | Player | number;
+  export function clonePedAlt(ped: Ped | Player | LocalPlayer | number, isNetwork: boolean, bScriptHostPed: boolean, copyHeadBlendFlag: boolean, p4: boolean): number;
 
   /**
    * Copies ped's components and props to targetPed.
    */
-  export function clonePedToTarget(ped: Ped | Player | number, targetPed: Ped | Player | number): void;
+  export function clonePedToTarget(ped: Ped | Player | LocalPlayer | number, targetPed: Ped | Player | LocalPlayer | number): void;
 
-  export function clonePedToTargetAlt(ped: Ped | Player | number, targetPed: Ped | Player | number, p2: boolean): void;
+  export function clonePedToTargetAlt(ped: Ped | Player | LocalPlayer | number, targetPed: Ped | Player | LocalPlayer | number, p2: boolean): void;
 
   /**
    * Gets a value indicating whether the specified ped is in the specified vehicle.
    * If 'atGetIn' is false, the function will not return true until the ped is sitting in the vehicle and is about to close the door. If it's true, the function returns true the moment the ped starts to get onto the seat (after opening the door). Eg. if false, and the ped is getting into a submersible, the function will not return true until the ped has descended down into the submersible and gotten into the seat, while if it's true, it'll return true the moment the hatch has been opened and the ped is about to descend into the submersible.
    */
-  export function isPedInVehicle(ped: Ped | Player | number, vehicle: Vehicle | number, atGetIn: boolean): boolean;
+  export function isPedInVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, atGetIn: boolean): boolean;
 
-  export function isPedInModel(ped: Ped | Player | number, modelHash: number): boolean;
+  export function isPedInModel(ped: Ped | Player | LocalPlayer | number, modelHash: number): boolean;
 
   /**
    * Gets a value indicating whether the specified ped is in any vehicle.
    * If 'atGetIn' is false, the function will not return true until the ped is sitting in the vehicle and is about to close the door. If it's true, the function returns true the moment the ped starts to get onto the seat (after opening the door). Eg. if false, and the ped is getting into a submersible, the function will not return true until the ped has descended down into the submersible and gotten into the seat, while if it's true, it'll return true the moment the hatch has been opened and the ped is about to descend into the submersible.
    */
-  export function isPedInAnyVehicle(ped: Ped | Player | number, atGetIn: boolean): boolean;
+  export function isPedInAnyVehicle(ped: Ped | Player | LocalPlayer | number, atGetIn: boolean): boolean;
 
   /**
    * xyz - relative to the world origin.
@@ -14385,18 +14385,18 @@ declare module "natives" {
    * Gets a value indicating whether this ped's health is below its injured threshold.
    * The default threshold is 100.
    */
-  export function isPedInjured(ped: Ped | Player | number): boolean;
+  export function isPedInjured(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Returns whether the specified ped is hurt.
    */
-  export function isPedHurt(ped: Ped | Player | number): boolean;
+  export function isPedHurt(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Gets a value indicating whether this ped's health is below its fatally injured threshold. The default threshold is 100.
    * If the handle is invalid, the function returns true.
    */
-  export function isPedFatallyInjured(ped: Ped | Player | number): boolean;
+  export function isPedFatallyInjured(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Seems to consistently return true if the ped is dead.
@@ -14405,36 +14405,36 @@ declare module "natives" {
    * That's what the devs call it, cry about it.
    * lol
    */
-  export function isPedDeadOrDying(ped: Ped | Player | number, p1: boolean): boolean;
+  export function isPedDeadOrDying(ped: Ped | Player | LocalPlayer | number, p1: boolean): boolean;
 
-  export function isConversationPedDead(ped: Ped | Player | number): boolean;
+  export function isConversationPedDead(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedAimingFromCover(ped: Ped | Player | number): boolean;
+  export function isPedAimingFromCover(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Returns whether the specified ped is reloading.
    */
-  export function isPedReloading(ped: Ped | Player | number): boolean;
+  export function isPedReloading(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Returns true if the given ped has a valid pointer to CPlayerInfo in its CPed class. That's all.
    */
-  export function isPedAPlayer(ped: Ped | Player | number): boolean;
+  export function isPedAPlayer(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * pedType: see CREATE_PED
    * Full list of peds by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/peds.json
    */
-  export function createPedInsideVehicle(vehicle: Vehicle | number, pedType: number, modelHash: number, seat: number, isNetwork: boolean, bScriptHostPed: boolean): Ped | Player | number;
+  export function createPedInsideVehicle(vehicle: Vehicle | number, pedType: number, modelHash: number, seat: number, isNetwork: boolean, bScriptHostPed: boolean): number;
 
-  export function setPedDesiredHeading(ped: Ped | Player | number, heading: number): void;
+  export function setPedDesiredHeading(ped: Ped | Player | LocalPlayer | number, heading: number): void;
 
-  export function forceAllHeadingValuesToAlign(ped: Ped | Player | number): void;
+  export function forceAllHeadingValuesToAlign(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * angle is ped's view cone
    */
-  export function isPedFacingPed(ped: Ped | Player | number, otherPed: Ped | Player | number, angle: number): boolean;
+  export function isPedFacingPed(ped: Ped | Player | LocalPlayer | number, otherPed: Ped | Player | LocalPlayer | number, angle: number): boolean;
 
   /**
    * Notes: The function only returns true while the ped is: 
@@ -14443,55 +14443,55 @@ declare module "natives" {
    * C.) Is locked-on to an enemy (arms up, strafing/skipping in the default fighting-stance, ready to dodge+counter). 
    * You don't have to be holding the melee-targetting button to be in this stance; you stay in it by default for a few seconds after swinging at someone. If you do a sprinting punch, it returns true for the duration of the punch animation and then returns false again, even if you've punched and made-angry many peds
    */
-  export function isPedInMeleeCombat(ped: Ped | Player | number): boolean;
+  export function isPedInMeleeCombat(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Returns true if the ped doesn't do any movement. If the ped is being pushed forwards by using APPLY_FORCE_TO_ENTITY for example, the function returns false.
    */
-  export function isPedStopped(ped: Ped | Player | number): boolean;
+  export function isPedStopped(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedShootingInArea(ped: Ped | Player | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: boolean, p8: boolean): boolean;
+  export function isPedShootingInArea(ped: Ped | Player | LocalPlayer | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p7: boolean, p8: boolean): boolean;
 
   export function isAnyPedShootingInArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: boolean, p7: boolean): boolean;
 
   /**
    * Returns whether the specified ped is shooting.
    */
-  export function isPedShooting(ped: Ped | Player | number): boolean;
+  export function isPedShooting(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * accuracy = 0-100, 100 being perfectly accurate
    */
-  export function setPedAccuracy(ped: Ped | Player | number, accuracy: number): void;
+  export function setPedAccuracy(ped: Ped | Player | LocalPlayer | number, accuracy: number): void;
 
-  export function getPedAccuracy(ped: Ped | Player | number): number;
+  export function getPedAccuracy(ped: Ped | Player | LocalPlayer | number): number;
 
   export function setAmbientLawPedAccuracyModifier(multiplier: number): void;
 
-  export function isPedModel(ped: Ped | Player | number, modelHash: number): boolean;
+  export function isPedModel(ped: Ped | Player | LocalPlayer | number, modelHash: number): boolean;
 
   /**
    * Forces the ped to fall back and kills it.
    * It doesn't really explode the ped's head but it kills the ped
    */
-  export function explodePedHead(ped: Ped | Player | number, weaponHash: number): void;
+  export function explodePedHead(ped: Ped | Player | LocalPlayer | number, weaponHash: number): void;
 
   /**
    * Judging purely from a quick disassembly, if the ped is in a vehicle, the ped will be deleted immediately. If not, it'll be marked as no longer needed. - very elegant..
    */
-  export function removePedElegantly(ped?: Ped | Player | number): [void, Ped | Player | number];
+  export function removePedElegantly(ped?: Ped | Player | LocalPlayer | number): [void, number];
 
   /**
    * Same as SET_PED_ARMOUR, but ADDS 'amount' to the armor the Ped already has.
    */
-  export function addArmourToPed(ped: Ped | Player | number, amount: number): void;
+  export function addArmourToPed(ped: Ped | Player | LocalPlayer | number, amount: number): void;
 
   /**
    * Sets the armor of the specified ped.
    * ped: The Ped to set the armor of.
    * amount: A value between 0 and 100 indicating the value to set the Ped's armor to.
    */
-  export function setPedArmour(ped: Ped | Player | number, amount: number): void;
+  export function setPedArmour(ped: Ped | Player | LocalPlayer | number, amount: number): void;
 
   /**
    * Ped: The ped to warp.
@@ -14503,9 +14503,9 @@ declare module "natives" {
    * Left Rear = 1
    * RightRear = 2
    */
-  export function setPedIntoVehicle(ped: Ped | Player | number, vehicle: Vehicle | number, seatIndex: number): void;
+  export function setPedIntoVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, seatIndex: number): void;
 
-  export function setPedAllowVehiclesOverride(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAllowVehiclesOverride(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function canCreateRandomPed(p0: boolean): boolean;
 
@@ -14519,17 +14519,17 @@ declare module "natives" {
    * Creates a Ped at the specified location, returns the Ped Handle.  
    * Ped will not act until SET_PED_AS_NO_LONGER_NEEDED is called.
    */
-  export function createRandomPed(posX: number, posY: number, posZ: number): Ped | Player | number;
+  export function createRandomPed(posX: number, posY: number, posZ: number): number;
 
-  export function createRandomPedAsDriver(vehicle: Vehicle | number, returnHandle: boolean): Ped | Player | number;
+  export function createRandomPedAsDriver(vehicle: Vehicle | number, returnHandle: boolean): number;
 
   export function canCreateRandomDriver(): boolean;
 
   export function canCreateRandomBikeRider(): boolean;
 
-  export function setPedMoveAnimsBlendOut(ped: Ped | Player | number): void;
+  export function setPedMoveAnimsBlendOut(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedCanBeDraggedOut(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanBeDraggedOut(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * ntoggle was always false except in one instance (b678).
@@ -14540,22 +14540,22 @@ declare module "natives" {
   /**
    * Returns true/false if the ped is/isn't male.
    */
-  export function isPedMale(ped: Ped | Player | number): boolean;
+  export function isPedMale(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Returns true/false if the ped is/isn't humanoid.
    */
-  export function isPedHuman(ped: Ped | Player | number): boolean;
+  export function isPedHuman(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Gets the vehicle the specified Ped is in. Returns 0 if the ped is/was not in a vehicle.
    */
-  export function getVehiclePedIsIn(ped: Ped | Player | number, includeEntering: boolean): Vehicle | number;
+  export function getVehiclePedIsIn(ped: Ped | Player | LocalPlayer | number, includeEntering: boolean): Vehicle | number;
 
   /**
    * Resets the value for the last vehicle driven by the Ped.
    */
-  export function resetPedLastVehicle(ped: Ped | Player | number): void;
+  export function resetPedLastVehicle(ped: Ped | Player | LocalPlayer | number): void;
 
   export function setPedDensityMultiplierThisFrame(multiplier: number): void;
 
@@ -14577,7 +14577,7 @@ declare module "natives" {
   /**
    * Same function call as PED::GET_MOUNT, aka just returns 0
    */
-  export function isPedOnMount(ped: Ped | Player | number): boolean;
+  export function isPedOnMount(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Function just returns 0
@@ -14589,25 +14589,25 @@ declare module "natives" {
    *   v1->Returns->Item1= 0;
    * }
    */
-  export function getMount(ped: Ped | Player | number): Ped | Player | number;
+  export function getMount(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Gets a value indicating whether the specified ped is on top of any vehicle.
    * Return 1 when ped is on vehicle.
    * Return 0 when ped is not on a vehicle.
    */
-  export function isPedOnVehicle(ped: Ped | Player | number): boolean;
+  export function isPedOnVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedOnSpecificVehicle(ped: Ped | Player | number, vehicle: Vehicle | number): boolean;
+  export function isPedOnSpecificVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number): boolean;
 
   /**
    * Maximum possible amount of money on MP is 2000. ~JX
    * -----------------------------------------------------------------------------
    * Maximum amount that a ped can theoretically have is 65535 (0xFFFF) since the amount is stored as an unsigned short (uint16_t) value.
    */
-  export function setPedMoney(ped: Ped | Player | number, amount: number): void;
+  export function setPedMoney(ped: Ped | Player | LocalPlayer | number, amount: number): void;
 
-  export function getPedMoney(ped: Ped | Player | number): number;
+  export function getPedMoney(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Related to Peds dropping pickup_health_snack; p0 is a value between [0.0, 1.0] that corresponds to drop rate
@@ -14622,55 +14622,55 @@ declare module "natives" {
    * Ped no longer takes critical damage modifiers if set to FALSE.
    * Example: Headshotting a player no longer one shots them. Instead they will take the same damage as a torso shot.
    */
-  export function setPedSuffersCriticalHits(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedSuffersCriticalHits(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedUpperBodyDamageOnly(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedUpperBodyDamageOnly(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Detect if ped is sitting in the specified vehicle
    * [True/False]
    */
-  export function isPedSittingInVehicle(ped: Ped | Player | number, vehicle: Vehicle | number): boolean;
+  export function isPedSittingInVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number): boolean;
 
   /**
    * Detect if ped is in any vehicle
    * [True/False]
    */
-  export function isPedSittingInAnyVehicle(ped: Ped | Player | number): boolean;
+  export function isPedSittingInAnyVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedOnFoot(ped: Ped | Player | number): boolean;
+  export function isPedOnFoot(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedOnAnyBike(ped: Ped | Player | number): boolean;
+  export function isPedOnAnyBike(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedPlantingBomb(ped: Ped | Player | number): boolean;
+  export function isPedPlantingBomb(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getDeadPedPickupCoords(ped: Ped | Player | number, p1: number, p2: number): Vector3;
+  export function getDeadPedPickupCoords(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number): Vector3;
 
-  export function isPedInAnyBoat(ped: Ped | Player | number): boolean;
+  export function isPedInAnyBoat(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedInAnySub(ped: Ped | Player | number): boolean;
+  export function isPedInAnySub(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedInAnyHeli(ped: Ped | Player | number): boolean;
+  export function isPedInAnyHeli(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedInAnyPlane(ped: Ped | Player | number): boolean;
+  export function isPedInAnyPlane(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedInFlyingVehicle(ped: Ped | Player | number): boolean;
+  export function isPedInFlyingVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedDiesInWater(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedDiesInWater(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function getPedDiesInWater(ped: Ped | Player | number): boolean;
+  export function getPedDiesInWater(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedDiesInSinkingVehicle(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedDiesInSinkingVehicle(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function getPedArmour(ped: Ped | Player | number): number;
+  export function getPedArmour(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function setPedStayInVehicleWhenJacked(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedStayInVehicleWhenJacked(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanBeShotInVehicle(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanBeShotInVehicle(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function getPedLastDamageBone(ped: Ped | Player | number, outBone?: number): [boolean, number];
+  export function getPedLastDamageBone(ped: Ped | Player | LocalPlayer | number, outBone?: number): [boolean, number];
 
-  export function clearPedLastDamageBone(ped: Ped | Player | number): void;
+  export function clearPedLastDamageBone(ped: Ped | Player | LocalPlayer | number): void;
 
   export function setAiWeaponDamageModifier(value: number): void;
 
@@ -14680,44 +14680,44 @@ declare module "natives" {
 
   export function resetAiMeleeWeaponDamageModifier(): void;
 
-  export function setTreatAsAmbientPedForDriverLockon(ped: Ped | Player | number, p1: boolean): void;
+  export function setTreatAsAmbientPedForDriverLockon(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function setPedCanBeTargetted(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanBeTargetted(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanBeTargettedByTeam(ped: Ped | Player | number, team: number, toggle: boolean): void;
+  export function setPedCanBeTargettedByTeam(ped: Ped | Player | LocalPlayer | number, team: number, toggle: boolean): void;
 
-  export function setPedCanBeTargettedByPlayer(ped: Ped | Player | number, player: Player | number, toggle: boolean): void;
+  export function setPedCanBeTargettedByPlayer(ped: Ped | Player | LocalPlayer | number, player: Player | number, toggle: boolean): void;
 
-  export function setAllowLockonToPedIfFriendly(ped: Ped | Player | number, toggle: boolean): void;
+  export function setAllowLockonToPedIfFriendly(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setUseCameraHeadingForDesiredDirectionLockOnTest(ped: Ped | Player | number, toggle: boolean): void;
+  export function setUseCameraHeadingForDesiredDirectionLockOnTest(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function isPedInAnyPoliceVehicle(ped: Ped | Player | number): boolean;
+  export function isPedInAnyPoliceVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function forcePedToOpenParachute(ped: Ped | Player | number): void;
+  export function forcePedToOpenParachute(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function isPedInParachuteFreeFall(ped: Ped | Player | number): boolean;
+  export function isPedInParachuteFreeFall(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedFalling(ped: Ped | Player | number): boolean;
+  export function isPedFalling(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedJumping(ped: Ped | Player | number): boolean;
+  export function isPedJumping(ped: Ped | Player | LocalPlayer | number): boolean;
 
   export function isPedLanding(p0: any): boolean;
 
   export function isPedDoingABeastJump(p0: any): boolean;
 
-  export function isPedClimbing(ped: Ped | Player | number): boolean;
+  export function isPedClimbing(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedVaulting(ped: Ped | Player | number): boolean;
+  export function isPedVaulting(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedDiving(ped: Ped | Player | number): boolean;
+  export function isPedDiving(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedJumpingOutOfVehicle(ped: Ped | Player | number): boolean;
+  export function isPedJumpingOutOfVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Returns true if the ped is currently opening a door (CTaskOpenDoor).
    */
-  export function isPedOpeningDoor(ped: Ped | Player | number): boolean;
+  export function isPedOpeningDoor(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Returns:
@@ -14728,7 +14728,7 @@ declare module "natives" {
    * 3: Falling to doom (e.g. after exiting parachute)
    * Normal means no parachute?
    */
-  export function getPedParachuteState(ped: Ped | Player | number): number;
+  export function getPedParachuteState(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * -1: no landing
@@ -14737,69 +14737,69 @@ declare module "natives" {
    * 2: rolling
    * 3: ragdoll
    */
-  export function getPedParachuteLandingType(ped: Ped | Player | number): number;
+  export function getPedParachuteLandingType(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function setPedParachuteTintIndex(ped: Ped | Player | number, tintIndex: number): void;
+  export function setPedParachuteTintIndex(ped: Ped | Player | LocalPlayer | number, tintIndex: number): void;
 
-  export function getPedParachuteTintIndex(ped: Ped | Player | number, outTintIndex?: number): [void, number];
+  export function getPedParachuteTintIndex(ped: Ped | Player | LocalPlayer | number, outTintIndex?: number): [void, number];
 
-  export function setPedReserveParachuteTintIndex(ped: Ped | Player | number, p1: any): void;
+  export function setPedReserveParachuteTintIndex(ped: Ped | Player | LocalPlayer | number, p1: any): void;
 
-  export function createParachuteBagObject(ped: Ped | Player | number, p1: boolean, p2: boolean): Object;
+  export function createParachuteBagObject(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: boolean): number;
 
   /**
    * This is the SET_CHAR_DUCKING from GTA IV, that makes Peds duck. This function does nothing in GTA V. It cannot set the ped as ducking in vehicles, and IS_PED_DUCKING will always return false.
    */
-  export function setPedDucking(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedDucking(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function isPedDucking(ped: Ped | Player | number): boolean;
+  export function isPedDucking(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedInAnyTaxi(ped: Ped | Player | number): boolean;
+  export function isPedInAnyTaxi(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedIdRange(ped: Ped | Player | number, value: number): void;
+  export function setPedIdRange(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedHighlyPerceptive(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedHighlyPerceptive(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setCopPerceptionOverrides(seeingRange: number, seeingRangePeripheral: number, hearingRange: number, visualFieldMinAzimuthAngle: number, visualFieldMaxAzimuthAngle: number, fieldOfGazeMaxAngle: number, p6: number): void;
 
-  export function setPedInjuredOnGroundBehaviour(ped: Ped | Player | number, p1: number): void;
+  export function setPedInjuredOnGroundBehaviour(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
-  export function disablePedInjuredOnGroundBehaviour(ped: Ped | Player | number): void;
+  export function disablePedInjuredOnGroundBehaviour(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedSeeingRange(ped: Ped | Player | number, value: number): void;
+  export function setPedSeeingRange(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedHearingRange(ped: Ped | Player | number, value: number): void;
+  export function setPedHearingRange(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedVisualFieldMinAngle(ped: Ped | Player | number, value: number): void;
+  export function setPedVisualFieldMinAngle(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedVisualFieldMaxAngle(ped: Ped | Player | number, value: number): void;
+  export function setPedVisualFieldMaxAngle(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
   /**
    * This native refers to the field of vision the ped has below them, starting at 0 degrees. The angle value should be negative.
    * -90f should let the ped see 90 degrees below them, for example.
    */
-  export function setPedVisualFieldMinElevationAngle(ped: Ped | Player | number, angle: number): void;
+  export function setPedVisualFieldMinElevationAngle(ped: Ped | Player | LocalPlayer | number, angle: number): void;
 
   /**
    * This native refers to the field of vision the ped has above them, starting at 0 degrees. 90f would let the ped see enemies directly above of them.
    */
-  export function setPedVisualFieldMaxElevationAngle(ped: Ped | Player | number, angle: number): void;
+  export function setPedVisualFieldMaxElevationAngle(ped: Ped | Player | LocalPlayer | number, angle: number): void;
 
-  export function setPedVisualFieldPeripheralRange(ped: Ped | Player | number, range: number): void;
+  export function setPedVisualFieldPeripheralRange(ped: Ped | Player | LocalPlayer | number, range: number): void;
 
-  export function setPedVisualFieldCenterAngle(ped: Ped | Player | number, angle: number): void;
+  export function setPedVisualFieldCenterAngle(ped: Ped | Player | LocalPlayer | number, angle: number): void;
 
-  export function getPedVisualFieldCenterAngle(ped: Ped | Player | number): number;
+  export function getPedVisualFieldCenterAngle(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * p1 is usually 0 in the scripts. action is either 0 or a pointer to "DEFAULT_ACTION".
    */
-  export function setPedStealthMovement(ped: Ped | Player | number, p1: boolean, action: string): void;
+  export function setPedStealthMovement(ped: Ped | Player | LocalPlayer | number, p1: boolean, action: string): void;
 
   /**
    * Returns whether the entity is in stealth mode
    */
-  export function getPedStealthMovement(ped: Ped | Player | number): boolean;
+  export function getPedStealthMovement(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Creates a new ped group.
@@ -14809,23 +14809,23 @@ declare module "natives" {
    */
   export function createGroup(unused: number): number;
 
-  export function setPedAsGroupLeader(ped: Ped | Player | number, groupId: number): void;
+  export function setPedAsGroupLeader(ped: Ped | Player | LocalPlayer | number, groupId: number): void;
 
-  export function setPedAsGroupMember(ped: Ped | Player | number, groupId: number): void;
+  export function setPedAsGroupMember(ped: Ped | Player | LocalPlayer | number, groupId: number): void;
 
   /**
    * This only will teleport the ped to the group leader if the group leader teleports (sets coords).
    * Only works in singleplayer
    */
-  export function setPedCanTeleportToGroupLeader(pedHandle: Ped | Player | number, groupHandle: number, toggle: boolean): void;
+  export function setPedCanTeleportToGroupLeader(pedHandle: Ped | Player | LocalPlayer | number, groupHandle: number, toggle: boolean): void;
 
   export function removeGroup(groupId: number): void;
 
-  export function removePedFromGroup(ped: Ped | Player | number): void;
+  export function removePedFromGroup(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function isPedGroupMember(ped: Ped | Player | number, groupId: number): boolean;
+  export function isPedGroupMember(ped: Ped | Player | LocalPlayer | number, groupId: number): boolean;
 
-  export function isPedHangingOnToVehicle(ped: Ped | Player | number): boolean;
+  export function isPedHangingOnToVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Sets the range at which members will automatically leave the group.
@@ -14835,79 +14835,79 @@ declare module "natives" {
   /**
    * Ped will stay on the ground after being stunned for at lest ms time. (in milliseconds)
    */
-  export function setPedMinGroundTimeForStungun(ped: Ped | Player | number, ms: number): void;
+  export function setPedMinGroundTimeForStungun(ped: Ped | Player | LocalPlayer | number, ms: number): void;
 
-  export function isPedProne(ped: Ped | Player | number): boolean;
+  export function isPedProne(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Checks to see if ped and target are in combat with eachother. Only goes one-way: if target is engaged in combat with ped but ped has not yet reacted, the function will return false until ped starts fighting back.
    * p1 is usually 0 in the scripts because it gets the ped id during the task sequence. For instance: PED::IS_PED_IN_COMBAT(l_42E[4/*14*\/], PLAYER::PLAYER_PED_ID()) // armenian2.ct4: 43794
    */
-  export function isPedInCombat(ped: Ped | Player | number, target: Ped | Player | number): boolean;
+  export function isPedInCombat(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getPedTargetFromCombatPed(ped: Ped | Player | number, p1: any): Entity | number;
+  export function getPedTargetFromCombatPed(ped: Ped | Player | LocalPlayer | number, p1: any): number;
 
-  export function canPedInCombatSeeTarget(ped: Ped | Player | number, target: Ped | Player | number): boolean;
+  export function canPedInCombatSeeTarget(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedDoingDriveby(ped: Ped | Player | number): boolean;
+  export function isPedDoingDriveby(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedJacking(ped: Ped | Player | number): boolean;
+  export function isPedJacking(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedBeingJacked(ped: Ped | Player | number): boolean;
+  export function isPedBeingJacked(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * p1 is always 0
    */
-  export function isPedBeingStunned(ped: Ped | Player | number, p1: number): boolean;
+  export function isPedBeingStunned(ped: Ped | Player | LocalPlayer | number, p1: number): boolean;
 
-  export function getPedsJacker(ped: Ped | Player | number): Ped | Player | number;
+  export function getPedsJacker(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function getJackTarget(ped: Ped | Player | number): Ped | Player | number;
+  export function getJackTarget(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function isPedFleeing(ped: Ped | Player | number): boolean;
+  export function isPedFleeing(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * p1 is nearly always 0 in the scripts. 
    */
-  export function isPedInCover(ped: Ped | Player | number, exceptUseWeapon: boolean): boolean;
+  export function isPedInCover(ped: Ped | Player | LocalPlayer | number, exceptUseWeapon: boolean): boolean;
 
-  export function isPedInCoverFacingLeft(ped: Ped | Player | number): boolean;
+  export function isPedInCoverFacingLeft(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedInHighCover(ped: Ped | Player | number): boolean;
+  export function isPedInHighCover(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedGoingIntoCover(ped: Ped | Player | number): boolean;
+  export function isPedGoingIntoCover(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * i could be time. Only example in the decompiled scripts uses it as -1.
    */
-  export function setPedPinnedDown(ped: Ped | Player | number, pinned: boolean, i: number): boolean;
+  export function setPedPinnedDown(ped: Ped | Player | LocalPlayer | number, pinned: boolean, i: number): boolean;
 
-  export function hasPedClearLosToEntity(ped: Ped | Player | number, entity: Entity | number, x: number, y: number, z: number, p5: number, p6: boolean, p7: boolean): boolean;
+  export function hasPedClearLosToEntity(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, x: number, y: number, z: number, p5: number, p6: boolean, p7: boolean): boolean;
 
-  export function getSeatPedIsTryingToEnter(ped: Ped | Player | number): number;
+  export function getSeatPedIsTryingToEnter(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function getVehiclePedIsTryingToEnter(ped: Ped | Player | number): Vehicle | number;
+  export function getVehiclePedIsTryingToEnter(ped: Ped | Player | LocalPlayer | number): Vehicle | number;
 
   /**
    * Returns the Entity (Ped, Vehicle, or ?Object?) that killed the 'ped'
    * Is best to check if the Ped is dead before asking for its killer.
    */
-  export function getPedSourceOfDeath(ped: Ped | Player | number): Entity | number;
+  export function getPedSourceOfDeath(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Returns the hash of the weapon/model/object that killed the ped.
    */
-  export function getPedCauseOfDeath(ped: Ped | Player | number): number;
+  export function getPedCauseOfDeath(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function getPedTimeOfDeath(ped: Ped | Player | number): number;
+  export function getPedTimeOfDeath(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function countPedsInCombatWithTarget(ped: Ped | Player | number): number;
+  export function countPedsInCombatWithTarget(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function countPedsInCombatWithTargetWithinRadius(ped: Ped | Player | number, x: number, y: number, z: number, radius: number): number;
+  export function countPedsInCombatWithTargetWithinRadius(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number): number;
 
-  export function setPedRelationshipGroupDefaultHash(ped: Ped | Player | number, hash: number): void;
+  export function setPedRelationshipGroupDefaultHash(ped: Ped | Player | LocalPlayer | number, hash: number): void;
 
-  export function setPedRelationshipGroupHash(ped: Ped | Player | number, hash: number): void;
+  export function setPedRelationshipGroupHash(ped: Ped | Player | LocalPlayer | number, hash: number): void;
 
   /**
    * Sets the relationship between two groups. This should be called twice (once for each group).
@@ -14966,11 +14966,11 @@ declare module "natives" {
    * PED::GET_RELATIONSHIP_BETWEEN_PEDS(2, l_1017, 0xA49E591C);
    * PED::GET_RELATIONSHIP_BETWEEN_PEDS(2, 0xA49E591C, l_1017);
    */
-  export function getRelationshipBetweenPeds(ped1: Ped | Player | number, ped2: Ped | Player | number): number;
+  export function getRelationshipBetweenPeds(ped1: Ped | Player | LocalPlayer | number, ped2: Ped | Player | LocalPlayer | number): number;
 
-  export function getPedRelationshipGroupDefaultHash(ped: Ped | Player | number): number;
+  export function getPedRelationshipGroupDefaultHash(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function getPedRelationshipGroupHash(ped: Ped | Player | number): number;
+  export function getPedRelationshipGroupHash(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Gets the relationship between two groups. This should be called twice (once for each group).
@@ -14990,15 +14990,15 @@ declare module "natives" {
 
   export function setRelationshipGroupAffectsWantedLevel(group: number, p1: boolean): void;
 
-  export function tellGroupPedsInAreaToAttack(ped: Ped | Player | number, p1: any, p2: number, hash: number, p4: any, p5: any): void;
+  export function tellGroupPedsInAreaToAttack(ped: Ped | Player | LocalPlayer | number, p1: any, p2: number, hash: number, p4: any, p5: any): void;
 
-  export function setPedCanBeTargetedWithoutLos(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanBeTargetedWithoutLos(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedToInformRespectedFriends(ped: Ped | Player | number, radius: number, maxFriends: number): void;
+  export function setPedToInformRespectedFriends(ped: Ped | Player | LocalPlayer | number, radius: number, maxFriends: number): void;
 
-  export function isPedRespondingToEvent(ped: Ped | Player | number, event: any): boolean;
+  export function isPedRespondingToEvent(ped: Ped | Player | LocalPlayer | number, event: any): boolean;
 
-  export function getPosFromFiredEvent(ped: Ped | Player | number, eventType: number, outData?: any): [boolean, any];
+  export function getPosFromFiredEvent(ped: Ped | Player | LocalPlayer | number, eventType: number, outData?: any): [boolean, any];
 
   /**
    * FIRING_PATTERN_BURST_FIRE = 0xD6FF6D61 ( 1073727030 )
@@ -15019,17 +15019,17 @@ declare module "natives" {
    * FIRING_PATTERN_SLOW_FIRE_TANK = 0xE2CA3A71 ( -490063247 )
    * Firing pattern info: https://pastebin.com/Px036isB
    */
-  export function setPedFiringPattern(ped: Ped | Player | number, patternHash: number): void;
+  export function setPedFiringPattern(ped: Ped | Player | LocalPlayer | number, patternHash: number): void;
 
   /**
    * shootRate 0-1000
    */
-  export function setPedShootRate(ped: Ped | Player | number, shootRate: number): void;
+  export function setPedShootRate(ped: Ped | Player | LocalPlayer | number, shootRate: number): void;
 
   /**
    * combatType can be between 0-14. See GET_COMBAT_FLOAT below for a list of possible parameters.
    */
-  export function setCombatFloat(ped: Ped | Player | number, combatType: number, p2: number): void;
+  export function setCombatFloat(ped: Ped | Player | LocalPlayer | number, combatType: number, p2: number): void;
 
   /**
    * p0: Ped Handle
@@ -15060,7 +15060,7 @@ declare module "natives" {
    * 12=TimeToInvalidateInjuredTarget
    * 16=OptimalCoverDistance
    */
-  export function getCombatFloat(ped: Ped | Player | number, p1: number): number;
+  export function getCombatFloat(ped: Ped | Player | LocalPlayer | number, p1: number): number;
 
   /**
    * p1 may be a BOOL representing whether or not the group even exists
@@ -15072,11 +15072,11 @@ declare module "natives" {
   /**
    * Returns the group id of which the specified ped is a member of.
    */
-  export function getPedGroupIndex(ped: Ped | Player | number): number;
+  export function getPedGroupIndex(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function isPedInGroup(ped: Ped | Player | number): boolean;
+  export function isPedInGroup(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getPlayerPedIsFollowing(ped: Ped | Player | number): Player | number;
+  export function getPlayerPedIsFollowing(ped: Ped | Player | LocalPlayer | number): Player | number;
 
   /**
    * 0: Default
@@ -15093,9 +15093,9 @@ declare module "natives" {
   /**
    * Gets ID of vehicle player using. It means it can get ID at any interaction with vehicle. Enter\exit for example. And that means it is faster than GET_VEHICLE_PED_IS_IN but less safe.
    */
-  export function getVehiclePedIsUsing(ped: Ped | Player | number): Vehicle | number;
+  export function getVehiclePedIsUsing(ped: Ped | Player | LocalPlayer | number): Vehicle | number;
 
-  export function getVehiclePedIsEntering(ped: Ped | Player | number): Vehicle | number;
+  export function getVehiclePedIsEntering(ped: Ped | Player | LocalPlayer | number): Vehicle | number;
 
   /**
    * enable or disable the gravity of a ped
@@ -15103,50 +15103,50 @@ declare module "natives" {
    * PED::SET_PED_GRAVITY(PLAYER::PLAYER_PED_ID(), 0x00000001);
    * PED::SET_PED_GRAVITY(Local_289[iVar0 /*20*\/], 0x00000001);
    */
-  export function setPedGravity(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedGravity(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * damages a ped with the given amount
    */
-  export function applyDamageToPed(ped: Ped | Player | number, damageAmount: number, p2: boolean, p3: any, weaponType: number): void;
+  export function applyDamageToPed(ped: Ped | Player | LocalPlayer | number, damageAmount: number, p2: boolean, p3: any, weaponType: number): void;
 
-  export function getTimePedDamagedByWeapon(ped: Ped | Player | number, weaponHash: number): number;
+  export function getTimePedDamagedByWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number): number;
 
-  export function setPedAllowedToDuck(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAllowedToDuck(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedNeverLeavesGroup(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedNeverLeavesGroup(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * https://alloc8or.re/gta5/doc/enums/ePedType.txt
    */
-  export function getPedType(ped: Ped | Player | number): number;
+  export function getPedType(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Turns the desired ped into a cop. If you use this on the player ped, you will become almost invisible to cops dispatched for you. You will also report your own crimes, get a generic cop voice, get a cop-vision-cone on the radar, and you will be unable to shoot at other cops. SWAT and Army will still shoot at you. Toggling ped as "false" has no effect; you must change p0's ped model to disable the effect.
    */
-  export function setPedAsCop(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAsCop(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setPedHealthPendingLastDamageEventOverrideFlag(toggle: boolean): void;
 
   /**
    * Sets the maximum health of a ped.
    */
-  export function setPedMaxHealth(ped: Ped | Player | number, value: number): void;
+  export function setPedMaxHealth(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function getPedMaxHealth(ped: Ped | Player | number): number;
+  export function getPedMaxHealth(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function setPedMaxTimeInWater(ped: Ped | Player | number, value: number): void;
+  export function setPedMaxTimeInWater(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedMaxTimeUnderwater(ped: Ped | Player | number, value: number): void;
+  export function setPedMaxTimeUnderwater(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setCorpseRagdollFriction(ped: Ped | Player | number, p1: number): void;
+  export function setCorpseRagdollFriction(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * seatIndex must be <= 2
    */
-  export function setPedVehicleForcedSeatUsage(ped: Ped | Player | number, vehicle: Vehicle | number, seatIndex: number, flags: number, p4: any): void;
+  export function setPedVehicleForcedSeatUsage(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, seatIndex: number, flags: number, p4: any): void;
 
-  export function clearAllPedVehicleForcedSeatUsage(ped: Ped | Player | number): void;
+  export function clearAllPedVehicleForcedSeatUsage(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * This native does absolutely nothing, just a nullsub
@@ -15156,13 +15156,13 @@ declare module "natives" {
   /**
    * state: https://alloc8or.re/gta5/doc/enums/eKnockOffVehicle.txt
    */
-  export function setPedCanBeKnockedOffVehicle(ped: Ped | Player | number, state: number): void;
+  export function setPedCanBeKnockedOffVehicle(ped: Ped | Player | LocalPlayer | number, state: number): void;
 
-  export function canKnockPedOffVehicle(ped: Ped | Player | number): boolean;
+  export function canKnockPedOffVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function knockPedOffVehicle(ped: Ped | Player | number): void;
+  export function knockPedOffVehicle(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedCoordsNoGang(ped: Ped | Player | number, posX: number, posY: number, posZ: number): void;
+  export function setPedCoordsNoGang(ped: Ped | Player | LocalPlayer | number, posX: number, posY: number, posZ: number): void;
 
   /**
    * from fm_mission_controller.c4 (variable names changed for clarity):
@@ -15173,24 +15173,24 @@ declare module "natives" {
    * . . . . . . . . Ped ped1 = PED::GET_PED_AS_GROUP_MEMBER(groupID, memberNumber);
    * . . . . . . . . //and so on
    */
-  export function getPedAsGroupMember(groupID: number, memberNumber: number): Ped | Player | number;
+  export function getPedAsGroupMember(groupID: number, memberNumber: number): number;
 
-  export function getPedAsGroupLeader(groupID: number): Ped | Player | number;
+  export function getPedAsGroupLeader(groupID: number): number;
 
-  export function setPedKeepTask(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedKeepTask(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedAllowMinorReactionsAsMissionPed(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAllowMinorReactionsAsMissionPed(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function isPedSwimming(ped: Ped | Player | number): boolean;
+  export function isPedSwimming(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedSwimmingUnderWater(ped: Ped | Player | number): boolean;
+  export function isPedSwimmingUnderWater(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * teleports ped to coords along with the vehicle ped is in
    */
-  export function setPedCoordsKeepVehicle(ped: Ped | Player | number, posX: number, posY: number, posZ: number): void;
+  export function setPedCoordsKeepVehicle(ped: Ped | Player | LocalPlayer | number, posX: number, posY: number, posZ: number): void;
 
-  export function setPedDiesInVehicle(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedDiesInVehicle(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setCreateRandomCops(toggle: boolean): void;
 
@@ -15200,30 +15200,30 @@ declare module "natives" {
 
   export function canCreateRandomCops(): boolean;
 
-  export function setPedAsEnemy(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAsEnemy(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanSmashGlass(ped: Ped | Player | number, p1: boolean, p2: boolean): void;
+  export function setPedCanSmashGlass(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: boolean): void;
 
-  export function isPedInAnyTrain(ped: Ped | Player | number): boolean;
+  export function isPedInAnyTrain(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedGettingIntoAVehicle(ped: Ped | Player | number): boolean;
+  export function isPedGettingIntoAVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedTryingToEnterALockedVehicle(ped: Ped | Player | number): boolean;
+  export function isPedTryingToEnterALockedVehicle(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * ped can not pull out a weapon when true
    */
-  export function setEnableHandcuffs(ped: Ped | Player | number, toggle: boolean): void;
+  export function setEnableHandcuffs(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Used with SET_ENABLE_HANDCUFFS in decompiled scripts. From my observations, I have noticed that while being ragdolled you are not able to get up but you can still run. Your legs can also bend.
    */
-  export function setEnableBoundAnkles(ped: Ped | Player | number, toggle: boolean): void;
+  export function setEnableBoundAnkles(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Enables diving motion when underwater.
    */
-  export function setEnableScuba(ped: Ped | Player | number, toggle: boolean): void;
+  export function setEnableScuba(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Setting ped to true allows the ped to shoot "friendlies".
@@ -15231,7 +15231,7 @@ declare module "natives" {
    * p1 = false & p2 = false for unable to aim at.
    * p1 = true & p2 = false for able to aim at. 
    */
-  export function setCanAttackFriendly(ped: Ped | Player | number, toggle: boolean, p2: boolean): void;
+  export function setCanAttackFriendly(ped: Ped | Player | LocalPlayer | number, toggle: boolean, p2: boolean): void;
 
   /**
    * Returns the ped's alertness (0-3).
@@ -15242,14 +15242,14 @@ declare module "natives" {
    * 3 : Fully alerted (is facing the event?)
    * If the Ped does not exist, returns -1.
    */
-  export function getPedAlertness(ped: Ped | Player | number): number;
+  export function getPedAlertness(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * value ranges from 0 to 3.
    */
-  export function setPedAlertness(ped: Ped | Player | number, value: number): void;
+  export function setPedAlertness(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedGetOutUpsideDownVehicle(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedGetOutUpsideDownVehicle(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * transitionSpeed is the time in seconds it takes to transition from one movement clipset to another.	ransitionSpeed is usually 1.0f
@@ -15303,7 +15303,7 @@ declare module "natives" {
    * ~ NotCrunchyTaco
    * Full list of movement clipsets by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/movementClipsetsCompact.json
    */
-  export function setPedMovementClipset(ped: Ped | Player | number, clipSet: string, transitionSpeed: number): void;
+  export function setPedMovementClipset(ped: Ped | Player | LocalPlayer | number, clipSet: string, transitionSpeed: number): void;
 
   /**
    * If p1 is 0.0, I believe you are back to normal. 
@@ -15311,32 +15311,32 @@ declare module "natives" {
    * Using the following code to reset back to normal
    * PED::RESET_PED_MOVEMENT_CLIPSET(PLAYER::PLAYER_PED_ID(), 0.0);
    */
-  export function resetPedMovementClipset(ped: Ped | Player | number, p1: number): void;
+  export function resetPedMovementClipset(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * Full list of movement clipsets by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/movementClipsetsCompact.json
    */
-  export function setPedStrafeClipset(ped: Ped | Player | number, clipSet: string): void;
+  export function setPedStrafeClipset(ped: Ped | Player | LocalPlayer | number, clipSet: string): void;
 
-  export function resetPedStrafeClipset(ped: Ped | Player | number): void;
+  export function resetPedStrafeClipset(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedWeaponMovementClipset(ped: Ped | Player | number, clipSet: string): void;
+  export function setPedWeaponMovementClipset(ped: Ped | Player | LocalPlayer | number, clipSet: string): void;
 
-  export function resetPedWeaponMovementClipset(ped: Ped | Player | number): void;
+  export function resetPedWeaponMovementClipset(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedDriveByClipsetOverride(ped: Ped | Player | number, clipset: string): void;
+  export function setPedDriveByClipsetOverride(ped: Ped | Player | LocalPlayer | number, clipset: string): void;
 
-  export function clearPedDriveByClipsetOverride(ped: Ped | Player | number): void;
+  export function clearPedDriveByClipsetOverride(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Found in the b617d scripts:
    * PED::SET_PED_MOTION_IN_COVER_CLIPSET_OVERRIDE(v_7, "trevor_heist_cover_2h");
    */
-  export function setPedMotionInCoverClipsetOverride(ped: Ped | Player | number, p1: string): void;
+  export function setPedMotionInCoverClipsetOverride(ped: Ped | Player | LocalPlayer | number, p1: string): void;
 
-  export function clearPedMotionInCoverClipsetOverride(ped: Ped | Player | number): void;
+  export function clearPedMotionInCoverClipsetOverride(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function clearPedFallUpperBodyClipsetOverride(ped: Ped | Player | number): void;
+  export function clearPedFallUpperBodyClipsetOverride(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * PED::SET_PED_IN_VEHICLE_CONTEXT(l_128, MISC::GET_HASH_KEY("MINI_PROSTITUTE_LOW_PASSENGER"));
@@ -15348,22 +15348,22 @@ declare module "natives" {
    * PED::SET_PED_IN_VEHICLE_CONTEXT(PLAYER::PLAYER_PED_ID(), MISC::GET_HASH_KEY("MISS_ARMENIAN3_FRANKLIN_TENSE"));
    * PED::SET_PED_IN_VEHICLE_CONTEXT(PLAYER::PLAYER_PED_ID(), MISC::GET_HASH_KEY("MISSFBI5_TREVOR_DRIVING"));
    */
-  export function setPedInVehicleContext(ped: Ped | Player | number, context: number): void;
+  export function setPedInVehicleContext(ped: Ped | Player | LocalPlayer | number, context: number): void;
 
-  export function resetPedInVehicleContext(ped: Ped | Player | number): void;
+  export function resetPedInVehicleContext(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function isScriptedScenarioPedUsingConditionalAnim(ped: Ped | Player | number, animDict: string, anim: string): boolean;
+  export function isScriptedScenarioPedUsingConditionalAnim(ped: Ped | Player | LocalPlayer | number, animDict: string, anim: string): boolean;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    * Full list of movement clipsets by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/movementClipsetsCompact.json
    */
-  export function setPedAlternateWalkAnim(ped: Ped | Player | number, animDict: string, animName: string, p3: number, p4: boolean): void;
+  export function setPedAlternateWalkAnim(ped: Ped | Player | LocalPlayer | number, animDict: string, animName: string, p3: number, p4: boolean): void;
 
-  export function clearPedAlternateWalkAnim(ped: Ped | Player | number, p1: number): void;
+  export function clearPedAlternateWalkAnim(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * stance:
@@ -15374,9 +15374,9 @@ declare module "natives" {
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    * Full list of movement clipsets by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/movementClipsetsCompact.json
    */
-  export function setPedAlternateMovementAnim(ped: Ped | Player | number, stance: number, animDictionary: string, animationName: string, p4: number, p5: boolean): void;
+  export function setPedAlternateMovementAnim(ped: Ped | Player | LocalPlayer | number, stance: number, animDictionary: string, animationName: string, p4: number, p5: boolean): void;
 
-  export function clearPedAlternateMovementAnim(ped: Ped | Player | number, stance: number, p2: number): void;
+  export function clearPedAlternateMovementAnim(ped: Ped | Player | LocalPlayer | number, stance: number, p2: number): void;
 
   /**
    * From the scripts:
@@ -15385,7 +15385,7 @@ declare module "natives" {
    * PED::SET_PED_GESTURE_GROUP(PLAYER::PLAYER_PED_ID(),
    * "ANIM_GROUP_GESTURE_MISS_DocksSetup1");
    */
-  export function setPedGestureGroup(ped: Ped | Player | number, animGroupGesture: string): void;
+  export function setPedGestureGroup(ped: Ped | Player | LocalPlayer | number, animGroupGesture: string): void;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
@@ -15412,31 +15412,31 @@ declare module "natives" {
    * 10- Decals
    * 11 - Auxiliary parts for torso
    */
-  export function getPedDrawableVariation(ped: Ped | Player | number, componentId: number): number;
+  export function getPedDrawableVariation(ped: Ped | Player | LocalPlayer | number, componentId: number): number;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getNumberOfPedDrawableVariations(ped: Ped | Player | number, componentId: number): number;
+  export function getNumberOfPedDrawableVariations(ped: Ped | Player | LocalPlayer | number, componentId: number): number;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getPedTextureVariation(ped: Ped | Player | number, componentId: number): number;
+  export function getPedTextureVariation(ped: Ped | Player | LocalPlayer | number, componentId: number): number;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getNumberOfPedTextureVariations(ped: Ped | Player | number, componentId: number, drawableId: number): number;
+  export function getNumberOfPedTextureVariations(ped: Ped | Player | LocalPlayer | number, componentId: number, drawableId: number): number;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getNumberOfPedPropDrawableVariations(ped: Ped | Player | number, propId: number): number;
+  export function getNumberOfPedPropDrawableVariations(ped: Ped | Player | LocalPlayer | number, propId: number): number;
 
   /**
    * Need to check behavior when drawableId = -1
@@ -15447,13 +15447,13 @@ declare module "natives" {
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getNumberOfPedPropTextureVariations(ped: Ped | Player | number, propId: number, drawableId: number): number;
+  export function getNumberOfPedPropTextureVariations(ped: Ped | Player | LocalPlayer | number, propId: number, drawableId: number): number;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getPedPaletteVariation(ped: Ped | Player | number, componentId: number): number;
+  export function getPedPaletteVariation(ped: Ped | Player | LocalPlayer | number, componentId: number): number;
 
   export function getMpOutfitDataFromMetadata(p0?: any, p1?: any): [boolean, any, any];
 
@@ -15467,7 +15467,7 @@ declare module "natives" {
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    * Full list of ped components by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pedComponentVariations.json
    */
-  export function isPedComponentVariationValid(ped: Ped | Player | number, componentId: number, drawableId: number, textureId: number): boolean;
+  export function isPedComponentVariationValid(ped: Ped | Player | LocalPlayer | number, componentId: number, drawableId: number, textureId: number): boolean;
 
   /**
    * paletteId: 0 to 3.
@@ -15492,27 +15492,27 @@ declare module "natives" {
    * Examples: https://gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    * Full list of ped components by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pedComponentVariations.json
    */
-  export function setPedComponentVariation(ped: Ped | Player | number, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
+  export function setPedComponentVariation(ped: Ped | Player | LocalPlayer | number, componentId: number, drawableId: number, textureId: number, paletteId: number): void;
 
   /**
    * p1 is always 0 in R* scripts.
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function setPedRandomComponentVariation(ped: Ped | Player | number, p1: number): void;
+  export function setPedRandomComponentVariation(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function setPedRandomProps(ped: Ped | Player | number): void;
+  export function setPedRandomProps(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Sets Ped Default Clothes
    */
-  export function setPedDefaultComponentVariation(ped: Ped | Player | number): void;
+  export function setPedDefaultComponentVariation(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedBlendFromParents(ped: Ped | Player | number, p1: any, p2: any, p3: number, p4: number): void;
+  export function setPedBlendFromParents(ped: Ped | Player | LocalPlayer | number, p1: any, p2: any, p3: number, p4: number): void;
 
   /**
    * The "shape" parameters control the shape of the ped's face. The "skin" parameters control the skin tone. ShapeMix and skinMix control how much the first and second IDs contribute,(typically mother and father.) ThirdMix overrides the others in favor of the third IDs. IsParent is set for "children" of the player character's grandparents during old-gen character creation. It has unknown effect otherwise.
@@ -15526,7 +15526,7 @@ declare module "natives" {
    * For more info please refer to this topic. 
    * gtaforums.com/topic/858970-all-gtao-face-ids-pedset-ped-head-blend-data-explained
    */
-  export function setPedHeadBlendData(ped: Ped | Player | number, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void;
+  export function setPedHeadBlendData(ped: Ped | Player | LocalPlayer | number, shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number, isParent: boolean): void;
 
   /**
    * The pointer is to a padded struct that matches the arguments to SET_PED_HEAD_BLEND_DATA(...). There are 4 bytes of padding after each field.
@@ -15554,12 +15554,12 @@ declare module "natives" {
    *     bool isParent;
    * };
    */
-  export function getPedHeadBlendData(ped: Ped | Player | number, headBlendData?: any): [boolean, any];
+  export function getPedHeadBlendData(ped: Ped | Player | LocalPlayer | number, headBlendData?: any): [boolean, any];
 
   /**
    * See SET_PED_HEAD_BLEND_DATA().
    */
-  export function updatePedHeadBlendData(ped: Ped | Player | number, shapeMix: number, skinMix: number, thirdMix: number): void;
+  export function updatePedHeadBlendData(ped: Ped | Player | LocalPlayer | number, shapeMix: number, skinMix: number, thirdMix: number): void;
 
   /**
    * Used for freemode (online) characters.
@@ -15596,12 +15596,12 @@ declare module "natives" {
    * 30. white small pupil
    * 31. glossed over
    */
-  export function setHeadBlendEyeColor(ped: Ped | Player | number, index: number): void;
+  export function setHeadBlendEyeColor(ped: Ped | Player | LocalPlayer | number, index: number): void;
 
   /**
    * A getter for _SET_PED_EYE_COLOR. Returns -1 if fails to get.
    */
-  export function getHeadBlendEyeColor(ped: Ped | Player | number): number;
+  export function getHeadBlendEyeColor(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * OverlayID ranges from 0 to 12, index from 0 to _GET_NUM_OVERLAY_VALUES(overlayID)-1, and opacity from 0.0 to 1.0. 
@@ -15620,13 +15620,13 @@ declare module "natives" {
    * 11              Body Blemishes        0 - 11, 255
    * 12              Add Body Blemishes    0 - 1, 255
    */
-  export function setPedHeadOverlay(ped: Ped | Player | number, overlayID: number, index: number, opacity: number): void;
+  export function setPedHeadOverlay(ped: Ped | Player | LocalPlayer | number, overlayID: number, index: number, opacity: number): void;
 
   /**
    * Likely a char, if that overlay is not set, e.i. "None" option, returns 255;
    * This might be the once removed native GET_PED_HEAD_OVERLAY.
    */
-  export function getPedHeadOverlay(ped: Ped | Player | number, overlayID: number): number;
+  export function getPedHeadOverlay(ped: Ped | Player | LocalPlayer | number, overlayID: number): number;
 
   export function getPedHeadOverlayNum(overlayID: number): number;
 
@@ -15634,9 +15634,9 @@ declare module "natives" {
    * ColorType is 1 for eyebrows, beards, and chest hair; 2 for blush and lipstick; and 0 otherwise, though not called in those cases.
    * Called after SET_PED_HEAD_OVERLAY().
    */
-  export function setPedHeadOverlayTint(ped: Ped | Player | number, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
+  export function setPedHeadOverlayTint(ped: Ped | Player | LocalPlayer | number, overlayID: number, colorType: number, colorID: number, secondColorID: number): void;
 
-  export function setPedHairTint(ped: Ped | Player | number, colorID: number, highlightColorID: number): void;
+  export function setPedHairTint(ped: Ped | Player | LocalPlayer | number, colorID: number, highlightColorID: number): void;
 
   export function getNumPedHairTints(): number;
 
@@ -15701,19 +15701,19 @@ declare module "natives" {
    * 18 - Chin Hole (Chin Bum)
    * 19 - Neck Thickness (Thin/Thick)
    */
-  export function setPedMicroMorph(ped: Ped | Player | number, index: number, scale: number): void;
+  export function setPedMicroMorph(ped: Ped | Player | LocalPlayer | number, index: number, scale: number): void;
 
-  export function hasPedHeadBlendFinished(ped: Ped | Player | number): boolean;
+  export function hasPedHeadBlendFinished(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function finalizeHeadBlend(ped: Ped | Player | number): void;
+  export function finalizeHeadBlend(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * p4 seems to vary from 0 to 3.
    * Preview: https://gfycat.com/MaleRareAmazonparrot
    */
-  export function setHeadBlendPaletteColor(ped: Ped | Player | number, r: number, g: number, b: number, id: number): void;
+  export function setHeadBlendPaletteColor(ped: Ped | Player | LocalPlayer | number, r: number, g: number, b: number, id: number): void;
 
-  export function disableHeadBlendPaletteColor(ped: Ped | Player | number): void;
+  export function disableHeadBlendPaletteColor(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Type equals 0 for male non-dlc, 1 for female non-dlc, 2 for male dlc, and 3 for female dlc.
@@ -15731,27 +15731,27 @@ declare module "natives" {
    * PED::SET_PED_PRELOAD_VARIATION_DATA(PLAYER::PLAYER_PED_ID(), 8, PED::GET_PED_DRAWABLE_VARIATION(PLAYER::PLAYER_PED_ID(), 8), PED::GET_PED_TEXTURE_VARIATION(PLAYER::PLAYER_PED_ID(), 8));
    * p1 is probably componentId
    */
-  export function setPedPreloadVariationData(ped: Ped | Player | number, slot: number, drawableId: number, textureId: number): number;
+  export function setPedPreloadVariationData(ped: Ped | Player | LocalPlayer | number, slot: number, drawableId: number, textureId: number): number;
 
-  export function hasPedPreloadVariationDataFinished(ped: Ped | Player | number): boolean;
+  export function hasPedPreloadVariationDataFinished(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function releasePedPreloadVariationData(ped: Ped | Player | number): void;
-
-  /**
-   * List of component/props ID
-   * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
-   */
-  export function setPedPreloadPropData(ped: Ped | Player | number, componentId: number, drawableId: number, TextureId: number): number;
-
-  export function hasPedPreloadPropDataFinished(ped: Ped | Player | number): boolean;
-
-  export function releasePedPreloadPropData(ped: Ped | Player | number): void;
+  export function releasePedPreloadVariationData(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getPedPropIndex(ped: Ped | Player | number, componentId: number, p2: any): number;
+  export function setPedPreloadPropData(ped: Ped | Player | LocalPlayer | number, componentId: number, drawableId: number, TextureId: number): number;
+
+  export function hasPedPreloadPropDataFinished(ped: Ped | Player | LocalPlayer | number): boolean;
+
+  export function releasePedPreloadPropData(ped: Ped | Player | LocalPlayer | number): void;
+
+  /**
+   * List of component/props ID
+   * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
+   */
+  export function getPedPropIndex(ped: Ped | Player | LocalPlayer | number, componentId: number, p2: any): number;
 
   /**
    * ComponentId can be set to various things based on what category you're wanting to set
@@ -15766,65 +15766,65 @@ declare module "natives" {
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function setPedPropIndex(ped: Ped | Player | number, componentId: number, drawableId: number, TextureId: number, attach: boolean, p5: any): void;
+  export function setPedPropIndex(ped: Ped | Player | LocalPlayer | number, componentId: number, drawableId: number, TextureId: number, attach: boolean, p5: any): void;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function knockOffPedProp(ped: Ped | Player | number, p1: boolean, p2: boolean, p3: boolean, p4: boolean): void;
+  export function knockOffPedProp(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: boolean, p3: boolean, p4: boolean): void;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function clearPedProp(ped: Ped | Player | number, propId: number, p2: any): void;
+  export function clearPedProp(ped: Ped | Player | LocalPlayer | number, propId: number, p2: any): void;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function clearAllPedProps(ped: Ped | Player | number, p1: any): void;
+  export function clearAllPedProps(ped: Ped | Player | LocalPlayer | number, p1: any): void;
 
-  export function dropAmbientProp(ped: Ped | Player | number): void;
+  export function dropAmbientProp(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function getPedPropTextureIndex(ped: Ped | Player | number, componentId: number): number;
+  export function getPedPropTextureIndex(ped: Ped | Player | LocalPlayer | number, componentId: number): number;
 
-  export function clearPedParachutePackVariation(ped: Ped | Player | number): void;
+  export function clearPedParachutePackVariation(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * This native sets a scuba mask for freemode models and an oxygen bottle for player_* models. It works on freemode and player_* models.
    */
-  export function setPedScubaGearVariation(ped: Ped | Player | number): void;
+  export function setPedScubaGearVariation(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Removes the scubagear (for mp male: component id: 8, drawableId: 123, textureId: any) from peds. Does not play the 'remove scuba gear' animation, but instantly removes it.
    */
-  export function clearPedScubaGearVariation(ped: Ped | Player | number): void;
+  export function clearPedScubaGearVariation(ped: Ped | Player | LocalPlayer | number): void;
 
   export function isUsingPedScubaGearVariation(p0: any): boolean;
 
   /**
    * works with TASK::TASK_SET_BLOCKING_OF_NON_TEMPORARY_EVENTS to make a ped completely oblivious to all events going on around him
    */
-  export function setBlockingOfNonTemporaryEvents(ped: Ped | Player | number, toggle: boolean): void;
+  export function setBlockingOfNonTemporaryEvents(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedBoundsOrientation(ped: Ped | Player | number, p1: number, p2: number, x: number, y: number, z: number): void;
+  export function setPedBoundsOrientation(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number, x: number, y: number, z: number): void;
 
   /**
    * PED::REGISTER_TARGET(l_216, PLAYER::PLAYER_PED_ID()); from re_prisonbreak.txt.
    * l_216 = RECSBRobber1
    */
-  export function registerTarget(ped: Ped | Player | number, target: Ped | Player | number): void;
+  export function registerTarget(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Based on TASK_COMBAT_HATED_TARGETS_AROUND_PED, the parameters are likely similar (PedHandle, and area to attack in).
    */
-  export function registerHatedTargetsAroundPed(ped: Ped | Player | number, radius: number): void;
+  export function registerHatedTargetsAroundPed(ped: Ped | Player | LocalPlayer | number, radius: number): void;
 
   /**
    * Gets a random ped in the x/y/zRadius near the x/y/z coordinates passed. 
@@ -15839,7 +15839,7 @@ declare module "natives" {
    * Animal = 28
    * Army = 29
    */
-  export function getRandomPedAtCoord(x: number, y: number, z: number, xRadius: number, yRadius: number, zRadius: number, pedType: number): Ped | Player | number;
+  export function getRandomPedAtCoord(x: number, y: number, z: number, xRadius: number, yRadius: number, zRadius: number, pedType: number): number;
 
   /**
    * Gets the closest ped in a radius.
@@ -15871,35 +15871,35 @@ declare module "natives" {
    * 2. waiting to cross a road.
    * Note: PED::GET_PED_NEARBY_PEDS works for more peds.
    */
-  export function getClosestPed(x: number, y: number, z: number, radius: number, p4: boolean, p5: boolean, outPed: Ped | Player | number, p7: boolean, p8: boolean, pedType: number): [boolean, Ped | Player | number];
+  export function getClosestPed(x: number, y: number, z: number, radius: number, p4: boolean, p5: boolean, outPed: Ped | Player | LocalPlayer | number, p7: boolean, p8: boolean, pedType: number): [boolean, number];
 
   /**
    * Sets a value indicating whether scenario peds should be returned by the next call to a command that returns peds. Eg. GET_CLOSEST_PED.
    */
   export function setScenarioPedsToBeReturnedByNextCommand(value: boolean): void;
 
-  export function getCanPedBeGrabbedByScript(ped: Ped | Player | number, p1: boolean, p2: boolean, p3: boolean, p4: boolean, p5: boolean, p6: boolean, p7: boolean, p8: any): boolean;
+  export function getCanPedBeGrabbedByScript(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: boolean, p3: boolean, p4: boolean, p5: boolean, p6: boolean, p7: boolean, p8: any): boolean;
 
   /**
    * Scripts use 0.2, 0.5 and 1.0. Value must be >= 0.0 && <= 1.0
    */
-  export function setDriverRacingModifier(driver: Ped | Player | number, modifier: number): void;
+  export function setDriverRacingModifier(driver: Ped | Player | LocalPlayer | number, modifier: number): void;
 
   /**
    * The function specifically verifies the value is equal to, or less than 1.0f. If it is greater than 1.0f, the function does nothing at all.
    */
-  export function setDriverAbility(driver: Ped | Player | number, ability: number): void;
+  export function setDriverAbility(driver: Ped | Player | LocalPlayer | number, ability: number): void;
 
   /**
    * range 0.0f - 1.0f
    */
-  export function setDriverAggressiveness(driver: Ped | Player | number, aggressiveness: number): void;
+  export function setDriverAggressiveness(driver: Ped | Player | LocalPlayer | number, aggressiveness: number): void;
 
   /**
    * Prevents the ped from going limp.
    * [Example: Can prevent peds from falling when standing on moving vehicles.]
    */
-  export function canPedRagdoll(ped: Ped | Player | number): boolean;
+  export function canPedRagdoll(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * p4/p5: Unused in TU27
@@ -15918,7 +15918,7 @@ declare module "natives" {
    * EDIT 3/11/16: unclear what 'mircoseconds' mean-- a microsecond is 1000x a ms, so time2 must be 1000x time1?  more testing needed.  -sob
    * Edit Mar 21, 2017: removed part about time2 being the microseconds version of time1. this just isn't correct. time2 is in milliseconds, and time1 and time2 don't seem to be connected in any way.
    */
-  export function setPedToRagdoll(ped: Ped | Player | number, time1: number, time2: number, ragdollType: number, p4: boolean, p5: boolean, p6: boolean): boolean;
+  export function setPedToRagdoll(ped: Ped | Player | LocalPlayer | number, time1: number, time2: number, ragdollType: number, p4: boolean, p5: boolean, p6: boolean): boolean;
 
   /**
    * Return variable is never used in R*'s scripts.
@@ -15935,31 +15935,31 @@ declare module "natives" {
    * (Simplified) Example of the usage of the function from R*'s scripts:
    * ped::set_ped_to_ragdoll_with_fall(ped, 1500, 2000, 1, -entity::get_entity_forward_vector(ped), 1f, 0f, 0f, 0f, 0f, 0f, 0f);
    */
-  export function setPedToRagdollWithFall(ped: Ped | Player | number, time: number, p2: number, ragdollType: number, x: number, y: number, z: number, velocity: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number): boolean;
+  export function setPedToRagdollWithFall(ped: Ped | Player | LocalPlayer | number, time: number, p2: number, ragdollType: number, x: number, y: number, z: number, velocity: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number): boolean;
 
   /**
    * Causes Ped to ragdoll on collision with any object (e.g Running into trashcan). If applied to player you will sometimes trip on the sidewalk.
    */
-  export function setPedRagdollOnCollision(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedRagdollOnCollision(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * If the ped handle passed through the parenthesis is in a ragdoll state this will return true.
    */
-  export function isPedRagdoll(ped: Ped | Player | number): boolean;
+  export function isPedRagdoll(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedRunningRagdollTask(ped: Ped | Player | number): boolean;
+  export function isPedRunningRagdollTask(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedRagdollForceFall(ped: Ped | Player | number): void;
+  export function setPedRagdollForceFall(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function resetPedRagdollTimer(ped: Ped | Player | number): void;
+  export function resetPedRagdollTimer(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedCanRagdoll(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanRagdoll(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function isPedRunningMeleeTask(ped: Ped | Player | number): boolean;
+  export function isPedRunningMeleeTask(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedRunningMobilePhoneTask(ped: Ped | Player | number): boolean;
+  export function isPedRunningMobilePhoneTask(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isMobilePhoneToPedEar(ped: Ped | Player | number): boolean;
+  export function isMobilePhoneToPedEar(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Works for both player and peds,
@@ -15985,44 +15985,44 @@ declare module "natives" {
    *  RBF_SMOKE_GRENADE = 17,
    * };
    */
-  export function setRagdollBlockingFlags(ped: Ped | Player | number, blockingFlag: number): void;
+  export function setRagdollBlockingFlags(ped: Ped | Player | LocalPlayer | number, blockingFlag: number): void;
 
   /**
    * See SET_RAGDOLL_BLOCKING_FLAGS for flags
    */
-  export function clearRagdollBlockingFlags(ped: Ped | Player | number, blockingFlag: number): void;
+  export function clearRagdollBlockingFlags(ped: Ped | Player | LocalPlayer | number, blockingFlag: number): void;
 
-  export function setPedAngledDefensiveArea(ped: Ped | Player | number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: boolean, p9: boolean): void;
+  export function setPedAngledDefensiveArea(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: boolean, p9: boolean): void;
 
-  export function setPedSphereDefensiveArea(ped: Ped | Player | number, x: number, y: number, z: number, radius: number, p5: boolean, p6: boolean): void;
+  export function setPedSphereDefensiveArea(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number, p5: boolean, p6: boolean): void;
 
-  export function setPedDefensiveSphereAttachedToPed(ped: Ped | Player | number, target: Ped | Player | number, xOffset: number, yOffset: number, zOffset: number, radius: number, p6: boolean): void;
+  export function setPedDefensiveSphereAttachedToPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, xOffset: number, yOffset: number, zOffset: number, radius: number, p6: boolean): void;
 
-  export function setPedDefensiveSphereAttachedToVehicle(ped: Ped | Player | number, target: Vehicle | number, xOffset: number, yOffset: number, zOffset: number, radius: number, p6: boolean): void;
+  export function setPedDefensiveSphereAttachedToVehicle(ped: Ped | Player | LocalPlayer | number, target: Vehicle | number, xOffset: number, yOffset: number, zOffset: number, radius: number, p6: boolean): void;
 
-  export function setPedDefensiveAreaAttachedToPed(ped: Ped | Player | number, attachPed: Ped | Player | number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: boolean, p10: boolean): void;
+  export function setPedDefensiveAreaAttachedToPed(ped: Ped | Player | LocalPlayer | number, attachPed: Ped | Player | LocalPlayer | number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: boolean, p10: boolean): void;
 
-  export function setPedDefensiveAreaDirection(ped: Ped | Player | number, p1: number, p2: number, p3: number, p4: boolean): void;
+  export function setPedDefensiveAreaDirection(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number, p3: number, p4: boolean): void;
 
   /**
    * Ped will no longer get angry when you stay near him.
    */
-  export function removePedDefensiveArea(ped: Ped | Player | number, toggle: boolean): void;
+  export function removePedDefensiveArea(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function getPedDefensiveAreaPosition(ped: Ped | Player | number, p1: boolean): Vector3;
+  export function getPedDefensiveAreaPosition(ped: Ped | Player | LocalPlayer | number, p1: boolean): Vector3;
 
-  export function isPedDefensiveAreaActive(ped: Ped | Player | number, p1: boolean): boolean;
+  export function isPedDefensiveAreaActive(ped: Ped | Player | LocalPlayer | number, p1: boolean): boolean;
 
-  export function setPedPreferredCoverSet(ped: Ped | Player | number, itemSet: any): void;
+  export function setPedPreferredCoverSet(ped: Ped | Player | LocalPlayer | number, itemSet: any): void;
 
-  export function removePedPreferredCoverSet(ped: Ped | Player | number): void;
+  export function removePedPreferredCoverSet(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * It will revive/cure the injured ped. The condition is ped must not be dead.
    * Upon setting and converting the health int, found, if health falls below 5, the ped will lay on the ground in pain(Maximum default health is 100).
    * This function is well suited there.
    */
-  export function reviveInjuredPed(ped: Ped | Player | number): void;
+  export function reviveInjuredPed(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * This function will simply bring the dead person back to life.
@@ -16030,34 +16030,34 @@ declare module "natives" {
    * Instead, before calling this function, you may want to declare the position, where your Resurrected ped to be spawn at.(For instance, Around 2 floats of Player's current position.) 
    * Also, disabling any assigned task immediately helped in the number of scenarios, where If you want peds to perform certain decided tasks.
    */
-  export function resurrectPed(ped: Ped | Player | number): void;
+  export function resurrectPed(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * NOTE: Debugging functions are not present in the retail version of the game.
    * *untested but char *name could also be a hash for a localized string
    */
-  export function setPedNameDebug(ped: Ped | Player | number, name: string): void;
+  export function setPedNameDebug(ped: Ped | Player | LocalPlayer | number, name: string): void;
 
   /**
    * Gets the offset the specified ped has moved since the previous tick.
    * If worldSpace is false, the returned offset is relative to the ped. That is, if the ped has moved 1 meter right and 5 meters forward, it'll return 1,5,0.
    * If worldSpace is true, the returned offset is relative to the world. That is, if the ped has moved 1 meter on the X axis and 5 meters on the Y axis, it'll return 1,5,0.
    */
-  export function getPedExtractedDisplacement(ped: Ped | Player | number, worldSpace: boolean): Vector3;
+  export function getPedExtractedDisplacement(ped: Ped | Player | LocalPlayer | number, worldSpace: boolean): Vector3;
 
-  export function setPedDiesWhenInjured(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedDiesWhenInjured(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedEnableWeaponBlocking(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedEnableWeaponBlocking(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * p1 was always 1 (true).
    * Kicks the ped from the current vehicle and keeps the rendering-focus on this ped (also disables its collision). If doing this for your player ped, you'll still be able to drive the vehicle.
    */
-  export function specialFunctionDoNotUse(ped: Ped | Player | number, p1: boolean): void;
+  export function specialFunctionDoNotUse(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function resetPedVisibleDamage(ped: Ped | Player | number): void;
+  export function resetPedVisibleDamage(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function applyPedBloodDamageByZone(ped: Ped | Player | number, p1: any, p2: number, p3: number, p4: any): void;
+  export function applyPedBloodDamageByZone(ped: Ped | Player | LocalPlayer | number, p1: any, p2: number, p3: number, p4: any): void;
 
   /**
    * woundTypes:
@@ -16075,11 +16075,11 @@ declare module "natives" {
    * - Scripted_Ped_Splash_Back
    * - BackSplash
    */
-  export function applyPedBlood(ped: Ped | Player | number, boneIndex: number, xRot: number, yRot: number, zRot: number, woundType: string): void;
+  export function applyPedBlood(ped: Ped | Player | LocalPlayer | number, boneIndex: number, xRot: number, yRot: number, zRot: number, woundType: string): void;
 
-  export function applyPedBloodByZone(ped: Ped | Player | number, p1: number, p2: number, p3: number, p4: string): void;
+  export function applyPedBloodByZone(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number, p3: number, p4: string): void;
 
-  export function applyPedBloodSpecific(ped: Ped | Player | number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: string): void;
+  export function applyPedBloodSpecific(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: string): void;
 
   /**
    * enum eDamageZone
@@ -16105,7 +16105,7 @@ declare module "natives" {
    * cs_trev1_dirt
    * APPLY_PED_DAMAGE_DECAL(ped, 1, 0.5f, 0.513f, 0f, 1f, unk, 0, 0, "blushing");
    */
-  export function applyPedDamageDecal(ped: Ped | Player | number, damageZone: number, xOffset: number, yOffset: number, heading: number, scale: number, alpha: number, variation: number, fadeIn: boolean, decalName: string): void;
+  export function applyPedDamageDecal(ped: Ped | Player | LocalPlayer | number, damageZone: number, xOffset: number, yOffset: number, heading: number, scale: number, alpha: number, variation: number, fadeIn: boolean, decalName: string): void;
 
   /**
    * Damage Packs:
@@ -16134,50 +16134,50 @@ declare module "natives" {
    * gist.github.com/alexguirre/f3f47f75ddcf617f416f3c8a55ae2227
    * Full list of ped damage packs by DurtyFree https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pedDamagePacks.json
    */
-  export function applyPedDamagePack(ped: Ped | Player | number, damagePack: string, damage: number, mult: number): void;
+  export function applyPedDamagePack(ped: Ped | Player | LocalPlayer | number, damagePack: string, damage: number, mult: number): void;
 
-  export function clearPedBloodDamage(ped: Ped | Player | number): void;
+  export function clearPedBloodDamage(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Somehow related to changing ped's clothes.
    */
-  export function clearPedBloodDamageByZone(ped: Ped | Player | number, p1: number): void;
+  export function clearPedBloodDamageByZone(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
-  export function hidePedBloodDamageByZone(ped: Ped | Player | number, p1: any, p2: boolean): void;
+  export function hidePedBloodDamageByZone(ped: Ped | Player | LocalPlayer | number, p1: any, p2: boolean): void;
 
   /**
    * p1: from 0 to 5 in the b617d scripts.
    * p2: "blushing" and "ALL" found in the b617d scripts.
    */
-  export function clearPedDamageDecalByZone(ped: Ped | Player | number, p1: number, p2: string): void;
+  export function clearPedDamageDecalByZone(ped: Ped | Player | LocalPlayer | number, p1: number, p2: string): void;
 
-  export function getPedDecorationsState(ped: Ped | Player | number): number;
+  export function getPedDecorationsState(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function markPedDecorationsAsClonedFromLocalPlayer(ped: Ped | Player | number, p1: boolean): void;
+  export function markPedDecorationsAsClonedFromLocalPlayer(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
   /**
    * It clears the wetness of the selected Ped/Player. Clothes have to be wet to notice the difference.
    */
-  export function clearPedWetness(ped: Ped | Player | number): void;
+  export function clearPedWetness(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * It adds the wetness level to the player clothing/outfit. As if player just got out from water surface.
    */
-  export function setPedWetnessHeight(ped: Ped | Player | number, height: number): void;
+  export function setPedWetnessHeight(ped: Ped | Player | LocalPlayer | number, height: number): void;
 
   /**
    * combined with PED::SET_PED_WETNESS_HEIGHT(), this native makes the ped drenched in water up to the height specified in the other function
    */
-  export function setPedWetnessEnabledThisFrame(ped: Ped | Player | number): void;
+  export function setPedWetnessEnabledThisFrame(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedWetness(ped: Ped | Player | number, wetLevel: number): void;
+  export function setPedWetness(ped: Ped | Player | LocalPlayer | number, wetLevel: number): void;
 
-  export function clearPedEnvDirt(ped: Ped | Player | number): void;
+  export function clearPedEnvDirt(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Sweat is set to 100.0 or 0.0 in the decompiled scripts.
    */
-  export function setPedSweat(ped: Ped | Player | number, sweat: number): void;
+  export function setPedSweat(ped: Ped | Player | LocalPlayer | number, sweat: number): void;
 
   /**
    * Applies an Item from a PedDecorationCollection to a ped. These include tattoos and shirt decals.
@@ -16204,12 +16204,12 @@ declare module "natives" {
    * PED::ADD_PED_DECORATION_FROM_HASHES(PLAYER::PLAYER_PED_ID(), MISC::GET_HASH_KEY("mpbeach_overlays"), MISC::GET_HASH_KEY("fm_hair_fuzz"))
    * Full list of ped overlays / decorations by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pedOverlayCollections.json
    */
-  export function addPedDecorationFromHashes(ped: Ped | Player | number, collection: number, overlay: number): void;
+  export function addPedDecorationFromHashes(ped: Ped | Player | LocalPlayer | number, collection: number, overlay: number): void;
 
   /**
    * Full list of ped overlays / decorations by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pedOverlayCollections.json
    */
-  export function addPedDecorationFromHashesInCorona(ped: Ped | Player | number, collection: number, overlay: number): void;
+  export function addPedDecorationFromHashesInCorona(ped: Ped | Player | LocalPlayer | number, collection: number, overlay: number): void;
 
   /**
    * Returns the zoneID for the overlay if it is a member of collection.
@@ -16228,14 +16228,14 @@ declare module "natives" {
    */
   export function getPedDecorationZoneFromHashes(collection: number, overlay: number): number;
 
-  export function clearPedDecorations(ped: Ped | Player | number): void;
+  export function clearPedDecorations(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function clearPedDecorationsLeaveScars(ped: Ped | Player | number): void;
+  export function clearPedDecorationsLeaveScars(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Despite this function's name, it simply returns whether the specified handle is a Ped.
    */
-  export function wasPedSkeletonUpdated(ped: Ped | Player | number): boolean;
+  export function wasPedSkeletonUpdated(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Gets the position of the specified bone of the specified ped.
@@ -16245,7 +16245,7 @@ declare module "natives" {
    * offsetY: The Y-component of the offset to add to the position relative to the bone's rotation.
    * offsetZ: The Z-component of the offset to add to the position relative to the bone's rotation.
    */
-  export function getPedBoneCoords(ped: Ped | Player | number, boneId: number, offsetX: number, offsetY: number, offsetZ: number): Vector3;
+  export function getPedBoneCoords(ped: Ped | Player | LocalPlayer | number, boneId: number, offsetX: number, offsetY: number, offsetZ: number): Vector3;
 
   /**
    * Creates a new NaturalMotion message.
@@ -16273,7 +16273,7 @@ declare module "natives" {
    * CREATE_NM_MESSAGE(true, 372); // armsWindmill - Swing arms around.
    * GIVE_PED_NM_MESSAGE(ped); // Dispatch message to Ped.
    */
-  export function givePedNmMessage(ped: Ped | Player | number): void;
+  export function givePedNmMessage(ped: Ped | Player | LocalPlayer | number): void;
 
   export function addScenarioBlockingArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: boolean, p7: boolean, p8: boolean, p9: boolean, p10: any): number;
 
@@ -16288,25 +16288,25 @@ declare module "natives" {
   /**
    * Full list of ped scenarios by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/scenariosCompact.json
    */
-  export function isPedUsingScenario(ped: Ped | Player | number, scenario: string): boolean;
+  export function isPedUsingScenario(ped: Ped | Player | LocalPlayer | number, scenario: string): boolean;
 
-  export function isPedUsingAnyScenario(ped: Ped | Player | number): boolean;
+  export function isPedUsingAnyScenario(ped: Ped | Player | LocalPlayer | number): boolean;
 
   export function setPedPanicExitScenario(p0: any, p1: any, p2: any, p3: any): boolean;
 
-  export function toggleScenarioPedCowerInPlace(ped: Ped | Player | number, toggle: boolean): void;
+  export function toggleScenarioPedCowerInPlace(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function triggerPedScenarioPanicexittoflee(p0: any, p1: any, p2: any, p3: any): boolean;
 
   export function setPedShouldPlayDirectedNormalScenarioExit(p0: any, p1: any, p2: any, p3: any): boolean;
 
-  export function setPedShouldPlayNormalScenarioExit(ped: Ped | Player | number): void;
+  export function setPedShouldPlayNormalScenarioExit(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedShouldPlayImmediateScenarioExit(ped: Ped | Player | number): void;
+  export function setPedShouldPlayImmediateScenarioExit(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedShouldPlayFleeScenarioExit(ped: Ped | Player | number, p1: any, p2: any, p3: any): boolean;
+  export function setPedShouldPlayFleeScenarioExit(ped: Ped | Player | LocalPlayer | number, p1: any, p2: any, p3: any): boolean;
 
-  export function setPedShouldIgnoreScenarioExitCollisionChecks(ped: Ped | Player | number, p1: boolean): void;
+  export function setPedShouldIgnoreScenarioExitCollisionChecks(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
   export function setPedShouldIgnoreScenarioNavChecks(p0: any, p1: boolean): void;
 
@@ -16314,12 +16314,12 @@ declare module "natives" {
 
   export function isPedGesturing(p0: any): boolean;
 
-  export function resetFacialIdleAnim(ped: Ped | Player | number): void;
+  export function resetFacialIdleAnim(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function playFacialAnim(ped: Ped | Player | number, animName: string, animDict: string): void;
+  export function playFacialAnim(ped: Ped | Player | LocalPlayer | number, animName: string, animDict: string): void;
 
   /**
    * Clipsets:
@@ -16332,47 +16332,47 @@ declare module "natives" {
    * mood_happy_1
    * mood_talking_1
    */
-  export function setFacialClipset(ped: Ped | Player | number, animDict: string): void;
+  export function setFacialClipset(ped: Ped | Player | LocalPlayer | number, animDict: string): void;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function setFacialIdleAnimOverride(ped: Ped | Player | number, animName: string, animDict: string): void;
+  export function setFacialIdleAnimOverride(ped: Ped | Player | LocalPlayer | number, animName: string, animDict: string): void;
 
-  export function clearFacialIdleAnimOverride(ped: Ped | Player | number): void;
+  export function clearFacialIdleAnimOverride(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedCanPlayGestureAnims(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanPlayGestureAnims(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * p2 usually 0
    */
-  export function setPedCanPlayVisemeAnims(ped: Ped | Player | number, toggle: boolean, p2: boolean): void;
+  export function setPedCanPlayVisemeAnims(ped: Ped | Player | LocalPlayer | number, toggle: boolean, p2: boolean): void;
 
-  export function setPedIsIgnoredByAutoOpenDoors(ped: Ped | Player | number, p1: boolean): void;
+  export function setPedIsIgnoredByAutoOpenDoors(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function setPedCanPlayAmbientAnims(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanPlayAmbientAnims(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanPlayAmbientBaseAnims(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanPlayAmbientBaseAnims(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function triggerIdleAnimationOnPed(ped: Ped | Player | number): void;
+  export function triggerIdleAnimationOnPed(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedCanArmIk(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanArmIk(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanHeadIk(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanHeadIk(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanLegIk(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanLegIk(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanTorsoIk(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanTorsoIk(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanTorsoReactIk(ped: Ped | Player | number, p1: boolean): void;
+  export function setPedCanTorsoReactIk(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function setPedCanTorsoVehicleIk(ped: Ped | Player | number, p1: boolean): void;
+  export function setPedCanTorsoVehicleIk(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function setPedCanUseAutoConversationLookat(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanUseAutoConversationLookat(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function isPedHeadtrackingPed(ped1: Ped | Player | number, ped2: Ped | Player | number): boolean;
+  export function isPedHeadtrackingPed(ped1: Ped | Player | LocalPlayer | number, ped2: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedHeadtrackingEntity(ped: Ped | Player | number, entity: Entity | number): boolean;
+  export function isPedHeadtrackingEntity(ped: Ped | Player | LocalPlayer | number, entity: Entity | number): boolean;
 
   /**
    * This is only called once in the scripts.
@@ -16380,7 +16380,7 @@ declare module "natives" {
    *                     sub_1CA8("WORLD_HUMAN_SMOKING", 2);
    *                     PED::SET_PED_PRIMARY_LOOKAT(getElem(3, &l_34, 4), PLAYER::PLAYER_PED_ID());
    */
-  export function setPedPrimaryLookat(ped: Ped | Player | number, lookAt: Ped | Player | number): void;
+  export function setPedPrimaryLookat(ped: Ped | Player | LocalPlayer | number, lookAt: Ped | Player | LocalPlayer | number): void;
 
   export function setPedClothPinFrames(p0: any, p1: any): void;
 
@@ -16851,25 +16851,25 @@ declare module "natives" {
    * 	CPED_CONFIG_FLAG_DontChangeTargetFromMelee = 458,
    * };
    */
-  export function setPedConfigFlag(ped: Ped | Player | number, flagId: number, value: boolean): void;
+  export function setPedConfigFlag(ped: Ped | Player | LocalPlayer | number, flagId: number, value: boolean): void;
 
   /**
    * PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 240, 1);
    * Known values:
    * PRF_PreventGoingIntoStillInVehicleState = 236 *(fanatic2.c)*
    */
-  export function setPedResetFlag(ped: Ped | Player | number, flagId: number, doReset: boolean): void;
+  export function setPedResetFlag(ped: Ped | Player | LocalPlayer | number, flagId: number, doReset: boolean): void;
 
   /**
    * See SET_PED_CONFIG_FLAG
    */
-  export function getPedConfigFlag(ped: Ped | Player | number, flagId: number, p2: boolean): boolean;
+  export function getPedConfigFlag(ped: Ped | Player | LocalPlayer | number, flagId: number, p2: boolean): boolean;
 
-  export function getPedResetFlag(ped: Ped | Player | number, flagId: number): boolean;
+  export function getPedResetFlag(ped: Ped | Player | LocalPlayer | number, flagId: number): boolean;
 
-  export function setPedGroupMemberPassengerIndex(ped: Ped | Player | number, index: number): void;
+  export function setPedGroupMemberPassengerIndex(ped: Ped | Player | LocalPlayer | number, index: number): void;
 
-  export function setPedCanEvasiveDive(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanEvasiveDive(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Presumably returns the Entity that the Ped is currently diving out of the way of.
@@ -16877,9 +16877,9 @@ declare module "natives" {
    *     if (PED::IS_PED_EVASIVE_DIVING(A_0, &num3) != 0)
    *         if (ENTITY::IS_ENTITY_A_VEHICLE(num3) != 0)
    */
-  export function isPedEvasiveDiving(ped: Ped | Player | number, evadingEntity?: Entity | number): [boolean, Entity | number];
+  export function isPedEvasiveDiving(ped: Ped | Player | LocalPlayer | number, evadingEntity?: Entity | number): [boolean, number];
 
-  export function setPedShootsAtCoord(ped: Ped | Player | number, x: number, y: number, z: number, toggle: boolean): void;
+  export function setPedShootsAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, toggle: boolean): void;
 
   /**
    * Full list of peds by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/peds.json
@@ -16888,15 +16888,15 @@ declare module "natives" {
 
   export function stopAnyPedModelBeingSuppressed(): void;
 
-  export function setPedCanBeTargetedWhenInjured(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanBeTargetedWhenInjured(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedGeneratesDeadBodyEvents(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedGeneratesDeadBodyEvents(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function blockPedFromGeneratingDeadBodyEventsWhenDead(ped: Ped | Player | number, toggle: boolean): void;
+  export function blockPedFromGeneratingDeadBodyEventsWhenDead(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setPedWillOnlyAttackWantedPlayer(p0: any, p1: any): void;
 
-  export function setPedCanRagdollFromPlayerImpact(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanRagdollFromPlayerImpact(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * PoliceMotorcycleHelmet   1024    
@@ -16907,75 +16907,75 @@ declare module "natives" {
    * --
    * p2 is generally 4096 or 16384 in the scripts. p1 varies between 1 and 0.
    */
-  export function givePedHelmet(ped: Ped | Player | number, cannotRemove: boolean, helmetFlag: number, textureIndex: number): void;
+  export function givePedHelmet(ped: Ped | Player | LocalPlayer | number, cannotRemove: boolean, helmetFlag: number, textureIndex: number): void;
 
-  export function removePedHelmet(ped: Ped | Player | number, instantly: boolean): void;
+  export function removePedHelmet(ped: Ped | Player | LocalPlayer | number, instantly: boolean): void;
 
-  export function isPedTakingOffHelmet(ped: Ped | Player | number): boolean;
+  export function isPedTakingOffHelmet(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedHelmet(ped: Ped | Player | number, canWearHelmet: boolean): void;
+  export function setPedHelmet(ped: Ped | Player | LocalPlayer | number, canWearHelmet: boolean): void;
 
-  export function setPedHelmetFlag(ped: Ped | Player | number, helmetFlag: number): void;
+  export function setPedHelmetFlag(ped: Ped | Player | LocalPlayer | number, helmetFlag: number): void;
 
   /**
    * List of component/props ID
    * gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
    */
-  export function setPedHelmetPropIndex(ped: Ped | Player | number, propIndex: number, p2: boolean): void;
+  export function setPedHelmetPropIndex(ped: Ped | Player | LocalPlayer | number, propIndex: number, p2: boolean): void;
 
-  export function setPedHelmetVisorPropIndices(ped: Ped | Player | number, p1: boolean, p2: number, p3: number): void;
+  export function setPedHelmetVisorPropIndices(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: number, p3: number): void;
 
-  export function isPedHelmetVisorUp(ped: Ped | Player | number): boolean;
+  export function isPedHelmetVisorUp(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedHelmetTextureIndex(ped: Ped | Player | number, textureIndex: number): void;
+  export function setPedHelmetTextureIndex(ped: Ped | Player | LocalPlayer | number, textureIndex: number): void;
 
   /**
    * Returns true if the ped passed through the parenthesis is wearing a helmet.
    */
-  export function isPedWearingHelmet(ped: Ped | Player | number): boolean;
+  export function isPedWearingHelmet(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function clearPedStoredHatProp(ped: Ped | Player | number): void;
+  export function clearPedStoredHatProp(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function getPedHelmetStoredHatPropIndex(ped: Ped | Player | number): number;
+  export function getPedHelmetStoredHatPropIndex(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function getPedHelmetStoredHatTexIndex(ped: Ped | Player | number): number;
+  export function getPedHelmetStoredHatTexIndex(ped: Ped | Player | LocalPlayer | number): number;
 
   export function isCurrentHeadPropAHelmet(p0: any): boolean;
 
-  export function setPedToLoadCover(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedToLoadCover(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * It simply makes the said ped to cower behind cover object(wall, desk, car)
    * Peds flee attributes must be set to not to flee, first. Else, most of the peds, will just flee from gunshot sounds or any other panic situations.
    */
-  export function setPedCanCowerInCover(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanCowerInCover(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanPeekInCover(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanPeekInCover(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * This native does absolutely nothing, just a nullsub
    */
-  export function setPedPlaysHeadOnHornAnimWhenDiesInVehicle(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedPlaysHeadOnHornAnimWhenDiesInVehicle(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * "IK" stands for "Inverse kinematics." I assume this has something to do with how the ped uses his legs to balance. In the scripts, the second parameter is always an int with a value of 2, 0, or sometimes 1
    */
-  export function setPedLegIkMode(ped: Ped | Player | number, mode: number): void;
+  export function setPedLegIkMode(ped: Ped | Player | LocalPlayer | number, mode: number): void;
 
-  export function setPedMotionBlur(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedMotionBlur(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedCanSwitchWeapon(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanSwitchWeapon(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedDiesInstantlyInWater(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedDiesInstantlyInWater(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Only appears in lamar1 script.
    */
-  export function setLadderClimbInputState(ped: Ped | Player | number, p1: number): void;
+  export function setLadderClimbInputState(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
-  export function stopPedWeaponFiringWhenDropped(ped: Ped | Player | number): void;
+  export function stopPedWeaponFiringWhenDropped(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setScriptedAnimSeatOffset(ped: Ped | Player | number, p1: number): void;
+  export function setScriptedAnimSeatOffset(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * enum eCombatMovement // 0x4F456B61
@@ -16986,12 +16986,12 @@ declare module "natives" {
    * 	CM_WillRetreat
    * };
    */
-  export function setPedCombatMovement(ped: Ped | Player | number, combatMovement: number): void;
+  export function setPedCombatMovement(ped: Ped | Player | LocalPlayer | number, combatMovement: number): void;
 
   /**
    * See SET_PED_COMBAT_MOVEMENT
    */
-  export function getPedCombatMovement(ped: Ped | Player | number): number;
+  export function getPedCombatMovement(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * enum eCombatAbility // 0xE793438C
@@ -17002,7 +17002,7 @@ declare module "natives" {
    * 	CA_NumTypes
    * };
    */
-  export function setPedCombatAbility(ped: Ped | Player | number, abilityLevel: number): void;
+  export function setPedCombatAbility(ped: Ped | Player | LocalPlayer | number, abilityLevel: number): void;
 
   /**
    * enum eCombatRange // 0xB69160F5
@@ -17014,12 +17014,12 @@ declare module "natives" {
    * 	CR_NumRanges
    * };
    */
-  export function setPedCombatRange(ped: Ped | Player | number, combatRange: number): void;
+  export function setPedCombatRange(ped: Ped | Player | LocalPlayer | number, combatRange: number): void;
 
   /**
    * See SET_PED_COMBAT_RANGE
    */
-  export function getPedCombatRange(ped: Ped | Player | number): number;
+  export function getPedCombatRange(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * enum eCombatAttributes // 0x0E8E7201
@@ -17118,7 +17118,7 @@ declare module "natives" {
    * 	BF_0x053AEAD9 = 91
    * };
    */
-  export function setPedCombatAttributes(ped: Ped | Player | number, attributeId: number, enabled: boolean): void;
+  export function setPedCombatAttributes(ped: Ped | Player | LocalPlayer | number, attributeId: number, enabled: boolean): void;
 
   /**
    * enum eTargetLossResponseType
@@ -17128,82 +17128,82 @@ declare module "natives" {
    * 	TLR_SearchForTarget
    * };
    */
-  export function setPedTargetLossResponse(ped: Ped | Player | number, responseType: number): void;
+  export function setPedTargetLossResponse(ped: Ped | Player | LocalPlayer | number, responseType: number): void;
 
-  export function isPedPerformingMeleeAction(ped: Ped | Player | number): boolean;
+  export function isPedPerformingMeleeAction(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedPerformingStealthKill(ped: Ped | Player | number): boolean;
+  export function isPedPerformingStealthKill(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedPerformingACounterAttack(ped: Ped | Player | number): boolean;
+  export function isPedPerformingACounterAttack(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedBeingStealthKilled(ped: Ped | Player | number): boolean;
+  export function isPedBeingStealthKilled(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getMeleeTargetForPed(ped: Ped | Player | number): Ped | Player | number;
+  export function getMeleeTargetForPed(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function wasPedKilledByStealth(ped: Ped | Player | number): boolean;
+  export function wasPedKilledByStealth(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function wasPedKilledByTakedown(ped: Ped | Player | number): boolean;
+  export function wasPedKilledByTakedown(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function wasPedKnockedOut(ped: Ped | Player | number): boolean;
+  export function wasPedKnockedOut(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * bit 1 (0x2) = use vehicle
    * bit 15 (0x8000) = force cower
    */
-  export function setPedFleeAttributes(ped: Ped | Player | number, attributeFlags: number, enable: boolean): void;
+  export function setPedFleeAttributes(ped: Ped | Player | LocalPlayer | number, attributeFlags: number, enable: boolean): void;
 
   /**
    * p1: Only "CODE_HUMAN_STAND_COWER" found in the b617d scripts.
    */
-  export function setPedCowerHash(ped: Ped | Player | number, p1: string): void;
+  export function setPedCowerHash(ped: Ped | Player | LocalPlayer | number, p1: string): void;
 
-  export function setPedSteersAroundDeadBodies(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedSteersAroundDeadBodies(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedSteersAroundPeds(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedSteersAroundPeds(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedSteersAroundObjects(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedSteersAroundObjects(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setPedSteersAroundVehicles(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedSteersAroundVehicles(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setPedIsAvoidedByOthers(p0: any, p1: boolean): void;
 
-  export function setPedIncreasedAvoidanceRadius(ped: Ped | Player | number): void;
+  export function setPedIncreasedAvoidanceRadius(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setPedBlocksPathingWhenDead(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedBlocksPathingWhenDead(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setPedNoTimeDelayBeforeShot(p0: any): void;
 
   export function isAnyPedNearPoint(x: number, y: number, z: number, radius: number): boolean;
 
-  export function forcePedAiAndAnimationUpdate(ped: Ped | Player | number, p1: boolean, p2: boolean): void;
+  export function forcePedAiAndAnimationUpdate(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: boolean): void;
 
-  export function isPedHeadingTowardsPosition(ped: Ped | Player | number, x: number, y: number, z: number, p4: number): boolean;
+  export function isPedHeadingTowardsPosition(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, p4: number): boolean;
 
-  export function requestPedVisibilityTracking(ped: Ped | Player | number): void;
+  export function requestPedVisibilityTracking(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function requestPedVehicleVisibilityTracking(ped: Ped | Player | number, p1: boolean): void;
+  export function requestPedVehicleVisibilityTracking(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function requestPedRestrictedVehicleVisibilityTracking(ped: Ped | Player | number, p1: boolean): void;
+  export function requestPedRestrictedVehicleVisibilityTracking(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
-  export function requestPedUseSmallBboxVisibilityTracking(ped: Ped | Player | number, p1: boolean): void;
+  export function requestPedUseSmallBboxVisibilityTracking(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
   /**
    * returns whether or not a ped is visible within your FOV, not this check auto's to false after a certain distance.
    * Target needs to be tracked.. won't work otherwise.
    */
-  export function isTrackedPedVisible(ped: Ped | Player | number): boolean;
+  export function isTrackedPedVisible(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getTrackedPedPixelcount(ped: Ped | Player | number): number;
+  export function getTrackedPedPixelcount(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function isPedTracked(ped: Ped | Player | number): boolean;
+  export function isPedTracked(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function hasPedReceivedEvent(ped: Ped | Player | number, eventId: number): boolean;
+  export function hasPedReceivedEvent(ped: Ped | Player | LocalPlayer | number, eventId: number): boolean;
 
-  export function canPedSeeHatedPed(ped1: Ped | Player | number, ped2: Ped | Player | number): boolean;
+  export function canPedSeeHatedPed(ped1: Ped | Player | LocalPlayer | number, ped2: Ped | Player | LocalPlayer | number): boolean;
 
-  export function canPedShuffleToOrFromTurretSeat(ped: Ped | Player | number, p1?: number): [boolean, number];
+  export function canPedShuffleToOrFromTurretSeat(ped: Ped | Player | LocalPlayer | number, p1?: number): [boolean, number];
 
-  export function canPedShuffleToOrFromExtraSeat(ped: Ped | Player | number, p1?: number): [boolean, number];
+  export function canPedShuffleToOrFromExtraSeat(ped: Ped | Player | LocalPlayer | number, p1?: number): [boolean, number];
 
   /**
    * no bone= -1
@@ -17307,20 +17307,20 @@ declare module "natives" {
    *    RB_Neck_1 = 0x8b93,
    *    IK_Root = 0xdd1c
    */
-  export function getPedBoneIndex(ped: Ped | Player | number, boneId: number): number;
+  export function getPedBoneIndex(ped: Ped | Player | LocalPlayer | number, boneId: number): number;
 
-  export function getPedRagdollBoneIndex(ped: Ped | Player | number, bone: number): number;
+  export function getPedRagdollBoneIndex(ped: Ped | Player | LocalPlayer | number, bone: number): number;
 
   /**
    * Values look to be between 0.0 and 1.0
    * From decompiled scripts: 0.0, 0.6, 0.65, 0.8, 1.0
    * You are correct, just looked in IDA it breaks from the function if it's less than 0.0f or greater than 1.0f.
    */
-  export function setPedEnveffScale(ped: Ped | Player | number, value: number): void;
+  export function setPedEnveffScale(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function getPedEnveffScale(ped: Ped | Player | number): number;
+  export function getPedEnveffScale(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function setEnablePedEnveffScale(ped: Ped | Player | number, toggle: boolean): void;
+  export function setEnablePedEnveffScale(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * In agency_heist3b.c4, its like this 90% of the time:
@@ -17334,29 +17334,29 @@ declare module "natives" {
    * PED::SET_PED_ENVEFF_COLOR_MODULATOR(ped, 74, 69, 60);
    * PED::SET_ENABLE_PED_ENVEFF_SCALE(ped, 1);
    */
-  export function setPedEnveffCpvAdd(ped: Ped | Player | number, p1: number): void;
+  export function setPedEnveffCpvAdd(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * Something related to the environmental effects natives.
    * In the "agency_heist3b" script, p1 - p3 are always under 100 - usually they are {87, 81, 68}. If SET_PED_ENVEFF_SCALE is set to 0.65 (instead of the usual 1.0), they use {74, 69, 60}
    */
-  export function setPedEnveffColorModulator(ped: Ped | Player | number, p1: number, p2: number, p3: number): void;
+  export function setPedEnveffColorModulator(ped: Ped | Player | LocalPlayer | number, p1: number, p2: number, p3: number): void;
 
   /**
    * intensity: 0.0f - 1.0f
    * This native sets the emissive intensity for the given ped. It is used for different 'glow' levels on illuminated clothing.
    */
-  export function setPedEmissiveScale(ped: Ped | Player | number, intensity: number): void;
+  export function setPedEmissiveScale(ped: Ped | Player | LocalPlayer | number, intensity: number): void;
 
   /**
    * Use 0x4E90D746056E273D to set the illuminated clothing glow intensity for a specific ped.
    * Returns a float between 0.0 and 1.0 representing the current illuminated clothing glow intensity.
    */
-  export function getPedEmissiveScale(ped: Ped | Player | number): number;
+  export function getPedEmissiveScale(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function isPedShaderReady(ped: Ped | Player | number): boolean;
+  export function isPedShaderReady(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function setPedEnableCrewEmblem(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedEnableCrewEmblem(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * This native does absolutely nothing, just a nullsub
@@ -17366,9 +17366,9 @@ declare module "natives" {
   /**
    * Enable/disable ped shadow (ambient occlusion). https://gfycat.com/thankfulesteemedgecko
    */
-  export function setPedAoBlobRendering(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedAoBlobRendering(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function isPedSheltered(ped: Ped | Player | number): boolean;
+  export function isPedSheltered(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * p6 always 2 (but it doesnt seem to matter...)
@@ -17438,13 +17438,13 @@ declare module "natives" {
    * 	MotionState_Jetpack = 0x535E6A5E
    * };
    */
-  export function forcePedMotionState(ped: Ped | Player | number, motionStateHash: number, p2: boolean, p3: number, p4: boolean): boolean;
+  export function forcePedMotionState(ped: Ped | Player | LocalPlayer | number, motionStateHash: number, p2: boolean, p3: number, p4: boolean): boolean;
 
-  export function getPedCurrentMoveBlendRatio(ped: Ped | Player | number, speedX?: number, speedY?: number): [boolean, number, number];
+  export function getPedCurrentMoveBlendRatio(ped: Ped | Player | LocalPlayer | number, speedX?: number, speedY?: number): [boolean, number, number];
 
-  export function setPedMaxMoveBlendRatio(ped: Ped | Player | number, value: number): void;
+  export function setPedMaxMoveBlendRatio(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedMinMoveBlendRatio(ped: Ped | Player | number, value: number): void;
+  export function setPedMinMoveBlendRatio(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
   /**
    * Min: 0.00
@@ -17456,9 +17456,9 @@ declare module "natives" {
    * Needs to be looped!
    * Note: According to IDA for the Xbox360 xex, when they check bgt they seem to have the min to 0.0f, but the max set to 1.15f not 10.0f.
    */
-  export function setPedMoveRateOverride(ped: Ped | Player | number, value: number): void;
+  export function setPedMoveRateOverride(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function setPedMoveRateInWaterOverride(ped: Ped | Player | number, p1: number): void;
+  export function setPedMoveRateInWaterOverride(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   /**
    * Checks if the specified sexiness flag is set
@@ -17469,7 +17469,7 @@ declare module "natives" {
    *  SF_HOT_PERSON = 2,
    *  };
    */
-  export function pedHasSexinessFlagSet(ped: Ped | Player | number, sexinessFlag: number): boolean;
+  export function pedHasSexinessFlagSet(ped: Ped | Player | LocalPlayer | number, sexinessFlag: number): boolean;
 
   /**
    * Returns size of array, passed into the second variable.
@@ -17496,7 +17496,7 @@ declare module "natives" {
    *      }
    *  }  
    */
-  export function getPedNearbyVehicles(ped: Ped | Player | number, sizeAndVehs?: any): [number, any];
+  export function getPedNearbyVehicles(ped: Ped | Player | LocalPlayer | number, sizeAndVehs?: any): [number, any];
 
   /**
    * sizeAndPeds - is a pointer to an array. The array is filled with peds found nearby the ped supplied to the first argument.
@@ -17508,40 +17508,40 @@ declare module "natives" {
    * -----------------------------------
    * Example: gtaforums.com/topic/789788-function-args-to-pedget-ped-nearby-peds/?p=1067386687
    */
-  export function getPedNearbyPeds(ped: Ped | Player | number, sizeAndPeds: any, ignore: number): [number, any];
+  export function getPedNearbyPeds(ped: Ped | Player | LocalPlayer | number, sizeAndPeds: any, ignore: number): [number, any];
 
-  export function haveAllStreamingRequestsCompleted(ped: Ped | Player | number): boolean;
+  export function haveAllStreamingRequestsCompleted(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedUsingActionMode(ped: Ped | Player | number): boolean;
+  export function isPedUsingActionMode(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * p2 is usually -1 in the scripts. action is either 0 or "DEFAULT_ACTION".
    */
-  export function setPedUsingActionMode(ped: Ped | Player | number, p1: boolean, p2: number, action: string): void;
+  export function setPedUsingActionMode(ped: Ped | Player | LocalPlayer | number, p1: boolean, p2: number, action: string): void;
 
   /**
    * name: "MP_FEMALE_ACTION" found multiple times in the b617d scripts.
    */
-  export function setMovementModeOverride(ped: Ped | Player | number, name: string): void;
+  export function setMovementModeOverride(ped: Ped | Player | LocalPlayer | number, name: string): void;
 
   /**
    * Overrides the ped's collision capsule radius for the current tick.
    * Must be called every tick to be effective.
    * Setting this to 0.001 will allow warping through some objects.
    */
-  export function setPedCapsule(ped: Ped | Player | number, value: number): void;
+  export function setPedCapsule(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
   /**
    * gtaforums.com/topic/885580-ped-headshotmugshot-txd/
    */
-  export function registerPedheadshot(ped: Ped | Player | number): number;
+  export function registerPedheadshot(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function registerPedheadshotHires(ped: Ped | Player | number): number;
+  export function registerPedheadshotHires(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Similar to REGISTER_PEDHEADSHOT but creates a transparent background instead of black. Example: https://i.imgur.com/iHz8ztn.png
    */
-  export function registerPedheadshotTransparent(ped: Ped | Player | number): number;
+  export function registerPedheadshotTransparent(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * gtaforums.com/topic/885580-ped-headshotmugshot-txd/
@@ -17573,9 +17573,9 @@ declare module "natives" {
 
   export function hasPedheadshotImgUploadSucceeded(): boolean;
 
-  export function setPedHeatscaleOverride(ped: Ped | Player | number, heatScale: number): void;
+  export function setPedHeatscaleOverride(ped: Ped | Player | LocalPlayer | number, heatScale: number): void;
 
-  export function disablePedHeatscaleOverride(ped: Ped | Player | number): void;
+  export function disablePedHeatscaleOverride(ped: Ped | Player | LocalPlayer | number): void;
 
   export function spawnpointsStartSearch(p0: number, p1: number, p2: number, p3: number, p4: number, interiorFlags: number, scale: number, duration: number): void;
 
@@ -17595,9 +17595,9 @@ declare module "natives" {
 
   export function spawnpointsGetSearchResultFlags(p0: number, p1?: number): [void, number];
 
-  export function setIkTarget(ped: Ped | Player | number, ikIndex: number, entityLookAt: Entity | number, boneLookAt: number, offsetX: number, offsetY: number, offsetZ: number, p7: any, blendInDuration: number, blendOutDuration: number): void;
+  export function setIkTarget(ped: Ped | Player | LocalPlayer | number, ikIndex: number, entityLookAt: Entity | number, boneLookAt: number, offsetX: number, offsetY: number, offsetZ: number, p7: any, blendInDuration: number, blendOutDuration: number): void;
 
-  export function forceInstantLegIkSetup(ped: Ped | Player | number): void;
+  export function forceInstantLegIkSetup(ped: Ped | Player | LocalPlayer | number): void;
 
   export function requestActionModeAsset(asset: string): void;
 
@@ -17611,49 +17611,49 @@ declare module "natives" {
 
   export function removeStealthModeAsset(asset: string): void;
 
-  export function setPedLodMultiplier(ped: Ped | Player | number, multiplier: number): void;
+  export function setPedLodMultiplier(ped: Ped | Player | LocalPlayer | number, multiplier: number): void;
 
-  export function setPedCanLosePropsOnDamage(ped: Ped | Player | number, toggle: boolean, p2: number): void;
+  export function setPedCanLosePropsOnDamage(ped: Ped | Player | LocalPlayer | number, toggle: boolean, p2: number): void;
 
-  export function setForceFootstepUpdate(ped: Ped | Player | number, toggle: boolean): void;
+  export function setForceFootstepUpdate(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function setForceStepType(ped: Ped | Player | number, p1: boolean, type: number, p3: number): void;
+  export function setForceStepType(ped: Ped | Player | LocalPlayer | number, p1: boolean, type: number, p3: number): void;
 
-  export function isAnyHostilePedNearPoint(ped: Ped | Player | number, x: number, y: number, z: number, radius: number): boolean;
+  export function isAnyHostilePedNearPoint(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number): boolean;
 
   /**
    * Toggles config flag CPED_CONFIG_FLAG_CanPlayInCarIdles.
    */
-  export function setPedCanPlayInCarIdles(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedCanPlayInCarIdles(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function isTargetPedInPerceptionArea(ped: Ped | Player | number, targetPed: Ped | Player | number, p2: number, p3: number, p4: number, p5: number): boolean;
+  export function isTargetPedInPerceptionArea(ped: Ped | Player | LocalPlayer | number, targetPed: Ped | Player | LocalPlayer | number, p2: number, p3: number, p4: number, p5: number): boolean;
 
   /**
    * Min and max are usually 100.0 and 200.0
    */
   export function setPopControlSphereThisFrame(x: number, y: number, z: number, min: number, max: number): void;
 
-  export function forceZeroMassInCollisions(ped: Ped | Player | number): void;
+  export function forceZeroMassInCollisions(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setDisableHighFallDeath(ped: Ped | Player | number, toggle: boolean): void;
+  export function setDisableHighFallDeath(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setPedPhonePaletteIdx(p0: any, p1: any): void;
 
-  export function setPedSteerBias(ped: Ped | Player | number, value: number): void;
+  export function setPedSteerBias(ped: Ped | Player | LocalPlayer | number, value: number): void;
 
-  export function isPedSwitchingWeapon(Ped: Ped | Player | number): boolean;
+  export function isPedSwitchingWeapon(Ped: Ped | Player | LocalPlayer | number): boolean;
 
   export function setPedTreatedAsFriendly(p0: any, p1: any, p2: any): void;
 
-  export function setDisablePedMapCollision(ped: Ped | Player | number): void;
+  export function setDisablePedMapCollision(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function enableMpLight(ped: Ped | Player | number, toggle: boolean): void;
+  export function enableMpLight(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
-  export function getMpLightEnabled(ped: Ped | Player | number): boolean;
+  export function getMpLightEnabled(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function clearCoverPointForPed(ped: Ped | Player | number): void;
+  export function clearCoverPointForPed(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function setAllowStuntJumpCamera(ped: Ped | Player | number, toggle: boolean): void;
+  export function setAllowStuntJumpCamera(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Creates a rope at the specific position, that extends in the specified direction when not attached to any entities.
@@ -17780,13 +17780,13 @@ declare module "natives" {
 
   export function breakEntityGlass(entity: Entity | number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: any, p10: boolean): void;
 
-  export function getIsEntityAFrag(object: Object): boolean;
+  export function getIsEntityAFrag(object: number): boolean;
 
-  export function setDisableBreaking(object: Object, toggle: boolean): void;
+  export function setDisableBreaking(object: number, toggle: boolean): void;
 
-  export function resetDisableBreaking(object: Object): void;
+  export function resetDisableBreaking(object: number): void;
 
-  export function setDisableFragDamage(object: Object, toggle: boolean): void;
+  export function setDisableFragDamage(object: number, toggle: boolean): void;
 
   /**
    * PED_RAGDOLL_BUMP Proof?
@@ -17803,12 +17803,12 @@ declare module "natives" {
   /**
    * Gets the ped for a specified player index.
    */
-  export function getPlayerPed(player: Player | number): Ped | Player | number;
+  export function getPlayerPed(player: Player | number): number;
 
   /**
    * Does the same like PLAYER::GET_PLAYER_PED
    */
-  export function getPlayerPedScriptIndex(player: Player | number): Ped | Player | number;
+  export function getPlayerPedScriptIndex(player: Player | number): number;
 
   /**
    * Set the model for a specific Player. Be aware that this will destroy the current Ped for the Player and create a new one, any reference to the old ped should be reset
@@ -17816,7 +17816,7 @@ declare module "natives" {
    */
   export function setPlayerModel(player: Player | number, model: number): void;
 
-  export function changePlayerPed(player: Player | number, ped: Ped | Player | number, p2: boolean, resetDamage: boolean): void;
+  export function changePlayerPed(player: Player | number, ped: Ped | Player | LocalPlayer | number, p2: boolean, resetDamage: boolean): void;
 
   export function getPlayerRgbColour(player: Player | number, r?: number, g?: number, b?: number): [void, number, number, number];
 
@@ -18086,7 +18086,7 @@ declare module "natives" {
    * Assigns the handle of locked-on melee target to *entity that you pass it.
    * Returns false if no entity found.
    */
-  export function getPlayerTargetEntity(player: Player | number, entity?: Entity | number): [boolean, Entity | number];
+  export function getPlayerTargetEntity(player: Player | number, entity?: Entity | number): [boolean, number];
 
   /**
    * Gets a value indicating whether the specified player is currently aiming freely.
@@ -18102,7 +18102,7 @@ declare module "natives" {
    * Returns TRUE if it found an entity in your crosshair within range of your weapon. Assigns the handle of the target to the *entity that you pass it.
    * Returns false if no entity found.
    */
-  export function getEntityPlayerIsFreeAimingAt(player: Player | number, entity?: Entity | number): [boolean, Entity | number];
+  export function getEntityPlayerIsFreeAimingAt(player: Player | number, entity?: Entity | number): [boolean, number];
 
   /**
    * Affects the range of auto aim target.
@@ -18224,7 +18224,7 @@ declare module "natives" {
   /**
    * Returns current player ped
    */
-  export function playerPedId(): Ped | Player | number;
+  export function playerPedId(): number;
 
   /**
    * Does exactly the same thing as PLAYER_ID()
@@ -18551,7 +18551,7 @@ declare module "natives" {
   /**
    * p1 appears to always be 1 (only comes up twice)
    */
-  export function specialAbilityChargeContinuous(player: Player | number, p1: Ped | Player | number, p2: any): void;
+  export function specialAbilityChargeContinuous(player: Player | number, p1: Ped | Player | LocalPlayer | number, p2: any): void;
 
   /**
    * p1 appears as 5, 10, 15, 25, or 30. p2 is always true.
@@ -18800,7 +18800,7 @@ declare module "natives" {
    */
   export function setPlayerSneakingNoiseMultiplier(player: Player | number, multiplier: number): void;
 
-  export function canPedHearPlayer(player: Player | number, ped: Ped | Player | number): boolean;
+  export function canPedHearPlayer(player: Player | number, ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * This is to make the player walk without accepting input from INPUT.
@@ -19227,14 +19227,14 @@ declare module "natives" {
    * Returns the result of a shape test: 0 if the handle is invalid, 1 if the shape test is still pending, or 2 if the shape test has completed, and the handle should be invalidated.
    * When used with an asynchronous shape test, this native should be looped until returning 0 or 2, after which the handle is invalidated.
    */
-  export function getShapeTestResult(shapeTestHandle: number, hit?: boolean, endCoords?: Vector3, surfaceNormal?: Vector3, entityHit?: Entity | number): [number, boolean, Vector3, Vector3, Entity | number];
+  export function getShapeTestResult(shapeTestHandle: number, hit?: boolean, endCoords?: Vector3, surfaceNormal?: Vector3, entityHit?: Entity | number): [number, boolean, Vector3, Vector3, number];
 
   /**
    * Returns the result of a shape test, also returning the material of any touched surface.
    * When used with an asynchronous shape test, this native should be looped until returning 0 or 2, after which the handle is invalidated.
    * Unless the return value is 2, the other return values are undefined.
    */
-  export function getShapeTestResultIncludingMaterial(shapeTestHandle: number, hit?: boolean, endCoords?: Vector3, surfaceNormal?: Vector3, materialHash?: number, entityHit?: Entity | number): [number, boolean, Vector3, Vector3, number, Entity | number];
+  export function getShapeTestResultIncludingMaterial(shapeTestHandle: number, hit?: boolean, endCoords?: Vector3, surfaceNormal?: Vector3, materialHash?: number, entityHit?: Entity | number): [number, boolean, Vector3, Vector3, number, number];
 
   /**
    * Invalidates the entity handle passed by removing the fwScriptGuid from the entity. This should be used when receiving an ambient entity from shape testing natives, but can also be used for other natives returning an 'irrelevant' entity handle.
@@ -19759,9 +19759,9 @@ declare module "natives" {
    */
   export function playstatsOddjobDone(totalTimeMs: number, p1: number, p2: boolean): void;
 
-  export function playstatsPropChange(p0: Ped | Player | number, p1: number, p2: number, p3: number): void;
+  export function playstatsPropChange(p0: Ped | Player | LocalPlayer | number, p1: number, p2: number, p3: number): void;
 
-  export function playstatsClothChange(p0: Ped | Player | number, p1: any, p2: any, p3: any, p4: any): void;
+  export function playstatsClothChange(p0: Ped | Player | LocalPlayer | number, p1: any, p2: any, p3: any, p4: any): void;
 
   /**
    * This is a typo made by R*. It's supposed to be called PLAYSTATS_WEAPON_MOD_CHANGE.
@@ -20654,7 +20654,7 @@ declare module "natives" {
    * Flag 8 w/ SWITCH_TYPE_LONG will zoom out 3 steps, then zoom in 2/3 steps and stop on the 3rd and just hang there.
    * Flag 8 w/ SWITCH_TYPE_MEDIUM will zoom out 1 step, and just hang there.
    */
-  export function startPlayerSwitch(from: Ped | Player | number, to: Ped | Player | number, flags: number, switchType: number): void;
+  export function startPlayerSwitch(from: Ped | Player | LocalPlayer | number, to: Ped | Player | LocalPlayer | number, flags: number, switchType: number): void;
 
   export function stopPlayerSwitch(): void;
 
@@ -20715,9 +20715,9 @@ declare module "natives" {
    * 2: 1 step out from ped
    * 3: 1 step towards ped
    */
-  export function switchToMultiFirstpart(ped: Ped | Player | number, flags: number, switchType: number): void;
+  export function switchToMultiFirstpart(ped: Ped | Player | LocalPlayer | number, flags: number, switchType: number): void;
 
-  export function switchToMultiSecondpart(ped: Ped | Player | number): void;
+  export function switchToMultiSecondpart(ped: Ped | Player | LocalPlayer | number): void;
 
   export function isSwitchToMultiFirstpartFinished(): boolean;
 
@@ -20813,12 +20813,12 @@ declare module "natives" {
   /**
    * Stand still (?)
    */
-  export function taskPause(ped: Ped | Player | number, ms: number): void;
+  export function taskPause(ped: Ped | Player | LocalPlayer | number, ms: number): void;
 
   /**
    * Makes the specified ped stand still for (time) milliseconds.
    */
-  export function taskStandStill(ped: Ped | Player | number, time: number): void;
+  export function taskStandStill(ped: Ped | Player | LocalPlayer | number, time: number): void;
 
   /**
    * Definition is wrong. This has 4 parameters (Not sure when they were added. v350 has 2, v678 has 4).
@@ -20826,24 +20826,24 @@ declare module "natives" {
    * v678: Ped ped, bool unused, bool flag1, bool flag2
    * flag1 = super jump, flag2 = do nothing if flag1 is false and doubles super jump height if flag1 is true.
    */
-  export function taskJump(ped: Ped | Player | number, usePlayerLaunchForce: boolean, doSuperJump: boolean, useFullSuperJumpForce: boolean): void;
+  export function taskJump(ped: Ped | Player | LocalPlayer | number, usePlayerLaunchForce: boolean, doSuperJump: boolean, useFullSuperJumpForce: boolean): void;
 
-  export function taskCower(ped: Ped | Player | number, duration: number): void;
+  export function taskCower(ped: Ped | Player | LocalPlayer | number, duration: number): void;
 
   /**
    * In the scripts, p3 was always -1.
    * p3 seems to be duration or timeout of turn animation.
    * Also facingPed can be 0 or -1 so ped will just raise hands up.
    */
-  export function taskHandsUp(ped: Ped | Player | number, duration: number, facingPed: Ped | Player | number, timeToFacePed: number, flags: number): void;
+  export function taskHandsUp(ped: Ped | Player | LocalPlayer | number, duration: number, facingPed: Ped | Player | LocalPlayer | number, timeToFacePed: number, flags: number): void;
 
-  export function updateTaskHandsUpDuration(ped: Ped | Player | number, duration: number): void;
+  export function updateTaskHandsUpDuration(ped: Ped | Player | LocalPlayer | number, duration: number): void;
 
   /**
    * The given ped will try to open the nearest door to 'seat'.
    * Example: telling the ped to open the door for the driver seat does not necessarily mean it will open the driver door, it may choose to open the passenger door instead if that one is closer.
    */
-  export function taskOpenVehicleDoor(ped: Ped | Player | number, vehicle: Vehicle | number, timeOut: number, seat: number, speed: number): void;
+  export function taskOpenVehicleDoor(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, timeOut: number, seat: number, speed: number): void;
 
   /**
    * speed 1.0 = walk, 2.0 = run
@@ -20857,7 +20857,7 @@ declare module "natives" {
    * 3 = outside left
    * 4 = outside right
    */
-  export function taskEnterVehicle(ped: Ped | Player | number, vehicle: Vehicle | number, timeout: number, seat: number, speed: number, flag: number, overrideEntryClipsetName: string, p7: any): void;
+  export function taskEnterVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, timeout: number, seat: number, speed: number, flag: number, overrideEntryClipsetName: string, p7: any): void;
 
   /**
    * Flags from decompiled scripts:
@@ -20870,26 +20870,26 @@ declare module "natives" {
    * 262144 = ped moves to passenger seat first, then exits normally
    * Others to be tried out: 320, 512, 131072.
    */
-  export function taskLeaveVehicle(ped: Ped | Player | number, vehicle: Vehicle | number, flags: number): void;
+  export function taskLeaveVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, flags: number): void;
 
-  export function taskGetOffBoat(ped: Ped | Player | number, boat: Vehicle | number): void;
+  export function taskGetOffBoat(ped: Ped | Player | LocalPlayer | number, boat: Vehicle | number): void;
 
-  export function taskSkyDive(ped: Ped | Player | number, instant: boolean): void;
+  export function taskSkyDive(ped: Ped | Player | LocalPlayer | number, instant: boolean): void;
 
   /**
    * Second parameter is unused.
    * second parameter was for jetpack in the early stages of gta and the hard coded code is now removed
    */
-  export function taskParachute(ped: Ped | Player | number, giveParachuteItem: boolean, instant: boolean): void;
+  export function taskParachute(ped: Ped | Player | LocalPlayer | number, giveParachuteItem: boolean, instant: boolean): void;
 
   /**
    * makes ped parachute to coords x y z. Works well with PATHFIND::GET_SAFE_COORD_FOR_PED
    */
-  export function taskParachuteToTarget(ped: Ped | Player | number, x: number, y: number, z: number): void;
+  export function taskParachuteToTarget(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number): void;
 
-  export function setParachuteTaskTarget(ped: Ped | Player | number, x: number, y: number, z: number): void;
+  export function setParachuteTaskTarget(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number): void;
 
-  export function setParachuteTaskThrust(ped: Ped | Player | number, thrust: number): void;
+  export function setParachuteTaskThrust(ped: Ped | Player | LocalPlayer | number, thrust: number): void;
 
   /**
    * minHeightAboveGround: the minimum height above ground the heli must be at before the ped can start rappelling
@@ -20897,27 +20897,27 @@ declare module "natives" {
    * TASK::TASK_RAPPEL_FROM_HELI(PLAYER::PLAYER_PED_ID(), 10.0f);
    * TASK::TASK_RAPPEL_FROM_HELI(a_0, 10.0f);
    */
-  export function taskRappelFromHeli(ped: Ped | Player | number, minHeightAboveGround: number): void;
+  export function taskRappelFromHeli(ped: Ped | Player | LocalPlayer | number, minHeightAboveGround: number): void;
 
   /**
    * info about driving modes: https://gtaforums.com/topic/822314-guide-driving-styles/
    */
-  export function taskVehicleDriveToCoord(ped: Ped | Player | number, vehicle: Vehicle | number, x: number, y: number, z: number, speed: number, p6: any, vehicleModel: number, drivingMode: number, stopRange: number, straightLineDistance: number): void;
+  export function taskVehicleDriveToCoord(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, x: number, y: number, z: number, speed: number, p6: any, vehicleModel: number, drivingMode: number, stopRange: number, straightLineDistance: number): void;
 
-  export function taskVehicleDriveToCoordLongrange(ped: Ped | Player | number, vehicle: Vehicle | number, x: number, y: number, z: number, speed: number, driveMode: number, stopRange: number): void;
+  export function taskVehicleDriveToCoordLongrange(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, x: number, y: number, z: number, speed: number, driveMode: number, stopRange: number): void;
 
-  export function taskVehicleDriveWander(ped: Ped | Player | number, vehicle: Vehicle | number, speed: number, drivingStyle: number): void;
+  export function taskVehicleDriveWander(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, speed: number, drivingStyle: number): void;
 
   /**
    * p6 always -1
    * p7 always 10.0
    * p8 always 1
    */
-  export function taskFollowToOffsetOfEntity(ped: Ped | Player | number, entity: Entity | number, offsetX: number, offsetY: number, offsetZ: number, movementSpeed: number, timeout: number, stoppingRange: number, persistFollowing: boolean): void;
+  export function taskFollowToOffsetOfEntity(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, offsetX: number, offsetY: number, offsetZ: number, movementSpeed: number, timeout: number, stoppingRange: number, persistFollowing: boolean): void;
 
-  export function taskGoStraightToCoord(ped: Ped | Player | number, x: number, y: number, z: number, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
+  export function taskGoStraightToCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, speed: number, timeout: number, targetHeading: number, distanceToSlide: number): void;
 
-  export function taskGoStraightToCoordRelativeToEntity(ped: Ped | Player | number, entity: Entity | number, x: number, y: number, z: number, moveBlendRatio: number, time: number): void;
+  export function taskGoStraightToCoordRelativeToEntity(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, x: number, y: number, z: number, moveBlendRatio: number, time: number): void;
 
   /**
    * Makes the specified ped achieve the specified heading.
@@ -20925,7 +20925,7 @@ declare module "natives" {
    * heading: The desired heading.
    * timeout: The time, in milliseconds, to allow the task to complete. If the task times out, it is cancelled, and the ped will stay at the heading it managed to reach in the time.
    */
-  export function taskAchieveHeading(ped: Ped | Player | number, heading: number, timeout: number): void;
+  export function taskAchieveHeading(ped: Ped | Player | LocalPlayer | number, heading: number, timeout: number): void;
 
   /**
    * MulleKD19: Clears the current point route. Call this before TASK_EXTEND_ROUTE and TASK_FOLLOW_POINT_ROUTE.
@@ -20950,7 +20950,7 @@ declare module "natives" {
    * TASK_EXTEND_ROUTE(10f, 10f, 70f);
    * TASK_FOLLOW_POINT_ROUTE(GET_PLAYER_PED(), 1f, 0);
    */
-  export function taskFollowPointRoute(ped: Ped | Player | number, speed: number, mode: number): void;
+  export function taskFollowPointRoute(ped: Ped | Player | LocalPlayer | number, speed: number, mode: number): void;
 
   /**
    * The entity will move towards the target until time is over (duration) or get in target's range (distance). p5 and p6 are unknown, but you could leave p5 = 1073741824 or 100 or even 0 (didn't see any difference but on the decompiled scripts, they use 1073741824 mostly) and p6 = 0
@@ -20967,28 +20967,28 @@ declare module "natives" {
   /**
    * Makes the specified ped flee the specified distance from the specified position.
    */
-  export function taskSmartFleeCoord(ped: Ped | Player | number, x: number, y: number, z: number, distance: number, time: number, preferPavements: boolean, quitIfOutOfRange: boolean): void;
+  export function taskSmartFleeCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, distance: number, time: number, preferPavements: boolean, quitIfOutOfRange: boolean): void;
 
   /**
    * Makes a ped run away from another ped (fleeTarget).
    * distance = ped will flee this distance.
    * fleeTime = ped will flee for this amount of time, set to "-1" to flee forever
    */
-  export function taskSmartFleePed(ped: Ped | Player | number, fleeTarget: Ped | Player | number, safeDistance: number, fleeTime: number, preferPavements: boolean, updateToNearestHatedPed: boolean): void;
+  export function taskSmartFleePed(ped: Ped | Player | LocalPlayer | number, fleeTarget: Ped | Player | LocalPlayer | number, safeDistance: number, fleeTime: number, preferPavements: boolean, updateToNearestHatedPed: boolean): void;
 
-  export function taskReactAndFleePed(ped: Ped | Player | number, fleeTarget: Ped | Player | number): void;
+  export function taskReactAndFleePed(ped: Ped | Player | LocalPlayer | number, fleeTarget: Ped | Player | LocalPlayer | number): void;
 
-  export function taskShockingEventReact(ped: Ped | Player | number, eventHandle: number): void;
+  export function taskShockingEventReact(ped: Ped | Player | LocalPlayer | number, eventHandle: number): void;
 
-  export function taskWanderInArea(ped: Ped | Player | number, x: number, y: number, z: number, radius: number, minimalLength: number, timeBetweenWalks: number): void;
+  export function taskWanderInArea(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number, minimalLength: number, timeBetweenWalks: number): void;
 
   /**
    * Makes ped walk around the area.
    * set p1 to 10.0f and p2 to 10 if you want the ped to walk anywhere without a duration.
    */
-  export function taskWanderStandard(ped: Ped | Player | number, heading: number, flags: number): void;
+  export function taskWanderStandard(ped: Ped | Player | LocalPlayer | number, heading: number, flags: number): void;
 
-  export function taskWanderSpecific(ped: Ped | Player | number, conditionalAnimGroupStr: string, conditionalAnimStr: string, heading: number): void;
+  export function taskWanderSpecific(ped: Ped | Player | LocalPlayer | number, conditionalAnimGroupStr: string, conditionalAnimStr: string, heading: number): void;
 
   /**
    * Modes:
@@ -20998,38 +20998,38 @@ declare module "natives" {
    * Depending on the angle of approach, the vehicle can park at the specified heading or at its exact opposite (-180) angle.
    * Radius seems to define how close the vehicle has to be -after parking- to the position for this task considered completed. If the value is too small, the vehicle will try to park again until it's exactly where it should be. 20.0 Works well but lower values don't, like the radius is measured in centimeters or something.
    */
-  export function taskVehiclePark(ped: Ped | Player | number, vehicle: Vehicle | number, x: number, y: number, z: number, heading: number, mode: number, radius: number, keepEngineOn: boolean): void;
+  export function taskVehiclePark(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, x: number, y: number, z: number, heading: number, mode: number, radius: number, keepEngineOn: boolean): void;
 
   /**
    * known "killTypes" are: "AR_stealth_kill_knife" and "AR_stealth_kill_a".
    */
-  export function taskStealthKill(killer: Ped | Player | number, target: Ped | Player | number, stealthKillActionResultHash: number, desiredMoveBlendRatio: number, stealthFlags: number): void;
+  export function taskStealthKill(killer: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, stealthKillActionResultHash: number, desiredMoveBlendRatio: number, stealthFlags: number): void;
 
-  export function taskPlantBomb(ped: Ped | Player | number, x: number, y: number, z: number, heading: number): void;
+  export function taskPlantBomb(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, heading: number): void;
 
   /**
    * If no timeout, set timeout to -1.
    */
-  export function taskFollowNavMeshToCoord(ped: Ped | Player | number, x: number, y: number, z: number, moveBlendRatio: number, time: number, targetRadius: number, flags: number, targetHeading: number): void;
+  export function taskFollowNavMeshToCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, moveBlendRatio: number, time: number, targetRadius: number, flags: number, targetHeading: number): void;
 
-  export function taskFollowNavMeshToCoordAdvanced(ped: Ped | Player | number, x: number, y: number, z: number, moveBlendRatio: number, time: number, targetRadius: number, flags: number, slideToCoordHeading: number, maxSlopeNavigable: number, clampMaxSearchDistance: number, targetHeading: number): void;
+  export function taskFollowNavMeshToCoordAdvanced(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, moveBlendRatio: number, time: number, targetRadius: number, flags: number, slideToCoordHeading: number, maxSlopeNavigable: number, clampMaxSearchDistance: number, targetHeading: number): void;
 
-  export function setPedPathCanUseClimbovers(ped: Ped | Player | number, Toggle: boolean): void;
+  export function setPedPathCanUseClimbovers(ped: Ped | Player | LocalPlayer | number, Toggle: boolean): void;
 
-  export function setPedPathCanUseLadders(ped: Ped | Player | number, Toggle: boolean): void;
+  export function setPedPathCanUseLadders(ped: Ped | Player | LocalPlayer | number, Toggle: boolean): void;
 
-  export function setPedPathCanDropFromHeight(ped: Ped | Player | number, Toggle: boolean): void;
+  export function setPedPathCanDropFromHeight(ped: Ped | Player | LocalPlayer | number, Toggle: boolean): void;
 
   /**
    * Default modifier is 1.0, minimum is 0.0 and maximum is 10.0.
    */
-  export function setPedPathClimbCostModifier(ped: Ped | Player | number, modifier: number): void;
+  export function setPedPathClimbCostModifier(ped: Ped | Player | LocalPlayer | number, modifier: number): void;
 
-  export function setPedPathMayEnterWater(ped: Ped | Player | number, mayEnterWater: boolean): void;
+  export function setPedPathMayEnterWater(ped: Ped | Player | LocalPlayer | number, mayEnterWater: boolean): void;
 
-  export function setPedPathPreferToAvoidWater(ped: Ped | Player | number, avoidWater: boolean): void;
+  export function setPedPathPreferToAvoidWater(ped: Ped | Player | LocalPlayer | number, avoidWater: boolean): void;
 
-  export function setPedPathAvoidFire(ped: Ped | Player | number, avoidFire: boolean): void;
+  export function setPedPathAvoidFire(ped: Ped | Player | LocalPlayer | number, avoidFire: boolean): void;
 
   /**
    * Needs to be looped! And yes, it does work and is not a hash collision.
@@ -21045,24 +21045,24 @@ declare module "natives" {
    * 2 - ???
    * 3 - Finished Generating 
    */
-  export function getNavmeshRouteDistanceRemaining(ped: Ped | Player | number, distanceRemaining?: number, isPathReady?: boolean): [number, number, boolean];
+  export function getNavmeshRouteDistanceRemaining(ped: Ped | Player | LocalPlayer | number, distanceRemaining?: number, isPathReady?: boolean): [number, number, boolean];
 
   /**
    * See GET_NAVMESH_ROUTE_DISTANCE_REMAINING for more details.
    */
-  export function getNavmeshRouteResult(ped: Ped | Player | number): number;
+  export function getNavmeshRouteResult(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function isControlledVehicleUnableToGetToRoad(ped: Ped | Player | number): boolean;
+  export function isControlledVehicleUnableToGetToRoad(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * example from fm_mission_controller
    * TASK::TASK_GO_TO_COORD_ANY_MEANS(l_649, sub_f7e86(-1, 0), 1.0, 0, 0, 786603, 0xbf800000);
    */
-  export function taskGoToCoordAnyMeans(ped: Ped | Player | number, x: number, y: number, z: number, moveBlendRatio: number, vehicle: Vehicle | number, useLongRangeVehiclePathing: boolean, drivingFlags: number, maxRangeToShootTargets: number): void;
+  export function taskGoToCoordAnyMeans(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, moveBlendRatio: number, vehicle: Vehicle | number, useLongRangeVehiclePathing: boolean, drivingFlags: number, maxRangeToShootTargets: number): void;
 
-  export function taskGoToCoordAnyMeansExtraParams(ped: Ped | Player | number, x: number, y: number, z: number, moveBlendRatio: number, vehicle: Vehicle | number, useLongRangeVehiclePathing: boolean, drivingFlags: number, maxRangeToShootTargets: number, extraVehToTargetDistToPreferVehicle: number, driveStraightLineDistance: number, extraFlags: number, warpTimerMS: number): void;
+  export function taskGoToCoordAnyMeansExtraParams(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, moveBlendRatio: number, vehicle: Vehicle | number, useLongRangeVehiclePathing: boolean, drivingFlags: number, maxRangeToShootTargets: number, extraVehToTargetDistToPreferVehicle: number, driveStraightLineDistance: number, extraFlags: number, warpTimerMS: number): void;
 
-  export function taskGoToCoordAnyMeansExtraParamsWithCruiseSpeed(ped: Ped | Player | number, x: number, y: number, z: number, moveBlendRatio: number, vehicle: Vehicle | number, useLongRangeVehiclePathing: boolean, drivingFlags: number, maxRangeToShootTargets: number, extraVehToTargetDistToPreferVehicle: number, driveStraightLineDistance: number, extraFlags: number, cruiseSpeed: number, targetArriveDist: number): void;
+  export function taskGoToCoordAnyMeansExtraParamsWithCruiseSpeed(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, moveBlendRatio: number, vehicle: Vehicle | number, useLongRangeVehiclePathing: boolean, drivingFlags: number, maxRangeToShootTargets: number, extraVehToTargetDistToPreferVehicle: number, driveStraightLineDistance: number, extraFlags: number, cruiseSpeed: number, targetArriveDist: number): void;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
@@ -21112,13 +21112,13 @@ declare module "natives" {
    *     0 for single player 
    *     Can be 1 but only for MP 
    */
-  export function taskPlayAnim(ped: Ped | Player | number, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void;
+  export function taskPlayAnim(ped: Ped | Player | LocalPlayer | number, animDictionary: string, animationName: string, blendInSpeed: number, blendOutSpeed: number, duration: number, flag: number, playbackRate: number, lockX: boolean, lockY: boolean, lockZ: boolean): void;
 
   /**
    * It's similar to TASK_PLAY_ANIM, except the first 6 floats let you specify the initial position and rotation of the task. (Ped gets teleported to the position).
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function taskPlayAnimAdvanced(ped: Ped | Player | number, animDict: string, animName: string, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, animEnterSpeed: number, animExitSpeed: number, duration: number, flag: any, animTime: number, rotOrder: number, ikFlags: number): void;
+  export function taskPlayAnimAdvanced(ped: Ped | Player | LocalPlayer | number, animDict: string, animName: string, posX: number, posY: number, posZ: number, rotX: number, rotY: number, rotZ: number, animEnterSpeed: number, animExitSpeed: number, duration: number, flag: any, animTime: number, rotOrder: number, ikFlags: number): void;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
@@ -21161,7 +21161,7 @@ declare module "natives" {
    *           set_model_as_no_longer_needed(joaat("prop_ld_case_01"));
    *             remove_anim_dict("anim@heists@biolab@");
    */
-  export function taskScriptedAnimation(ped: Ped | Player | number, priorityLowData: number, priorityMidData: number, priorityHighData: number, blendInDelta: number, blendOutDelta: number): [void, number, number, number];
+  export function taskScriptedAnimation(ped: Ped | Player | LocalPlayer | number, priorityLowData: number, priorityMidData: number, priorityHighData: number, blendInDelta: number, blendOutDelta: number): [void, number, number, number];
 
   export function playEntityScriptedAnim(entity: Entity | number, priorityLowData: number, priorityMidData: number, priorityHighData: number, blendInDelta: number, blendOutDelta: number): [void, number, number, number];
 
@@ -21197,15 +21197,15 @@ declare module "natives" {
    * =========================================================
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function taskPlayPhoneGestureAnimation(ped: Ped | Player | number, animDict: string, animation: string, boneMaskType: string, blendInDuration: number, blendOutDuration: number, isLooping: boolean, holdLastFrame: boolean): void;
+  export function taskPlayPhoneGestureAnimation(ped: Ped | Player | LocalPlayer | number, animDict: string, animation: string, boneMaskType: string, blendInDuration: number, blendOutDuration: number, isLooping: boolean, holdLastFrame: boolean): void;
 
-  export function taskStopPhoneGestureAnimation(ped: Ped | Player | number, blendOutOverride: number): void;
+  export function taskStopPhoneGestureAnimation(ped: Ped | Player | LocalPlayer | number, blendOutOverride: number): void;
 
-  export function isPlayingPhoneGestureAnim(ped: Ped | Player | number): boolean;
+  export function isPlayingPhoneGestureAnim(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getPhoneGestureAnimCurrentTime(ped: Ped | Player | number): number;
+  export function getPhoneGestureAnimCurrentTime(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function getPhoneGestureAnimTotalTime(ped: Ped | Player | number): number;
+  export function getPhoneGestureAnimTotalTime(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Most probably plays a specific animation on vehicle. For example getting chop out of van etc...
@@ -21243,17 +21243,17 @@ declare module "natives" {
   /**
    * For flags, please refer to TASK_LOOK_AT_COORD.
    */
-  export function taskLookAtEntity(ped: Ped | Player | number, lookAt: Entity | number, duration: number, flags: number, priority: number): void;
+  export function taskLookAtEntity(ped: Ped | Player | LocalPlayer | number, lookAt: Entity | number, duration: number, flags: number, priority: number): void;
 
-  export function taskClearLookAt(ped: Ped | Player | number): void;
+  export function taskClearLookAt(ped: Ped | Player | LocalPlayer | number): void;
 
   export function openSequenceTask(taskSequenceId?: number): [void, number];
 
   export function closeSequenceTask(taskSequenceId: number): void;
 
-  export function taskPerformSequence(ped: Ped | Player | number, taskSequenceId: number): void;
+  export function taskPerformSequence(ped: Ped | Player | LocalPlayer | number, taskSequenceId: number): void;
 
-  export function taskPerformSequenceLocally(ped: Ped | Player | number, taskSequenceId: number): void;
+  export function taskPerformSequenceLocally(ped: Ped | Player | LocalPlayer | number, taskSequenceId: number): void;
 
   export function clearSequenceTask(taskSequenceId?: number): [void, number];
 
@@ -21264,18 +21264,18 @@ declare module "natives" {
    * 0 to 7 = task that's currently in progress, 0 meaning the first one.
    * -1 no task sequence in progress.
    */
-  export function getSequenceProgress(ped: Ped | Player | number): number;
+  export function getSequenceProgress(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Task index enum: https://alloc8or.re/gta5/doc/enums/eTaskTypeIndex.txt
    */
-  export function getIsTaskActive(ped: Ped | Player | number, taskIndex: number): boolean;
+  export function getIsTaskActive(ped: Ped | Player | LocalPlayer | number, taskIndex: number): boolean;
 
   /**
    * Gets the status of a script-assigned task.
    * taskHash: https://alloc8or.re/gta5/doc/enums/eScriptTaskHash.txt
    */
-  export function getScriptTaskStatus(ped: Ped | Player | number, taskHash: number): number;
+  export function getScriptTaskStatus(ped: Ped | Player | LocalPlayer | number, taskHash: number): number;
 
   /**
    * https://alloc8or.re/gta5/doc/enums/eVehicleMissionType.txt
@@ -21285,42 +21285,42 @@ declare module "natives" {
   /**
    * Flags are the same flags used in TASK_LEAVE_VEHICLE
    */
-  export function taskLeaveAnyVehicle(ped: Ped | Player | number, delayTime: number, flags: number): void;
+  export function taskLeaveAnyVehicle(ped: Ped | Player | LocalPlayer | number, delayTime: number, flags: number): void;
 
-  export function taskAimGunScripted(ped: Ped | Player | number, scriptTask: number, disableBlockingClip: boolean, instantBlendToAim: boolean): void;
+  export function taskAimGunScripted(ped: Ped | Player | LocalPlayer | number, scriptTask: number, disableBlockingClip: boolean, instantBlendToAim: boolean): void;
 
-  export function taskAimGunScriptedWithTarget(ped: Ped | Player | number, target: Ped | Player | number, x: number, y: number, z: number, gunTaskType: number, disableBlockingClip: boolean, forceAim: boolean): void;
+  export function taskAimGunScriptedWithTarget(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, gunTaskType: number, disableBlockingClip: boolean, forceAim: boolean): void;
 
-  export function updateTaskAimGunScriptedTarget(ped: Ped | Player | number, target: Ped | Player | number, x: number, y: number, z: number, disableBlockingClip: boolean): void;
+  export function updateTaskAimGunScriptedTarget(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, disableBlockingClip: boolean): void;
 
   export function getClipSetForScriptedGunTask(gunTaskType: number): string;
 
   /**
    * duration: the amount of time in milliseconds to do the task.  -1 will keep the task going until either another task is applied, or CLEAR_ALL_TASKS() is called with the ped
    */
-  export function taskAimGunAtEntity(ped: Ped | Player | number, entity: Entity | number, duration: number, instantBlendToAim: boolean): void;
+  export function taskAimGunAtEntity(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, duration: number, instantBlendToAim: boolean): void;
 
   /**
    * duration: the amount of time in milliseconds to do the task. -1 will keep the task going until either another task is applied, or CLEAR_ALL_TASKS() is called with the ped
    */
-  export function taskTurnPedToFaceEntity(ped: Ped | Player | number, entity: Entity | number, duration: number): void;
+  export function taskTurnPedToFaceEntity(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, duration: number): void;
 
-  export function taskAimGunAtCoord(ped: Ped | Player | number, x: number, y: number, z: number, time: number, instantBlendToAim: boolean, playAnimIntro: boolean): void;
+  export function taskAimGunAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, time: number, instantBlendToAim: boolean, playAnimIntro: boolean): void;
 
   /**
    * Firing Pattern Hash Information: https://pastebin.com/Px036isB
    */
-  export function taskShootAtCoord(ped: Ped | Player | number, x: number, y: number, z: number, duration: number, firingPattern: number): void;
+  export function taskShootAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, duration: number, firingPattern: number): void;
 
   /**
    * Makes the specified ped shuffle to the next vehicle seat.
    * The ped MUST be in a vehicle and the vehicle parameter MUST be the ped's current vehicle.
    */
-  export function taskShuffleToNextVehicleSeat(ped: Ped | Player | number, vehicle: Vehicle | number, useAlternateShuffle: boolean): void;
+  export function taskShuffleToNextVehicleSeat(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, useAlternateShuffle: boolean): void;
 
-  export function clearPedTasks(ped: Ped | Player | number): void;
+  export function clearPedTasks(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function clearPedSecondaryTask(ped: Ped | Player | number): void;
+  export function clearPedSecondaryTask(ped: Ped | Player | LocalPlayer | number): void;
 
   export function taskEveryoneLeaveVehicle(vehicle: Vehicle | number): void;
 
@@ -21331,14 +21331,14 @@ declare module "natives" {
    * 	ESEEK_KEEP_TO_PAVEMENTS = 0x02
    * };
    */
-  export function taskGotoEntityOffset(ped: Ped | Player | number, entity: Entity | number, time: number, seekRadius: number, seekAngleDeg: number, moveBlendRatio: number, gotoEntityOffsetFlags: number): void;
+  export function taskGotoEntityOffset(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, time: number, seekRadius: number, seekAngleDeg: number, moveBlendRatio: number, gotoEntityOffsetFlags: number): void;
 
-  export function taskGotoEntityOffsetXy(ped: Ped | Player | number, entity: Entity | number, duration: number, targetRadius: number, offsetX: number, offsetY: number, moveBlendRatio: number, gotoEntityOffsetFlags: number): void;
+  export function taskGotoEntityOffsetXy(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, duration: number, targetRadius: number, offsetX: number, offsetY: number, moveBlendRatio: number, gotoEntityOffsetFlags: number): void;
 
   /**
    * duration in milliseconds
    */
-  export function taskTurnPedToFaceCoord(ped: Ped | Player | number, x: number, y: number, z: number, duration: number): void;
+  export function taskTurnPedToFaceCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, duration: number): void;
 
   /**
    * '1 - brake
@@ -21372,22 +21372,22 @@ declare module "natives" {
    * Seems to be this:
    * Works on NPCs, but overrides their current task. If inside a task sequence (and not being the last task), "time" will work, otherwise the task will be performed forever until tasked with something else
    */
-  export function taskVehicleTempAction(driver: Ped | Player | number, vehicle: Vehicle | number, action: number, time: number): void;
+  export function taskVehicleTempAction(driver: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, action: number, time: number): void;
 
   /**
    * missionType: https://alloc8or.re/gta5/doc/enums/eVehicleMissionType.txt
    */
-  export function taskVehicleMission(driver: Ped | Player | number, vehicle: Vehicle | number, vehicleTarget: Vehicle | number, missionType: number, cruiseSpeed: number, drivingStyle: number, targetReached: number, straightLineDistance: number, DriveAgainstTraffic: boolean): void;
+  export function taskVehicleMission(driver: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, vehicleTarget: Vehicle | number, missionType: number, cruiseSpeed: number, drivingStyle: number, targetReached: number, straightLineDistance: number, DriveAgainstTraffic: boolean): void;
 
   /**
    * See TASK_VEHICLE_MISSION
    */
-  export function taskVehicleMissionPedTarget(ped: Ped | Player | number, vehicle: Vehicle | number, pedTarget: Ped | Player | number, missionType: number, maxSpeed: number, drivingStyle: number, minDistance: number, straightLineDistance: number, DriveAgainstTraffic: boolean): void;
+  export function taskVehicleMissionPedTarget(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, pedTarget: Ped | Player | LocalPlayer | number, missionType: number, maxSpeed: number, drivingStyle: number, minDistance: number, straightLineDistance: number, DriveAgainstTraffic: boolean): void;
 
   /**
    * See TASK_VEHICLE_MISSION
    */
-  export function taskVehicleMissionCoorsTarget(ped: Ped | Player | number, vehicle: Vehicle | number, x: number, y: number, z: number, mission: number, cruiseSpeed: number, drivingStyle: number, targetReached: number, straightLineDistance: number, DriveAgainstTraffic: boolean): void;
+  export function taskVehicleMissionCoorsTarget(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, x: number, y: number, z: number, mission: number, cruiseSpeed: number, drivingStyle: number, targetReached: number, straightLineDistance: number, DriveAgainstTraffic: boolean): void;
 
   /**
    * Makes a ped follow the targetVehicle with <minDistance> in between.
@@ -21402,20 +21402,20 @@ declare module "natives" {
    * if the target is closer than noRoadsDistance, the driver will ignore pathing/roads and follow you directly.
    * Driving Styles guide: gtaforums.com/topic/822314-guide-driving-styles/
    */
-  export function taskVehicleEscort(ped: Ped | Player | number, vehicle: Vehicle | number, targetVehicle: Vehicle | number, mode: number, speed: number, drivingStyle: number, minDistance: number, minHeightAboveTerrain: number, noRoadsDistance: number): void;
+  export function taskVehicleEscort(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, targetVehicle: Vehicle | number, mode: number, speed: number, drivingStyle: number, minDistance: number, minHeightAboveTerrain: number, noRoadsDistance: number): void;
 
   /**
    * Makes a ped in a vehicle follow an entity (ped, vehicle, etc.)
    * drivingStyle: http://gtaforums.com/topic/822314-guide-driving-styles/
    */
-  export function taskVehicleFollow(driver: Ped | Player | number, vehicle: Vehicle | number, targetEntity: Entity | number, speed: number, drivingStyle: number, minDistance: number): void;
+  export function taskVehicleFollow(driver: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, targetEntity: Entity | number, speed: number, drivingStyle: number, minDistance: number): void;
 
   /**
    * chases targetEnt fast and aggressively
    * --
    * Makes ped (needs to be in vehicle) chase targetEnt.
    */
-  export function taskVehicleChase(driver: Ped | Player | number, targetEnt: Entity | number): void;
+  export function taskVehicleChase(driver: Ped | Player | LocalPlayer | number, targetEnt: Entity | number): void;
 
   /**
    * pilot, vehicle and altitude are rather self-explanatory.
@@ -21426,7 +21426,7 @@ declare module "natives" {
    * NOT CONFIRMED:  p7 appears to be a FlyingStyle enum.  Still investigating it as of this writing, but playing around with values here appears to result in different -behavior- as opposed to offsetting coordinates, altitude, target speed, etc.
    * NOTE: If the pilot finds enemies, it will engage them until it kills them, but will return to protect the ped/vehicle given shortly thereafter.
    */
-  export function taskVehicleHeliProtect(pilot: Ped | Player | number, vehicle: Vehicle | number, entityToFollow: Entity | number, targetSpeed: number, drivingFlags: number, radius: number, altitude: number, heliFlags: number): void;
+  export function taskVehicleHeliProtect(pilot: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, entityToFollow: Entity | number, targetSpeed: number, drivingFlags: number, radius: number, altitude: number, heliFlags: number): void;
 
   /**
    * Flag 8: Medium-aggressive boxing tactic with a bit of PIT
@@ -21435,9 +21435,9 @@ declare module "natives" {
    * Flag 32: Stay back from suspect, no tactical contact. Convoy-like.
    * Flag 16: Ramming, seems to be slightly less aggressive than 1-2.
    */
-  export function setTaskVehicleChaseBehaviorFlag(ped: Ped | Player | number, flag: number, set: boolean): void;
+  export function setTaskVehicleChaseBehaviorFlag(ped: Ped | Player | LocalPlayer | number, flag: number, set: boolean): void;
 
-  export function setTaskVehicleChaseIdealPursuitDistance(ped: Ped | Player | number, distance: number): void;
+  export function setTaskVehicleChaseIdealPursuitDistance(ped: Ped | Player | LocalPlayer | number, distance: number): void;
 
   /**
    * Ped pilot should be in a heli.
@@ -21445,13 +21445,13 @@ declare module "natives" {
    * x,y,z appear to be how close to the EntityToFollow the heli should be. Scripts use 0.0, 0.0, 80.0. Then the heli tries to position itself 80 units above the EntityToFollow. If you reduce it to -5.0, it tries to go below (if the EntityToFollow is a heli or plane)
    * NOTE: If the pilot finds enemies, it will engage them, then remain there idle, not continuing to chase the Entity given.
    */
-  export function taskHeliChase(pilot: Ped | Player | number, entityToFollow: Entity | number, x: number, y: number, z: number): void;
+  export function taskHeliChase(pilot: Ped | Player | LocalPlayer | number, entityToFollow: Entity | number, x: number, y: number, z: number): void;
 
-  export function taskPlaneChase(pilot: Ped | Player | number, entityToFollow: Entity | number, x: number, y: number, z: number): void;
+  export function taskPlaneChase(pilot: Ped | Player | LocalPlayer | number, entityToFollow: Entity | number, x: number, y: number, z: number): void;
 
-  export function taskPlaneLand(pilot: Ped | Player | number, plane: Vehicle | number, runwayStartX: number, runwayStartY: number, runwayStartZ: number, runwayEndX: number, runwayEndY: number, runwayEndZ: number): void;
+  export function taskPlaneLand(pilot: Ped | Player | LocalPlayer | number, plane: Vehicle | number, runwayStartX: number, runwayStartY: number, runwayStartZ: number, runwayEndX: number, runwayEndY: number, runwayEndZ: number): void;
 
-  export function clearDefaultPrimaryTask(ped: Ped | Player | number): void;
+  export function clearDefaultPrimaryTask(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * This native is very useful when switching the player to a ped inside a vehicle that has a task assigned prior to the player switch.
@@ -21461,7 +21461,7 @@ declare module "natives" {
 
   export function clearVehicleCrashTask(vehicle: Vehicle | number): void;
 
-  export function taskPlaneGotoPreciseVtol(ped: Ped | Player | number, vehicle: Vehicle | number, x: number, y: number, z: number, flightHeight: number, minHeightAboveTerrain: number, useDesiredOrientation: boolean, desiredOrientation: number, autopilot: boolean): void;
+  export function taskPlaneGotoPreciseVtol(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, x: number, y: number, z: number, flightHeight: number, minHeightAboveTerrain: number, useDesiredOrientation: boolean, desiredOrientation: number, autopilot: boolean): void;
 
   /**
    * Used in am_vehicle_spawn.ysc and am_mp_submarine.ysc.
@@ -21469,7 +21469,7 @@ declare module "natives" {
    * p1 is the vehicle handle of the submarine. Submarine must have a driver, but the ped handle is not passed to the native.
    * Speed can be set by calling SET_DRIVE_TASK_CRUISE_SPEED after
    */
-  export function taskSubmarineGotoAndStop(ped: Ped | Player | number, submarine: Vehicle | number, x: number, y: number, z: number, autopilot: boolean): void;
+  export function taskSubmarineGotoAndStop(ped: Ped | Player | LocalPlayer | number, submarine: Vehicle | number, x: number, y: number, z: number, autopilot: boolean): void;
 
   /**
    * Must have targetVehicle, targetPed, OR destination X/Y/Z set
@@ -21508,9 +21508,9 @@ declare module "natives" {
    * Unk3 is a float value, you may see -1082130432 for this value in decompiled native scripts, this is the equivalent to -1.0f. Seems to affect acceleration/aggressiveness, but not sure exactly how it works. Higher value seems to result in lower acceleration/less aggressive flying. Almost always -1.0 in native scripts, occasionally 20.0 or 50.0. Setting to 400.0 seems to work well for making the pilot not overshoot the destination when using coordinate destination.
    * Notes updated by PNWParksFan, May 2021
    */
-  export function taskHeliMission(pilot: Ped | Player | number, aircraft: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Ped | Player | number, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, maxSpeed: number, radius: number, targetHeading: number, maxHeight: number, minHeight: number, slowDownDistance: number, behaviorFlags: number): void;
+  export function taskHeliMission(pilot: Ped | Player | LocalPlayer | number, aircraft: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Ped | Player | LocalPlayer | number, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, maxSpeed: number, radius: number, targetHeading: number, maxHeight: number, minHeight: number, slowDownDistance: number, behaviorFlags: number): void;
 
-  export function taskHeliEscortHeli(pilot: Ped | Player | number, heli1: Vehicle | number, heli2: Vehicle | number, offsetX: number, offsetY: number, offsetZ: number): void;
+  export function taskHeliEscortHeli(pilot: Ped | Player | LocalPlayer | number, heli1: Vehicle | number, heli2: Vehicle | number, offsetX: number, offsetY: number, offsetZ: number): void;
 
   /**
    * EXAMPLE USAGE:
@@ -21550,9 +21550,9 @@ declare module "natives" {
    * 16 = CTaskVehiclePoliceBehaviour
    * 17 = CTaskVehicleCrash
    */
-  export function taskPlaneMission(pilot: Ped | Player | number, aircraft: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Ped | Player | number, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, angularDrag: number, targetReached: number, targetHeading: number, maxZ: number, minZ: number, precise: boolean): void;
+  export function taskPlaneMission(pilot: Ped | Player | LocalPlayer | number, aircraft: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Ped | Player | LocalPlayer | number, destinationX: number, destinationY: number, destinationZ: number, missionFlag: number, angularDrag: number, targetReached: number, targetHeading: number, maxZ: number, minZ: number, precise: boolean): void;
 
-  export function taskPlaneTaxi(pilot: Ped | Player | number, aircraft: Vehicle | number, x: number, y: number, z: number, cruiseSpeed: number, targetReached: number): void;
+  export function taskPlaneTaxi(pilot: Ped | Player | LocalPlayer | number, aircraft: Vehicle | number, x: number, y: number, z: number, cruiseSpeed: number, targetReached: number): void;
 
   /**
    * You need to call PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS after TASK_BOAT_MISSION in order for the task to execute.
@@ -21562,7 +21562,7 @@ declare module "natives" {
    * PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(pedDriver, 1);
    * P8 appears to be driving style flag - see gtaforums.com/topic/822314-guide-driving-styles/ for documentation
    */
-  export function taskBoatMission(pedDriver: Ped | Player | number, vehicle: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Ped | Player | number, x: number, y: number, z: number, mission: number, maxSpeed: number, drivingStyle: number, targetReached: number, boatFlags: any): void;
+  export function taskBoatMission(pedDriver: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, targetVehicle: Vehicle | number, targetPed: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, mission: number, maxSpeed: number, drivingStyle: number, targetReached: number, boatFlags: any): void;
 
   /**
    * Example:
@@ -21572,29 +21572,29 @@ declare module "natives" {
    * I marked p6 as distanceToShoot as if you think of GTA's Logic with the native SET_VEHICLE_SHOOT natives, it won't shoot till it gets within a certain distance of the target.
    * I marked p7 as pedAccuracy as it seems it's mostly 100 (Completely Accurate), 75, 90, etc. Although this could be the ammo count within the gun, but I highly doubt it. I will change this comment once I find out if it's ammo count or not.
    */
-  export function taskDriveBy(driverPed: Ped | Player | number, targetPed: Ped | Player | number, targetVehicle: Vehicle | number, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, pushUnderneathDrivingTaskIfDriving: boolean, firingPattern: number): void;
+  export function taskDriveBy(driverPed: Ped | Player | LocalPlayer | number, targetPed: Ped | Player | LocalPlayer | number, targetVehicle: Vehicle | number, targetX: number, targetY: number, targetZ: number, distanceToShoot: number, pedAccuracy: number, pushUnderneathDrivingTaskIfDriving: boolean, firingPattern: number): void;
 
   /**
    * For p1 & p2 (Ped, Vehicle). I could be wrong, as the only time this native is called in scripts is once and both are 0, but I assume this native will work like SET_MOUNTED_WEAPON_TARGET in which has the same exact amount of parameters and the 1st and last 3 parameters are right and the same for both natives.
    */
-  export function setDrivebyTaskTarget(shootingPed: Ped | Player | number, targetPed: Ped | Player | number, targetVehicle: Vehicle | number, x: number, y: number, z: number): void;
+  export function setDrivebyTaskTarget(shootingPed: Ped | Player | LocalPlayer | number, targetPed: Ped | Player | LocalPlayer | number, targetVehicle: Vehicle | number, x: number, y: number, z: number): void;
 
-  export function clearDrivebyTaskUnderneathDrivingTask(ped: Ped | Player | number): void;
+  export function clearDrivebyTaskUnderneathDrivingTask(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function isDrivebyTaskUnderneathDrivingTask(ped: Ped | Player | number): boolean;
+  export function isDrivebyTaskUnderneathDrivingTask(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Forces the ped to use the mounted weapon.
    * Returns false if task is not possible.
    */
-  export function controlMountedWeapon(ped: Ped | Player | number): boolean;
+  export function controlMountedWeapon(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Note: Look in decompiled scripts and the times that p1 and p2 aren't 0. They are filled with vars. If you look through out that script what other natives those vars are used in, you can tell p1 is a ped and p2 is a vehicle. Which most likely means if you want the mounted weapon to target a ped set targetVehicle to 0 or vice-versa.
    */
-  export function setMountedWeaponTarget(shootingPed: Ped | Player | number, targetPed: Ped | Player | number, targetVehicle: Vehicle | number, x: number, y: number, z: number, taskMode: number, ignoreTargetVehDeadCheck: boolean): void;
+  export function setMountedWeaponTarget(shootingPed: Ped | Player | LocalPlayer | number, targetPed: Ped | Player | LocalPlayer | number, targetVehicle: Vehicle | number, x: number, y: number, z: number, taskMode: number, ignoreTargetVehDeadCheck: boolean): void;
 
-  export function isMountedWeaponTaskUnderneathDrivingTask(ped: Ped | Player | number): boolean;
+  export function isMountedWeaponTaskUnderneathDrivingTask(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Actually has 3 params, not 2.
@@ -21602,15 +21602,15 @@ declare module "natives" {
    * p1: int (or bool?)
    * p2: int
    */
-  export function taskUseMobilePhone(ped: Ped | Player | number, usePhone: boolean, desiredPhoneMode: number): void;
+  export function taskUseMobilePhone(ped: Ped | Player | LocalPlayer | number, usePhone: boolean, desiredPhoneMode: number): void;
 
-  export function taskUseMobilePhoneTimed(ped: Ped | Player | number, duration: number): void;
+  export function taskUseMobilePhoneTimed(ped: Ped | Player | LocalPlayer | number, duration: number): void;
 
   /**
    * p2 tend to be 16, 17 or 1
    * p3 to p7 tend to be 0.0
    */
-  export function taskChatToPed(ped: Ped | Player | number, target: Ped | Player | number, flags: number, goToLocationX: number, goToLocationY: number, goToLocationZ: number, headingDegs: number, idleTime: number): void;
+  export function taskChatToPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, flags: number, goToLocationX: number, goToLocationY: number, goToLocationZ: number, headingDegs: number, idleTime: number): void;
 
   /**
    * Seat Numbers
@@ -21622,7 +21622,7 @@ declare module "natives" {
    * Right-Rear = 2
    * Extra seats = 3-14(This may differ from vehicle type e.g. Firetruck Rear Stand, Ambulance Rear)
    */
-  export function taskWarpPedIntoVehicle(ped: Ped | Player | number, vehicle: Vehicle | number, seat: number): void;
+  export function taskWarpPedIntoVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, seat: number): void;
 
   /**
    * //this part of the code is to determine at which entity the player is aiming, for example if you want to create a mod where you give orders to peds
@@ -21640,24 +21640,24 @@ declare module "natives" {
    * Climbs or vaults the nearest thing.
    * usePlayerLaunchForce is unused.
    */
-  export function taskClimb(ped: Ped | Player | number, usePlayerLaunchForce: boolean): void;
+  export function taskClimb(ped: Ped | Player | LocalPlayer | number, usePlayerLaunchForce: boolean): void;
 
-  export function taskClimbLadder(ped: Ped | Player | number, fast: boolean): void;
+  export function taskClimbLadder(ped: Ped | Player | LocalPlayer | number, fast: boolean): void;
 
   /**
    * Attaches a ped to a rope and allows player control to rappel down a wall. Disables all collisions while on the rope.
    * p10: Usually 1 in the scripts, clipSet: Clipset to use for the task, minZ: Minimum Z that the player can descend to, ropeHandle: Rope to attach this task to created with ADD_ROPE
    */
-  export function taskRappelDownWallUsingClipsetOverride(ped: Ped | Player | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, minZ: number, ropeHandle: number, clipSet: string, p10: any, p11: any): void;
+  export function taskRappelDownWallUsingClipsetOverride(ped: Ped | Player | LocalPlayer | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, minZ: number, ropeHandle: number, clipSet: string, p10: any, p11: any): void;
 
-  export function getTaskRappelDownWallState(ped: Ped | Player | number): number;
+  export function getTaskRappelDownWallState(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Immediately stops the pedestrian from whatever it's doing. They stop fighting, animations, etc. they forget what they were doing.
    */
-  export function clearPedTasksImmediately(ped: Ped | Player | number): void;
+  export function clearPedTasksImmediately(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function taskPerformSequenceFromProgress(ped: Ped | Player | number, taskIndex: number, progress1: number, progress2: number): void;
+  export function taskPerformSequenceFromProgress(ped: Ped | Player | LocalPlayer | number, taskIndex: number, progress1: number, progress2: number): void;
 
   /**
    * This native does absolutely nothing, just a nullsub
@@ -21666,9 +21666,9 @@ declare module "natives" {
    */
   export function setNextDesiredMoveState(nextMoveState: number): void;
 
-  export function setPedDesiredMoveBlendRatio(ped: Ped | Player | number, newMoveBlendRatio: number): void;
+  export function setPedDesiredMoveBlendRatio(ped: Ped | Player | LocalPlayer | number, newMoveBlendRatio: number): void;
 
-  export function getPedDesiredMoveBlendRatio(ped: Ped | Player | number): number;
+  export function getPedDesiredMoveBlendRatio(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * eg
@@ -21678,20 +21678,20 @@ declare module "natives" {
    * distanceToStopAt = distance from the target, where the ped should stop to aim.
    * StartAimingDist = distance where the ped should start to aim.
    */
-  export function taskGotoEntityAiming(ped: Ped | Player | number, target: Entity | number, distanceToStopAt: number, StartAimingDist: number): void;
+  export function taskGotoEntityAiming(ped: Ped | Player | LocalPlayer | number, target: Entity | number, distanceToStopAt: number, StartAimingDist: number): void;
 
   /**
    * p1 is always GET_HASH_KEY("empty") in scripts, for the rare times this is used
    */
-  export function taskSetDecisionMaker(ped: Ped | Player | number, decisionMakerId: number): void;
+  export function taskSetDecisionMaker(ped: Ped | Player | LocalPlayer | number, decisionMakerId: number): void;
 
-  export function taskSetSphereDefensiveArea(ped: Ped | Player | number, x: number, y: number, z: number, radius: number): void;
+  export function taskSetSphereDefensiveArea(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number): void;
 
-  export function taskClearDefensiveArea(ped: Ped | Player | number): void;
+  export function taskClearDefensiveArea(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function taskPedSlideToCoord(ped: Ped | Player | number, x: number, y: number, z: number, heading: number, speed: number): void;
+  export function taskPedSlideToCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, heading: number, speed: number): void;
 
-  export function taskPedSlideToCoordHdgRate(ped: Ped | Player | number, x: number, y: number, z: number, heading: number, speed: number, headingChangeRate: number): void;
+  export function taskPedSlideToCoordHdgRate(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, heading: number, speed: number, headingChangeRate: number): void;
 
   export function addCoverPoint(x: number, y: number, z: number, direction: number, usage: number, height: number, arc: number, isPriority: boolean): number;
 
@@ -21711,18 +21711,18 @@ declare module "natives" {
    * p2 should be 0
    * p3 should be 16
    */
-  export function taskCombatPed(ped: Ped | Player | number, targetPed: Ped | Player | number, combatFlags: number, threatResponseFlags: number): void;
+  export function taskCombatPed(ped: Ped | Player | LocalPlayer | number, targetPed: Ped | Player | LocalPlayer | number, combatFlags: number, threatResponseFlags: number): void;
 
-  export function taskCombatPedTimed(ped: Ped | Player | number, target: Ped | Player | number, time: number, flags: number): void;
+  export function taskCombatPedTimed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, time: number, flags: number): void;
 
-  export function taskSeekCoverFromPos(ped: Ped | Player | number, x: number, y: number, z: number, duration: number, allowPeekingAndFiring: boolean): void;
+  export function taskSeekCoverFromPos(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, duration: number, allowPeekingAndFiring: boolean): void;
 
-  export function taskSeekCoverFromPed(ped: Ped | Player | number, target: Ped | Player | number, duration: number, allowPeekingAndFiring: boolean): void;
+  export function taskSeekCoverFromPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, duration: number, allowPeekingAndFiring: boolean): void;
 
   /**
    * p5 is always -1
    */
-  export function taskSeekCoverToCoverPoint(ped: Ped | Player | number, coverpoint: number, x: number, y: number, z: number, time: number, allowPeekingAndFiring: boolean): void;
+  export function taskSeekCoverToCoverPoint(ped: Ped | Player | LocalPlayer | number, coverpoint: number, x: number, y: number, z: number, time: number, allowPeekingAndFiring: boolean): void;
 
   /**
    * p8 causes the ped to take the shortest route to the cover position. It may have something to do with navmesh or pathfinding mechanics.
@@ -21732,47 +21732,47 @@ declare module "natives" {
    * from michael3:
    * TASK::TASK_SEEK_COVER_TO_COORDS(ped, -2231.011474609375, 263.6326599121094, 173.60195922851562, -1, 0);
    */
-  export function taskSeekCoverToCoords(ped: Ped | Player | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, timeout: number, shortRoute: boolean): void;
+  export function taskSeekCoverToCoords(ped: Ped | Player | LocalPlayer | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, timeout: number, shortRoute: boolean): void;
 
-  export function taskPutPedDirectlyIntoCover(ped: Ped | Player | number, x: number, y: number, z: number, time: number, allowPeekingAndFiring: boolean, blendInDuration: number, forceInitialFacingDirection: boolean, forceFaceLeft: boolean, identifier: number, doEntry: boolean): void;
+  export function taskPutPedDirectlyIntoCover(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, time: number, allowPeekingAndFiring: boolean, blendInDuration: number, forceInitialFacingDirection: boolean, forceFaceLeft: boolean, identifier: number, doEntry: boolean): void;
 
-  export function taskWarpPedDirectlyIntoCover(ped: Ped | Player | number, time: number, allowPeekingAndFiring: boolean, forceInitialFacingDirection: boolean, forceFaceLeft: boolean, identifier: number): void;
+  export function taskWarpPedDirectlyIntoCover(ped: Ped | Player | LocalPlayer | number, time: number, allowPeekingAndFiring: boolean, forceInitialFacingDirection: boolean, forceFaceLeft: boolean, identifier: number): void;
 
   /**
    * p1 is 1, 2, or 3 in scripts
    */
-  export function taskExitCover(ped: Ped | Player | number, exitType: number, x: number, y: number, z: number): void;
+  export function taskExitCover(ped: Ped | Player | LocalPlayer | number, exitType: number, x: number, y: number, z: number): void;
 
   /**
    * from armenian3.c4
    * TASK::TASK_PUT_PED_DIRECTLY_INTO_MELEE(PlayerPed, armenianPed, 0.0, -1.0, 0.0, 0);
    */
-  export function taskPutPedDirectlyIntoMelee(ped: Ped | Player | number, meleeTarget: Ped | Player | number, blendInDuration: number, timeInMelee: number, strafePhaseSync: number, aiCombatFlags: number): void;
+  export function taskPutPedDirectlyIntoMelee(ped: Ped | Player | LocalPlayer | number, meleeTarget: Ped | Player | LocalPlayer | number, blendInDuration: number, timeInMelee: number, strafePhaseSync: number, aiCombatFlags: number): void;
 
   /**
    * used in sequence task
    * both parameters seems to be always 0
    */
-  export function taskToggleDuck(ped: Ped | Player | number, toggleType: number): void;
+  export function taskToggleDuck(ped: Ped | Player | LocalPlayer | number, toggleType: number): void;
 
   /**
    * From re_prisonvanbreak:
    * TASK::TASK_GUARD_CURRENT_POSITION(l_DD, 35.0, 35.0, 1);
    */
-  export function taskGuardCurrentPosition(ped: Ped | Player | number, maxPatrolProximity: number, defensiveAreaRadius: number, setDefensiveArea: boolean): void;
+  export function taskGuardCurrentPosition(ped: Ped | Player | LocalPlayer | number, maxPatrolProximity: number, defensiveAreaRadius: number, setDefensiveArea: boolean): void;
 
-  export function taskGuardAssignedDefensiveArea(ped: Ped | Player | number, x: number, y: number, z: number, heading: number, maxPatrolProximity: number, timer: number): void;
+  export function taskGuardAssignedDefensiveArea(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, heading: number, maxPatrolProximity: number, timer: number): void;
 
-  export function taskGuardSphereDefensiveArea(ped: Ped | Player | number, defendPositionX: number, defendPositionY: number, defendPositionZ: number, heading: number, maxPatrolProximity: number, time: number, x: number, y: number, z: number, defensiveAreaRadius: number): void;
+  export function taskGuardSphereDefensiveArea(ped: Ped | Player | LocalPlayer | number, defendPositionX: number, defendPositionY: number, defendPositionZ: number, heading: number, maxPatrolProximity: number, time: number, x: number, y: number, z: number, defensiveAreaRadius: number): void;
 
   /**
    * scenarioName example: "WORLD_HUMAN_GUARD_STAND"
    */
-  export function taskStandGuard(ped: Ped | Player | number, x: number, y: number, z: number, heading: number, scenarioName: string): void;
+  export function taskStandGuard(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, heading: number, scenarioName: string): void;
 
-  export function setDriveTaskCruiseSpeed(driver: Ped | Player | number, cruiseSpeed: number): void;
+  export function setDriveTaskCruiseSpeed(driver: Ped | Player | LocalPlayer | number, cruiseSpeed: number): void;
 
-  export function setDriveTaskMaxCruiseSpeed(ped: Ped | Player | number, speed: number): void;
+  export function setDriveTaskMaxCruiseSpeed(ped: Ped | Player | LocalPlayer | number, speed: number): void;
 
   /**
    * This native is used to set the driving style for specific ped.
@@ -21782,7 +21782,7 @@ declare module "natives" {
    * 786469
    * http://gtaforums.com/topic/822314-guide-driving-styles/
    */
-  export function setDriveTaskDrivingStyle(ped: Ped | Player | number, drivingStyle: number): void;
+  export function setDriveTaskDrivingStyle(ped: Ped | Player | LocalPlayer | number, drivingStyle: number): void;
 
   export function addCoverBlockingArea(startX: number, startY: number, startZ: number, endX: number, endY: number, endZ: number, blockObjects: boolean, blockVehicles: boolean, blockMap: boolean, blockPlayer: boolean): void;
 
@@ -21829,7 +21829,7 @@ declare module "natives" {
    * WORLD_VEHICLE_TRUCK_LOGS
    * Full list of ped scenarios by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/scenariosCompact.json
    */
-  export function taskStartScenarioInPlace(ped: Ped | Player | number, scenarioName: string, unkDelay: number, playEnterAnim: boolean): void;
+  export function taskStartScenarioInPlace(ped: Ped | Player | LocalPlayer | number, scenarioName: string, unkDelay: number, playEnterAnim: boolean): void;
 
   /**
    * Full list of ped scenarios by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/scenariosCompact.json
@@ -21844,25 +21844,25 @@ declare module "natives" {
    * p7 used for sitting scenarios
    * p8 teleports ped to position
    */
-  export function taskStartScenarioAtPosition(ped: Ped | Player | number, scenarioName: string, x: number, y: number, z: number, heading: number, duration: number, sittingScenario: boolean, teleport: boolean): void;
+  export function taskStartScenarioAtPosition(ped: Ped | Player | LocalPlayer | number, scenarioName: string, x: number, y: number, z: number, heading: number, duration: number, sittingScenario: boolean, teleport: boolean): void;
 
   /**
    * Updated variables
    * An alternative to TASK::TASK_USE_NEAREST_SCENARIO_TO_COORD_WARP. Makes the ped walk to the scenario instead.
    */
-  export function taskUseNearestScenarioToCoord(ped: Ped | Player | number, x: number, y: number, z: number, distance: number, duration: number): void;
+  export function taskUseNearestScenarioToCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, distance: number, duration: number): void;
 
-  export function taskUseNearestScenarioToCoordWarp(ped: Ped | Player | number, x: number, y: number, z: number, radius: number, timeToLeave: number): void;
+  export function taskUseNearestScenarioToCoordWarp(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number, timeToLeave: number): void;
 
   /**
    * p5 is always 0 in scripts
    */
-  export function taskUseNearestScenarioChainToCoord(ped: Ped | Player | number, x: number, y: number, z: number, maxRange: number, timeToLeave: number): void;
+  export function taskUseNearestScenarioChainToCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, maxRange: number, timeToLeave: number): void;
 
   /**
    * p5 is always -1 or 0 in scripts
    */
-  export function taskUseNearestScenarioChainToCoordWarp(ped: Ped | Player | number, x: number, y: number, z: number, radius: number, timeToLeave: number): void;
+  export function taskUseNearestScenarioChainToCoordWarp(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number, timeToLeave: number): void;
 
   export function doesScenarioExistInArea(x: number, y: number, z: number, radius: number, mustBeFree: boolean): boolean;
 
@@ -21870,12 +21870,12 @@ declare module "natives" {
 
   export function isScenarioOccupied(x: number, y: number, z: number, maxRange: number, onlyUsersActuallyAtScenario: boolean): boolean;
 
-  export function pedHasUseScenarioTask(ped: Ped | Player | number): boolean;
+  export function pedHasUseScenarioTask(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function playAnimOnRunningScenario(ped: Ped | Player | number, animDict: string, animName: string): void;
+  export function playAnimOnRunningScenario(ped: Ped | Player | LocalPlayer | number, animDict: string, animName: string): void;
 
   /**
    * Full list of scenario groups used in scripts by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/scenarioGroupNames.json
@@ -22019,14 +22019,14 @@ declare module "natives" {
 
   export function resetScenarioTypesEnabled(): void;
 
-  export function isPedActiveInScenario(ped: Ped | Player | number): boolean;
+  export function isPedActiveInScenario(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Used only once (am_mp_property_int)
    * ped was PLAYER_PED_ID()
    * Related to CTaskAmbientClips.
    */
-  export function isPedPlayingBaseClipInScenario(ped: Ped | Player | number): boolean;
+  export function isPedPlayingBaseClipInScenario(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Appears only in fm_mission_controller and used only 3 times.
@@ -22034,20 +22034,20 @@ declare module "natives" {
    * p1 was always true
    * p2 was always true
    */
-  export function setPedCanPlayAmbientIdles(ped: Ped | Player | number, blockIdleClips: boolean, removeIdleClipIfPlaying: boolean): void;
+  export function setPedCanPlayAmbientIdles(ped: Ped | Player | LocalPlayer | number, blockIdleClips: boolean, removeIdleClipIfPlaying: boolean): void;
 
   /**
    * Despite its name, it only attacks ONE hated target. The one closest to the specified position.
    */
-  export function taskCombatHatedTargetsInArea(ped: Ped | Player | number, x: number, y: number, z: number, radius: number, combatFlags: number): void;
+  export function taskCombatHatedTargetsInArea(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, radius: number, combatFlags: number): void;
 
   /**
    * Despite its name, it only attacks ONE hated target. The one closest hated target.
    * p2 seems to be always 0
    */
-  export function taskCombatHatedTargetsAroundPed(ped: Ped | Player | number, radius: number, combatFlags: number): void;
+  export function taskCombatHatedTargetsAroundPed(ped: Ped | Player | LocalPlayer | number, radius: number, combatFlags: number): void;
 
-  export function taskCombatHatedTargetsAroundPedTimed(ped: Ped | Player | number, radius: number, time: number, combatFlags: number): void;
+  export function taskCombatHatedTargetsAroundPedTimed(ped: Ped | Player | LocalPlayer | number, radius: number, time: number, combatFlags: number): void;
 
   /**
    * In every case of this native, I've only seen the first parameter passed as 0, although I believe it's a Ped after seeing tasks around it using 0. That's because it's used in a Sequence Task.
@@ -22058,9 +22058,9 @@ declare module "natives" {
    * ----------------------------------------------------
    * The first comment is right it definately is the ped as if you look in script finale_heist2b.c line 59628 in Xbox Scripts atleast you will see task_throw_projectile and the first param is Local_559[2 <14>] if you look above it a little bit line 59622 give_weapon_to_ped uses the same exact param Local_559[2 <14>] and we all know the first param of that native is ped. So it guaranteed has to be ped. 0 just may mean to use your ped by default for some reason.
    */
-  export function taskThrowProjectile(ped: Ped | Player | number, x: number, y: number, z: number, ignoreCollisionEntityIndex: number, createInvincibleProjectile: boolean): void;
+  export function taskThrowProjectile(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, ignoreCollisionEntityIndex: number, createInvincibleProjectile: boolean): void;
 
-  export function taskSwapWeapon(ped: Ped | Player | number, drawWeapon: boolean): void;
+  export function taskSwapWeapon(ped: Ped | Player | LocalPlayer | number, drawWeapon: boolean): void;
 
   /**
    * The 2nd param (drawWeapon) is not implemented.
@@ -22070,22 +22070,22 @@ declare module "natives" {
    *                 TASK::TASK_RELOAD_WEAPON(PLAYER::PLAYER_PED_ID(), 1);
    *             }
    */
-  export function taskReloadWeapon(ped: Ped | Player | number, drawWeapon: boolean): void;
+  export function taskReloadWeapon(ped: Ped | Player | LocalPlayer | number, drawWeapon: boolean): void;
 
-  export function isPedGettingUp(ped: Ped | Player | number): boolean;
+  export function isPedGettingUp(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * EX: Function.Call(Ped1, Ped2, Time, 0);
    * The last parameter is always 0 for some reason I do not know. The first parameter is the pedestrian who will writhe to the pedestrian in the other parameter. The third paremeter is how long until the Writhe task ends. When the task ends, the ped will die. If set to -1, he will not die automatically, and the task will continue until something causes it to end. This can be being touched by an entity, being shot, explosion, going into ragdoll, having task cleared. Anything that ends the current task will kill the ped at this point.
    * Third parameter does not appear to be time. The last parameter is not implemented (It's not used, regardless of value).
    */
-  export function taskWrithe(ped: Ped | Player | number, target: Ped | Player | number, minFireLoops: number, startState: number, forceShootOnGround: boolean, shootFromGroundTimer: number): void;
+  export function taskWrithe(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, minFireLoops: number, startState: number, forceShootOnGround: boolean, shootFromGroundTimer: number): void;
 
   /**
    * This native checks if a ped is on the ground, in pain from a (gunshot) wound.
    * Returns `true` if the ped is in writhe, `false` otherwise.
    */
-  export function isPedInWrithe(ped: Ped | Player | number): boolean;
+  export function isPedInWrithe(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    *  patrolRoutes found in the b617d scripts:
@@ -22141,7 +22141,7 @@ declare module "natives" {
    */
   export function deletePatrolRoute(patrolRoute: string): void;
 
-  export function getPatrolTaskInfo(ped: Ped | Player | number, timeLeftAtNode?: number, nodeId?: number): [boolean, number, number];
+  export function getPatrolTaskInfo(ped: Ped | Player | LocalPlayer | number, timeLeftAtNode?: number, nodeId?: number): [boolean, number, number];
 
   /**
    * After looking at some scripts the second parameter seems to be an id of some kind. Here are some I found from some R* scripts:
@@ -22161,27 +22161,27 @@ declare module "natives" {
    *     TASK::CLOSE_PATROL_ROUTE();
    *     TASK::CREATE_PATROL_ROUTE();
    */
-  export function taskPatrol(ped: Ped | Player | number, patrolRouteName: string, alertState: number, canChatToPeds: boolean, useHeadLookAt: boolean): void;
+  export function taskPatrol(ped: Ped | Player | LocalPlayer | number, patrolRouteName: string, alertState: number, canChatToPeds: boolean, useHeadLookAt: boolean): void;
 
   /**
    * Makes the ped run to take cover
    */
-  export function taskStayInCover(ped: Ped | Player | number): void;
+  export function taskStayInCover(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * x, y, z: offset in world coords from some entity.
    */
-  export function addVehicleSubtaskAttackCoord(ped: Ped | Player | number, x: number, y: number, z: number): void;
+  export function addVehicleSubtaskAttackCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number): void;
 
-  export function addVehicleSubtaskAttackPed(ped: Ped | Player | number, target: Ped | Player | number): void;
+  export function addVehicleSubtaskAttackPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number): void;
 
-  export function taskVehicleShootAtPed(ped: Ped | Player | number, target: Ped | Player | number, fireTolerance: number): void;
+  export function taskVehicleShootAtPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, fireTolerance: number): void;
 
-  export function taskVehicleAimAtPed(ped: Ped | Player | number, target: Ped | Player | number): void;
+  export function taskVehicleAimAtPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number): void;
 
-  export function taskVehicleShootAtCoord(ped: Ped | Player | number, x: number, y: number, z: number, fireTolerance: number): void;
+  export function taskVehicleShootAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, fireTolerance: number): void;
 
-  export function taskVehicleAimAtCoord(ped: Ped | Player | number, x: number, y: number, z: number): void;
+  export function taskVehicleAimAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number): void;
 
   /**
    * Differs from TASK_VEHICLE_DRIVE_TO_COORDS in that it will pick the shortest possible road route without taking one-way streets and other "road laws" into consideration.
@@ -22195,7 +22195,7 @@ declare module "natives" {
    * If using this to continually follow a Ped who is on foot:  You will need to run this in a tick loop.  Call it in with the Ped's updated coordinates every 20 ticks or so and you will have one hell of a smart, fast-reacting NPC driver -- provided he doesn't get stuck.  If your update frequency is too fast, the Ped may not have enough time to figure his way out of being stuck, and thus, remain stuck.  One way around this would be to implement an "anti-stuck" mechanism, which allows the driver to realize he's stuck, temporarily pause the tick, unstuck, then resume the tick.
    * EDIT:  This is being discussed in more detail at http://gtaforums.com/topic/818504-any-idea-on-how-to-make-peds-clever-and-insanely-fast-c/  
    */
-  export function taskVehicleGotoNavmesh(ped: Ped | Player | number, vehicle: Vehicle | number, x: number, y: number, z: number, speed: number, behaviorFlag: number, stoppingRange: number): void;
+  export function taskVehicleGotoNavmesh(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, x: number, y: number, z: number, speed: number, behaviorFlag: number, stoppingRange: number): void;
 
   /**
    * movement_speed: mostly 2f, but also 1/1.2f, etc.
@@ -22207,9 +22207,9 @@ declare module "natives" {
    * p13: 0
    * firing_pattern: ${firing_pattern_full_auto}, 0xC6EE6B4C
    */
-  export function taskGoToCoordWhileAimingAtCoord(ped: Ped | Player | number, x: number, y: number, z: number, aimAtX: number, aimAtY: number, aimAtZ: number, moveBlendRatio: number, shoot: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, navFlags: number, instantBlendToAim: boolean, firingPattern: number): void;
+  export function taskGoToCoordWhileAimingAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, aimAtX: number, aimAtY: number, aimAtZ: number, moveBlendRatio: number, shoot: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, navFlags: number, instantBlendToAim: boolean, firingPattern: number): void;
 
-  export function taskGoToCoordWhileAimingAtEntity(ped: Ped | Player | number, x: number, y: number, z: number, aimAtID: Entity | number, moveBlendRatio: number, shoot: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, navFlags: number, instantBlendToAim: boolean, firingPattern: number, time: number): void;
+  export function taskGoToCoordWhileAimingAtEntity(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, aimAtID: Entity | number, moveBlendRatio: number, shoot: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, navFlags: number, instantBlendToAim: boolean, firingPattern: number, time: number): void;
 
   /**
    * The ped will walk or run towards goToLocation, aiming towards goToLocation or focusLocation (depending on the aimingFlag) and shooting if shootAtEnemies = true to any enemy in his path.
@@ -22236,21 +22236,21 @@ declare module "natives" {
    * 1st example: The ped (pedhandle) will run towards goToLocation1. While running and aiming towards goToLocation1, the ped will shoot on sight to any enemy in his path, using "FullAuto" firing pattern. The ped will stop once he is closer than distanceToStopAt to goToLocation1.
    * 2nd example: The ped will walk towards goToLocation2. This time, while walking towards goToLocation2 and aiming at focusLocation, the ped will point his weapon on sight to any enemy in his path without shooting. The ped will stop once he is closer than distanceToStopAt to goToLocation2.
    */
-  export function taskGoToCoordAndAimAtHatedEntitiesNearCoord(pedHandle: Ped | Player | number, goToLocationX: number, goToLocationY: number, goToLocationZ: number, focusLocationX: number, focusLocationY: number, focusLocationZ: number, speed: number, shootAtEnemies: boolean, distanceToStopAt: number, noRoadsDistance: number, useNavMesh: boolean, navFlags: number, taskFlags: number, firingPattern: number): void;
+  export function taskGoToCoordAndAimAtHatedEntitiesNearCoord(pedHandle: Ped | Player | LocalPlayer | number, goToLocationX: number, goToLocationY: number, goToLocationZ: number, focusLocationX: number, focusLocationY: number, focusLocationZ: number, speed: number, shootAtEnemies: boolean, distanceToStopAt: number, noRoadsDistance: number, useNavMesh: boolean, navFlags: number, taskFlags: number, firingPattern: number): void;
 
-  export function taskGoToEntityWhileAimingAtCoord(ped: Ped | Player | number, entity: Entity | number, aimX: number, aimY: number, aimZ: number, moveBlendRatio: number, shoot: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, instantBlendToAim: boolean, firingPattern: number): void;
+  export function taskGoToEntityWhileAimingAtCoord(ped: Ped | Player | LocalPlayer | number, entity: Entity | number, aimX: number, aimY: number, aimZ: number, moveBlendRatio: number, shoot: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, instantBlendToAim: boolean, firingPattern: number): void;
 
   /**
    * shootatEntity:
    * If true, peds will shoot at Entity till it is dead.
    * If false, peds will just walk till they reach the entity and will cease shooting.
    */
-  export function taskGoToEntityWhileAimingAtEntity(ped: Ped | Player | number, entityToWalkTo: Entity | number, entityToAimAt: Entity | number, speed: number, shootatEntity: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, instantBlendToAim: boolean, firingPattern: number): void;
+  export function taskGoToEntityWhileAimingAtEntity(ped: Ped | Player | LocalPlayer | number, entityToWalkTo: Entity | number, entityToAimAt: Entity | number, speed: number, shootatEntity: boolean, targetRadius: number, slowDistance: number, useNavMesh: boolean, instantBlendToAim: boolean, firingPattern: number): void;
 
   /**
    * Makes the ped ragdoll like when falling from a great height
    */
-  export function setHighFallTask(ped: Ped | Player | number, minTime: number, maxTime: number, entryType: number): void;
+  export function setHighFallTask(ped: Ped | Player | LocalPlayer | number, minTime: number, maxTime: number, entryType: number): void;
 
   /**
    * Full list of waypoint recordings by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/waypointRecordings.json
@@ -22292,15 +22292,15 @@ declare module "natives" {
    */
   export function waypointRecordingGetClosestWaypoint(name: string, x: number, y: number, z: number, point?: number): [boolean, number];
 
-  export function taskFollowWaypointRecording(ped: Ped | Player | number, name: string, p2: number, p3: number, p4: number): void;
+  export function taskFollowWaypointRecording(ped: Ped | Player | LocalPlayer | number, name: string, p2: number, p3: number, p4: number): void;
 
-  export function isWaypointPlaybackGoingOnForPed(ped: Ped | Player | number): boolean;
+  export function isWaypointPlaybackGoingOnForPed(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getPedWaypointProgress(ped: Ped | Player | number): number;
+  export function getPedWaypointProgress(ped: Ped | Player | LocalPlayer | number): number;
 
   export function getPedWaypointDistance(p0: any): number;
 
-  export function setPedWaypointRouteOffset(ped: Ped | Player | number, x: number, y: number, z: number): boolean;
+  export function setPedWaypointRouteOffset(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number): boolean;
 
   export function getWaypointDistanceAlongRoute(name: string, point: number): number;
 
@@ -22316,15 +22316,15 @@ declare module "natives" {
 
   export function useWaypointRecordingAsAssistedMovementRoute(name: string, p1: boolean, p2: number, p3: number): void;
 
-  export function waypointPlaybackStartAimingAtPed(ped: Ped | Player | number, target: Ped | Player | number, p2: boolean): void;
+  export function waypointPlaybackStartAimingAtPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, p2: boolean): void;
 
-  export function waypointPlaybackStartAimingAtCoord(ped: Ped | Player | number, x: number, y: number, z: number, p4: boolean): void;
+  export function waypointPlaybackStartAimingAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, p4: boolean): void;
 
-  export function waypointPlaybackStartShootingAtPed(ped: Ped | Player | number, ped2: Ped | Player | number, p2: boolean, p3: boolean): void;
+  export function waypointPlaybackStartShootingAtPed(ped: Ped | Player | LocalPlayer | number, ped2: Ped | Player | LocalPlayer | number, p2: boolean, p3: boolean): void;
 
-  export function waypointPlaybackStartShootingAtCoord(ped: Ped | Player | number, x: number, y: number, z: number, p4: boolean, firingPattern: number): void;
+  export function waypointPlaybackStartShootingAtCoord(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, p4: boolean, firingPattern: number): void;
 
-  export function waypointPlaybackStopAimingOrShooting(ped: Ped | Player | number): void;
+  export function waypointPlaybackStopAimingOrShooting(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Routes: "1_FIBStairs", "2_FIBStairs", "3_FIBStairs", "4_FIBStairs", "5_FIBStairs", "5_TowardsFire", "6a_FIBStairs", "7_FIBStairs", "8_FIBStairs", "Aprtmnt_1", "AssAfterLift", "ATM_1", "coroner2", "coroner_stairs", "f5_jimmy1", "fame1", "family5b", "family5c", "Family5d", "family5d", "FIB_Glass1", "FIB_Glass2", "FIB_Glass3", "finaBroute1A", "finalb1st", "finalB1sta", "finalbround", "finalbroute2", "Hairdresser1", "jan_foyet_ft_door", "Jo_3", "Lemar1", "Lemar2", "mansion_1", "Mansion_1", "pols_1", "pols_2", "pols_3", "pols_4", "pols_5", "pols_6", "pols_7", "pols_8", "Pro_S1", "Pro_S1a", "Pro_S2", "Towards_case", "trev_steps", "tunrs1", "tunrs2", "tunrs3", "Wave01457s"
@@ -22350,7 +22350,7 @@ declare module "natives" {
    * p11 = 1073741824
    * Full list of waypoint recordings by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/waypointRecordings.json
    */
-  export function taskVehicleFollowWaypointRecording(ped: Ped | Player | number, vehicle: Vehicle | number, WPRecording: string, p3: number, p4: number, p5: number, p6: number, p7: number, p8: boolean, p9: number): void;
+  export function taskVehicleFollowWaypointRecording(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, WPRecording: string, p3: number, p4: number, p5: number, p6: number, p7: number, p8: boolean, p9: number): void;
 
   export function isWaypointPlaybackGoingOnForVehicle(vehicle: Vehicle | number): boolean;
 
@@ -22371,104 +22371,104 @@ declare module "natives" {
    * It makes the ped ignore basically all shocking events around it. Occasionally the ped may comment or gesture, but other than that they just continue their daily activities. This includes shooting and wounding the ped. And - most importantly - they do not flee.
    * Since it is a task, every time the native is called the ped will stop for a moment. 
    */
-  export function taskSetBlockingOfNonTemporaryEvents(ped: Ped | Player | number, toggle: boolean): void;
+  export function taskSetBlockingOfNonTemporaryEvents(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * p2 always false
    * [30/03/2017] ins1de :
    * See FORCE_PED_MOTION_STATE
    */
-  export function taskForceMotionState(ped: Ped | Player | number, state: number, forceRestart: boolean): void;
+  export function taskForceMotionState(ped: Ped | Player | LocalPlayer | number, state: number, forceRestart: boolean): void;
 
   /**
    * Example:
    * TASK::TASK_MOVE_NETWORK_BY_NAME(PLAYER::PLAYER_PED_ID(), "arm_wrestling_sweep_paired_a_rev3", 0.0f, true, "mini@arm_wrestling", 0);
    */
-  export function taskMoveNetworkByName(ped: Ped | Player | number, task: string, multiplier: number, allowOverrideCloneUpdate: boolean, animDict: string, flags: number): void;
+  export function taskMoveNetworkByName(ped: Ped | Player | LocalPlayer | number, task: string, multiplier: number, allowOverrideCloneUpdate: boolean, animDict: string, flags: number): void;
 
   /**
    * Example:
    * TASK::TASK_MOVE_NETWORK_ADVANCED_BY_NAME(PLAYER::PLAYER_PED_ID(), "minigame_tattoo_michael_parts", 324.13f, 181.29f, 102.6f, 0.0f, 0.0f, 22.32f, 2, 0, false, 0, 0);
    */
-  export function taskMoveNetworkAdvancedByName(ped: Ped | Player | number, network: string, x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number, rotOrder: number, blendDuration: number, allowOverrideCloneUpdate: boolean, animDict: string, flags: number): void;
+  export function taskMoveNetworkAdvancedByName(ped: Ped | Player | LocalPlayer | number, network: string, x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number, rotOrder: number, blendDuration: number, allowOverrideCloneUpdate: boolean, animDict: string, flags: number): void;
 
   /**
    * Used only once in the scripts (am_mp_nightclub)
    */
-  export function taskMoveNetworkByNameWithInitParams(ped: Ped | Player | number, network: string, initialParameters: number, blendDuration: number, allowOverrideCloneUpdate: boolean, animDict: string, flags: number): [void, number];
+  export function taskMoveNetworkByNameWithInitParams(ped: Ped | Player | LocalPlayer | number, network: string, initialParameters: number, blendDuration: number, allowOverrideCloneUpdate: boolean, animDict: string, flags: number): [void, number];
 
-  export function taskMoveNetworkAdvancedByNameWithInitParams(ped: Ped | Player | number, network: string, initialParameters: number, x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number, rotOrder: number, blendDuration: number, allowOverrideCloneUpdate: boolean, dictionary: string, flags: number): [void, number];
+  export function taskMoveNetworkAdvancedByNameWithInitParams(ped: Ped | Player | LocalPlayer | number, network: string, initialParameters: number, x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number, rotOrder: number, blendDuration: number, allowOverrideCloneUpdate: boolean, dictionary: string, flags: number): [void, number];
 
-  export function isTaskMoveNetworkActive(ped: Ped | Player | number): boolean;
+  export function isTaskMoveNetworkActive(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isTaskMoveNetworkReadyForTransition(ped: Ped | Player | number): boolean;
+  export function isTaskMoveNetworkReadyForTransition(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function requestTaskMoveNetworkStateTransition(ped: Ped | Player | number, name: string): boolean;
+  export function requestTaskMoveNetworkStateTransition(ped: Ped | Player | LocalPlayer | number, name: string): boolean;
 
   /**
    * Used only once in the scripts (fm_mission_controller) like so:
    * TASK::SET_EXPECTED_CLONE_NEXT_TASK_MOVE_NETWORK_STATE(iLocal_3160, "Cutting");
    */
-  export function setExpectedCloneNextTaskMoveNetworkState(ped: Ped | Player | number, state: string): boolean;
+  export function setExpectedCloneNextTaskMoveNetworkState(ped: Ped | Player | LocalPlayer | number, state: string): boolean;
 
-  export function getTaskMoveNetworkState(ped: Ped | Player | number): string;
+  export function getTaskMoveNetworkState(ped: Ped | Player | LocalPlayer | number): string;
 
-  export function setTaskMoveNetworkAnimSet(ped: Ped | Player | number, clipSet: number, variableClipSet: number): void;
+  export function setTaskMoveNetworkAnimSet(ped: Ped | Player | LocalPlayer | number, clipSet: number, variableClipSet: number): void;
 
   /**
    * signalName - "Phase", "Wobble", "x_axis","y_axis","introphase","speed".
    * p2 - From what i can see it goes up to 1f (maybe).
    * Example: TASK::SET_TASK_MOVE_NETWORK_SIGNAL_FLOAT(PLAYER::PLAYER_PED_ID(), "Phase", 0.5);
    */
-  export function setTaskMoveNetworkSignalFloat(ped: Ped | Player | number, signalName: string, value: number): void;
+  export function setTaskMoveNetworkSignalFloat(ped: Ped | Player | LocalPlayer | number, signalName: string, value: number): void;
 
-  export function setTaskMoveNetworkSignalLocalFloat(ped: Ped | Player | number, signalName: string, value: number): void;
+  export function setTaskMoveNetworkSignalLocalFloat(ped: Ped | Player | LocalPlayer | number, signalName: string, value: number): void;
 
-  export function setTaskMoveNetworkSignalFloatLerpRate(ped: Ped | Player | number, signalName: string, value: number): void;
+  export function setTaskMoveNetworkSignalFloatLerpRate(ped: Ped | Player | LocalPlayer | number, signalName: string, value: number): void;
 
-  export function setTaskMoveNetworkSignalBool(ped: Ped | Player | number, signalName: string, value: boolean): void;
+  export function setTaskMoveNetworkSignalBool(ped: Ped | Player | LocalPlayer | number, signalName: string, value: boolean): void;
 
-  export function getTaskMoveNetworkSignalFloat(ped: Ped | Player | number, signalName: string): number;
+  export function getTaskMoveNetworkSignalFloat(ped: Ped | Player | LocalPlayer | number, signalName: string): number;
 
-  export function getTaskMoveNetworkSignalBool(ped: Ped | Player | number, signalName: string): boolean;
+  export function getTaskMoveNetworkSignalBool(ped: Ped | Player | LocalPlayer | number, signalName: string): boolean;
 
-  export function getTaskMoveNetworkEvent(ped: Ped | Player | number, eventName: string): boolean;
+  export function getTaskMoveNetworkEvent(ped: Ped | Player | LocalPlayer | number, eventName: string): boolean;
 
   /**
    * Doesn't actually return anything.
    */
-  export function setTaskMoveNetworkEnableCollisionOnNetworkCloneWhenFixed(ped: Ped | Player | number, enable: boolean): boolean;
+  export function setTaskMoveNetworkEnableCollisionOnNetworkCloneWhenFixed(ped: Ped | Player | LocalPlayer | number, enable: boolean): boolean;
 
-  export function setScriptTaskEnableCollisionOnNetworkCloneWhenFixed(ped: Ped | Player | number, enable: boolean): void;
+  export function setScriptTaskEnableCollisionOnNetworkCloneWhenFixed(ped: Ped | Player | LocalPlayer | number, enable: boolean): void;
 
-  export function isMoveBlendRatioStill(ped: Ped | Player | number): boolean;
+  export function isMoveBlendRatioStill(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isMoveBlendRatioWalking(ped: Ped | Player | number): boolean;
+  export function isMoveBlendRatioWalking(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isMoveBlendRatioRunning(ped: Ped | Player | number): boolean;
+  export function isMoveBlendRatioRunning(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isMoveBlendRatioSprinting(ped: Ped | Player | number): boolean;
+  export function isMoveBlendRatioSprinting(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedStill(ped: Ped | Player | number): boolean;
+  export function isPedStill(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedWalking(ped: Ped | Player | number): boolean;
+  export function isPedWalking(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedRunning(ped: Ped | Player | number): boolean;
+  export function isPedRunning(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isPedSprinting(ped: Ped | Player | number): boolean;
+  export function isPedSprinting(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * What's strafing?
    */
-  export function isPedStrafing(ped: Ped | Player | number): boolean;
+  export function isPedStrafing(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    *  TASK::TASK_SYNCHRONIZED_SCENE(ped, scene, "creatures@rottweiler@in_vehicle@std_car", "get_in", 1000.0, -8.0, 4, 0, 0x447a0000, 0);
    * Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
    */
-  export function taskSynchronizedScene(ped: Ped | Player | number, scene: number, animDictionary: string, animationName: string, blendIn: number, blendOut: number, flags: number, ragdollBlockingFlags: number, moverBlendDelta: number, ikFlags: number): void;
+  export function taskSynchronizedScene(ped: Ped | Player | LocalPlayer | number, scene: number, animDictionary: string, animationName: string, blendIn: number, blendOut: number, flags: number, ragdollBlockingFlags: number, moverBlendDelta: number, ikFlags: number): void;
 
-  export function taskAgitatedActionConfrontResponse(ped: Ped | Player | number, ped2: Ped | Player | number): void;
+  export function taskAgitatedActionConfrontResponse(ped: Ped | Player | LocalPlayer | number, ped2: Ped | Player | LocalPlayer | number): void;
 
   /**
    * This function is called on peds in vehicles.
@@ -22476,13 +22476,13 @@ declare module "natives" {
    * p2, p3, p4: "sweep_low", "sweep_med" or "sweep_high"
    * p5: no idea what it does but is usually -1
    */
-  export function taskSweepAimEntity(ped: Ped | Player | number, animDict: string, lowAnimName: string, medAnimName: string, hiAnimName: string, runtime: number, targetEntity: Entity | number, turnRate: number, blendInDuration: number): void;
+  export function taskSweepAimEntity(ped: Ped | Player | LocalPlayer | number, animDict: string, lowAnimName: string, medAnimName: string, hiAnimName: string, runtime: number, targetEntity: Entity | number, turnRate: number, blendInDuration: number): void;
 
-  export function updateTaskSweepAimEntity(ped: Ped | Player | number, entity: Entity | number): void;
+  export function updateTaskSweepAimEntity(ped: Ped | Player | LocalPlayer | number, entity: Entity | number): void;
 
-  export function taskSweepAimPosition(ped: Ped | Player | number, animDict: string, lowAnimName: string, medAnimName: string, hiAnimName: string, runtime: number, x: number, y: number, z: number, turnRate: number, blendInDuration: number): void;
+  export function taskSweepAimPosition(ped: Ped | Player | LocalPlayer | number, animDict: string, lowAnimName: string, medAnimName: string, hiAnimName: string, runtime: number, x: number, y: number, z: number, turnRate: number, blendInDuration: number): void;
 
-  export function updateTaskSweepAimPosition(ped: Ped | Player | number, x: number, y: number, z: number): void;
+  export function updateTaskSweepAimPosition(ped: Ped | Player | LocalPlayer | number, x: number, y: number, z: number): void;
 
   /**
    * Example from "me_amanda1.ysc.c4":
@@ -22494,18 +22494,18 @@ declare module "natives" {
    * I would love to have time to experiment to see if a player Ped can arrest another Ped. Might make for a good cop mod.
    * Looks like only the player can be arrested this way. Peds react and try to arrest you if you task them, but the player charater doesn't do anything if tasked to arrest another ped.
    */
-  export function taskArrestPed(ped: Ped | Player | number, target: Ped | Player | number): void;
+  export function taskArrestPed(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number): void;
 
-  export function isPedRunningArrestTask(ped: Ped | Player | number): boolean;
+  export function isPedRunningArrestTask(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * This function is hard-coded to always return 0.
    */
-  export function isPedBeingArrested(ped: Ped | Player | number): boolean;
+  export function isPedBeingArrested(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function uncuffPed(ped: Ped | Player | number): void;
+  export function uncuffPed(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function isPedCuffed(ped: Ped | Player | number): boolean;
+  export function isPedCuffed(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * p7 when set to true allows you to spawn vehicles under -100 z.
@@ -22725,7 +22725,7 @@ declare module "natives" {
    */
   export function setVehicleOutOfControl(vehicle: Vehicle | number, killDriver: boolean, explodeOnImpact: boolean): void;
 
-  export function setVehicleTimedExplosion(vehicle: Vehicle | number, ped: Ped | Player | number, toggle: boolean): void;
+  export function setVehicleTimedExplosion(vehicle: Vehicle | number, ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function addVehiclePhoneExplosiveDevice(vehicle: Vehicle | number): void;
 
@@ -22898,9 +22898,9 @@ declare module "natives" {
    * etc.
    * If p2 is true it uses a different GetOccupant function.
    */
-  export function getPedInVehicleSeat(vehicle: Vehicle | number, seatIndex: number, p2: boolean): Ped | Player | number;
+  export function getPedInVehicleSeat(vehicle: Vehicle | number, seatIndex: number, p2: boolean): number;
 
-  export function getLastPedInVehicleSeat(vehicle: Vehicle | number, seatIndex: number): Ped | Player | number;
+  export function getLastPedInVehicleSeat(vehicle: Vehicle | number, seatIndex: number): number;
 
   export function getVehicleLightsState(vehicle: Vehicle | number, lightsOn?: boolean, highbeamsOn?: boolean): [boolean, boolean, boolean];
 
@@ -23602,7 +23602,7 @@ declare module "natives" {
   /**
    * doorId: see SET_VEHICLE_DOOR_SHUT
    */
-  export function getPedUsingVehicleDoor(vehicle: Vehicle | number, doord: number): Ped | Player | number;
+  export function getPedUsingVehicleDoor(vehicle: Vehicle | number, doord: number): number;
 
   /**
    * enum eDoorId
@@ -24190,9 +24190,9 @@ declare module "natives" {
    */
   export function isVehicleAttachedToTowTruck(towTruck: Vehicle | number, vehicle: Vehicle | number): boolean;
 
-  export function getEntityAttachedToTowTruck(towTruck: Vehicle | number): Entity | number;
+  export function getEntityAttachedToTowTruck(towTruck: Vehicle | number): number;
 
-  export function setVehicleAutomaticallyAttaches(vehicle: Vehicle | number, p1: boolean, p2: any): Entity | number;
+  export function setVehicleAutomaticallyAttaches(vehicle: Vehicle | number, p1: boolean, p2: any): number;
 
   /**
    * Sets the arm position of a bulldozer. Position must be a value between 0.0 and 1.0. Ignored when `p2` is set to false, instead incrementing arm position by 0.1 (or 10%).
@@ -24387,7 +24387,7 @@ declare module "natives" {
    * side = only relevant for bikes/motorcycles to check if the left (false)/right (true) side is blocked.
    * onEnter = check if you can enter (true) or exit (false) a vehicle.
    */
-  export function isEntryPointForSeatClear(ped: Ped | Player | number, vehicle: Vehicle | number, seatIndex: number, side: boolean, onEnter: boolean): boolean;
+  export function isEntryPointForSeatClear(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, seatIndex: number, side: boolean, onEnter: boolean): boolean;
 
   /**
    * doorId: see SET_VEHICLE_DOOR_SHUT
@@ -24819,9 +24819,9 @@ declare module "natives" {
    * Commands the driver of an armed vehicle (p0) to shoot its weapon at a target (p1). p3, p4 and p5 are the coordinates of the target. Example:
    * WEAPON::SET_CURRENT_PED_VEHICLE_WEAPON(pilot,MISC::GET_HASH_KEY("VEHICLE_WEAPON_PLANE_ROCKET"));                        VEHICLE::SET_VEHICLE_SHOOT_AT_TARGET(pilot, target, targPos.x, targPos.y, targPos.z);
    */
-  export function setVehicleShootAtTarget(driver: Ped | Player | number, entity: Entity | number, xTarget: number, yTarget: number, zTarget: number): void;
+  export function setVehicleShootAtTarget(driver: Ped | Player | LocalPlayer | number, entity: Entity | number, xTarget: number, yTarget: number, zTarget: number): void;
 
-  export function getVehicleLockOnTarget(vehicle: Vehicle | number, entity?: Entity | number): [boolean, Entity | number];
+  export function getVehicleLockOnTarget(vehicle: Vehicle | number, entity?: Entity | number): [boolean, number];
 
   export function setForceHdVehicle(vehicle: Vehicle | number, toggle: boolean): void;
 
@@ -24927,7 +24927,7 @@ declare module "natives" {
    */
   export function getVehicleAttachedToCargobob(cargobob: Vehicle | number): Vehicle | number;
 
-  export function getEntityAttachedToCargobob(p0: any): Entity | number;
+  export function getEntityAttachedToCargobob(p0: any): number;
 
   export function attachVehicleToCargobob(cargobob: Vehicle | number, vehicle: Vehicle | number, p2: number, x: number, y: number, z: number): void;
 
@@ -25015,12 +25015,12 @@ declare module "natives" {
   /**
    * Full list of weapons by DurtyFree (Search for VEHICLE_*): https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function disableVehicleWeapon(disabled: boolean, weaponHash: number, vehicle: Vehicle | number, owner: Ped | Player | number): void;
+  export function disableVehicleWeapon(disabled: boolean, weaponHash: number, vehicle: Vehicle | number, owner: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Full list of weapons by DurtyFree (Search for VEHICLE_*): https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function isVehicleWeaponDisabled(weaponHash: number, vehicle: Vehicle | number, owner: Ped | Player | number): boolean;
+  export function isVehicleWeaponDisabled(weaponHash: number, vehicle: Vehicle | number, owner: Ped | Player | LocalPlayer | number): boolean;
 
   export function setVehicleUsedForPilotSchool(vehicle: Vehicle | number, toggle: boolean): void;
 
@@ -25129,9 +25129,9 @@ declare module "natives" {
    * index: 0 - 1
    * Used to be incorrectly named _SET_VEHICLE_EXCLUSIVE_DRIVER_2
    */
-  export function setVehicleExclusiveDriver(vehicle: Vehicle | number, ped: Ped | Player | number, index: number): void;
+  export function setVehicleExclusiveDriver(vehicle: Vehicle | number, ped: Ped | Player | LocalPlayer | number, index: number): void;
 
-  export function isPedExclusiveDriverOfVehicle(ped: Ped | Player | number, vehicle: Vehicle | number, outIndex?: number): [boolean, number];
+  export function isPedExclusiveDriverOfVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, outIndex?: number): [boolean, number];
 
   export function disableIndividualPlanePropeller(vehicle: Vehicle | number, propeller: number): void;
 
@@ -25582,7 +25582,7 @@ declare module "natives" {
    * Native is significantly more complicated than simply generating a random vector & length.
    * The 'point' is either 400.0 or 250.0 units away from the Ped's current coordinates; and paths into functions like rage::grcViewport___IsSphereVisible
    */
-  export function findSpawnCoordinatesForHeli(ped: Ped | Player | number): Vector3;
+  export function findSpawnCoordinatesForHeli(ped: Ped | Player | LocalPlayer | number): Vector3;
 
   /**
    * Only used with the "akula" and "annihilator2" in the decompiled native scripts.
@@ -25903,7 +25903,7 @@ declare module "natives" {
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setCurrentPedWeapon(ped: Ped | Player | number, weaponHash: number, bForceInHand: boolean): void;
+  export function setCurrentPedWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number, bForceInHand: boolean): void;
 
   /**
    * The return value seems to indicate returns true if the hash of the weapon object weapon equals the weapon hash.
@@ -25911,19 +25911,19 @@ declare module "natives" {
    * p2 is not implemented
    * disassembly said that?
    */
-  export function getCurrentPedWeapon(ped: Ped | Player | number, weaponHash: number, p2: boolean): [boolean, number];
+  export function getCurrentPedWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number, p2: boolean): [boolean, number];
 
-  export function getCurrentPedWeaponEntityIndex(ped: Ped | Player | number, p1: any): Entity | number;
+  export function getCurrentPedWeaponEntityIndex(ped: Ped | Player | LocalPlayer | number, p1: any): number;
 
   /**
    * p1 is always 0 in the scripts.
    */
-  export function getBestPedWeapon(ped: Ped | Player | number, p1: boolean): number;
+  export function getBestPedWeapon(ped: Ped | Player | LocalPlayer | number, p1: boolean): number;
 
   /**
    * Full list of weapons by DurtyFree (Search for VEHICLE_*): https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setCurrentPedVehicleWeapon(ped: Ped | Player | number, weaponHash: number): boolean;
+  export function setCurrentPedVehicleWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number): boolean;
 
   /**
    * Example in VB
@@ -25936,9 +25936,9 @@ declare module "natives" {
    * If GetVehicleCurrentWeapon(Game.Player.Character) = -821520672 Then ...Do something
    * Note: -821520672 = VEHICLE_WEAPON_PLANE_ROCKET
    */
-  export function getCurrentPedVehicleWeapon(ped: Ped | Player | number, weaponHash?: number): [boolean, number];
+  export function getCurrentPedVehicleWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash?: number): [boolean, number];
 
-  export function setPedCycleVehicleWeaponsOnly(ped: Ped | Player | number): void;
+  export function setPedCycleVehicleWeaponsOnly(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Checks if the ped is currently equipped with a weapon matching a bit specified using a bitwise-or in typeFlags.
@@ -25957,7 +25957,7 @@ declare module "natives" {
    * 0 never returns true.
    * Note: When I say "Explosives weapon group", it does not include the Jerry can and Fire Extinguisher.
    */
-  export function isPedArmed(ped: Ped | Player | number, typeFlags: number): boolean;
+  export function isPedArmed(ped: Ped | Player | LocalPlayer | number, typeFlags: number): boolean;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
@@ -25969,11 +25969,11 @@ declare module "natives" {
    * Bool does not check if the weapon is current equipped, unfortunately.
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function hasPedGotWeapon(ped: Ped | Player | number, weaponHash: number, p2: boolean): boolean;
+  export function hasPedGotWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number, p2: boolean): boolean;
 
-  export function isPedWeaponReadyToShoot(ped: Ped | Player | number): boolean;
+  export function isPedWeaponReadyToShoot(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function getPedWeapontypeInSlot(ped: Ped | Player | number, weaponSlot: number): number;
+  export function getPedWeapontypeInSlot(ped: Ped | Player | LocalPlayer | number, weaponSlot: number): number;
 
   /**
    * WEAPON::GET_AMMO_IN_PED_WEAPON(PLAYER::PLAYER_PED_ID(), a_0)
@@ -25983,43 +25983,43 @@ declare module "natives" {
    * natives.WEAPON.GET_AMMO_IN_PED_WEAPON(plyPed, WeaponHash)
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getAmmoInPedWeapon(ped: Ped | Player | number, weaponhash: number): number;
+  export function getAmmoInPedWeapon(ped: Ped | Player | LocalPlayer | number, weaponhash: number): number;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function addAmmoToPed(ped: Ped | Player | number, weaponHash: number, ammo: number): void;
+  export function addAmmoToPed(ped: Ped | Player | LocalPlayer | number, weaponHash: number, ammo: number): void;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setPedAmmo(ped: Ped | Player | number, weaponHash: number, ammo: number, p3: boolean): void;
+  export function setPedAmmo(ped: Ped | Player | LocalPlayer | number, weaponHash: number, ammo: number, p3: boolean): void;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setPedInfiniteAmmo(ped: Ped | Player | number, toggle: boolean, weaponHash: number): void;
+  export function setPedInfiniteAmmo(ped: Ped | Player | LocalPlayer | number, toggle: boolean, weaponHash: number): void;
 
-  export function setPedInfiniteAmmoClip(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedInfiniteAmmoClip(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function setPedStunGunFiniteAmmo(p0: any, p1: any): void;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function giveWeaponToPed(ped: Ped | Player | number, weaponHash: number, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void;
+  export function giveWeaponToPed(ped: Ped | Player | LocalPlayer | number, weaponHash: number, ammoCount: number, isHidden: boolean, bForceInHand: boolean): void;
 
   /**
    * Gives a weapon to PED with a delay, example:
    * WEAPON::GIVE_DELAYED_WEAPON_TO_PED(PED::PLAYER_PED_ID(), MISC::GET_HASH_KEY("WEAPON_PISTOL"), 1000, false)
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function giveDelayedWeaponToPed(ped: Ped | Player | number, weaponHash: number, ammoCount: number, bForceInHand: boolean): void;
+  export function giveDelayedWeaponToPed(ped: Ped | Player | LocalPlayer | number, weaponHash: number, ammoCount: number, bForceInHand: boolean): void;
 
   /**
    * setting the last params to false it does that same so I would suggest its not a toggle
    */
-  export function removeAllPedWeapons(ped: Ped | Player | number, p1: boolean): void;
+  export function removeAllPedWeapons(ped: Ped | Player | LocalPlayer | number, p1: boolean): void;
 
   /**
    * This native removes a specified weapon from your selected ped.
@@ -26031,19 +26031,19 @@ declare module "natives" {
    * The code above removes the knife from the player.
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function removeWeaponFromPed(ped: Ped | Player | number, weaponHash: number): void;
+  export function removeWeaponFromPed(ped: Ped | Player | LocalPlayer | number, weaponHash: number): void;
 
   /**
    * Hides the players weapon during a cutscene.
    */
-  export function hidePedWeaponForScriptedCutscene(ped: Ped | Player | number, toggle: boolean): void;
+  export function hidePedWeaponForScriptedCutscene(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Has 5 parameters since latest patches.
    */
-  export function setPedCurrentWeaponVisible(ped: Ped | Player | number, visible: boolean, deselectWeapon: boolean, p3: boolean, p4: boolean): void;
+  export function setPedCurrentWeaponVisible(ped: Ped | Player | LocalPlayer | number, visible: boolean, deselectWeapon: boolean, p3: boolean, p4: boolean): void;
 
-  export function setPedDropsWeaponsWhenDead(ped: Ped | Player | number, toggle: boolean): void;
+  export function setPedDropsWeaponsWhenDead(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * It determines what weapons caused damage:
@@ -26052,12 +26052,12 @@ declare module "natives" {
    * If you want to identify any weapon (firearms, melee, rockets, etc.), second parameter=0, third parameter=2.
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function hasPedBeenDamagedByWeapon(ped: Ped | Player | number, weaponHash: number, weaponType: number): boolean;
+  export function hasPedBeenDamagedByWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number, weaponType: number): boolean;
 
   /**
    * Does NOT seem to work with HAS_PED_BEEN_DAMAGED_BY_WEAPON. Use CLEAR_ENTITY_LAST_WEAPON_DAMAGE and HAS_ENTITY_BEEN_DAMAGED_BY_WEAPON instead.
    */
-  export function clearPedLastWeaponDamage(ped: Ped | Player | number): void;
+  export function clearPedLastWeaponDamage(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * It determines what weapons caused damage:
@@ -26070,52 +26070,52 @@ declare module "natives" {
 
   export function clearEntityLastWeaponDamage(entity: Entity | number): void;
 
-  export function setPedDropsWeapon(ped: Ped | Player | number): void;
+  export function setPedDropsWeapon(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setPedDropsInventoryWeapon(ped: Ped | Player | number, weaponHash: number, xOffset: number, yOffset: number, zOffset: number, ammoCount: number): void;
+  export function setPedDropsInventoryWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number, xOffset: number, yOffset: number, zOffset: number, ammoCount: number): void;
 
   /**
    * p2 is mostly 1 in the scripts.
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getMaxAmmoInClip(ped: Ped | Player | number, weaponHash: number, p2: boolean): number;
+  export function getMaxAmmoInClip(ped: Ped | Player | LocalPlayer | number, weaponHash: number, p2: boolean): number;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getAmmoInClip(ped: Ped | Player | number, weaponHash: number, ammo?: number): [boolean, number];
+  export function getAmmoInClip(ped: Ped | Player | LocalPlayer | number, weaponHash: number, ammo?: number): [boolean, number];
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setAmmoInClip(ped: Ped | Player | number, weaponHash: number, ammo: number): boolean;
+  export function setAmmoInClip(ped: Ped | Player | LocalPlayer | number, weaponHash: number, ammo: number): boolean;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getMaxAmmo(ped: Ped | Player | number, weaponHash: number, ammo?: number): [boolean, number];
+  export function getMaxAmmo(ped: Ped | Player | LocalPlayer | number, weaponHash: number, ammo?: number): [boolean, number];
 
   /**
    * Returns the max ammo for an ammo type. Ammo types: https://gist.github.com/root-cause/faf41f59f7a6d818b7db0b839bd147c1
    */
-  export function getMaxAmmoByType(ped: Ped | Player | number, ammoTypeHash: number, ammo?: number): [boolean, number];
+  export function getMaxAmmoByType(ped: Ped | Player | LocalPlayer | number, ammoTypeHash: number, ammo?: number): [boolean, number];
 
   /**
    * Ammo types: https://gist.github.com/root-cause/faf41f59f7a6d818b7db0b839bd147c1
    */
-  export function addPedAmmoByType(ped: Ped | Player | number, ammoTypeHash: number, ammo: number): void;
+  export function addPedAmmoByType(ped: Ped | Player | LocalPlayer | number, ammoTypeHash: number, ammo: number): void;
 
   /**
    * Ammo types: https://gist.github.com/root-cause/faf41f59f7a6d818b7db0b839bd147c1
    */
-  export function setPedAmmoByType(ped: Ped | Player | number, ammoTypeHash: number, ammo: number): void;
+  export function setPedAmmoByType(ped: Ped | Player | LocalPlayer | number, ammoTypeHash: number, ammo: number): void;
 
-  export function getPedAmmoByType(ped: Ped | Player | number, ammoTypeHash: number): number;
+  export function getPedAmmoByType(ped: Ped | Player | LocalPlayer | number, ammoTypeHash: number): number;
 
-  export function setPedAmmoToDrop(ped: Ped | Player | number, p1: number): void;
+  export function setPedAmmoToDrop(ped: Ped | Player | LocalPlayer | number, p1: number): void;
 
   export function setPickupAmmoAmountScaler(p0: number): void;
 
@@ -26125,32 +26125,32 @@ declare module "natives" {
    * Use 0xF489B44DD5AF4BD9 if you always want AMMO_PISTOL.
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getPedAmmoTypeFromWeapon(ped: Ped | Player | number, weaponHash: number): number;
+  export function getPedAmmoTypeFromWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number): number;
 
   /**
    * Returns the base/default ammo type of the specified ped's specified weapon.
    * Use GET_PED_AMMO_TYPE_FROM_WEAPON if you want current ammo type (like AMMO_MG_INCENDIARY/AMMO_MG_TRACER while using MkII magazines) and use this if you want base ammo type. (AMMO_MG)
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getPedOriginalAmmoTypeFromWeapon(ped: Ped | Player | number, weaponHash: number): number;
+  export function getPedOriginalAmmoTypeFromWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number): number;
 
   /**
    * Pass ped. Pass address of Vector3.
    * The coord will be put into the Vector3.
    * The return will determine whether there was a coord found or not.
    */
-  export function getPedLastWeaponImpactCoord(ped: Ped | Player | number, coords?: Vector3): [boolean, Vector3];
+  export function getPedLastWeaponImpactCoord(ped: Ped | Player | LocalPlayer | number, coords?: Vector3): [boolean, Vector3];
 
   /**
    * p1/gadgetHash was always 0xFBAB5776 ("GADGET_PARACHUTE").
    * p2 is always true.
    */
-  export function setPedGadget(ped: Ped | Player | number, gadgetHash: number, p2: boolean): void;
+  export function setPedGadget(ped: Ped | Player | LocalPlayer | number, gadgetHash: number, p2: boolean): void;
 
   /**
    * gadgetHash - was always 0xFBAB5776 ("GADGET_PARACHUTE").
    */
-  export function getIsPedGadgetEquipped(ped: Ped | Player | number, gadgetHash: number): boolean;
+  export function getIsPedGadgetEquipped(ped: Ped | Player | LocalPlayer | number, gadgetHash: number): boolean;
 
   /**
    * Returns the hash of the weapon. 
@@ -26164,53 +26164,53 @@ declare module "natives" {
    * The difference is that GET_SELECTED_PED_WEAPON simply returns the ped's current weapon hash but GET_CURRENT_PED_WEAPON also checks the weapon object and returns true if the hash of the weapon object equals the weapon hash
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getSelectedPedWeapon(ped: Ped | Player | number): number;
+  export function getSelectedPedWeapon(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    *              WEAPON::EXPLODE_PROJECTILES(PLAYER::PLAYER_PED_ID(), func_221(0x00000003), 0x00000001);
    */
-  export function explodeProjectiles(ped: Ped | Player | number, weaponHash: number, p2: boolean): void;
+  export function explodeProjectiles(ped: Ped | Player | LocalPlayer | number, weaponHash: number, p2: boolean): void;
 
   /**
    * If `explode` true, then removal is done through exploding the projectile. Basically the same as EXPLODE_PROJECTILES but without defining the owner ped.
    */
   export function removeAllProjectilesOfType(weaponHash: number, explode: boolean): void;
 
-  export function getLockonDistanceOfCurrentPedWeapon(ped: Ped | Player | number): number;
+  export function getLockonDistanceOfCurrentPedWeapon(ped: Ped | Player | LocalPlayer | number): number;
 
-  export function getMaxRangeOfCurrentPedWeapon(ped: Ped | Player | number): number;
+  export function getMaxRangeOfCurrentPedWeapon(ped: Ped | Player | LocalPlayer | number): number;
 
   /**
    * Fourth Parameter = unsure, almost always -1
    */
-  export function hasVehicleGotProjectileAttached(driver: Ped | Player | number, vehicle: Vehicle | number, weaponHash: number, p3: any): boolean;
+  export function hasVehicleGotProjectileAttached(driver: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, weaponHash: number, p3: any): boolean;
 
   /**
    * Full list of weapons & components by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function giveWeaponComponentToPed(ped: Ped | Player | number, weaponHash: number, componentHash: number): void;
+  export function giveWeaponComponentToPed(ped: Ped | Player | LocalPlayer | number, weaponHash: number, componentHash: number): void;
 
   /**
    * Full list of weapons & components by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function removeWeaponComponentFromPed(ped: Ped | Player | number, weaponHash: number, componentHash: number): void;
+  export function removeWeaponComponentFromPed(ped: Ped | Player | LocalPlayer | number, weaponHash: number, componentHash: number): void;
 
   /**
    * Full list of weapons & components by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function hasPedGotWeaponComponent(ped: Ped | Player | number, weaponHash: number, componentHash: number): boolean;
+  export function hasPedGotWeaponComponent(ped: Ped | Player | LocalPlayer | number, weaponHash: number, componentHash: number): boolean;
 
   /**
    * Full list of weapons & components by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function isPedWeaponComponentActive(ped: Ped | Player | number, weaponHash: number, componentHash: number): boolean;
+  export function isPedWeaponComponentActive(ped: Ped | Player | LocalPlayer | number, weaponHash: number, componentHash: number): boolean;
 
-  export function refillAmmoInstantly(ped: Ped | Player | number): boolean;
+  export function refillAmmoInstantly(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Forces a ped to reload only if they are able to; if they have a full magazine, they will not reload.
    */
-  export function makePedReload(ped: Ped | Player | number): boolean;
+  export function makePedReload(ped: Ped | Player | LocalPlayer | number): boolean;
 
   /**
    * Nearly every instance of p1 I found was 31. Nearly every instance of p2 I found was 0.
@@ -26225,26 +26225,26 @@ declare module "natives" {
   /**
    * Now has 8 params.
    */
-  export function createWeaponObject(weaponHash: number, ammoCount: number, x: number, y: number, z: number, showWorldModel: boolean, scale: number, p7: any, p8: any, p9: any): Object;
+  export function createWeaponObject(weaponHash: number, ammoCount: number, x: number, y: number, z: number, showWorldModel: boolean, scale: number, p7: any, p8: any, p9: any): number;
 
   /**
    * componentHash:
    * (use WEAPON::GET_WEAPON_COMPONENT_TYPE_MODEL() to get hash value)
    * ${component_at_ar_flsh}, ${component_at_ar_supp}, ${component_at_pi_flsh}, ${component_at_scope_large}, ${component_at_ar_supp_02}
    */
-  export function giveWeaponComponentToWeaponObject(weaponObject: Object, componentHash: number): void;
+  export function giveWeaponComponentToWeaponObject(weaponObject: number, componentHash: number): void;
 
   /**
    * see DOES_WEAPON_TAKE_WEAPON_COMPONENT for full list of weapons & components
    */
-  export function removeWeaponComponentFromWeaponObject(object: Object, componentHash: number): void;
+  export function removeWeaponComponentFromWeaponObject(object: number, componentHash: number): void;
 
   /**
    * see DOES_WEAPON_TAKE_WEAPON_COMPONENT for full list of weapons & components
    */
-  export function hasWeaponGotWeaponComponent(weapon: Object, componentHash: number): boolean;
+  export function hasWeaponGotWeaponComponent(weapon: number, componentHash: number): boolean;
 
-  export function giveWeaponObjectToPed(weaponObject: Object, ped: Ped | Player | number): void;
+  export function giveWeaponObjectToPed(weaponObject: number, ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * Full list of weapons & components by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
@@ -26255,13 +26255,13 @@ declare module "natives" {
    * Drops the current weapon and returns the object
    * Unknown behavior when unarmed.
    */
-  export function getWeaponObjectFromPed(ped: Ped | Player | number, p1: boolean): Object;
+  export function getWeaponObjectFromPed(ped: Ped | Player | LocalPlayer | number, p1: boolean): number;
 
   /**
    * Gives the specified loadout to the specified ped. 
    * Loadouts are defined in common.rpf\data\ai\loadouts.meta
    */
-  export function giveLoadoutToPed(ped: Ped | Player | number, loadoutHash: number): void;
+  export function giveLoadoutToPed(ped: Ped | Player | LocalPlayer | number, loadoutHash: number): void;
 
   /**
    * tintIndex can be the following:
@@ -26275,19 +26275,19 @@ declare module "natives" {
    * 7 - Platinum
    * Full list of weapons, components & tint indexes by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setPedWeaponTintIndex(ped: Ped | Player | number, weaponHash: number, tintIndex: number): void;
+  export function setPedWeaponTintIndex(ped: Ped | Player | LocalPlayer | number, weaponHash: number, tintIndex: number): void;
 
   /**
    * Full list of weapons, components & tint indexes by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getPedWeaponTintIndex(ped: Ped | Player | number, weaponHash: number): number;
+  export function getPedWeaponTintIndex(ped: Ped | Player | LocalPlayer | number, weaponHash: number): number;
 
   /**
    * Full list of weapons, components & tint indexes by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setWeaponObjectTintIndex(weapon: Object, tintIndex: number): void;
+  export function setWeaponObjectTintIndex(weapon: number, tintIndex: number): void;
 
-  export function getWeaponObjectTintIndex(weapon: Object): number;
+  export function getWeaponObjectTintIndex(weapon: number): number;
 
   /**
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
@@ -26330,13 +26330,13 @@ declare module "natives" {
    * 31 = Dark Green
    * Full list of weapons, components, tint indexes & weapon liveries by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setPedWeaponComponentTintIndex(ped: Ped | Player | number, weaponHash: number, camoComponentHash: number, colorIndex: number): void;
+  export function setPedWeaponComponentTintIndex(ped: Ped | Player | LocalPlayer | number, weaponHash: number, camoComponentHash: number, colorIndex: number): void;
 
   /**
    * Returns -1 if camoComponentHash is invalid/not attached to the weapon.
    * Full list of weapons, components, tint indexes & weapon liveries by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getPedWeaponComponentTintIndex(ped: Ped | Player | number, weaponHash: number, camoComponentHash: number): number;
+  export function getPedWeaponComponentTintIndex(ped: Ped | Player | LocalPlayer | number, weaponHash: number, camoComponentHash: number): number;
 
   /**
    * Colors:
@@ -26374,17 +26374,17 @@ declare module "natives" {
    * 31 = Dark Green
    * Full list of weapons, components, tint indexes & weapon liveries by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setWeaponObjectComponentTintIndex(weaponObject: Object, camoComponentHash: number, colorIndex: number): void;
+  export function setWeaponObjectComponentTintIndex(weaponObject: number, camoComponentHash: number, colorIndex: number): void;
 
   /**
    * Returns -1 if camoComponentHash is invalid/not attached to the weapon object.
    * Full list of weapons, components, tint indexes & weapon liveries by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function getWeaponObjectComponentTintIndex(weaponObject: Object, camoComponentHash: number): number;
+  export function getWeaponObjectComponentTintIndex(weaponObject: number, camoComponentHash: number): number;
 
-  export function getPedWeaponCamoIndex(ped: Ped | Player | number, weaponHash: number): number;
+  export function getPedWeaponCamoIndex(ped: Ped | Player | LocalPlayer | number, weaponHash: number): number;
 
-  export function setWeaponObjectCamoIndex(weaponObject: Object, p1: number): void;
+  export function setWeaponObjectCamoIndex(weaponObject: number, p1: number): void;
 
   /**
    * struct WeaponHudStatsData
@@ -26440,12 +26440,12 @@ declare module "natives" {
    */
   export function getWeaponTimeBetweenShots(weaponHash: number): number;
 
-  export function setPedChanceOfFiringBlanks(ped: Ped | Player | number, xBias: number, yBias: number): void;
+  export function setPedChanceOfFiringBlanks(ped: Ped | Player | LocalPlayer | number, xBias: number, yBias: number): void;
 
   /**
    * Returns handle of the projectile.
    */
-  export function setPedShootOrdnanceWeapon(ped: Ped | Player | number, p1: number): Object;
+  export function setPedShootOrdnanceWeapon(ped: Ped | Player | LocalPlayer | number, p1: number): number;
 
   export function requestWeaponHighDetailModel(weaponObject: Entity | number): void;
 
@@ -26468,16 +26468,16 @@ declare module "natives" {
    * This native returns a true or false value.
    * Ped ped = The ped whose weapon you want to check.
    */
-  export function isPedCurrentWeaponSilenced(ped: Ped | Player | number): boolean;
+  export function isPedCurrentWeaponSilenced(ped: Ped | Player | LocalPlayer | number): boolean;
 
-  export function isFlashLightOn(ped: Ped | Player | number): boolean;
+  export function isFlashLightOn(ped: Ped | Player | LocalPlayer | number): boolean;
 
   export function setFlashLightFadeDistance(distance: number): boolean;
 
   /**
    * Enables/disables flashlight on ped's weapon.
    */
-  export function setFlashLightActiveHistory(ped: Ped | Player | number, toggle: boolean): void;
+  export function setFlashLightActiveHistory(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   /**
    * Changes the selected ped aiming animation style. 
@@ -26514,7 +26514,7 @@ declare module "natives" {
    *   "SuperFat",
    *  "Trevor"
    */
-  export function setWeaponAnimationOverride(ped: Ped | Player | number, animStyle: number): void;
+  export function setWeaponAnimationOverride(ped: Ped | Player | LocalPlayer | number, animStyle: number): void;
 
   /**
    * enum class eDamageType
@@ -26540,7 +26540,7 @@ declare module "natives" {
    */
   export function getWeaponDamageType(weaponHash: number): number;
 
-  export function setEqippedWeaponStartSpinningAtFullSpeed(ped: Ped | Player | number): void;
+  export function setEqippedWeaponStartSpinningAtFullSpeed(ped: Ped | Player | LocalPlayer | number): void;
 
   /**
    * this returns if you can use the weapon while using a parachute
@@ -26574,12 +26574,12 @@ declare module "natives" {
    * Disables selecting the given weapon. Ped isn't forced to put the gun away. However you can't reselect the weapon if you holster then unholster. Weapon is also grayed out on the weapon wheel.
    * Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json
    */
-  export function setCanPedSelectInventoryWeapon(ped: Ped | Player | number, weaponHash: number, toggle: boolean): void;
+  export function setCanPedSelectInventoryWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number, toggle: boolean): void;
 
   /**
    * Disable all weapons. Does the same as 0xB4771B9AAF4E68E4 except for all weapons.
    */
-  export function setCanPedSelectAllWeapons(ped: Ped | Player | number, toggle: boolean): void;
+  export function setCanPedSelectAllWeapons(ped: Ped | Player | LocalPlayer | number, toggle: boolean): void;
 
   export function getZoneAtCoords(x: number, y: number, z: number): number;
 
