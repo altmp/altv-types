@@ -980,7 +980,7 @@ declare module "alt-client" {
     public readonly name: string;
 
     /** Player's vehicle, null if player is not in any vehicle */
-    public readonly vehicle: Vehicle | null;
+    public readonly vehicle: Vehicle | LocalVehicle | null;
 
     public readonly isDead: boolean;
 
@@ -2571,7 +2571,7 @@ declare module "alt-client" {
    * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the server to throw an exception which has to be caught.
    *
    */
-  export function onRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<any> | ReturnType<any>): void;
+  export function onRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<ReturnType<shared.ICustomClientServerRpc[K]>> | ReturnType<shared.ICustomClientServerRpc[K]>): void;
   export function onRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomServerClientRpc>, listener: (...args: any[]) => Promise<any> | any): void;
 
   /**
