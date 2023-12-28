@@ -2953,6 +2953,20 @@ declare module "alt-client" {
 
   export function getPoolEntities(poolName: string): number[];
 
+  // Voice related functions
+  export function getVoicePlayers(): number[];
+  export function removeVoicePlayer(player: number): void;
+
+  export function getVoiceSpatialVolume(player: number): number;
+  export function setVoiceSpatialVolume(player: number, volume: number): void;
+
+  export function getVoiceNonSpatialVolume(player: number): number;
+  export function setVoiceNonSpatialVolume(player: number, volume: number): void;
+
+  export function addVoiceFilter(player: number, filter: AudioFilter): void;
+  export function removeVoiceFilter(player: number): void;
+  export function getVoiceFilter(player: number): AudioFilter;
+
   export class WebSocketClient extends BaseObject {
     /**
      * Retrieves the websocketclient from the pool.
