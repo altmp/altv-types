@@ -1681,6 +1681,11 @@ declare module "alt-client" {
      */
     public resetDashboardLights(): void;
 
+    /**
+     * @remarks Setter needs to be called in everytick and engine must be off.
+     */
+    public steeringAngle: number;
+
     // normal meta
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K>): void;
@@ -4314,11 +4319,6 @@ declare module "alt-client" {
      * The vehicle's oil level.
      */
     public oilLevel: number;
-
-    /**
-     * @remarks Setter needs to be called in everytick and engine must be off.
-     */
-    public steeringAngle: number;
 
     public suspensionHeight: number;
   }
