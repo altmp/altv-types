@@ -512,6 +512,7 @@ declare module "alt-server" {
   export interface IDecoration {
     readonly collection: number;
     readonly overlay: number;
+    readonly count: number;
   }
 
   /**
