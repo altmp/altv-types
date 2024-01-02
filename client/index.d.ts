@@ -2972,6 +2972,8 @@ declare module "alt-client" {
   export function removeVoiceFilter(player: number): void;
   export function getVoiceFilter(player: number): AudioFilter;
 
+  export function updateClipContext(context: Record<string, string>): void;
+
   export class WebSocketClient extends BaseObject {
     /**
      * Retrieves the websocketclient from the pool.
