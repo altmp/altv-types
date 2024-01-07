@@ -4141,7 +4141,7 @@ declare module "alt-client" {
      */
     public static getByID(id: number): TextLabel | null;
 
-    //public static readonly all: readonly TextLabel[];
+    public static readonly all: readonly TextLabel[];
 
     public visible: boolean;
 
