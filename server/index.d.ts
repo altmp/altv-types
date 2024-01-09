@@ -448,6 +448,7 @@ declare module "alt-server" {
   }
 
   export interface IVehicleModel {
+    readonly modelHash: number;
     readonly title: string;
     readonly type: shared.ModelType;
     readonly wheelsCount: number;
@@ -1433,7 +1434,7 @@ declare module "alt-server" {
 
     public getHairHighlightColor(): number;
 
-    public addDecoration(collection: string | number, overlay: string | number): void;
+    public addDecoration(collection: string | number, overlay: string | number, count?: number): void;
     public removeDecoration(collection: string | number, overlay: string | number): void;
     public clearDecorations(): void;
     public getDecorations(): readonly IDecoration[];

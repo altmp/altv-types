@@ -544,6 +544,20 @@ declare module "alt-client" {
     readonly uuid: string | null;
   }
 
+  export interface ISyncInfo {
+    readonly active: boolean;
+    readonly receivedTick: number;
+    readonly fullyReceivedTick: number;
+    readonly sendTick: number;
+    readonly ackedSendTick: number;
+    readonly propertyCount: number;
+    readonly componentCount: number;
+    /**
+     * 2D array of property update ticks grouped by component
+     */
+    readonly propertyUpdateTicks: number[][];
+  }
+
   export class BaseObject extends shared.BaseObject {
     /**
      * Whether this entity was created clientside or serverside. (Clientside = false, Serverside = true).
@@ -945,6 +959,8 @@ declare module "alt-client" {
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
     public getStreamSyncedMetaKeys(): readonly string[];
+
+    public getSyncInfo(): ISyncInfo;
 
     public frozen: boolean;
   }
@@ -4125,7 +4141,7 @@ declare module "alt-client" {
      */
     public static getByID(id: number): TextLabel | null;
 
-    //public static readonly all: readonly TextLabel[];
+    public static readonly all: readonly TextLabel[];
 
     public visible: boolean;
 
