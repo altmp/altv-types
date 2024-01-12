@@ -31,6 +31,7 @@ declare module "alt-client" {
     Portugese = "pt",
     BrazilianPortuguese = "pt_br",
     Romanian = "ro",
+
     Serbian = "rs", // Wrong tag (sr)
     Russian = "ru",
     Slovak = "sk",
@@ -104,6 +105,13 @@ declare module "alt-client" {
     Center,
     Left,
     Rigth,
+  }
+
+  export const enum TextLabelAlignment {
+    Left,
+    Right,
+    Center,
+    Justify,
   }
 
   export interface IClientEvent {
@@ -537,6 +545,20 @@ declare module "alt-client" {
     readonly uuid: string | null;
   }
 
+  export interface ISyncInfo {
+    readonly active: boolean;
+    readonly receivedTick: number;
+    readonly fullyReceivedTick: number;
+    readonly sendTick: number;
+    readonly ackedSendTick: number;
+    readonly propertyCount: number;
+    readonly componentCount: number;
+    /**
+     * 2D array of property update ticks grouped by component
+     */
+    readonly propertyUpdateTicks: number[][];
+  }
+
   export class BaseObject extends shared.BaseObject {
     /**
      * Whether this entity was created clientside or serverside. (Clientside = false, Serverside = true).
@@ -938,6 +960,8 @@ declare module "alt-client" {
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
     public getStreamSyncedMetaKeys(): readonly string[];
+
+    public getSyncInfo(): ISyncInfo;
 
     public frozen: boolean;
   }
@@ -2623,6 +2647,11 @@ declare module "alt-client" {
   export function getMsPerGameMinute(): number;
 
   /**
+   * Gets current server time since epoch in milliseconds.
+   */
+  export function getServerTime(): number;
+
+  /**
    * Gets the state of the specified permission.
    *
    * @param permId Permission id.
@@ -2944,6 +2973,28 @@ declare module "alt-client" {
   export function toggleVoiceControls(state: boolean): void;
 
   export function isFullScreen(): boolean;
+
+  export function getPoolSize(poolName: string): number;
+
+  export function getPoolCount(poolName: string): number;
+
+  export function getPoolEntities(poolName: string): number[];
+
+  // Voice related functions
+  export function getVoicePlayers(): number[];
+  export function removeVoicePlayer(player: number): void;
+
+  export function getVoiceSpatialVolume(player: number): number;
+  export function setVoiceSpatialVolume(player: number, volume: number): void;
+
+  export function getVoiceNonSpatialVolume(player: number): number;
+  export function setVoiceNonSpatialVolume(player: number, volume: number): void;
+
+  export function addVoiceFilter(player: number, filter: AudioFilter): void;
+  export function removeVoiceFilter(player: number): void;
+  export function getVoiceFilter(player: number): AudioFilter;
+
+  export function updateClipContext(context: Record<string, string>): void;
 
   export class WebSocketClient extends BaseObject {
     /**
@@ -3926,7 +3977,7 @@ declare module "alt-client" {
     constructor(filtername: string);
 
     public addRotateEffect(fRate: number, priority: number): number;
-    public addVolumeEffect(fVolume: number, priority: number): number;
+    public addVolumeEffect(fVolume: number, priority: number, channel?: number): number;
     public addPeakeqEffect(lBand: number, fBandwidth: number, fQ: number, fCenter: number, fGain: number, priority: number): number;
     public addDampEffect(fTarget: number, fQuiet: number, fRate: number, fGain: number, fDelay: number, priority: number): number;
     public addAutowahEffect(fDryMix: number, fWetMix: number, fFeedback: number, fRate: number, fRange: number, fFreq: number, priority: number): number;
@@ -4096,13 +4147,25 @@ declare module "alt-client" {
      */
     public static getByID(id: number): TextLabel | null;
 
-    //public static readonly all: readonly TextLabel[];
+    public static readonly all: readonly TextLabel[];
 
     public visible: boolean;
 
     public color: shared.RGBA;
 
+    public outlineColor: shared.RGBA;
+
+    public outlineWidth: number;
+
+    public font: string;
+
+    public fontSize: number;
+
     public scale: number;
+
+    public align: TextLabelAlignment;
+
+    public text: string;
 
     public rot: shared.Vector3;
 

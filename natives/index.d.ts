@@ -1,4 +1,4 @@
-// This file was generated on 25.12.2023, 19:07:26 - DO NOT MODIFY MANUALLY
+// This file was generated on 25.12.2023, 19:01:55 - DO NOT MODIFY MANUALLY
 
 /// <reference types="@altv/types-client"/>
 
@@ -3573,7 +3573,7 @@ declare module "natives" {
    * male ped ~= 100 - 200
    * female ped ~= 0 - 100
    */
-  export function setEntityHealth(entity: Entity | number, health: number, p2: number): void;
+  export function setEntityHealth(entity: Entity | number, health: number, instigator: Entity | number, weaponType: number): void;
 
   /**
    * Sets a ped or an object totally invincible. It doesn't take any kind of damage. Peds will not ragdoll on explosions and the tazer animation won't apply either.
@@ -8150,7 +8150,7 @@ declare module "natives" {
    * Uses the `SOCIAL_CLUB2` scaleform.
    * menu: GALLERY, MISSIONS, CREWS, MIGRATE, PLAYLISTS, JOBS
    */
-  export function openSocialClubMenu(): void;
+  export function openSocialClubMenu(menu: number): void;
 
   export function closeSocialClubMenu(): void;
 
@@ -9270,9 +9270,9 @@ declare module "natives" {
    */
   export function stringToInt(string: string, outInteger?: number | null): [boolean, number];
 
-  export function setBitsInRange(unkVar: number | null, rangeStart: number, rangeEnd: number, p3: number): [void, number];
+  export function setBitsInRange(value: number | null, rangeStart: number, rangeEnd: number, p3: number): [void, number];
 
-  export function getBitsInRange(unkVar: number, rangeStart: number, rangeEnd: number): number;
+  export function getBitsInRange(value: number, rangeStart: number, rangeEnd: number): number;
 
   /**
    * See description of `ADD_STUNT_JUMP_ANGLED` for detailed info. The only difference really is this one does not have the radius (or angle, not sure) floats parameters for entry and landing zones.
@@ -10050,9 +10050,9 @@ declare module "natives" {
 
   export function networkEarnFromContraband(amount: number, p1: any): void;
 
-  export function networkEarnFromDestroyingContraband(p0: any): void;
+  export function networkEarnFromDestroyingContraband(p0: any, p1: any, p2: any): void;
 
-  export function networkEarnFromSmugglerWork(p0: any, p1: any, p2: any, p3: any, p4: any): void;
+  export function networkEarnFromSmugglerWork(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void;
 
   export function networkEarnFromHangarTrade(p0: any, p1: any): void;
 
@@ -10104,7 +10104,7 @@ declare module "natives" {
    */
   export function networkBuyAirstrike(cost: number, p1: boolean, p2: boolean, p3: any): void;
 
-  export function networkBuyBackupGang(p0: number, p1: number, p2: boolean, p3: boolean): void;
+  export function networkBuyBackupGang(p0: number, p1: number, p2: boolean, p3: boolean, npcProvider: number): void;
 
   /**
    * p1 = 0 (always)
@@ -10223,7 +10223,7 @@ declare module "natives" {
 
   export function networkSpentMoveYacht(amount: number, p1: boolean, p2: boolean): void;
 
-  export function networkSpentRenameOrganization(p0: any, p1: any, p2: any): void;
+  export function networkSpentRenameOrganization(p0: any, p1: any, p2: any, p3: any): void;
 
   export function networkBuyContrabandMission(p0: number, p1: number, p2: number, p3: boolean, p4: boolean): void;
 
@@ -10239,9 +10239,9 @@ declare module "natives" {
 
   export function networkSpentPaHeliPickup(p0: any, p1: any, p2: any, p3: any): void;
 
-  export function networkSpentPurchaseOfficeProperty(p0: any, p1: any, p2: any, p3: any): void;
+  export function networkSpentPurchaseOfficeProperty(p0: any, p1: any, p2: any, p3: any, p4: any): void;
 
-  export function networkSpentUpgradeOfficeProperty(p0: any, p1: any, p2: any, p3: any): void;
+  export function networkSpentUpgradeOfficeProperty(p0: any, p1: any, p2: any, p3: any, p4: any): void;
 
   export function networkSpentPurchaseWarehouseProperty(p0: any, p1: any, p2: any, p3: any): void;
 
@@ -10694,7 +10694,7 @@ declare module "natives" {
 
   export function networkGetStringBankBalance(): string;
 
-  export function networkGetStringBankWalletBalance(): string;
+  export function networkGetStringBankWalletBalance(character: number): string;
 
   /**
    * Returns true if wallet balance >= amount.
@@ -10996,9 +10996,9 @@ declare module "natives" {
 
   export function networkCanEnterMultiplayer(): boolean;
 
-  export function networkSessionDoFreeroamQuickmatch(p0: any, p1: any, p2: any, maxPlayers: number): boolean;
+  export function networkSessionDoFreeroamQuickmatch(p0: any, p1: any, p2: any): boolean;
 
-  export function networkSessionDoFriendMatchmaking(p0: number, p1: number, maxPlayers: number): boolean;
+  export function networkSessionDoFriendMatchmaking(p0: number, p1: number, p2: number): boolean;
 
   /**
    * p4 seems to be unused in 1.60/build 2628
@@ -12224,7 +12224,7 @@ declare module "natives" {
 
   export function setNetworkIdVisibleInCutsceneHack(netId: number, p1: boolean, p2: boolean): void;
 
-  export function setNetworkIdVisibleInCutsceneRemainHack(p0: any, p1: any): void;
+  export function setNetworkIdVisibleInCutsceneRemainHack(p0: any, p1: any, p2: any): void;
 
   export function setNetworkCutsceneEntities(toggle: boolean): void;
 
@@ -13148,7 +13148,7 @@ declare module "natives" {
    */
   export function networkGetLastVelReceivedOverNetwork(entity: Entity | number): Vector3;
 
-  export function networkGetPredictedVelocity(entity: Entity | number): Vector3;
+  export function networkGetPredictedVelocity(entity: Entity | number, maxSpeedToPredict: number): Vector3;
 
   /**
    * Does nothing (it's a nullsub).
@@ -13198,7 +13198,7 @@ declare module "natives" {
    */
   export function slideObject(object: number, toX: number, toY: number, toZ: number, speedX: number, speedY: number, speedZ: number, collision: boolean): boolean;
 
-  export function setObjectTargettable(object: number, targettable: boolean): void;
+  export function setObjectTargettable(object: number, targettable: boolean, p2: any): void;
 
   /**
    * Overrides a flag on the object which determines if the object should be avoided by a vehicle in task CTaskVehicleGoToPointWithAvoidanceAutomobile.
@@ -15108,7 +15108,7 @@ declare module "natives" {
   /**
    * damages a ped with the given amount
    */
-  export function applyDamageToPed(ped: Ped | Player | LocalPlayer | number, damageAmount: number, p2: boolean, p3: any): void;
+  export function applyDamageToPed(ped: Ped | Player | LocalPlayer | number, damageAmount: number, p2: boolean, p3: any, weaponType: number): void;
 
   export function getTimePedDamagedByWeapon(ped: Ped | Player | LocalPlayer | number, weaponHash: number): number;
 
@@ -16275,7 +16275,7 @@ declare module "natives" {
    */
   export function givePedNmMessage(ped: Ped | Player | LocalPlayer | number): void;
 
-  export function addScenarioBlockingArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: boolean, p7: boolean, p8: boolean, p9: boolean): number;
+  export function addScenarioBlockingArea(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, p6: boolean, p7: boolean, p8: boolean, p9: boolean, p10: any): number;
 
   export function removeScenarioBlockingAreas(): void;
 
@@ -18809,7 +18809,7 @@ declare module "natives" {
    * C# Example :
    * Function.Call(Hash.SIMULATE_PLAYER_INPUT_GAIT, Game.Player, 1.0f, 100, 1.0f, 1, 0); //Player will go forward for 100ms
    */
-  export function simulatePlayerInputGait(player: Player | number, amount: number, gaitType: number, speed: number, p4: boolean, p5: boolean): void;
+  export function simulatePlayerInputGait(player: Player | number, amount: number, gaitType: number, speed: number, p4: boolean, p5: boolean, p6: any): void;
 
   export function resetPlayerInputGait(player: Player | number): void;
 
@@ -19716,7 +19716,7 @@ declare module "natives" {
 
   export function playstatsStartedSessionInOfflinemode(): void;
 
-  export function playstatsActivityDone(p0: number, activityId: number): void;
+  export function playstatsActivityDone(p0: number, activityId: number, p2: any): void;
 
   export function playstatsLeaveJobChain(p0: any, p1: any, p2: any, p3: any, p4: any): void;
 
@@ -19792,7 +19792,7 @@ declare module "natives" {
 
   export function playstatsPegasusAsPersonalAircraft(modelHash: number): void;
 
-  export function playstatsShopmenuNav(p0: any, p1: any, p2: any): void;
+  export function playstatsShopmenuNav(p0: any, p1: any, p2: any, p3: any): void;
 
   export function playstatsFmEventChallenges(p0: any): void;
 
@@ -20139,11 +20139,11 @@ declare module "natives" {
 
   export function playstatsHitContrabandDestroyLimit(p0: any): void;
 
-  export function startBeingBoss(p0: any): void;
+  export function startBeingBoss(p0: any, p1: any, p2: any): void;
 
   export function startBeingGoon(p0: any, p1: any, p2: any): void;
 
-  export function endBeingBoss(p0: any, p1: any): void;
+  export function endBeingBoss(p0: any, p1: any, p2: any): void;
 
   export function endBeingGoon(p0: any, p1: any, p2: any, p3: any, p4: any): void;
 
@@ -20275,7 +20275,7 @@ declare module "natives" {
 
   export function playstatsHeist3Hack(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void;
 
-  export function playstatsNpcPhone(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any, p11: any, p12: any): void;
+  export function playstatsNpcPhone(p0?: any | null): [void, any];
 
   export function playstatsArcadeCabinet(p0: any): void;
 
@@ -20293,7 +20293,7 @@ declare module "natives" {
 
   export function playstatsKillYourself(): void;
 
-  export function playstatsFmMissionEnd(p0: any, p1: any, p2: any): void;
+  export function playstatsFmMissionEnd(p0: any, p1: any, p2: any, p3: any): void;
 
   export function playstatsHeist4Prep(p0: any): void;
 
@@ -20857,7 +20857,7 @@ declare module "natives" {
    * 3 = outside left
    * 4 = outside right
    */
-  export function taskEnterVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, timeout: number, seat: number, speed: number, flag: number, overrideEntryClipsetName: string): void;
+  export function taskEnterVehicle(ped: Ped | Player | LocalPlayer | number, vehicle: Vehicle | number, timeout: number, seat: number, speed: number, flag: number, overrideEntryClipsetName: string, p7: any): void;
 
   /**
    * Flags from decompiled scripts:
@@ -21648,7 +21648,7 @@ declare module "natives" {
    * Attaches a ped to a rope and allows player control to rappel down a wall. Disables all collisions while on the rope.
    * p10: Usually 1 in the scripts, clipSet: Clipset to use for the task, minZ: Minimum Z that the player can descend to, ropeHandle: Rope to attach this task to created with ADD_ROPE
    */
-  export function taskRappelDownWallUsingClipsetOverride(ped: Ped | Player | LocalPlayer | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, minZ: number, ropeHandle: number, clipSet: string, p10: any): void;
+  export function taskRappelDownWallUsingClipsetOverride(ped: Ped | Player | LocalPlayer | number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, minZ: number, ropeHandle: number, clipSet: string, p10: any, p11: any): void;
 
   export function getTaskRappelDownWallState(ped: Ped | Player | LocalPlayer | number): number;
 
@@ -24929,7 +24929,7 @@ declare module "natives" {
 
   export function getEntityAttachedToCargobob(p0: any): number;
 
-  export function attachVehicleToCargobob(vehicle: Vehicle | number, cargobob: Vehicle | number, p2: number, x: number, y: number, z: number): void;
+  export function attachVehicleToCargobob(cargobob: Vehicle | number, vehicle: Vehicle | number, p2: number, x: number, y: number, z: number): void;
 
   export function attachEntityToCargobob(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void;
 

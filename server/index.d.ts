@@ -232,6 +232,16 @@ declare module "alt-server" {
     VerifyFailed,
   }
 
+  export interface VehicleBadgePosition {
+    active: boolean;
+    alpha: number;
+    size: number;
+    boneIndex: number;
+    offset: shared.Vector3;
+    direction: shared.Vector3;
+    side: shared.Vector3;
+  }
+
   export interface IConnectionInfo {
     readonly name: string;
     readonly socialID: string;
@@ -438,6 +448,7 @@ declare module "alt-server" {
   }
 
   export interface IVehicleModel {
+    readonly modelHash: number;
     readonly title: string;
     readonly type: shared.ModelType;
     readonly wheelsCount: number;
@@ -502,6 +513,7 @@ declare module "alt-server" {
   export interface IDecoration {
     readonly collection: number;
     readonly overlay: number;
+    readonly count: number;
   }
 
   /**
@@ -1254,6 +1266,8 @@ declare module "alt-server" {
      */
     public getDlcClothes(component: number): IDlcCloth;
 
+    public clearClothes(component: number): void;
+
     /**
      * Sets the specified clothing component.
      *
@@ -1400,7 +1414,11 @@ declare module "alt-server" {
 
     public getHeadBlendPaletteColor(id: number): shared.RGBA;
 
+    public removeHeadBlendPaletteColor(): void;
+
     public setHeadBlendData(shapeFirstID: number, shapeSecondID: number, shapeThirdID: number, skinFirstID: number, skinSecondID: number, skinThirdID: number, shapeMix: number, skinMix: number, thirdMix: number): void;
+
+    public removeHeadBlendData(): void;
 
     public getHeadBlendData(): IHeadBlendData;
 
@@ -1416,7 +1434,7 @@ declare module "alt-server" {
 
     public getHairHighlightColor(): number;
 
-    public addDecoration(collection: string | number, overlay: string | number): void;
+    public addDecoration(collection: string | number, overlay: string | number, count?: number): void;
     public removeDecoration(collection: string | number, overlay: string | number): void;
     public clearDecorations(): void;
     public getDecorations(): readonly IDecoration[];
@@ -2449,6 +2467,8 @@ declare module "alt-server" {
     public getWeaponCapacity(weaponIndex: number): number;
 
     public setWeaponCapacity(weaponIndex: number, capacity: number): void;
+
+    setBadge(textureDictionary: number, texture: number, pos: VehicleBadgePosition, pos2?: VehicleBadgePosition, pos3?: VehicleBadgePosition, pos4?: VehicleBadgePosition): void;
 
     public hybridExtraActive: boolean;
 
