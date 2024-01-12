@@ -31,6 +31,7 @@ declare module "alt-client" {
     Portugese = "pt",
     BrazilianPortuguese = "pt_br",
     Romanian = "ro",
+
     Serbian = "rs", // Wrong tag (sr)
     Russian = "ru",
     Slovak = "sk",
@@ -2646,6 +2647,11 @@ declare module "alt-client" {
   export function getMsPerGameMinute(): number;
 
   /**
+   * Gets current server time since epoch in milliseconds.
+   */
+  export function getServerTime(): number;
+
+  /**
    * Gets the state of the specified permission.
    *
    * @param permId Permission id.
@@ -4141,7 +4147,7 @@ declare module "alt-client" {
      */
     public static getByID(id: number): TextLabel | null;
 
-    //public static readonly all: readonly TextLabel[];
+    public static readonly all: readonly TextLabel[];
 
     public visible: boolean;
 
