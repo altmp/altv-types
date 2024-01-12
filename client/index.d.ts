@@ -31,6 +31,7 @@ declare module "alt-client" {
     Portugese = "pt",
     BrazilianPortuguese = "pt_br",
     Romanian = "ro",
+
     Serbian = "rs", // Wrong tag (sr)
     Russian = "ru",
     Slovak = "sk",
@@ -2644,7 +2645,7 @@ declare module "alt-client" {
    * @remarks This is set with the {@link setMsPerGameMinute} function.
    */
   export function getMsPerGameMinute(): number;
-  
+
   /**
    * Gets current server time since epoch in milliseconds.
    */
