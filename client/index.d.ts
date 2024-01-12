@@ -2644,6 +2644,11 @@ declare module "alt-client" {
    * @remarks This is set with the {@link setMsPerGameMinute} function.
    */
   export function getMsPerGameMinute(): number;
+  
+  /**
+   * Gets current server time since epoch in milliseconds.
+   */
+  export function getServerTime(): number;
 
   /**
    * Gets the state of the specified permission.
