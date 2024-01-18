@@ -4025,7 +4025,24 @@ declare module "alt-client" {
   }
 
   export class Marker extends WorldObject {
-    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
+    /**
+     * Creates static marker without streaming enabled.
+     * @param type
+     * @param position
+     * @param color
+     */
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
+
+    /**
+     * Creates marker with streaming enabled (2000 markers at most, in specific dimension).
+     *
+     * @param type
+     * @param position
+     * @param color
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming: true, streamingDistance: number);
 
     /**
      * Retrieves the marker from the pool.
@@ -4137,6 +4154,37 @@ declare module "alt-client" {
   }
 
   export class TextLabel extends WorldObject {
+    /**
+     * Creates static text label without streaming enabled.
+     * @param text
+     * @param fontName
+     * @param fontSize
+     * @param scale
+     * @param pos
+     * @param rot
+     * @param color
+     * @param outlineWidth
+     * @param outlineColor
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
+
+    /**
+     * Creates text label with streaming enabled.
+     *
+     * @param text
+     * @param fontName
+     * @param fontSize
+     * @param scale
+     * @param pos
+     * @param rot
+     * @param color
+     * @param outlineWidth
+     * @param outlineColor
+     * @param useStreaming
+     * @param streamingDistance
+     */
     public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 
     /**
@@ -4181,7 +4229,24 @@ declare module "alt-client" {
   }
 
   export class LocalVehicle extends Vehicle {
-    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
+    /**
+     * Creates static local vehicle without streaming enabled.
+     * @param type
+     * @param position
+     * @param color
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3);
+
+    /**
+     * Creates local vehicle with streaming enabled.
+     *
+     * @param type
+     * @param position
+     * @param color
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: true, streamingDistance: number);
 
     /**
      * Retrieves the localvehicle from the pool.
@@ -4387,7 +4452,26 @@ declare module "alt-client" {
   }
 
   export class LocalPed extends Ped {
-    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
+    /**
+     * Creates static local ped without streaming enabled.
+     * @param model
+     * @param dimension
+     * @param pos
+     * @param rot
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3);
+
+    /**
+     * Creates local ped with streaming enabled.
+     *
+     * @param model
+     * @param dimension
+     * @param pos
+     * @param rot
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: true, streamingDistance: number);
 
     /**
      * Retrieves the localPed from the pool.
