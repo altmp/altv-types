@@ -793,7 +793,7 @@ declare module "alt-client" {
     public color: shared.RGBA;
     public iconColor: shared.RGBA;
 
-    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA, iconColor: shared.RGBA, streamingDistance: number);
+    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbColor: shared.RGBA, iconColor: shared.RGBA, streamingDistance: number);
 
     /**
      * Streaming range for the checkpoint
@@ -3974,7 +3974,7 @@ declare module "alt-client" {
   }
 
   export class AudioFilter extends BaseObject {
-    constructor(filtername: string);
+    constructor(filterName: string);
 
     public addRotateEffect(fRate: number, priority: number): number;
     public addVolumeEffect(fVolume: number, priority: number, channel?: number): number;
