@@ -1,3 +1,13 @@
+declare const enum AltPermission {
+  NONE,
+  SCREEN_CAPTURE,
+  WEBRTC,
+  CLIPBOARD_ACCESS,
+  EXTENDED_VOICE_API,
+  All,
+}
+
+
 interface Alt {
   /**
    * Emits specified event across particular client.
@@ -46,6 +56,15 @@ interface Alt {
   getBranch(): string;
 
   getLocale(): string;
+
+  /**
+   * Gets the state of the specified permission.
+   *
+   * @param permId Permission id.
+   * @returns Permission state.
+   */
+  getPermissionState(permId: AltPermission): boolean;
+  getPermissionState<T extends number>(permId: T): boolean;
 }
 
 interface Window {

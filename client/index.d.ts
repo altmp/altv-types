@@ -31,6 +31,7 @@ declare module "alt-client" {
     Portugese = "pt",
     BrazilianPortuguese = "pt_br",
     Romanian = "ro",
+
     Serbian = "rs", // Wrong tag (sr)
     Russian = "ru",
     Slovak = "sk",
@@ -544,6 +545,20 @@ declare module "alt-client" {
     readonly uuid: string | null;
   }
 
+  export interface ISyncInfo {
+    readonly active: boolean;
+    readonly receivedTick: number;
+    readonly fullyReceivedTick: number;
+    readonly sendTick: number;
+    readonly ackedSendTick: number;
+    readonly propertyCount: number;
+    readonly componentCount: number;
+    /**
+     * 2D array of property update ticks grouped by component
+     */
+    readonly propertyUpdateTicks: number[][];
+  }
+
   export class BaseObject extends shared.BaseObject {
     /**
      * Whether this entity was created clientside or serverside. (Clientside = false, Serverside = true).
@@ -778,7 +793,7 @@ declare module "alt-client" {
     public color: shared.RGBA;
     public iconColor: shared.RGBA;
 
-    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbcolor: shared.RGBA, iconColor: shared.RGBA, streamingDistance: number);
+    constructor(type: shared.CheckpointType, pos: shared.IVector3, nextPos: shared.IVector3, radius: number, height: number, rgbColor: shared.RGBA, iconColor: shared.RGBA, streamingDistance: number);
 
     /**
      * Streaming range for the checkpoint
@@ -945,6 +960,8 @@ declare module "alt-client" {
     public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K): boolean;
 
     public getStreamSyncedMetaKeys(): readonly string[];
+
+    public getSyncInfo(): ISyncInfo;
 
     public frozen: boolean;
   }
@@ -2630,6 +2647,11 @@ declare module "alt-client" {
   export function getMsPerGameMinute(): number;
 
   /**
+   * Gets current server time since epoch in milliseconds.
+   */
+  export function getServerTime(): number;
+
+  /**
    * Gets the state of the specified permission.
    *
    * @param permId Permission id.
@@ -3952,7 +3974,7 @@ declare module "alt-client" {
   }
 
   export class AudioFilter extends BaseObject {
-    constructor(filtername: string);
+    constructor(filterName: string);
 
     public addRotateEffect(fRate: number, priority: number): number;
     public addVolumeEffect(fVolume: number, priority: number, channel?: number): number;
@@ -4003,7 +4025,24 @@ declare module "alt-client" {
   }
 
   export class Marker extends WorldObject {
-    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
+    /**
+     * Creates static marker without streaming enabled.
+     * @param type
+     * @param position
+     * @param color
+     */
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA);
+
+    /**
+     * Creates marker with streaming enabled (2000 markers at most, in specific dimension).
+     *
+     * @param type
+     * @param position
+     * @param color
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(type: shared.MarkerType, position: shared.Vector3, color: shared.RGBA, useStreaming: true, streamingDistance: number);
 
     /**
      * Retrieves the marker from the pool.
@@ -4115,6 +4154,37 @@ declare module "alt-client" {
   }
 
   export class TextLabel extends WorldObject {
+    /**
+     * Creates static text label without streaming enabled.
+     * @param text
+     * @param fontName
+     * @param fontSize
+     * @param scale
+     * @param pos
+     * @param rot
+     * @param color
+     * @param outlineWidth
+     * @param outlineColor
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
+
+    /**
+     * Creates text label with streaming enabled.
+     *
+     * @param text
+     * @param fontName
+     * @param fontSize
+     * @param scale
+     * @param pos
+     * @param rot
+     * @param color
+     * @param outlineWidth
+     * @param outlineColor
+     * @param useStreaming
+     * @param streamingDistance
+     */
     public constructor(text: string, fontName: string, fontSize: number, scale: number, pos: shared.IVector3, rot: shared.IVector3, color: shared.RGBA, outlineWidth: number, outlineColor: shared.RGBA, useStreaming?: boolean, streamingDistance?: number);
 
     /**
@@ -4125,7 +4195,7 @@ declare module "alt-client" {
      */
     public static getByID(id: number): TextLabel | null;
 
-    //public static readonly all: readonly TextLabel[];
+    public static readonly all: readonly TextLabel[];
 
     public visible: boolean;
 
@@ -4159,7 +4229,24 @@ declare module "alt-client" {
   }
 
   export class LocalVehicle extends Vehicle {
-    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
+    /**
+     * Creates static local vehicle without streaming enabled.
+     * @param type
+     * @param position
+     * @param color
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3);
+
+    /**
+     * Creates local vehicle with streaming enabled.
+     *
+     * @param type
+     * @param position
+     * @param color
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: true, streamingDistance: number);
 
     /**
      * Retrieves the localvehicle from the pool.
@@ -4365,7 +4452,26 @@ declare module "alt-client" {
   }
 
   export class LocalPed extends Ped {
-    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming?: boolean, streamingDistance?: number);
+    /**
+     * Creates static local ped without streaming enabled.
+     * @param model
+     * @param dimension
+     * @param pos
+     * @param rot
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3);
+
+    /**
+     * Creates local ped with streaming enabled.
+     *
+     * @param model
+     * @param dimension
+     * @param pos
+     * @param rot
+     * @param useStreaming
+     * @param streamingDistance
+     */
+    public constructor(model: string | number, dimension: number, pos: shared.IVector3, rot: shared.IVector3, useStreaming: true, streamingDistance: number);
 
     /**
      * Retrieves the localPed from the pool.
