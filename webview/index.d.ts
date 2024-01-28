@@ -7,7 +7,6 @@ declare const enum AltPermission {
   All,
 }
 
-
 interface Alt {
   /**
    * Emits specified event across particular client.
