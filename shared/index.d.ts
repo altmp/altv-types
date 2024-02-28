@@ -2827,7 +2827,7 @@ declare module "alt-shared" {
    *
    * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    */
-  export function log(...args: any[]): void;
+  export function log(arg: any, ...args: any[]): void;
 
   /**
    * Logs the specified arguments as an error to the console.
