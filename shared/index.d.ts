@@ -2834,21 +2834,21 @@ declare module "alt-shared" {
    *
    * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    */
-  export function logError(...args: any[]): void;
+  export function logError(arg: any, ...args: any[]): void;
 
   /**
    * Logs the specified arguments as a warning to the console.
    *
    * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    */
-  export function logWarning(...args: any[]): void;
+  export function logWarning(arg: any, ...args: any[]): void;
 
   /**
    * Logs the specified arguments to the console if debug is enabled.
    *
    * @remarks Uses {@link "alt-shared".Utils.inspect alt.Utils.inspect} to format values.
    */
-  export function logDebug(...args: any[]): void;
+  export function logDebug(arg: any, ...args: any[]): void;
 
   /**
    * Schedules execution of handler on next tick/next frame.
