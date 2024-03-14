@@ -38,7 +38,7 @@
     - name: Shuffle
       href: snippets/shuffle.md
     - name: Text Labels
-      href: snippets/textlabels.md
+      href: snippets/natives-textlabels.md
     - name: Voice
       href: snippets/voice.md
 - name: Vehicle
