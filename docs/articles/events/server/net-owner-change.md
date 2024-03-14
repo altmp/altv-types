@@ -12,7 +12,7 @@ Triggered when netOwner of the entity changes.
 import alt from "alt-server";
 
 alt.on("netOwnerChange", (entity, owner, oldOwner) => {
-  if (entity.type === alt.BaseObjectType.Ped) {
+  if (entity instanceof alt.Ped) {
     alt.log(`Ped ${entity.id} has a new owner: ${owner ? owner.id : "null"}, old owner: ${oldOwner ? oldOwner.id : "null"}`);
   }
 });

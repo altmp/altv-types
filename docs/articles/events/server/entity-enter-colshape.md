@@ -14,7 +14,7 @@ import alt from "alt-server";
 let colshape = new alt.ColshapeSphere(new alt.Vector3(0, 0, 71), 5, 10);
 
 alt.on("entityEnterColshape", (colshape, entity) => {
-  if (entity.type === alt.BaseObjectType.Player) {
+  if (entity.type instanceof alt.Player) {
     console.log(`Player ${entity.name} entered colshape ${colshape.id}`);
   }
 });
