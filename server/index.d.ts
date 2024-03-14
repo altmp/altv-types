@@ -727,6 +727,7 @@ declare module "alt-server" {
     public pos: shared.Vector3;
   }
 
+  /** https://docs.altv.mp/articles/virtualentity.html */
   export class VirtualEntityGroup extends BaseObject {
     /** Creates a new Virtual Entity Group */
     public constructor(maxEntitiesInStream: number);
@@ -734,7 +735,10 @@ declare module "alt-server" {
     /** Returns all Virtual Entity Group instances */
     public static readonly all: readonly VirtualEntityGroup[];
 
-    /** Maximum streaming range inside the Virtual Entity Group */
+    /**
+     * Max number of entities per player stream.
+     * More info: https://docs.altv.mp/articles/virtualentity.html#what-is-max-number-of-entities-per-player-stream
+     */
     public readonly maxEntitiesInStream: number;
   }
 
