@@ -12,8 +12,29 @@
 - name: Events
   href: events/index.md
   items:
-    - name: beforePlayerConnect
-      href: events/before-player-connect.md
+    - name: Client Events
+      href: events/client/index.md
+    - name: Server Events
+      href: events/server/index.md
+      items:
+        - name: anyResourceError
+          href: events/server/any-resource-error.md
+        - name: anyResourceStart
+          href: events/server/any-resource-start.md
+        - name: anyResourceStop
+          href: events/server/any-resource-stop.md
+        - name: beforePlayerConnect
+          href: events/server/before-player-connect.md
+        - name: consoleCommand
+          href: events/server/console-command.md
+        - name: entityEnterColshape
+          href: events/server/entity-enter-colshape.md
+        - name: entityLeaveColshape
+          href: events/server/entity-leave-colshape.md
+        - name: explosion
+          href: events/server/explosion.md
+        - name: netOwnerChange
+          href: events/server/net-owner-change.md
 - name: Player
   href: player/index.md
   items:
