@@ -11,9 +11,6 @@
       href: import-assertions.md
 - name: Events
   href: events/index.md
-  items:
-    - name: beforePlayerConnect
-      href: events/before-player-connect.md
 - name: Player
   href: player/index.md
   items:
