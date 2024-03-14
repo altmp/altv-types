@@ -20,6 +20,23 @@ server/
 ├── server.toml
 ```
 
+Before creating an example resource we need to create package.json in the root with the following content so we can use ES6 modules on serverside.
+```json
+{
+    "type": "module"
+}
+```
+
+So in the end our server folder structure should look like this:
+```
+server/
+...
+├── altv-server.exe
+├── libnode.dll
+├── server.toml
+├── package.json // <--------- here
+```
+
 Let's create an example resource.
 
 ```
