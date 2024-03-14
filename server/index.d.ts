@@ -644,10 +644,6 @@ declare module "alt-server" {
     };
 
     readonly "js-module"?: {
-      readonly inspector?: {
-        readonly host?: string;
-        readonly port?: number;
-      };
       readonly "source-maps"?: boolean;
       readonly "heap-profiler"?: boolean;
       readonly profiler?: boolean;
