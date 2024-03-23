@@ -3893,6 +3893,8 @@ declare module "alt-client" {
 
     public static readonly count: number;
 
+    public static readonly streamedIn: readonly Object[];
+
     public readonly alpha: number;
 
     public readonly textureVariation: number;
