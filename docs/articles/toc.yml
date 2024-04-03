@@ -11,9 +11,6 @@
       href: import-assertions.md
 - name: Events
   href: events/index.md
-  items:
-    - name: beforePlayerConnect
-      href: events/before-player-connect.md
 - name: Player
   href: player/index.md
   items:
@@ -41,7 +38,7 @@
     - name: Shuffle
       href: snippets/shuffle.md
     - name: Text Labels
-      href: snippets/textlabels.md
+      href: snippets/natives-textlabels.md
     - name: Voice
       href: snippets/voice.md
 - name: Vehicle
@@ -51,4 +48,5 @@
       href: vehicle/train-api.md
 - name: Workers
   href: workers.md
-
+- name: Debugging server code
+  href: debugging-server-code.md
