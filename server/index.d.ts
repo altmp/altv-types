@@ -3268,8 +3268,8 @@ declare module "alt-server" {
    * ```
    *
    * @param position
-   * @param range
-   * @param dimension
+   * @param range Can be set to `0` to get entities in any range.
+   * @param dimension Can be set to {@link "alt-shared".globalDimension} to get entities in  any dimension.
    * @param limit How many entities to return if there are more entities in the specified range, dimension. (`-1` to disable).
    * @param allowedTypes
    *
