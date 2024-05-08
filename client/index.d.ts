@@ -3927,6 +3927,11 @@ declare module "alt-client" {
      */
     public static getByScriptID(scriptID: number): Ped | null;
 
+    /**
+     * Gets the ped with the given remote id
+     */
+    public static getByRemoteID(id: number): Ped | null;
+
     public static readonly all: readonly Ped[];
 
     public static readonly streamedIn: readonly Ped[];
