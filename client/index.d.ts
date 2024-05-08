@@ -3930,7 +3930,7 @@ declare module "alt-client" {
     /**
      * Gets the ped with the given remote id
      */
-    public static getByRemoteID(id: number): Player | null;
+    public static getByRemoteID(id: number): Ped | null;
 
     public static readonly all: readonly Ped[];
 
