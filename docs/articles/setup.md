@@ -9,6 +9,7 @@ This article will explain how to setup an alt:V server with the JS module.
 - Basic knowledge of command prompts
 - VC Redist Latest Version installed
 - Windows 10+ or Linux (For running the server)
+- On Linux you need the package libatomic1 `apt-get install libatomic1`
 
 ## Summary
 
