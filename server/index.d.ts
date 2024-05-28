@@ -3000,9 +3000,9 @@ declare module "alt-server" {
   export function emitAllClientsUnreliable<K extends string>(eventName: Exclude<K, keyof shared.ICustomServerClientEvent>, ...args: any[]): void;
 
   /**
-   * Subscribes to a client event with the specified listener.
+   * Subscribes to a client -> server RPC with the specified listener.
    * @param rpcName Name of the RPC
-   * @param listener Listener that should be added.
+   * @param listener Listener to be assigned to this RPC name (there can only be one listener for each RPC name).
    *
    * @example
    * ```js
@@ -3013,6 +3013,7 @@ declare module "alt-server" {
    *    return [1, 2, [10, 13, 19], false, "hey there"];
    * });
    * ```
+   *
    * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the client to throw an exception which has to be caught.
    *
    */
@@ -3022,7 +3023,7 @@ declare module "alt-server" {
   /**
    *
    * @param rpcName Name of the RPC
-   * @param listener Listener that should be added.
+   * @param listener Listener that should be removed (if not passed current listener will be removed).
    *
    */
   export function offRpc<K extends keyof shared.ICustomClientServerRpc>(rpcName: string, listener: (player: Player, ...args: Parameters<shared.ICustomClientServerRpc[K]>) => Promise<ReturnType<shared.ICustomClientServerRpc[K]>> | ReturnType<shared.ICustomClientServerRpc[K]>): void;

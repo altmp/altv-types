@@ -2602,20 +2602,30 @@ declare module "alt-client" {
   export function emitRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomClientServerRpc>, ...args: any[]): Promise<any>;
 
   /**
-   * Subscribes to a client event with the specified listener.
+   * Subscribes to a server -> client RPC with the specified listener.
    * @param rpcName Name of the RPC
-   * @param listener Listener that should be added.
+   * @param listener Listener to be assigned to this RPC name (there can only be one listener for each RPC name).
    *
-   * @remarks The return value of the listener function determines the response clients will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the server to throw an exception which has to be caught.
+   * * @example
+   * ```js
+   * alt.onRpc("testRpc", (...args) => {
+   *     alt.log(`server called testRpc`, args);
+   *
+   *    // throw new Error("I am an error! Notice me!");
+   *    return [1, 2, [10, 13, 19], false, "hey there"];
+   * });
+   * ```
+   *
+   * @remarks The return value of the listener function determines the response server will receive. When returning multiple values, use an array. Returning an Error object will cause the promise on the server to throw an exception which has to be caught.
    *
    */
-  export function onRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<ReturnType<shared.ICustomClientServerRpc[K]>> | ReturnType<shared.ICustomClientServerRpc[K]>): void;
+  export function onRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<ReturnType<shared.ICustomServerClientRpc[K]>> | ReturnType<shared.ICustomServerClientRpc[K]>): void;
   export function onRpc<K extends string>(rpcName: Exclude<K, keyof shared.ICustomServerClientRpc>, listener: (...args: any[]) => Promise<any> | any): void;
 
   /**
    *
    * @param rpcName Name of the RPC
-   * @param listener Listener that should be added.
+   * @param listener Listener that should be removed (if not passed current listener will be removed).
    *
    */
   export function offRpc<K extends keyof shared.ICustomServerClientRpc>(rpcName: K, listener?: (...args: Parameters<shared.ICustomServerClientRpc[K]>) => Promise<ReturnType<shared.ICustomServerClientRpc[K]>> | ReturnType<shared.ICustomServerClientRpc[K]>): void;
@@ -3926,6 +3936,11 @@ declare module "alt-client" {
      * @returns Entity if it was found, otherwise null.
      */
     public static getByScriptID(scriptID: number): Ped | null;
+
+    /**
+     * Gets the ped with the given remote id
+     */
+    public static getByRemoteID(id: number): Ped | null;
 
     public static readonly all: readonly Ped[];
 
