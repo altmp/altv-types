@@ -252,4 +252,4 @@ Followed by setting up a whole server with basic fundamentals!
 
 Keep in mind that...
 - alt:V uses ES6 modules
-- the server does not automatically update, you can use something like [altv-pkg](https://github.com/Stuyk/altv-pkg) (unofficial) to easily update server files
+- the server does not automatically update, you can use something like [altv-pkg](https://github.com/altmp/altv-pkg) to easily update server files
