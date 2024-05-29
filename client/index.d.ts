@@ -2357,6 +2357,8 @@ declare module "alt-client" {
      * @param handlingHash hash of the vehicle **handling name**
      */
     public static getForHandlingName(handlingHash: number): HandlingData;
+
+    public static reloadVehiclePhysics(modelHash: number): boolean;
   }
 
   export class MapZoomData {
