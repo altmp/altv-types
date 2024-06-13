@@ -85,6 +85,7 @@ declare module "alt-client" {
     ForceVehicleTyreBurst = "FORCE_VEHICLE_TYRE_BURST",
   }
 
+  /** @deprecated This method will be removed in the next major release. (v17)  */
   export const enum WatermarkPosition {
     BottomRight = 0,
     TopRight = 1,
@@ -3258,8 +3259,11 @@ declare module "alt-client" {
    * Change the position of the alt:V watermark.
    *
    * @param position Watermarkposition.
+   * @deprecated This method will be removed in the next major release. (v17)
    */
   export function setWatermarkPosition(position: WatermarkPosition): void;
+
+  /** @deprecated This method will be removed in the next major release. (v17)  */
   export function setWatermarkPosition<T extends number>(position: T): void;
 
   /**
