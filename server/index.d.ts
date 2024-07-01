@@ -2822,8 +2822,17 @@ declare module "alt-server" {
     public readonly maxDistance: number;
     public readonly isSpatial: boolean;
 
+    /**
+     * Priority of voice channel.
+     * If a player is in two channels and both can be heard by another player, only one should play the voice.
+     * Value is of type integer, can be negative.
+     */
     public priority: number;
 
+    /**
+     * Hash of the filter name (should also be created on clientside).
+     * See docs: [Audio filters](https://docs.altv.mp/articles/audio_filters.html), [Voice](https://docs.altv.mp/articles/voice.html).
+     */
     public filter: number;
 
     public addPlayer(player: Player): void;
