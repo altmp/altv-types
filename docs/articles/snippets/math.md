@@ -1,33 +1,12 @@
 # Math & Distance Utility Functions
 
-alt:V by default does not come with default functions for getting distance.
-
-Use these functions on server-side or client-side.
-
 ```js
 /**
- * Get all players in a certain range of a position.
- * @param  {} pos
- * @param  {} range
- * @param  {} dimension=0
- * @returns {Array<alt.Player>}
- */
-export function getPlayersInRange(pos, range, dimension = 0) {
-    if (pos === undefined || range === undefined) {
-        throw new Error('GetPlayersInRange => pos or range is undefined');
-    }
-
-    return alt.Player.all.filter(player => {
-        return player.dimension === dimension && distance2d(pos, player.pos) <= range;
-    });
-}
-
-/**
- * Get the forward vector of a player.
+ * Get the forward vector from rotation.
  * @param  {} rot
  * @returns {{x,y,z}}
  */
-export function getForwardVectorServer(rot) {
+export function getForwardVector(rot) {
     const z = -rot.z;
     const x = rot.x;
     const num = Math.abs(Math.cos(x));
@@ -39,39 +18,7 @@ export function getForwardVectorServer(rot) {
 }
 
 /**
- * Get the distance from one vector to another.
- * Does take Z-Axis into consideration.
- * @param  {} vector1
- * @param  {} vector2
- * @returns {number}
- */
-export function distance(vector1, vector2) {
-    if (vector1 === undefined || vector2 === undefined) {
-        throw new Error('AddVector => vector1 or vector2 is undefined');
-    }
-
-    return Math.sqrt(
-        Math.pow(vector1.x - vector2.x, 2) + Math.pow(vector1.y - vector2.y, 2) + Math.pow(vector1.z - vector2.z, 2)
-    );
-}
-
-/**
- * Get the distance from one vector to another.
- * Does not take Z-Axis into consideration.
- * @param  {} vector1
- * @param  {} vector2
- * @returns {{x,y,z}}
- */
-export function distance2d(vector1, vector2) {
-    if (vector1 === undefined || vector2 === undefined) {
-        throw new Error('AddVector => vector1 or vector2 is undefined');
-    }
-
-    return Math.sqrt(Math.pow(vector1.x - vector2.x, 2) + Math.pow(vector1.y - vector2.y, 2));
-}
-
-/**
- * Check if a position is between two vectors.
+ * Check if a position is between two vectors (2D).
  * @param  {} pos
  * @param  {} vector1
  * @param  {} vector2
@@ -109,38 +56,23 @@ export function getClosestVectorFromGroup(pos, arrayOfPositions) {
             return distance(pos, a.pos) - distance(pos, b.pos);
         }
 
-        return distance(pos, a.pos) - distance(pos, b.pos);
+        return distance(pos, a) - distance(pos, b);
     });
 
     return arrayOfPositions[0];
-}
-
-/**
- * Get the closest player to a player.
- * @param  {} player
- * @returns {Array<alt.Player>}
- */
-export function getClosestPlayer(player) {
-    return getClosestVectorFromGroup(player.pos, [...alt.Player.all]);
-}
-
-/**
- * Get the closest vehicle to a player.
- * @param  {alt.Vector3} player
- * @returns {Array<alt.Vehicle>}
- */
-export function getClosestVehicle(player) {
-    return getClosestVectorFromGroup(player.pos, [...alt.Vehicle.all]);
 }
 ```
 
 ## Example Usage
 
 ```js
-const dist1 = { x: 5, y: 2, z: 0 };
-const dist2 = { x: 1, y: 1, z: 0 };
+import alt from "alt-server";
 
-const dist = distance2d(dist1, dist2);
-const closestVehicle = getClosestVehicle(player);
-const closestPlayer = getClosestPlayer(player);
+const pos1 = new alt.Vector3(5, 2, 0);
+const pos2 = new alt.Vector3(1, 1, 0);
+
+const dist = pos1.distanceTo(pos2);
+
+// Closest pos to 0, 0, 0
+const closest = getClosestVectorFromGroup(alt.Vector3.zero, [pos1, pos2]);
 ```
