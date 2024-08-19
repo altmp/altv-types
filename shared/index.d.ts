@@ -2,7 +2,7 @@
  * @module alt-shared
  */
 declare module "alt-shared" {
-  export const enum BaseObjectType {
+  export enum BaseObjectType {
     Player,
     Vehicle,
     Ped,
@@ -36,7 +36,7 @@ declare module "alt-shared" {
     Size,
   }
 
-  export const enum BlipSprite {
+  export enum BlipSprite {
     Higher,
     Lower,
     PolicePed,
@@ -781,7 +781,7 @@ declare module "alt-shared" {
     Agency,
   }
 
-  export const enum BlipColor {
+  export enum BlipColor {
     White,
     Red,
     Green,
@@ -836,7 +836,7 @@ declare module "alt-shared" {
     Purple = 83,
   }
 
-  export const enum BlipType {
+  export enum BlipType {
     Vehicle = 1,
     Ped,
     Object,
@@ -851,7 +851,7 @@ declare module "alt-shared" {
     PickupObject,
   }
 
-  export const enum MarkerType {
+  export enum MarkerType {
     MarkerCone = 0,
     MarkerCylinder = 1,
     MarkerArrow = 2,
@@ -899,7 +899,7 @@ declare module "alt-shared" {
     MarkerPitLane = 44,
   }
 
-  export const enum ColShapeType {
+  export enum ColShapeType {
     Sphere,
     Cylinder,
     Circle,
@@ -909,7 +909,7 @@ declare module "alt-shared" {
     Polygon,
   }
 
-  export const enum AudioCategories {
+  export enum AudioCategories {
     x44E21C90 = "0x44E21C90",
     xBAD598C7 = "0xBAD598C7",
     xA4D158B0 = "0xA4D158B0",
@@ -1138,13 +1138,13 @@ declare module "alt-shared" {
     xCFF0C1C2 = "0xCFF0C1C2",
   }
 
-  export const enum FileEncoding {
+  export enum FileEncoding {
     Utf8 = "utf-8",
     Utf16 = "utf-16",
     Binary = "binary",
   }
 
-  export const enum Permission {
+  export enum Permission {
     NONE,
     SCREEN_CAPTURE,
     WEBRTC,
@@ -1153,7 +1153,7 @@ declare module "alt-shared" {
     All,
   }
 
-  export const enum CheckpointType {
+  export enum CheckpointType {
     CylinderSingleArrow,
     CylinderDoubleArrow,
     CylinderTripleArrow,
@@ -1223,7 +1223,7 @@ declare module "alt-shared" {
     RingWhirl,
   }
 
-  export const enum ModelType {
+  export enum ModelType {
     Invalid,
     Ped,
     Automobile,
@@ -1244,7 +1244,7 @@ declare module "alt-shared" {
     Object,
   }
 
-  export const enum KeyCode {
+  export enum KeyCode {
     Key0 = 48,
     Key1 = 49,
     Key2 = 50,
@@ -1354,7 +1354,7 @@ declare module "alt-shared" {
     MouseMiddle = 4,
   }
 
-  export const enum BodyPart {
+  export enum BodyPart {
     Pelvis,
     LeftHip,
     LeftLeg,
@@ -1379,7 +1379,7 @@ declare module "alt-shared" {
     Unknown = -1,
   }
 
-  export const enum PedConfigFlag {
+  export enum PedConfigFlag {
     NoCriticalHits = 2,
     DrownsInWater = 3,
     DisableReticuleFixedLockon = 4,
@@ -1666,7 +1666,7 @@ declare module "alt-shared" {
     DontChangeTargetFromMelee = 458,
   }
 
-  export const enum VoiceConnectionState {
+  export enum VoiceConnectionState {
     Disconnected,
     Connecting,
     Connected,
@@ -1774,7 +1774,7 @@ declare module "alt-shared" {
     readonly components: readonly number[];
   }
 
-  export const enum VehicleLockState {
+  export enum VehicleLockState {
     None,
     Unlocked,
     Locked,
