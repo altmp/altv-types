@@ -1,4 +1,4 @@
-// This file was generated on 19.8.2024, 19:47:56 - DO NOT MODIFY MANUALLY
+// This file was generated on 19.8.2024, 20:03:40 - DO NOT MODIFY MANUALLY
 
 /// <reference types="@altv/types-client"/>
 
@@ -130,7 +130,7 @@ declare module "natives" {
 
   export function appGetFloat(property: string | null): number;
 
-  export function appGetString(property: string | null): string;
+  export function appGetString(property: string | null): string | null;
 
   export function appSetInt(property: string | null, value: number): void;
 
@@ -620,12 +620,12 @@ declare module "natives" {
   /**
    * Returns active radio station name
    */
-  export function getPlayerRadioStationName(): string;
+  export function getPlayerRadioStationName(): string | null;
 
   /**
    * Converts radio station index to string. Use HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION to get the user-readable text.
    */
-  export function getRadioStationName(radioStation: number): string;
+  export function getRadioStationName(radioStation: number): string | null;
 
   export function getPlayerRadioStationGenre(): number;
 
@@ -2749,7 +2749,7 @@ declare module "natives" {
 
   export function datadictGetFloat(objectData: any | null, key: string | null): [number, any];
 
-  export function datadictGetString(objectData: any | null, key: string | null): [string, any];
+  export function datadictGetString(objectData: any | null, key: string | null): [string | null, any];
 
   export function datadictGetVector(objectData: any | null, key: string | null): [Vector3, any];
 
@@ -2787,7 +2787,7 @@ declare module "natives" {
 
   export function dataarrayGetFloat(arrayData: any | null, arrayIndex: number): [number, any];
 
-  export function dataarrayGetString(arrayData: any | null, arrayIndex: number): [string, any];
+  export function dataarrayGetString(arrayData: any | null, arrayIndex: number): [string | null, any];
 
   export function dataarrayGetVector(arrayData: any | null, arrayIndex: number): [Vector3, any];
 
@@ -3117,7 +3117,7 @@ declare module "natives" {
   /**
    * Returns the name of the script that owns/created the entity or nullptr. Second parameter is unused, can just be a nullptr.
    */
-  export function getEntityScript(entity: Entity | number, script?: number | null): [string, number];
+  export function getEntityScript(entity: Entity | number, script?: number | null): [string | null, number];
 
   /**
    * result is in meters per second
@@ -5752,7 +5752,7 @@ declare module "natives" {
    * methodReturn: The return value of this native: END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE
    * Used to get a return value from a scaleform function. Returns a string in the same way GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT returns an int.
    */
-  export function getScaleformMovieMethodReturnValueString(methodReturn: number): string;
+  export function getScaleformMovieMethodReturnValueString(methodReturn: number): string | null;
 
   /**
    * Pushes an integer for the Scaleform function onto the stack.
@@ -6499,7 +6499,7 @@ declare module "natives" {
    * // Get "STRING" text from "MY_STRING"
    * subStr = HUD::GET_CHARACTER_FROM_AUDIO_CONVERSATION_FILENAME("MY_STRING", 3, 6);
    */
-  export function getCharacterFromAudioConversationFilename(text: string | null, position: number, length: number): string;
+  export function getCharacterFromAudioConversationFilename(text: string | null, position: number, length: number): string | null;
 
   /**
    * Returns a substring of a specified length starting at a specified position. The result is guaranteed not to exceed the specified max length.
@@ -6520,7 +6520,7 @@ declare module "natives" {
    *     return TRUE;
    * }
    */
-  export function getCharacterFromAudioConversationFilenameWithByteLimit(text: string | null, position: number, length: number, maxLength: number): string;
+  export function getCharacterFromAudioConversationFilenameWithByteLimit(text: string | null, position: number, length: number, maxLength: number): string | null;
 
   /**
    * Returns a substring that is between two specified positions. The length of the string will be calculated using (endPosition - startPosition).
@@ -6530,12 +6530,12 @@ declare module "natives" {
    * // Overflows are possibly replaced with underscores (needs verification)
    * subStr = HUD::GET_CHARACTER_FROM_AUDIO_CONVERSATION_FILENAME_BYTES("MY_STRING", 3, 10); // "STRING_"?
    */
-  export function getCharacterFromAudioConversationFilenameBytes(text: string | null, startPosition: number, endPosition: number): string;
+  export function getCharacterFromAudioConversationFilenameBytes(text: string | null, startPosition: number, endPosition: number): string | null;
 
   /**
    * Gets a localized string literal from a label name. Can be used for output of e.g. VEHICLE::GET_LIVERY_NAME. To check if a GXT label can be localized with this, HUD::DOES_TEXT_LABEL_EXIST can be used.
    */
-  export function getFilenameForAudioConversation(labelName: string | null): string;
+  export function getFilenameForAudioConversation(labelName: string | null): string | null;
 
   export function clearPrints(): void;
 
@@ -6577,7 +6577,7 @@ declare module "natives" {
    */
   export function doesTextLabelExist(gxt: string | null): boolean;
 
-  export function getFirstNCharactersOfLiteralString(string: string | null, length: number): string;
+  export function getFirstNCharactersOfLiteralString(string: string | null, length: number): string | null;
 
   /**
    * Returns the string length of the string from the gxt string .
@@ -6595,7 +6595,7 @@ declare module "natives" {
    * This functions converts the hash of a street name into a readable string.
    * For how to get the hashes, see PATHFIND::GET_STREET_NAME_AT_COORD.
    */
-  export function getStreetNameFromHashKey(hash: number): string;
+  export function getStreetNameFromHashKey(hash: number): string | null;
 
   export function isHudPreferenceSwitchedOn(): boolean;
 
@@ -8515,7 +8515,7 @@ declare module "natives" {
   /**
    * Returns pointer to an empty string.
    */
-  export function getContentToLoad(): string;
+  export function getContentToLoad(): string | null;
 
   /**
    * Does nothing (it's a nullsub). Seems to be PS4 specific.
@@ -9637,7 +9637,7 @@ declare module "natives" {
   /**
    * Returns NULL unless UPDATE_ONSCREEN_KEYBOARD() returns 1 in the same tick.
    */
-  export function getOnscreenKeyboardResult(): string;
+  export function getOnscreenKeyboardResult(): string | null;
 
   /**
    * DO NOT use this as it doesn't clean up the text input box properly and your script will get stuck in the UPDATE_ONSCREEN_KEYBOARD() loop.
@@ -10189,7 +10189,7 @@ declare module "natives" {
   /**
    * This isn't a hash collision.
    */
-  export function processCashGift(p0: number | null, p1: number | null, p2: string | null): [string, number, number];
+  export function processCashGift(p0: number | null, p1: number | null, p2: string | null): [string | null, number, number];
 
   export function networkSpentMoveSubmarine(p0: any, p1: any, p2: any): void;
 
@@ -10690,11 +10690,11 @@ declare module "natives" {
 
   export function networkGetPvcBalance(): number;
 
-  export function networkGetStringWalletBalance(characterSlot: number): string;
+  export function networkGetStringWalletBalance(characterSlot: number): string | null;
 
-  export function networkGetStringBankBalance(): string;
+  export function networkGetStringBankBalance(): string | null;
 
-  export function networkGetStringBankWalletBalance(character: number): string;
+  export function networkGetStringBankWalletBalance(character: number): string | null;
 
   /**
    * Returns true if wallet balance >= amount.
@@ -10850,7 +10850,7 @@ declare module "natives" {
    * 1.33
    * _GET_ONLINE_VERSION() will return "1.33"
    */
-  export function getOnlineVersion(): string;
+  export function getOnlineVersion(): string | null;
 
   /**
    * Returns whether the player is signed into Social Club.
@@ -11443,13 +11443,13 @@ declare module "natives" {
 
   export function networkGetPresenceInviteId(p0: number): number;
 
-  export function networkGetPresenceInviteInviter(p0: number): string;
+  export function networkGetPresenceInviteInviter(p0: number): string | null;
 
   export function networkGetPresenceInviteHandle(p0: any, p1?: any | null): [boolean, any];
 
   export function networkGetPresenceInviteSessionId(p0: any): number;
 
-  export function networkGetPresenceInviteContentId(p0: number): string;
+  export function networkGetPresenceInviteContentId(p0: number): string | null;
 
   export function networkGetPresenceInvitePlaylistLength(p0: number): number;
 
@@ -11815,7 +11815,7 @@ declare module "natives" {
 
   export function networkGamertagFromHandleSucceeded(): boolean;
 
-  export function networkGetGamertagFromHandle(gamerHandle?: any | null): [string, any];
+  export function networkGetGamertagFromHandle(gamerHandle?: any | null): [string | null, any];
 
   /**
    * Hardcoded to return -1.
@@ -11833,7 +11833,7 @@ declare module "natives" {
 
   export function networkGetPlayerFromGamerHandle(gamerHandle?: any | null): [number, any];
 
-  export function networkMemberIdFromGamerHandle(gamerHandle?: any | null): [string, any];
+  export function networkMemberIdFromGamerHandle(gamerHandle?: any | null): [string | null, any];
 
   export function networkIsGamerInMySession(gamerHandle?: any | null): [boolean, any];
 
@@ -11842,13 +11842,13 @@ declare module "natives" {
   /**
    * Returns the name of a given player. Returns "**Invalid**" if rlGamerInfo of the given player cannot be retrieved or the player doesn't exist.
    */
-  export function networkPlayerGetName(player: Player | number): string;
+  export function networkPlayerGetName(player: Player | number): string | null;
 
   /**
    * Returns a string of the player's Rockstar Id. 
    * Takes a 24 char buffer. Returns the buffer or "**Invalid**" if rlGamerInfo of the given player cannot be retrieved or the player doesn't exist.
    */
-  export function networkPlayerGetUserid(player: Player | number, userID?: number | null): [string, number];
+  export function networkPlayerGetUserid(player: Player | number, userID?: number | null): [string | null, number];
 
   /**
    * Checks if a specific value (BYTE) in CNetGamePlayer is nonzero.
@@ -11878,9 +11878,9 @@ declare module "natives" {
 
   export function networkGetFriendCount(): number;
 
-  export function networkGetFriendName(friendIndex: number): string;
+  export function networkGetFriendName(friendIndex: number): string | null;
 
-  export function networkGetFriendDisplayName(friendIndex: number): string;
+  export function networkGetFriendDisplayName(friendIndex: number): string | null;
 
   export function networkIsFriendOnline(name: string | null): boolean;
 
@@ -12394,12 +12394,12 @@ declare module "natives" {
    */
   export function getTimeDifference(timeA: number, timeB: number): number;
 
-  export function getTimeAsString(time: number): string;
+  export function getTimeAsString(time: number): string | null;
 
   /**
    * Same as GET_CLOUD_TIME_AS_INT but returns the value as a hex string (%I64X).
    */
-  export function getCloudTimeAsString(): string;
+  export function getCloudTimeAsString(): string | null;
 
   /**
    * Returns POSIX timestamp, an int representing the cloud time.
@@ -12742,18 +12742,18 @@ declare module "natives" {
 
   export function isCommerceDataFetchInProgress(): boolean;
 
-  export function getCommerceItemId(index: number): string;
+  export function getCommerceItemId(index: number): string | null;
 
-  export function getCommerceItemName(index: number): string;
+  export function getCommerceItemName(index: number): string | null;
 
-  export function getCommerceProductPrice(index: number): string;
+  export function getCommerceProductPrice(index: number): string | null;
 
   export function getCommerceItemNumCats(index: number): number;
 
   /**
    * index2 is unused
    */
-  export function getCommerceItemCat(index: number, index2: number): string;
+  export function getCommerceItemCat(index: number, index2: number): string | null;
 
   export function openCommerceStore(p0: string | null, p1: string | null, p2: number): void;
 
@@ -12768,7 +12768,7 @@ declare module "natives" {
 
   export function releaseAllCommerceItemImages(): void;
 
-  export function getCommerceItemTexturename(index: number): string;
+  export function getCommerceItemTexturename(index: number): string | null;
 
   export function isStoreAvailableToUser(): boolean;
 
@@ -12835,7 +12835,7 @@ declare module "natives" {
 
   export function ugcGetCreateResult(): number;
 
-  export function ugcGetCreateContentId(): string;
+  export function ugcGetCreateContentId(): string | null;
 
   export function ugcClearCreateResult(): void;
 
@@ -12889,13 +12889,13 @@ declare module "natives" {
 
   export function ugcClearQueryResults(): void;
 
-  export function ugcGetContentUserId(p0: number): string;
+  export function ugcGetContentUserId(p0: number): string | null;
 
   export function ugcGetContentCreatorGamerHandle(p0: number, p1?: any | null): [boolean, any];
 
   export function ugcGetContentCreatedByLocalPlayer(p0: any): boolean;
 
-  export function ugcGetContentUserName(p0: any): string;
+  export function ugcGetContentUserName(p0: any): string | null;
 
   export function ugcGetContentIsUsingScNickname(p0: any): boolean;
 
@@ -12904,18 +12904,18 @@ declare module "natives" {
   /**
    * Return the mission id of a job.
    */
-  export function ugcGetContentId(p0: number): string;
+  export function ugcGetContentId(p0: number): string | null;
 
   /**
    * Return the root content id of a job.
    */
-  export function ugcGetRootContentId(p0: number): string;
+  export function ugcGetRootContentId(p0: number): string | null;
 
-  export function ugcGetContentName(p0: any): string;
+  export function ugcGetContentName(p0: any): string | null;
 
   export function ugcGetContentDescriptionHash(p0: any): number;
 
-  export function ugcGetContentPath(p0: number, p1: number): string;
+  export function ugcGetContentPath(p0: number, p1: number): string | null;
 
   export function ugcGetContentUpdatedDate(p0: any, p1?: any | null): [void, any];
 
@@ -12955,7 +12955,7 @@ declare module "natives" {
 
   export function ugcDidDescriptionRequestSucceed(p0: any): boolean;
 
-  export function ugcGetCachedDescription(p0: any, p1: any): string;
+  export function ugcGetCachedDescription(p0: any, p1: any): string | null;
 
   export function ugcReleaseCachedDescription(p0: any): boolean;
 
@@ -13019,7 +13019,7 @@ declare module "natives" {
 
   export function textureDownloadHasFailed(p0: number): boolean;
 
-  export function textureDownloadGetName(p0: number): string;
+  export function textureDownloadGetName(p0: number): string | null;
 
   /**
    * 0 = succeeded
@@ -13926,12 +13926,12 @@ declare module "natives" {
    * gtaforums.com/topic/819070-c-draw-instructional-buttons-scaleform-movie/#entry1068197378
    * control: unused parameter
    */
-  export function getControlInstructionalButtonsString(control: number, action: number, allowXOSwap: boolean): string;
+  export function getControlInstructionalButtonsString(control: number, action: number, allowXOSwap: boolean): string | null;
 
   /**
    * control: unused parameter
    */
-  export function getControlGroupInstructionalButtonsString(control: number, controlGroup: number, allowXOSwap: boolean): string;
+  export function getControlGroupInstructionalButtonsString(control: number, controlGroup: number, allowXOSwap: boolean): string | null;
 
   /**
    * control: see IS_CONTROL_ENABLED
@@ -17561,7 +17561,7 @@ declare module "natives" {
   /**
    * gtaforums.com/topic/885580-ped-headshotmugshot-txd/
    */
-  export function getPedheadshotTxdString(id: number): string;
+  export function getPedheadshotTxdString(id: number): string | null;
 
   export function requestPedheadshotImgUpload(id: number): boolean;
 
@@ -17839,7 +17839,7 @@ declare module "natives" {
 
   export function getNumberOfPlayersInTeam(team: number): number;
 
-  export function getPlayerName(player: Player | number): string;
+  export function getPlayerName(player: Player | number): string | null;
 
   /**
    * Remnant from GTA IV. Does nothing in GTA V.
@@ -19069,7 +19069,7 @@ declare module "natives" {
 
   export function isThreadActive(threadId: number): boolean;
 
-  export function getNameOfScriptWithThisId(threadId: number): string;
+  export function getNameOfScriptWithThisId(threadId: number): string | null;
 
   /**
    * Starts a new iteration of the current threads.
@@ -19095,7 +19095,7 @@ declare module "natives" {
    */
   export function getNumberOfThreadsRunningTheScriptWithThisHash(scriptHash: number): number;
 
-  export function getThisScriptName(): string;
+  export function getThisScriptName(): string | null;
 
   export function getHashOfThisScriptName(): number;
 
@@ -19257,7 +19257,7 @@ declare module "natives" {
 
   export function scInboxMessageDoApply(p0: number): boolean;
 
-  export function scInboxMessageGetRawTypeAtIndex(p0: number): string;
+  export function scInboxMessageGetRawTypeAtIndex(p0: number): string | null;
 
   export function scInboxMessagePushGamerT0RecipList(gamerHandle?: any | null): [void, any];
 
@@ -19289,7 +19289,7 @@ declare module "natives" {
 
   export function scHasNewRockstarMsg(): boolean;
 
-  export function scGetNewRockstarMsg(): string;
+  export function scGetNewRockstarMsg(): string | null;
 
   export function scPresenceAttrSetInt(attrHash: number, value: number): boolean;
 
@@ -19333,9 +19333,9 @@ declare module "natives" {
 
   export function scLicenseplateGetCount(token: number): number;
 
-  export function scLicenseplateGetPlate(token: number, plateIndex: number): string;
+  export function scLicenseplateGetPlate(token: number, plateIndex: number): string | null;
 
-  export function scLicenseplateGetPlateData(token: number, plateIndex: number): string;
+  export function scLicenseplateGetPlateData(token: number, plateIndex: number): string | null;
 
   export function scLicenseplateSetPlateData(oldPlateText: string | null, newPlateText: string | null, plateData?: any | null): [boolean, any];
 
@@ -19409,7 +19409,7 @@ declare module "natives" {
   /**
    * Returns the nickname of the logged-in Rockstar Social Club account.
    */
-  export function scAccountInfoGetNickname(): string;
+  export function scAccountInfoGetNickname(): string | null;
 
   export function scAchievementInfoStatus(p0?: number | null): [boolean, number];
 
@@ -19598,7 +19598,7 @@ declare module "natives" {
   /**
    * p1 is always -1 in the script files
    */
-  export function statGetString(statHash: number, p1: number): string;
+  export function statGetString(statHash: number, p1: number): string | null;
 
   /**
    * p3 is probably characterSlot or BOOL save, always -1
@@ -19613,9 +19613,9 @@ declare module "natives" {
   /**
    * Returns the rockstar ID (user id) value of a given stat. Returns "STAT_UNKNOWN" if the statHash is invalid or the stat has no userId
    */
-  export function statGetUserId(statHash: number): string;
+  export function statGetUserId(statHash: number): string | null;
 
-  export function statGetLicensePlate(statName: number): string;
+  export function statGetLicensePlate(statName: number): string | null;
 
   export function statSetLicensePlate(statName: number, str: string | null): boolean;
 
@@ -21293,7 +21293,7 @@ declare module "natives" {
 
   export function updateTaskAimGunScriptedTarget(ped: Ped | Player | LocalPlayer | number, target: Ped | Player | LocalPlayer | number, x: number, y: number, z: number, disableBlockingClip: boolean): void;
 
-  export function getClipSetForScriptedGunTask(gunTaskType: number): string;
+  export function getClipSetForScriptedGunTask(gunTaskType: number): string | null;
 
   /**
    * duration: the amount of time in milliseconds to do the task.  -1 will keep the task going until either another task is applied, or CLEAR_ALL_TASKS() is called with the ped
@@ -22411,7 +22411,7 @@ declare module "natives" {
    */
   export function setExpectedCloneNextTaskMoveNetworkState(ped: Ped | Player | LocalPlayer | number, state: string | null): boolean;
 
-  export function getTaskMoveNetworkState(ped: Ped | Player | LocalPlayer | number): string;
+  export function getTaskMoveNetworkState(ped: Ped | Player | LocalPlayer | number): string | null;
 
   export function setTaskMoveNetworkAnimSet(ped: Ped | Player | LocalPlayer | number, clipSet: number, variableClipSet: number): void;
 
@@ -23217,7 +23217,7 @@ declare module "natives" {
   /**
    * Returns the license plate text from a vehicle. 8 chars maximum.
    */
-  export function getVehicleNumberPlateText(vehicle: Vehicle | number): string;
+  export function getVehicleNumberPlateText(vehicle: Vehicle | number): string | null;
 
   /**
    * Returns the number of *types* of licence plates, enumerated below in SET_VEHICLE_NUMBER_PLATE_TEXT_INDEX.
@@ -24003,14 +24003,14 @@ declare module "natives" {
    * Using HUD::GET_FILENAME_FOR_AUDIO_CONVERSATION, you can get the localized name.
    * Full list of vehicles by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/vehicles.json
    */
-  export function getDisplayNameFromVehicleModel(modelHash: number): string;
+  export function getDisplayNameFromVehicleModel(modelHash: number): string | null;
 
   /**
    * Will return a vehicle's manufacturer display label.
    * Returns "CARNOTFOUND" if the hash doesn't match a vehicle hash.
    * Full list of vehicles by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/vehicles.json
    */
-  export function getMakeNameFromVehicleModel(modelHash: number): string;
+  export function getMakeNameFromVehicleModel(modelHash: number): string | null;
 
   /**
    * The only example I can find of this function in the scripts, is this:
@@ -24495,12 +24495,12 @@ declare module "natives" {
    * Returns a string which is the codename of the vehicle's currently selected primary color
    * p1 is always 0
    */
-  export function getVehicleModColor1Name(vehicle: Vehicle | number, p1: boolean): string;
+  export function getVehicleModColor1Name(vehicle: Vehicle | number, p1: boolean): string | null;
 
   /**
    * Returns a string which is the codename of the vehicle's currently selected secondary color
    */
-  export function getVehicleModColor2Name(vehicle: Vehicle | number): string;
+  export function getVehicleModColor2Name(vehicle: Vehicle | number): string | null;
 
   export function haveVehicleModsStreamedIn(vehicle: Vehicle | number): boolean;
 
@@ -24582,12 +24582,12 @@ declare module "natives" {
    * Returns the text label of a mod type for a given vehicle
    * Use GET_FILENAME_FOR_AUDIO_CONVERSATION to get the part name in the game's language
    */
-  export function getModTextLabel(vehicle: Vehicle | number, modType: number, modValue: number): string;
+  export function getModTextLabel(vehicle: Vehicle | number, modType: number, modValue: number): string | null;
 
   /**
    * Returns the name for the type of vehicle mod(Armour, engine etc)
    */
-  export function getModSlotName(vehicle: Vehicle | number, modType: number): string;
+  export function getModSlotName(vehicle: Vehicle | number, modType: number): string | null;
 
   /**
    * Returns the text label of the vehicle's liveryIndex, as specified by the liveryNames section of the vehicle's modkit data in the carcols file.
@@ -24607,7 +24607,7 @@ declare module "natives" {
    * Use GET_FILENAME_FOR_AUDIO_CONVERSATION, to get the localized livery name.
    * Full list of vehicle mod kits and mods by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/vehicleModKits.json
    */
-  export function getLiveryName(vehicle: Vehicle | number, liveryIndex: number): string;
+  export function getLiveryName(vehicle: Vehicle | number, liveryIndex: number): string | null;
 
   export function getVehicleModModifierValue(vehicle: Vehicle | number, modType: number, modIndex: number): number;
 
@@ -26772,7 +26772,7 @@ declare module "natives" {
    * ZQ_UAR = Davis Quartz
    * Full list of zones by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/zones.json
    */
-  export function getNameOfZone(x: number, y: number, z: number): string;
+  export function getNameOfZone(x: number, y: number, z: number): string | null;
 
   export function setZoneEnabled(zoneId: number, toggle: boolean): void;
 
