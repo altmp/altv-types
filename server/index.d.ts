@@ -11,7 +11,7 @@ declare module "alt-server" {
   export type DateTimeDay = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30;
   export type DateTimeMonth = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
-  export const enum ExplosionType {
+  export enum ExplosionType {
     Grenade,
     GrenadeLauncher,
     StickyBomb,
@@ -54,7 +54,7 @@ declare module "alt-server" {
     Unknown = -1,
   }
 
-  export const enum RadioStation {
+  export enum RadioStation {
     LosSantosRockRadio,
     NonStopPopFm,
     RadioLosSantos,
@@ -77,7 +77,7 @@ declare module "alt-server" {
     RadioOff = 255,
   }
 
-  export const enum NumberPlateStyle {
+  export enum NumberPlateStyle {
     BlueWhite,
     YellowBlack,
     YellowBlue,
@@ -86,18 +86,18 @@ declare module "alt-server" {
     Yankton,
   }
 
-  export const enum VehicleBumper {
+  export enum VehicleBumper {
     Front,
     Rear,
   }
 
-  export const enum VehicleBumperDamage {
+  export enum VehicleBumperDamage {
     NotDamaged,
     Damaged,
     None,
   }
 
-  export const enum VehicleDoor {
+  export enum VehicleDoor {
     DriverFront,
     PassengerFront,
     DriverRear,
@@ -106,7 +106,7 @@ declare module "alt-server" {
     Trunk,
   }
 
-  export const enum VehicleDoorState {
+  export enum VehicleDoorState {
     Closed,
     OpenedLevel1,
     OpenedLevel2,
@@ -118,7 +118,7 @@ declare module "alt-server" {
     Unknown = 255,
   }
 
-  export const enum VehicleModType {
+  export enum VehicleModType {
     Spoiler,
     FrontBumper,
     RearBumper,
@@ -170,7 +170,7 @@ declare module "alt-server" {
     Livery,
   }
 
-  export const enum VehiclePart {
+  export enum VehiclePart {
     FrontLeft,
     FrontRight,
     MiddleLeft,
@@ -179,14 +179,14 @@ declare module "alt-server" {
     RearRight,
   }
 
-  export const enum VehiclePartDamage {
+  export enum VehiclePartDamage {
     NotDamaged,
     DamagedLevel1,
     DamagedLevel2,
     DamagedLevel3,
   }
 
-  export const enum WeatherType {
+  export enum WeatherType {
     ExtraSunny,
     Clear,
     Clouds,
@@ -204,7 +204,7 @@ declare module "alt-server" {
     Halloween,
   }
 
-  export const enum WindowTint {
+  export enum WindowTint {
     None,
     PureBlack,
     DarkSmoke,
@@ -214,19 +214,19 @@ declare module "alt-server" {
     Green,
   }
 
-  export const enum BaseObjectFilterType {
+  export enum BaseObjectFilterType {
     Player = 1,
     Vehicle = 2,
     Ped = 4,
     Object = 8,
   }
 
-  export const enum Benefit {
+  export enum Benefit {
     None,
     CloudAuth,
   }
 
-  export const enum CloudAuthResult {
+  export enum CloudAuthResult {
     Success,
     NoBenefit,
     VerifyFailed,
@@ -278,7 +278,7 @@ declare module "alt-server" {
     static getByID(id: number): IConnectionInfo | null;
   }
 
-  export const enum ConnectDeniedReason {
+  export enum ConnectDeniedReason {
     WRONG_VERSION,
     WRONG_BRANCH,
     DEBUG_NOT_ALLOWED,
@@ -500,7 +500,7 @@ declare module "alt-server" {
     readonly fixedAfterExplosion: boolean;
   }
 
-  export const enum AmmoSpecialType {
+  export enum AmmoSpecialType {
     None,
     ArmorPiercing,
     Explosive,

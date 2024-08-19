@@ -6,7 +6,7 @@
 declare module "alt-client" {
   import * as shared from "alt-shared";
 
-  export const enum Locale {
+  export enum Locale {
     Arabic = "ar",
     Belarusian = "by",
     Czech = "cz",
@@ -42,7 +42,7 @@ declare module "alt-client" {
     ChineseTraditional = "zh_tw",
   }
 
-  export const enum StatName {
+  export enum StatName {
     Stamina = "stamina",
     Strength = "strength",
     LungCapacity = "lung_capacity",
@@ -52,7 +52,7 @@ declare module "alt-client" {
     Stealth = "stealth_ability",
   }
 
-  export const enum VehicleIndicatorLights {
+  export enum VehicleIndicatorLights {
     None = 0,
     BlinkLeft = 1,
     BlinkRight = 2,
@@ -61,14 +61,14 @@ declare module "alt-client" {
     Interior = 64,
   }
 
-  export const enum WebSocketReadyState {
+  export enum WebSocketReadyState {
     Connecting,
     Open,
     Closing,
     Closed,
   }
 
-  export const enum ConfigFlag {
+  export enum ConfigFlag {
     DisableAutoWeaponSwap = "DISABLE_AUTO_WEAPON_SWAP",
     DisablePedPropKnockOff = "DISABLE_PED_PROP_KNOCK_OFF",
     DisableIdleCamera = "DISABLE_IDLE_CAMERA",
@@ -86,7 +86,7 @@ declare module "alt-client" {
   }
 
   /** @deprecated This method will be removed in the next major release. (v17)  */
-  export const enum WatermarkPosition {
+  export enum WatermarkPosition {
     BottomRight = 0,
     TopRight = 1,
     TopLeft = 2,
@@ -94,7 +94,7 @@ declare module "alt-client" {
     BottomCenter = 4,
   }
 
-  export const enum GameFont {
+  export enum GameFont {
     ChaletLondon,
     HouseScript,
     Monospace,
@@ -102,13 +102,13 @@ declare module "alt-client" {
     Pricedown = 7,
   }
 
-  export const enum TextAlign {
+  export enum TextAlign {
     Center,
     Left,
     Rigth,
   }
 
-  export const enum TextLabelAlignment {
+  export enum TextLabelAlignment {
     Left,
     Right,
     Center,
