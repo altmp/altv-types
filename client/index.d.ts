@@ -235,6 +235,7 @@ declare module "alt-client" {
     deformationDamageMult: number;
     downforceModifier: number;
     driveBiasFront: number;
+    driveBiasRear: number;
     driveInertia: number;
     driveMaxFlatVel: number;
     engineDamageMult: number;
@@ -1601,6 +1602,13 @@ declare module "alt-client" {
      */
     public setWheelTyreWidth(wheelIndex: number, width: number): void;
 
+    public getWheelDynamicFlag(wheelIndex: number, flag: number): boolean;
+    public setWheelDynamicFlag(wheelIndex: number, flag: number, value: boolean): void;
+    public getWheelConfigFlag(wheelIndex: number, flag: number): boolean;
+    public setWheelConfigFlag(wheelIndex: number, flag: number, value: boolean): void;
+
+    public setupTransmission(): void;
+
     /**
      * Vehicle daylight state.
      */
@@ -2290,6 +2298,7 @@ declare module "alt-client" {
     public deformationDamageMult: number;
     public downforceModifier: number;
     public driveBiasFront: number;
+    public driveBiasRear: number;
     public driveInertia: number;
     public driveMaxFlatVel: number;
     public engineDamageMult: number;
