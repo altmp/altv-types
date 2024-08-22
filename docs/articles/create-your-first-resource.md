@@ -20,6 +20,23 @@ server/
 ├── server.toml
 ```
 
+Before creating an example resource we need to create package.json in the root with the following content so we can use ES6 modules on serverside.
+```json
+{
+    "type": "module"
+}
+```
+
+So in the end our server folder structure should look like this:
+```
+server/
+...
+├── altv-server.exe
+├── libnode.dll
+├── server.toml
+├── package.json // <--------- here
+```
+
 Let's create an example resource.
 
 ```
@@ -55,7 +72,7 @@ deps = [
 
 You can access exported functions & more by adding the following in your code: 
 ```js
-import * as chat from 'chat';
+import * as chat from 'alt:chat';
 ```
 
 **main** is the main server file.
@@ -68,13 +85,13 @@ import * as chat from 'chat';
 
 Creating Server-side Code - server.js
 We're going to add **chat** as a dependency to our resource.
-Then we're going to import 'alt' and 'chat'. 
+Then we're going to import 'alt-server' and 'alt:chat'. 
 
 ```js
 // alt:V built-in module that provides server-side API.
 import * as alt from 'alt-server';
 // Your chat resource module.
-import * as chat from 'chat';
+import * as chat from 'alt:chat';
 
 console.log('==> Your Resource Has Loaded! Horray!');
 

@@ -723,17 +723,26 @@ declare module "alt-server" {
     public pos: shared.Vector3;
   }
 
+  /** [Documentation](https://docs.altv.mp/articles/virtualentity.html) */
   export class VirtualEntityGroup extends BaseObject {
-    /** Creates a new Virtual Entity Group */
+    /**
+     * Creates a new Virtual Entity Group
+     *
+     * @param maxEntitiesInStream Max number of entities per player stream. [More info](https://docs.altv.mp/articles/virtualentity.html#what-is-max-number-of-entities-per-player-stream).
+     */
     public constructor(maxEntitiesInStream: number);
 
     /** Returns all Virtual Entity Group instances */
     public static readonly all: readonly VirtualEntityGroup[];
 
-    /** Maximum streaming range inside the Virtual Entity Group */
+    /**
+     * Max number of entities per player stream.
+     * [More info](https://docs.altv.mp/articles/virtualentity.html#what-is-max-number-of-entities-per-player-stream).
+     */
     public readonly maxEntitiesInStream: number;
   }
 
+  /** [Documentation](https://docs.altv.mp/articles/virtualentity.html) */
   export class VirtualEntity extends WorldObject {
     /** Creates a new Virtual Entity */
     public constructor(group: VirtualEntityGroup, position: shared.Vector3, streamingDistance: number, data?: Record<string, any>);

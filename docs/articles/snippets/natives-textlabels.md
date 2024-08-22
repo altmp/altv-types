@@ -1,6 +1,6 @@
-# Drawing Text 3D & 2D
+# Drawing Text 3D & 2D (via game natives)
 
-Used to draw text on your screen or in a 3D space. This only works on **client-side**.
+Used to draw text on your screen or in a 3D space. This only works on **client-side**. This implementation uses natives of the game, for an alternative take a look at official [Text Label API](https://docs.altv.mp/articles/textlabel.html) added in [15.0](https://docs.altv.mp/articles/changelogs/15_0.html).
 
 **Client Side**
 
