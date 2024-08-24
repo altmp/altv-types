@@ -1745,6 +1745,33 @@ declare module "alt-shared" {
     >
   );
 
+  /**
+   * This is an internal utility type and you probably don't need it
+   *
+   * Converts metadata interface for multi values setter.
+   * For example, `setStreamSyncedMeta(values: MetaValues<ICustomVehicleStreamSyncedMeta>): void` in `alt.Vehicle`:
+   * ```
+   * declare module "alt-shared" {
+   *     export interface ICustomVehicleStreamSyncedMeta {
+   *         typed: boolean,
+   *     }
+   * }
+   *
+   * // vehicle is alt.Vehicle
+   * vehicle.setStreamSyncedMeta({
+   *     // must be boolean
+   *     typed: true,
+   *
+   *     // unknown type
+   *     a: 1,
+   *     b: 2
+   * });
+   * ```
+   *
+   * @hidden
+   */
+  export type MetaValues<TInterface> = Partial<TInterface> & Record<string, unknown>;
+
   export interface IVector2 {
     readonly x: number;
     readonly y: number;
@@ -1894,6 +1921,13 @@ declare module "alt-shared" {
    * @remarks See {@link ICustomGlobalMeta} for an example of use
    */
   export interface ICustomPedStreamSyncedMeta extends ICustomEntityStreamSyncedMeta {}
+
+  /**
+   * Extend it by interface merging for use in checkpoint stream synced meta (class `Checkpoint` on client & server, e.g. `checkpoint.getStreamSyncedMeta`)
+   *
+   * @remarks See {@link ICustomGlobalMeta} for an example of use
+   */
+  export interface ICustomCheckpointStreamSyncedMeta {}
 
   /**
    * Extend `alt.emitServer` and `alt.onServer` auto-completion by merging interfaces.
@@ -2604,6 +2638,7 @@ declare module "alt-shared" {
     public setMeta<K extends ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
     /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+    public setMeta(values: MetaValues<ICustomBaseObjectMeta>): void;
 
     /**
      * Gets a value using the specified key.
