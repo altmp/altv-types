@@ -46,7 +46,5 @@
   items:
     - name: Train API
       href: vehicle/train-api.md
-- name: Workers
-  href: workers.md
 - name: Debugging server code
   href: debugging-server-code.md
