@@ -2415,12 +2415,12 @@ declare module "alt-shared" {
     /**
      * Calculates angle between to vectors (in radians).
      */
-    public angleTo(vector: IVector2): Vector2;
+    public angleTo(vector: IVector2): number;
 
     /**
      * Calculates angle between to vectors (in degrees).
      */
-    public angleToDegrees(vector: IVector2): Vector2;
+    public angleToDegrees(vector: IVector2): number;
 
     /**
      * Converts degrees to radians.
