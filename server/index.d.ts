@@ -686,6 +686,7 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
     /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomBaseObjectMeta>): void;
 
     /**
      * Removes the specified key and the data connected to that specific key.
@@ -707,6 +708,7 @@ declare module "alt-server" {
     public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomBaseObjectSyncedMeta>>(key: K, value: shared.ICustomBaseObjectSyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomBaseObjectSyncedMeta} */
     public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomBaseObjectSyncedMeta, K, V>): void;
+    public setSyncedMeta(values: shared.MetaValues<shared.ICustomBaseObjectSyncedMeta>): void;
   }
 
   export class WorldObject extends BaseObject {
@@ -792,6 +794,7 @@ declare module "alt-server" {
     public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVirtualEntityStreamSyncedMeta>>(key: K, value: shared.ICustomVirtualEntityStreamSyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomVirtualEntityStreamSyncedMeta} */
     public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomVirtualEntityStreamSyncedMeta, K, V>): void;
+    public setStreamSyncedMeta(values: shared.MetaValues<shared.ICustomVirtualEntityStreamSyncedMeta>): void;
 
     /**
      * Removes the specified key and the data connected to that specific key.
@@ -857,6 +860,7 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K, value: ICustomEntityMeta[K]): void;
     /** @deprecated See {@link ICustomEntityMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomEntityMeta>): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K): void;
@@ -911,6 +915,7 @@ declare module "alt-server" {
     public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntitySyncedMeta>>(key: K, value: shared.ICustomEntitySyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomEntitySyncedMeta} */
     public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntitySyncedMeta, K, V>): void;
+    public setSyncedMeta(values: shared.MetaValues<shared.ICustomEntitySyncedMeta>): void;
 
     /**
      * Removes the specified key and the data connected to that specific key.
@@ -954,6 +959,7 @@ declare module "alt-server" {
     public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomEntityStreamSyncedMeta>>(key: K, value: shared.ICustomEntityStreamSyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomEntityStreamSyncedMeta} */
     public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomEntityStreamSyncedMeta, K, V>): void;
+    public setStreamSyncedMeta(values: shared.MetaValues<shared.ICustomEntityStreamSyncedMeta>): void;
 
     /**
      * Changes network owner to the specified player.
@@ -1485,6 +1491,7 @@ declare module "alt-server" {
     public setLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K, value: shared.ICustomPlayerLocalMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomPlayerLocalMeta} */
     public setLocalMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerLocalMeta, K, V>): void;
+    public setLocalMeta(values: shared.MetaValues<shared.ICustomPlayerLocalMeta>): void;
 
     public deleteLocalMeta(key: string): void;
     public deleteLocalMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerLocalMeta>>(key: K): void;
@@ -1511,6 +1518,7 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomPlayerMeta>>(key: K, value: ICustomPlayerMeta[K]): void;
     /** @deprecated See {@link ICustomPlayerMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomPlayerMeta>): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomPlayerMeta>>(key: K): void;
@@ -1529,6 +1537,7 @@ declare module "alt-server" {
     public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K, value: shared.ICustomPlayerSyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomPlayerSyncedMeta} */
     public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerSyncedMeta, K, V>): void;
+    public setSyncedMeta(values: shared.MetaValues<shared.ICustomPlayerSyncedMeta>): void;
 
     public deleteSyncedMeta(key: string): void;
     public deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerSyncedMeta>>(key: K): void;
@@ -1547,6 +1556,7 @@ declare module "alt-server" {
     public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K, value: shared.ICustomPlayerStreamSyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomPlayerStreamSyncedMeta} */
     public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerStreamSyncedMeta, K, V>): void;
+    public setStreamSyncedMeta(values: shared.MetaValues<shared.ICustomPlayerStreamSyncedMeta>): void;
 
     public deleteStreamSyncedMeta(key: string): void;
     public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): void;
@@ -2491,6 +2501,7 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K, value: ICustomVehicleMeta[K]): void;
     /** @deprecated See {@link ICustomVehicleMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomVehicleMeta>): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K): void;
@@ -2509,6 +2520,7 @@ declare module "alt-server" {
     public setSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVehicleSyncedMeta>>(key: K, value: shared.ICustomVehicleSyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomVehicleSyncedMeta} */
     public setSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomVehicleSyncedMeta, K, V>): void;
+    public setSyncedMeta(values: shared.MetaValues<shared.ICustomVehicleSyncedMeta>): void;
 
     public deleteSyncedMeta(key: string): void;
     public deleteSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVehicleSyncedMeta>>(key: K): void;
@@ -2527,6 +2539,7 @@ declare module "alt-server" {
     public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVehicleStreamSyncedMeta>>(key: K, value: shared.ICustomVehicleStreamSyncedMeta[K]): void;
     /** @deprecated See {@link "alt-shared".ICustomVehicleStreamSyncedMeta} */
     public setStreamSyncedMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomVehicleStreamSyncedMeta, K, V>): void;
+    public setStreamSyncedMeta(values: shared.MetaValues<shared.ICustomVehicleStreamSyncedMeta>): void;
 
     public deleteStreamSyncedMeta(key: string): void;
     public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomVehicleStreamSyncedMeta>>(key: K): void;
@@ -2667,6 +2680,7 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K, value: ICustomBlipMeta[K]): void;
     /** @deprecated See {@link ICustomBlipMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBlipMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomBlipMeta>): void;
   }
 
   export class AreaBlip extends Blip {
@@ -2732,6 +2746,7 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K, value: ICustomColshapeMeta[K]): void;
     /** @deprecated See {@link ICustomColshapeMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomColshapeMeta>): void;
   }
 
   export class ColshapeCylinder extends Colshape {
@@ -2792,18 +2807,20 @@ declare module "alt-server" {
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K, value: ICustomCheckpointMeta[K]): void;
+    public setMeta(values: shared.MetaValues<ICustomCheckpointMeta>): void;
 
-    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomPlayerStreamSyncedMeta, K>): void;
-    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K, value: shared.ICustomPlayerStreamSyncedMeta[K]): void;
+    public setStreamSyncedMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<shared.ICustomCheckpointStreamSyncedMeta, K>): void;
+    public setStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomCheckpointStreamSyncedMeta>>(key: K, value: shared.ICustomCheckpointStreamSyncedMeta[K]): void;
+    public setStreamSyncedMeta(values: shared.MetaValues<shared.ICustomCheckpointStreamSyncedMeta>): void;
 
     public deleteStreamSyncedMeta(key: string): void;
-    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): void;
+    public deleteStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomCheckpointStreamSyncedMeta>>(key: K): void;
 
-    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomPlayerStreamSyncedMeta>): unknown;
-    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): shared.ICustomPlayerStreamSyncedMeta[K] | undefined;
+    public getStreamSyncedMeta<K extends string>(key: Exclude<K, keyof shared.ICustomCheckpointStreamSyncedMeta>): unknown;
+    public getStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomCheckpointStreamSyncedMeta>>(key: K): shared.ICustomCheckpointStreamSyncedMeta[K] | undefined;
 
     public hasStreamSyncedMeta(key: string): boolean;
-    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomPlayerStreamSyncedMeta>>(key: K): boolean;
+    public hasStreamSyncedMeta<K extends shared.ExtractStringKeys<shared.ICustomCheckpointStreamSyncedMeta>>(key: K): boolean;
 
     public getStreamSyncedMetaKeys(): readonly string[];
   }
@@ -2862,6 +2879,7 @@ declare module "alt-server" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomVoiceChannelMeta>>(key: K, value: ICustomVoiceChannelMeta[K]): void;
     /** @deprecated See {@link ICustomVoiceChannelMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomVoiceChannelMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomVoiceChannelMeta>): void;
 
     public readonly players: readonly Player[];
 
