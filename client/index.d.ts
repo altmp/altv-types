@@ -594,6 +594,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomBaseObjectMeta>>(key: K, value: ICustomBaseObjectMeta[K]): void;
     /** @deprecated See {@link ICustomBaseObjectMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBaseObjectMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomBaseObjectMeta>): void;
   }
 
   /** [Documentation](https://docs.altv.mp/articles/virtualentity.html) */
@@ -739,6 +740,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomAudioMeta>>(key: K, value: ICustomAudioMeta[K]): void;
     /** @deprecated See {@link ICustomAudioMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomAudioMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomAudioMeta>): void;
   }
 
   export class AudioOutput extends BaseObject {
@@ -847,6 +849,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomCheckpointMeta>>(key: K, value: ICustomCheckpointMeta[K]): void;
     /** @deprecated See {@link ICustomCheckpointMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomCheckpointMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomCheckpointMeta>): void;
   }
 
   export class Entity extends WorldObject {
@@ -916,6 +919,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K, value: ICustomEntityMeta[K]): void;
     /** @deprecated See {@link ICustomEntityMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomEntityMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomEntityMeta>): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomEntityMeta>>(key: K): void;
@@ -1202,6 +1206,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomPlayerMeta>>(key: K, value: ICustomPlayerMeta[K]): void;
     /** @deprecated See {@link ICustomPlayerMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomPlayerMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomPlayerMeta>): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomPlayerMeta>>(key: K): void;
@@ -1282,6 +1287,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomLocalPlayerMeta>>(key: K, value: ICustomLocalPlayerMeta[K]): void;
     /** @deprecated See {@link ICustomLocalPlayerMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomLocalPlayerMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomLocalPlayerMeta>): void;
   }
 
   export class Vehicle extends Entity {
@@ -1734,6 +1740,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K, value: ICustomVehicleMeta[K]): void;
     /** @deprecated See {@link ICustomVehicleMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomVehicleMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomVehicleMeta>): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomVehicleMeta>>(key: K): void;
@@ -1998,6 +2005,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomWebViewMeta>>(key: K, value: ICustomWebViewMeta[K]): void;
     /** @deprecated See {@link ICustomWebViewMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomWebViewMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomWebViewMeta>): void;
   }
 
   /** @deprecated */
@@ -2249,6 +2257,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomBlipMeta>>(key: K, value: ICustomBlipMeta[K]): void;
     /** @deprecated See {@link ICustomBlipMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomBlipMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomBlipMeta>): void;
   }
 
   export class AreaBlip extends Blip {
@@ -3987,6 +3996,7 @@ declare module "alt-client" {
 
     public setMeta<K extends string>(key: K, value: shared.InterfaceValueByKey<ICustomPedMeta, K>): void;
     public setMeta<K extends shared.ExtractStringKeys<ICustomPedMeta>>(key: K, value: ICustomPedMeta[K]): void;
+    public setMeta(values: shared.MetaValues<ICustomPedMeta>): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomPedMeta>>(key: K): void;
@@ -4168,6 +4178,7 @@ declare module "alt-client" {
     public setMeta<K extends shared.ExtractStringKeys<ICustomColshapeMeta>>(key: K, value: ICustomColshapeMeta[K]): void;
     /** @deprecated See {@link ICustomColshapeMeta} */
     public setMeta<V extends any, K extends string = string>(key: K, value: shared.InterfaceValueByKey<ICustomColshapeMeta, K, V>): void;
+    public setMeta(values: shared.MetaValues<ICustomColshapeMeta>): void;
   }
 
   export class ColshapeCylinder extends Colshape {
