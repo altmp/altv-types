@@ -561,6 +561,14 @@ declare module "alt-client" {
     readonly propertyUpdateTicks: number[][];
   }
 
+  /**
+   * Axis-Aligned Bounding Box.
+   */
+  export interface IAABB {
+    min: number;
+    max: number;
+  }
+
   export class BaseObject extends shared.BaseObject {
     /**
      * Whether this entity was created clientside or serverside. (Clientside = false, Serverside = true).
@@ -4562,6 +4570,62 @@ declare module "alt-client" {
     protected constructor();
 
     public static register(path: string): Font;
+  }
+
+  export class Interior {
+    protected constructor();
+
+    public static getForInteriorID(id: number): Interior;
+
+    public readonly id: number;
+    public readonly pos: shared.Vector3;
+    public readonly rot: shared.Vector3;
+    public readonly roomCount: number;
+    public readonly portalCount: number;
+    public readonly entitiesExtents: IAABB;
+
+    /**
+     * Get room by it's hash. Throws if room hash is invalid.
+     */
+    public getRoomByHash(hash: number): InteriorRoom;
+
+    /**
+     * Get room by it's index: from 0 to {@link roomCount}, for example if `roomCount = 2`, room indexes will be 0 and 1.
+     * Throws if room hash is invalid.
+     */
+    public getRoomByIndex(index: number): InteriorRoom;
+
+    /**
+     * Get portal by it's index: from 0 to {@link portalCount}, for example if `portalCount = 2`, portal indexes will be 0 and 1.
+     * Throws if portal index is invalid.
+     */
+    public getPortalByIndex(index: number): InteriorPortal;
+  }
+
+  export class InteriorRoom {
+    public readonly index: number;
+    public readonly name: string;
+    public readonly nameHash: number;
+    public flag: number;
+    public timecycle: number;
+    public extents: IAABB;
+  }
+
+  export class InteriorPortal {
+    public readonly index: number;
+    public readonly cornerCount: number;
+    public readonly entityCount: number;
+    public roomFrom: number;
+    public roomTo: number;
+    public flag: number;
+
+    public getCornerPos(cornerIndex: number): shared.Vector3;
+    public setCornerPos(cornerIndex: number, value: shared.Vector3): void;
+    public getEntityArchetype(entityIndex: number): number;
+    public getEntityFlag(entityIndex: number): number;
+    public setEntityFlag(entityIndex: number, flag: number): void;
+    public getEntityPos(entityIndex: number): shared.Vector3;
+    public getEntityRot(entityIndex: number): shared.Vector3;
   }
 
   export * from "alt-shared";
