@@ -4575,6 +4575,9 @@ declare module "alt-client" {
   export class Interior {
     protected constructor();
 
+    /**
+     * Create interior instance by id. Throws if id is invalid (for example, when it's 0).
+     */
     public static getForInteriorID(id: number): Interior;
 
     public readonly id: number;
