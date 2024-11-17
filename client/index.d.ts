@@ -4577,6 +4577,22 @@ declare module "alt-client" {
 
     /**
      * Create interior instance by id. Throws if id is invalid (for example, when it's 0).
+     *
+     * @example
+     * ```js
+     * // Get the interior where our local player is currently in
+     * const interiorId = natives.getInteriorFromEntity(alt.Player.local);
+     * if (interiorId !== 0) {
+     *   const interior = alt.Interior.getForInteriorID(interiorId);
+     *
+     *   // Output room count of it
+     *   alt.log({
+     *     roomCount: interior.roomCount
+     *   });
+     * } else {
+     *   alt.logError("Interior id is 0, seems like player is outside");
+     * }
+     * ```
      */
     public static getForInteriorID(id: number): Interior;
 
