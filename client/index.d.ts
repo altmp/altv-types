@@ -4610,7 +4610,7 @@ declare module "alt-client" {
 
     /**
      * Get room by it's index: from 0 to {@link roomCount}, for example if `roomCount = 2`, room indexes will be 0 and 1.
-     * Throws if room hash is invalid.
+     * Throws if room index is invalid.
      */
     public getRoomByIndex(index: number): InteriorRoom;
 
