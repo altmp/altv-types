@@ -4622,6 +4622,8 @@ declare module "alt-client" {
   }
 
   export class InteriorRoom {
+    protected constructor();
+
     public readonly index: number;
     public readonly name: string;
     public readonly nameHash: number;
@@ -4631,6 +4633,8 @@ declare module "alt-client" {
   }
 
   export class InteriorPortal {
+    protected constructor();
+
     public readonly index: number;
     public readonly cornerCount: number;
     public readonly entityCount: number;
