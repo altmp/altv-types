@@ -83,6 +83,11 @@ declare module "alt-client" {
      * Useful when damage in weapon meta is set to 0, and is calculated manually by script in event.
      */
     ForceVehicleTyreBurst = "FORCE_VEHICLE_TYRE_BURST",
+    /**
+     * Prevents head props from being hidden when getting into the vehicle.
+     * Equivalent to calling `setPedResetFlag` native with flag 337 in every tick.
+     */
+    SwapAllowHeadPropInVehicleFlag = "SWAP_ALLOW_HEAD_PROP_IN_VEHICLE_FLAG",
   }
 
   /** @deprecated This method will be removed in the next major release. (v17)  */
