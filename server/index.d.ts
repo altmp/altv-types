@@ -2319,6 +2319,98 @@ declare module "alt-server" {
      * @param wheelId The variation id of the wheel.
      */
     public setWheels(wheelType: number, wheelId: number): void;
+
+    /**
+     * Gets the camber angle of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelCamber(wheelIndex: number): number;
+
+    /**
+     * Sets the camber angle of the specified wheel.
+     *
+     * @remarks A positive camber angle means that the top of the wheel is farther out than the bottom. A negative camber angle means that the bottom of the wheel is farther out than the top.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param camber The value the of camber angle.
+     */
+    public setWheelCamber(wheelIndex: number, camber: number): void;
+
+    /**
+     * Gets the track width of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTrackWidth(wheelIndex: number): number;
+
+    /**
+     * Sets the track width of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param width The value of the track width.
+     */
+    public setWheelTrackWidth(wheelIndex: number, width: number): void;
+
+    /**
+     * Gets the height of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelHeight(wheelIndex: number): number;
+
+    /**
+     * Sets the height of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param height The value of the wheel height.
+     */
+    public setWheelHeight(wheelIndex: number, height: number): void;
+
+    /**
+     * Gets the tyre radius of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTyreRadius(wheelIndex: number): number;
+
+    /**
+     * @remarks Applies only physical effects to the wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param radius The value of the tyre radius.
+     */
+    public setWheelTyreRadius(wheelIndex: number, radius: number): void;
+
+    /**
+     * Gets the rim radius of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelRimRadius(wheelIndex: number): number;
+
+    /**
+     * @remarks Does not show any visible effect.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param radius The index of the rim radius.
+     */
+    public setWheelRimRadius(wheelIndex: number, radius: number): void;
+
+    /**
+     * Gets the tyre width the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTyreWidth(wheelIndex: number): number;
+
+    /**
+     * @remarks Does not show any visible effect.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param width The value of the tyre width.
+     */
+    public setWheelTyreWidth(wheelIndex: number, width: number): void;
     /**
      * Sets if a specific window is damaged.
      *
