@@ -1965,8 +1965,6 @@ declare module "alt-client" {
     /**
      * Creates a WebView depending on params.
      *
-     * @param url URL of the html file.
-     *
      */
     constructor(params: IWebViewParams);
 
