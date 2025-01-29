@@ -260,7 +260,18 @@ declare module "alt-server" {
     readonly cloudAuthResult: CloudAuthResult;
     readonly id: number;
     readonly isAccepted: boolean;
+    readonly hwid3: string;
 
+    /**
+     * Set text for (potential) player in queue.
+     *
+     * @example
+     * ```js
+     * alt.on("connectionQueueAdd", (connection) => {
+     *   connection.text = "Your position in queue: 3";
+     * })
+     * ```
+     */
     text: string;
 
     /**
@@ -491,6 +502,7 @@ declare module "alt-server" {
     readonly skillAbove50MaxAmmoMp: number;
     readonly maxSkillMaxAmmoMp: number;
     readonly bonusMaxAmmoMp: number;
+    readonly damageType: string;
   }
 
   export interface IAmmoFlags {
@@ -1060,6 +1072,8 @@ declare module "alt-server" {
     public readonly isInMelee: boolean;
     public readonly isInCover: boolean;
     public readonly isParachuting: boolean;
+    public readonly isOnVehicle: boolean;
+    public readonly isInWater: boolean;
 
     /**
      * Position the player is currently aiming at.
@@ -1091,6 +1105,7 @@ declare module "alt-server" {
     public readonly isSpawned: boolean;
     public readonly socialID: string;
     public readonly socialClubName: string;
+    public readonly hwid3: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;

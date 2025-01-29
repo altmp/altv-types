@@ -219,6 +219,15 @@ declare module "alt-client" {
 
     playerStartTalking: (target: Player) => void;
     playerStopTalking: (target: Player) => void;
+
+    /**
+     * @remarks This event is only triggered for local player.
+     */
+    playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
+    /**
+     * @remarks This event is only triggered for local player.
+     */
+    playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
   }
 
   export interface IDiscordUser {
