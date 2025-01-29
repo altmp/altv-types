@@ -260,7 +260,18 @@ declare module "alt-server" {
     readonly cloudAuthResult: CloudAuthResult;
     readonly id: number;
     readonly isAccepted: boolean;
+    readonly hwid3: string;
 
+    /**
+     * Set text for (potential) player in queue.
+     *
+     * @example
+     * ```js
+     * alt.on("connectionQueueAdd", (connection) => {
+     *   connection.text = "Your position in queue: 3";
+     * })
+     * ```
+     */
     text: string;
 
     /**
@@ -327,7 +338,7 @@ declare module "alt-server" {
     vehicleAttach: (vehicle: Vehicle, attachedVehicle: Vehicle) => void;
     vehicleDestroy: (vehicle: Vehicle) => void;
     vehicleDetach: (vehicle: Vehicle, detachedVehicle: Vehicle) => void;
-    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart) => number | boolean | void;
+    weaponDamage: (source: Player, target: Entity, weaponHash: number, damage: number, offset: shared.Vector3, bodyPart: shared.BodyPart, sourceEntity: Entity) => number | boolean | void;
     startFire: (player: Player, fires: IFireInfo[]) => boolean | void;
     startProjectile: (player: Player, pos: shared.Vector3, dir: shared.Vector3, ammoHash: number, weaponHash: number) => boolean | void;
     playerWeaponChange: (player: Player, oldWeapon: number, weapon: number) => void;
@@ -491,6 +502,7 @@ declare module "alt-server" {
     readonly skillAbove50MaxAmmoMp: number;
     readonly maxSkillMaxAmmoMp: number;
     readonly bonusMaxAmmoMp: number;
+    readonly damageType: string;
   }
 
   export interface IAmmoFlags {
@@ -1060,6 +1072,8 @@ declare module "alt-server" {
     public readonly isInMelee: boolean;
     public readonly isInCover: boolean;
     public readonly isParachuting: boolean;
+    public readonly isOnVehicle: boolean;
+    public readonly isInWater: boolean;
 
     /**
      * Position the player is currently aiming at.
@@ -1091,6 +1105,7 @@ declare module "alt-server" {
     public readonly isSpawned: boolean;
     public readonly socialID: string;
     public readonly socialClubName: string;
+    public readonly hwid3: string;
     public readonly hwidHash: string;
     public readonly hwidExHash: string;
     public readonly authToken: string;
@@ -2319,6 +2334,98 @@ declare module "alt-server" {
      * @param wheelId The variation id of the wheel.
      */
     public setWheels(wheelType: number, wheelId: number): void;
+
+    /**
+     * Gets the camber angle of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelCamber(wheelIndex: number): number;
+
+    /**
+     * Sets the camber angle of the specified wheel.
+     *
+     * @remarks A positive camber angle means that the top of the wheel is farther out than the bottom. A negative camber angle means that the bottom of the wheel is farther out than the top.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param camber The value the of camber angle.
+     */
+    public setWheelCamber(wheelIndex: number, camber: number): void;
+
+    /**
+     * Gets the track width of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTrackWidth(wheelIndex: number): number;
+
+    /**
+     * Sets the track width of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param width The value of the track width.
+     */
+    public setWheelTrackWidth(wheelIndex: number, width: number): void;
+
+    /**
+     * Gets the height of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelHeight(wheelIndex: number): number;
+
+    /**
+     * Sets the height of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param height The value of the wheel height.
+     */
+    public setWheelHeight(wheelIndex: number, height: number): void;
+
+    /**
+     * Gets the tyre radius of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTyreRadius(wheelIndex: number): number;
+
+    /**
+     * @remarks Applies only physical effects to the wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param radius The value of the tyre radius.
+     */
+    public setWheelTyreRadius(wheelIndex: number, radius: number): void;
+
+    /**
+     * Gets the rim radius of the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelRimRadius(wheelIndex: number): number;
+
+    /**
+     * @remarks Does not show any visible effect.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param radius The index of the rim radius.
+     */
+    public setWheelRimRadius(wheelIndex: number, radius: number): void;
+
+    /**
+     * Gets the tyre width the specified wheel.
+     *
+     * @param wheelIndex The index of the wheel.
+     */
+    public getWheelTyreWidth(wheelIndex: number): number;
+
+    /**
+     * @remarks Does not show any visible effect.
+     *
+     * @param wheelIndex The index of the wheel.
+     * @param width The value of the tyre width.
+     */
+    public setWheelTyreWidth(wheelIndex: number, width: number): void;
     /**
      * Sets if a specific window is damaged.
      *

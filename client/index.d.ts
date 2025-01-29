@@ -120,6 +120,18 @@ declare module "alt-client" {
     Justify,
   }
 
+  export enum CookieSameSite {
+    NoRestriction = "NO_RESTRICTION",
+    LaxMode = "LAX_MODE",
+    StrictMode = "STRICT_MODE",
+  }
+
+  export enum CookiePriority {
+    Low = "LOW",
+    Medium = "MEDIUM",
+    High = "HIGH",
+  }
+
   export interface IClientEvent {
     anyResourceError: (resourceName: string) => void;
     anyResourceStart: (resourceName: string) => void;
@@ -207,6 +219,15 @@ declare module "alt-client" {
 
     playerStartTalking: (target: Player) => void;
     playerStopTalking: (target: Player) => void;
+
+    /**
+     * @remarks This event is only triggered for local player.
+     */
+    playerDimensionChange: (player: Player, oldDimension: number, newDimension: number) => void;
+    /**
+     * @remarks This event is only triggered for local player.
+     */
+    playerInteriorChange: (player: Player, oldInterior: number, newInterior: number) => void;
   }
 
   export interface IDiscordUser {
@@ -572,6 +593,33 @@ declare module "alt-client" {
   export interface IAABB {
     min: number;
     max: number;
+  }
+
+  export interface IWebViewParams {
+    url: string;
+    pos?: shared.IVector2;
+    size?: shared.IVector2;
+    isOverlay?: boolean;
+    drawableHash?: number;
+    targetTexture?: string;
+    headers?: Record<string, string>;
+    cookies?: ICookie[];
+  }
+
+  export interface ICookie {
+    /**
+     * Cookie name must always start with "__altv_"
+     */
+    name: `__altv_${string}`;
+    url: string;
+    value: unknown;
+    httpOnly?: boolean;
+    secure?: boolean;
+    domain?: string;
+    path?: string;
+    sameSite?: CookieSameSite;
+    priority: CookiePriority;
+    expires: number;
   }
 
   export class BaseObject extends shared.BaseObject {
@@ -1918,10 +1966,16 @@ declare module "alt-client" {
      * Creates a WebView rendered on game object.
      *
      * @param url URL of the html file.
-     * @param propHash Hash of object to render on.
-     * @param targetTexture Name of object's texture to replace.
+     * @param drawableHash Hash of drawable to render on.
+     * @param targetTexture Name of texture to replace.
      */
-    constructor(url: string, propHash: number, targetTexture: string);
+    constructor(url: string, drawableHash: number, targetTexture: string);
+
+    /**
+     * Creates a WebView depending on params.
+     *
+     */
+    constructor(params: IWebViewParams);
 
     /**
      * Emits specified event across particular WebView.
@@ -2002,6 +2056,7 @@ declare module "alt-client" {
     public removeOutput(output: AudioOutput): void;
     public getOutputs(): readonly (AudioOutput | number)[];
     public reload(ignoreCache?: boolean): void;
+    public setCookie(cookie: ICookie): void;
 
     public deleteMeta(key: string): void;
     public deleteMeta<K extends shared.ExtractStringKeys<ICustomWebViewMeta>>(key: K): void;
